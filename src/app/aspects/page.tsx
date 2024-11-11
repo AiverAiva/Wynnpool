@@ -116,103 +116,128 @@ export default function AspectPool() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="container mx-auto p-4">
-        {lootData && aspectData && (
-          <>
-            <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
-            <Card className="mb-4">
-              <CardHeader>
-                <CardTitle>Next Update In</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-semibold">{countdown}</p>
-              </CardContent>
-            </Card>
-            <Tabs defaultValue="TNA">
-              <TabsList className="grid w-full grid-cols-4">
-                {Object.keys(lootData.Loot).map((section) => (
-                  <TabsTrigger key={section} value={section}>{section}</TabsTrigger>
-                ))}
-              </TabsList>
-              {Object.entries(lootData.Loot).map(([section, categories]) => (
-                <TabsContent key={section} value={section}>
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>{section} Loot</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      {Object.entries(categories).map(([category, items]) => (
-                        <div key={category} className="mb-4">
-                          <h3 className="text-xl font-semibold mb-2">{category}</h3>
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <TooltipProvider delayDuration={100}>
-                              {items.map((item) => {
-                                const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item)
-                                return (
-                                  <Tooltip key={item}>
-                                    <TooltipTrigger asChild>
-                                      <div className="flex items-center space-x-2 cursor-pointer">
-                                        <Image
-                                          unoptimized
-                                          src={`/icons/aspects/${lootData.Icon[item]}`}
-                                          alt={item}
-                                          width={32}
-                                          height={32}
-                                        />
-                                        <span>{item}</span>
-                                      </div>
-                                    </TooltipTrigger>
-                                    {aspectInfo && (
-                                      <TooltipContent className="w-64">
-                                        <h4 className="font-bold">{aspectInfo.name}</h4>
-                                        <p className="text-sm">{aspectInfo.description}</p>
-                                        <h5 className="font-semibold mt-2">Tiers:</h5>
-                                        <ul className="text-sm">
-                                          {Object.entries(aspectInfo.tiers).map(([tier, effect]) => (
-                                            <li key={tier}>{tier}: {effect}</li>
-                                          ))}
-                                        </ul>
-                                      </TooltipContent>
-                                    )}
-                                  </Tooltip>
-                                )
-                              })}
-                            </TooltipProvider>
-                          </div>
-                        </div>
-                      ))}
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-              ))}
-            </Tabs>
-          </>
-        )}
-        <div>
-          <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')} className="mt-4">
-            <TabsList>
-              <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
-              <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
-            </TabsList>
-          </Tabs>
 
-          <div className="mt-4">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th></th>
-                  <th className="px-4 py-2">
-                    <Tabs value={selectedClass} onValueChange={setSelectedClass}>
-                      <TabsList>
-                        {Object.keys(aspectData).map((className) => (
-                          <TabsTrigger key={className} value={className}>
-                            {className}
-                          </TabsTrigger>
-                        ))}
-                      </TabsList>
-                    </Tabs>
-                    
-                    {/* <select
+      <div className="
+        w-screen
+        top-0
+        left-0
+        z-10
+        bg-gray-200 
+        bg-opacity-50
+        dark:bg-slate-900
+        flex
+        justify-center
+        items-center
+        duration-150
+      ">
+
+        <div className="
+          w-full
+          max-w-screen-lg
+          bg-white
+          dark:bg-slate-800
+          p-6
+          mx-4
+          shadow-lg
+          duration-150
+        ">
+
+          <main className="container mx-auto p-4">
+            {lootData && aspectData && (
+              <>
+                <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
+                <Card className="mb-4">
+                  <CardHeader>
+                    <CardTitle>Next Update In</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-2xl font-semibold">{countdown}</p>
+                  </CardContent>
+                </Card>
+                <Tabs defaultValue="TNA">
+                  <TabsList className="grid w-full grid-cols-4">
+                    {Object.keys(lootData.Loot).map((section) => (
+                      <TabsTrigger key={section} value={section}>{section}</TabsTrigger>
+                    ))}
+                  </TabsList>
+                  {Object.entries(lootData.Loot).map(([section, categories]) => (
+                    <TabsContent key={section} value={section}>
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>{section} Loot</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          {Object.entries(categories).map(([category, items]) => (
+                            <div key={category} className="mb-4">
+                              <h3 className="text-xl font-semibold mb-2">{category}</h3>
+                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <TooltipProvider delayDuration={100}>
+                                  {items.map((item) => {
+                                    const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item)
+                                    return (
+                                      <Tooltip key={item}>
+                                        <TooltipTrigger asChild>
+                                          <div className="flex items-center space-x-2 cursor-pointer">
+                                            <Image
+                                              unoptimized
+                                              src={`/icons/aspects/${lootData.Icon[item]}`}
+                                              alt={item}
+                                              width={32}
+                                              height={32}
+                                            />
+                                            <span>{item}</span>
+                                          </div>
+                                        </TooltipTrigger>
+                                        {aspectInfo && (
+                                          <TooltipContent className="w-fit p-4">
+                                            <h4 className="font-bold">{aspectInfo.name}</h4>
+                                            <p className="text-sm">{aspectInfo.description}</p>
+                                            <ul className="text-sm">
+                                              {Object.entries(aspectInfo.tiers).map(([tier, effect]) => (
+                                                <li key={tier} className='mt-1'><Badge>{tier}</Badge> {effect}</li>
+                                              ))}
+                                            </ul>
+                                          </TooltipContent>
+                                        )}
+                                      </Tooltip>
+                                    )
+                                  })}
+                                </TooltipProvider>
+                              </div>
+                            </div>
+                          ))}
+                        </CardContent>
+                      </Card>
+                    </TabsContent>
+                  ))}
+                </Tabs>
+              </>
+            )}
+            <div>
+              <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')} className="mt-4">
+                <TabsList>
+                  <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
+                  <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
+                </TabsList>
+              </Tabs>
+
+              <div className="mt-4">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th></th>
+                      <th className="px-4 py-2">
+                        <Tabs value={selectedClass} onValueChange={setSelectedClass}>
+                          <TabsList>
+                            {Object.keys(aspectData).map((className) => (
+                              <TabsTrigger key={className} value={className}>
+                                {className}
+                              </TabsTrigger>
+                            ))}
+                          </TabsList>
+                        </Tabs>
+
+                        {/* <select
                       id="class-select"
                       value={selectedClass}
                       onChange={(e) => setSelectedClass(e.target.value)}
@@ -222,38 +247,41 @@ export default function AspectPool() {
                         <option key={className} value={className}>{className}</option>
                       ))}
                     </select> */}
-                  </th>
-                  <th className="px-4 py-2">Raid</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {availableAspects.map(({ name, section, rarity, icon, description }) => (
-                  <tr key={`${name}-${section}`}>
-                    <td className="px-4 py-2">
-                      <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
-                    </td>
-                    <td className="px-4 py-1">
-                      <Badge
-                        className={`ml-2  mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
-                            rarity === 'Legendary' ? 'bg-cyan-400' :
-                              'bg-fuchsia-700'
-                          } text-white text-sm font-thin`}
-                      >
-                        {name}
-                      </Badge>
-                      <br />
-                      <p className="px-4 py-1 text-sm">{description}</p>
-                    </td>
-                    <td className="px-4 py-2 text-center">
-                      {section}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                      </th>
+                      <th className="px-4 py-2">Raid</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {availableAspects.map(({ name, section, rarity, icon, description }) => (
+                      <tr key={`${name}-${section}`}>
+                        <td className="px-4 py-2">
+                          <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
+                        </td>
+                        <td className="px-4 py-1">
+                          <Badge
+                            className={`ml-2  mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
+                              rarity === 'Legendary' ? 'bg-cyan-400' :
+                                'bg-fuchsia-700'
+                              } text-white text-sm font-thin`}
+                          >
+                            {name}
+                          </Badge>
+                          <br />
+                          <p className="px-4 py-1 text-sm">{description}</p>
+                        </td>
+                        <td className="px-4 py-2 text-center">
+                          {section}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </main>
         </div>
-      </main>
+      </div>
+
     </div>
   )
 }
