@@ -116,20 +116,15 @@ export default function AspectPool() {
   })
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-background">
       <Navbar />
       <div className="
-        w-screen
-        top-0
-        left-0
-        z-10
         flex
         justify-center
         items-center
         duration-150
       ">
         <div className="
-          w-full
           max-w-screen-lg
           p-6
           mx-4
