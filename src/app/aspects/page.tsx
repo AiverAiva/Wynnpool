@@ -123,9 +123,6 @@ export default function AspectPool() {
         top-0
         left-0
         z-10
-        bg-gray-200 
-        bg-opacity-50
-        dark:bg-slate-900
         flex
         justify-center
         items-center
@@ -134,8 +131,6 @@ export default function AspectPool() {
         <div className="
           w-full
           max-w-screen-lg
-          bg-white
-          dark:bg-slate-800
           p-6
           mx-4
           shadow-lg
@@ -229,8 +224,8 @@ export default function AspectPool() {
               </Tabs>
 
               <div className="mt-4">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                <table className="min-w-full divide-y">
+                  <thead>
                     <tr>
                       <th></th>
                       <th className="px-4 py-2">
@@ -247,7 +242,7 @@ export default function AspectPool() {
                       <th className="px-4 py-2">Raid</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="divide-y">
                     {availableAspects.map(({ name, section, rarity, icon, description }) => (
                       <tr key={`${name}-${section}`}>
                         <td className="px-4 py-2">
