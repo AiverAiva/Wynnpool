@@ -167,9 +167,9 @@ import { Menu } from 'lucide-react'
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Loot', href: '/loot' },
+  // { name: 'Loot', href: '/loot' },
   { name: 'Aspects', href: '/aspects' },
-  { name: 'About', href: '/about' },
+  // { name: 'About', href: '/about' },
 ]
 
 export function Navbar() {
@@ -178,11 +178,11 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
+      <div className="container flex h-14 mx-auto px-4 py-4 flex justify-between items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="hidden font-bold sm:inline-block">
-              Game Loot Tracker
+              Wynnpool
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
