@@ -89,22 +89,26 @@ export default function AspectPool() {
   const raidOrder: LootSection[] = ['TNA', 'TCC', 'NOL', 'NOTG']
 
   const availableAspects = Object.entries(lootData.Loot).reduce((acc, [section, categories]) => {
+    const aspectNamesSet = new Set(acc.map(aspect => aspect.name)); // Create a Set from existing aspect names
+  
     Object.entries(categories).forEach(([rarity, aspects]) => {
       aspects.forEach((aspect) => {
-        const matchedAspect = aspectData[selectedClass]?.find((a) => a.name === aspect)
-        if (matchedAspect) {
+        const matchedAspect = aspectData[selectedClass]?.find((a) => a.name === aspect);
+        if (matchedAspect && !aspectNamesSet.has(aspect)) { // Check if the aspect is already added
+          aspectNamesSet.add(aspect); // Mark the aspect as added
           acc.push({
             name: aspect,
             section: section as LootSection,
             rarity: rarity as LootCategory,
             icon: lootData.Icon[aspect],
             description: matchedAspect.description,
-          })
+          });
         }
-      })
-    })
-    return acc
-  }, [] as { name: string; section: LootSection; rarity: LootCategory; icon: string; description?: string }[])
+      });
+    });
+  
+    return acc;
+  }, [] as { name: string; section: LootSection; rarity: LootCategory; icon: string; description?: string }[]);
 
   // Sort the list based on the selected sort criteria
   availableAspects.sort((a, b) => {
