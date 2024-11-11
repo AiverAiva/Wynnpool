@@ -39,6 +39,7 @@ export default function AspectPool() {
   const [countdown, setCountdown] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [selectedClass, setSelectedClass] = useState<string>('Archer')
+  const [sortBy, setSortBy] = useState<'rarity' | 'raid'>('rarity')
 
   useEffect(() => {
     setIsLoading(true)
@@ -82,22 +83,35 @@ export default function AspectPool() {
   if (isLoading) return <div>Loading...</div>
   if (!lootData || !aspectData) return <div>Error loading data. Please try again later.</div>
 
-  // Get currently available aspects for the selected class from lootData
+  const rarityOrder: LootCategory[] = ['Mythic', 'Fabled', 'Legendary']
+  const raidOrder: LootSection[] = ['TNA', 'TCC', 'NOL', 'NOTG']
+
   const availableAspects = Object.entries(lootData.Loot).reduce((acc, [section, categories]) => {
     Object.entries(categories).forEach(([rarity, aspects]) => {
       aspects.forEach((aspect) => {
-        if (aspectData[selectedClass]?.some((a) => a.name === aspect)) {
+        const matchedAspect = aspectData[selectedClass]?.find((a) => a.name === aspect)
+        if (matchedAspect) {
           acc.push({
             name: aspect,
             section: section as LootSection,
             rarity: rarity as LootCategory,
             icon: lootData.Icon[aspect],
+            description: matchedAspect.description,
           })
         }
       })
     })
     return acc
-  }, [] as { name: string; section: LootSection; rarity: LootCategory; icon: string }[])
+  }, [] as { name: string; section: LootSection; rarity: LootCategory; icon: string; description?: string }[])
+
+  // Sort the list based on the selected sort criteria
+  availableAspects.sort((a, b) => {
+    if (sortBy === 'rarity') {
+      return rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity)
+    } else {
+      return raidOrder.indexOf(a.section) - raidOrder.indexOf(b.section)
+    }
+  })
 
   return (
     <div className="min-h-screen bg-background">
@@ -174,43 +188,71 @@ export default function AspectPool() {
             </Tabs>
           </>
         )}
-        <Tabs value={selectedClass} onValueChange={setSelectedClass}>
-          <TabsList>
-            {Object.keys(aspectData).map((className) => (
-              <TabsTrigger key={className} value={className}>
-                {className}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          {Object.keys(aspectData).map((className) => (
-            <TabsContent key={className} value={className}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {availableAspects
-                  .filter((aspect) => aspectData[className]?.some((a) => a.name === aspect.name))
-                  .map(({ name, section, rarity, icon }) => (
-                    <TooltipProvider delayDuration={100}>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Card key={name}>
-                            <CardHeader>
-                              <Badge className="w-fit">{section}</Badge>
-                              <CardTitle>{name}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                              <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
-                              <p>Rarity: {rarity}</p>
-                            </CardContent>
-                          </Card>
-                        </TooltipTrigger>
-                        <TooltipContent>{aspectData[className].find((a) => a.name === name)?.description}</TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+        <div>
+          <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')} className="mt-4">
+            <TabsList>
+              <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
+              <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
+            </TabsList>
+          </Tabs>
 
-                  ))}
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
+          <div className="mt-4">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th></th>
+                  <th className="px-4 py-2">
+                    <Tabs value={selectedClass} onValueChange={setSelectedClass}>
+                      <TabsList>
+                        {Object.keys(aspectData).map((className) => (
+                          <TabsTrigger key={className} value={className}>
+                            {className}
+                          </TabsTrigger>
+                        ))}
+                      </TabsList>
+                    </Tabs>
+                    
+                    {/* <select
+                      id="class-select"
+                      value={selectedClass}
+                      onChange={(e) => setSelectedClass(e.target.value)}
+                      className="p-2 border rounded w-full font-thin text-center"
+                    >
+                      {Object.keys(aspectData).map((className) => (
+                        <option key={className} value={className}>{className}</option>
+                      ))}
+                    </select> */}
+                  </th>
+                  <th className="px-4 py-2">Raid</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {availableAspects.map(({ name, section, rarity, icon, description }) => (
+                  <tr key={`${name}-${section}`}>
+                    <td className="px-4 py-2">
+                      <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
+                    </td>
+                    <td className="px-4 py-1">
+                      <Badge
+                        className={`ml-2  mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
+                            rarity === 'Legendary' ? 'bg-cyan-400' :
+                              'bg-fuchsia-700'
+                          } text-white text-sm font-thin`}
+                      >
+                        {name}
+                      </Badge>
+                      <br />
+                      <p className="px-4 py-1 text-sm">{description}</p>
+                    </td>
+                    <td className="px-4 py-2 text-center">
+                      {section}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </main>
     </div>
   )
