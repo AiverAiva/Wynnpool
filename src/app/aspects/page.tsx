@@ -41,6 +41,7 @@ export default function AspectPool() {
   const [isLoading, setIsLoading] = useState(true)
   const [selectedClass, setSelectedClass] = useState<string>('Archer')
   const [sortBy, setSortBy] = useState<'rarity' | 'raid'>('rarity')
+  const [openTooltips, setOpenTooltips] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
     setIsLoading(true)
@@ -115,9 +116,8 @@ export default function AspectPool() {
   })
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
-
       <div className="
         w-screen
         top-0
@@ -131,7 +131,6 @@ export default function AspectPool() {
         items-center
         duration-150
       ">
-
         <div className="
           w-full
           max-w-screen-lg
@@ -174,11 +173,18 @@ export default function AspectPool() {
                               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 <TooltipProvider delayDuration={100}>
                                   {items.map((item) => {
-                                    const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item)
+                                    const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item);
+
                                     return (
-                                      <Tooltip key={item}>
+                                      <Tooltip key={item} open={openTooltips[item]} onOpenChange={(isOpen) => setOpenTooltips({ ...openTooltips, [item]: isOpen })}>
                                         <TooltipTrigger asChild>
-                                          <div className="flex items-center space-x-2 cursor-pointer">
+                                          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => {
+                                            // Toggle the tooltip state for the current item
+                                            setOpenTooltips((prevState) => ({
+                                              ...prevState,
+                                              [item]: !prevState[item]
+                                            }));
+                                          }}>
                                             <Image
                                               unoptimized
                                               src={`/icons/aspects/${lootData.Icon[item]}`}
@@ -201,7 +207,7 @@ export default function AspectPool() {
                                           </TooltipContent>
                                         )}
                                       </Tooltip>
-                                    )
+                                    );
                                   })}
                                 </TooltipProvider>
                               </div>
@@ -237,17 +243,6 @@ export default function AspectPool() {
                             ))}
                           </TabsList>
                         </Tabs>
-
-                        {/* <select
-                      id="class-select"
-                      value={selectedClass}
-                      onChange={(e) => setSelectedClass(e.target.value)}
-                      className="p-2 border rounded w-full font-thin text-center"
-                    >
-                      {Object.keys(aspectData).map((className) => (
-                        <option key={className} value={className}>{className}</option>
-                      ))}
-                    </select> */}
                       </th>
                       <th className="px-4 py-2">Raid</th>
                     </tr>
