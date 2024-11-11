@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Navbar } from "@/components/ui/navbar"
 import Image from 'next/image'
@@ -37,6 +38,7 @@ export default function AspectPool() {
   const [aspectData, setAspectData] = useState<AspectData | null>(null)
   const [countdown, setCountdown] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const [selectedClass, setSelectedClass] = useState<string>('Archer')
 
   useEffect(() => {
     setIsLoading(true)
@@ -44,15 +46,15 @@ export default function AspectPool() {
       fetch('/api/aspects-pool').then(response => response.json()),
       fetch('/api/aspects-data').then(response => response.json())
     ])
-    .then(([lootData, aspectData]) => {
-      setLootData(lootData)
-      setAspectData(aspectData)
-      setIsLoading(false)
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error)
-      setIsLoading(false)
-    })
+      .then(([lootData, aspectData]) => {
+        setLootData(lootData)
+        setAspectData(aspectData)
+        setIsLoading(false)
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error)
+        setIsLoading(false)
+      })
   }, [])
 
   useEffect(() => {
@@ -77,86 +79,138 @@ export default function AspectPool() {
     }
   }, [lootData]);
 
-
-
   if (isLoading) return <div>Loading...</div>
   if (!lootData || !aspectData) return <div>Error loading data. Please try again later.</div>
+
+  // Get currently available aspects for the selected class from lootData
+  const availableAspects = Object.entries(lootData.Loot).reduce((acc, [section, categories]) => {
+    Object.entries(categories).forEach(([rarity, aspects]) => {
+      aspects.forEach((aspect) => {
+        if (aspectData[selectedClass]?.some((a) => a.name === aspect)) {
+          acc.push({
+            name: aspect,
+            section: section as LootSection,
+            rarity: rarity as LootCategory,
+            icon: lootData.Icon[aspect],
+          })
+        }
+      })
+    })
+    return acc
+  }, [] as { name: string; section: LootSection; rarity: LootCategory; icon: string }[])
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto p-4">
         {lootData && aspectData && (
-        <>
-        <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
-        <Card className="mb-4">
-          <CardHeader>
-            <CardTitle>Next Update In</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-semibold">{countdown}</p>
-          </CardContent>
-        </Card>
-        <Tabs defaultValue="TNA">
-          <TabsList className="grid w-full grid-cols-4">
-            {Object.keys(lootData.Loot).map((section) => (
-              <TabsTrigger key={section} value={section}>{section}</TabsTrigger>
+          <>
+            <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
+            <Card className="mb-4">
+              <CardHeader>
+                <CardTitle>Next Update In</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-semibold">{countdown}</p>
+              </CardContent>
+            </Card>
+            <Tabs defaultValue="TNA">
+              <TabsList className="grid w-full grid-cols-4">
+                {Object.keys(lootData.Loot).map((section) => (
+                  <TabsTrigger key={section} value={section}>{section}</TabsTrigger>
+                ))}
+              </TabsList>
+              {Object.entries(lootData.Loot).map(([section, categories]) => (
+                <TabsContent key={section} value={section}>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>{section} Loot</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {Object.entries(categories).map(([category, items]) => (
+                        <div key={category} className="mb-4">
+                          <h3 className="text-xl font-semibold mb-2">{category}</h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <TooltipProvider delayDuration={100}>
+                              {items.map((item) => {
+                                const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item)
+                                return (
+                                  <Tooltip key={item}>
+                                    <TooltipTrigger asChild>
+                                      <div className="flex items-center space-x-2 cursor-pointer">
+                                        <Image
+                                          unoptimized
+                                          src={`/icons/aspects/${lootData.Icon[item]}`}
+                                          alt={item}
+                                          width={32}
+                                          height={32}
+                                        />
+                                        <span>{item}</span>
+                                      </div>
+                                    </TooltipTrigger>
+                                    {aspectInfo && (
+                                      <TooltipContent className="w-64">
+                                        <h4 className="font-bold">{aspectInfo.name}</h4>
+                                        <p className="text-sm">{aspectInfo.description}</p>
+                                        <h5 className="font-semibold mt-2">Tiers:</h5>
+                                        <ul className="text-sm">
+                                          {Object.entries(aspectInfo.tiers).map(([tier, effect]) => (
+                                            <li key={tier}>{tier}: {effect}</li>
+                                          ))}
+                                        </ul>
+                                      </TooltipContent>
+                                    )}
+                                  </Tooltip>
+                                )
+                              })}
+                            </TooltipProvider>
+                          </div>
+                        </div>
+                      ))}
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </>
+        )}
+        <Tabs value={selectedClass} onValueChange={setSelectedClass}>
+          <TabsList>
+            {Object.keys(aspectData).map((className) => (
+              <TabsTrigger key={className} value={className}>
+                {className}
+              </TabsTrigger>
             ))}
           </TabsList>
-          {Object.entries(lootData.Loot).map(([section, categories]) => (
-            <TabsContent key={section} value={section}>
-              <Card>
-                <CardHeader>
-                  <CardTitle>{section} Loot</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {Object.entries(categories).map(([category, items]) => (
-                    <div key={category} className="mb-4">
-                      <h3 className="text-xl font-semibold mb-2">{category}</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <TooltipProvider delayDuration={100}>
-                          {items.map((item) => {
-                            const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item)
-                            return (
-                              <Tooltip key={item}>
-                                <TooltipTrigger asChild>
-                                  <div className="flex items-center space-x-2 cursor-pointer">
-                                    <Image
-                                      unoptimized
-                                      src={`/icons/aspects/${lootData.Icon[item]}`}
-                                      alt={item}
-                                      width={32}
-                                      height={32}
-                                    />
-                                    <span>{item}</span>
-                                  </div>
-                                </TooltipTrigger>
-                                {aspectInfo && (
-                                  <TooltipContent className="w-64">
-                                    <h4 className="font-bold">{aspectInfo.name}</h4>
-                                    <p className="text-sm">{aspectInfo.description}</p>
-                                    <h5 className="font-semibold mt-2">Tiers:</h5>
-                                    <ul className="text-sm">
-                                      {Object.entries(aspectInfo.tiers).map(([tier, effect]) => (
-                                        <li key={tier}>{tier}: {effect}</li>
-                                      ))}
-                                    </ul>
-                                  </TooltipContent>
-                                )}
-                              </Tooltip>
-                            )
-                          })}
-                        </TooltipProvider>
-                      </div>
-                    </div>
+          {Object.keys(aspectData).map((className) => (
+            <TabsContent key={className} value={className}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {availableAspects
+                  .filter((aspect) => aspectData[className]?.some((a) => a.name === aspect.name))
+                  .map(({ name, section, rarity, icon }) => (
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Card key={name}>
+                            <CardHeader>
+                              <Badge className="w-fit">{section}</Badge>
+                              <CardTitle>{name}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                              <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
+                              <p>Rarity: {rarity}</p>
+                            </CardContent>
+                          </Card>
+                        </TooltipTrigger>
+                        <TooltipContent>{aspectData[className].find((a) => a.name === name)?.description}</TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+
                   ))}
-                </CardContent>
-              </Card>
+              </div>
             </TabsContent>
           ))}
         </Tabs>
-        </>
-        )}
       </main>
     </div>
   )
