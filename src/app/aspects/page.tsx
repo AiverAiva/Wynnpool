@@ -119,15 +119,12 @@ export default function AspectPool() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="
-        flex
-        justify-center
+        lg:flex
         items-center
-        duration-150
+        justify-center
       ">
         <div className="
           max-w-screen-lg
-          p-6
-          mx-4
           shadow-lg
           duration-150
         ">
@@ -161,7 +158,7 @@ export default function AspectPool() {
                             <div key={category} className="mb-4">
                               <h3 className="text-xl font-semibold mb-2">{category}</h3>
                               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <TooltipProvider delayDuration={100}>
+                                <TooltipProvider delayDuration={50}>
                                   {items.map((item) => {
                                     const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item);
 
@@ -222,7 +219,7 @@ export default function AspectPool() {
                 <table className="min-w-full divide-y">
                   <thead>
                     <tr>
-                      <th></th>
+                      <th className='hidden md:block'></th>
                       <th className="px-4 py-2">
                         <Tabs value={selectedClass} onValueChange={setSelectedClass}>
                           <TabsList>
@@ -240,7 +237,7 @@ export default function AspectPool() {
                   <tbody className="divide-y">
                     {availableAspects.map(({ name, section, rarity, icon, description }) => (
                       <tr key={`${name}-${section}`}>
-                        <td className="px-4 py-2">
+                        <td className="px-4 py-2 hidden md:block">
                           <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
                         </td>
                         <td className="px-4 py-1">
