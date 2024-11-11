@@ -114,7 +114,7 @@ export default function AspectPool() {
                     <div key={category} className="mb-4">
                       <h3 className="text-xl font-semibold mb-2">{category}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <TooltipProvider>
+                        <TooltipProvider delayDuration={100}>
                           {items.map((item) => {
                             const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item)
                             return (
