@@ -36,16 +36,23 @@ export default function GameLootPage() {
   const [lootData, setLootData] = useState<LootData | null>(null)
   const [aspectData, setAspectData] = useState<AspectData | null>(null)
   const [countdown, setCountdown] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    fetch('https://nori.fish/api/aspects')
-      .then(response => response.json())
-      .then(data => setLootData(data))
-
-    fetch('/api/aspects-data')
-      .then(response => response.json())
-      .then(data => setAspectData(data))
-      
+    setIsLoading(true)
+    Promise.all([
+      fetch('https://nori.fish/api/aspects').then(response => response.json()),
+      fetch('/api/aspects-data').then(response => response.json())
+    ])
+    .then(([lootData, aspectData]) => {
+      setLootData(lootData)
+      setAspectData(aspectData)
+      setIsLoading(false)
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error)
+      setIsLoading(false)
+    })
   }, [])
 
   useEffect(() => {
@@ -67,13 +74,16 @@ export default function GameLootPage() {
     }
   }, [lootData])
 
-  if (!lootData || !aspectData) return <div>Loading...</div>
-  if (aspectData) console.log(aspectData)
+  if (isLoading) return <div>Loading...</div>
+  if (!lootData || !aspectData) return <div>Error loading data. Please try again later.</div>
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto p-4">
-        <h1 className="text-4xl font-bold mb-4">Game Loot</h1>
+        {lootData && aspectData && (
+        <>
+        <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
         <Card className="mb-4">
           <CardHeader>
             <CardTitle>Next Update In</CardTitle>
@@ -140,6 +150,8 @@ export default function GameLootPage() {
             </TabsContent>
           ))}
         </Tabs>
+        </>
+        )}
       </main>
     </div>
   )
