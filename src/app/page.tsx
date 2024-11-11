@@ -100,13 +100,17 @@
 //   );
 // }
 
+'use client'
+
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Navbar } from "@/components/ui/navbar"
-import { BookOpen, Compass, Database, Globe, Search, Users } from "lucide-react"
+import { BookOpen, Compass, Database, Globe, Search, Users} from "lucide-react"
 import Link from "next/link"
+import WynncraftNews from '@/components/lastest-news'
 
 export default function HomePage() {
   return (
@@ -129,7 +133,7 @@ export default function HomePage() {
           <h1 className="text-4xl font-bold mb-4">Welcome to Wynnpool</h1>
           <p className="text-xl text-muted-foreground mb-8">Your ultimate utility for up-to-date Wynncraft information</p>
           <div className="max-w-md mx-auto">
-             {/* onSubmit={(e) => e.preventDefault()} */}
+            {/* onSubmit={(e) => e.preventDefault()} */}
             <form className="flex">
               <Input type="text" placeholder="Search for items, quests, or players..." className="rounded-r-none" />
               <Button type="submit" className="rounded-l-none">
@@ -186,33 +190,12 @@ export default function HomePage() {
           <h2 className="text-2xl font-semibold mb-4">Latest Updates</h2>
           <Tabs defaultValue="game">
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="game">Game Updates</TabsTrigger>
+              <TabsTrigger value="game">Latest News</TabsTrigger>
               <TabsTrigger value="items">Item Changelog</TabsTrigger>
               <TabsTrigger value="events">Events</TabsTrigger>
             </TabsList>
             <TabsContent value="game">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Latest Game Updates</CardTitle>
-                  <CardDescription>Stay informed about recent changes to Wynncraft</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    <li className="flex items-center">
-                      <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
-                      New region "Silent Expanse" added
-                    </li>
-                    <li className="flex items-center">
-                      <Compass className="h-4 w-4 mr-2 text-muted-foreground" />
-                      Level cap increased to 106
-                    </li>
-                    <li className="flex items-center">
-                      <Users className="h-4 w-4 mr-2 text-muted-foreground" />
-                      New class "Shaman" now available
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+              <WynncraftNews />
             </TabsContent>
             <TabsContent value="items">
               <Card>
