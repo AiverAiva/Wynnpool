@@ -16,7 +16,11 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Wynnpool",
-  description: "metadatametadatametadatametadata",
+  description: "A utility integration for Wynncraft, using the up-to-date data with global statistics and more.",
+  keywords: ["Wynncraft", "Lootrun", "Raid", "Aspect", "Wynndata"],
+  openGraph: {
+    images: '/images/og-image.png',
+  },
 };
 
 export default function RootLayout({
