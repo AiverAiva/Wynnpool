@@ -32,7 +32,7 @@ interface LootData {
   Timestamp: number
 }
 
-export default function GameLootPage() {
+export default function AspectPool() {
   const [lootData, setLootData] = useState<LootData | null>(null)
   const [aspectData, setAspectData] = useState<AspectData | null>(null)
   const [countdown, setCountdown] = useState('')
@@ -41,7 +41,7 @@ export default function GameLootPage() {
   useEffect(() => {
     setIsLoading(true)
     Promise.all([
-      fetch('https://nori.fish/api/aspects').then(response => response.json()),
+      fetch('/api/aspects-pool').then(response => response.json()),
       fetch('/api/aspects-data').then(response => response.json())
     ])
     .then(([lootData, aspectData]) => {
@@ -58,21 +58,26 @@ export default function GameLootPage() {
   useEffect(() => {
     if (lootData) {
       const timer = setInterval(() => {
-        const now = Math.floor(Date.now() / 1000)
-        const timeLeft = lootData.Timestamp - now
+        const now = Math.floor(Date.now() / 1000);
+        const nextUpdate = lootData.Timestamp + 7 * 86400; // 7 days in seconds
+        const timeLeft = nextUpdate - now;
+
         if (timeLeft <= 0) {
-          setCountdown('Data update imminent!')
+          setCountdown('Data update imminent!');
         } else {
-          const days = Math.floor(timeLeft / 86400)
-          const hours = Math.floor((timeLeft % 86400) / 3600)
-          const minutes = Math.floor((timeLeft % 3600) / 60)
-          const seconds = timeLeft % 60
-          setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`)
+          const days = Math.floor(timeLeft / 86400);
+          const hours = Math.floor((timeLeft % 86400) / 3600);
+          const minutes = Math.floor((timeLeft % 3600) / 60);
+          const seconds = timeLeft % 60;
+          setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
         }
-      }, 1000)
-      return () => clearInterval(timer)
+      }, 1000);
+
+      return () => clearInterval(timer);
     }
-  }, [lootData])
+  }, [lootData]);
+
+
 
   if (isLoading) return <div>Loading...</div>
   if (!lootData || !aspectData) return <div>Error loading data. Please try again later.</div>
