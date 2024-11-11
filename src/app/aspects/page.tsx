@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Navbar } from "@/components/ui/navbar"
+import { Spinner } from "@/components/ui/spinner"
 import Image from 'next/image'
 
 type LootCategory = 'Mythic' | 'Fabled' | 'Legendary'
@@ -80,7 +81,7 @@ export default function AspectPool() {
     }
   }, [lootData]);
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
   if (!lootData || !aspectData) return <div>Error loading data. Please try again later.</div>
 
   const rarityOrder: LootCategory[] = ['Mythic', 'Fabled', 'Legendary']
