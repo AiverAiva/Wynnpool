@@ -187,7 +187,7 @@ export default function HomePage() {
           <Tabs defaultValue="game">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="game">Game Updates</TabsTrigger>
-              <TabsTrigger value="items">New Items</TabsTrigger>
+              <TabsTrigger value="items">Item Changelog</TabsTrigger>
               <TabsTrigger value="events">Events</TabsTrigger>
             </TabsList>
             <TabsContent value="game">
@@ -200,15 +200,15 @@ export default function HomePage() {
                   <ul className="space-y-2">
                     <li className="flex items-center">
                       <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
-                      New region "Forgotten Isles" added
+                      New region "Silent Expanse" added
                     </li>
                     <li className="flex items-center">
                       <Compass className="h-4 w-4 mr-2 text-muted-foreground" />
-                      Level cap increased to 150
+                      Level cap increased to 106
                     </li>
                     <li className="flex items-center">
                       <Users className="h-4 w-4 mr-2 text-muted-foreground" />
-                      New class "Summoner" now available
+                      New class "Shaman" now available
                     </li>
                   </ul>
                 </CardContent>
@@ -217,14 +217,14 @@ export default function HomePage() {
             <TabsContent value="items">
               <Card>
                 <CardHeader>
-                  <CardTitle>New Items</CardTitle>
-                  <CardDescription>Check out the latest additions to the item pool</CardDescription>
+                  <CardTitle>Item changelogs</CardTitle>
+                  <CardDescription>Check out the latest changes to the items</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
-                    <li>Celestial Bow (Mythic)</li>
-                    <li>Dragonhide Armor Set (Legendary)</li>
-                    <li>Rune of the Ancients (Unique)</li>
+                    <li>BBB(Mythic)</li>
+                    <li>AAA(Legendary)</li>
+                    <li>CCC(Unique)</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -237,9 +237,9 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
-                    <li>Summer Festival (Starts June 1st)</li>
-                    <li>Double XP Weekend (May 15th - 17th)</li>
-                    <li>Raid Boss Challenge (Every Saturday)</li>
+                    <li>AAA (Starts June 1st)</li>
+                    <li>BBB (May 15th - 17th)</li>
+                    <li>CCC (Every Saturday)</li>
                   </ul>
                 </CardContent>
               </Card>
