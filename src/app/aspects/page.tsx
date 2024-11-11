@@ -220,7 +220,7 @@ export default function AspectPool() {
                   <thead>
                     <tr>
                       <th className='hidden md:block'></th>
-                      <th className="px-4 py-2">
+                      <th className="py-2">
                         <Tabs value={selectedClass} onValueChange={setSelectedClass}>
                           <TabsList>
                             {Object.keys(aspectData).map((className) => (
