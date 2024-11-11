@@ -54,22 +54,24 @@ export default function CountdownPage() {
     })
 
     return (
-        <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className='bg-background'>
             <Navbar />
-            <Card className="w-full max-w-2xl">
-                <CardHeader>
-                    <CardTitle className="text-xl text-center font-thin">Countdown to next <p className="text-3xl font-bold">Banish the beyond</p></CardTitle>
-                </CardHeader>
-                <CardContent>
-                    {timerComponents.length ? (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {timerComponents}
-                        </div>
-                    ) : (
-                        <p className="text-2xl text-center">Time's up!</p>
-                    )}
-                </CardContent>
-            </Card>
+            <div className="min-h-screen flex items-center justify-center ">
+                <Card className="w-full max-w-2xl">
+                    <CardHeader>
+                        <CardTitle className="text-xl text-center font-thin">Countdown to next <p className="text-3xl font-bold">Banish the beyond</p></CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        {timerComponents.length ? (
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                {timerComponents}
+                            </div>
+                        ) : (
+                            <p className="text-2xl text-center">Time's up!</p>
+                        )}
+                    </CardContent>
+                </Card>
+            </div>
         </div>
     )
 }
