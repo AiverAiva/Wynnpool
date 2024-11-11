@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   try {
     // Get the path to the JSON file
-    const dataFilePath = path.join(process.cwd(), 'src', 'data', 'aspect_data.json');
+    const dataFilePath = path.join(process.cwd(), 'src', 'data', 'aspects_data.json');
     
     // Read the file
     const fileContents = await fs.readFile(dataFilePath, 'utf8');

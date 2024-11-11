@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { NextResponse } from 'next/server';
 
-const ASPECT_DATA_FILE = path.join(process.cwd(), 'src', 'data', 'aspect_pool.json');
+const ASPECT_DATA_FILE = path.join(process.cwd(), 'src', 'data', 'aspects_pool.json');
 const EXTERNAL_API_URL = 'https://nori.fish/api/aspects';
 
 async function readLocalData() {
