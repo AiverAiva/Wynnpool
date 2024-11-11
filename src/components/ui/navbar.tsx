@@ -167,8 +167,9 @@ import { Menu } from 'lucide-react'
 
 const navItems = [
   { name: 'Home', href: '/' },
-  // { name: 'Loot', href: '/loot' },
+    // { name: 'Loot', href: '/loot' },
   { name: 'Aspects', href: '/aspects' },
+  { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
   // { name: 'About', href: '/about' },
 ]
 
