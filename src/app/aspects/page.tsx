@@ -32,48 +32,63 @@ interface LootData {
   Timestamp: number
 }
 
-export default function GameLootPage() {
+export default function AspectPool() {
   const [lootData, setLootData] = useState<LootData | null>(null)
   const [aspectData, setAspectData] = useState<AspectData | null>(null)
   const [countdown, setCountdown] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    fetch('https://nori.fish/api/aspects')
-      .then(response => response.json())
-      .then(data => setLootData(data))
-
-    fetch('/api/aspects-data')
-      .then(response => response.json())
-      .then(data => setAspectData(data))
-      
+    setIsLoading(true)
+    Promise.all([
+      fetch('/api/aspects-pool').then(response => response.json()),
+      fetch('/api/aspects-data').then(response => response.json())
+    ])
+    .then(([lootData, aspectData]) => {
+      setLootData(lootData)
+      setAspectData(aspectData)
+      setIsLoading(false)
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error)
+      setIsLoading(false)
+    })
   }, [])
 
   useEffect(() => {
     if (lootData) {
       const timer = setInterval(() => {
-        const now = Math.floor(Date.now() / 1000)
-        const timeLeft = lootData.Timestamp - now
-        if (timeLeft <= 0) {
-          setCountdown('Data update imminent!')
-        } else {
-          const days = Math.floor(timeLeft / 86400)
-          const hours = Math.floor((timeLeft % 86400) / 3600)
-          const minutes = Math.floor((timeLeft % 3600) / 60)
-          const seconds = timeLeft % 60
-          setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`)
-        }
-      }, 1000)
-      return () => clearInterval(timer)
-    }
-  }, [lootData])
+        const now = Math.floor(Date.now() / 1000);
+        const nextUpdate = lootData.Timestamp + 7 * 86400; // 7 days in seconds
+        const timeLeft = nextUpdate - now;
 
-  if (!lootData || !aspectData) return <div>Loading...</div>
-  if (aspectData) console.log(aspectData)
+        if (timeLeft <= 0) {
+          setCountdown('Data update imminent!');
+        } else {
+          const days = Math.floor(timeLeft / 86400);
+          const hours = Math.floor((timeLeft % 86400) / 3600);
+          const minutes = Math.floor((timeLeft % 3600) / 60);
+          const seconds = timeLeft % 60;
+          setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+        }
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [lootData]);
+
+
+
+  if (isLoading) return <div>Loading...</div>
+  if (!lootData || !aspectData) return <div>Error loading data. Please try again later.</div>
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto p-4">
-        <h1 className="text-4xl font-bold mb-4">Game Loot</h1>
+        {lootData && aspectData && (
+        <>
+        <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
         <Card className="mb-4">
           <CardHeader>
             <CardTitle>Next Update In</CardTitle>
@@ -99,7 +114,7 @@ export default function GameLootPage() {
                     <div key={category} className="mb-4">
                       <h3 className="text-xl font-semibold mb-2">{category}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <TooltipProvider>
+                        <TooltipProvider delayDuration={100}>
                           {items.map((item) => {
                             const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item)
                             return (
@@ -140,6 +155,8 @@ export default function GameLootPage() {
             </TabsContent>
           ))}
         </Tabs>
+        </>
+        )}
       </main>
     </div>
   )
