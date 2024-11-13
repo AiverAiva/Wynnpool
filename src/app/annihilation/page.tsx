@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, Clock, Info } from "lucide-react"
-import { Navbar } from '@/components/ui/navbar'
 
 interface AnnihilationData {
     current: {
@@ -83,7 +82,6 @@ export default function AnnihilationEvents() {
 
     return (
         <div className="min-h-screen bg-background">
-            <Navbar />
             <div className="container mx-auto p-4 max-w-screen-lg">
                 <h1 className="text-3xl font-bold mb-6">Annihilation Events</h1>
 

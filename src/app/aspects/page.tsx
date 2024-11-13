@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Navbar } from "@/components/ui/navbar"
 import { Spinner } from "@/components/ui/spinner"
 import Image from 'next/image'
 
@@ -121,7 +120,6 @@ export default function AspectPool() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <div className="
         lg:flex
         items-center

@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import Image from 'next/image'
 import { Skeleton } from "@/components/ui/skeleton"
-import { Navbar } from '@/components/ui/navbar'
 
 interface LootItem {
     Item: string
@@ -76,7 +75,6 @@ export default function LootRunPool() {
 
     return (
         <div>
-            <Navbar />
             <div className="container mx-auto p-4 max-w-screen-lg">
                 <h1 className="text-4xl font-bold mb-4">Loot Run Pool</h1>
                 <Card className="mb-4">

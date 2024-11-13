@@ -107,7 +107,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Navbar } from "@/components/ui/navbar"
 import { BookOpen, Compass, Database, Globe, Search, Users} from "lucide-react"
 import Link from "next/link"
 import WynncraftNews from '@/components/lastest-news'
@@ -115,7 +114,6 @@ import WynncraftNews from '@/components/lastest-news'
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       {/* <header className="border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-primary">Wynnpool</Link>
