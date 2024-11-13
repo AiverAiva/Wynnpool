@@ -91,7 +91,6 @@ export async function GET() {
 
             const newData = await fetchLootpool(tokens.access_token, tokens.csrf_token);
             if (newData) {
-                newData.Timestamp = currentTimestamp;
                 await writeLocalData(newData);
                 data = newData;
             } else if (!data) {

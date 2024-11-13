@@ -53,7 +53,7 @@ export default function LootRunPool() {
         if (lootData) {
             const timer = setInterval(() => {
                 const now = Math.floor(Date.now() / 1000)
-                const timeLeft = now - lootData.Timestamp
+                const timeLeft = lootData.Timestamp - now
                 if (timeLeft <= 0) {
                     setCountdown('Loot pool update imminent!')
                 } else {
@@ -104,7 +104,10 @@ export default function LootRunPool() {
                                                         <TooltipTrigger asChild>
                                                             <div className="flex items-center space-x-2">
                                                                 <Image
-                                                                    src={lootData.Icon[item]}
+                                                                    unoptimized
+                                                                    src={lootData.Icon[item].startsWith('http')
+                                                                        ? lootData.Icon[item]
+                                                                        : `https://nori.fish/resources/${lootData.Icon[item]}`}
                                                                     alt={item}
                                                                     width={32}
                                                                     height={32}
@@ -121,7 +124,10 @@ export default function LootRunPool() {
                                                         <TooltipTrigger asChild>
                                                             <div className="flex items-center space-x-2">
                                                                 <Image
-                                                                    src={lootData.Icon[items.Item]}
+                                                                    unoptimized
+                                                                    src={lootData.Icon[items.Item].startsWith('http')
+                                                                        ? lootData.Icon[items.Item]
+                                                                        : `https://nori.fish/resources/${lootData.Icon[items.Item]}`}
                                                                     alt={items.Item}
                                                                     width={32}
                                                                     height={32}
