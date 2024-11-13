@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Navbar } from "@/components/ui/navbar"
 
 // Define the structure of the time left object
 interface TimeLeft {
@@ -55,7 +54,6 @@ export default function CountdownPage() {
 
     return (
         <div className='bg-background'>
-            <Navbar />
             <div className="min-h-screen flex items-center justify-center ">
                 <Card className="w-full max-w-2xl">
                     <CardHeader>
