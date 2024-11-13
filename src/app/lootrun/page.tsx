@@ -98,7 +98,7 @@ export default function LootRunPool() {
                                                                         unoptimized
                                                                         src={lootData.Icon[item].startsWith('http')
                                                                             ? lootData.Icon[item]
-                                                                            : `https://nori.fish/resources/${lootData.Icon[item]}`}
+                                                                            : `/icons/items/${lootData.Icon[item]}`}
                                                                         alt={item}
                                                                         width={32}
                                                                         height={32}
