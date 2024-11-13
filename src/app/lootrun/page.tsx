@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import Image from 'next/image'
 import { Skeleton } from "@/components/ui/skeleton"
+import Countdown from '@/components/custom/countdown'
 
 interface LootItem {
     Item: string
@@ -41,7 +42,7 @@ const rarityColors = {
 
 export default function LootRunPool() {
     const [lootData, setLootData] = useState<LootData | null>(null)
-    const [countdown, setCountdown] = useState('')
+    const [countdown, setCountdown] = useState<number | null>(null);
 
     useEffect(() => {
         fetch('/api/lootrun-pool')
@@ -51,23 +52,8 @@ export default function LootRunPool() {
 
     useEffect(() => {
         if (lootData) {
-            const timer = setInterval(() => {
-                const now = Math.floor(Date.now() / 1000);
-                const nextUpdate = lootData.Timestamp + 7 * 86400; // 7 days in seconds
-                const timeLeft = nextUpdate - now;
-
-                if (timeLeft <= 0) {
-                    setCountdown('Data update imminent!');
-                } else {
-                    const days = Math.floor(timeLeft / 86400);
-                    const hours = Math.floor((timeLeft % 86400) / 3600);
-                    const minutes = Math.floor((timeLeft % 3600) / 60);
-                    const seconds = timeLeft % 60;
-                    setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-                }
-            }, 1000);
-
-            return () => clearInterval(timer);
+            const nextUpdate = lootData.Timestamp + 7 * 86400; // 7 days in seconds
+            setCountdown(nextUpdate);
         }
     }, [lootData])
 
@@ -76,13 +62,13 @@ export default function LootRunPool() {
     return (
         <div>
             <div className="container mx-auto p-4 max-w-screen-lg">
-                <h1 className="text-4xl font-bold mb-4">Loot Run Pool</h1>
+                <h1 className="text-4xl font-bold mb-4">Lootrun Pool</h1>
                 <Card className="mb-4">
-                    <CardHeader>
+                    <CardHeader className="flex justify-center items-center">
                         <CardTitle>Next Update In</CardTitle>
                     </CardHeader>
-                    <CardContent>
-                        <p className="text-2xl font-semibold">{countdown}</p>
+                    <CardContent className="flex justify-center items-center">
+                        <Countdown targetTimestamp={countdown} endText="Data outdated, waiting for update..." />
                     </CardContent>
                 </Card>
                 <Tabs defaultValue={Object.keys(lootData.Loot)[0]}>
