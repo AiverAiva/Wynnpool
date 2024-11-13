@@ -89,7 +89,7 @@ export default function AspectPool() {
 
   const availableAspects = Object.entries(lootData.Loot).reduce((acc, [section, categories]) => {
     const aspectNamesSet = new Set(acc.map(aspect => aspect.name)); // Create a Set from existing aspect names
-  
+
     Object.entries(categories).forEach(([rarity, aspects]) => {
       aspects.forEach((aspect) => {
         const matchedAspect = aspectData[selectedClass]?.find((a) => a.name === aspect);
@@ -105,7 +105,7 @@ export default function AspectPool() {
         }
       });
     });
-  
+
     return acc;
   }, [] as { name: string; section: LootSection; rarity: LootCategory; icon: string; description?: string }[]);
 
@@ -120,153 +120,139 @@ export default function AspectPool() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="
-        lg:flex
-        items-center
-        justify-center
-      ">
-        <div className="
-          max-w-screen-lg
-          shadow-lg
-          duration-150
-        ">
+      <main className="container mx-auto p-6 max-w-screen-lg duration-150">
+        {lootData && aspectData && (
+          <>
+            <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
+            <Card className="mb-4">
+              <CardHeader>
+                <CardTitle>Next Update In</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-semibold">{countdown}</p>
+              </CardContent>
+            </Card>
+            <Tabs defaultValue="TNA">
+              <TabsList className="grid w-full grid-cols-4">
+                {Object.keys(lootData.Loot).map((section) => (
+                  <TabsTrigger key={section} value={section}>{section}</TabsTrigger>
+                ))}
+              </TabsList>
+              {Object.entries(lootData.Loot).map(([section, categories]) => (
+                <TabsContent key={section} value={section}>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>{section} Loot</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {Object.entries(categories).map(([category, items]) => (
+                        <div key={category} className="mb-4">
+                          <h3 className="text-xl font-semibold mb-2">{category}</h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <TooltipProvider delayDuration={50}>
+                              {items.map((item) => {
+                                const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item);
 
-          <main className="container mx-auto p-4">
-            {lootData && aspectData && (
-              <>
-                <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
-                <Card className="mb-4">
-                  <CardHeader>
-                    <CardTitle>Next Update In</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-2xl font-semibold">{countdown}</p>
-                  </CardContent>
-                </Card>
-                <Tabs defaultValue="TNA">
-                  <TabsList className="grid w-full grid-cols-4">
-                    {Object.keys(lootData.Loot).map((section) => (
-                      <TabsTrigger key={section} value={section}>{section}</TabsTrigger>
-                    ))}
-                  </TabsList>
-                  {Object.entries(lootData.Loot).map(([section, categories]) => (
-                    <TabsContent key={section} value={section}>
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>{section} Loot</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          {Object.entries(categories).map(([category, items]) => (
-                            <div key={category} className="mb-4">
-                              <h3 className="text-xl font-semibold mb-2">{category}</h3>
-                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <TooltipProvider delayDuration={50}>
-                                  {items.map((item) => {
-                                    const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item);
+                                return (
+                                  <Tooltip key={item} open={openTooltips[item]} onOpenChange={(isOpen) => setOpenTooltips({ ...openTooltips, [item]: isOpen })}>
+                                    <TooltipTrigger asChild>
+                                      <div className="flex items-center space-x-2 cursor-pointer" onClick={() => {
+                                        // Toggle the tooltip state for the current item
+                                        setOpenTooltips((prevState) => ({
+                                          ...prevState,
+                                          [item]: !prevState[item]
+                                        }));
+                                      }}>
+                                        <Image
+                                          unoptimized
+                                          src={`/icons/aspects/${lootData.Icon[item]}`}
+                                          alt={item}
+                                          width={32}
+                                          height={32}
+                                        />
+                                        <span>{item}</span>
+                                      </div>
+                                    </TooltipTrigger>
+                                    {aspectInfo && (
+                                      <TooltipContent className="w-fit p-4">
+                                        <h4 className="font-bold">{aspectInfo.name}</h4>
+                                        <p className="text-sm">{aspectInfo.description}</p>
+                                        <ul className="text-sm">
+                                          {Object.entries(aspectInfo.tiers).map(([tier, effect]) => (
+                                            <li key={tier} className='mt-1'><Badge>{tier}</Badge> {effect}</li>
+                                          ))}
+                                        </ul>
+                                      </TooltipContent>
+                                    )}
+                                  </Tooltip>
+                                );
+                              })}
+                            </TooltipProvider>
+                          </div>
+                        </div>
+                      ))}
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </>
+        )}
+        <div>
+          <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')} className="mt-4">
+            <TabsList>
+              <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
+              <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
+            </TabsList>
+          </Tabs>
 
-                                    return (
-                                      <Tooltip key={item} open={openTooltips[item]} onOpenChange={(isOpen) => setOpenTooltips({ ...openTooltips, [item]: isOpen })}>
-                                        <TooltipTrigger asChild>
-                                          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => {
-                                            // Toggle the tooltip state for the current item
-                                            setOpenTooltips((prevState) => ({
-                                              ...prevState,
-                                              [item]: !prevState[item]
-                                            }));
-                                          }}>
-                                            <Image
-                                              unoptimized
-                                              src={`/icons/aspects/${lootData.Icon[item]}`}
-                                              alt={item}
-                                              width={32}
-                                              height={32}
-                                            />
-                                            <span>{item}</span>
-                                          </div>
-                                        </TooltipTrigger>
-                                        {aspectInfo && (
-                                          <TooltipContent className="w-fit p-4">
-                                            <h4 className="font-bold">{aspectInfo.name}</h4>
-                                            <p className="text-sm">{aspectInfo.description}</p>
-                                            <ul className="text-sm">
-                                              {Object.entries(aspectInfo.tiers).map(([tier, effect]) => (
-                                                <li key={tier} className='mt-1'><Badge>{tier}</Badge> {effect}</li>
-                                              ))}
-                                            </ul>
-                                          </TooltipContent>
-                                        )}
-                                      </Tooltip>
-                                    );
-                                  })}
-                                </TooltipProvider>
-                              </div>
-                            </div>
-                          ))}
-                        </CardContent>
-                      </Card>
-                    </TabsContent>
-                  ))}
-                </Tabs>
-              </>
-            )}
-            <div>
-              <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')} className="mt-4">
-                <TabsList>
-                  <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
-                  <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
-                </TabsList>
-              </Tabs>
-
-              <div className="mt-4">
-                <table className="min-w-full divide-y">
-                  <thead>
-                    <tr>
-                      <th className='hidden md:block'></th>
-                      <th className="py-2">
-                        <Tabs value={selectedClass} onValueChange={setSelectedClass}>
-                          <TabsList>
-                            {Object.keys(aspectData).map((className) => (
-                              <TabsTrigger key={className} value={className}>
-                                {className}
-                              </TabsTrigger>
-                            ))}
-                          </TabsList>
-                        </Tabs>
-                      </th>
-                      <th className="px-4 py-2">Raid</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y">
-                    {availableAspects.map(({ name, section, rarity, icon, description }) => (
-                      <tr key={`${name}-${section}`}>
-                        <td className="px-4 py-2 hidden md:block">
-                          <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
-                        </td>
-                        <td className="px-4 py-1">
-                          <Badge
-                            className={`ml-2  mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
-                              rarity === 'Legendary' ? 'bg-cyan-400' :
-                                'bg-fuchsia-700'
-                              } text-white text-sm font-thin`}
-                          >
-                            {name}
-                          </Badge>
-                          <br />
-                          <p className="px-4 py-1 text-sm">{description}</p>
-                        </td>
-                        <td className="px-4 py-2 text-center">
-                          {section}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </main>
+          <div className="mt-4">
+            <table className="min-w-full divide-y">
+              <thead>
+                <tr>
+                  <th className='hidden md:block'></th>
+                  <th className="py-2">
+                    <Tabs value={selectedClass} onValueChange={setSelectedClass}>
+                      <TabsList>
+                        {Object.keys(aspectData).map((className) => (
+                          <TabsTrigger key={className} value={className}>
+                            {className}
+                          </TabsTrigger>
+                        ))}
+                      </TabsList>
+                    </Tabs>
+                  </th>
+                  <th className="px-4 py-2">Raid</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                {availableAspects.map(({ name, section, rarity, icon, description }) => (
+                  <tr key={`${name}-${section}`}>
+                    <td className="px-4 py-2 hidden md:block">
+                      <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
+                    </td>
+                    <td className="px-4 py-1">
+                      <Badge
+                        className={`ml-2  mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
+                          rarity === 'Legendary' ? 'bg-cyan-400' :
+                            'bg-fuchsia-700'
+                          } text-white text-sm font-thin`}
+                      >
+                        {name}
+                      </Badge>
+                      <br />
+                      <p className="px-4 py-1 text-sm">{description}</p>
+                    </td>
+                    <td className="px-4 py-2 text-center">
+                      {section}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-
+      </main>
     </div>
   )
 }
