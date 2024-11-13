@@ -8,6 +8,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import Image from 'next/image'
 import { Skeleton } from "@/components/ui/skeleton"
 import Countdown from '@/components/custom/countdown'
+import { Spinner } from '@/components/ui/spinner'
 
 interface LootItem {
     Item: string
@@ -57,7 +58,7 @@ export default function LootRunPool() {
         }
     }, [lootData])
 
-    if (!lootData) return <div className="flex justify-center items-center h-screen"><Skeleton className="w-[300px] h-[20px]" /></div>
+    if (!lootData) return <div className="flex justify-center items-center h-screen"><Spinner size="large" /></div>
 
     return (
         <div>
