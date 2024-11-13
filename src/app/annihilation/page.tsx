@@ -1,11 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, Clock, Info } from "lucide-react"
 import Countdown from '@/components/custom/countdown'
+import { Badge } from '@/components/ui/badge'
 
 interface AnnihilationData {
     current: {
@@ -42,7 +43,7 @@ export default function AnnihilationEvents() {
 
     useEffect(() => {
         if (data) {
-            setCountdown(data.current.datetime_utc/1000);
+            setCountdown(data.current.datetime_utc / 1000);
         }
     }, [data])
 
@@ -72,12 +73,16 @@ export default function AnnihilationEvents() {
             <div className="container mx-auto p-4 max-w-screen-lg">
                 <h1 className="text-3xl font-bold mb-6">Annihilation Events</h1>
 
-                <Card className="mb-6">
-                <CardHeader className="flex justify-center items-center">
+                <Card className="mb-6 relative">
+                    {data?.current.predicted && (
+                        <Badge className="absolute top-4 right-4 text-xl font-mono">Predicted</Badge>
+                    )}
+                    <CardHeader className="flex justify-center items-center">
                         <CardTitle>Next Annihilation In</CardTitle>
                     </CardHeader>
 
                     <CardContent className="flex justify-center items-center">
+
                         {data ? (
                             <div>
                                 <Countdown targetTimestamp={countdown} endText="Data outdated, waiting for update..." />
@@ -88,18 +93,21 @@ export default function AnnihilationEvents() {
                         ) : (
                             <Skeleton className="h-16 w-full" />
                         )}
+
                     </CardContent>
+                    <CardFooter>
+                        {data?.current.predicted && (
+                            <Alert variant="default">
+                                <Info className="h-4 w-4" />
+                                <AlertTitle>Notice</AlertTitle>
+                                <AlertDescription>
+                                    The current event is based on a prediction and might not be accurate.
+                                </AlertDescription>
+                            </Alert>
+                        )}
+                    </CardFooter>
                 </Card>
 
-                {data?.current.predicted && (
-                    <Alert variant="default" className="mb-6">
-                        <Info className="h-4 w-4" />
-                        <AlertTitle>Notice</AlertTitle>
-                        <AlertDescription>
-                            The current event is based on a prediction and might not be accurate.
-                        </AlertDescription>
-                    </Alert>
-                )}
 
                 <Card>
                     <CardHeader>
