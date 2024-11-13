@@ -169,6 +169,7 @@ const navItems = [
   { name: 'Home', href: '/' },
   // { name: 'Loot', href: '/loot' },
   { name: 'Aspects', href: '/aspects' },
+  { name: 'Lootrun', href: '/lootrun' },
   { name: 'Annihilation', href: '/annihilation' },
   { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
   // { name: 'About', href: '/about' },
