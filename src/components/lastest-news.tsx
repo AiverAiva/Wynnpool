@@ -23,7 +23,7 @@ export default function WynncraftNews() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch('https://api.wynncraft.com/v3/latest-news')
+        const response = await fetch('/api/latest-news')
         if (!response.ok) {
           throw new Error('Failed to fetch news')
         }
