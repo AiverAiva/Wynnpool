@@ -109,7 +109,7 @@ import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookOpen, Compass, Database, Globe, Search, Users } from "lucide-react"
 import Link from "next/link"
-import WynncraftNews from '@/components/lastest-news'
+import WynncraftNews from '@/components/custom/lastest-news'
 
 export default function HomePage() {
   return (
@@ -136,7 +136,7 @@ export default function HomePage() {
                 <Input type="text" placeholder="Search for items, quests, or players..." className="rounded-r-none" />
                 <Button type="submit" className="rounded-l-none">
                   <Search className="h-4 w-4 mr-2" />
-                  Search
+                  Search (WIP)
                 </Button>
               </form>
             </div>
@@ -147,7 +147,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Item Database</CardTitle>
+                  <CardTitle>Item Database (WIP)</CardTitle>
                   <CardDescription>Browse and search for Wynncraft items</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -159,7 +159,7 @@ export default function HomePage() {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>Quest Guide</CardTitle>
+                  <CardTitle>Quest Guide (WIP)</CardTitle>
                   <CardDescription>Find detailed quest walkthroughs</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -171,7 +171,7 @@ export default function HomePage() {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>Player Stats</CardTitle>
+                  <CardTitle>Player Stats (WIP)</CardTitle>
                   <CardDescription>Look up player statistics and rankings</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -198,7 +198,7 @@ export default function HomePage() {
               <TabsContent value="items">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Item changelogs</CardTitle>
+                    <CardTitle>Item changelogs (WIP)</CardTitle>
                     <CardDescription>Check out the latest changes to the items</CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -213,7 +213,7 @@ export default function HomePage() {
               <TabsContent value="events">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Upcoming Events</CardTitle>
+                    <CardTitle>Upcoming Events (WIP)</CardTitle>
                     <CardDescription>Don't miss out on these limited-time events</CardDescription>
                   </CardHeader>
                   <CardContent>
