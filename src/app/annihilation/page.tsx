@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, Clock, Info } from "lucide-react"
+import Countdown from '@/components/custom/countdown'
 
 interface AnnihilationData {
     current: {
@@ -19,7 +20,7 @@ interface AnnihilationData {
 
 export default function AnnihilationEvents() {
     const [data, setData] = useState<AnnihilationData | null>(null)
-    const [countdown, setCountdown] = useState<string>('')
+    const [countdown, setCountdown] = useState<number | null>(null)
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
@@ -41,21 +42,7 @@ export default function AnnihilationEvents() {
 
     useEffect(() => {
         if (data) {
-            const timer = setInterval(() => {
-                const now = Date.now()
-                const timeLeft = data.current.datetime_utc - now
-                if (timeLeft <= 0) {
-                    setCountdown('Event in progress!')
-                } else {
-                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
-                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
-                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000)
-                    setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`)
-                }
-            }, 1000)
-
-            return () => clearInterval(timer)
+            setCountdown(data.current.datetime_utc/1000);
         }
     }, [data])
 
@@ -86,13 +73,14 @@ export default function AnnihilationEvents() {
                 <h1 className="text-3xl font-bold mb-6">Annihilation Events</h1>
 
                 <Card className="mb-6">
-                    <CardHeader>
-                        <CardTitle>Current Event {data?.current.predicted ? "(Predicted)" : ""}</CardTitle>
+                <CardHeader className="flex justify-center items-center">
+                        <CardTitle>Next Annihilation In</CardTitle>
                     </CardHeader>
-                    <CardContent>
+
+                    <CardContent className="flex justify-center items-center">
                         {data ? (
                             <div>
-                                <p className="text-2xl font-semibold mb-2">{countdown}</p>
+                                <Countdown targetTimestamp={countdown} endText="Data outdated, waiting for update..." />
                                 <p className="text-sm text-muted-foreground">
                                     Starts at: {formatDate(data.current.datetime_utc)}
                                 </p>
