@@ -22,7 +22,7 @@ async function writeLocalData(data: any) {
         await fs.mkdir(HISTORY_DIR, { recursive: true });
 
         await fs.writeFile(LOOTPOOL_DATA_FILE, JSON.stringify(data, null, 2));
-        const historyFile = path.join(HISTORY_DIR, `aspects_pool_${data.Timestamp}.json`);
+        const historyFile = path.join(HISTORY_DIR, `lootrun_pool_${data.Timestamp}.json`);
         
         await fs.writeFile(historyFile, JSON.stringify(data, null, 2));
 
