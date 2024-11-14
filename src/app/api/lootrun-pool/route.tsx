@@ -2,7 +2,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import { NextResponse } from 'next/server';
 
-const LOOTPOOL_DATA_FILE = path.join(process.cwd(), 'src', 'data', 'lootrun_pool.json');
+const DATA_DIR = path.join(process.cwd(), 'src', 'data');
+const LOOTPOOL_DATA_FILE = path.join(DATA_DIR, 'lootrun_pool.json');
+const HISTORY_DIR = path.join(DATA_DIR, 'history', 'lootrun_pool');
 const TOKEN_API_URL = 'https://nori.fish/api/tokens';
 const LOOTPOOL_API_URL = 'https://nori.fish/api/lootpool';
 
@@ -17,8 +19,14 @@ async function readLocalData() {
 
 async function writeLocalData(data: any) {
     try {
+        await fs.mkdir(HISTORY_DIR, { recursive: true });
+
         await fs.writeFile(LOOTPOOL_DATA_FILE, JSON.stringify(data, null, 2));
-        console.log('Data saved successfully');
+        const historyFile = path.join(HISTORY_DIR, `aspects_pool_${data.Timestamp}.json`);
+        
+        await fs.writeFile(historyFile, JSON.stringify(data, null, 2));
+
+        console.log('Data saved successfully and archived in history');
     } catch (error) {
         console.error('Error writing local data:', error);
     }
