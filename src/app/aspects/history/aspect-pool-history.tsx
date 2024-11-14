@@ -123,7 +123,7 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
                                     ))}
 
                                     {/* Bottom left button positioned absolutely within Tabs */}
-                                    <Button className="absolute bottom-4 right-4 opacity-30 transition-opacity duration-300 hover:opacity-80 " onClick={handleDownload}>
+                                    <Button className="absolute bottom-4 right-4 opacity-30 transition-opacity duration-300 hover:opacity-100 " onClick={handleDownload}>
                                         Download JSON
                                     </Button>
                                 </Tabs>
