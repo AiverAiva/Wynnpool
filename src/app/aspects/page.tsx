@@ -9,6 +9,8 @@ import { Spinner } from "@/components/ui/spinner"
 import Image from 'next/image'
 import Countdown from '@/components/custom/countdown'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 type LootCategory = 'Mythic' | 'Fabled' | 'Legendary'
 type LootSection = 'TNA' | 'TCC' | 'NOL' | 'NOTG'
@@ -111,13 +113,18 @@ export default function AspectPool() {
         {lootData && aspectData && (
           <>
             <h1 className="text-4xl font-bold mb-4">Aspect Pool</h1>
-            <Card className="mb-4 te">
+            <Card className="mb-4 relative">
               <CardHeader className="flex justify-center items-center">
                 <CardTitle>Next Update In</CardTitle>
               </CardHeader>
               <CardContent className="flex justify-center items-center">
                 <Countdown targetTimestamp={countdown} endText="Data outdated, waiting for update..." />
               </CardContent>
+              <Link href="/aspects/history" legacyBehavior passHref>
+                <Button className="absolute top-4 right-4 rounded-full">
+                  History
+                </Button>
+              </Link>
             </Card>
             <Tabs defaultValue="TNA">
               <TabsList className="grid w-full grid-cols-4">
