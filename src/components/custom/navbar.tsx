@@ -11,12 +11,12 @@
 //   // import ShadcnKit from "@/components/icons/shadcn-kit";
 //   import { nanoid } from "nanoid";
 //   import Link from "next/link";
-  
+
 //   const Navbar = () => {
 //     return (
 //       <Card className="container bg-card py-3 px-4 border-0 flex items-center justify-between gap-6 rounded-2xl mt-5">
 //         <div className="text-primary cursor-pointer" />
-  
+
 //         <ul className="hidden md:flex items-center gap-10 text-card-foreground">
 //           <li className="text-primary font-medium">
 //             <a href="#home">Home</a>
@@ -35,7 +35,7 @@
 //               <DropdownMenuTrigger asChild>
 //                 <span className="cursor-pointer">Pages</span>
 //               </DropdownMenuTrigger>
-  
+
 //               <DropdownMenuContent align="start">
 //                 {landings.map((page) => (
 //                   <DropdownMenuItem key={page.id}>
@@ -46,19 +46,19 @@
 //             </DropdownMenu>
 //           </li>
 //         </ul>
-  
+
 //         <div className="flex items-center">
 //           <Button variant="secondary" className="hidden md:block px-2">
 //             Login
 //           </Button>
 //           <Button className="hidden md:block ml-2 mr-2">Get Started</Button>
-  
+
 //           <div className="flex md:hidden mr-2 items-center gap-2">
 //             <DropdownMenu>
 //               <DropdownMenuTrigger asChild>
 //                 <span className="py-2 px-2 bg-gray-100 rounded-md">Pages</span>
 //               </DropdownMenuTrigger>
-  
+
 //               <DropdownMenuContent align="start">
 //                 {landings.map((page) => (
 //                   <DropdownMenuItem key={page.id}>
@@ -67,14 +67,14 @@
 //                 ))}
 //               </DropdownMenuContent>
 //             </DropdownMenu>
-  
+
 //             <DropdownMenu>
 //               <DropdownMenuTrigger asChild>
 //                 <Button variant="outline" size="icon">
 //                   <Menu className="h-5 w-5 rotate-0 scale-100" />
 //                 </Button>
 //               </DropdownMenuTrigger>
-  
+
 //               <DropdownMenuContent align="end">
 //                 <DropdownMenuItem>
 //                   <a href="#home">Home</a>
@@ -99,13 +99,13 @@
 //               </DropdownMenuContent>
 //             </DropdownMenu>
 //           </div>
-  
+
 //           <ModeToggle />
 //         </div>
 //       </Card>
 //     );
 //   };
-  
+
 //   const landings = [
 //     {
 //       id: nanoid(),
@@ -153,7 +153,7 @@
 //       route: "/career-landing",
 //     },
 //   ];
-  
+
 //   export default Navbar;
 'use client'
 
@@ -164,46 +164,90 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Menu } from 'lucide-react'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
+import React from 'react'
 
 const navItems = [
   { name: 'Home', href: '/' },
-  // { name: 'Loot', href: '/loot' },
   { name: 'Aspects', href: '/aspects' },
   { name: 'Lootrun', href: '/lootrun' },
   { name: 'Annihilation', href: '/annihilation' },
   { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
-  // { name: 'About', href: '/about' },
 ]
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const triggerPaths = ['/aspects', '/lootrun'];
+  const isActive = triggerPaths.includes(pathname);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 mx-auto px-4 py-4 flex justify-between items-center">
+        
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block">
+            <span className="hidden font-bold sm:inline-block text-xl">
               Wynnpool
             </span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`transition-colors hover:text-foreground/80 ${
-                  pathname === item.href ? 'text-foreground' : 'text-foreground/60'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+          <NavigationMenu>
+            <NavigationMenuList className="flex items-center text-sm font-medium">
+              <NavigationMenuItem>
+                <Link href="/" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <p className={`transition-colors hover:text-foreground/80 ${pathname === '/' ? 'text-foreground' : 'text-foreground/60'
+                    } `}>Home</p>
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className={`transition-colors hover:text-foreground/80 ${isActive ? 'text-foreground' : 'text-foreground/60'
+                    } `}
+                >
+                  Lootpool
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
+                    <ListItem href="/aspects" title="Aspects" className={pathname === "/aspects" ? 'bg-accent/50' : ''}>
+                      A page where you can find information about the aspects pool and planner.
+                    </ListItem>
+                    <ListItem href="/lootrun" title="Lootrun" className={pathname === "/lootrun" ? 'bg-accent/50' : ''}>
+                      Lootrun pool from every area in game, with detailed infomation.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/annihilation" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <p className={`transition-colors hover:text-foreground/80 ${pathname === '/annihilation' ? 'text-foreground' : 'text-foreground/60'
+                    } `}>Annihilation</p>
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="https://discord.gg/QVxPPqHFMk" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <p className={`transition-colors hover:text-foreground/80 text-foreground/60`}>Discord</p>
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
         <div className="flex items-center space-x-2">
-          <ModeToggle />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button
@@ -220,7 +264,7 @@ export function Navbar() {
                 className="flex items-center"
                 onOpenChange={setIsOpen}
               >
-                <span className="font-bold">Wynnpool</span>
+                <span className="font-bold text-foreground">Wynnpool</span>
               </MobileLink>
               <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                 <div className="flex flex-col space-y-3">
@@ -237,6 +281,7 @@ export function Navbar() {
               </div>
             </SheetContent>
           </Sheet>
+          <ModeToggle />
         </div>
       </div>
     </header>
@@ -264,14 +309,38 @@ function MobileLink({
       onClick={() => {
         onOpenChange?.(false)
       }}
-      className={`${className} ${
-        pathname === href
-          ? 'text-foreground'
-          : 'text-foreground/60 hover:text-foreground/80'
-      }`}
+      className={`${className} ${pathname === href
+        ? 'text-foreground'
+        : 'text-foreground/60 hover:text-foreground/80'
+        }`}
       {...props}
     >
       {children}
     </Link>
   )
 }
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={
+            `${className} block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground`
+          }
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"
