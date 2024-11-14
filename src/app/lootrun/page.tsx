@@ -9,6 +9,8 @@ import Image from 'next/image'
 import { Skeleton } from "@/components/ui/skeleton"
 import Countdown from '@/components/custom/countdown'
 import { Spinner } from '@/components/ui/spinner'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 interface LootItem {
     Item: string
@@ -64,13 +66,18 @@ export default function LootRunPool() {
         <div>
             <div className="container mx-auto p-4 max-w-screen-lg">
                 <h1 className="text-4xl font-bold mb-4">Lootrun Pool</h1>
-                <Card className="mb-4">
+                <Card className="mb-4 relative">
                     <CardHeader className="flex justify-center items-center">
                         <CardTitle>Next Update In</CardTitle>
                     </CardHeader>
                     <CardContent className="flex justify-center items-center">
                         <Countdown targetTimestamp={countdown} endText="Data outdated, waiting for update..." />
                     </CardContent>
+                    <Link href="/lootrun/history" legacyBehavior passHref>
+                        <Button className="absolute top-4 right-4 rounded-full">
+                            History
+                        </Button>
+                    </Link>
                 </Card>
                 <Tabs defaultValue={Object.keys(lootData.Loot)[0]}>
                     <TabsList className="grid w-full grid-cols-5">
@@ -118,7 +125,7 @@ export default function LootRunPool() {
                                                                         unoptimized
                                                                         src={lootData.Icon[items.Item].startsWith('http')
                                                                             ? lootData.Icon[items.Item]
-                                                                            : `https://nori.fish/resources/${lootData.Icon[items.Item]}`}
+                                                                            : `/icons/items/${lootData.Icon[items.Item]}`}
                                                                         alt={items.Item}
                                                                         width={32}
                                                                         height={32}
