@@ -74,8 +74,12 @@ export default function AnnihilationEvents() {
                 <h1 className="text-3xl font-bold mb-6">Annihilation Events</h1>
 
                 <Card className="mb-6 relative">
-                    {data?.current.predicted && (
-                        <Badge className="absolute top-4 right-4 text-xl font-mono">Predicted</Badge>
+                    {data && (
+                        data.current?.predicted ? (
+                            <Badge className="absolute top-4 right-4 text-xl font-mono">Predicted</Badge>
+                        ) : (
+                            <Badge className="absolute top-4 right-4 text-xl font-mono">Accurate</Badge>
+                        )
                     )}
                     <CardHeader className="flex justify-center items-center">
                         <CardTitle>Next Annihilation In</CardTitle>
