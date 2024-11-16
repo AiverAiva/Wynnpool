@@ -39,13 +39,16 @@ export default function Countdown({ targetTimestamp, endText = "Countdown ended"
         return () => clearInterval(intervalId)
     }, [targetTimestamp])
 
-    if (!targetTimestamp || timeLeft === null) {
-        return <Skeleton className="h-6 w-[300px]" />  // Skeleton placeholder
-    }
 
     if (isEnded) {
         return <div className="font-mono text-4xl">{endText}</div>
     }
+
+    if (!targetTimestamp || timeLeft === null) {
+        return <Skeleton className="h-6 w-[300px]" />  // Skeleton placeholder
+    }
+
+   
 
     return (
         <div className="flex gap-5">
