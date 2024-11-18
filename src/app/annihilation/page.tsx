@@ -76,9 +76,9 @@ export default function AnnihilationEvents() {
                 <Card className="mb-6 relative">
                     {data && (
                         data.current?.predicted ? (
-                            <Badge className="absolute top-4 right-4 text-xl font-mono">Predicted</Badge>
+                            <Badge className="absolute top-6 sm:top-4 right-4 sm:text-xl font-mono">Predicted</Badge>
                         ) : (
-                            <Badge className="absolute top-4 right-4 text-xl font-mono">Accurate</Badge>
+                            <Badge className="absolute top-6 sm:top-4 right-4 sm:text-xl font-mono ">Accurate</Badge>
                         )
                     )}
                     <CardHeader className="flex justify-center items-center">
