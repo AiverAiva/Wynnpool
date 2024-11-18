@@ -51,13 +51,14 @@ export default function Countdown({ targetTimestamp, endText = "Countdown ended"
    
 
     return (
-        <div className="flex gap-5">
+        <div className="flex gap-5 justify-center">
             {timeLeft.days > 0 && (
                 <div>
                     <span className="countdown font-mono text-4xl">
                         {timeLeft.days}
                     </span>
-                    {` day${timeLeft.days > 1 ? 's' : ''}`}
+                    <span className="hidden sm:inline">{` day${timeLeft.days > 1 ? 's' : ''}`}</span>
+                    <span className="inline sm:hidden">h</span>
                 </div>
             )}
             {(timeLeft.hours > 0 || timeLeft.days > 0) && (
@@ -65,7 +66,8 @@ export default function Countdown({ targetTimestamp, endText = "Countdown ended"
                     <span className="countdown font-mono text-4xl">
                         {timeLeft.hours}
                     </span>
-                    {` hour${timeLeft.hours > 1 ? 's' : ''}`}
+                    <span className="hidden sm:inline">{` hour${timeLeft.hours > 1 ? 's' : ''}`}</span>
+                    <span className="inline sm:hidden">h</span>
                 </div>
             )}
             {(timeLeft.minutes > 0 || timeLeft.hours > 0 || timeLeft.days > 0) && (
@@ -73,7 +75,8 @@ export default function Countdown({ targetTimestamp, endText = "Countdown ended"
                     <span className="countdown font-mono text-4xl">
                         {timeLeft.minutes}
                     </span>
-                    {` min${timeLeft.minutes > 1 ? 's' : ''}`}
+                    <span className="hidden sm:inline">{` min${timeLeft.minutes > 1 ? 's' : ''}`}</span>
+                    <span className="inline sm:hidden">m</span>
                 </div>
             )}
             {(timeLeft.seconds > 0 || timeLeft.minutes > 0 || timeLeft.hours > 0 || timeLeft.days > 0) && (
@@ -81,7 +84,8 @@ export default function Countdown({ targetTimestamp, endText = "Countdown ended"
                     <span className="countdown font-mono text-4xl">
                         {timeLeft.seconds}
                     </span>
-                    {` sec${timeLeft.seconds > 1 ? 's' : ''}`}
+                    <span className="hidden sm:inline">{` sec${timeLeft.seconds > 1 ? 's' : ''}`}</span>
+                    <span className="inline sm:hidden">s</span>
                 </div>
             )}
         </div>
