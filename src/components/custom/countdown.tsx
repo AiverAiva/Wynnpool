@@ -58,7 +58,7 @@ export default function Countdown({ targetTimestamp, endText = "Countdown ended"
                         {timeLeft.days}
                     </span>
                     <span className="hidden sm:inline">{` day${timeLeft.days > 1 ? 's' : ''}`}</span>
-                    <span className="inline sm:hidden">h</span>
+                    <span className="inline sm:hidden">d</span>
                 </div>
             )}
             {(timeLeft.hours > 0 || timeLeft.days > 0) && (
