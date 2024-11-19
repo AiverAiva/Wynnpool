@@ -70,7 +70,7 @@ export default function AnnihilationEvents() {
 
     return (
         <div className="min-h-screen bg-background">
-            <div className="container mx-auto p-4 max-w-screen-lg">
+            <div className="container mx-auto p-4 max-w-screen-lg duration-150">
                 <h1 className="text-3xl font-bold mb-6">Annihilation Events</h1>
 
                 <Card className="mb-6 sm:relative">
