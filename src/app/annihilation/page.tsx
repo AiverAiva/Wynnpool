@@ -73,18 +73,19 @@ export default function AnnihilationEvents() {
             <div className="container mx-auto p-4 max-w-screen-lg">
                 <h1 className="text-3xl font-bold mb-6">Annihilation Events</h1>
 
-                <Card className="mb-6 relative">
-                    {data && (
-                        data.current?.predicted ? (
-                            <Badge className="absolute top-6 sm:top-4 right-4 sm:text-xl font-mono">Predicted</Badge>
-                        ) : (
-                            <Badge className="absolute top-6 sm:top-4 right-4 sm:text-xl font-mono ">Accurate</Badge>
-                        )
-                    )}
+                <Card className="mb-6 sm:relative">
+
                     <CardHeader className="flex justify-center items-center">
                         <CardTitle>Next Annihilation In</CardTitle>
+                        {data && (
+                        data.current?.predicted ? (
+                            <Badge className="sm:absolute top-4 right-4 sm:text-xl font-mono">Predicted</Badge>
+                        ) : (
+                            <Badge className="sm:absolute top-4 right-4 sm:text-xl font-mono ">Accurate</Badge>
+                        )
+                    )}
                     </CardHeader>
-
+                    
                     <CardContent className="flex justify-center items-center">
 
                         {data ? (
