@@ -5,19 +5,15 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Loader2 } from 'lucide-react'
+import { ChevronsUpDown, Loader2 } from 'lucide-react'
 import { cn } from "@/lib/utils"
-import Image from 'next/image';
 import { ItemTypeIcon } from '@/components/custom/WynnIcon'
 import { ItemDisplay } from '@/components/custom/item-display'
-import { Identification } from '@/types/itemTypes'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
+import React from 'react'
 
 const itemTypes = {
     weapon: ['bow', 'spear', 'wand', 'relik', 'dagger'],
@@ -73,7 +69,7 @@ function MultiSelectTabs({ options, selectedOptions, onChange }: MultiSelectTabs
 }
 function RarityTabs({ options, selectedOptions, onChange }: MultiSelectTabsProps) {
     return (
-        <div className="flex flex-wrap gap-2 p-1 bg-secondary rounded-md w-fit p-2">
+        <div className="flex flex-wrap gap-2 p-2 bg-secondary rounded-md w-fit">
             {options.map((option) => {
                 const isSelected = selectedOptions.includes(option);
                 const color = tiersColors[option as keyof typeof tiersColors] || '#ccc'; // Default to #ccc if color not found
@@ -108,50 +104,23 @@ export default function ItemSearch() {
     const [query, setQuery] = useState('')
     const [selectedTypes, setSelectedTypes] = useState<string[]>([])
     const [selectedTiers, setSelectedTiers] = useState<string[]>([])
-    const [levelRange, setLevelRange] = useState([1, 106])
+    const [levelRange, setLevelRange] = useState<number[]>([1, 106])
     const [results, setResults] = useState<Record<string, any> | null>(null)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [selectedIdentifications, setSelectedIdentifications] = useState<string[]>([]);
     const [identifications, setIdentifications] = useState<string[]>([])
-    const [open, setOpen] = useState(false)
-    const isDesktop = useMediaQuery("(min-width: 768px)")
-    
-    useEffect(() => {
-        const fetchIdentifications = async () => {
-            try {
-                const response = await fetch('https://api.wynncraft.com/v3/item/metadata')
-                const data = await response.json()
-                setIdentifications(data.identifications)
-            } catch (error) {
-                console.error('Error fetching identifications:', error)
-            }
-        }
-
-        fetchIdentifications()
-    }, [])
+    const [selectedIdentifications, setSelectedIdentifications] = useState<string[]>([]);
+    const [majorIds, setMajorIds] = useState<string[]>([])
+    const [selectedMajorId, setselectedMajorId] = useState<string>('');
 
     useEffect(() => {
         fetch('/api/items/metadata')
-            .then(response => response.json())
-            .then(data => setIdentifications(data.identifications))
+            .then((response) => response.json())
+            .then((data) => {
+                setIdentifications(data.identifications)
+                setMajorIds(data.majorIds)
+            })
     }, [])
-
-    const addFilter = () => {
-        setSelectedIdentifications([...selectedIdentifications, ''])
-    }
-
-    const updateFilter = (index: number, value: string) => {
-        const newFilters = [...selectedIdentifications]
-        newFilters[index] = value
-        setSelectedIdentifications(newFilters)
-    }
-
-    const removeFilter = (index: number) => {
-        const newFilters = [...selectedIdentifications]
-        newFilters.splice(index, 1)
-        setSelectedIdentifications(newFilters)
-    }
 
     const handleSearch = async () => {
         setIsLoading(true)
@@ -171,6 +140,8 @@ export default function ItemSearch() {
         if (selectedTiers.length > 0) payload.tier = selectedTiers
         payload.levelRange = levelRange
         payload.identifications = selectedIdentifications.filter(id => id !== '');
+        if (selectedMajorId !== '') payload.majorIds = [selectedMajorId];
+
         try {
             const response = await fetch('/api/items/search', {
                 method: 'POST',
@@ -220,10 +191,10 @@ export default function ItemSearch() {
                         <CardTitle>Item Search (WIP)</CardTitle>
                         <CardDescription>Search for items using various criteria</CardDescription>
                     </CardHeader>
-                    <CardContent className='md:flex gap-4 w-full space-y-6 md:space-y-0'>
-                        <div className='w-[360px]'>
+                    <CardContent className='lg:flex gap-4 w-full space-y-6 lg:space-y-0'>
+                        <div className='w-[360px] md:w-full lg:w-2/5'>
                             <div className="space-y-6">
-                                <div>
+                                <div className='w-auto'>
                                     <Label htmlFor="query">Item Name</Label>
                                     <Input
                                         id="query"
@@ -256,7 +227,6 @@ export default function ItemSearch() {
                                         selectedOptions={selectedTiers}
                                         onChange={setSelectedTiers}
                                     />
-
                                 </div>
                                 {/* <div>
                                     <Label>Level Range: {levelRange[0]} - {levelRange[1]}</Label>
@@ -270,57 +240,32 @@ export default function ItemSearch() {
                                 </div> */}
                             </div>
                         </div>
-                        <div className='flex-grow space-y-4'>
+                        <div className='w-[360px] md:w-full lg:w-3/5 lg:flex-grow space-y-4'>
                             <div>
                                 <Label htmlFor="query">Major id</Label>
-                                <Select>
-                                    <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Select an identification" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {identifications.map((identification) => (
-                                            <SelectItem key={identification} value={identification}>
-                                                {identification}
-                                            </SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
+                                <div className='flex items-center gap-4'>
+                                    <ResponsiveComboBox
+                                        availableOptions={majorIds}
+                                        value={selectedMajorId}
+                                        currentLabel='Select a Major id...'
+                                        onChange={(val) => setselectedMajorId(val)}
+                                    />
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => setselectedMajorId('')}
+                                        className="h-8 w-8"
+                                    >
+                                        ↻
+                                    </Button>
+                                </div>
                             </div>
                             <div>
                                 <Label htmlFor="query">Identifications</Label>
-                                {selectedIdentifications.map((filter, index) => (
-                                    <div key={index} className="flex items-center gap-2 mb-4">
-                                        <Select
-                                            value={filter}
-                                            onValueChange={(value) => updateFilter(index, value)}
-                                        >
-                                            <SelectTrigger className="w-full">
-                                                <SelectValue placeholder="Select an identification" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                {identifications.map((identification) => (
-                                                    <SelectItem key={identification} value={identification}>
-                                                        {identification}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                        <Button
-                                            variant="destructive"
-                                            onClick={() => removeFilter(index)}
-                                            className="h-8 w-8"
-                                        >
-                                            ✕
-                                        </Button>
-                                    </div>
-                                ))}
-                                {/* justify-center */}
-                                <div className='flex justify-center'>
-                                    <Button variant="ghost" onClick={addFilter}>
-                                        + Add Filter
-                                    </Button>
-                                </div>
-                                {/*  */}
+                                <IdentificationBox
+                                    availableIdentifications={identifications}
+                                    selectedIdentifications={selectedIdentifications}
+                                    setSelectedIdentifications={setSelectedIdentifications}
+                                />
                             </div>
                         </div>
                     </CardContent>
@@ -376,3 +321,174 @@ export default function ItemSearch() {
     )
 }
 
+interface IdentificationBoxProps {
+    availableIdentifications: string[]
+    selectedIdentifications: string[]
+    setSelectedIdentifications: React.Dispatch<React.SetStateAction<string[]>>
+}
+
+const IdentificationBox: React.FC<IdentificationBoxProps> = ({
+    availableIdentifications,
+    selectedIdentifications,
+    setSelectedIdentifications,
+}) => {
+    const [identificationBoxes, setIdentificationBoxes] = useState<string[]>([''])
+
+    const addBox = () => {
+        setIdentificationBoxes((prev) => [...prev, ''])
+    }
+
+    const removeBox = (index: number) => {
+        setIdentificationBoxes((prev) => {
+            const updated = [...prev]
+            const removed = updated.splice(index, 1)[0]
+            if (removed) {
+                setSelectedIdentifications((prevSelected) =>
+                    prevSelected.filter((id) => id !== removed)
+                )
+            }
+            return updated
+        })
+    }
+
+    const updateBox = (value: string, index: number) => {
+        setIdentificationBoxes((prev) => {
+            const updated = [...prev]
+            const oldValue = updated[index]
+            updated[index] = value
+
+            if (oldValue) {
+                setSelectedIdentifications((prevSelected) =>
+                    prevSelected.filter((id) => id !== oldValue)
+                )
+            }
+
+            if (value) {
+                setSelectedIdentifications((prevSelected) => [...prevSelected, value])
+            }
+
+            return updated
+        })
+    }
+
+    return (
+        <div className="space-y-4">
+            {identificationBoxes.map((value, index) => (
+                <div key={index} className="flex items-center gap-4">
+                    <ResponsiveComboBox
+                        availableOptions={availableIdentifications.filter(
+                            (id) => !selectedIdentifications.includes(id) || id === value
+                        )}
+                        value={value}
+                        currentLabel='Select an Identification...'
+                        onChange={(val) => updateBox(val, index)}
+                    />
+                    <Button
+                        variant="destructive"
+                        onClick={() => removeBox(index)}
+                        className="h-8 w-8"
+                    >
+                        ✕
+                    </Button>
+                </div>
+            ))}
+            {identificationBoxes.length < 5 && (
+                <Button variant="ghost" onClick={addBox} className='w-full'>
+                    + Add Identification
+                </Button>
+            )}
+        </div>
+    )
+}
+
+interface ResponsiveComboBoxProps {
+    availableOptions: string[]
+    value: string
+    currentLabel?: string
+    onChange: (value: string) => void
+}
+
+const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
+    availableOptions,
+    value,
+    currentLabel,
+    onChange,
+}) => {
+    const [open, setOpen] = React.useState(false)
+    const isDesktop = useMediaQuery('(min-width: 768px)')
+
+    if (!currentLabel) currentLabel = 'Select an option...'
+
+    if (isDesktop) {
+        return (
+            <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger asChild>
+                    <Button variant="outline" className="justify-between w-full">
+                        {value ? (
+                            <p>{value}</p>
+                        ) : (
+                            <p>{currentLabel}</p>
+                        )}
+                        <ChevronsUpDown className="opacity-50" />
+                    </Button>
+                </PopoverTrigger>
+                <PopoverContent className="p-0" align="start">
+                    <Command>
+                        <CommandInput placeholder="Search identification..." />
+                        <CommandList>
+                            <CommandEmpty>No results found.</CommandEmpty>
+                            <CommandGroup>
+                                {availableOptions.map((option) => (
+                                    <CommandItem
+                                        key={option}
+                                        value={option}
+                                        onSelect={() => {
+                                            onChange(option)
+                                            setOpen(false)
+                                        }}
+                                    >
+                                        {option}
+                                    </CommandItem>
+                                ))}
+                            </CommandGroup>
+                        </CommandList>
+                    </Command>
+                </PopoverContent>
+            </Popover>
+        )
+    }
+
+    return (
+        <Drawer open={open} onOpenChange={setOpen}>
+            <DrawerTrigger asChild>
+                <Button variant="outline" className='w-full'>
+                    {currentLabel}
+                </Button>
+            </DrawerTrigger>
+            <DrawerContent>
+                <div className="mt-4 border-t">
+                    <Command>
+                        <CommandInput placeholder="Search identification..." />
+                        <CommandList>
+                            <CommandEmpty>No results found.</CommandEmpty>
+                            <CommandGroup>
+                                {availableOptions.map((option) => (
+                                    <CommandItem
+                                        key={option}
+                                        value={option}
+                                        onSelect={() => {
+                                            onChange(option)
+                                            setOpen(false)
+                                        }}
+                                    >
+                                        {option}
+                                    </CommandItem>
+                                ))}
+                            </CommandGroup>
+                        </CommandList>
+                    </Command>
+                </div>
+            </DrawerContent>
+        </Drawer>
+    )
+}
