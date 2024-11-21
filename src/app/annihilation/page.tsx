@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AlertCircle, Clock, Info } from "lucide-react"
+import { AlertCircle, Clock, Info, Loader } from "lucide-react"
 import Countdown from '@/components/custom/countdown'
 import { Badge } from '@/components/ui/badge'
 
@@ -12,6 +12,7 @@ interface AnnihilationData {
     current: {
         datetime_utc: number
         predicted?: boolean
+        workflow_dispatched?: boolean
     }
     predicted: {
         datetime_utc: number
@@ -77,21 +78,21 @@ export default function AnnihilationEvents() {
 
                     <CardHeader className="flex justify-center items-center">
                         <CardTitle>Next Annihilation In</CardTitle>
-                        {data && (
-                        data.current?.predicted ? (
-                            <Badge className="sm:absolute top-4 right-4 sm:text-xl font-mono">Predicted</Badge>
+                        {data && !data.current?.workflow_dispatched &&(
+                            data.current?.predicted ? (
+                        <Badge className="sm:absolute top-4 right-4 sm:text-xl font-mono">Predicted</Badge>
                         ) : (
-                            <Badge className="sm:absolute top-4 right-4 sm:text-xl font-mono ">Accurate</Badge>
+                        <Badge className="sm:absolute top-4 right-4 sm:text-xl font-mono ">Accurate</Badge>
                         )
-                    )}
+                        )}
                     </CardHeader>
-                    
+
                     <CardContent className="flex justify-center items-center">
 
                         {data ? (
                             <div>
-                                <Countdown targetTimestamp={countdown} endText="Data outdated, waiting for update..." />
-                                <p className="text-sm text-muted-foreground">
+                                <Countdown targetTimestamp={countdown} endText="Updating data, come back in two minutes..." />
+                                <p className="text-sm text-muted-foreground text-center">
                                     Starts at: {formatDate(data.current.datetime_utc)}
                                 </p>
                             </div>

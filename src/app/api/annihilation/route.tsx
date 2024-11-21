@@ -61,8 +61,8 @@ export async function GET() {
     } else {
       workflow_dispatched = false;
     }
-    console.log(workflow_dispatched);
-    // Send the updated data as a response
+
+    data.current.workflow_dispatched = workflow_dispatched;
     return NextResponse.json(data, { status: 200 });
   } catch (error) {
     console.error('Error processing request:', error);
