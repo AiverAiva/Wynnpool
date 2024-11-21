@@ -49,7 +49,6 @@ export async function GET() {
         let data = await readLocalData();
         const currentTimestamp = Math.floor(Date.now() / 1000);
 
-        console.log( currentTimestamp, data.Timestamp)
         if (!data || currentTimestamp >= data.Timestamp+86400*7) {
             console.log('Fetching new data from external API');
             const newData = await fetchExternalData();
