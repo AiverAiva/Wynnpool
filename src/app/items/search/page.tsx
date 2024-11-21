@@ -13,6 +13,11 @@ import { cn } from "@/lib/utils"
 import Image from 'next/image';
 import { ItemTypeIcon } from '@/components/custom/WynnIcon'
 import { ItemDisplay } from '@/components/custom/item-display'
+import { Identification } from '@/types/itemTypes'
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { useMediaQuery } from '@/hooks/use-media-query'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
 
 const itemTypes = {
     weapon: ['bow', 'spear', 'wand', 'relik', 'dagger'],
@@ -109,7 +114,9 @@ export default function ItemSearch() {
     const [error, setError] = useState<string | null>(null)
     const [selectedIdentifications, setSelectedIdentifications] = useState<string[]>([]);
     const [identifications, setIdentifications] = useState<string[]>([])
-
+    const [open, setOpen] = useState(false)
+    const isDesktop = useMediaQuery("(min-width: 768px)")
+    
     useEffect(() => {
         const fetchIdentifications = async () => {
             try {
@@ -122,6 +129,12 @@ export default function ItemSearch() {
         }
 
         fetchIdentifications()
+    }, [])
+
+    useEffect(() => {
+        fetch('/api/items/metadata')
+            .then(response => response.json())
+            .then(data => setIdentifications(data.identifications))
     }, [])
 
     const addFilter = () => {
@@ -207,8 +220,8 @@ export default function ItemSearch() {
                         <CardTitle>Item Search (WIP)</CardTitle>
                         <CardDescription>Search for items using various criteria</CardDescription>
                     </CardHeader>
-                    <CardContent className='md:flex gap-4 w-full'>
-                        <div className='w-[360px] lg:w-2/5'>
+                    <CardContent className='md:flex gap-4 w-full space-y-6 md:space-y-0'>
+                        <div className='w-[360px]'>
                             <div className="space-y-6">
                                 <div>
                                     <Label htmlFor="query">Item Name</Label>
@@ -257,8 +270,24 @@ export default function ItemSearch() {
                                 </div> */}
                             </div>
                         </div>
-                        <div className='sm:w-5/3'>
-                            <ScrollArea className="h-[400px]">
+                        <div className='flex-grow space-y-4'>
+                            <div>
+                                <Label htmlFor="query">Major id</Label>
+                                <Select>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Select an identification" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {identifications.map((identification) => (
+                                            <SelectItem key={identification} value={identification}>
+                                                {identification}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <div>
+                                <Label htmlFor="query">Identifications</Label>
                                 {selectedIdentifications.map((filter, index) => (
                                     <div key={index} className="flex items-center gap-2 mb-4">
                                         <Select
@@ -285,10 +314,14 @@ export default function ItemSearch() {
                                         </Button>
                                     </div>
                                 ))}
-                            </ScrollArea>
-                            <Button variant="secondary" onClick={addFilter} className="mt-4">
-                                + Add Filter
-                            </Button>
+                                {/* justify-center */}
+                                <div className='flex justify-center'>
+                                    <Button variant="ghost" onClick={addFilter}>
+                                        + Add Filter
+                                    </Button>
+                                </div>
+                                {/*  */}
+                            </div>
                         </div>
                     </CardContent>
                     <CardFooter>
@@ -304,11 +337,21 @@ export default function ItemSearch() {
             </div>
             {results && (
                 <Card className="mt-4">
-                    <CardHeader>
-                        <CardTitle>Search Results</CardTitle>
+                    <CardHeader className='relative'>
+                        <CardTitle>Search Results
+
+                        </CardTitle>
+                        <div className='absolute top-4 right-4'>
+                            {Object.keys(results).length != 0 && (
+                                <p className="text-center text-accent texts">{Object.keys(results).length} results found.</p>
+                            )}
+                        </div>
                     </CardHeader>
                     <CardContent>
                         {/* <ScrollArea className="h-[400px]"> */}
+                        {Object.keys(results).length == 0 && (
+                            <p className="text-center">No results found.</p>
+                        )}
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {Object.entries(results).map(([name, item]) => (
                                 <ItemDisplay key={name} item={item} />
@@ -332,3 +375,4 @@ export default function ItemSearch() {
         </div>
     )
 }
+
