@@ -16,15 +16,6 @@ async function readLocalData() {
   }
 }
 
-async function writeLocalData(data: any) {
-  try {
-    await fs.writeFile(LOCAL_DATA_PATH, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Error writing local data:', error);
-    throw new Error('Unable to write local data');
-  }
-}
-
 async function triggerGitHubWorkflow() {
   try {
     const response = await fetch(GITHUB_ACTION_URL, {
@@ -49,27 +40,28 @@ async function triggerGitHubWorkflow() {
   }
 }
 
+let workflow_dispatched = false;
+
 export async function GET() {
   try {
     const data = await readLocalData();
-    const currentTimestamp = Date.now();
+    const currentTimestamp = Date.now ();
 
     // Check if the `current.datetime_utc` has passed
     if (data.current && data.current.datetime_utc <= currentTimestamp) {
-      if (!data.current.workflow_dispatched) {
+      if (!workflow_dispatched) {
         console.log('Triggering GitHub workflow...');
         await triggerGitHubWorkflow();
-
         // Mark the workflow as dispatched
-        data.current.workflow_dispatched = true;
-
-        // Save updated data
-        await writeLocalData(data);
+        workflow_dispatched = true;
+        
       } else {
         console.log('Workflow already dispatched for this datetime');
       }
+    } else {
+      workflow_dispatched = false;
     }
-
+    console.log(workflow_dispatched);
     // Send the updated data as a response
     return NextResponse.json(data, { status: 200 });
   } catch (error) {
