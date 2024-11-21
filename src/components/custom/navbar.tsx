@@ -177,24 +177,42 @@ import {
 } from "@/components/ui/navigation-menu"
 import React from 'react'
 
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Aspects', href: '/aspects' },
-  { name: 'Lootrun', href: '/lootrun' },
-  { name: 'Annihilation', href: '/annihilation' },
-  { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
-]
+const navCategories = [
+  {
+    category: 'Main',
+    items: [
+      { name: 'Home', href: '/' },
+      { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
+      { name: 'Annihilation', href: '/annihilation' },
+    ],
+  },
+  {
+    category: 'Loopool',
+    items: [
+      { name: 'Lootrun', href: '/lootrun' },
+      { name: 'Aspects', href: '/aspects' },
+    ],
+  },
+  {
+    category: 'Loadout',
+    items: [
+      { name: 'Aspects Data', href: '/aspects/data' },
+      { name: 'Item Search', href: '/items/search' },
+    ],
+  },
+];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const triggerPaths = ['/aspects', '/lootrun'];
-  const isActive = triggerPaths.includes(pathname);
+  function isActive(triggerPaths: string[]) {
+    return triggerPaths.includes(pathname);
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 mx-auto px-4 py-4 flex justify-between items-center">
-        
+
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="hidden font-bold sm:inline-block text-xl">
@@ -207,13 +225,13 @@ export function Navbar() {
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <p className={`transition-colors hover:text-foreground/80 ${pathname === '/' ? 'text-foreground' : 'text-foreground/60'
-                    } `}>Home</p>
+                      } `}>Home</p>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger
-                  className={`transition-colors hover:text-foreground/80 ${isActive ? 'text-foreground' : 'text-foreground/60'
+                  className={`transition-colors hover:text-foreground/80 ${isActive(['/aspects', '/lootrun']) ? 'text-foreground' : 'text-foreground/60'
                     } `}
                 >
                   Lootpool
@@ -230,10 +248,28 @@ export function Navbar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className={`transition-colors hover:text-foreground/80 ${isActive(['/items/search', '/aspects/data']) ? 'text-foreground' : 'text-foreground/60'
+                    } `}
+                >
+                  Loadout
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
+                    <ListItem href="/items/search" title="Item search" className={pathname === "/items/search" ? 'bg-accent/50' : ''}>
+                      Find the items with a selected filter.
+                    </ListItem>
+                    <ListItem href="/aspects/data" title="Aspect Data" className={pathname === "/aspects/data" ? 'bg-accent/50' : ''}>
+                      A page with all the aspects and their effects, cateogrized by class.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
                 <Link href="/annihilation" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <p className={`transition-colors hover:text-foreground/80 ${pathname === '/annihilation' ? 'text-foreground' : 'text-foreground/60'
-                    } `}>Annihilation</p>
+                      } `}>Annihilation</p>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -250,32 +286,28 @@ export function Navbar() {
         <div className="flex items-center space-x-2">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
-              >
+              <Button variant="ghost" className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
-              <MobileLink
-                href="/"
-                className="flex items-center"
-                onOpenChange={setIsOpen}
-              >
+              <MobileLink href="/" className="flex items-center" onOpenChange={setIsOpen}>
                 <span className="font-bold text-foreground">Wynnpool</span>
               </MobileLink>
               <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                 <div className="flex flex-col space-y-3">
-                  {navItems.map((item) => (
-                    <MobileLink
-                      key={item.href}
-                      href={item.href}
-                      onOpenChange={setIsOpen}
-                    >
-                      {item.name}
-                    </MobileLink>
+                  {navCategories.map((category) => (
+                    <div key={category.category}>
+                      <h3 className="font-bold text-lg mt-4 mb-2">{category.category}</h3>
+                      <div className="ml-2 flex flex-col space-y-2">
+                        {category.items.map((item) => (
+                          <MobileLink key={item.href} href={item.href} onOpenChange={setIsOpen}>
+                            {item.name}
+                          </MobileLink>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
