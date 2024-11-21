@@ -32,6 +32,10 @@ export interface ItemBase {
     }
     requirements?: {
         level?: number
+        levelRange?: {
+            min: number
+            max: number
+        }
         strength?: number
         dexterity?: number
         intelligence?: number
