@@ -19,7 +19,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Wynnpool",
   description: "A utility integration for Wynncraft, using the up-to-date data with global statistics and more.",
-  keywords: ["Wynncraft", "Lootrun", "Raid", "Aspect", "Wynndata"],
+  keywords: ["Wynncraft", "Lootrun", "Raid", "Aspect", "Annihilation"],
   openGraph: {
     images: '/images/og-image.png',
   },
