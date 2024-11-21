@@ -260,7 +260,13 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
                 ))}
               </div>
             )} */}
-
+          {item.majorIds && (
+            <ul className="list-disc list-inside">
+              {Object.entries(item.majorIds).map(([key, value]) => (
+                <div key={key} dangerouslySetInnerHTML={{ __html: value }} />
+              ))}
+            </ul>
+          )}
           {item.lore && (
             <>
               <Separator />
