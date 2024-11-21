@@ -1,5 +1,11 @@
 
 export type Rarity = 'common' | 'set' | 'unique' | 'rare' | 'legendary' | 'fabled' | 'mythic';
+
+export type Identification = {
+    value: string
+    label: string
+}
+
 export interface ItemBase {
     internalName: string
     type: string
