@@ -2,101 +2,102 @@
   "Loot": {
     "TNA": {
       "Mythic": [
-        "Boltslinger's Embodiment of Rended Skies",
-        "Fallen's Embodiment of Blind Fury",
-        "Paladin's Embodiment of Undying Determination"
+        "Riftwalker's Embodiment of Chronal Control",
+        "Acolyte's Embodiment of Unwavering Adherence",
+        "Shadestepper's Embodiment of Unseen Execution"
       ],
       "Fabled": [
-        "Aspect of Chaotic Demolition",
-        "Aspect of Rallying Fervor",
-        "Aspect of Empowering Fantasy",
-        "Aspect of the Beckoned Legion",
-        "Aspect of the Airborne",
-        "Aspect of Extreme Current"
+        "Aspect of Unyielding Fate",
+        "Aspect of Martial Trance",
+        "Aspect of Seismic Sense",
+        "Aspect of Shining Status",
+        "Aspect of Rallying Fervor"
       ],
       "Legendary": [
-        "Aspect of Emanant Force",
-        "Aspect of the Ray of Frost",
-        "Aspect of the North Wind",
+        "Aspect of Foul Play",
+        "Aspect of Wind Walking",
+        "Aspect of Shadow Armor",
+        "Aspect of Redoublement",
+        "Aspect of the Alraune's Roots",
         "Aspect of Bullet Hell",
-        "Aspect of the Monolith",
-        "Aspect of Clinging Lichen",
-        "Aspect of the Dimension's Door",
-        "Aspect of the Megaphone"
+        "Aspect of Reverberation",
+        "Aspect of the Ray of Frost"
       ]
     },
     "TCC": {
       "Mythic": [
-        "Battle Monk's Embodiment of Complete Synchrony",
         "Light Bender's Embodiment of Celestial Brilliance",
-        "Fallen's Embodiment of Blind Fury"
+        "Acrobat's Embodiment of Gravity Defiance",
+        "Trickster's Embodiment of the Ultimate Show"
       ],
       "Fabled": [
+        "Aspect of the Dagger's Silhouette",
         "Aspect of the Great Escape",
-        "Aspect of Unquenching Flames",
-        "Aspect of Seeking Stars",
-        "Aspect of Hyper-Perception",
-        "Aspect of the Beckoned Legion"
+        "Aspect of the Amphibian",
+        "Aspect of Burning Providence",
+        "Aspect of the Airborne"
       ],
       "Legendary": [
-        "Aspect of the Dimension's Door",
-        "Aspect of Lashing Fire",
-        "Aspect of Clinging Lichen",
-        "Aspect of the Chain Knife",
-        "Aspect of Extreme Firepower",
+        "Aspect of Dynamic Entry",
+        "Aspect of the Ray of Frost",
         "Aspect of Motivation",
-        "Aspect of Steel Chords",
-        "Aspect of the Comet",
-        "Aspect of the Apprentice's Bolt"
+        "Aspect of the North Wind",
+        "Aspect of Lashing Fire",
+        "Aspect of Earthshaking",
+        "Aspect of Extreme Firepower",
+        "Aspect of Further Horizons"
       ]
     },
     "NOL": {
       "Mythic": [
-        "Sharpshooter's Embodiment of Laser Precision",
-        "Shadestepper's Embodiment of Unseen Execution",
-        "Riftwalker's Embodiment of Chronal Control"
+        "Ritualist's Embodiment of the Ancestral Avatar",
+        "Light Bender's Embodiment of Celestial Brilliance",
+        "Battle Monk's Embodiment of Complete Synchrony"
       ],
       "Fabled": [
-        "Aspect of Flickering Transmission",
+        "Aspect of Martial Trance",
+        "Aspect of Burning Providence",
         "Aspect of Unyielding Fate",
-        "Aspect of the Poltergeist",
-        "Aspect of Stances",
-        "Aspect of Unquenching Flames"
+        "Aspect of the Beckoned Legion",
+        "Aspect of Chaotic Demolition",
+        "Aspect of Shining Status"
       ],
       "Legendary": [
-        "Aspect of the Megaphone",
-        "Aspect of Motivation",
-        "Aspect of the Alraune's Roots",
+        "Aspect of the Cone of Cold",
         "Aspect of Clinging Lichen",
-        "Aspect of Foul Play",
-        "Aspect of the Monolith",
-        "Aspect of Skyward Strikes",
-        "Aspect of the Ray of Frost"
+        "Aspect of Battlement Fortification",
+        "Aspect of Shadow Armor",
+        "Aspect of the Returning Javelin",
+        "Aspect of Steel Chords",
+        "Aspect of the Fog Machine",
+        "Aspect of Motivation",
+        "Aspect of Turbulence"
       ]
     },
     "NOTG": {
       "Mythic": [
-        "Fallen's Embodiment of Blind Fury",
-        "Acolyte's Embodiment of Unwavering Adherence",
-        "Acrobat's Embodiment of Gravity Defiance"
+        "Paladin's Embodiment of Undying Determination",
+        "Battle Monk's Embodiment of Complete Synchrony",
+        "Fallen's Embodiment of Blind Fury"
       ],
       "Fabled": [
-        "Aspect of Fatal Fulguration",
-        "Aspect of the Dagger's Silhouette",
+        "Aspect of Seismic Sense",
         "Aspect of Unyielding Fate",
-        "Aspect of Exsanguination",
-        "Aspect of Martial Trance",
-        "Aspect of Sleight-Of-Hand"
+        "Aspect of False Coercing",
+        "Aspect of Chaotic Demolition",
+        "Aspect of the Airborne",
+        "Aspect of Searing Friction"
       ],
       "Legendary": [
-        "Aspect of Redoublement",
-        "Aspect of Bullet Hell",
-        "Aspect of Wind Walking",
         "Aspect of Skyward Strikes",
-        "Aspect of Turbulence",
-        "Aspect of the Magic Missile",
-        "Aspect of Shadow Armor",
-        "Aspect of the Anvil Drop"
+        "Aspect of the Stellar Flurry",
+        "Aspect of the Ray of Frost",
+        "Aspect of the Pinwheel",
+        "Aspect of the Monolith",
+        "Aspect of Redoublement",
+        "Aspect of Dynamic Entry",
+        "Aspect of Extreme Firepower",
+        "Aspect of Wind Walking"
       ]
     }
   },
@@ -155,5 +156,5 @@
     "Aspect of Shadow Armor": "static_assassin.png",
     "Aspect of the Anvil Drop": "static_warrior.png"
   },
-  "Timestamp": 1731693600
+  "Timestamp": 1732298400
 }
