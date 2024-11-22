@@ -39,7 +39,7 @@ interface LootData {
 
 export default function AspectPool() {
   const [lootData, setLootData] = useState<LootData | null>(null)
-  const [aspectData, setAspectData] = useState<AspectData | null>(null)
+  const [aspectData, setAspectData] = useState<AspectData | null>({})
   const [countdown, setCountdown] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true)
   const [selectedClass, setSelectedClass] = useState<string>('Archer')
@@ -70,6 +70,13 @@ export default function AspectPool() {
     }
   }, [lootData]);
 
+  const aspectToClassName = Object.entries(aspectData!).reduce((acc, [className, aspects]) => {
+    aspects.forEach((aspect) => {
+      acc[aspect.name] = className;
+    });
+    return acc;
+  }, {} as { [aspectName: string]: string });
+
   if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
   if (!lootData || !aspectData) return <div>Error loading data. Please try again later.</div>
 
@@ -81,6 +88,7 @@ export default function AspectPool() {
 
     Object.entries(categories).forEach(([rarity, aspects]) => {
       aspects.forEach((aspect) => {
+        const className = aspectToClassName[aspect];
         const matchedAspect = aspectData[selectedClass]?.find((a) => a.name === aspect);
         if (matchedAspect && !aspectNamesSet.has(aspect)) { // Check if the aspect is already added
           aspectNamesSet.add(aspect); // Mark the aspect as added
@@ -88,15 +96,15 @@ export default function AspectPool() {
             name: aspect,
             section: section as LootSection,
             rarity: rarity as LootCategory,
-            icon: lootData.Icon[aspect],
             description: matchedAspect.description,
+            className: className,
           });
         }
       });
     });
 
     return acc;
-  }, [] as { name: string; section: LootSection; rarity: LootCategory; icon: string; description?: string }[]);
+  }, [] as { name: string; section: LootSection; rarity: LootCategory; description?: string; className: string }[]);
 
   // Sort the list based on the selected sort criteria
   availableAspects.sort((a, b) => {
@@ -145,13 +153,13 @@ export default function AspectPool() {
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <TooltipProvider delayDuration={50}>
                               {items.map((item) => {
-                                const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item);
+                                const aspectInfo = Object.values(aspectData!).flat().find(aspect => aspect.name === item);
+                                const className = aspectToClassName[item];
 
                                 return (
                                   <Tooltip key={item} open={openTooltips[item]} onOpenChange={(isOpen) => setOpenTooltips({ ...openTooltips, [item]: isOpen })}>
                                     <TooltipTrigger asChild>
                                       <div className="flex items-center space-x-2 cursor-pointer" onClick={() => {
-                                        // Toggle the tooltip state for the current item
                                         setOpenTooltips((prevState) => ({
                                           ...prevState,
                                           [item]: !prevState[item]
@@ -159,7 +167,7 @@ export default function AspectPool() {
                                       }}>
                                         <Image
                                           unoptimized
-                                          src={`/icons/aspects/${lootData.Icon[item]}`}
+                                          src={`/icons/aspects/aspect_${className.toLowerCase()}.${aspectInfo?.rarity === 'Mythic' ? 'gif' : 'png'}`}
                                           alt={item}
                                           width={32}
                                           height={32}
@@ -208,7 +216,7 @@ export default function AspectPool() {
                   <th className="py-2">
                     <Tabs value={selectedClass} onValueChange={setSelectedClass}>
                       <TabsList>
-                        {Object.keys(aspectData).map((className) => (
+                        {Object.keys(aspectData!).map((className) => (
                           <TabsTrigger key={className} value={className}>
                             {className}
                           </TabsTrigger>
@@ -220,10 +228,16 @@ export default function AspectPool() {
                 </tr>
               </thead>
               <tbody className="divide-y">
-                {availableAspects.map(({ name, section, rarity, icon, description }) => (
+                {availableAspects.map(({ name, section, rarity, description, className }) => (
                   <tr key={`${name}-${section}`}>
                     <td className="px-4 py-2 hidden md:block">
-                      <Image unoptimized src={`/icons/aspects/${icon}`} alt={name} width={50} height={50} />
+                      <Image
+                        unoptimized
+                        src={`/icons/aspects/aspect_${className.toLowerCase()}.${rarity === 'Mythic' ? 'gif' : 'png'}`}
+                        alt={name}
+                        width={50}
+                        height={50}
+                      />
                     </td>
                     <td className="px-4 py-1">
                       <Badge
