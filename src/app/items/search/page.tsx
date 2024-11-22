@@ -156,6 +156,7 @@ export default function ItemSearch() {
             }
 
             const data = await response.json()
+            console.log(data)
             setResults(data)
         } catch (err) {
             setError('An error occurred while searching for items.')

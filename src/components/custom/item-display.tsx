@@ -127,7 +127,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { ItemBase } from "@/types/itemTypes"
+import { getIdentificationInfo, ItemBase } from "@/types/itemTypes"
 
 
 
@@ -185,10 +185,17 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
           {item.base && (
             <ul className="list-disc list-inside">
               {Object.entries(item.base).map(([key, value]) => (
-                <div key={key}>
-                  <div className="flex">
-                    <h4 className="font-semibold">{key}</h4>{value.min}~{value.max}
-                  </div>
+                <div key={key} className="flex">
+                  {typeof value === 'number' ? (
+                    <>
+                      <h4 className="font-semibold">{getIdentificationInfo(key)?.displayName}</h4>{value}
+                    </>
+                  ) : (
+                    <>
+                      <h4 className="font-semibold">{getIdentificationInfo(key)?.displayName}</h4>{value.min}~{value.max}
+                    </>
+                  )}
+
                 </div>
               ))}
             </ul>
@@ -198,18 +205,22 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
               {Object.entries(item.requirements).map(([key, value]) => {
                 let displayValue;
                 if (typeof value === 'string' || typeof value === 'number') {
-                  displayValue = value; 
+                  displayValue = value;
                 } else if (Array.isArray(value)) {
-                  displayValue = value.join(', '); 
+                  displayValue = value.join(', ');
                 } else if (typeof value === 'object' && value !== null) {
-                  displayValue = `${value.min} - ${value.max}`; 
+                  displayValue = `${value.min} - ${value.max}`;
                 } else {
-                  displayValue = 'Unknown value'; 
+                  displayValue = 'Unknown value';
                 }
 
                 return (
                   <div key={key}>
-                    {key}: {displayValue}
+                    {getIdentificationInfo(key) ? (
+                      <>{getIdentificationInfo(key)?.displayName}: {displayValue}</>
+                    ) : (
+                      <>{key}: {displayValue}</>
+                    )}
                   </div>
                 );
               })}
@@ -232,14 +243,15 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
                   <div key={key} className="flex items-center justify-between">
                     {typeof value === 'number' ? (
                       <>
-                        <span className="flex-grow text-center">{`${key}`}</span>
-                        <span className={getColorClass(value)}>{value}</span>
+                        <span style={{ flex: '1', textAlign: 'left' }}></span>
+                        <span className="flex-grow text-center">{getIdentificationInfo(key)?.displayName}</span>
+                        <span className={`${getColorClass(value)}`} style={{ flex: '1', textAlign: 'right' }}>{value}</span>
                       </>
                     ) : (
                       <>
-                        <span className={getColorClass(value.min)} style={{ flex: '1', textAlign: 'left' }}>{`${value.min}`}</span>
-                        <span className="flex-grow text-center">{`${key}`}</span>
-                        <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{`${value.max}`}</span>
+                        <span className={getColorClass(value.min)} style={{ flex: '1', textAlign: 'left' }}>{`${value.min}${getIdentificationInfo(key)?.unit}`}</span>
+                        <span className="flex-grow text-center">{`${getIdentificationInfo(key)?.displayName}`}</span>
+                        <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{`${value.max}${getIdentificationInfo(key)?.unit}`}</span>
                       </>
                     )}
                   </div>
