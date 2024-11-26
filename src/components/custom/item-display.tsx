@@ -127,7 +127,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { getIdentificationInfo, ItemBase } from "@/types/itemTypes"
+import { getIdentificationInfo, ItemBase } from "@/types/itemType"
 
 
 
@@ -272,12 +272,25 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
                 ))}
               </div>
             )} */}
+          
           {item.majorIds && (
             <ul className="list-disc list-inside">
               {Object.entries(item.majorIds).map(([key, value]) => (
                 <div key={key} dangerouslySetInnerHTML={{ __html: value }} />
               ))}
             </ul>
+          )}
+          {item.powderSlots && (
+            <p className="text-sm font-bold">
+              Powder Slots:{' '}
+              {Array(item.powderSlots)
+                .fill(null)
+                .map((_, idx) => (
+                  <span key={idx} className="text-lg text-primary/50">
+                    ○
+                  </span>
+                ))}
+            </p>
           )}
           {item.lore && (
             <>
