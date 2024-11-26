@@ -11,25 +11,10 @@ import Countdown from '@/components/custom/countdown'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { AspectData } from '@/types/aspectType'
 
 type LootCategory = 'Mythic' | 'Fabled' | 'Legendary'
 type LootSection = 'TNA' | 'TCC' | 'NOL' | 'NOTG'
-
-interface AspectTier {
-  [key: string]: string
-}
-
-interface Aspect {
-  name: string
-  id: string
-  rarity: string
-  description: string
-  tiers: AspectTier
-}
-
-interface AspectData {
-  [className: string]: Aspect[]
-}
 
 interface LootData {
   Loot: Record<LootSection, Record<LootCategory, string[]>>
