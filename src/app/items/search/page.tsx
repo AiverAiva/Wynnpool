@@ -289,7 +289,7 @@ export default function ItemSearch() {
                         </CardTitle>
                         <div className='absolute top-4 right-4'>
                             {Object.keys(results).length != 0 && (
-                                <p className="text-center text-accent texts">{Object.keys(results).length} results found.</p>
+                                <p className="text-center text-foreground/40 texts">{Object.keys(results).length} results found.</p>
                             )}
                         </div>
                     </CardHeader>
