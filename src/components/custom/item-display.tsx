@@ -283,13 +283,9 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
           {item.powderSlots && (
             <p className="text-sm font-bold">
               Powder Slots:{' '}
-              {Array(item.powderSlots)
-                .fill(null)
-                .map((_, idx) => (
-                  <span key={idx} className="text-lg text-primary/50">
-                    ○
-                  </span>
-                ))}
+              <span className="text-lg text-primary/50">
+                {Array.from({length: item.powderSlots }, () => '○').join('')} 
+              </span>
             </p>
           )}
           {item.lore && (
