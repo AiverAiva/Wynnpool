@@ -235,3 +235,4 @@ export type Item = WeaponItem | ArmourItem | ToolItem | IngredientItem | Materia
 export interface ItemDisplayProps {
     item: Item
 }
+
