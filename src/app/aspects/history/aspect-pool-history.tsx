@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import { AspectData } from '@/types/aspectType'
 
 interface HistoryFile {
     filename: string
@@ -20,6 +21,19 @@ interface AspectPoolHistoryProps {
 export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
     const [selectedFile, setSelectedFile] = useState<HistoryFile | null>(null)
     const [fileContent, setFileContent] = useState<any>(null)
+    const [aspectData, setAspectData] = useState<AspectData | null>({})
+
+    useEffect(() => {
+        Promise.all([
+            fetch('/api/aspects-data').then(response => response.json())
+        ])
+            .then(([aspectData]) => {
+                setAspectData(aspectData)
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error)
+            })
+    }, [])
 
     const handleFileClick = async (file: HistoryFile) => {
         setSelectedFile(file)
@@ -50,6 +64,13 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
             URL.revokeObjectURL(url);
         }
     };
+
+    const aspectToClassName = Object.entries(aspectData!).reduce((acc, [className, aspects]) => {
+        aspects.forEach((aspect) => {
+            acc[aspect.name] = className;
+        });
+        return acc;
+    }, {} as { [aspectName: string]: string });
 
     return (
         <div className="container mx-auto p-4">
@@ -98,24 +119,31 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
                                                     {/* Dynamic height for ScrollArea */}
                                                     <ScrollArea className="overflow-y-auto" style={{ height: 'calc(100vh - 265px)' }}>
                                                         {Object.entries(categories).map(([category, items]: [string, any]) => (
-                                                            <div key={category} className="mb-4">
+
+                                                            <div key={category} className="mb-4" >
                                                                 <h3 className="text-xl font-semibold mb-2">{category}</h3>
                                                                 <div className="grid grid-cols-1 gap-4">
-                                                                    {items.map((item: string) => (
-                                                                        <div key={item} className="flex items-center space-x-2">
-                                                                            <Image
-                                                                                unoptimized
-                                                                                src={`/icons/aspects/${fileContent.Icon[item]}`}
-                                                                                alt={item}
-                                                                                width={32}
-                                                                                height={32}
-                                                                            />
-                                                                            <span>{item}</span>
-                                                                        </div>
-                                                                    ))}
+                                                                    {items.map((item: string) => {
+                                                                        const aspectInfo = Object.values(aspectData!).flat().find(aspect => aspect.name === item);
+                                                                        const className = aspectToClassName[item];
+
+                                                                        return (
+                                                                            <div key={item} className="flex items-center space-x-2">
+                                                                                <Image
+                                                                                    unoptimized
+                                                                                    src={`/icons/aspects/aspect_${className.toLowerCase()}.${aspectInfo?.rarity === 'Mythic' ? 'gif' : 'png'}`}
+                                                                                    alt={item}
+                                                                                    width={32}
+                                                                                    height={32}
+                                                                                />
+                                                                                <span>{item}</span>
+                                                                            </div>
+                                                                        )
+                                                                    })}
                                                                 </div>
                                                             </div>
                                                         ))}
+
                                                     </ScrollArea>
                                                 </CardContent>
                                             </Card>
@@ -138,21 +166,21 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
     )
     function ArrowLeftIcon(props: any) {
         return (
-          <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="m12 19-7-7 7-7" />
-            <path d="M19 12H5" />
-          </svg>
+            <svg
+                {...props}
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            >
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+            </svg>
         )
-      }
+    }
 }
