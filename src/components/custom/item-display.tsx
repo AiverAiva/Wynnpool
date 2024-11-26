@@ -127,7 +127,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { getIdentificationInfo, ItemBase } from "@/types/itemType"
-
+import Image from 'next/image'
 
 
 interface ItemDisplayProps {
@@ -161,16 +161,45 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
   return (
     <Card className="w-full max-w-2xl mx-auto h-fit">
       <CardHeader>
-        <div className="flex justify-between items-center">
-          <CardTitle className={`text-2xl font-bold ${rarityTextColor[item.rarity]}`}>{item.internalName}</CardTitle>
+        <div className="flex justify-center items-center">
+          {item.icon ? (
+            <Image
+              src={`https://cdn.wynncraft.com/nextgen/itemguide/3.3/${typeof item.icon.value === 'object' ? item.icon.value.name : item.icon.value}.webp`}
+              alt={item.internalName}
+              width={64}
+              height={64}
+              style={{
+                imageRendering: 'pixelated' // Preserve pixel art look
+              }}
+            />
+            // console.log(`https://cdn.wynncraft.com/nextgen/itemguide/3.3/${typeof item.icon.value === 'object' ? item.icon.value.name : item.icon.value}.webp`)
+          ) : (
+            <Image
+              src={`https://cdn.wynncraft.com/nextgen/itemguide/3.3/${item.armourMaterial}_${item.armourType}.webp`}
+              alt={item.internalName}
+              width={48}
+              height={48}
+              style={{
+                imageRendering: 'pixelated' // Preserve pixel art look
+              }}
+            />
+          )}
+        </div>
+        <div className="flex justify-center items-center">
+          <CardTitle className={`text-xl font-bold ${rarityTextColor[item.rarity]}`}>{item.internalName}</CardTitle>
+        </div>
+        <div className="flex justify-center items-center">
           <Badge className={`${getRarityColor(item.rarity)}`}>
-            <p className={`${rarityTextColor[item.rarity]} brightness-[.3]`}>{item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)}</p>
+            <p className={`${rarityTextColor[item.rarity]} brightness-[.3]`}>{item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)} Item</p>
           </Badge>
         </div>
-        <CardDescription>
-          {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
-          {item.attackSpeed && ` - ${item.attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`}
-        </CardDescription>
+        {item.attackSpeed && (
+          <CardDescription>
+            <div className="flex justify-center items-center">
+              {`${item.attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
+            </div>
+          </CardDescription>
+        )}
       </CardHeader>
       <CardContent>
         {/* <ScrollArea className="h-[600px] pr-4"> */}
@@ -271,7 +300,7 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
                 ))}
               </div>
             )} */}
-          
+
           {item.majorIds && (
             <ul className="list-disc list-inside">
               {Object.entries(item.majorIds).map(([key, value]) => (
@@ -283,7 +312,7 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
             <p className="text-sm font-bold">
               Powder Slots:{' '}
               <span className="text-lg text-primary/50">
-                {Array.from({length: item.powderSlots }, () => '○').join('')} 
+                {Array.from({ length: item.powderSlots }, () => '○').join('')}
               </span>
             </p>
           )}

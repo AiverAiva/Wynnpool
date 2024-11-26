@@ -142,6 +142,8 @@ export interface ItemBase {
         value: { id: string; name: string; customModelData: string } | string
         format: string
     }
+    armourMaterial?: string // for armour
+    armourType?: string // for armour
     identified?: boolean
     allow_craftsman?: boolean
     powderSlots?: number
