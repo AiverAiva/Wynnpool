@@ -103,9 +103,9 @@ export default function LootRunPool() {
                                                                 <div className="flex items-center space-x-2">
                                                                     <Image
                                                                         unoptimized
-                                                                        src={lootData.Icon[item].startsWith('http')
+                                                                        src={lootData.Icon[item] && lootData.Icon[item].startsWith('http')
                                                                             ? lootData.Icon[item]
-                                                                            : `/icons/items/${lootData.Icon[item]}`}
+                                                                            : (lootData.Icon[item] ? `/icons/items/${lootData.Icon[item]}` : '/icons/items/barrier.webp')}
                                                                         alt={item}
                                                                         width={32}
                                                                         height={32}
