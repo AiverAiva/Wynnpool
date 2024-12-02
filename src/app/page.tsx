@@ -110,6 +110,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookOpen, Compass, Database, Globe, Search, Users } from "lucide-react"
 import Link from "next/link"
 import WynncraftNews from '@/components/custom/lastest-news'
+import ServerStatusDisplay from '@/components/custom/server-status'
 
 export default function HomePage() {
   return (
@@ -185,7 +186,6 @@ export default function HomePage() {
             </Card>
           </div>
         </section>
-
         <section>
           <h2 className="text-2xl font-semibold mb-4">Latest Updates</h2>
           <Tabs defaultValue="game">
@@ -228,6 +228,9 @@ export default function HomePage() {
               </Card>
             </TabsContent>
           </Tabs>
+        </section>
+        <section>
+          <ServerStatusDisplay />
         </section>
       </main>
 
