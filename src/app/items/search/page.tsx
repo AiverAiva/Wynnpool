@@ -294,17 +294,14 @@ export default function ItemSearch() {
                         </div>
                     </CardHeader>
                     <CardContent>
-                        {/* <ScrollArea className="h-[400px]"> */}
                         {Object.keys(results).length == 0 && (
                             <p className="text-center">No results found.</p>
                         )}
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                             {Object.entries(results).map(([name, item]) => (
                                 <ItemDisplay key={name} item={item} />
                             ))}
                         </div>
-                        {/* <pre>{JSON.stringify(results, null, 2)}</pre> */}
-                        {/* </ScrollArea> */}
                     </CardContent>
                 </Card>
             )}
