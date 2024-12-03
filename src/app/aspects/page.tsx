@@ -185,20 +185,19 @@ export default function AspectPool() {
             </Tabs>
           </>
         )}
-        <div>
-          <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')} className="mt-4">
-            <TabsList>
-              <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
-              <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
-            </TabsList>
-          </Tabs>
-
-          <div className="mt-4">
-            <table className="min-w-full divide-y">
-              <thead>
-                <tr>
-                  <th className='hidden md:block'></th>
-                  <th className="py-2">
+        <Card className="mt-4">
+          <table className="min-w-full divide-y">
+            <thead>
+              <tr>
+                <th className='hidden md:block'></th>
+                <th className="py-2">
+                  <div className='flex gap-4 flex-wrap items-center justify-center'>
+                    <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')}>
+                      <TabsList>
+                        <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
+                        <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
+                      </TabsList>
+                    </Tabs>
                     <Tabs value={selectedClass} onValueChange={setSelectedClass}>
                       <TabsList>
                         {Object.keys(aspectData!).map((className) => (
@@ -208,43 +207,43 @@ export default function AspectPool() {
                         ))}
                       </TabsList>
                     </Tabs>
-                  </th>
-                  <th className="px-4 py-2">Raid</th>
+                  </div>
+                </th>
+                <th className="px-4 py-2">Raid</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              {availableAspects.map(({ name, section, rarity, description, className }) => (
+                <tr key={`${name}-${section}`}>
+                  <td className="px-4 py-2 hidden md:block">
+                    <Image
+                      unoptimized
+                      src={`/icons/aspects/aspect_${className.toLowerCase()}.${rarity === 'Mythic' ? 'gif' : 'png'}`}
+                      alt={name}
+                      width={50}
+                      height={50}
+                    />
+                  </td>
+                  <td className="px-4 py-1">
+                    <Badge
+                      className={`ml-2  mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
+                        rarity === 'Legendary' ? 'bg-cyan-400' :
+                          'bg-fuchsia-700'
+                        } text-white text-sm font-thin`}
+                    >
+                      {name}
+                    </Badge>
+                    <br />
+                    <p className="px-4 py-1 text-sm">{description}</p>
+                  </td>
+                  <td className="px-4 py-2 text-center">
+                    {section}
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="divide-y">
-                {availableAspects.map(({ name, section, rarity, description, className }) => (
-                  <tr key={`${name}-${section}`}>
-                    <td className="px-4 py-2 hidden md:block">
-                      <Image
-                        unoptimized
-                        src={`/icons/aspects/aspect_${className.toLowerCase()}.${rarity === 'Mythic' ? 'gif' : 'png'}`}
-                        alt={name}
-                        width={50}
-                        height={50}
-                      />
-                    </td>
-                    <td className="px-4 py-1">
-                      <Badge
-                        className={`ml-2  mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
-                          rarity === 'Legendary' ? 'bg-cyan-400' :
-                            'bg-fuchsia-700'
-                          } text-white text-sm font-thin`}
-                      >
-                        {name}
-                      </Badge>
-                      <br />
-                      <p className="px-4 py-1 text-sm">{description}</p>
-                    </td>
-                    <td className="px-4 py-2 text-center">
-                      {section}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+              ))}
+            </tbody>
+          </table>
+        </Card>
       </main>
     </div>
   )
