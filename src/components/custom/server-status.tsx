@@ -87,12 +87,12 @@ export default function ServerStatusDisplay() {
     }
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto py-8 max-w-screen-lg">
             <h3 className="text-2xl font-bold mb-4">Server Status</h3>
             <Card>
                 <Table>
                     <TableHeader>
-                        <TableRow>
+                        <TableRow >
                             <TableHead>
                                 <Button variant="ghost" onClick={() => handleSort('server')}>
                                     Server <ArrowUpDown className="ml-2 h-4 w-4" />
@@ -110,6 +110,7 @@ export default function ServerStatusDisplay() {
                             </TableHead>
                         </TableRow>
                     </TableHeader>
+
                     <TableBody>
                         {sortedServers.map(([server, serverData]) => (
                             <TableRow key={server}>
