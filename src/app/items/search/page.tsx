@@ -14,6 +14,7 @@ import { useMediaQuery } from '@/hooks/use-media-query'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
 import React from 'react'
+import { getIdentificationInfo } from '@/types/itemType'
 
 const itemTypes = {
     weapon: ['bow', 'spear', 'wand', 'relik', 'dagger'],
@@ -103,7 +104,7 @@ function RarityTabs({ options, selectedOptions, onChange }: MultiSelectTabsProps
 export default function ItemSearch() {
     const [query, setQuery] = useState('')
     const [selectedTypes, setSelectedTypes] = useState<string[]>([])
-    const [selectedTiers, setSelectedTiers] = useState<string[]>([])
+    const [selectedTiers, setSelectedTiers] = useState<string[]>(tiers)
     const [levelRange, setLevelRange] = useState<number[]>([1, 106])
     const [results, setResults] = useState<Record<string, any> | null>(null)
     const [isLoading, setIsLoading] = useState(false)
@@ -112,7 +113,6 @@ export default function ItemSearch() {
     const [selectedIdentifications, setSelectedIdentifications] = useState<string[]>([]);
     const [majorIds, setMajorIds] = useState<string[]>([])
     const [selectedMajorId, setselectedMajorId] = useState<string>('');
-
     useEffect(() => {
         fetch('/api/items/metadata')
             .then((response) => response.json())
@@ -157,6 +157,21 @@ export default function ItemSearch() {
 
             const data = await response.json()
             console.log(data)
+            data.sort((a: any, b: any) => {
+                const getFirstMatchIndex = (item: any) => {
+                    for (let i = 0; i < selectedIdentifications.length; i++) {
+                        if (item.identifications.hasOwnProperty(selectedIdentifications[i])) {
+                            return i;
+                        }
+                    }
+                    return selectedIdentifications.length; 
+                };
+
+                const indexA = getFirstMatchIndex(a);
+                const indexB = getFirstMatchIndex(b);
+
+                return indexA - indexB;
+            });
             setResults(data)
         } catch (err) {
             setError('An error occurred while searching for items.')
@@ -423,7 +438,7 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
                 <PopoverTrigger asChild>
                     <Button variant="outline" className="justify-between w-full">
                         {value ? (
-                            <p>{value}</p>
+                            <p>{getIdentificationInfo(value)?.displayName}</p>
                         ) : (
                             <p>{currentLabel}</p>
                         )}
@@ -445,13 +460,14 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
                                             setOpen(false)
                                         }}
                                     >
-                                        {option}
+                                        {getIdentificationInfo(option)?.displayName}
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
                         </CommandList>
                     </Command>
                 </PopoverContent>
+                
             </Popover>
         )
     }
