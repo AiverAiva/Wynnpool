@@ -6,9 +6,9 @@ const EXTERNAL_API_BASE_URL = 'https://api.wynncraft.com/v3/search';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { query: string } }
+  { params }: { params: Promise<{ query: string }> }
 ): Promise<NextResponse> {
-  const { query } = await params;
+  const query = (await params).query
 
   if (!query) {
     return NextResponse.json(
