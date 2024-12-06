@@ -1,16 +1,12 @@
+// src/app/api/search/[query]/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 
 const EXTERNAL_API_BASE_URL = 'https://api.wynncraft.com/v3/search';
 
-interface Params {
-  params: {
-    query: string;
-  };
-}
-
 export async function GET(
   request: NextRequest,
-  { params }: Params
+  { params }: { params: { query: string } }
 ): Promise<NextResponse> {
   const { query } = await params;
 
