@@ -2,8 +2,11 @@ import { NextResponse } from 'next/server';
 
 const EXTERNAL_API_BASE_URL = 'https://api.wynncraft.com/v3/search';
 
-export async function GET(request: Request, { params }: { params: { query: string } }) {
-    const { query } = params;
+export async function GET(
+    request: Request,
+    context: { params: { query: string } } // Correct type for the second argument
+) {
+    const { query } = context.params;
 
     if (!query) {
         return NextResponse.json({ error: 'Missing search query' }, { status: 400 });
