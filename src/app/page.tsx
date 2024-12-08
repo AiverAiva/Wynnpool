@@ -107,7 +107,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { BookOpen, Compass, Database, Globe, Search, Users, AlertCircle } from "lucide-react"
+import { BookOpen, Compass, Database, Globe, Search, Users, AlertCircle, Heart } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -347,6 +347,7 @@ export default function HomePage() {
                                     src={`/api/player-icon/${uuid}`}
                                     alt={name}
                                     className="w-12 h-12"
+                                    style={{ imageRendering: 'pixelated' }}
                                   />
                                   <div>
                                     <span className="font-semibold text-lg">{getPlayerDisplayName(name)}</span>
@@ -387,6 +388,23 @@ export default function HomePage() {
                   <Button variant="outline" className="w-full">
                     <Database className="h-4 w-4 mr-2" />
                     Explore Items
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Support on Patreon</CardTitle>
+                <CardDescription>Help keeping Wynnpool no ads by donating</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="https://www.patreon.com/AiverAiva">
+                  <Button
+                    variant="outline"
+                    className="w-full flex items-center justify-center"
+                  >
+                    <Heart className="h-4 w-4 mr-2" />
+                    Support Now
                   </Button>
                 </Link>
               </CardContent>
