@@ -104,10 +104,10 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { BookOpen, Compass, Database, Globe, Search, Users } from "lucide-react"
+import { BookOpen, Compass, Database, Globe, Search, Users, AlertCircle } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -122,6 +122,8 @@ import ServerStatusDisplay from '@/components/custom/server-status'
 import { ItemBase } from '@/types/itemType'
 import { Spinner } from '@/components/ui/spinner'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { cutePlayers, getPlayerDisplayName } from '@/types/playerType'
 
 type SearchResult = | {
   query?: string;
@@ -169,6 +171,7 @@ export default function HomePage() {
     setQuery(value);
 
     if (value.trim() === '') {
+      setResults(null);
       setIsLoading(false);
       return;
     }
@@ -201,8 +204,9 @@ export default function HomePage() {
   };
 
   const handleInputFocus = () => {
-    if (query.trim()) {
-      setIsDialogOpen(true);
+    setIsDialogOpen(true);
+    if (!query.trim() || (results && 'error' in results)) {
+      setResults(null)
     }
   };
 
@@ -257,7 +261,7 @@ export default function HomePage() {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent>
             <DialogHeader>
-              WIP!
+              this is actually not working at the moment, coming soon!
               <DialogTitle>
                 <div className="relative">
                   <Search className="absolute z-20 top-1/2 left-3 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -272,45 +276,94 @@ export default function HomePage() {
               </DialogTitle>
             </DialogHeader>
             <div className="min-h-[50vh] max-h-[60vh]">
-              <ScrollArea className='h-full'>
+              <ScrollArea className="h-full">
                 {!isLoading ? (
-                  results && !('error' in results) ? (
-                    <div>
-                      {results.players && (
-                        <div>
-                          <h2 className="font-bold mb-2">Players</h2>
-                          <ul>
-                            {Object.entries(results.players).map(([uuid, name]) => (
-                              <li key={uuid} className="mb-1">{name}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      {results.guilds && (
-                        <div className="mt-4">
-                          <h2 className="font-bold mb-2">Guilds</h2>
-                          <ul>
-                            {Object.entries(results.guilds).map(([id, guild]) => (
-                              <li key={id} className="mb-1">{guild.name}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      {results.items && (
-                        <div className="mt-4">
-                          <h2 className="font-bold mb-2">Items</h2>
-                          <ul>
-                            {Object.keys(results.items).map((itemName) => (
-                              <li key={itemName} className="mb-1">{itemName}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    results && 'error' in results && (
-                      <p className="text-muted-foreground">{results.error}</p>
+                  results ? (
+                    'error' in results ? (
+                      <Alert variant="destructive">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>
+                          {results.error}
+                        </AlertDescription>
+                      </Alert>
+                    ) : (
+                      //  className='pr-4' prob for scrollbar
+                      <div>
+                        {results.players && (
+                          <div>
+                            <h2 className="font-bold mb-2">Players</h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                              {Object.entries(results.players).map(([uuid, name]) => (
+                                <Card key={uuid} className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
+                                  <CardContent className="flex flex-col justify-between p-2 h-full">
+                                    <div className="flex items-center gap-3">
+                                      <img
+                                        src={`/api/player-icon/${uuid}`}
+                                        alt={name}
+                                        className="w-8 h-8"
+                                      />
+                                      <div>
+                                        <span>{getPlayerDisplayName(name)}</span>
+                                      </div>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {results.guilds && (
+                          <div className="mt-4">
+                            <h2 className="font-bold mb-2">Guilds</h2>
+                            <ul>
+                              {Object.entries(results.guilds).map(([id, guild]) => (
+                                <li key={id} className="mb-1">{guild.name}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {results.items && (
+                          <div className="mt-4">
+                            <h2 className="font-bold mb-2">Items</h2>
+                            <ul>
+                              {Object.keys(results.items).map((itemName) => (
+                                <li key={itemName} className="mb-1">{itemName}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
                     )
+                  ) : (
+                    <div>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {cutePlayers.map(({ uuid, name, quote, icon }) => (
+                          <li key={uuid} className="relative">
+                            <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
+                              <CardContent className="flex flex-col justify-between p-4 h-full">
+                                <div className="flex items-center gap-3">
+                                  <img
+                                    src={`/api/player-icon/${uuid}`}
+                                    alt={name}
+                                    className="w-12 h-12"
+                                  />
+                                  <div>
+                                    <span className="font-semibold text-lg">{getPlayerDisplayName(name)}</span>
+                                    <p className="text-xs text-muted-foreground mt-1">{quote}</p>
+                                  </div>
+                                </div>
+                              </CardContent>
+                              <CardFooter className="flex justify-end items-end p-4">
+                                <div className="absolute bottom-4 right-4">
+                                  {icon}
+                                </div>
+                              </CardFooter>
+                            </Card>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -318,7 +371,6 @@ export default function HomePage() {
                   </div>
                 )}
               </ScrollArea>
-
             </div>
           </DialogContent>
         </Dialog>
