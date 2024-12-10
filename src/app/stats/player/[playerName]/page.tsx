@@ -1,29 +1,21 @@
 'use client'
 
-import { notFound } from 'next/navigation'
-import React, { useState } from 'react';
+import { notFound, useParams } from 'next/navigation'
+import React, { useEffect, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Player } from '@/types/playerType';
+import { Spinner } from '@/components/ui/spinner';
 
-async function getPlayerData(playerName: string) {
-    try {
-        const res = await fetch(`https://api.wynncraft.com/v3/player/${playerName}?fullResult`)
-        if (!res.ok) throw new Error('Failed to fetch player data')
-        return res.json()
-    } catch (error) {
-        console.error('Error fetching player data:', error)
-        return null
-    }
-}
-
-export default async function PlayerStatsPage({ params }: { params: { playerName: string } }) {
+export default function PlayerStatsPage() {
+    const { playerName } = useParams();
     const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+    const [playerData, setPlayerData] = useState<Player>();
+    const [isLoading, setIsLoading] = useState(true);
 
     const toggleSection = (id: string) => {
         setOpenSections((prev) => ({
@@ -32,10 +24,28 @@ export default async function PlayerStatsPage({ params }: { params: { playerName
         }));
     };
 
-    const playerData: Player = await getPlayerData((await params).playerName)
-    if (!playerData) {
-        notFound()
-    }
+    useEffect(() => {
+        async function fetchPlayerData() {
+            try {
+                const res = await fetch(`https://api.wynncraft.com/v3/player/${playerName}?fullResult`)
+                if (!res.ok) {
+                    throw new Error('Failed to fetch player data')
+                }
+
+                const data = await res.json()
+                setPlayerData(data)
+            } catch (err) {
+                console.error('An error occurred while fetching the player data.', err)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+
+        fetchPlayerData()
+    }, [playerName])
+
+    if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
+    if (!playerData) return notFound()
 
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
@@ -44,22 +54,26 @@ export default async function PlayerStatsPage({ params }: { params: { playerName
                 <CardHeader>
                     <div className="flex items-center space-x-4">
                         <img
-                            src={`/api/player-icon/${playerData.username}`}
+                            src={`https://vzge.me/bust/512/${playerData.username}`}
                             alt={playerData.username}
-                            className="h-20 w-20"
-                            style={{ imageRendering: 'pixelated' }}
+                            className="h-32 w-32"
+                            // style={{ imageRendering: 'pixelated' }}
                         />
 
                         <div className="flex flex-col">
+
                             <div className="flex items-center space-x-2">
-                                <img
-                                    src={`https://cdn.wynncraft.com/${playerData.rankBadge}`}
-                                    alt={`${playerData.rank} badge`}
-                                    className="h-16 w-16 object-contain"
-                                />
+                                {playerData.supportRank && (
+                                    <img
+                                        src={`https://cdn.wynncraft.com/${playerData.rankBadge}`}
+                                        alt={`${playerData.rank} badge`}
+                                        className="h-16 w-16 object-contain"
+                                    />
+                                )}
                                 <CardTitle className="text-2xl">{playerData.username}</CardTitle>
+
                             </div>
-                            <CardDescription className="-mt-4">
+                            <CardDescription className={'-mt-4'}>
                                 Rank: {playerData.rank} | Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>
                         </div>
