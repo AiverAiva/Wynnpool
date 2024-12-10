@@ -8,8 +8,46 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress"
 import { Bold, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Player } from '@/types/playerType';
+import { getPlayerDisplayName, Player } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
+
+function formatDateWithSuffix(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('en-US', { month: 'long' });
+    const year = date.getFullYear();
+
+    // Determine suffix for the day
+    const suffix =
+        day === 1 || day === 21 || day === 31 ? 'st'
+            : day === 2 || day === 22 ? 'nd'
+                : day === 3 || day === 23 ? 'rd'
+                    : 'th';
+
+    return `${month} ${day}${suffix} ${year}`;
+}
+
+function formatTimeAgo(dateString: string): string {
+    const now = new Date();
+    const pastDate = new Date(dateString);
+    const diffInSeconds = Math.floor((now.getTime() - pastDate.getTime()) / 1000);
+
+    const seconds = diffInSeconds;
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const weeks = Math.floor(days / 7);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
+
+    if (years > 0) return `${years} year${years > 1 ? 's' : ''} ago`;
+    if (months > 0) return `${months} month${months > 1 ? 's' : ''} ago`;
+    if (weeks > 0) return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
+    if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
+    if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+}
 
 export default function PlayerStatsPage() {
     const { playerName } = useParams();
@@ -70,7 +108,14 @@ export default function PlayerStatsPage() {
                         </div>
 
                         <div className="flex flex-col">
-
+                            <span className="italic text-sm text-gray-500">
+                                Joined {formatDateWithSuffix(playerData.firstJoin)}
+                            </span>
+                            {!playerData.online && playerData.lastJoin && (
+                                <span className="italic text-sm text-gray-500">
+                                    Last joined {formatTimeAgo(playerData.lastJoin)}
+                                </span>
+                            )}
                             <div className="flex items-center space-x-2">
                                 {(playerData.supportRank || playerData.rank != 'Player') && (
                                     <img
@@ -79,7 +124,7 @@ export default function PlayerStatsPage() {
                                         className="h-5 object-contain"
                                     />
                                 )}
-                                <CardTitle className="text-2xl">{playerData.username}</CardTitle>
+                                <CardTitle className="text-2xl">{getPlayerDisplayName(playerData.username)}</CardTitle>
                             </div>
                             <CardDescription className="flex flex-col">
                                 {playerData.guild ? (
