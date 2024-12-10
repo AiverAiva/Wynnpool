@@ -295,20 +295,22 @@ export default function HomePage() {
                             <h2 className="font-bold mb-2">Players</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                               {Object.entries(results.players).map(([uuid, name]) => (
-                                <Card key={uuid} className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
-                                  <CardContent className="flex flex-col justify-between p-2 h-full">
-                                    <div className="flex items-center gap-3">
-                                      <img
-                                        src={`/api/player-icon/${uuid}`}
-                                        alt={name}
-                                        className="w-8 h-8"
-                                      />
-                                      <div>
-                                        <span>{getPlayerDisplayName(name)}</span>
+                                <Link href={`/stats/player/${name}`}>
+                                  <Card key={uuid} className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
+                                    <CardContent className="flex flex-col justify-between p-2 h-full">
+                                      <div className="flex items-center gap-3">
+                                        <img
+                                          src={`/api/player-icon/${uuid}`}
+                                          alt={name}
+                                          className="w-8 h-8"
+                                        />
+                                        <div>
+                                          <span>{getPlayerDisplayName(name)}</span>
+                                        </div>
                                       </div>
-                                    </div>
-                                  </CardContent>
-                                </Card>
+                                    </CardContent>
+                                  </Card>
+                                </Link>
                               ))}
                             </div>
                           </div>
@@ -339,29 +341,31 @@ export default function HomePage() {
                     <div>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {cutePlayers.map(({ uuid, name, quote, icon }) => (
-                          <li key={uuid} className="relative">
-                            <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
-                              <CardContent className="flex flex-col justify-between p-4 h-full">
-                                <div className="flex items-center gap-3">
-                                  <img
-                                    src={`/api/player-icon/${uuid}`}
-                                    alt={name}
-                                    className="w-12 h-12"
-                                    style={{ imageRendering: 'pixelated' }}
-                                  />
-                                  <div>
-                                    <span className="font-semibold text-lg">{getPlayerDisplayName(name)}</span>
-                                    <p className="text-xs text-muted-foreground mt-1">{quote}</p>
+                          <Link href={`/stats/player/${name}`}>
+                            <li key={uuid} className="relative">
+                              <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
+                                <CardContent className="flex flex-col justify-between p-4 h-full">
+                                  <div className="flex items-center gap-3">
+                                    <img
+                                      src={`/api/player-icon/${uuid}`}
+                                      alt={name}
+                                      className="w-12 h-12"
+                                      style={{ imageRendering: 'pixelated' }}
+                                    />
+                                    <div>
+                                      <span className="font-semibold text-lg">{getPlayerDisplayName(name)}</span>
+                                      <p className="text-xs text-muted-foreground mt-1">{quote}</p>
+                                    </div>
                                   </div>
-                                </div>
-                              </CardContent>
-                              <CardFooter className="flex justify-end items-end p-4">
-                                <div className="absolute bottom-4 right-4">
-                                  {icon}
-                                </div>
-                              </CardFooter>
-                            </Card>
-                          </li>
+                                </CardContent>
+                                <CardFooter className="flex justify-end items-end p-4">
+                                  <div className="absolute bottom-4 right-4">
+                                    {icon}
+                                  </div>
+                                </CardFooter>
+                              </Card>
+                            </li>
+                          </Link>
                         ))}
                       </ul>
                     </div>
