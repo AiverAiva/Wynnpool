@@ -92,22 +92,21 @@ export default function PlayerStatsPage() {
             <Card className={`mb-8 ${playerData.online ? " outline outline-green-500" : "outline-none"}`}>
                 {/* https://ui.shadcn.com/docs/components/dialog add a share button for sharing profiles here*/}
                 <CardHeader>
-                    <div className="flex items-center space-x-4 relative">
+                    <div className="flex items-center space-x-4 ">
                         <img
                             src={`https://vzge.me/bust/512/${playerData.uuid}`}
                             alt={playerData.username}
                             className="h-32 w-32"
                         // style={{ imageRendering: 'pixelated' }}
                         />
-                        <div className={`absolute top-0 right-0 px-4 py-1 text-md font-mono text-white rounded-full ${playerData.online ? "bg-green-500" : "bg-accent"}`}>
-                            {playerData.online ? (
-                                <span><span className='font-bold'>Online</span> on <span className='font-bold'>{playerData.server}</span></span>
-                            ) : (
-                                <span className='font-bold'>Offline</span>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full sm:relative">
+                            <div className={`sm:absolute top-0 w-fit mb-2 sm:-mt-5 right-0 px-4 py-1 text-md font-mono text-white rounded-full ${playerData.online ? "bg-green-500" : "bg-accent"}`}>
+                                {playerData.online ? (
+                                    <span><span className='font-bold'>Online</span> on <span className='font-bold'>{playerData.server}</span></span>
+                                ) : (
+                                    <span className='font-bold'>Offline</span>
+                                )}
+                            </div>
                             <span className="italic text-sm text-gray-500">
                                 Joined {formatDateWithSuffix(playerData.firstJoin)}
                             </span>
