@@ -194,7 +194,8 @@ export default function HomePage() {
       const response = await fetch(`/api/search/${searchQuery}`);
       const data = await response.json();
 
-      setResults(data);
+      console.log(query.trim(), data)
+      if (query.trim() != '') setResults(data);
       setIsDialogOpen(true);
     } catch (error) {
       console.error('Error fetching search results:', error);
@@ -321,6 +322,16 @@ export default function HomePage() {
                             <ul>
                               {Object.entries(results.guilds).map(([id, guild]) => (
                                 <li key={id} className="mb-1">{guild.name}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {results.guildsPrefix && (
+                          <div className="mt-4">
+                            <h2 className="font-bold mb-2">Guilds</h2>
+                            <ul>
+                              {Object.entries(results.guildsPrefix).map(([id, guild]) => (
+                                <li key={id} className="mb-1">{guild.name} {guild.prefix}</li>
                               ))}
                             </ul>
                           </div>
