@@ -6,10 +6,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
+import { Bold, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Player } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
+import { cn } from '@/lib/utils';
 
 export default function PlayerStatsPage() {
     const { playerName } = useParams();
@@ -50,15 +51,23 @@ export default function PlayerStatsPage() {
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
             <span className='text-2xl'>this page is also incompleted dont blame me, join discord if u have idea :3</span>
-            <Card className="mb-8">
+            <Card className={`mb-8 ${playerData.online ? " outline outline-green-500" : "outline-none"}`}>
+                {/* https://ui.shadcn.com/docs/components/dialog add a share button for sharing profiles here*/}
                 <CardHeader>
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-4 relative">
                         <img
                             src={`https://vzge.me/bust/512/${playerData.uuid}`}
                             alt={playerData.username}
                             className="h-32 w-32"
-                            // style={{ imageRendering: 'pixelated' }}
+                        // style={{ imageRendering: 'pixelated' }}
                         />
+                        <div className={`absolute top-0 right-0 px-4 py-1 text-md font-mono text-white rounded-full ${playerData.online ? "bg-green-500" : "bg-accent"}`}>
+                            {playerData.online ? (
+                                <span><span className='font-bold'>Online</span> on <span className='font-bold'>{playerData.server}</span></span>
+                            ) : (
+                                <span className='font-bold'>Offline</span>
+                            )}
+                        </div>
 
                         <div className="flex flex-col">
 
@@ -71,12 +80,17 @@ export default function PlayerStatsPage() {
                                     />
                                 )}
                                 <CardTitle className="text-2xl">{playerData.username}</CardTitle>
-
                             </div>
-                            <CardDescription>
-                                Rank: {playerData.rank} | Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
+                            <CardDescription className="flex flex-col">
+                                {playerData.guild ? (
+                                    <span className='text-md font-mono'><span className='font-bold'>{playerData.guild.rank}</span> of <span className='font-bold cursor-pointer hover:underline'>{playerData.guild.name} [{playerData.guild.prefix}]</span></span>
+                                ) : (
+                                    <span>No guild</span>
+                                )}
+                                Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>
                         </div>
+
                     </div>
                 </CardHeader>
                 <CardContent>
@@ -99,7 +113,7 @@ export default function PlayerStatsPage() {
                         <div
                             key={id}
                             className={`border border-border rounded-md overflow-hidden transition-all ${isOpen ? 'shadow-lg' : 'shadow-sm'
-                                }`}
+                                } ${id == playerData.activeCharacter && playerData.online && 'outline outline-green-500'} `}
                         >
                             {/* Header */}
                             <div
