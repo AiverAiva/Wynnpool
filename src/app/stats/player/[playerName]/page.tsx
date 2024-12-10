@@ -11,8 +11,6 @@ import { Button } from '@/components/ui/button';
 import { Player } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
 
-
-
 export default function PlayerStatsPage() {
     const { playerName } = useParams();
     const [openSections, setOpenSections] = useState<Record<string, boolean>>({});

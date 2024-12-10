@@ -1,24 +1,18 @@
-import { ThemeProvider } from "@/components/theme-provider"
-import { Navbar } from "@/components/custom/navbar";
-import { useParams } from "next/navigation";
-
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function PlayerLayout({
+    children, // will be a page or nested layout
+}: {
+    children: React.ReactNode
+}) {
     return (
-        <html lang="en">
-            <body>
-                {children}
-            </body>
-        </html>
-    );
+        <section>
+            {children}
+        </section>
+    )
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ playerName: string }> }) {
     const { playerName } = await params;
-    
+
     // Fetch player data
     const res = await fetch(`${process.env.BASE_URL}/api/stats/player/${playerName}`)
     if (!res.ok) {

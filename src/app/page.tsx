@@ -194,7 +194,6 @@ export default function HomePage() {
       const response = await fetch(`/api/search/${searchQuery}`);
       const data = await response.json();
 
-      console.log(query.trim(), data)
       if (query.trim() != '') setResults(data);
       setIsDialogOpen(true);
     } catch (error) {
@@ -297,7 +296,7 @@ export default function HomePage() {
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                               {Object.entries(results.players).map(([uuid, name]) => (
                                 <Link href={`/stats/player/${name}`}>
-                                  <Card key={uuid} className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
+                                  <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
                                     <CardContent className="flex flex-col justify-between p-2 h-full">
                                       <div className="flex items-center gap-3">
                                         <img
