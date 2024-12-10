@@ -27,7 +27,7 @@ export default function PlayerStatsPage() {
     useEffect(() => {
         async function fetchPlayerData() {
             try {
-                const res = await fetch(`https://api.wynncraft.com/v3/player/${playerName}?fullResult`)
+                const res = await fetch(`/api/stats/player/${playerName}`)
                 if (!res.ok) {
                     throw new Error('Failed to fetch player data')
                 }
