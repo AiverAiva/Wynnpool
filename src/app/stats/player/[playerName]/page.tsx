@@ -54,7 +54,7 @@ export default function PlayerStatsPage() {
                 <CardHeader>
                     <div className="flex items-center space-x-4">
                         <img
-                            src={`https://vzge.me/bust/512/${playerData.username}`}
+                            src={`https://vzge.me/bust/512/${playerData.uuid}`}
                             alt={playerData.username}
                             className="h-32 w-32"
                             // style={{ imageRendering: 'pixelated' }}
@@ -63,7 +63,7 @@ export default function PlayerStatsPage() {
                         <div className="flex flex-col">
 
                             <div className="flex items-center space-x-2">
-                                {playerData.supportRank && (
+                                {(playerData.supportRank || playerData.rank != 'Player') && (
                                     <img
                                         src={`https://cdn.wynncraft.com/${playerData.rankBadge}`}
                                         alt={`${playerData.rank} badge`}
@@ -157,6 +157,7 @@ export default function PlayerStatsPage() {
 }
 
 function StatCard({ title, value }: { title: string; value: number | string }) {
+    if (!value) return
     return (
         <Card>
             <CardHeader className="p-4">
