@@ -33,7 +33,7 @@ const connectToDatabase = async () => {
 
 const fetchAndCacheImage = async (uuid: string): Promise<Blob> => {
   try {
-    const response = await fetch(`https://vzge.me/face/32/${uuid}.png`, {
+    const response = await fetch(`https://vzge.me/face/128/${uuid}.png`, {
       headers: {
         'User-Agent': 'Wynnpool/1.0 (+https://github.com/AiverAiva/Wynnpool; contact@wynnpool.com)'
       }
