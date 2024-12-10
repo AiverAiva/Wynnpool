@@ -16,8 +16,8 @@ export default function RootLayout({
     );
 }
 
-export async function generateMetadata({ params, request }: { params: Promise<{ playerName: string }>, request: Request }) {
-    const playerName = (await params).playerName;
+export async function generateMetadata({ params }: { params: Promise<{ playerName: string }> }) {
+    const { playerName } = await params;
     
     // Fetch player data
     const res = await fetch(`${process.env.BASE_URL}/api/stats/player/${playerName}`)
