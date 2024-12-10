@@ -62,7 +62,7 @@ export default function PlayerStatsPage() {
         }));
     };
 
-    
+
     useEffect(() => {
         async function fetchPlayerData() {
             try {
@@ -100,7 +100,7 @@ export default function PlayerStatsPage() {
                         // style={{ imageRendering: 'pixelated' }}
                         />
                         <div className="flex flex-col w-full sm:relative">
-                            <div className={`sm:absolute top-0 w-fit mb-2 sm:-mt-5 right-0 px-4 py-1 text-md font-mono text-white rounded-full ${playerData.online ? "bg-green-500" : "bg-accent"}`}>
+                            <div className={`sm:absolute top-0 w-fit mb-2 right-0 px-4 py-1 text-md font-mono text-white rounded-full ${playerData.online ? "bg-green-500" : "bg-accent"}`}>
                                 {playerData.online ? (
                                     <span><span className='font-bold'>Online</span> on <span className='font-bold'>{playerData.server}</span></span>
                                 ) : (
@@ -112,7 +112,7 @@ export default function PlayerStatsPage() {
                             </span>
                             {!playerData.online && playerData.lastJoin && (
                                 <span className="italic text-sm text-gray-500">
-                                    Last joined {formatTimeAgo(playerData.lastJoin)}
+                                    Last seen {formatTimeAgo(playerData.lastJoin)}
                                 </span>
                             )}
                             <div className="flex items-center space-x-2">
