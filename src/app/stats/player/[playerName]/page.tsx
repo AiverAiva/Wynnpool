@@ -10,7 +10,8 @@ import { Bold, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Player } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
-import { cn } from '@/lib/utils';
+
+
 
 export default function PlayerStatsPage() {
     const { playerName } = useParams();
@@ -25,6 +26,7 @@ export default function PlayerStatsPage() {
         }));
     };
 
+    
     useEffect(() => {
         async function fetchPlayerData() {
             try {
