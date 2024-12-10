@@ -45,7 +45,7 @@ export default function PlayerStatsPage() {
     }, [playerName])
 
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
-    if (!playerData) return notFound()
+    if (!playerData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Player Not Found.   </span></div>
 
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
@@ -67,13 +67,13 @@ export default function PlayerStatsPage() {
                                     <img
                                         src={`https://cdn.wynncraft.com/${playerData.rankBadge}`}
                                         alt={`${playerData.rank} badge`}
-                                        className="h-16 w-16 object-contain"
+                                        className="h-5 object-contain"
                                     />
                                 )}
                                 <CardTitle className="text-2xl">{playerData.username}</CardTitle>
 
                             </div>
-                            <CardDescription className={'-mt-4'}>
+                            <CardDescription>
                                 Rank: {playerData.rank} | Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>
                         </div>
