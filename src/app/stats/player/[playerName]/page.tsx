@@ -2,7 +2,6 @@
 
 import { notFound, useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
@@ -10,6 +9,7 @@ import { Bold, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getPlayerDisplayName, Player } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
+import GuildEventDisplay from '@/components/custom/guild-event-display';
 
 function formatDateWithSuffix(dateString: string): string {
     const date = new Date(dateString);
@@ -85,7 +85,7 @@ export default function PlayerStatsPage() {
 
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
     if (!playerData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Player Not Found.   </span></div>
-
+  
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
             <span className='text-2xl'>this page is also incompleted dont blame me, join discord if u have idea :3</span>
@@ -146,6 +146,7 @@ export default function PlayerStatsPage() {
                         <StatCard title="Raids Completed" value={playerData.globalData.raids.total} />
                         <StatCard title="Quests Completed" value={playerData.globalData.completedQuests} />
                     </div>
+                    <GuildEventDisplay query={{ uuid: playerData.uuid }} />
                 </CardContent>
             </Card>
 
