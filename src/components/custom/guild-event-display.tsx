@@ -78,7 +78,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
             case 'leave':
                 icon = <LogOut className="w-6 h-6 text-red-600" />;
                 bgColor = 'bg-red-600/20';
-                message = `${event.name} Left ${event.guild_name}`;
+                message = `${event.name} Left ${event.guild_name} as ${event.rank}`;
                 break;
 
             case 'rank_change':
