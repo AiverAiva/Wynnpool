@@ -66,7 +66,7 @@ export default function PlayerStatsPage() {
     useEffect(() => {
         async function fetchPlayerData() {
             try {
-                const res = await fetch(`/api/stats/player/${playerName}`)
+                const res = await fetch(`/api/player/${playerName}`)
                 if (!res.ok) {
                     throw new Error('Failed to fetch player data')
                 }
