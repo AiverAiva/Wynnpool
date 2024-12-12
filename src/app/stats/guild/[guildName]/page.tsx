@@ -11,17 +11,6 @@ import { Spinner } from '@/components/ui/spinner'
 import GuildEventDisplay from '@/components/custom/guild-event-display'
 import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 
-async function getGuildData(guildName: string) {
-    try {
-        const res = await fetch(`https://api.wynncraft.com/v3/guild/${guildName}`)
-        if (!res.ok) throw new Error('Failed to fetch guild data')
-        return res.json()
-    } catch (error) {
-        console.error('Error fetching guild data:', error)
-        return null
-    }
-}
-
 export default function GuildStatsPage({ params }: { params: { guildName: string } }) {
     const { guildName } = useParams();
     const [guildData, setGuildData] = useState<any>();
@@ -30,15 +19,15 @@ export default function GuildStatsPage({ params }: { params: { guildName: string
     useEffect(() => {
         async function fetchGuildData() {
             try {
-                const res = await fetch(`https://api.wynncraft.com/v3/guild/${guildName}?identifier=uuid`)
+                const res = await fetch(`/api/guild/${guildName}`)
                 if (!res.ok) {
-                    throw new Error('Failed to fetch player data')
+                    throw new Error('Failed to fetch guild data')
                 }
 
                 const data = await res.json()
                 setGuildData(data)
             } catch (err) {
-                console.error('An error occurred while fetching the player data.', err)
+                console.error('An error occurred while fetching the guild data.', err)
             } finally {
                 setIsLoading(false)
             }
