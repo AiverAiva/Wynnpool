@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ playerNam
     const { playerName } = await params;
 
     // Fetch player data
-    const res = await fetch(`${process.env.BASE_URL}/api/stats/player/${playerName}`)
+    const res = await fetch(`${process.env.BASE_URL}/api/player/${playerName}`)
     if (!res.ok) {
         return {
             title: 'Player Not Found',
