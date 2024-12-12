@@ -150,7 +150,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Roadmap
 
 - player/server data
-    - [ ] Nested Feature
+    - [x] player/guild searching ( :white_check_mark: 2024/12/12)
     - [ ] leaderboard stuff
 - stuff about items/build making
     - [ ] build library
