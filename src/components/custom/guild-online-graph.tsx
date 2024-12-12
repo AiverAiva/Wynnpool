@@ -23,7 +23,6 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Spinner } from "../ui/spinner"
-import { useEffect } from "react"
 
 interface OnlineCountData {
     timestamp: number
@@ -34,12 +33,12 @@ interface ChartProps {
     guildUuid: string
 }
 
-export default function Component({ guildUuid }: ChartProps) {
+export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
     const [chartData, setChartData] = React.useState<OnlineCountData[]>([])
     const [loading, setLoading] = React.useState(true)
     const [timeSpan, setTimeSpan] = React.useState("24h")
 
-    useEffect(() => {
+    React.useEffect(() => {
         async function fetchData() {
             setLoading(true)
             try {
@@ -72,7 +71,7 @@ export default function Component({ guildUuid }: ChartProps) {
                 })
                 const result = await response.json()
                 setChartData(result.data.map((item: any) => ({
-                    timestamp: item.timestamp * 1000, 
+                    timestamp: item.timestamp * 1000, // Convert to milliseconds
                     count: item.count,
                 })))
             } catch (error) {
@@ -93,9 +92,21 @@ export default function Component({ guildUuid }: ChartProps) {
     }
 
     const maxCount = Math.max(...chartData.map(item => item.count))
-
+    const CustomTooltip = ({ active, payload, label }: any) => {
+        if (active && payload && payload.length) {
+            const data = payload[0].payload
+            return (
+                <div className="bg-background/80 p-2 shadow-md rounded-lg border border-border">
+                    <p className="font-semibold">{new Date(data.timestamp).toLocaleString()}</p>
+                    <p>Count: {data.count}</p>
+                </div>
+            )
+        }
+        return null
+    }
+    
     return (
-        <Card>
+        <Card className="mt-4">
             <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
                 <div className="grid flex-1 gap-1 text-center sm:text-left">
                     <CardTitle>Guild Online Count</CardTitle>
@@ -163,22 +174,7 @@ export default function Component({ guildUuid }: ChartProps) {
                                 domain={[0, maxCount]}
                                 allowDataOverflow={true}
                             />
-                            <ChartTooltip
-                                cursor={false}
-                                content={
-                                    <ChartTooltipContent
-                                        labelFormatter={(value) => {
-                                            return new Date(value).toLocaleString("en-US", {
-                                                month: "short",
-                                                day: "numeric",
-                                                hour: "numeric",
-                                                minute: "numeric",
-                                            })
-                                        }}
-                                        indicator="dot"
-                                    />
-                                }
-                            />
+                            <ChartTooltip content={<CustomTooltip />} />
                             <Area
                                 dataKey="count"
                                 type="monotone"
