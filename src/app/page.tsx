@@ -142,6 +142,13 @@ type SearchResult = | {
       prefix: string;
     }
   >;
+  mergedGuilds?: Record<  //Merging guilds and guildsPrefix
+    string,
+    {
+      name: string;
+      prefix: string;
+    }
+  >;
   territories?: Record<
     string,
     {
@@ -193,7 +200,10 @@ export default function HomePage() {
     try {
       const response = await fetch(`/api/search/${searchQuery}`);
       const data = await response.json();
-
+      data.mergedGuilds = {
+        ...data.guildsPrefix,
+        ...data.guilds,
+      };
       if (query.trim() != '') setResults(data);
       setIsDialogOpen(true);
     } catch (error) {
@@ -315,22 +325,16 @@ export default function HomePage() {
                             </div>
                           </div>
                         )}
-                        {results.guilds && (
+                        {results.mergedGuilds && (
                           <div className="mt-4">
                             <h2 className="font-bold mb-2">Guilds</h2>
                             <ul>
-                              {Object.entries(results.guilds).map(([id, guild]) => (
-                                <li key={id} className="mb-1">{guild.name}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                        {results.guildsPrefix && (
-                          <div className="mt-4">
-                            <h2 className="font-bold mb-2">Guilds</h2>
-                            <ul>
-                              {Object.entries(results.guildsPrefix).map(([id, guild]) => (
-                                <li key={id} className="mb-1">{guild.name} {guild.prefix}</li>
+                                {Object.entries(results.mergedGuilds).map(([id, guild]) => (
+                                  <Link href={`/stats/guild/${guild.name}`}>
+                                    <div className='w-full hover:bg-accent/60 transition-colors cursor-pointer py-1 px-3 rounded-md'>
+                                      <li key={id} className='font-mono text-lg'>[{guild.prefix}] {guild.name}</li>
+                                    </div>
+                                  </Link>
                               ))}
                             </ul>
                           </div>
