@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { getPlayerDisplayName, Player } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
 import GuildEventDisplay from '@/components/custom/guild-event-display';
+import Link from 'next/link';
 
 function formatDateWithSuffix(dateString: string): string {
     const date = new Date(dateString);
@@ -127,7 +128,7 @@ export default function PlayerStatsPage() {
                             </div>
                             <CardDescription className="flex flex-col">
                                 {playerData.guild ? (
-                                    <span className='text-md font-mono'><span className='font-bold'>{playerData.guild.rank}</span> of <span className='font-bold cursor-pointer hover:underline'>{playerData.guild.name} [{playerData.guild.prefix}]</span></span>
+                                    <span className='text-md font-mono'><span className='font-bold'>{playerData.guild.rank}</span> of <Link href={`/stats/guild/${playerData.guild.name}`} className='font-bold cursor-pointer hover:underline'>{playerData.guild.name} [{playerData.guild.prefix}]</Link></span>
                                 ) : (
                                     <span>No guild</span>
                                 )}
