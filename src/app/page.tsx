@@ -307,7 +307,7 @@ export default function HomePage() {
                         {results.players && (
                           <div>
                             <h2 className="font-bold mb-2">Players</h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                               {Object.entries(results.players).map(([uuid, name]) => (
                                 <Link href={`/stats/player/${name}`}>
                                   <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
@@ -319,7 +319,7 @@ export default function HomePage() {
                                           className="w-8 h-8"
                                         />
                                         <div>
-                                          <span>{getPlayerDisplayName(name)}</span>
+                                          <span className='font-mono'>{getPlayerDisplayName(name)}</span>
                                         </div>
                                       </div>
                                     </CardContent>
@@ -335,9 +335,9 @@ export default function HomePage() {
                             <ul>
                                 {Object.entries(results.mergedGuilds).map(([id, guild]) => (
                                   <Link href={`/stats/guild/${guild.name}`}>
-                                    <div className='w-full hover:bg-accent/60 transition-colors cursor-pointer py-1 px-3 rounded-md'>
-                                      <li key={id} className='font-mono text-lg'>[{guild.prefix}] {guild.name}</li>
-                                    </div>
+                                    <Card className='w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2'>
+                                      <li key={id} className='text-md font-mono'>[{guild.prefix}] {guild.name}</li>
+                                    </Card>
                                   </Link>
                               ))}
                             </ul>
