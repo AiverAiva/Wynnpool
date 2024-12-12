@@ -84,7 +84,7 @@ export default function PlayerStatsPage() {
     }, [playerName])
 
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
-    if (!playerData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Player Not Found.   </span></div>
+    if (!playerData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Player Not Found.</span></div>
   
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
