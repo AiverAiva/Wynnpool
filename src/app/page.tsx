@@ -300,7 +300,7 @@ export default function HomePage() {
                                     <CardContent className="flex flex-col justify-between p-2 h-full">
                                       <div className="flex items-center gap-3">
                                         <img
-                                          src={`/api/player-icon/${uuid}`}
+                                          src={`/api/player/icon/${uuid}`}
                                           alt={name}
                                           className="w-8 h-8"
                                         />
@@ -357,7 +357,7 @@ export default function HomePage() {
                                 <CardContent className="flex flex-col justify-between p-4 h-full">
                                   <div className="flex items-center gap-3">
                                     <img
-                                      src={`/api/player-icon/${uuid}`}
+                                      src={`/api/player/icon/${uuid}`}
                                       alt={name}
                                       className="w-12 h-12"
                                       style={{ imageRendering: 'pixelated' }}
