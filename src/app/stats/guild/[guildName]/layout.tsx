@@ -22,7 +22,6 @@ export async function generateMetadata({ params }: { params: Promise<{ guildName
     }
 
     const guildData = await res.json();
-    console.log(guildData)
 
     return {
         title: `[${guildData.prefix}] ${guildData.name} - Guild Stats`,
