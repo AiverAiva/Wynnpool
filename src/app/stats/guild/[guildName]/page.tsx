@@ -11,7 +11,7 @@ import { Spinner } from '@/components/ui/spinner'
 import GuildEventDisplay from '@/components/custom/guild-event-display'
 import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 
-export default function GuildStatsPage({ params }: { params: { guildName: string } }) {
+export default function GuildStatsPage() {
     const { guildName } = useParams();
     const [guildData, setGuildData] = useState<any>();
     const [isLoading, setIsLoading] = useState(true);
