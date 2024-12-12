@@ -200,10 +200,14 @@ export default function HomePage() {
     try {
       const response = await fetch(`/api/search/${searchQuery}`);
       const data = await response.json();
-      data.mergedGuilds = {
+      const mergedGuilds = {
         ...data.guildsPrefix,
         ...data.guilds,
       };
+
+      if (Object.keys(mergedGuilds).length > 0) {
+        data.mergedGuilds = mergedGuilds;
+      }
       if (query.trim() != '') setResults(data);
       setIsDialogOpen(true);
     } catch (error) {
