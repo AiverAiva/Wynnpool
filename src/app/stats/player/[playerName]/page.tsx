@@ -89,7 +89,6 @@ export default function PlayerStatsPage() {
   
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
-            <span className='text-2xl'>this page is also incompleted dont blame me, join discord if u have idea :3</span>
             <Card className={`mb-8 ${playerData.online ? " outline outline-green-500" : "outline-none"}`}>
                 {/* https://ui.shadcn.com/docs/components/dialog add a share button for sharing profiles here*/}
                 <CardHeader>
