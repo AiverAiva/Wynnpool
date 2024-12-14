@@ -208,7 +208,8 @@ export default function HomePage() {
       if (Object.keys(mergedGuilds).length > 0) {
         data.mergedGuilds = mergedGuilds;
       }
-      if (query.trim() != '') setResults(data);
+
+      setResults(data)
       setIsDialogOpen(true);
     } catch (error) {
       console.error('Error fetching search results:', error);
@@ -333,12 +334,12 @@ export default function HomePage() {
                           <div className="mt-4">
                             <h2 className="font-bold mb-2">Guilds</h2>
                             <ul>
-                                {Object.entries(results.mergedGuilds).map(([id, guild]) => (
-                                  <Link href={`/stats/guild/${guild.name}`}>
-                                    <Card className='w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2'>
-                                      <li key={id} className='text-md font-mono'>[{guild.prefix}] {guild.name}</li>
-                                    </Card>
-                                  </Link>
+                              {Object.entries(results.mergedGuilds).map(([id, guild]) => (
+                                <Link href={`/stats/guild/${guild.name}`}>
+                                  <Card className='w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2'>
+                                    <li key={id} className='text-md font-mono'>[{guild.prefix}] {guild.name}</li>
+                                  </Card>
+                                </Link>
                               ))}
                             </ul>
                           </div>
