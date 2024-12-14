@@ -276,7 +276,6 @@ export default function HomePage() {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent>
             <DialogHeader>
-              this is actually not working at the moment, coming soon!
               <DialogTitle>
                 <div className="relative">
                   <Search className="absolute z-20 top-1/2 left-3 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
