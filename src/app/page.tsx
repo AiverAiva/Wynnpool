@@ -124,6 +124,7 @@ import { Spinner } from '@/components/ui/spinner'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { cutePlayers, getPlayerDisplayName } from '@/types/playerType'
+import { SparklesText } from '@/components/ui/sparkles-text'
 
 type SearchResult = | {
   query?: string;
@@ -251,7 +252,9 @@ export default function HomePage() {
       <main className="container mx-auto px-4 py-8 max-w-screen-lg">
 
         <section className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Wynnpool</h1>
+          <div className='sm:flex mb-4 justify-center items-center'>
+            <h1 className="text-4xl">Welcome to</h1><SparklesText className='text-4xl sm:ml-2' text="Wynnpool" />
+          </div>
           <p className="text-xl text-muted-foreground mb-8">Your ultimate utility for up-to-date Wynncraft information</p>
           <div className="max-w-md mx-auto">
             {/* onSubmit={(e) => e.preventDefault()} */}
