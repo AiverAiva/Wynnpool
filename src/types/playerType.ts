@@ -1,4 +1,4 @@
-import { Code, Star } from 'lucide-react';
+import { Code, CodeXml, Star } from 'lucide-react';
 import { createElement } from 'react';
 
 export const cutePlayers = [
@@ -7,7 +7,7 @@ export const cutePlayers = [
         name: 'AiverAiva',
         emoji: '🐢',
         quote: 'i cutes veri mucc',
-        icon: createElement(Code, { className: 'w-4 h-4 text-muted-foreground' })
+        icon: createElement(CodeXml, { className: 'w-4 h-4 text-muted-foreground' })
     }
 ];
 
