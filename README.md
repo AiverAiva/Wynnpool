@@ -216,7 +216,7 @@ Project Link: [https://github.com/AiverAiva/Wynnpool](https://github.com/AiverAi
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Credit
 
 * Thanks [RawFish69](https://github.com/RawFish69) for the api.
 * [Wynndata](https://www.wynndata.tk/), [Wynnbuilder](https://github.com/wynnbuilder/wynnbuilder.github.io) for inspiration.
