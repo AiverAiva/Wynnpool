@@ -12,10 +12,19 @@ import {
 } from "@/components/ui/accordion"
 import { Card, CardContent } from '../ui/card';
 import { GuildEvent } from '@/types/guildType';
+import { Skeleton } from '../ui/skeleton';
 
 interface GuildEventDisplayProps {
     query: Record<string, any>;
 }
+
+const SkeletonLoader: React.FC = () => (
+    <div className="animate-pulse flex flex-col gap-2">
+        {Array(10).fill(0).map((_, index) => (
+            <Skeleton key={index} className="h-14 w-full" />
+        ))}
+    </div>
+);
 
 const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
     const [data, setData] = useState<GuildEvent[]>([]);
@@ -23,11 +32,11 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
     const [totalPages, setTotalPages] = useState<number>(1);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false); // Track accordion open state
 
     const fetchData = async () => {
         if (!isLoading) return
         setError(null);
-        setData([]);
 
         try {
             const response = await fetch('/api/guild/event', {
@@ -58,11 +67,17 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
     }, [query, page]);
 
     const handlePreviousPage = () => {
-        if (page > 1) setPage((prevPage) => prevPage - 1);
+        if (page > 1) {
+            setPage((prevPage) => prevPage - 1);
+            setIsLoading(true)
+        }
     };
 
     const handleNextPage = () => {
-        if (page < totalPages) setPage((prevPage) => prevPage + 1);
+        if (page < totalPages) {
+            setPage((prevPage) => prevPage + 1);
+            setIsLoading(true)
+        }
     };
 
     const renderEventCard = (event: GuildEvent) => {
@@ -84,7 +99,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
             case 'rank_change':
                 icon = <Edit3 className="w-6 h-6 text-cyan-600" />;
                 bgColor = 'bg-cyan-600/20';
-                message = `${event.name}'s rank changed to ${event.new_rank} from ${event.old_rank} in ${event.guild_name}`;
+                message = `${event.name}'s rank changed to ${event.new_rank} from ${event.old_rank}`;
                 break;
 
             default:
@@ -96,7 +111,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
         return (
             <div
                 key={event._id ? event._id.toString() : event.timestamp}
-                className={`flex items-center gap-4 py-2 px-4 rounded-md shadow-sm ${bgColor}`}
+                className={`flex items-center gap-4 py-1 px-4 rounded-md shadow-sm ${bgColor}`}
             >
                 {icon}
                 <div>
@@ -107,47 +122,43 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
         );
     };
 
-    if (isLoading || data.length === 0) return
+    if (data.length === 0) return
     return (
         <div className="mt-4">
-            {/* p-4 mx-auto  */}
             {error && <div className="text-red-500 mb-4">{error}</div>}
-
-            {isLoading && (
-                <div className="flex items-center justify-center my-4">
-                    <Loader2 className="animate-spin w-6 h-6" />
-                </div>
-            )}
-
-            {!isLoading && data.length > 0 && (
-                <Card className=''>
-                    <CardContent>
-                        <Accordion type="single" collapsible>
-                            <AccordionItem value="item-1" className="border-b-0 -mb-6">
-                                <AccordionTrigger className='hover:no-underline hover:text-foreground/60 transition-color duration-200'>Player Activity</AccordionTrigger>
-                                <AccordionContent>
+            <Card>
+                <CardContent>
+                    <Accordion
+                        type="single"
+                        collapsible
+                        value={isAccordionOpen ? 'item-1' : undefined}
+                        onValueChange={(value) => setIsAccordionOpen(value === 'item-1')}>
+                        <AccordionItem value="item-1" className="border-b-0 -mb-6">
+                            <AccordionTrigger className='hover:no-underline hover:text-foreground/60 transition-color duration-200'>Player Activity</AccordionTrigger>
+                            <AccordionContent>
+                                {isLoading ? (
+                                    <SkeletonLoader />
+                                ) : (
                                     <div className='flex flex-col gap-2'>
                                         {data.map(renderEventCard)}
+                                        {totalPages > 1 && (
+                                            <div className="flex justify-between mt-4">
+                                                <Button onClick={handlePreviousPage} disabled={page === 1}>
+                                                    Previous
+                                                </Button>
+                                                <span>Page {page} of {totalPages}</span>
+                                                <Button onClick={handleNextPage} disabled={page === totalPages}>
+                                                    Next
+                                                </Button>
+                                            </div>
+                                        )}
                                     </div>
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
-                    </CardContent>
-                </Card>
-            )}
-
-            {/* Pagination Controls */}
-            {!isLoading && data.length > 10 && (
-                <div className="flex justify-between mt-4">
-                    <Button onClick={handlePreviousPage} disabled={page === 1}>
-                        Previous
-                    </Button>
-                    <span>Page {page} of {totalPages}</span>
-                    <Button onClick={handleNextPage} disabled={page === totalPages}>
-                        Next
-                    </Button>
-                </div>
-            )}
+                                )}
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </CardContent>
+            </Card>
         </div>
     );
 };
