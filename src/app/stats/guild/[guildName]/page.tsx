@@ -88,7 +88,7 @@ export default function GuildStatsPage() {
                                 <TableBody>
                                     {roles.flatMap(role =>
                                         Object.entries(guildData.members[role] || {}).map(([uuid, member]: [string, any]) => (
-                                            <TableRow key={uuid}>
+                                            <TableRow key={uuid} className={member.online && 'bg-green-500/20 hover:bg-green-300/20'}>
                                                 <TableCell><span>{member.username}</span></TableCell>
                                                 <TableCell>
                                                     <Badge>{role}</Badge>
