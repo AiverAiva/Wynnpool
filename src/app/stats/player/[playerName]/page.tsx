@@ -183,15 +183,14 @@ export default function PlayerStatsPage() {
                                                     <Tooltip key={index}>
                                                         <TooltipTrigger>
                                                             {/* <div className='hover:bg-background transition-colors transition-duration-200 rounded-md p-1.5'> */}
-                                                                <img
-                                                                    src={`/icons/gamemode/${mode}.svg`}
-                                                                    alt={formattedMode}
-                                                                    className="h-4"
-                                                                />
-                                                            {/* </div> */}
+                                                            <img
+                                                                src={`/icons/gamemode/${mode == 'hardcore' && char.deaths > 0 ? 'defeated_' : ''}${mode}.svg`}
+                                                                alt={formattedMode}
+                                                                className={'h-4'}
+                                                            />
                                                         </TooltipTrigger>
                                                         <TooltipContent side="bottom">
-                                                            <p>{formattedMode}</p>
+                                                            <p>{`${mode == 'hardcore' && char.deaths > 0 ? 'Defeated ' : ''}${formattedMode}`}</p>
                                                         </TooltipContent>
                                                     </Tooltip>
                                                 );
