@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import {
@@ -23,6 +22,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Spinner } from "../ui/spinner"
+import { useEffect, useState } from "react"
 
 interface OnlineCountData {
     timestamp: number
@@ -33,12 +33,36 @@ interface ChartProps {
     guildUuid: string
 }
 
-export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
-    const [chartData, setChartData] = React.useState<OnlineCountData[]>([])
-    const [loading, setLoading] = React.useState(true)
-    const [timeSpan, setTimeSpan] = React.useState("24h")
+function fillDataGaps(data: OnlineCountData[]): OnlineCountData[] {
+    const filledData: OnlineCountData[] = [];
+    const interval = 60 * 60 * 1000; // an hour in milliseconds
 
-    React.useEffect(() => {
+    for (let i = 0; i < data.length; i++) {
+        const currentNode = data[i];
+        filledData.push(currentNode); // Add the current node
+
+        // If not the last node, add gap nodes
+        if (i < data.length - 1) {
+            let tempTimestamp = currentNode.timestamp + interval;
+            while (tempTimestamp < data[i + 1].timestamp) {
+                filledData.push({
+                    timestamp: tempTimestamp,
+                    count: 0, // Default count for gap nodes
+                });
+                tempTimestamp += interval;
+            }
+        }
+    }
+
+    return filledData;
+}
+
+export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
+    const [chartData, setChartData] = useState<OnlineCountData[]>([])
+    const [loading, setLoading] = useState(true)
+    const [timeSpan, setTimeSpan] = useState("24h")
+
+    useEffect(() => {
         async function fetchData() {
             setLoading(true)
             try {
@@ -70,10 +94,10 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                     }),
                 })
                 const result = await response.json()
-                setChartData(result.data.map((item: any) => ({
-                    timestamp: item.timestamp * 1000, // Convert to milliseconds
+                setChartData(fillDataGaps(result.data.map((item: any) => ({
+                    timestamp: item.timestamp * 1000,
                     count: item.count,
-                })))
+                }))));
             } catch (error) {
                 console.error("Failed to fetch chart data:", error)
             } finally {
