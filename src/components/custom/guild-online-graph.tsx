@@ -70,14 +70,14 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                 let startTime: number
 
                 switch (timeSpan) {
-                    case "6h":
-                        startTime = now - 6 * 60 * 60
-                        break
                     case "24h":
                         startTime = now - 24 * 60 * 60
                         break
                     case "3d":
                         startTime = now - 3 * 24 * 60 * 60
+                        break
+                    case "14d":
+                        startTime = now - 14 * 24 * 60 * 60
                         break
                     default:
                         startTime = now - 24 * 60 * 60
@@ -143,9 +143,9 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                         <SelectValue placeholder="Select time span" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="6h">Last 6 hours</SelectItem>
                         <SelectItem value="24h">Last 24 hours</SelectItem>
                         <SelectItem value="3d">Last 3 days</SelectItem>
+                        <SelectItem value="14d">Last 14 days</SelectItem>
                     </SelectContent>
                 </Select>
             </CardHeader>
