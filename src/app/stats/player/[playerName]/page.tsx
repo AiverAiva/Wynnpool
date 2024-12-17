@@ -11,6 +11,7 @@ import { getPlayerDisplayName, Player } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
 import GuildEventDisplay from '@/components/custom/guild-event-display';
 import Link from 'next/link';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 function formatDateWithSuffix(dateString: string): string {
     const date = new Date(dateString);
@@ -86,7 +87,7 @@ export default function PlayerStatsPage() {
 
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
     if (!playerData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Player Not Found.</span></div>
-  
+
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
             <Card className={`mb-8 ${playerData.online ? " outline outline-green-500" : "outline-none"}`}>
@@ -153,6 +154,7 @@ export default function PlayerStatsPage() {
 
             <div className="space-y-4">
                 {Object.entries(playerData.characters).map(([id, char]) => {
+                    console.log(char)
                     const isOpen = openSections[id] ?? false;
                     return (
                         <div
@@ -166,9 +168,40 @@ export default function PlayerStatsPage() {
                                 onClick={() => toggleSection(id)}
                             >
                                 <div>
-                                    <h2 className="text-lg font-semibold">
-                                        {char.type} (Level {char.level})
-                                    </h2>
+                                    <div className='flex items-center space-x-2'>
+                                        <h2 className="text-lg font-semibold">
+                                            {char.type} (Level {char.level})
+                                        </h2>
+                                        <TooltipProvider delayDuration={50}>
+                                            {char.gamemode.sort().map((mode, index) => {
+                                                const formattedMode = mode
+                                                    .split('_')
+                                                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                                                    .join(' ');
+
+                                                return (
+                                                    <Tooltip key={index}>
+                                                        <TooltipTrigger>
+                                                            {/* <div className='hover:bg-background transition-colors transition-duration-200 rounded-md p-1.5'> */}
+                                                                <img
+                                                                    src={`/icons/gamemode/${mode}.svg`}
+                                                                    alt={formattedMode}
+                                                                    className="h-4"
+                                                                />
+                                                            {/* </div> */}
+                                                        </TooltipTrigger>
+                                                        <TooltipContent side="bottom">
+                                                            <p>{formattedMode}</p>
+                                                        </TooltipContent>
+                                                    </Tooltip>
+                                                );
+                                            })}
+                                        </TooltipProvider>
+                                        {/* // <span key={index}>
+                                            //     {mode}
+                                            //     {index < char.gamemode.length - 1 && ','}
+                                            // </span> */}
+                                    </div>
                                     <p className="text-sm text-muted-foreground">
                                         XP: {char.xp.toLocaleString()} ({char.xpPercent}%)
                                     </p>
