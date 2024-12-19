@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { Spinner } from '@/components/ui/spinner'
 import GuildEventDisplay from '@/components/custom/guild-event-display'
 import GuildOnlineGraph from '@/components/custom/guild-online-graph'
+import Link from 'next/link'
 
 export default function GuildStatsPage() {
     const { guildName } = useParams();
@@ -88,10 +89,19 @@ export default function GuildStatsPage() {
                                 <TableBody>
                                     {roles.flatMap(role =>
                                         Object.entries(guildData.members[role] || {}).map(([uuid, member]: [string, any]) => (
-                                            <TableRow key={uuid} className={member.online && 'bg-green-500/20 hover:bg-green-300/20'}>
-                                                <TableCell><span>{member.username}</span></TableCell>
+                                            <TableRow className={`${member.online ? 'bg-green-500/20 hover:bg-green-300/20' : ''}`}>
                                                 <TableCell>
-                                                    <Badge>{role}</Badge>
+                                                    <Link href={`/stats/player/${member.username}`} className='flex items-center cursor-pointer'> 
+                                                        <img
+                                                            src={`/api/player/icon/${uuid}`}
+                                                            alt={member.username}
+                                                            className="w-8 h-8"
+                                                        />
+                                                        <span className="ml-2 font-mono text-lg">{member.username}</span>
+                                                    </Link>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Badge className="text-md font-mono capitalize">{role}</Badge>
                                                 </TableCell>
                                                 <TableCell>{member.contributed.toLocaleString()}</TableCell>
                                                 <TableCell>{new Date(member.joined).toLocaleDateString()}</TableCell>
