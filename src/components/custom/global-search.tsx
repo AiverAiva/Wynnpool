@@ -183,7 +183,7 @@ const GlobalSearch: React.FC<any> = () => {
                             <h2 className="font-bold mb-2">Players</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                               {Object.entries(results.players).map(([uuid, name]) => (
-                                <Link href={`/stats/player/${name}`}>
+                                <Link href={`/stats/player/${name}`} key={uuid}>
                                   <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
                                     <CardContent className="flex flex-col justify-between p-2 h-full">
                                       <div className="flex items-center gap-3">
