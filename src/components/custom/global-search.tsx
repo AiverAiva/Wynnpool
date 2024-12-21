@@ -233,7 +233,7 @@ const GlobalSearch: React.FC<any> = () => {
                     <div>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {cutePlayers.map(({ uuid, name, quote, icon }) => (
-                          <Link href={`/stats/player/${name}`}>
+                          <Link prefetch={false} href={`/stats/player/${name}`}>
                             <li key={uuid} className="relative">
                               <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
                                 <CardContent className="flex flex-col justify-between p-4 h-full">
