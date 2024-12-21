@@ -22,6 +22,8 @@ const connectToDatabase = async () => {
     if (mongoose.connection.readyState === 0) {
         await mongoose.connect(process.env.MONGODB_URI || '', {
             dbName: 'wynnpool',
+            maxPoolSize: 5,
+            connectTimeoutMS: 10000,
         });
     }
 };

@@ -22,7 +22,8 @@ const connectToDatabase = async () => {
     try {
       await mongoose.connect(process.env.MONGODB_URI as string, {
         dbName: 'wynnpool',
-        maxPoolSize: 5
+        maxPoolSize: 5,
+        connectTimeoutMS: 10000,
       });
       console.log('Connected to MongoDB');
     } catch (error) {

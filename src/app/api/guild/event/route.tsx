@@ -43,6 +43,8 @@ const connectToDatabase = async () => {
         try {
             await mongoose.connect(MONGODB_URI, {
                 dbName: MONGODB_DB,
+                maxPoolSize: 5,
+                connectTimeoutMS: 10000,
             });
             console.log('Connected to MongoDB with Mongoose');
         } catch (error) {
