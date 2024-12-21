@@ -45,7 +45,7 @@ let workflow_dispatched = false;
 export async function GET() {
   try {
     const data = await readLocalData();
-    const currentTimestamp = Date.now ();
+    const currentTimestamp = Date.now();
 
     // Check if the `current.datetime_utc` has passed
     if (data.current && data.current.datetime_utc <= currentTimestamp) {
@@ -54,7 +54,7 @@ export async function GET() {
         await triggerGitHubWorkflow();
         // Mark the workflow as dispatched
         workflow_dispatched = true;
-        
+
       } else {
         console.log('Workflow already dispatched for this datetime');
       }

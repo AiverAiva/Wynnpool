@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 interface PlayerIconDocument extends Document {
   uuid: string;
-  image: Buffer; 
+  image: Buffer;
   contentType: string;
   createdAt: Date;
 }
@@ -75,7 +75,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         status: 200,
         headers: {
           'Content-Type': cachedImage.contentType || 'image/png',
-          'Content-Disposition': 'inline', 
+          'Content-Disposition': 'inline',
         },
       });
     } else {
