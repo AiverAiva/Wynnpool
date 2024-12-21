@@ -12,9 +12,32 @@ import GuildEventDisplay from '@/components/custom/guild-event-display'
 import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 import Link from 'next/link'
 
+function formatTimeAgo(timestamp: number | string | undefined): string {
+    if (!timestamp) return 'Never';
+
+    const date = typeof timestamp === 'number' ? new Date(timestamp) : new Date(timestamp);
+    const now = new Date();
+    const diff = now.getTime() - date.getTime();
+
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
+
+    if (years > 0) return `${years} year${years > 1 ? 's' : ''} ago`;
+    if (months > 0) return `${months} month${months > 1 ? 's' : ''} ago`;
+    if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
+    if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+}
+
 export default function GuildStatsPage() {
     const { guildName } = useParams();
     const [guildData, setGuildData] = useState<any>();
+    const [lastSeenData, setLastSeenData] = useState<any>();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -27,13 +50,24 @@ export default function GuildStatsPage() {
 
                 const data = await res.json()
                 setGuildData(data)
+                const lastSeenRes = await fetch('/api/guild/last-seen', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ guild_uuid: data.uuid }),
+                });
+                if (!lastSeenRes.ok) {
+                    throw new Error('Failed to fetch last seen data')
+                }
+                const lastSeenData = await lastSeenRes.json()
+                setLastSeenData(lastSeenData.data.members)
             } catch (err) {
                 console.error('An error occurred while fetching the guild data.', err)
             } finally {
                 setIsLoading(false)
             }
         }
-
         fetchGuildData()
     }, [guildName])
 
@@ -84,29 +118,41 @@ export default function GuildStatsPage() {
                                         <TableHead>Role</TableHead>
                                         <TableHead>Contribution</TableHead>
                                         <TableHead>Joined</TableHead>
+                                        <TableHead>Last Seen</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
                                     {roles.flatMap(role =>
-                                        Object.entries(guildData.members[role] || {}).map(([uuid, member]: [string, any]) => (
-                                            <TableRow className={`${member.online ? 'bg-green-500/20 hover:bg-green-300/20' : ''}`}>
-                                                <TableCell>
-                                                    <Link href={`/stats/player/${member.username}`} className='flex items-center cursor-pointer'> 
-                                                        <img
-                                                            src={`/api/player/icon/${uuid}`}
-                                                            alt={member.username}
-                                                            className="w-8 h-8"
-                                                        />
-                                                        <span className="ml-2 font-mono text-lg">{member.username}</span>
-                                                    </Link>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Badge className="text-md font-mono capitalize">{role}</Badge>
-                                                </TableCell>
-                                                <TableCell>{member.contributed.toLocaleString()}</TableCell>
-                                                <TableCell>{new Date(member.joined).toLocaleDateString()}</TableCell>
-                                            </TableRow>
-                                        ))
+                                        Object.entries(guildData.members[role] || {}).map(([uuid, member]: [string, any]) => {
+                                            const lastSeenInfo = lastSeenData[uuid];
+                                            const lastSeen = lastSeenInfo ? formatTimeAgo(lastSeenInfo.lastSeen * 1000) : 'Never';
+
+                                            return (
+                                                <TableRow key={uuid} className={`${member.online ? 'bg-green-500/20 hover:bg-green-300/20' : ''}`}>
+                                                    <TableCell>
+                                                        <Link href={`/stats/player/${member.username}`} className='flex items-center cursor-pointer'>
+                                                            <img
+                                                                src={`/api/player/icon/${uuid}`}
+                                                                alt={member.username}
+                                                                className="w-8 h-8"
+                                                            />
+                                                            <span className="ml-2 font-mono text-lg">{member.username}</span>
+                                                        </Link>
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        <Badge className="text-md font-mono capitalize">{role}</Badge>
+                                                    </TableCell>
+                                                    <TableCell>{member.contributed.toLocaleString()}</TableCell>
+                                                    <TableCell>{new Date(member.joined).toLocaleDateString()}</TableCell>
+                                                    <TableCell>{member.online ? (
+                                                        <span className='font-bold'>Online</span>
+                                                    ) : (
+                                                        lastSeen
+                                                    )}</TableCell>
+                                                </TableRow>
+                                            )
+                                        }
+                                        )
                                     )}
                                 </TableBody>
                             </Table>

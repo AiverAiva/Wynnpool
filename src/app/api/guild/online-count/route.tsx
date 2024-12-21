@@ -3,14 +3,15 @@ import mongoose from 'mongoose';
 
 // Define Schema
 const GuildOnlineCountSchema = new mongoose.Schema({
-    guild_name: { type: String, required: true },
-    guild_uuid: { type: String, required: true },
-    timestamp: { type: Number, required: true },
-    count: { type: Number, required: true },
-},
+        guild_name: { type: String, required: true },
+        guild_uuid: { type: String, required: true },
+        timestamp: { type: Number, required: true },
+        count: { type: Number, required: true },
+    },
     {
         collection: 'guild_online_count', // Explicitly specify the collection name
-    });
+    }
+);
 
 const GuildOnlineCountModel =
     mongoose.models.GuildOnlineCount ||
