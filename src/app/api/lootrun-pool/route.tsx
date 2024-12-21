@@ -23,7 +23,7 @@ async function writeLocalData(data: any) {
 
         await fs.writeFile(LOOTPOOL_DATA_FILE, JSON.stringify(data, null, 2));
         const historyFile = path.join(HISTORY_DIR, `lootrun_pool_${data.Timestamp}.json`);
-        
+
         await fs.writeFile(historyFile, JSON.stringify(data, null, 2));
 
         console.log('Data saved successfully and archived in history');
@@ -89,7 +89,7 @@ export async function GET() {
         let data = await readLocalData();
         const currentTimestamp = Math.floor(Date.now() / 1000);
 
-        if (!data || currentTimestamp >= data.Timestamp+86400*7) {
+        if (!data || currentTimestamp >= data.Timestamp + 86400 * 7) {
             console.log('Fetching new data from external API');
 
             const tokens = await fetchTokens();

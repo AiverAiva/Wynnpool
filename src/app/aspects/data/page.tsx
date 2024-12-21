@@ -81,8 +81,8 @@ export default function AspectDataPage() {
       <ScrollArea className="h-[calc(100vh-100px)]">
         {Object.entries(data).map(([className, aspects]) => (
           <Card key={className} className="mb-4">
-            <CardHeader 
-              className="cursor-pointer" 
+            <CardHeader
+              className="cursor-pointer"
               onClick={() => toggleClass(className)}
             >
               <CardTitle className="flex items-center">
