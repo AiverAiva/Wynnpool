@@ -130,7 +130,7 @@ export default function GuildStatsPage() {
                                             return (
                                                 <TableRow key={uuid} className={`${member.online ? 'bg-green-500/20 hover:bg-green-300/20' : ''}`}>
                                                     <TableCell>
-                                                        <Link prefetch={false} href={`/stats/player/${member.username}`} className='flex items-center cursor-pointer'>
+                                                        <Link href={`/stats/player/${member.username}`} className='flex items-center cursor-pointer'>
                                                             <img
                                                                 src={`/api/player/icon/${uuid}`}
                                                                 alt={member.username}
