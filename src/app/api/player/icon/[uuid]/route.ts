@@ -64,6 +64,34 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     return NextResponse.json({ error: 'UUID is required' }, { status: 400 });
   }
 
+  const useCache = process.env.USE_CACHE === 'true'; // Add an environment variable to toggle
+
+  if (!useCache) {
+    console.log(`Fetching directly from API for UUID: ${uuid}`);
+    try {
+      const response = await fetch(`https://vzge.me/face/128/${uuid}.png`, {
+        headers: {
+          'User-Agent': 'Wynnpool/1.0 (+https://github.com/AiverAiva/Wynnpool; contact@wynnpool.com)',
+        },
+      });
+
+      if (!response.ok) throw new Error('Failed to fetch image directly');
+
+      const imageBlob = await response.blob();
+
+      return new NextResponse(imageBlob, {
+        status: 200,
+        headers: {
+          'Content-Type': 'image/png',
+          'Content-Disposition': 'inline',
+        },
+      });
+    } catch (error) {
+      console.error(`Error fetching directly for UUID: ${uuid}`, error);
+      return NextResponse.json({ error: 'Failed to fetch directly' }, { status: 500 });
+    }
+  }
+  
   await connectToDatabase();
 
   try {
