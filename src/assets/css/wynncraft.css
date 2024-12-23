@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'five';
+    src: url('/fonts/five.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.font-five {
+    font-family: 'five';
+}
+
+@font-face {
+    font-family: 'common';
+    src: url('/fonts/common.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.font-common {
+    font-family: 'common';
+}
+
+
+@font-face {
+    font-family: 'ascii';
+    src: url('/fonts/ascii.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.font-ascii {
+    font-family: 'ascii';
+}
+
+@font-face {
+    font-family: 'wynnic';
+    src: url('/fonts/wynnic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.font-wynnic {
+    font-family: 'wynnic';
+}
