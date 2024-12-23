@@ -128,7 +128,7 @@ import { Separator } from "@/components/ui/separator"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { getIdentificationInfo, ItemBase } from "@/types/itemType"
 import Image from 'next/image'
-
+import '@/assets/css/wynncraft.css'
 
 interface ItemDisplayProps {
   item: ItemBase
@@ -304,7 +304,7 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
           {item.majorIds && (
             <ul className="list-disc list-inside">
               {Object.entries(item.majorIds).map(([key, value]) => (
-                <div key={key} dangerouslySetInnerHTML={{ __html: value }} />
+                <div className="text-sm" key={key} dangerouslySetInnerHTML={{ __html: value }} />
               ))}
             </ul>
           )}
