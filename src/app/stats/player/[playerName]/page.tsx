@@ -154,7 +154,6 @@ export default function PlayerStatsPage() {
 
             <div className="space-y-4">
                 {Object.entries(playerData.characters).map(([id, char]) => {
-                    console.log(char)
                     const isOpen = openSections[id] ?? false;
                     return (
                         <div
@@ -174,6 +173,7 @@ export default function PlayerStatsPage() {
                                         </h2>
                                         <TooltipProvider delayDuration={50}>
                                             {char.gamemode.sort().map((mode, index) => {
+                                                if (mode == 'ironman' && char.gamemode.includes('ultimate_ironman')) return
                                                 const formattedMode = mode
                                                     .split('_')
                                                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
