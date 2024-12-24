@@ -11,6 +11,7 @@ import { Spinner } from '@/components/ui/spinner'
 import GuildEventDisplay from '@/components/custom/guild-event-display'
 import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 import Link from 'next/link'
+import Banner from '@/components/custom/banner'
 
 function formatTimeAgo(timestamp: number | string | undefined): string {
     if (!timestamp) return 'Never';
@@ -79,22 +80,31 @@ export default function GuildStatsPage() {
     return (
         <div className="container mx-auto p-4">
             <Card className="mb-8">
-                <CardHeader>
-                    <CardTitle className="text-3xl">{guildData.name}</CardTitle>
-                    <CardDescription>
-                        Prefix: {guildData.prefix} | Level: {guildData.level} | Wars: {guildData.wars}
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <StatCard title="XP Progress" value={`${guildData.xpPercent}%`}>
-                            <Progress value={guildData.xpPercent} className="mt-2" />
-                        </StatCard>
-                        <StatCard title="Territories" value={guildData.territories} />
-                        <StatCard title="Total Members" value={guildData.members.total} />
-                        <StatCard title="Online Members" value={guildData.online} />
-                        <StatCard title="Created" value={new Date(guildData.created).toLocaleDateString()} />
+                <div className='flex'>
+                    <div className='ml-12 mr-6 flex items-center'>
+                        <Banner className='rounded-lg' {...guildData.banner} />
                     </div>
+                    <div className='w-full'>
+                        <CardHeader>
+                            <CardTitle className="text-3xl">{guildData.name}</CardTitle>
+                            <CardDescription>
+                                Prefix: {guildData.prefix} | Level: {guildData.level} | Wars: {guildData.wars}
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <StatCard title="XP Progress" value={`${guildData.xpPercent}%`}>
+                                    <Progress value={guildData.xpPercent} className="mt-2" />
+                                </StatCard>
+                                <StatCard title="Territories" value={guildData.territories} />
+                                <StatCard title="Total Members" value={guildData.members.total} />
+                                <StatCard title="Online Members" value={guildData.online} />
+                                <StatCard title="Created" value={new Date(guildData.created).toLocaleDateString()} />
+                            </div>
+                        </CardContent>
+                    </div>
+                </div>
+                <CardContent>
                     <GuildOnlineGraph guildUuid={guildData.uuid} />
                     <GuildEventDisplay query={{ guild_uuid: guildData.uuid }} />
                 </CardContent>
