@@ -66,7 +66,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     return NextResponse.json({ error: 'UUID is required' }, { status: 400 });
   }
 
-  const useCache = process.env.USE_CACHE === 'true'; // Add an environment variable to toggle
+  const useCache = true; 
 
   if (!useCache) {
     console.log(`Fetching directly from API for UUID: ${uuid}`);
