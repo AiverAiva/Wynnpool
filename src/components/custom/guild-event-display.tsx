@@ -13,6 +13,8 @@ import {
 import { Card, CardContent } from '../ui/card';
 import { GuildEvent } from '@/types/guildType';
 import { Skeleton } from '../ui/skeleton';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface GuildEventDisplayProps {
     query: Record<string, any>;
@@ -33,6 +35,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false); // Track accordion open state
+    const pathname = usePathname()
 
     const fetchData = async () => {
         if (!isLoading) return
@@ -99,7 +102,16 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
             case 'rank_change':
                 icon = <Edit3 className="w-6 h-6 text-cyan-600" />;
                 bgColor = 'bg-cyan-600/20';
-                message = `${event.name}'s rank changed to ${event.new_rank} from ${event.old_rank}`;
+                message =
+                    <span>
+                        {event.name}'s rank changed to {event.new_rank} from {event.old_rank}
+                        {pathname.includes('/player/') && (
+                            <span>
+                                &ensp;in&ensp;
+                                <Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`}>{event.guild_name}</Link>
+                            </span>
+                        )}
+                    </span>;
                 break;
 
             default:
