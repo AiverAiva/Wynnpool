@@ -182,8 +182,8 @@ const navCategories = [
     category: 'Main',
     items: [
       { name: 'Home', href: '/' },
-      { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
       { name: 'Annihilation', href: '/annihilation' },
+      { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
     ],
   },
   {
@@ -197,7 +197,7 @@ const navCategories = [
     category: 'Loadout',
     items: [
       { name: 'Aspects Data', href: '/aspects/data' },
-      { name: 'Item Search', href: '/items/search' },
+      { name: 'Item Search', href: '/item/search' },
     ],
   },
 ];
@@ -249,14 +249,14 @@ export function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger
-                  className={`transition-colors hover:text-foreground/80 ${isActive(['/items/search', '/aspects/data']) ? 'text-foreground' : 'text-foreground/60'
+                  className={`transition-colors hover:text-foreground/80 ${isActive(['/item/search', '/aspects/data']) ? 'text-foreground' : 'text-foreground/60'
                     } `}
                 >
                   Loadout
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
-                    <ListItem href="/items/search" title="Item search" className={pathname === "/items/search" ? 'bg-accent/50' : ''}>
+                    <ListItem href="/item/search" title="Item search" className={pathname === "/item/search" ? 'bg-accent/50' : ''}>
                       Find the items with a selected filter.
                     </ListItem>
                     <ListItem href="/aspects/data" title="Aspect Data" className={pathname === "/aspects/data" ? 'bg-accent/50' : ''}>

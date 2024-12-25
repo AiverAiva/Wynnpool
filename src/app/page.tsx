@@ -31,7 +31,7 @@ export default function HomePage() {
                 <CardDescription>Browse and search for Wynncraft items</CardDescription>
               </CardHeader>
               <CardContent>
-                <Link href="/items/search">
+                <Link href="/item/search">
                   <Button variant="outline" className="w-full">
                     <Database className="h-4 w-4 mr-2" />
                     Explore Items
