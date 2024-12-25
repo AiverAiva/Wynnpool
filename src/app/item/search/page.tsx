@@ -114,7 +114,7 @@ export default function ItemSearch() {
     const [selectedMajorId, setselectedMajorId] = useState<string>('');
 
     useEffect(() => {
-        fetch('/api/items/metadata')
+        fetch('/api/item/metadata')
             .then((response) => response.json())
             .then((data) => {
                 setIdentifications(data.identifications)
@@ -143,7 +143,7 @@ export default function ItemSearch() {
         if (selectedMajorId !== '') payload.majorIds = [selectedMajorId];
 
         try {
-            const response = await fetch('/api/items/search', {
+            const response = await fetch('/api/item/search', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
