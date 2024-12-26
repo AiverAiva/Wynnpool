@@ -134,7 +134,6 @@ export function getIdentificationInfo(identification: string): IdentificationInf
 export interface ItemBase {
     internalName: string
     type: string
-    rarity: Rarity
     attackSpeed?: string // for weapons
     subType?: string
     accessoryType?: string
@@ -142,14 +141,12 @@ export interface ItemBase {
         value: { id: string; name: string; customModelData: string } | string
         format: string
     }
-    armourMaterial?: string // for armour
-    armourType?: string // for armour
     identified?: boolean
     allow_craftsman?: boolean
     powderSlots?: number
     lore?: string
     dropRestriction?: string
-    restrictions?: string //its plural somehow so idk
+    restrictions?: string //its plural somehow so
     raidReward?: boolean
     dropMeta?: {
         coordinates: [number, number, number]
@@ -191,19 +188,26 @@ export interface ItemBase {
 }
 
 export interface WeaponItem extends ItemBase {
+    type: 'weapon'
+    rarity: Rarity
     attackSpeed: string
     averageDPS: number
 }
 
 export interface ArmourItem extends ItemBase {
+    type: 'armour'
+    rarity: Rarity
     armourMaterial: string
+    armourType: string
 }
 
 export interface ToolItem extends ItemBase {
+    type: 'tool'
     gatheringSpeed: number
 }
 
 export interface IngredientItem extends ItemBase {
+    type: 'ingredient'
     tier: string
     consumableOnlyIDs?: {
         duration: number
@@ -228,13 +232,11 @@ export interface IngredientItem extends ItemBase {
 }
 
 export interface MaterialItem extends ItemBase {
+    type: 'material'
     tier: string
     craftable: string[]
 }
 
 export type Item = WeaponItem | ArmourItem | ToolItem | IngredientItem | MaterialItem
 
-export interface ItemDisplayProps {
-    item: Item
-}
 

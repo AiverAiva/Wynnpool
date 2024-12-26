@@ -3,7 +3,7 @@
 import { notFound, useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '@/components/ui/spinner';
-import { ItemBase } from '@/types/itemType';
+import { Item } from '@/types/itemType';
 import { ItemDisplay } from '@/components/custom/item-display';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copy-to-clipboard-button';
@@ -12,7 +12,7 @@ import { Copy } from 'lucide-react';
 export default function ItemPage() {
     const { itemName } = useParams();
     const [isLoading, setIsLoading] = useState(true);
-    const [itemData, setItemData] = useState<ItemBase | null>(null);
+    const [itemData, setItemData] = useState<Item | null>(null);
 
 
     useEffect(() => {
