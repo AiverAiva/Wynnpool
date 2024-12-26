@@ -6,8 +6,6 @@ import { Spinner } from '@/components/ui/spinner';
 import { Item } from '@/types/itemType';
 import { ItemDisplay } from '@/components/custom/item-display';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { CopyButton } from '@/components/ui/copy-to-clipboard-button';
-import { Copy } from 'lucide-react';
 
 export default function ItemPage() {
     const { itemName } = useParams();
