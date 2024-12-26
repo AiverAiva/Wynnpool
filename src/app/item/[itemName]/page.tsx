@@ -91,13 +91,16 @@ export default function ItemPage() {
                                 </>
                             )}
                             {itemData.dropRestriction == 'never' && (
-                                itemData.requirements?.quest ? (
+                                itemData.requirements?.quest || itemData.restrictions == 'quest item' ? (
                                     <div className='flex gap-4'>
                                         <img className='w-10 h-10' src='/icons/dropType/quest.png' />
                                         <div className='flex flex-col'>
                                             <span className='font-bold text-lg'>Quest</span>
                                             <span className='italic text-sm'>This item can be obtained through a quest or by completing one.</span>
-                                            <span className='font-mono text-md mt-4'><span className='font-bold'>Quest Name:&ensp;</span>{itemData.requirements?.quest}</span>
+
+                                            {itemData.requirements?.quest && (
+                                                <span className='font-mono text-md mt-4'><span className='font-bold'>Quest Name:&ensp;</span>{itemData.requirements?.quest}</span>
+                                            )}
                                         </div>
                                     </div>
                                 ) : itemData.dropMeta ? (
@@ -110,7 +113,7 @@ export default function ItemPage() {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div>UNKNOWWN</div>
+                                    <div>Prob from merchant, Please report this item in Discord thanks :3</div>
                                 )
                             )} 
                         </CardContent>
