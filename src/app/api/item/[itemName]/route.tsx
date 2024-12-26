@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from 'next/server';
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { itemName: string } }
+    { params }: { params: Promise<{ itemName: string }> }
 ): Promise<NextResponse> {
     const itemName = (await params).itemName;
     const EXTERNAL_API_URL = `https://api.wynncraft.com/v3/item/search/${encodeURIComponent(itemName)}`;
