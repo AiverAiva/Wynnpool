@@ -149,7 +149,7 @@ export interface ItemBase {
     powderSlots?: number
     lore?: string
     dropRestriction?: string
-    restriction?: string
+    restrictions?: string //its plural somehow so idk
     raidReward?: boolean
     dropMeta?: {
         coordinates: [number, number, number]

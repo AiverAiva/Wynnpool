@@ -273,13 +273,13 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
                       <>
                         <span style={{ flex: '1', textAlign: 'left' }}></span>
                         <span className="flex-grow text-center">{getIdentificationInfo(key)?.displayName}</span>
-                        <span className={`${getColorClass(value)}`} style={{ flex: '1', textAlign: 'right' }}>{value}</span>
+                        <span className={`${getColorClass(value)}`} style={{ flex: '1', textAlign: 'right' }}>{value}{getIdentificationInfo(key)?.unit}</span>
                       </>
                     ) : (
                       <>
-                        <span className={getColorClass(value.min)} style={{ flex: '1', textAlign: 'left' }}>{`${value.min}${getIdentificationInfo(key)?.unit}`}</span>
+                        <span className={getColorClass(value.min)} style={{ flex: '1', textAlign: 'left' }}>{value.min}{getIdentificationInfo(key)?.unit}</span>
                         <span className="flex-grow text-center">{`${getIdentificationInfo(key)?.displayName}`}</span>
-                        <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{`${value.max}${getIdentificationInfo(key)?.unit}`}</span>
+                        <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{value.max}{getIdentificationInfo(key)?.unit}</span>
                       </>
                     )}
                   </div>
@@ -322,10 +322,9 @@ export function ItemDisplay({ item }: ItemDisplayProps) {
               <p className="text-sm italic text-muted-foreground">{item.lore}</p>
             </>
           )}
-
-
-
-
+          {item.restrictions && (
+            <p className="text-red-500 capitalize">{item.restrictions}</p>
+          )}
           {/* 
             <div>
               <h3 className="font-semibold">Base Damage</h3>
