@@ -81,12 +81,13 @@ export default function GuildStatsPage() {
         <div className="container mx-auto p-4">
             <Card className="mb-8">
                 <div className='flex'>
-                    <div className='ml-12 mr-6 items-center hidden sm:flex'>
-                        <Banner className='rounded-lg' {...guildData.banner} />
-                    </div>
+                    {guildData.banner && (
+                        <div className='ml-12 mr-6 items-center hidden sm:flex'>
+                            <Banner className='rounded-lg' {...guildData.banner} />
+                        </div>
+                    )}
                     <div className='w-full'>
                         <CardHeader>
-
                             <div className='flex justify-between gap-2'>
                                 <div>
                                     <CardTitle className="text-3xl">{guildData.name}</CardTitle>

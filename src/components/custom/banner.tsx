@@ -36,9 +36,10 @@ const Banner: React.FC<BannerProps> = ({ base, tier, structure, layers, classNam
       RED: '#993333',
       BLACK: '#191919',
     };
-    return colorMap[color.toUpperCase()] || '#000000'; // Default to black if color not found
+    return colorMap[color.toUpperCase()] 
   };
   
+  if (!layers) return
   return (
     <div
       className={cn("relative", className)}
