@@ -12,9 +12,10 @@ interface BannerProps {
   structure: string; // Tier structure (e.g., "tier6")
   layers: Layer[]; // Layers array
   className?: string; // Optional className for custom styling
+  size?: number;
 }
 
-const Banner: React.FC<BannerProps> = ({ base, tier, structure, layers, className }) => {
+const Banner: React.FC<BannerProps> = ({ base, tier, structure, layers, className, size=150 }) => {
   // Convert color names to hex values
   const getColorHex = (color: string) => {
     const colorMap: Record<string, string> = {
@@ -42,8 +43,8 @@ const Banner: React.FC<BannerProps> = ({ base, tier, structure, layers, classNam
     <div
       className={cn("relative", className)}
       style={{
-        width: '150px',
-        height: '300px',
+        width: `${size}px`,
+        height: `${size*2}px`,
         backgroundColor: getColorHex(base), // Base color
       }}
     >

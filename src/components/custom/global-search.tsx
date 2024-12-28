@@ -211,9 +211,9 @@ const GlobalSearch: React.FC<any> = () => {
                           <h2 className="font-bold mb-2">Guilds</h2>
                           <ul>
                             {Object.entries(results.mergedGuilds).map(([id, guild]) => (
-                              <Link href={`/stats/guild/${guild.name}`}>
+                              <Link href={`/stats/guild/${guild.name}`} key={id} >
                                 <Card className='w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2'>
-                                  <li key={id} className='text-md font-mono'>[{guild.prefix}] {guild.name}</li>
+                                  <li className='text-md font-mono'>[{guild.prefix}] {guild.name}</li>
                                 </Card>
                               </Link>
                             ))}
@@ -225,7 +225,6 @@ const GlobalSearch: React.FC<any> = () => {
                           <h2 className="font-bold mb-2">Items</h2>
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                             {Object.keys(results.items).map((itemName) => (
-                              console.log(results.items![itemName]),
                               <Link href={`/item/${itemName}`} key={itemName}>
                                 <SmallItemCard item={results.items![itemName]} />
                               </Link>

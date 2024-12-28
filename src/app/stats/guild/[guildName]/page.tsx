@@ -81,15 +81,22 @@ export default function GuildStatsPage() {
         <div className="container mx-auto p-4">
             <Card className="mb-8">
                 <div className='flex'>
-                    <div className='ml-12 mr-6 flex items-center'>
+                    <div className='ml-12 mr-6 items-center hidden sm:flex'>
                         <Banner className='rounded-lg' {...guildData.banner} />
                     </div>
                     <div className='w-full'>
                         <CardHeader>
-                            <CardTitle className="text-3xl">{guildData.name}</CardTitle>
-                            <CardDescription>
-                                Prefix: {guildData.prefix} | Level: {guildData.level} | Wars: {guildData.wars}
-                            </CardDescription>
+
+                            <div className='flex justify-between gap-2'>
+                                <div>
+                                    <CardTitle className="text-3xl">{guildData.name}</CardTitle>
+                                    <CardDescription>
+                                        Prefix: {guildData.prefix} | Level: {guildData.level} | Wars: {guildData.wars}
+                                    </CardDescription>
+                                </div>
+                                {/* justify-between */}
+                                <Banner className='rounded-lg flex sm:hidden ' size={75} {...guildData.banner} />
+                            </div>
                         </CardHeader>
                         <CardContent>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
