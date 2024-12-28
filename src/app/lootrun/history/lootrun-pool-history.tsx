@@ -132,12 +132,12 @@ export function LootrunPoolHistory({ historyFiles }: LootrunPoolHistoryProps) {
                                                                 <h3 className="text-xl font-semibold mb-2">{rarity}</h3>
                                                                 <div className="grid grid-cols-1 gap-4">
                                                                     {Array.isArray(items) ? items.map((item) => (
-                                                                        <div className="flex items-center space-x-2">
+                                                                        <div className="flex items-center space-x-2" key={item}>
                                                                             <Image
                                                                                 unoptimized
-                                                                                src={fileContent.Icon[item].startsWith('http')
+                                                                                src={fileContent.Icon[item] && fileContent.Icon[item].startsWith('http')
                                                                                     ? fileContent.Icon[item]
-                                                                                    : `/icons/items/${fileContent.Icon[item]}`}
+                                                                                    : (fileContent.Icon[item] ? `/icons/items/${fileContent.Icon[item]}` : '/icons/items/barrier.webp')}
                                                                                 alt={item}
                                                                                 width={32}
                                                                                 height={32}
@@ -149,9 +149,9 @@ export function LootrunPoolHistory({ historyFiles }: LootrunPoolHistoryProps) {
                                                                         <div className="flex items-center space-x-2">
                                                                             <Image
                                                                                 unoptimized
-                                                                                src={fileContent.Icon[items.Item].startsWith('http')
+                                                                                src={fileContent.Icon[items.Item] && fileContent.Icon[items.Item].startsWith('http')
                                                                                     ? fileContent.Icon[items.Item]
-                                                                                    : `/icons/items/${fileContent.Icon[items.Item]}`}
+                                                                                    : (fileContent.Icon[items.Item] ? `/icons/items/${fileContent.Icon[items.Item]}` : '/icons/items/barrier.webp')}
                                                                                 alt={items.Item}
                                                                                 width={32}
                                                                                 height={32}
