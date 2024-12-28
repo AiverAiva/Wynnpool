@@ -98,46 +98,31 @@ export default function LootRunPool() {
                                                 <h3 className="text-xl font-semibold mb-2">{rarity}</h3>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                                     {Array.isArray(items) ? items.map((item) => (
-                                                        <Tooltip key={item}>
-                                                            <TooltipTrigger asChild>
-                                                                <div className="flex items-center space-x-2">
-                                                                    <Image
-                                                                        unoptimized
-                                                                        src={lootData.Icon[item] && lootData.Icon[item].startsWith('http')
-                                                                            ? lootData.Icon[item]
-                                                                            : (lootData.Icon[item] ? `/icons/items/${lootData.Icon[item]}` : '/icons/items/barrier.webp')}
-                                                                        alt={item}
-                                                                        width={32}
-                                                                        height={32}
-                                                                    />
-                                                                    <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{item}</Badge>
-                                                                </div>
-                                                            </TooltipTrigger>
-                                                            <TooltipContent>
-                                                                <p>{item}</p>
-                                                            </TooltipContent>
-                                                        </Tooltip>
+                                                        <div className="flex items-center space-x-2" key={item}>
+                                                            <Image
+                                                                unoptimized
+                                                                src={lootData.Icon[item] && lootData.Icon[item].startsWith('http')
+                                                                    ? lootData.Icon[item]
+                                                                    : (lootData.Icon[item] ? `/icons/items/${lootData.Icon[item]}` : '/icons/items/barrier.webp')}
+                                                                alt={item}
+                                                                width={32}
+                                                                height={32}
+                                                            />
+                                                            <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{item}</Badge>
+                                                        </div>
                                                     )) : (
-                                                        <Tooltip>
-                                                            <TooltipTrigger asChild>
-                                                                <div className="flex items-center space-x-2">
-                                                                    <Image
-                                                                        unoptimized
-                                                                        src={lootData.Icon[items.Item].startsWith('http')
-                                                                            ? lootData.Icon[items.Item]
-                                                                            : `/icons/items/${lootData.Icon[items.Item]}`}
-                                                                        alt={items.Item}
-                                                                        width={32}
-                                                                        height={32}
-                                                                    />
-                                                                    <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{items.Item}</Badge>
-                                                                </div>
-                                                            </TooltipTrigger>
-                                                            <TooltipContent>
-                                                                <p>{items.Item}</p>
-                                                                <p>Tracker: {items.Tracker}</p>
-                                                            </TooltipContent>
-                                                        </Tooltip>
+                                                        <div className="flex items-center space-x-2">
+                                                            <Image
+                                                                unoptimized
+                                                                src={lootData.Icon[items.Item].startsWith('http')
+                                                                    ? lootData.Icon[items.Item]
+                                                                    : `/icons/items/${lootData.Icon[items.Item]}`}
+                                                                alt={items.Item}
+                                                                width={32}
+                                                                height={32}
+                                                            />
+                                                            <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{items.Item}<span className='font-mono text-xs font-thin'>&ensp;{items.Tracker}</span></Badge>
+                                                        </div>
                                                     )}
                                                 </div>
                                             </div>
