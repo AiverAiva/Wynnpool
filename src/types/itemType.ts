@@ -134,9 +134,7 @@ export function getIdentificationInfo(identification: string): IdentificationInf
 export interface ItemBase {
     internalName: string
     type: string
-    attackSpeed?: string // for weapons
     subType?: string
-    accessoryType?: string
     icon: {
         value: { id: string; name: string; customModelData: string } | string
         format: string
@@ -152,6 +150,7 @@ export interface ItemBase {
         coordinates: [number, number, number]
         name: string
         type: string
+        event: string
     }
     base?: {
         [key: string]: {
@@ -192,6 +191,12 @@ export interface WeaponItem extends ItemBase {
     rarity: Rarity
     attackSpeed: string
     averageDPS: number
+}
+
+export interface AccessoryItem extends ItemBase {
+    type: 'accessory'
+    rarity: Rarity
+    accessoryType: string
 }
 
 export interface ArmourItem extends ItemBase {
@@ -237,6 +242,6 @@ export interface MaterialItem extends ItemBase {
     craftable: string[]
 }
 
-export type Item = WeaponItem | ArmourItem | ToolItem | IngredientItem | MaterialItem
+export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem 
 
 
