@@ -3,37 +3,6 @@
 // import { Separator } from "@/components/ui/separator"
 // import { ScrollArea } from "@/components/ui/scroll-area"
 
-// interface ItemData {
-//   internalName: string
-//   type: string
-//   attackSpeed?: string
-//   averageDps?: number
-//   requirements: {
-//     level: number
-//     classRequirement?: string
-//     [key: string]: number | string | undefined
-//   }
-//   majorIds: {
-//     [key: string]: string
-//   }
-//   lore?: string
-//   identifications: {
-//     [key: string]: number | { min: number; raw: number; max: number }
-//   }
-//   base: {
-//     baseDamage: {
-//       min: number
-//       raw: number
-//       max: number
-//     }
-//   }
-//   rarity: string
-// }
-
-// interface ItemDisplayProps {
-//   item: ItemData
-// }
-
 // export function ItemDisplay({ item }: ItemDisplayProps) {
 //   const getRarityColor = (rarity: string) => {
 //     const colors: { [key: string]: string } = {
@@ -168,149 +137,148 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
     mythic: 'text-mythic',
   };
 
-  if (item.type == 'ingredient') {
-    return <span className="text-3xl">incompleted atm :D</span>
-  }
-  if (item.type == 'weapon' || item.type === 'armour') {
-    return (
-      <Card className="w-full max-w-2xl mx-auto h-fit">
-        <CardHeader>
-          <div className="flex justify-center items-center">
-            <ItemIcon item={item} size={64} />
-          </div>
-          <div className="flex justify-center items-center">
-            <CardTitle className={`text-xl font-bold ${rarityTextColor[item.rarity]}`}>{item.internalName}</CardTitle>
-          </div>
+  return (
+    <Card className="w-full max-w-2xl mx-auto h-fit font-ascii">
+      <CardHeader>
+        <div className="flex justify-center items-center">
+          <ItemIcon item={item} size={64} />
+        </div>
+
+        <div className="flex justify-center items-center">
+          <CardTitle className={`text-lg ${(item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory') && rarityTextColor[item.rarity]}`}>{item.internalName}</CardTitle>
+        </div>
+        {(item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory') && (
           <div className="flex justify-center items-center">
             <Badge className={`${getRarityColor(item.rarity)}`}>
               <p className={`${rarityTextColor[item.rarity]} brightness-[.3]`}>{item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)} Item</p>
             </Badge>
           </div>
+        )}
 
-          {item.attackSpeed && (
-            <CardDescription>
-              <div className="flex justify-center items-center">
-                {`${item.attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
-              </div>
-            </CardDescription>
-          )}
-        </CardHeader>
-        <CardContent>
-          {/* <ScrollArea className="h-[600px] pr-4"> */}
-          <div className="space-y-4">
-            {/* {item.averageDps && (
+        {item.type == 'weapon' && item.attackSpeed && (
+          <CardDescription>
+            <div className="flex justify-center items-center">
+              {`${item.attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
+            </div>
+          </CardDescription>
+        )}
+      </CardHeader>
+      <CardContent>
+        {/* <ScrollArea className="h-[600px] pr-4"> */}
+        <div className="space-y-4">
+          {/* {item.averageDps && (
                 <div>
                   <h3 className="font-semibold">Average DPS</h3>
                   <p>{item.averageDps}</p>
-                </div>
+                </div>  
               )} */}
-            {item.base && (
-              <ul className="list-disc list-inside">
-                {Object.entries(item.base).map(([key, value]) => (
-                  <div key={key} className="flex">
+          {item.base && (
+            <ul className="list-disc list-inside text-sm">
+              {Object.entries(item.base).map(([key, value]) => (
+                <div key={key} className="flex">
+                  {typeof value === 'number' ? (
+                    <>
+                      <h4 className="font-semibold">{getIdentificationInfo(key)?.displayName}</h4>{value}
+                    </>
+                  ) : (
+                    <>
+                      <h4 className="font-semibold">{getIdentificationInfo(key)?.displayName}</h4>{value.min}~{value.max}
+                    </>
+                  )}
+
+                </div>
+              ))}
+            </ul>
+          )}
+          {item.requirements && (
+            <ul className="list-disc list-inside text-sm">
+              {Object.entries(item.requirements).map(([key, value]) => {
+                let displayValue;
+                if (typeof value === 'string' || typeof value === 'number') {
+                  displayValue = value;
+                } else if (Array.isArray(value)) {
+                  displayValue = value.join(', ');
+                } else if (typeof value === 'object' && value !== null) {
+                  displayValue = `${value.min} - ${value.max}`;
+                } else {
+                  displayValue = 'Unknown value';
+                }
+
+                return (
+                  <div key={key}>
+                    {getIdentificationInfo(key) ? (
+                      <>{getIdentificationInfo(key)?.displayName}: {displayValue}</>
+                    ) : (
+                      <>{key}: {displayValue}</>
+                    )}
+                  </div>
+                );
+              })}
+            </ul>
+          )}
+
+          {item.identifications && (
+            <ul className="list-disc list-inside">
+              {Object.entries(item.identifications).map(([key, value]) => {
+                // Determine the text color based on the value
+                const getColorClass = (val: number) => {
+                  const isCost = key.toLowerCase().includes('cost');
+                  if (isCost) {
+                    return val < 0 ? 'text-green-500' : 'text-red-500'; // Cost keys are inverted
+                  }
+                  return val > 0 ? 'text-green-500' : 'text-red-500'; // Regular keys
+                };
+
+                return (
+                  <div key={key} className="flex items-center justify-between text-sm">
                     {typeof value === 'number' ? (
                       <>
-                        <h4 className="font-semibold">{getIdentificationInfo(key)?.displayName}</h4>{value}
+                        <span style={{ flex: '1', textAlign: 'left' }}></span>
+                        <span className="flex-grow text-center">{getIdentificationInfo(key)?.displayName}</span>
+                        <span className={`${getColorClass(value)}`} style={{ flex: '1', textAlign: 'right' }}>{value}{getIdentificationInfo(key)?.unit}</span>
                       </>
                     ) : (
                       <>
-                        <h4 className="font-semibold">{getIdentificationInfo(key)?.displayName}</h4>{value.min}~{value.max}
+                        <span className={getColorClass(value.min)} style={{ flex: '1', textAlign: 'left' }}>{value.min}{getIdentificationInfo(key)?.unit}</span>
+                        <span className="flex-grow text-center">{`${getIdentificationInfo(key)?.displayName}`}</span>
+                        <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{value.max}{getIdentificationInfo(key)?.unit}</span>
                       </>
                     )}
-
                   </div>
-                ))}
-              </ul>
-            )}
-            {item.requirements && (
-              <ul className="list-disc list-inside">
-                {Object.entries(item.requirements).map(([key, value]) => {
-                  let displayValue;
-                  if (typeof value === 'string' || typeof value === 'number') {
-                    displayValue = value;
-                  } else if (Array.isArray(value)) {
-                    displayValue = value.join(', ');
-                  } else if (typeof value === 'object' && value !== null) {
-                    displayValue = `${value.min} - ${value.max}`;
-                  } else {
-                    displayValue = 'Unknown value';
-                  }
-
-                  return (
-                    <div key={key}>
-                      {getIdentificationInfo(key) ? (
-                        <>{getIdentificationInfo(key)?.displayName}: {displayValue}</>
-                      ) : (
-                        <>{key}: {displayValue}</>
-                      )}
-                    </div>
-                  );
-                })}
-              </ul>
-            )}
-
-            {item.identifications && (
-              <ul className="list-disc list-inside">
-                {Object.entries(item.identifications).map(([key, value]) => {
-                  // Determine the text color based on the value
-                  const getColorClass = (val: number) => {
-                    const isCost = key.toLowerCase().includes('cost');
-                    if (isCost) {
-                      return val < 0 ? 'text-green-500' : 'text-red-500'; // Cost keys are inverted
-                    }
-                    return val > 0 ? 'text-green-500' : 'text-red-500'; // Regular keys
-                  };
-
-                  return (
-                    <div key={key} className="flex items-center justify-between">
-                      {typeof value === 'number' ? (
-                        <>
-                          <span style={{ flex: '1', textAlign: 'left' }}></span>
-                          <span className="flex-grow text-center">{getIdentificationInfo(key)?.displayName}</span>
-                          <span className={`${getColorClass(value)}`} style={{ flex: '1', textAlign: 'right' }}>{value}{getIdentificationInfo(key)?.unit}</span>
-                        </>
-                      ) : (
-                        <>
-                          <span className={getColorClass(value.min)} style={{ flex: '1', textAlign: 'left' }}>{value.min}{getIdentificationInfo(key)?.unit}</span>
-                          <span className="flex-grow text-center">{`${getIdentificationInfo(key)?.displayName}`}</span>
-                          <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{value.max}{getIdentificationInfo(key)?.unit}</span>
-                        </>
-                      )}
-                    </div>
-                  );
-                })}
-              </ul>
-            )}
-            {item.majorIds && (
-              <ul className="list-disc list-inside">
-                {Object.entries(item.majorIds).map(([key, value]) => (
-                  <div className="text-sm" key={key} dangerouslySetInnerHTML={{ __html: value }} />
-                ))}
-              </ul>
-            )}
-            {item.powderSlots && (
-              <p className="text-sm font-bold">
-                Powder Slots:{' '}
-                <span className="text-lg text-primary/50">
-                  {Array.from({ length: item.powderSlots }, () => '○').join('')}
-                </span>
-              </p>
-            )}
-            {item.lore && (
-              <>
-                <Separator />
-                <p className="text-sm italic text-muted-foreground">{item.lore}</p>
-              </>
-            )}
-            {item.restrictions && (
-              <p className="text-red-500 capitalize">{item.restrictions}</p>
-            )}
-          </div>
-        </CardContent>
-      </Card>
-    )
-  }
+                );
+              })}
+            </ul>
+          )}
+          {item.majorIds && (
+            <ul className="list-disc list-inside">
+              {Object.entries(item.majorIds).map(([key, value]) => (
+                <div className="text-sm" key={key} dangerouslySetInnerHTML={{ __html: value }} />
+              ))}
+            </ul>
+          )}
+          {item.powderSlots && (
+            <p className="text-sm font-bold">
+              Powder Slots:{' '}
+              <span className="text-lg text-primary/50">
+                {Array.from({ length: item.powderSlots }, () => '○').join('')}
+              </span>
+            </p>
+          )}
+          {item.lore && (
+            <>
+              <Separator />
+              <p className="text-sm italic text-muted-foreground">{item.lore}</p>
+            </>
+          )}
+          {item.restrictions && (
+            <p className="text-red-500 capitalize">{item.restrictions}</p>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  )
 }
+// }
 
 const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
   const getImageSrc = (): string => {
@@ -336,7 +304,7 @@ const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
   return (
     <Image
       src={src}
-      alt={item.internalName || 'none'}
+      alt={item.internalName}
       width={size}
       height={size}
       style={{
