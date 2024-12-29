@@ -66,7 +66,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     return NextResponse.json({ error: 'UUID is required' }, { status: 400 });
   }
 
-  const useCache = true; 
+  const useCache = false; 
 
   if (!useCache) {
     console.log(`Fetching directly from API for UUID: ${uuid}`);
