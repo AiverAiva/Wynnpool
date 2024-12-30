@@ -10,10 +10,9 @@ import { Separator } from "@/components/ui/separator"
 import { getIdentificationInfo, IngredientItem, Item } from "@/types/itemType"
 import Image from 'next/image'
 import '@/assets/css/wynncraft.css'
-import { FC } from "react"
 import { getClassInfo } from "@/types/classType"
-import { usePathname } from "next/navigation"
 import Link from "next/link"
+import { ItemIcon } from "./WynnIcon"
 
 interface ItemDisplayProps {
   item: Item
@@ -205,39 +204,6 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
   )
 }
 
-const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
-  const getImageSrc = (): string => {
-    if (item.icon) {
-      if (item.icon.format === 'attribute' || item.icon.format === 'legacy') {
-        const iconValue =
-          typeof item.icon.value === 'object'
-            ? item.icon.value.name
-            : item.icon.value.replace(':', '_');
-        return `https://cdn.wynncraft.com/nextgen/itemguide/3.3/${iconValue}.webp`;
-      }
-      if (item.icon.format === 'skin') {
-        return `https://mc-heads.net/head/${item.icon.value}`;
-      }
-    } else if (item.type === 'armour') {
-      return `https://cdn.wynncraft.com/nextgen/itemguide/3.3/${item.armourMaterial}_${item.armourType}.webp`;
-    }
-    return `/icons/items/barrier.webp`;
-  };
-
-  const src = getImageSrc();
-
-  return (
-    <Image
-      src={src}
-      alt={item.internalName}
-      width={size}
-      height={size}
-      style={{
-        imageRendering: 'pixelated', // Preserve pixel art look
-      }}
-    />
-  );
-};
 
 const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
   return (
@@ -252,7 +218,6 @@ const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
       }
     </div>
   )
-
 }
 
 const StarFormatter: React.FC<any> = ({ tier }) => {
