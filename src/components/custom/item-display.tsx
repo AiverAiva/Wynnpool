@@ -17,6 +17,7 @@ import Link from "next/link"
 
 interface ItemDisplayProps {
   item: Item
+  embeded?: boolean
 }
 
 const SmallItemCard: React.FC<ItemDisplayProps> = ({ item }) => {
@@ -28,9 +29,8 @@ const SmallItemCard: React.FC<ItemDisplayProps> = ({ item }) => {
   )
 }
 
-const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
+const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
   const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory'
-  const pathname = usePathname()
 
   return (
     <Card className="w-full max-w-2xl mx-auto h-fit font-ascii">
@@ -40,7 +40,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
         </div>
 
         <div className="flex justify-center items-center">
-          <CardTitle className={`text-lg ${isCombatItem && `text-${item.rarity}`} font-thin text-[#AAAAAA]`}>
+          <CardTitle className={`text-lg ${isCombatItem && `text-${item.rarity}`} font-thin ${item.type == 'ingredient' && 'text-[#AAAAAA]'}`}>
             {item.internalName}
             {item.type == 'ingredient' && (
               <StarFormatter tier={item.tier} />
@@ -61,7 +61,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
         )}
         {item.type == 'weapon' && item.attackSpeed && (
           <CardDescription>
-            <div className="flex justify-center items-center -mt-1">
+            <div className="flex justify-center items-center text-xs">
               {`${item.attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
             </div>
           </CardDescription>
@@ -192,7 +192,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
             </div>
           )}
 
-          {pathname == `/item/${item.internalName.replace(' ', '%20')}` && (
+          {embeded && (
             <div className="flex justify-end">
               <Link href={`/item/${item.internalName}`}>
                 <span className="font-mono text-sm italic hover:underline text-gray-500 cursor-pointer transition trasition-all">more details...</span>
@@ -262,13 +262,13 @@ const StarFormatter: React.FC<any> = ({ tier }) => {
         <span className="text-[#555555] ml-2">
           [✫✫✫]
         </span>
-      ) 
+      )
     case 1:
       return (
         <span className="text-[#FFAA00] ml-2">
           [<span className="text-[#FFFF55]">✫</span><span className="text-[#555555]">✫✫</span>]
         </span>
-      ) 
+      )
     case 2:
       return (
         <span className="text-[#AA00AA] ml-2">
@@ -282,9 +282,6 @@ const StarFormatter: React.FC<any> = ({ tier }) => {
         </span>
       )
   }
-  // return (
-  //   ✫✫✫
-  // )
 }
 
 export { ItemDisplay, SmallItemCard }
