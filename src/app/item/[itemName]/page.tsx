@@ -1,16 +1,36 @@
 'use client'
 
-import { notFound, useParams } from 'next/navigation'
+import { notFound, useParams, usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '@/components/ui/spinner';
 import { Item } from '@/types/itemType';
 import { ItemDisplay } from '@/components/custom/item-display';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Check, Copy } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export default function ItemPage() {
     const { itemName } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [itemData, setItemData] = useState<Item | null>(null);
+    const [copied, setCopied] = useState<boolean>(false);
+
+    const handleCopy = async () => {
+        try {
+            navigator.clipboard.writeText(`https://wynnpool.com/item/${itemData?.internalName}`)
+                .then(() => {
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 1000); 
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        } catch (err) {
+            console.error("Failed to copy text: ", err);
+        }
+    };
 
     useEffect(() => {
         async function fetchItemData() {
@@ -44,19 +64,46 @@ export default function ItemPage() {
                     <ItemDisplay item={itemData} />
                 </div>
                 <div className='flex flex-col md:w-3/5 lg:w-2/3 gap-4'>
-                    {/* <Card>
-                        <div className="flex items-center justify-between p-3 bg-green-500 rounded-lg">
-                            <span className="text-white font-semibold">Share this item!</span>
-                            <div className="flex items-center gap-2 bg-green-400 px-3 py-1.5 rounded-full">
-                                <span className="text-white text-sm">wynnpool.com/{itemData.internalName}</span>
-                                <button
-                                    className="flex items-center gap-1 px-2 py-1 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700"
-                                >
-                                    <Copy className='h-4 w-4'/>
-                                </button>
-                            </div>
+                    <Card className="flex items-center justify-between px-4 py-2 bg-green-500 rounded-lg">
+                        <span className="text-white font-semibold">Share this item!</span>
+                        <div className="flex items-center gap-2 bg-green-400 px-3 py-1.5 rounded-full">
+                            <span className="text-white text-sm font-mono mx-2">wynnpool.com/{itemData.internalName}</span>
+                            {/* <button
+                                className="flex items-center gap-1 px-2 py-1 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700"
+                            > */}
+                            <TooltipProvider delayDuration={0}>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <button
+                                            className="flex items-center gap-1 px-2 py-1 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700 disabled:opacity-100"
+                                            onClick={handleCopy}
+                                            aria-label={copied ? "Copied" : "Copy to clipboard"}
+                                            disabled={copied}
+                                        >
+                                            <div
+                                                className={cn(
+                                                    "transition-all",
+                                                    copied ? "scale-100 opacity-100" : "scale-0 opacity-0",
+                                                )}
+                                            >
+                                                <Check className="stroke-emerald-200" size={16} strokeWidth={2} aria-hidden="true" />
+                                            </div>
+                                            <div
+                                                className={cn(
+                                                    "absolute transition-all",
+                                                    copied ? "scale-0 opacity-0" : "scale-100 opacity-100",
+                                                )}
+                                            >
+                                                <Copy size={16} strokeWidth={2} aria-hidden="true" />
+                                            </div>
+                                        </button>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="px-2 py-1 text-xs">Click to copy</TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+                            {/* </button> */}
                         </div>
-                    </Card> */}
+                    </Card>
                     <Card>
                         <CardHeader>
                             <h2 className='text-2xl font-bold'>How to obtain this item?</h2>
@@ -111,8 +158,6 @@ export default function ItemPage() {
                                                 )}
                                             </Card>
                                         ))}
-                                        {/* <span className='font-mono text-md mt-4'><span className='font-bold'>Name:&ensp;</span>{itemData.dropMeta.name}</span>
-                                                    <span className='font-mono text-md'><span className='font-bold'>Coordinates:&ensp;</span>{itemData.dropMeta.coordinates.join(' ')}</span> */}
                                     </div>
                                 </div>
                             )}
