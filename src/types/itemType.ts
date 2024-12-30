@@ -7,23 +7,29 @@ export type Identification = {
 }
 
 export interface IdentificationInfo {
-    unit: string;
     displayName: string;
+    unit?: string;
+    symbol?: string;
+}
+
+export interface DroppedByInfo {
+    name: string;
+    coords: [number, number, number, number?] | null;
 }
 
 const identificationMap: Record<string, IdentificationInfo> = {
-    "baseHealth": { unit: "", displayName: "Health" },
-    "baseEarthDefence": { unit: "%", displayName: "Earth Defence" },
-    "baseThunderDefence": { unit: "%", displayName: "Thunder Defence" },
-    "dexterity": { unit: "", displayName: "Req Dexterity" },
-    "intelligence": { unit: "", displayName: "Req Intelligence" },
+    "baseHealth": { unit: "", displayName: "Health", symbol: "" },
+    "baseEarthDefence": { unit: "%", displayName: "Earth Defence", symbol: ""  },
+    "baseThunderDefence": { unit: "%", displayName: "Thunder Defence", symbol: "" },
+    "dexterity": { unit: "", displayName: "Dexterity Min" },
+    "intelligence": { unit: "", displayName: "Intelligence Min" },
     "rawIntelligence": { unit: "", displayName: "Intelligence" },
     "spellDamage": { unit: "%", displayName: "Spell Damage" },
     "thunderDamage": { unit: "%", displayName: "Thunder Damage" },
     "waterDamage": { unit: "%", displayName: "Water Damage" },
-    "baseWaterDefence": { unit: "", displayName: "Water Defence" },
-    "baseAirDefence": { unit: "", displayName: "Air Defence" },
-    "agility": { unit: "", displayName: "Req Agility" },
+    "baseWaterDefence": { unit: "", displayName: "Water Defence", symbol: "" },
+    "baseAirDefence": { unit: "", displayName: "Air Defence", symbol: "" },
+    "agility": { unit: "", displayName: "Agility Min" },
     "mainAttackDamage": { unit: "%", displayName: "Main Attack Damage" },
     "rawMainAttackDamage": { unit: "", displayName: "Main Attack Damage" },
     "walkSpeed": { unit: "%", displayName: "Walk Speed" },
@@ -31,18 +37,18 @@ const identificationMap: Record<string, IdentificationInfo> = {
     "airDamage": { unit: "%", displayName: "Air Damage" },
     "waterDefence": { unit: "%", displayName: "Water Defence" },
     "airDefence": { unit: "%", displayName: "Air Defence" },
-    "baseEarthDamage": { unit: "", displayName: "Earth Damage" },
-    "baseFireDamage": { unit: "", displayName: "Fire Damage" },
-    "strength": { unit: "", displayName: "Req Strength" },
-    "defence": { unit: "", displayName: "Req Defence" },
+    "baseEarthDamage": { unit: "", displayName: "Earth Damage", symbol: "" },
+    "baseFireDamage": { unit: "", displayName: "Fire Damage", symbol: "" },
+    "strength": { unit: "", displayName: "Strength Min" },
+    "defence": { unit: "", displayName: "Defence Min" },
     "manaRegen": { unit: "/5s", displayName: "Mana Regen" },
     "manaSteal": { unit: "/3s", displayName: "Mana Steal" },
     "earthDamage": { unit: "%", displayName: "Earth Damage" },
     "fireDamage": { unit: "%", displayName: "Fire Damage" },
     "rawHealth": { unit: "", displayName: "Health Bonus" },
     "exploding": { unit: "%", displayName: "Exploding" },
-    "baseDamage": { unit: "", displayName: "Neutral Damage" },
-    "baseThunderDamage": { unit: "", displayName: "Thunder Damage" },
+    "baseDamage": { unit: "", displayName: "Neutral Damage", symbol: "" },
+    "baseThunderDamage": { unit: "", displayName: "Thunder Damage", symbol: "" },
     "lifeSteal": { unit: "/3s", displayName: "Life Steal" },
     "reflection": { unit: "%", displayName: "Reflection" },
     "lootBonus": { unit: "%", displayName: "Loot Bonus" },
@@ -57,16 +63,16 @@ const identificationMap: Record<string, IdentificationInfo> = {
     "rawSpellDamage": { unit: "", displayName: "Spell Damage" },
     "thorns": { unit: "%", displayName: "Thorns" },
     "thunderDefence": { unit: "%", displayName: "Thunder Defence" },
-    "baseFireDefence": { unit: "", displayName: "Fire Defence" },
+    "baseFireDefence": { unit: "", displayName: "Fire Defence", symbol: "" },
     "rawDexterity": { unit: "", displayName: "Dexterity" },
-    "baseAirDamage": { unit: "", displayName: "Air Damage" },
+    "baseAirDamage": { unit: "", displayName: "Air Damage", symbol: "" },
     "earthDefence": { unit: "%", displayName: "Earth Defence" },
     "fireDefence": { unit: "%", displayName: "Fire Defence" },
     "4thSpellCost": { unit: "%", displayName: "4th Spell Cost" },
     "rawFireDamage": { unit: "", displayName: "Fire Damage" },
     "raw1stSpellCost": { unit: "", displayName: "1st Spell Cost" },
     "healingEfficiency": { unit: "%", displayName: "Healing Efficiency" },
-    "baseWaterDamage": { unit: "%", displayName: "Water Damage" },
+    "baseWaterDamage": { unit: "%", displayName: "Water Damage", symbol: "" },
     "elementalSpellDamage": { unit: "%", displayName: "Elemental Spell Damage" },
     "3rdSpellCost": { unit: "%", displayName: "3rd Spell Cost" },
     "1stSpellCost": { unit: "%", displayName: "1st Spell Cost" },
@@ -125,6 +131,8 @@ const identificationMap: Record<string, IdentificationInfo> = {
     "neutralSpellDamage": { unit: "%", displayName: "Neutral Spell Damage" },
     "mainAttackNeutraDamageBonus": { unit: "%", displayName: "Attack Neutral Damage Bonus" },
     "rawMaxMana": { unit: "", displayName: "Max Mana" },
+    "level": { displayName: "Combat Level" },
+    "classRequirement": { displayName: "Class Req" },
 };
 
 export function getIdentificationInfo(identification: string): IdentificationInfo | undefined {
@@ -184,6 +192,7 @@ export interface ItemBase {
     majorIds?: {
         [key: string]: string
     }
+    droppedBy?: DroppedByInfo[]
 }
 
 export interface WeaponItem extends ItemBase {
@@ -214,6 +223,10 @@ export interface ToolItem extends ItemBase {
 export interface IngredientItem extends ItemBase {
     type: 'ingredient'
     tier: string
+    requirements: {
+        level: number
+        skills: string[]
+    }
     consumableOnlyIDs?: {
         duration: number
         charges: number
@@ -234,6 +247,7 @@ export interface IngredientItem extends ItemBase {
         defence_requirement: number
         agility_requirement: number
     }
+    droppedBy: DroppedByInfo[]
 }
 
 export interface MaterialItem extends ItemBase {
