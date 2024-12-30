@@ -12,7 +12,6 @@ export default function ItemPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [itemData, setItemData] = useState<Item | null>(null);
 
-
     useEffect(() => {
         async function fetchItemData() {
             try {
@@ -23,6 +22,7 @@ export default function ItemPage() {
 
                 const data = await res.json()
                 setItemData(data)
+                console.log(data)
             } catch (err) {
                 console.error('An error occurred while fetching the item data.', err)
             } finally {
@@ -35,6 +35,7 @@ export default function ItemPage() {
 
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
     if (!itemData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Item Not Found.</span></div>
+    const isCombatItem = itemData.type == 'weapon' || itemData.type === 'armour' || itemData.type === 'accessory'
 
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
@@ -87,6 +88,33 @@ export default function ItemPage() {
                                         </div>
                                     </div>
                                 </>
+                            )}
+                            {itemData.droppedBy && (
+                                <div className='flex gap-4'>
+                                    <img className='w-10 h-10' src='/icons/dropType/specialdrop.png' />
+                                    <div className='flex flex-col'>
+                                        <span className='font-bold text-lg'>Special Drop</span>
+                                        <span className='italic text-sm mb-4'>This item can be dropped only by specific mobs or in a specific area.</span>
+                                        {itemData.droppedBy.map((drop, index) => (
+                                            <Card key={index} className='mt-2 flex flex-col px-4 py-2'>
+                                                <span className='font-mono text-md'>
+                                                    <span className='font-bold'>Name:&ensp;</span>{drop.name}
+                                                </span>
+                                                {drop.coords ? (
+                                                    <span className='font-mono text-md'>
+                                                        <span className='font-bold'>Coordinates:&ensp;</span>{drop.coords.join(' ')}
+                                                    </span>
+                                                ) : (
+                                                    <span className='font-mono text-md'>
+                                                        <span className='font-bold'>Coordinates:&ensp;</span>unknown
+                                                    </span>
+                                                )}
+                                            </Card>
+                                        ))}
+                                        {/* <span className='font-mono text-md mt-4'><span className='font-bold'>Name:&ensp;</span>{itemData.dropMeta.name}</span>
+                                                    <span className='font-mono text-md'><span className='font-bold'>Coordinates:&ensp;</span>{itemData.dropMeta.coordinates.join(' ')}</span> */}
+                                    </div>
+                                </div>
                             )}
                             {itemData.dropRestriction == 'never' && (
                                 itemData.dropMeta ? (
@@ -151,9 +179,20 @@ export default function ItemPage() {
                                                 </div>
                                             </div>
                                         )}
+                                        {itemData.dropMeta.type.includes('raid') && (
+                                            <div className='flex gap-4'>
+                                                <img className='w-10 h-10' src='/icons/dropType/raid.png' />
+                                                <div className='flex flex-col'>
+                                                    <span className='font-bold text-lg'>Raid</span>
+                                                    <span className='italic text-sm'>This item can be obtained through a Raid.</span>
+                                                    <span className='font-mono text-md mt-4'><span className='font-bold'>Raid:&ensp;</span>{itemData.dropMeta.name}</span>
+                                                    <span className='font-mono text-md'><span className='font-bold'>Location:&ensp;</span>{itemData.dropMeta.coordinates.join(' ')}</span>
+                                                </div>
+                                            </div>
+                                        )}
                                     </>
-                                ) : itemData.requirements?.quest || itemData.restrictions == 'quest item' ? (
-                                    itemData.requirements?.quest && (
+                                ) : isCombatItem && itemData.requirements?.quest || itemData.restrictions == 'quest item' ? (
+                                    isCombatItem && itemData.requirements?.quest && (
                                         <div className='flex gap-4'>
                                             <img className='w-10 h-10' src='/icons/dropType/quest.png' />
                                             <div className='flex flex-col'>
