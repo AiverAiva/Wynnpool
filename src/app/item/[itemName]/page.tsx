@@ -8,7 +8,6 @@ import { ItemDisplay } from '@/components/custom/item-display';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Check, Copy } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 export default function ItemPage() {
@@ -19,7 +18,7 @@ export default function ItemPage() {
 
     const handleCopy = async () => {
         try {
-            navigator.clipboard.writeText(`https://wynnpool.com/item/${itemData?.internalName.replace(' ', '%20')}`)
+            navigator.clipboard.writeText(`https://wynnpool.com/item/${itemData?.internalName.replaceAll(' ', '%20')}`)
                 .then(() => {
                     setCopied(true);
                     setTimeout(() => setCopied(false), 1000); 
