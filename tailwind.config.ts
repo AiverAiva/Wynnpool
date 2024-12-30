@@ -89,5 +89,21 @@ export default {
 			}
 		}
 	},
+	safelist: [
+		'text-common',
+		'text-set',
+		'text-unique',
+		'text-rare',
+		'text-legendary',
+		'text-fabled',
+		'text-mythic',
+		'bg-common',
+		'bg-set',
+		'bg-unique',
+		'bg-rare',
+		'bg-legendary',
+		'bg-fabled',
+		'bg-mythic',
+	],
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
