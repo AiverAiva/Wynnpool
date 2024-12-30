@@ -1,5 +1,7 @@
 
-import React from 'react';
+import { Item } from '@/types/itemType';
+import React, { FC } from 'react';
+import Image from 'next/image';
 
 interface IconProps {
   name: string; // Add more icon names as needed
@@ -57,7 +59,42 @@ const ItemTypeIcon: React.FC<ItemTypeIconProps> = ({ type, size = 32 }) => {
   );
 };
 
-export { ItemTypeIcon}
+
+const getImageSrc = (item: Item): string => {
+  if (item.icon) {
+    if (item.icon.format === 'attribute' || item.icon.format === 'legacy') {
+      const iconValue =
+        typeof item.icon.value === 'object'
+          ? item.icon.value.name
+          : item.icon.value.replace(':', '_');
+      return `https://cdn.wynncraft.com/nextgen/itemguide/3.3/${iconValue}.webp`;
+    }
+    if (item.icon.format === 'skin') {
+      return `https://mc-heads.net/head/${item.icon.value}`;
+    }
+  } else if (item.type === 'armour') {
+    return `https://cdn.wynncraft.com/nextgen/itemguide/3.3/${item.armourMaterial}_${item.armourType}.webp`;
+  }
+  return `/icons/items/barrier.webp`;
+};
+
+const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
+  const src = getImageSrc(item);
+
+  return (
+    <Image
+      src={src}
+      alt={item.internalName}
+      width={size}
+      height={size}
+      style={{
+        imageRendering: 'pixelated', // Preserve pixel art look
+      }}
+    />
+  );
+};
+
+export { ItemTypeIcon, ItemIcon, getImageSrc }
 // export const WynnIcon: React.FC<IconProps> = ({ name, size = 32, className, alt = '' }) => {
 //     const src = `/icons/${name}`; // Build the path to the icon in /public/icons
   
