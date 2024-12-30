@@ -1,104 +1,19 @@
-// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-// import { Badge } from "@/components/ui/badge"
-// import { Separator } from "@/components/ui/separator"
-// import { ScrollArea } from "@/components/ui/scroll-area"
 
-// export function ItemDisplay({ item }: ItemDisplayProps) {
-//   const getRarityColor = (rarity: string) => {
-//     const colors: { [key: string]: string } = {
-//       normal: "bg-gray-500",
-//       unique: "bg-yellow-500",
-//       rare: "bg-blue-500",
-//       legendary: "bg-purple-500",
-//       fabled: "bg-red-500",
-//       mythic: "bg-pink-500"
-//     }
-//     return colors[rarity.toLowerCase()] || "bg-gray-500"
-//   }
-
-//   return (
-//     <Card className="w-full max-w-2xl mx-auto">
-//       <CardHeader>
-//         <div className="flex justify-between items-center">
-//           <CardTitle className="text-2xl font-bold">{item.internalName}</CardTitle>
-//           <Badge className={`${getRarityColor(item.rarity)} text-white`}>
-//             {item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)}
-//           </Badge>
-//         </div>
-//         <CardDescription>
-//           {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
-//           {item.attackSpeed && ` - ${item.attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`}
-//         </CardDescription>
-//       </CardHeader>
-//       <CardContent>
-//         <ScrollArea className="h-[600px] pr-4">
-//           <div className="space-y-4">
 //             {item.averageDps && (
-//               <div>
 //                 <h3 className="font-semibold">Average DPS</h3>
 //                 <p>{item.averageDps}</p>
-//               </div>
-//             )}
-
-//             <div>
-//               <h3 className="font-semibold">Requirements</h3>
-//               <ul className="list-disc list-inside">
-//                 {Object.entries(item.requirements).map(([key, value]) => (
-//                   <li key={key}>
-//                     {key.charAt(0).toUpperCase() + key.slice(1)}: {value}
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-
-//             {Object.keys(item.majorIds).length > 0 && (
-//               <div>
-//                 <h3 className="font-semibold">Major IDs</h3>
-//                 {Object.entries(item.majorIds).map(([key, value]) => (
-//                   <div key={key} dangerouslySetInnerHTML={{ __html: value }} />
-//                 ))}
-//               </div>
-//             )}
-
-//             <div>
-//               <h3 className="font-semibold">Lore</h3>
-//               <p className="italic text-muted-foreground">{item.lore}</p>
-//             </div>
-
-//             <Separator />
-
-//             <div>
-//               <h3 className="font-semibold">Identifications</h3>
-//               <ul className="list-disc list-inside">
-//                 {Object.entries(item.identifications).map(([key, value]) => (
-//                   <li key={key}>
-//                     {key.replace(/([A-Z])/g, ' $1').trim()}:{' '}
-//                     {typeof value === 'number' 
-//                       ? value 
-//                       : `${value.min} to ${value.max} (Base: ${value.raw})`}
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-
-//             <div>
 //               <h3 className="font-semibold">Base Damage</h3>
 //               <p>{item.base.baseDamage.min} to {item.base.baseDamage.max} (Base: {item.base.baseDamage.raw})</p>
-//             </div>
-//           </div>
-//         </ScrollArea>
-//       </CardContent>
-//     </Card>
-//   )
-// }
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { getIdentificationInfo, IngredientItem, Item } from "@/types/itemType"
 import Image from 'next/image'
 import '@/assets/css/wynncraft.css'
 import { FC } from "react"
+import { getClassInfo } from "@/types/classType"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
 
 interface ItemDisplayProps {
   item: Item
@@ -114,28 +29,8 @@ const SmallItemCard: React.FC<ItemDisplayProps> = ({ item }) => {
 }
 
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
-  const getRarityColor = (rarity: string) => {
-    const colors: { [key: string]: string } = {
-      common: "bg-common",
-      set: "bg-set",
-      unique: "bg-unique",
-      rare: "bg-rare",
-      legendary: "bg-legendary",
-      fabled: "bg-fabled",
-      mythic: "bg-mythic",
-    };
-    return colors[rarity.toLowerCase()] || "bg-gray-500";
-  };
-
-  const rarityTextColor = {
-    common: 'text-common',
-    set: 'text-set',
-    unique: 'text-unique',
-    rare: 'text-rare',
-    legendary: 'text-legendary',
-    fabled: 'text-fabled',
-    mythic: 'text-mythic',
-  };
+  const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory'
+  const pathname = usePathname()
 
   return (
     <Card className="w-full max-w-2xl mx-auto h-fit font-ascii">
@@ -145,53 +40,51 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
         </div>
 
         <div className="flex justify-center items-center">
-          <CardTitle className={`text-lg ${(item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory') && rarityTextColor[item.rarity]}`}>{item.internalName}</CardTitle>
+          <CardTitle className={`text-lg ${isCombatItem && `text-${item.rarity}`} font-thin text-[#AAAAAA]`}>
+            {item.internalName}
+            {item.type == 'ingredient' && (
+              <StarFormatter tier={item.tier} />
+            )}
+          </CardTitle>
         </div>
-        {(item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory') && (
+        {isCombatItem && (
           <div className="flex justify-center items-center">
-            <Badge className={`${getRarityColor(item.rarity)}`}>
-              <p className={`${rarityTextColor[item.rarity]} brightness-[.3]`}>{item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)} Item</p>
+            <Badge className={`bg-${item.rarity}`}>
+              <p className={`text-${item.rarity} brightness-[.3] font-thin`}>{item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)} Item</p>
             </Badge>
           </div>
         )}
-
+        {item.type == 'ingredient' && (
+          <div className="flex justify-center items-center">
+            <span className="text-[#555555] text-xs -mt-2">Crafting Ingredient</span>
+          </div>
+        )}
         {item.type == 'weapon' && item.attackSpeed && (
           <CardDescription>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center -mt-1">
               {`${item.attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
             </div>
           </CardDescription>
         )}
       </CardHeader>
       <CardContent>
-        {/* <ScrollArea className="h-[600px] pr-4"> */}
         <div className="space-y-4">
           {/* {item.averageDps && (
-                <div>
-                  <h3 className="font-semibold">Average DPS</h3>
-                  <p>{item.averageDps}</p>
-                </div>  
-              )} */}
+            <div>
+              <h3 className="font-semibold">Average DPS</h3>
+              <p>{item.averageDps}</p>
+            </div>
+          )} */}
           {item.base && (
             <ul className="list-disc list-inside text-sm">
-              {Object.entries(item.base).map(([key, value]) => (
-                <div key={key} className="flex">
-                  {typeof value === 'number' ? (
-                    <>
-                      <h4 className="font-semibold">{getIdentificationInfo(key)?.displayName}</h4>{value}
-                    </>
-                  ) : (
-                    <>
-                      <h4 className="font-semibold">{getIdentificationInfo(key)?.displayName}</h4>{value.min}~{value.max}
-                    </>
-                  )}
-
-                </div>
+              {Object.entries(item.base).map(([name, value]) => (
+                <BaseStatsFormatter value={value} name={name} key={name} />
               ))}
             </ul>
           )}
-          {item.requirements && (
-            <ul className="list-disc list-inside text-sm">
+
+          {isCombatItem && item.requirements && (
+            <ul className="list-disc list-inside text-sm text-gray-400">
               {Object.entries(item.requirements).map(([key, value]) => {
                 let displayValue;
                 if (typeof value === 'string' || typeof value === 'number') {
@@ -207,7 +100,11 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
                 return (
                   <div key={key}>
                     {getIdentificationInfo(key) ? (
-                      <>{getIdentificationInfo(key)?.displayName}: {displayValue}</>
+                      key == 'classRequirement' ? (
+                        <>{getIdentificationInfo(key)?.displayName}: {getClassInfo(value as string)!.displayName}</>
+                      ) : (
+                        <>{getIdentificationInfo(key)?.displayName}: {displayValue}</>
+                      )
                     ) : (
                       <>{key}: {displayValue}</>
                     )}
@@ -220,7 +117,6 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
           {item.identifications && (
             <ul className="list-disc list-inside">
               {Object.entries(item.identifications).map(([key, value]) => {
-                // Determine the text color based on the value
                 const getColorClass = (val: number) => {
                   const isCost = key.toLowerCase().includes('cost');
                   if (isCost) {
@@ -249,6 +145,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
               })}
             </ul>
           )}
+
           {item.majorIds && (
             <ul className="list-disc list-inside">
               {Object.entries(item.majorIds).map(([key, value]) => (
@@ -257,13 +154,14 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
             </ul>
           )}
           {item.powderSlots && (
-            <p className="text-sm font-bold">
-              Powder Slots:{' '}
-              <span className="text-lg text-primary/50">
-                {Array.from({ length: item.powderSlots }, () => '○').join('')}
+            <p className="text-sm">
+              Powder Slots&ensp;
+              <span className="text-primary/50">
+                [<span className="font-five">{Array.from({ length: item.powderSlots }, () => 'O').join('')}</span>]
               </span>
             </p>
           )}
+
           {item.lore && (
             <>
               <Separator />
@@ -273,12 +171,39 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
           {item.restrictions && (
             <p className="text-red-500 capitalize">{item.restrictions}</p>
           )}
+
+          {item.type == 'ingredient' && (
+            <div className="mt-6 text-gray-400">
+              <span className="text-sm">Crafting Lv. Min: {item.requirements.level}</span>
+              <div className="flex flex-col ml-4">
+                {Object.entries(item.requirements.skills).map(([key, value]) => (
+                  <div key={key} className="flex items-center gap-2">
+                    <Image
+                      src={`/icons/profession/${value}.webp`}
+                      alt={item.internalName}
+                      width={32}
+                      height={32}
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm capitalize">{value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {pathname == `/item/${item.internalName.replace(' ', '%20')}` && (
+            <div className="flex justify-end">
+              <Link href={`/item/${item.internalName}`}>
+                <span className="font-mono text-sm italic hover:underline text-gray-500 cursor-pointer transition trasition-all">more details...</span>
+              </Link>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>
   )
 }
-// }
 
 const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
   const getImageSrc = (): string => {
@@ -313,5 +238,53 @@ const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
     />
   );
 };
+
+const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
+  return (
+    <div className="flex items-center">
+      <span className="font-common text-lg h-6">{getIdentificationInfo(name)?.symbol}</span>
+      <span className={getIdentificationInfo(name)?.symbol && "ml-2"}>{getIdentificationInfo(name)?.displayName}</span>
+      {typeof value === 'number' ? (
+        <span className="ml-1">{value}</span>
+      ) : (
+        <span className="ml-1">{value.min}-{value.max}</span>
+      )
+      }
+    </div>
+  )
+
+}
+
+const StarFormatter: React.FC<any> = ({ tier }) => {
+  switch (tier) {
+    case 0:
+      return (
+        <span className="text-[#555555] ml-2">
+          [✫✫✫]
+        </span>
+      ) 
+    case 1:
+      return (
+        <span className="text-[#FFAA00] ml-2">
+          [<span className="text-[#FFFF55]">✫</span><span className="text-[#555555]">✫✫</span>]
+        </span>
+      ) 
+    case 2:
+      return (
+        <span className="text-[#AA00AA] ml-2">
+          [<span className="text-[#FF55FF]">✫✫</span><span className="text-[#555555]">✫</span>]
+        </span>
+      )
+    case 3:
+      return (
+        <span className="text-[#00AAAA] ml-2">
+          [<span className="text-[#55FFFF]">✫✫✫</span>]
+        </span>
+      )
+  }
+  // return (
+  //   ✫✫✫
+  // )
+}
 
 export { ItemDisplay, SmallItemCard }
