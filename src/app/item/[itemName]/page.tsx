@@ -19,7 +19,7 @@ export default function ItemPage() {
 
     const handleCopy = async () => {
         try {
-            navigator.clipboard.writeText(`https://wynnpool.com/item/${itemData?.internalName}`)
+            navigator.clipboard.writeText(`https://wynnpool.com/item/${itemData?.internalName.replace(' ', '%20')}`)
                 .then(() => {
                     setCopied(true);
                     setTimeout(() => setCopied(false), 1000); 
