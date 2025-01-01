@@ -1,7 +1,7 @@
 'use client'
 
 import { Item } from "@/types/itemType";
-import { AlertCircle, Search } from "lucide-react";
+import { AlertCircle, Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Input } from "../ui/input";
 import { Spinner } from '@/components/ui/spinner'
@@ -14,6 +14,7 @@ import Image from 'next/image'
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -21,6 +22,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { ItemDisplay, SmallItemCard } from "./item-display";
+import { Button } from "../ui/button";
 
 type SearchResult = | {
   query?: string;
@@ -137,7 +139,7 @@ const GlobalSearch: React.FC<any> = () => {
       <form className="flex" onSubmit={(e) => e.preventDefault()}>
         <div className="relative w-full inline-flex group">
           <div
-            className="absolute z-0 transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
+            className="absolute z-0 transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
           </div>
           <Search className="absolute z-20 top-1/2 left-3 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
           <Input
@@ -150,34 +152,52 @@ const GlobalSearch: React.FC<any> = () => {
           />
         </div>
       </form>
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>
-              <div className="relative">
-                <Search className="absolute z-20 top-1/2 left-3 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                <Input
-                  type="text"
-                  placeholder="Search for items, guilds, or players..."
-                  value={query}
-                  onChange={handleInputChange}
-                  className="pl-10 rounded-r-none"
-                />
-              </div>
-            </DialogTitle>
-          </DialogHeader>
+
+      {/* blur */}
+      <div className={`absolute w-screen h-screen top-0 left-0 z-5 backdrop-blur-sm pointer-events-none ${!isDialogOpen && 'hidden'}`}></div>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} >
+        <DialogContent className="z-50">
+          <div className="flex gap-2">
+            <div className="relative flex-grow">
+              <Search className="absolute z-20 top-1/2 left-3 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input
+                type="text"
+                placeholder="Search for items, guilds, or players..."
+                value={query}
+                onChange={handleInputChange}
+                className="pl-10"
+              />
+            </div>
+            <DialogClose className="w-8 h-8">
+              <Button variant="outline" size="icon">
+                <X className="h-4 w-4" />
+              </Button>
+            </DialogClose>
+          </div>
           <div className="min-h-[50vh] max-h-[60vh]">
             <ScrollArea className="h-full">
               {!isLoading ? (
                 results ? (
                   'error' in results ? (
-                    <Alert variant="destructive">
-                      <AlertCircle className="h-4 w-4" />
-                      <AlertTitle>Error</AlertTitle>
-                      <AlertDescription>
-                        {results.error}
-                      </AlertDescription>
-                    </Alert>
+                    results.error === 'No results found for the given query.' ? (
+                      <div className="w-full h-full flex flex-col items-center justify-center">
+                        <img
+                          src={`/turtles/not_found.png`}
+                          alt='NOT FOUND'
+                          className="h-32 mt-8"
+                        />
+                        <span className="font-mono text-lg">No results found for <span className="font-bold">{query}</span>.</span>
+                      </div>
+                    ) : (
+                      <Alert variant="destructive">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>
+                          {results.error}
+                        </AlertDescription>
+                      </Alert>
+                    )
                   ) : (
                     //  className='pr-4' prob for scrollbar
                     <div>
@@ -278,7 +298,7 @@ const GlobalSearch: React.FC<any> = () => {
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </div >
   );
 };
 
