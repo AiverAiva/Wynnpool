@@ -158,23 +158,27 @@ const GlobalSearch: React.FC<any> = () => {
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} >
         <DialogContent className="z-50">
-          <div className="flex gap-2">
-            <div className="relative flex-grow">
-              <Search className="absolute z-20 top-1/2 left-3 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                type="text"
-                placeholder="Search for items, guilds, or players..."
-                value={query}
-                onChange={handleInputChange}
-                className="pl-10"
-              />
+          <DialogTitle className="hidden"/>
+          <DialogHeader>
+            <div className="flex gap-2">
+              <div className="relative flex-grow">
+                <Search className="absolute z-20 top-1/2 left-3 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <Input
+                  type="text"
+                  placeholder="Search for items, guilds, or players..."
+                  value={query}
+                  onChange={handleInputChange}
+                  className="pl-10"
+                />
+              </div>
+              <DialogClose className="w-8 h-8">
+                <Button variant="outline" size="icon">
+                  <X className="h-4 w-4" />
+                </Button>
+              </DialogClose>
             </div>
-            <DialogClose className="w-8 h-8">
-              <Button variant="outline" size="icon">
-                <X className="h-4 w-4" />
-              </Button>
-            </DialogClose>
-          </div>
+          </DialogHeader>
+
           <div className="min-h-[50vh] max-h-[60vh]">
             <ScrollArea className="h-full">
               {!isLoading ? (
@@ -247,9 +251,8 @@ const GlobalSearch: React.FC<any> = () => {
                             {Object.keys(results.items).map((itemName) => (
                               <Link href={`/item/${itemName}`} key={itemName}>
                                 <SmallItemCard item={results.items![itemName]} />
+                                {/* <ItemDisplay item={results.items![itemName]} embeded={true}/> */}
                               </Link>
-                              // <ItemDisplay item={results.items![itemName]}>
-
                             ))}
                           </div>
                         </div>
