@@ -269,6 +269,18 @@ export interface MaterialItem extends ItemBase {
     craftable: string[]
 }
 
-export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem
+
+export interface Tome extends ItemBase {
+    type: 'tome'
+    // type: 'guild_tome' | 'weapon_tome' | 'mysticism_tome' | 'lootrun_tome' | 'expertise_tome' | 'marathon_tome' | 'armour_tome'
+    rarity: Rarity
+}
+
+export interface Charm extends ItemBase {
+    type: 'charm'
+    rarity: Rarity
+}
+
+export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem | Tome | Charm
 
 
