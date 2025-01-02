@@ -39,7 +39,7 @@ function getFormattedText(number: number) {
 }
 
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
-  const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory' || item.type === 'tome' || item.type === 'charm' 
+  const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory' || item.type === 'tome' || item.type === 'charm'
   return (
     <Card className="w-full max-w-2xl mx-auto h-fit font-ascii">
       <CardHeader>
@@ -52,6 +52,11 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
             {item.internalName}
             {item.type == 'ingredient' && (
               <StarFormatter tier={item.tier} />
+            )}
+            {item.type == 'material' && (
+              <span className="text-[#FFAA00] ml-2">
+                [<span className="text-[#FFFF55]">{Array.from({ length: item.tier }, () => '✫').join('')}</span><span className="text-[#555555]">{Array.from({ length: 3-item.tier }, () => '✫').join('')}</span>]
+              </span>
             )}
           </CardTitle>
         </div>
@@ -219,6 +224,9 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
                 </div>
               </div>
             </>
+          )}
+          {item.type == 'material' && (
+            <span className="text-sm text-gray-400">Use this material to craft: <span className="capitalize text-white">{item.craftable.join(', ')}</span></span>
           )}
           {item.majorIds && (
             <ul className="list-disc list-inside">

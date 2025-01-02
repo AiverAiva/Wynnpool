@@ -235,7 +235,7 @@ export interface ToolItem extends ItemBase {
 
 export interface IngredientItem extends ItemBase {
     type: 'ingredient'
-    tier: string
+    tier: number
     requirements: {
         level: number
         skills: string[]
@@ -265,7 +265,7 @@ export interface IngredientItem extends ItemBase {
 
 export interface MaterialItem extends ItemBase {
     type: 'material'
-    tier: string
+    tier: number
     craftable: string[]
 }
 

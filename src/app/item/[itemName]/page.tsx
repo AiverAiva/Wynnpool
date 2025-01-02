@@ -107,6 +107,16 @@ export default function ItemPage() {
                             <h2 className='text-2xl font-bold'>How to obtain this item?</h2>
                         </CardHeader>
                         <CardContent className='flex flex-col gap-4'>
+                            {!itemData.dropRestriction && !itemData.droppedBy && (
+                                <div className="w-full h-full flex flex-col items-center justify-center">
+                                    <img
+                                        src={`/turtles/not_found.png`}
+                                        alt='NOT FOUND'
+                                        className="h-32"
+                                    />
+                                    <span className="font-mono text-lg">I don't know :3</span>
+                                </div>
+                            )}
                             {itemData.dropRestriction == 'lootchest' && (
                                 <div className='flex gap-4'>
                                     <img className='w-10 h-10' src='/icons/dropType/lootchest.png' />
