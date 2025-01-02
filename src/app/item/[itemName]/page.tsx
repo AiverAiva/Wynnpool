@@ -41,7 +41,6 @@ export default function ItemPage() {
 
                 const data = await res.json()
                 setItemData(data)
-                console.log(data)
             } catch (err) {
                 console.error('An error occurred while fetching the item data.', err)
             } finally {

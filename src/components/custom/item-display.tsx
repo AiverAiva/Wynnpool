@@ -7,7 +7,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { getIdentificationInfo, IngredientItem, Item } from "@/types/itemType"
+import { AccessoryItem, ArmourItem, getIdentificationInfo, IngredientItem, Item, WeaponItem } from "@/types/itemType"
 import Image from 'next/image'
 import '@/assets/css/wynncraft.css'
 import { getClassInfo } from "@/types/classType"
@@ -39,8 +39,7 @@ function getFormattedText(number: number) {
 }
 
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
-  const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory'
-
+  const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory' || item.type === 'tome' || item.type === 'charm' 
   return (
     <Card className="w-full max-w-2xl mx-auto h-fit font-ascii">
       <CardHeader>
@@ -158,11 +157,11 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
               {Object.entries(item.ingredientPositionModifiers).some(([key, value]) => value !== 0) && (
                 <div className="flex flex-col text-sm text-gray-400">
                   {Object.entries(item.ingredientPositionModifiers).map(([key, value]) => (value !== 0 && (
-                      <div key={key} className="flex flex-col">
-                        <span><span className={getColor(value)}>{value > 0 && '+'}{value}{getIdentificationInfo(key)?.unit}</span> Ingredient Effectiveness</span>
-                        <span>({getIdentificationInfo(key)?.displayName})</span>
-                      </div>
-                    )
+                    <div key={key} className="flex flex-col">
+                      <span><span className={getColor(value)}>{value > 0 && '+'}{value}{getIdentificationInfo(key)?.unit}</span> Ingredient Effectiveness</span>
+                      <span>({getIdentificationInfo(key)?.displayName})</span>
+                    </div>
+                  )
                   ))}
                 </div>
               )}
