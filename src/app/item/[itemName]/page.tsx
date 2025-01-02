@@ -21,7 +21,7 @@ export default function ItemPage() {
             navigator.clipboard.writeText(`https://wynnpool.com/item/${itemData?.internalName.replaceAll(' ', '%20')}`)
                 .then(() => {
                     setCopied(true);
-                    setTimeout(() => setCopied(false), 1000); 
+                    setTimeout(() => setCopied(false), 1000);
                 })
                 .catch(err => {
                     console.error('Failed to copy: ', err);
@@ -58,7 +58,7 @@ export default function ItemPage() {
 
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
-            <div className='flex justify-between gap-4 mb-4 flex-col sm:flex-row'>
+            <div className='flex justify-between gap-4 mb-4 flex-col md:flex-row'>
                 <div className='md:w-2/5 lg:w-1/3'>
                     <ItemDisplay item={itemData} />
                 </div>
@@ -147,8 +147,21 @@ export default function ItemPage() {
                                                     <span className='font-bold'>Name:&ensp;</span>{drop.name}
                                                 </span>
                                                 {drop.coords ? (
-                                                    <span className='font-mono text-md'>
-                                                        <span className='font-bold'>Coordinates:&ensp;</span>{drop.coords.join(' ')}
+                                                    console.log(drop.coords),
+                                                    <span className='font-mono text-md flex'>
+                                                        <span className='font-bold'>Coordinates:&ensp;</span>
+                                                        {drop.coords.some(coord => Array.isArray(coord)) ? (
+                                                            <div className='flex flex-col'>
+                                                                {(drop.coords as number[][]).map((value, index) => (
+                                                                    <span key={index}>{value.join(', ')}</span>
+                                                                ))}
+                                                            </div>
+                                                        ) : (
+                                                            <div className='flex'>
+                                                                <span key={index}>{drop.coords.join(', ')}</span>
+                                                            </div>
+                                                        )}
+
                                                     </span>
                                                 ) : (
                                                     <span className='font-mono text-md'>
