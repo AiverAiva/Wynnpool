@@ -28,6 +28,16 @@ const SmallItemCard: React.FC<ItemDisplayProps> = ({ item }) => {
   )
 }
 
+function getColor(number: number) {
+  if (number > 0) return 'text-green-500'
+  if (number < 0) return 'text-red-500'
+}
+
+function getFormattedText(number: number) {
+  if (number > 0) return '+' + number
+  if (number < 0) return number
+}
+
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
   const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory'
 
@@ -112,7 +122,6 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
               })}
             </ul>
           )}
-
           {item.identifications && (
             <ul className="list-disc list-inside">
               {Object.entries(item.identifications).map(([key, value]) => {
@@ -144,7 +153,74 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
               })}
             </ul>
           )}
-
+          {item.type == 'ingredient' && (
+            <>
+              {Object.entries(item.ingredientPositionModifiers).some(([key, value]) => value !== 0) && (
+                <div className="flex flex-col text-sm text-gray-400">
+                  {Object.entries(item.ingredientPositionModifiers).map(([key, value]) => (value !== 0 && (
+                      <div key={key} className="flex flex-col">
+                        <span><span className={getColor(value)}>{value > 0 && '+'}{value}{getIdentificationInfo(key)?.unit}</span> Ingredient Effectiveness</span>
+                        <span>({getIdentificationInfo(key)?.displayName})</span>
+                      </div>
+                    )
+                  ))}
+                </div>
+              )}
+              {Object.entries(item.itemOnlyIDs).some(([key, value]) => key !== 'durabilityModifier' && value !== 0) && (
+                <div className="flex flex-col text-sm">
+                  {Object.entries(item.itemOnlyIDs).map(([key, value]) => (
+                    key !== 'durabilityModifier' && value !== 0 && (
+                      <div key={key} className="flex items-center gap-2">
+                        <span className={getColor(value * -1)}>{value > 0 && '+'}{value} {getIdentificationInfo(key.replace('Requirement', ''))?.displayName}</span>
+                      </div>
+                    )
+                  ))}
+                </div>
+              )}
+              {(item.itemOnlyIDs.durabilityModifier !== 0 || item.consumableOnlyIDs.duration !== 0) && (
+                <div className="flex flex-col text-[13.5px]">
+                  <div className="flex">
+                    {item.itemOnlyIDs.durabilityModifier !== 0 && (
+                      <span className={getColor(item.itemOnlyIDs.durabilityModifier)}>
+                        {getFormattedText(item.itemOnlyIDs.durabilityModifier / 1000)} Durability
+                      </span>
+                    )}
+                    {item.itemOnlyIDs.durabilityModifier !== 0 &&
+                      item.consumableOnlyIDs.duration !== 0 && (
+                        <span className="text-gray-400">&ensp;or&ensp;</span>
+                      )}
+                    {item.consumableOnlyIDs.duration !== 0 && (
+                      <span className={getColor(item.consumableOnlyIDs.duration)}>
+                        {getFormattedText(item.consumableOnlyIDs.duration)}s Duration
+                      </span>
+                    )}
+                  </div>
+                  {item.consumableOnlyIDs.charges != 0 && (
+                    <span className={getColor(item.consumableOnlyIDs.charges)}>
+                      {getFormattedText(item.consumableOnlyIDs.charges)} Charges
+                    </span>
+                  )}
+                </div>
+              )}
+              <div className="text-gray-400">
+                <span className="text-sm">Crafting Lv. Min: {item.requirements.level}</span>
+                <div className="flex flex-col ml-4">
+                  {Object.entries(item.requirements.skills).map(([key, value]) => (
+                    <div key={key} className="flex items-center gap-2">
+                      <Image
+                        src={`/icons/profession/${value}.webp`}
+                        alt={item.internalName}
+                        width={32}
+                        height={32}
+                        className="h-4 w-4"
+                      />
+                      <span className="text-sm capitalize">{value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
           {item.majorIds && (
             <ul className="list-disc list-inside">
               {Object.entries(item.majorIds).map(([key, value]) => (
@@ -160,7 +236,6 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
               </span>
             </p>
           )}
-
           {item.lore && (
             <>
               <Separator />
@@ -171,25 +246,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
             <p className="text-red-500 capitalize">{item.restrictions}</p>
           )}
 
-          {item.type == 'ingredient' && (
-            <div className="mt-6 text-gray-400">
-              <span className="text-sm">Crafting Lv. Min: {item.requirements.level}</span>
-              <div className="flex flex-col ml-4">
-                {Object.entries(item.requirements.skills).map(([key, value]) => (
-                  <div key={key} className="flex items-center gap-2">
-                    <Image
-                      src={`/icons/profession/${value}.webp`}
-                      alt={item.internalName}
-                      width={32}
-                      height={32}
-                      className="h-4 w-4"
-                    />
-                    <span className="text-sm capitalize">{value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+
 
           {embeded && (
             <div className="flex justify-end">
@@ -198,6 +255,8 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
               </Link>
             </div>
           )}
+
+
         </div>
       </CardContent>
     </Card>
