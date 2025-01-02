@@ -91,7 +91,7 @@ const GlobalSearch: React.FC<any> = () => {
 
     debounceTimeout.current = window.setTimeout(() => {
       if (value.trim()) {
-        performSearch(value);
+        performSearch(value.trim());
       }
     }, 500); // Delay of 500ms after typing stops
   };
