@@ -232,9 +232,12 @@ export default function PlayerStatsPage() {
                                     <h3 className="font-semibold mt-4 mb-2">Professions</h3>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                                         {Object.entries(char.professions).map(([profession, data]) => (
-                                            <Badge key={profession} variant="outline" className="text-xs">
+                                            <Card className="text-xs px-3 py-1 capitalize flex gap-2">
+                                                <img src={`/icons/profession/${profession}.webp`} alt={profession} className="h-4" />
                                                 {profession}: {data.level}
-                                            </Badge>
+                                            </Card>
+                                            // <Badge key={profession} variant="outline" >
+                                            // </Badge>
                                         ))}
                                     </div>
                                 </CardContent>
