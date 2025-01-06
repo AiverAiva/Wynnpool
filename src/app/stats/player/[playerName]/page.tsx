@@ -12,6 +12,15 @@ import { Spinner } from '@/components/ui/spinner';
 import GuildEventDisplay from '@/components/custom/guild-event-display';
 import Link from 'next/link';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Skeleton } from '@/components/ui/skeleton';
+
+
+interface PlayerGuild {
+    guild_uuid: string;
+    guild_name: string;
+    player_uuid: string;
+    player_rank: string;
+}
 
 function formatDateWithSuffix(dateString: string): string {
     const date = new Date(dateString);
@@ -55,6 +64,7 @@ export default function PlayerStatsPage() {
     const { playerName } = useParams();
     const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
     const [playerData, setPlayerData] = useState<Player>();
+    const [playerGuildData, setPlayerGuildData] = useState<PlayerGuild>();
     const [isLoading, setIsLoading] = useState(true);
 
     const toggleSection = (id: string) => {
@@ -63,7 +73,6 @@ export default function PlayerStatsPage() {
             [id]: !prev[id],
         }));
     };
-
 
     useEffect(() => {
         async function fetchPlayerData() {
@@ -74,15 +83,25 @@ export default function PlayerStatsPage() {
                 }
 
                 const data = await res.json()
+
                 setPlayerData(data)
+
+                setIsLoading(false)
+                const resGuild = await fetch(`/api/player/guild/${data.uuid}`)
+                if (!resGuild.ok) {
+                    throw new Error('Failed to fetch player guild data')
+                }
+                const dataGuild = await resGuild.json()
+                setPlayerGuildData(dataGuild)
             } catch (err) {
                 console.error('An error occurred while fetching the player data.', err)
             } finally {
                 setIsLoading(false)
             }
         }
-
         fetchPlayerData()
+
+
     }, [playerName])
 
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
@@ -127,10 +146,14 @@ export default function PlayerStatsPage() {
                                 <CardTitle className="text-2xl">{getPlayerDisplayName(playerData.username)}</CardTitle>
                             </div>
                             <CardDescription className="flex flex-col">
-                                {playerData.guild ? (
-                                    <span className='text-md font-mono'><span className='font-bold'>{playerData.guild.rank}</span> of <Link href={`/stats/guild/${playerData.guild.name}`} className='font-bold cursor-pointer hover:underline'>{playerData.guild.name} [{playerData.guild.prefix}]</Link></span>
+                                {playerGuildData ? (
+                                    playerGuildData.guild_name ? (
+                                        <span className='text-md font-mono'><span className='font-bold capitalize'>{playerGuildData.player_rank}</span> of <Link href={`/stats/guild/${playerGuildData.guild_name}`} className='font-bold cursor-pointer hover:underline'>{playerGuildData.guild_name} [{playerGuildData.guild_prefix}]</Link></span>
+                                    ) : (
+                                        <span>No guild</span>
+                                    )
                                 ) : (
-                                    <span>No guild</span>
+                                    <Skeleton className='h-4 w-48' />
                                 )}
                                 Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>
