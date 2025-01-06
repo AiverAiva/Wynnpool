@@ -67,6 +67,7 @@ export default function PlayerStatsPage() {
     const [playerData, setPlayerData] = useState<Player>();
     const [playerGuildData, setPlayerGuildData] = useState<PlayerGuild>();
     const [isLoading, setIsLoading] = useState(true);
+    const [isPlayerGuildLoading, setIsPlayerGuildLoading] = useState(true);
 
     const toggleSection = (id: string) => {
         setOpenSections((prev) => ({
@@ -94,10 +95,12 @@ export default function PlayerStatsPage() {
                 }
                 const dataGuild = await resGuild.json()
                 setPlayerGuildData(dataGuild)
+                setIsPlayerGuildLoading(false)
             } catch (err) {
                 console.error('An error occurred while fetching the player data.', err)
             } finally {
                 setIsLoading(false)
+                setIsPlayerGuildLoading(false)
             }
         }
         fetchPlayerData()
@@ -108,7 +111,6 @@ export default function PlayerStatsPage() {
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
     if (!playerData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Player Not Found.</span></div>
 
-    console.log(playerGuildData)
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
             <Card className={`mb-8 ${playerData.online ? " outline outline-green-500" : "outline-none"}`}>
@@ -148,10 +150,14 @@ export default function PlayerStatsPage() {
                                 <CardTitle className="text-2xl">{getPlayerDisplayName(playerData.username)}</CardTitle>
                             </div>
                             <CardDescription className="flex flex-col">
-                                {playerGuildData ? (
-                                    <span className='text-md font-mono'><span className='font-bold capitalize'>{playerGuildData.player_rank}</span> of <Link href={`/stats/guild/${playerGuildData.guild_name}`} className='font-bold cursor-pointer hover:underline'>{playerGuildData.guild_name} [{playerGuildData.guild_prefix}]</Link></span>
+                                {!isPlayerGuildLoading ? (
+                                    playerGuildData ? (
+                                        <span className='text-md font-mono'><span className='font-bold capitalize'>{playerGuildData.player_rank}</span> of <Link href={`/stats/guild/${playerGuildData.guild_name}`} className='font-bold cursor-pointer hover:underline'>{playerGuildData.guild_name} [{playerGuildData.guild_prefix}]</Link></span>
+                                    ) : (
+                                        <span>No guild</span>
+                                    )
                                 ) : (
-                                    <span>No guild</span>
+                                    <Skeleton className='h-5 w-48' />
                                 )}
                                 Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>
