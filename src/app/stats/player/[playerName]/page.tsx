@@ -108,6 +108,7 @@ export default function PlayerStatsPage() {
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
     if (!playerData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Player Not Found.</span></div>
 
+    console.log(playerGuildData)
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
             <Card className={`mb-8 ${playerData.online ? " outline outline-green-500" : "outline-none"}`}>
@@ -148,13 +149,9 @@ export default function PlayerStatsPage() {
                             </div>
                             <CardDescription className="flex flex-col">
                                 {playerGuildData ? (
-                                    playerGuildData.guild_name ? (
-                                        <span className='text-md font-mono'><span className='font-bold capitalize'>{playerGuildData.player_rank}</span> of <Link href={`/stats/guild/${playerGuildData.guild_name}`} className='font-bold cursor-pointer hover:underline'>{playerGuildData.guild_name} [{playerGuildData.guild_prefix}]</Link></span>
-                                    ) : (
-                                        <span>No guild</span>
-                                    )
+                                    <span className='text-md font-mono'><span className='font-bold capitalize'>{playerGuildData.player_rank}</span> of <Link href={`/stats/guild/${playerGuildData.guild_name}`} className='font-bold cursor-pointer hover:underline'>{playerGuildData.guild_name} [{playerGuildData.guild_prefix}]</Link></span>
                                 ) : (
-                                    <Skeleton className='h-5 w-48' />
+                                    <span>No guild</span>
                                 )}
                                 Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>
