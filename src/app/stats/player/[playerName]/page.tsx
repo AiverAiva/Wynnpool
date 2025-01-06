@@ -18,6 +18,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 interface PlayerGuild {
     guild_uuid: string;
     guild_name: string;
+    guild_prefix: string;
     player_uuid: string;
     player_rank: string;
 }
@@ -153,7 +154,7 @@ export default function PlayerStatsPage() {
                                         <span>No guild</span>
                                     )
                                 ) : (
-                                    <Skeleton className='h-4 w-48' />
+                                    <Skeleton className='h-5 w-48' />
                                 )}
                                 Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>

@@ -57,7 +57,7 @@ const connectToDatabase = async () => {
   }
 };
 
-export async function GET(request: NextRequest, { params }: { params: { uuid: string } }): Promise<NextResponse> {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ uuid: string }> }): Promise<NextResponse> {
   const playerUuid = (await params).uuid;
 
   if (!playerUuid) {
