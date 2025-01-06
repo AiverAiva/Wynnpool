@@ -255,7 +255,7 @@ export default function PlayerStatsPage() {
                                     <h3 className="font-semibold mt-4 mb-2">Professions</h3>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                                         {Object.entries(char.professions).map(([profession, data]) => (
-                                            <Card className="text-xs px-3 py-1 capitalize flex gap-2">
+                                            <Card className="text-xs px-3 py-1 capitalize flex gap-2" key={profession}>
                                                 <img src={`/icons/profession/${profession}.webp`} alt={profession} className="h-4" />
                                                 {profession}: {data.level}
                                             </Card>
