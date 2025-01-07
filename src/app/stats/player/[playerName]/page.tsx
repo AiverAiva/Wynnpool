@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { Bold, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
+import { Bold, ChevronDownIcon, ChevronUpIcon, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getPlayerDisplayName, Player, QuestList } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
@@ -15,6 +15,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Skeleton } from '@/components/ui/skeleton';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 interface PlayerGuild {
     guild_uuid: string;
@@ -69,6 +71,7 @@ export default function PlayerStatsPage() {
     const [playerGuildData, setPlayerGuildData] = useState<PlayerGuild>();
     const [isLoading, setIsLoading] = useState(true);
     const [isPlayerGuildLoading, setIsPlayerGuildLoading] = useState(true);
+    const [sortBy, setSortBy] = useState<'createDate' | 'combatLevel' | 'totalLevel'>('combatLevel');
 
     const toggleSection = (id: string) => {
         setOpenSections((prev) => ({
@@ -76,6 +79,22 @@ export default function PlayerStatsPage() {
             [id]: !prev[id],
         }));
     };
+
+    const sortedCharacters = React.useMemo(() => {
+        if (!playerData) return [];
+        return Object.entries(playerData.characters).sort((a, b) => {
+            switch (sortBy) {
+                case 'createDate':
+                    return a[1].playtime - b[1].playtime;
+                case 'combatLevel':
+                    return b[1].level - a[1].level;
+                case 'totalLevel':
+                    return b[1].totalLevel - a[1].totalLevel;
+                default:
+                    return 0;
+            }
+        });
+    }, [playerData, sortBy]);
 
     useEffect(() => {
         async function fetchPlayerData() {
@@ -179,116 +198,122 @@ export default function PlayerStatsPage() {
                 </CardContent>
             </Card>
 
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold">Characters</h2>
+                <Select onValueChange={(value) => setSortBy(value as any)} defaultValue={sortBy}>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Sort by" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="combatLevel">Combat Level</SelectItem>
+                        <SelectItem value="createDate">Create Date</SelectItem>
+                        <SelectItem value="totalLevel">Total Level</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
 
-            <div className="space-y-4">
-                {Object.entries(playerData.characters).map(([id, char]) => {
-                    const isOpen = openSections[id] ?? false;
-                    return (
-                        <div
-                            key={id}
-                            className={`border border-border rounded-md overflow-hidden transition-all ${isOpen ? 'shadow-lg' : 'shadow-sm'
-                                } ${id == playerData.activeCharacter && playerData.online && 'outline outline-green-500'} `}
-                        >
-                            {/* Header */}
-                            <div
-                                className="flex items-center justify-between p-4 bg-secondary cursor-pointer hover:bg-secondary/80 transition-colors"
-                                onClick={() => toggleSection(id)}
-                            >
-                                <div>
-                                    <div className='flex items-center space-x-2'>
-                                        <div className="flex items-center gap-2">
-                                            <h2 className="text-xl font-bold tracking-tight">
-                                                <span className="text-primary">{char.type}</span>
-                                                <span className="text-muted-foreground font-medium ml-2">
-                                                    Level {char.level}
-                                                </span>
-                                                {char.nickname && (
-                                                    <span className='ml-3 text-lg font-medium italic text-muted-foreground/80'>
-                                                        "{char.nickname}"
-                                                    </span>
-                                                )}
-                                            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {sortedCharacters.map(([id, char]) => (
+                    <Dialog key={id}>
+                        <DialogTrigger asChild>
+                            <Card className={`relative overflow-hidden p-4 cursor-pointer hover:bg-accent transition-colors ${id == playerData.activeCharacter && playerData.online ? 'outline outline-green-500' : ''}`}>
+                                <div className="flex items-center justify-between">
+                                    <div className='w-full'>
+                                        <h2 className="text-lg font-bold tracking-tight flex items-center justify-between flex">
+                                            <span className="text-primary">{char.type}</span>
+                                            <span className="text-muted-foreground font-medium">
+                                                Level {char.level}
+                                            </span>
+                                        </h2>
+                                        <div className='flex justify-between items-center'>
+                                            <p className="text-sm text-muted-foreground">
+                                                Total Level: {char.totalLevel}
+                                            </p>
+                                            <div className='flex items-center space-x-2'>
+                                                <TooltipProvider delayDuration={50}>
+                                                    {char.gamemode.sort().map((mode, index) => {
+                                                        if (mode == 'ironman' && char.gamemode.includes('ultimate_ironman')) return
+                                                        const formattedMode = mode
+                                                            .split('_')
+                                                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                                                            .join(' ');
+
+                                                        return (
+                                                            <Tooltip key={index}>
+                                                                <TooltipTrigger>
+                                                                    {/* <div className='hover:bg-background transition-colors transition-duration-200 rounded-md p-1.5'> */}
+                                                                    <img
+                                                                        src={`/icons/gamemode/${mode == 'hardcore' && char.deaths > 0 ? 'defeated_' : ''}${mode}.svg`}
+                                                                        alt={formattedMode}
+                                                                        className={'h-4'}
+                                                                    />
+                                                                </TooltipTrigger>
+                                                                <TooltipContent side="bottom">
+                                                                    <p>{`${mode == 'hardcore' && char.deaths > 0 ? 'Defeated ' : ''}${formattedMode}`}</p>
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        );
+                                                    })}
+                                                </TooltipProvider>
+                                            </div>
                                         </div>
-                                        <TooltipProvider delayDuration={50}>
-                                            {char.gamemode.sort().map((mode, index) => {
-                                                if (mode == 'ironman' && char.gamemode.includes('ultimate_ironman')) return
-                                                const formattedMode = mode
-                                                    .split('_')
-                                                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                                                    .join(' ');
-
-                                                return (
-                                                    <Tooltip key={index}>
-                                                        <TooltipTrigger>
-                                                            {/* <div className='hover:bg-background transition-colors transition-duration-200 rounded-md p-1.5'> */}
-                                                            <img
-                                                                src={`/icons/gamemode/${mode == 'hardcore' && char.deaths > 0 ? 'defeated_' : ''}${mode}.svg`}
-                                                                alt={formattedMode}
-                                                                className={'h-4'}
-                                                            />
-                                                        </TooltipTrigger>
-                                                        <TooltipContent side="bottom">
-                                                            <p>{`${mode == 'hardcore' && char.deaths > 0 ? 'Defeated ' : ''}${formattedMode}`}</p>
-                                                        </TooltipContent>
-                                                    </Tooltip>
-                                                );
-                                            })}
-                                        </TooltipProvider>
+                                        {char.nickname && (
+                                            <span className='text-sm font-medium italic text-muted-foreground/80'>
+                                                "{char.nickname}"
+                                            </span>
+                                        )}
                                     </div>
-                                    <p className="text-sm text-muted-foreground">
-                                        XP: {char.xp.toLocaleString()} ({char.xpPercent}%)
-                                    </p>
                                 </div>
-                                <Button
-                                    variant="ghost"
-                                    className="p-2 rounded-md"
-                                    aria-label={isOpen ? 'Collapse section' : 'Expand section'}
-                                >
-                                    {isOpen ? <ChevronUpIcon className="w-5 h-5" /> : <ChevronDownIcon className="w-5 h-5" />}
-                                </Button>
-                            </div>
+                                <Progress className="absolute bottom-0 left-0 w-full rounded-none h-1" value={char.xpPercent} />
+                            </Card>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-3xl max-w-screen-lg">
+                            <DialogHeader>
+                                <DialogTitle>{char.type} Details</DialogTitle>
+                            </DialogHeader>
+                            <ScrollArea className='h-[70vh]'>
+                                <div className="mt-4 space-y-6">
+                                    <section>
+                                        <h3 className="font-semibold mb-2">Character Stats</h3>
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <StatCard title="Combat Level" value={char.level} />
+                                            <StatCard title="Total Level" value={char.totalLevel} />
+                                            <StatCard title="Playtime" value={`${Math.round(char.playtime)} hours`} />
+                                            <StatCard title="Mobs Killed" value={char.mobsKilled} />
+                                            <StatCard title="Chests Found" value={char.chestsFound} />
+                                            <StatCard title="Deaths" value={char.deaths} />
+                                        </div>
+                                    </section>
 
-                            {/* Foldable Content */}
-                            <div
-                                className={`transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                                    }`}
-                            >
-                                <CardContent className="p-4">
-                                    <Progress value={char.xpPercent} className="mb-4" />
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                        <StatCard title="Playtime" value={`${Math.round(char.playtime)} hours`} />
-                                        <StatCard title="Mobs Killed" value={char.mobsKilled} />
-                                        <StatCard title="Chests Found" value={char.chestsFound} />
-                                        <StatCard title="Deaths" value={char.deaths} />
-                                        <StatCard title="Dungeons Completed" value={char.dungeons.total} />
-                                        <StatCard title="Raids Completed" value={char.raids.total} />
-                                    </div>
-                                    <h3 className="font-semibold mt-4 mb-2">Professions</h3>
-                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                                        {Object.entries(char.professions).map(([profession, data]) => (
-                                            <Card key={profession} className="bg-background transition-colors overflow-hidden">
-                                                <CardContent className="p-3 flex items-center justify-between">
-                                                    <div className="flex items-center gap-2">
-                                                        <img
-                                                            src={`/icons/profession/${profession}.webp`}
-                                                            alt={profession}
-                                                            className="h-6 w-6"
-                                                        // style={{ imageRendering: 'pixelated' }}
-                                                        />
-                                                        <span className="capitalize text-sm">{profession}</span>
-                                                    </div>
-                                                    <Badge variant="outline" className="ml-2">
-                                                        {data.level}
-                                                    </Badge>
-                                                </CardContent>
-                                                <Progress value={data.xpPercent} className='h-1 rounded-none w-full' />
-                                            </Card>
-                                        ))}
-                                    </div>
+                                    <section>
+                                        <h3 className="font-semibold mb-2">Professions</h3>
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                                            {Object.entries(char.professions).map(([profession, data]) => (
+                                                <Card key={profession} className="bg-background transition-colors overflow-hidden">
+                                                    <CardContent className="p-3 flex items-center justify-between">
+                                                        <div className="flex items-center gap-2">
+                                                            <img
+                                                                src={`/icons/profession/${profession}.webp`}
+                                                                alt={profession}
+                                                                className="h-6 w-6"
+                                                            // style={{ imageRendering: 'pixelated' }}
+                                                            />
+                                                            <span className="capitalize text-sm">{profession}</span>
+                                                        </div>
+                                                        <Badge variant="outline" className="ml-2">
+                                                            {data.level}
+                                                        </Badge>
+                                                    </CardContent>
+                                                    <Progress value={data.xpPercent} className='h-1 rounded-none w-full' />
+                                                </Card>
+                                            ))}
+                                        </div>
+                                    </section>
 
-                                    <h3 className="font-semibold mt-4 mb-2">Quests</h3>
-                                    <Card className="p-2">
-                                        <ScrollArea className="h-[300px]">
+                                    <section>
+                                        <h3 className="font-semibold mb-2">Quests</h3>
+                                        <Card className="p-2">
+                                            {/* <ScrollArea className="h-[300px]"> */}
                                             <div className="flex flex-wrap gap-1 text-xs">
                                                 {QuestList
                                                     .sort((a, b) => {
@@ -304,13 +329,14 @@ export default function PlayerStatsPage() {
                                                         </Link>
                                                     ))}
                                             </div>
-                                        </ScrollArea>
-                                    </Card>
-                                </CardContent>
-                            </div>
-                        </div>
-                    );
-                })}
+                                            {/* </ScrollArea> */}
+                                        </Card>
+                                    </section>
+                                </div>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+                ))}
             </div>
         </div >
     )
