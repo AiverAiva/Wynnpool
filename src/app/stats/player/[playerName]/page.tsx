@@ -7,13 +7,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress"
 import { Bold, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getPlayerDisplayName, Player } from '@/types/playerType';
+import { getPlayerDisplayName, Player, QuestList } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
 import GuildEventDisplay from '@/components/custom/guild-event-display';
 import Link from 'next/link';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Skeleton } from '@/components/ui/skeleton';
-
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { cn } from '@/lib/utils';
 
 interface PlayerGuild {
     guild_uuid: string;
@@ -195,9 +196,19 @@ export default function PlayerStatsPage() {
                             >
                                 <div>
                                     <div className='flex items-center space-x-2'>
-                                        <h2 className="text-lg font-semibold">
-                                            {char.type} (Level {char.level})
-                                        </h2>
+                                        <div className="flex items-center gap-2 py-2">
+                                            <h2 className="text-xl font-bold tracking-tight">
+                                                <span className="text-primary">{char.type}</span>
+                                                <span className="text-muted-foreground font-medium ml-2">
+                                                    Level {char.level}
+                                                </span>
+                                                {char.nickname && (
+                                                    <span className='ml-3 text-lg font-medium italic text-muted-foreground/80'>
+                                                        "{char.nickname}"
+                                                    </span>
+                                                )}
+                                            </h2>
+                                        </div>
                                         <TooltipProvider delayDuration={50}>
                                             {char.gamemode.sort().map((mode, index) => {
                                                 if (mode == 'ironman' && char.gamemode.includes('ultimate_ironman')) return
@@ -257,23 +268,55 @@ export default function PlayerStatsPage() {
                                         <StatCard title="Raids Completed" value={char.raids.total} />
                                     </div>
                                     <h3 className="font-semibold mt-4 mb-2">Professions</h3>
-                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                                         {Object.entries(char.professions).map(([profession, data]) => (
-                                            <Card className="text-xs px-3 py-1 capitalize flex gap-2" key={profession}>
-                                                <img src={`/icons/profession/${profession}.webp`} alt={profession} className="h-4" />
-                                                {profession}: {data.level}
+                                            <Card key={profession} className="bg-background transition-colors overflow-hidden">
+                                                <CardContent className="p-3 flex items-center justify-between">
+                                                    <div className="flex items-center gap-2">
+                                                        <img
+                                                            src={`/icons/profession/${profession}.webp`}
+                                                            alt={profession}
+                                                            className="h-6 w-6"
+                                                        // style={{ imageRendering: 'pixelated' }}
+                                                        />
+                                                        <span className="capitalize text-sm">{profession}</span>
+                                                    </div>
+                                                    <Badge variant="outline" className="ml-2">
+                                                        {data.level}
+                                                    </Badge>
+                                                </CardContent>
+                                                <Progress value={data.xpPercent} className='h-1 rounded-none w-full' />
                                             </Card>
-                                            // <Badge key={profession} variant="outline" >
-                                            // </Badge>
                                         ))}
                                     </div>
+
+                                    <h3 className="font-semibold mt-4 mb-2">Quests</h3>
+                                    <Card className="p-2">
+                                        <ScrollArea className="h-[300px]">
+                                            <div className="flex flex-wrap gap-1 text-xs">
+                                                {QuestList
+                                                    .sort((a, b) => {
+                                                        const aIncluded: any = char.quests.includes(a);
+                                                        const bIncluded: any = char.quests.includes(b);
+                                                        return bIncluded - aIncluded; // Included quests first
+                                                    })
+                                                    .map((quest) => (
+                                                        <Link href={`https://wynncraft.fandom.com/wiki/${quest.replace(' ', '_')}`}>
+                                                            <div className={cn(char.quests.includes(quest) ? "bg-green-950/30 text-green-400 hover:bg-green-950/60" : "bg-muted/50 text-muted-foreground hover:bg-muted ", "flex items-center gap-2 p-2 rounded-lg transition-colors cursor-default group cursor-pointer")}>
+                                                                <span>{quest}</span>
+                                                            </div>
+                                                        </Link>
+                                                    ))}
+                                            </div>
+                                        </ScrollArea>
+                                    </Card>
                                 </CardContent>
                             </div>
                         </div>
                     );
                 })}
             </div>
-        </div>
+        </div >
     )
 }
 
