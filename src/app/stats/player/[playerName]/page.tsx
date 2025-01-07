@@ -196,7 +196,7 @@ export default function PlayerStatsPage() {
                             >
                                 <div>
                                     <div className='flex items-center space-x-2'>
-                                        <div className="flex items-center gap-2 py-2">
+                                        <div className="flex items-center gap-2">
                                             <h2 className="text-xl font-bold tracking-tight">
                                                 <span className="text-primary">{char.type}</span>
                                                 <span className="text-muted-foreground font-medium ml-2">
@@ -234,10 +234,6 @@ export default function PlayerStatsPage() {
                                                 );
                                             })}
                                         </TooltipProvider>
-                                        {/* // <span key={index}>
-                                            //     {mode}
-                                            //     {index < char.gamemode.length - 1 && ','}
-                                            // </span> */}
                                     </div>
                                     <p className="text-sm text-muted-foreground">
                                         XP: {char.xp.toLocaleString()} ({char.xpPercent}%)
@@ -301,7 +297,7 @@ export default function PlayerStatsPage() {
                                                         return bIncluded - aIncluded; // Included quests first
                                                     })
                                                     .map((quest) => (
-                                                        <Link href={`https://wynncraft.fandom.com/wiki/${quest.replace(' ', '_')}`}>
+                                                        <Link href={`https://wynncraft.wiki.gg/wiki/${quest.replace(' ', '_').replace('À', '')}`}>
                                                             <div className={cn(char.quests.includes(quest) ? "bg-green-950/30 text-green-400 hover:bg-green-950/60" : "bg-muted/50 text-muted-foreground hover:bg-muted ", "flex items-center gap-2 p-2 rounded-lg transition-colors cursor-default group cursor-pointer")}>
                                                                 <span>{quest}</span>
                                                             </div>
