@@ -1,12 +1,10 @@
 'use client'
 
-import { notFound, useParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react';
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { Bold, ChevronDownIcon, ChevronUpIcon, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { getPlayerDisplayName, Player, QuestList } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
 import GuildEventDisplay from '@/components/custom/guild-event-display';
@@ -66,19 +64,11 @@ function formatTimeAgo(dateString: string): string {
 
 export default function PlayerStatsPage() {
     const { playerName } = useParams();
-    const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
     const [playerData, setPlayerData] = useState<Player>();
     const [playerGuildData, setPlayerGuildData] = useState<PlayerGuild>();
     const [isLoading, setIsLoading] = useState(true);
     const [isPlayerGuildLoading, setIsPlayerGuildLoading] = useState(true);
     const [sortBy, setSortBy] = useState<'createDate' | 'combatLevel' | 'totalLevel'>('combatLevel');
-
-    const toggleSection = (id: string) => {
-        setOpenSections((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }));
-    };
 
     const sortedCharacters = React.useMemo(() => {
         if (!playerData) return [];
@@ -313,23 +303,23 @@ export default function PlayerStatsPage() {
                                     <section>
                                         <h3 className="font-semibold mb-2">Quests</h3>
                                         <Card className="p-2">
-                                            {/* <ScrollArea className="h-[300px]"> */}
-                                            <div className="flex flex-wrap gap-1 text-xs">
-                                                {QuestList
-                                                    .sort((a, b) => {
-                                                        const aIncluded: any = char.quests.includes(a);
-                                                        const bIncluded: any = char.quests.includes(b);
-                                                        return bIncluded - aIncluded; // Included quests first
-                                                    })
-                                                    .map((quest) => (
-                                                        <Link href={`https://wynncraft.wiki.gg/wiki/${quest.replace(' ', '_').replace('À', '')}`}>
-                                                            <div className={cn(char.quests.includes(quest) ? "bg-green-950/30 text-green-400 hover:bg-green-950/60" : "bg-muted/50 text-muted-foreground hover:bg-muted ", "flex items-center gap-2 p-2 rounded-lg transition-colors cursor-default group cursor-pointer")}>
-                                                                <span>{quest}</span>
-                                                            </div>
-                                                        </Link>
-                                                    ))}
-                                            </div>
-                                            {/* </ScrollArea> */}
+                                            <ScrollArea className="h-[300px]">
+                                                <div className="flex flex-wrap gap-1 text-xs">
+                                                    {QuestList
+                                                        .sort((a, b) => {
+                                                            const aIncluded: any = char.quests.includes(a);
+                                                            const bIncluded: any = char.quests.includes(b);
+                                                            return bIncluded - aIncluded; // Included quests first
+                                                        })
+                                                        .map((quest) => (
+                                                            <Link href={`https://wynncraft.wiki.gg/wiki/${quest.replace(' ', '_').replace('À', '')}`}>
+                                                                <div className={cn(char.quests.includes(quest) ? "bg-green-950/30 text-green-400 hover:bg-green-950/60" : "bg-muted/50 text-muted-foreground hover:bg-muted ", "flex items-center gap-2 p-2 rounded-lg transition-colors cursor-default group cursor-pointer")}>
+                                                                    <span>{quest}</span>
+                                                                </div>
+                                                            </Link>
+                                                        ))}
+                                                </div>
+                                            </ScrollArea>
                                         </Card>
                                     </section>
                                 </div>
