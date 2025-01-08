@@ -58,7 +58,7 @@ const identificationMap: Record<string, IdentificationInfo> = {
     "lifeSteal": { unit: "/3s", displayName: "Life Steal" },
     "reflection": { unit: "%", displayName: "Reflection" },
     "lootBonus": { unit: "%", displayName: "Loot Bonus" },
-    "poison": { unit: "", displayName: "Poison" },
+    "poison": { unit: "/3s", displayName: "Poison" },
     "elementalDamage": { unit: "%", displayName: "Elemental Damage" },
     "rawDefence": { unit: "", displayName: "Defence" },
     "rawAgility": { unit: "", displayName: "Agility" },
