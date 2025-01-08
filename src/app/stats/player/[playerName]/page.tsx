@@ -312,7 +312,7 @@ export default function PlayerStatsPage() {
                                                             return bIncluded - aIncluded; // Included quests first
                                                         })
                                                         .map((quest) => (
-                                                            <Link href={`https://wynncraft.wiki.gg/wiki/${quest.replace(' ', '_').replace('À', '')}`}>
+                                                            <Link key={quest} href={`https://wynncraft.wiki.gg/wiki/${quest.replace(' ', '_').replace('À', '')}`}>
                                                                 <div className={cn(char.quests.includes(quest) ? "bg-green-950/30 text-green-400 hover:bg-green-950/60" : "bg-muted/50 text-muted-foreground hover:bg-muted ", "flex items-center gap-2 p-2 rounded-lg transition-colors cursor-default group cursor-pointer")}>
                                                                     <span>{quest}</span>
                                                                 </div>
