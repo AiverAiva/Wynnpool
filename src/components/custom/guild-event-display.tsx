@@ -90,13 +90,32 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
             case 'join':
                 icon = <LogIn className="w-6 h-6 text-green-600" />;
                 bgColor = 'bg-green-600/20';
-                message = `${event.name} Joined ${event.guild_name}`;
+                message =
+                    <span>
+                        <Link href={`/stats/player/${event.uuid}`} className='font-bold hover:underline'>{event.name}</Link>
+                        &ensp;Joined 
+                        {pathname.includes('/player/') && (
+                            <span>
+                                &ensp;<Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`}>{event.guild_name}</Link>&ensp;
+                            </span>
+                        )}
+                    </span>;
                 break;
 
             case 'leave':
                 icon = <LogOut className="w-6 h-6 text-red-600" />;
                 bgColor = 'bg-red-600/20';
-                message = `${event.name} Left ${event.guild_name} as ${event.rank}`;
+                message =
+                    <span>
+                        <Link href={`/stats/player/${event.uuid}`} className='font-bold hover:underline'>{event.name}</Link>
+                        &ensp;Left&ensp;
+                        {pathname.includes('/player/') && (
+                            <span>
+                                <Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`}>{event.guild_name}</Link>&ensp;
+                            </span>
+                        )}
+                        as&ensp;{event.rank}
+                    </span>;
                 break;
 
             case 'rank_change':
@@ -104,7 +123,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
                 bgColor = 'bg-cyan-600/20';
                 message =
                     <span>
-                        {event.name}'s rank changed to {event.new_rank} from {event.old_rank}
+                        <Link href={`/stats/player/${event.uuid}`} className='font-bold hover:underline'>{event.name}</Link>'s rank changed to {event.new_rank} from {event.old_rank}
                         {pathname.includes('/player/') && (
                             <span>
                                 &ensp;in&ensp;
