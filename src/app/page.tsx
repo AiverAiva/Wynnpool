@@ -129,12 +129,6 @@ export default function HomePage() {
           <ServerStatusDisplay />
         </section>
       </main>
-
-      <footer className="border-t mt-12">
-        <div className="container mx-auto px-4 py-6 text-center text-muted-foreground">
-          <p>&copy; 2024 Wynnpool. All rights reserved. Not affiliated with Wynncraft.</p>
-        </div>
-      </footer>
     </div>
   )
 }

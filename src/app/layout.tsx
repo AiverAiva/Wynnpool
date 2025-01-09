@@ -57,6 +57,11 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ThemeProvider>
+        <footer className="border-t mt-12">
+          <div className="container mx-auto px-4 py-6 text-center text-muted-foreground">
+            <p>Copyright Wynnpool &copy; 2024 - 2025. All rights reserved. Not affiliated with Wynncraft.</p>
+          </div>
+        </footer>
       </body>
     </html>
   );
