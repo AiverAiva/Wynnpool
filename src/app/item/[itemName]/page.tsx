@@ -3,12 +3,15 @@
 import { notFound, useParams, usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '@/components/ui/spinner';
-import { Item } from '@/types/itemType';
+import { getIdentificationCost, Item } from '@/types/itemType';
 import { ItemDisplay } from '@/components/custom/item-display';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Copy } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import CurrencyDisplay from '@/components/custom/currency-display';
+
 
 export default function ItemPage() {
     const { itemName } = useParams();
@@ -276,6 +279,47 @@ export default function ItemPage() {
                             )}
                         </CardContent>
                     </Card>
+                    {!itemData.identified && (
+                        <Card className="w-full max-w-2xl mx-auto">
+                            <CardHeader>
+                                <CardTitle>Identification Cost Calculator</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <Table>
+                                    <TableHeader>
+                                        <TableRow>
+                                            <TableHead>Reroll Count</TableHead>
+                                            <TableHead>Cost</TableHead>
+                                        </TableRow>
+                                    </TableHeader>
+                                    <TableBody>
+                                        {(() => {
+                                            const rerolls = [];
+                                            let currentCost = getIdentificationCost(itemData.rarity, itemData.requirements?.level || 0);
+                                            let rerollCount = 1;
+                                            const maxSTX = 29 * 64 * 4096; //29stx
+
+                                            while (currentCost <= maxSTX) {
+                                                rerolls.push({
+                                                    count: rerollCount,
+                                                    cost: currentCost
+                                                });
+                                                currentCost *= 5;
+                                                rerollCount++;
+                                            }
+
+                                            return rerolls.map(({ count, cost }) => (
+                                                <TableRow key={count}>
+                                                    <TableCell className="font-medium">Reroll [{count}]</TableCell>
+                                                    <TableCell className='flex gap-2 items-center'><CurrencyDisplay amount={cost} />({cost})</TableCell>
+                                                </TableRow>
+                                            ));
+                                        })()}
+                                    </TableBody>
+                                </Table>
+                            </CardContent>
+                        </Card>
+                    )}
                 </div>
             </div>
         </div>

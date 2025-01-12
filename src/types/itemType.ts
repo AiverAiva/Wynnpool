@@ -230,11 +230,13 @@ export interface ArmourItem extends ItemBase {
 
 export interface ToolItem extends ItemBase {
     type: 'tool'
+    identified: true
     gatheringSpeed: number
 }
 
 export interface IngredientItem extends ItemBase {
     type: 'ingredient'
+    identified: true
     tier: number
     requirements: {
         level: number
@@ -265,6 +267,7 @@ export interface IngredientItem extends ItemBase {
 
 export interface MaterialItem extends ItemBase {
     type: 'material'
+    identified: true
     tier: number
     craftable: string[]
 }
@@ -283,4 +286,21 @@ export interface Charm extends ItemBase {
 
 export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem | Tome | Charm
 
-
+export function getIdentificationCost(rarity: string, level: number): number {
+    switch (rarity) {
+        case 'mythic':
+            return Math.floor(90 + level * 18);
+        case 'fabled':
+            return Math.floor(16 + level * 8);
+        case 'legendary':
+            return Math.floor(12 + level * 4.5);
+        case 'rare':
+            return Math.floor(8 + level * 1.2);
+        case 'unique':
+            return Math.floor(3 + level * 0.5);
+        case 'set':
+            return Math.floor(8 + level * 1.5);
+        default:
+            return 0;
+    }
+}
