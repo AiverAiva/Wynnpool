@@ -282,7 +282,7 @@ export default function ItemPage() {
                     {!itemData.identified && (
                         <Card className="w-full max-w-2xl mx-auto">
                             <CardHeader>
-                                <CardTitle>Identification Cost Calculator</CardTitle>
+                                <CardTitle>Identification Cost</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <Table>
