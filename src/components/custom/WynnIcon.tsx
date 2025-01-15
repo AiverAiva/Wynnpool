@@ -2,6 +2,7 @@
 import { Item } from '@/types/itemType';
 import React, { FC } from 'react';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 interface IconProps {
   name: string; // Add more icon names as needed
@@ -94,17 +95,45 @@ const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
   );
 };
 
-export { ItemTypeIcon, ItemIcon, getImageSrc }
-// export const WynnIcon: React.FC<IconProps> = ({ name, size = 32, className, alt = '' }) => {
-//     const src = `/icons/${name}`; // Build the path to the icon in /public/icons
-  
-//     return (
-//       <img
-//         src={src}
-//         alt={alt || name} // Fallback to the icon name if alt is not provided
-//         width={size}
-//         height={size}
-//         className={className}
-//       />
-//     );
-//   };
+const iconBackgroundPositions: { [key: string]: string } = {
+  dungeon_key: '-320px -0px',
+  corrupted_dungeon_key: '-352px -0px',
+  nii_rune: '-224px -608px',
+  uth_rune: '-192px -608px',
+  tol_rune: '-128px -608px',
+};
+
+const MiscIcon: React.FC<{ id: string; size?: number }> = ({ id, size = 32 }) => {
+  const backgroundPosition = iconBackgroundPositions[id];
+
+  if (!backgroundPosition) {
+    console.error(`Invalid icon ID: ${id}`);
+    return null;
+  }
+
+  const [x, y] = backgroundPosition
+    .split(' ')
+    .map((pos) => parseInt(pos.replace('px', ''), 10));
+
+  const scale = size / 32;
+
+  return (
+    <span
+      className="sprite"
+      style={{
+        backgroundImage: 'url(/icons/items/WynnIconCSS.webp)',
+        display: 'inline-block',
+        width: `${size}px`,
+        height: `${size}px`,
+        verticalAlign: 'middle',
+        backgroundPosition: `${x * scale}px ${y * scale}px`,
+        backgroundSize: `${640 * scale}px ${640 * scale}px`,
+        imageRendering: 'pixelated',
+        lineHeight: 0,
+      }}
+    ></span>
+  );
+};
+
+
+export { ItemTypeIcon, ItemIcon, MiscIcon, getImageSrc }
