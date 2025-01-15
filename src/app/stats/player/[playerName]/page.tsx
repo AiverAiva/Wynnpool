@@ -15,6 +15,8 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import Image from 'next/image';
+import { MiscIcon } from '@/components/custom/WynnIcon';
 
 interface PlayerGuild {
     guild_uuid: string;
@@ -299,6 +301,62 @@ export default function PlayerStatsPage() {
                                             ))}
                                         </div>
                                     </section>
+
+                                    <section>
+                                        <h3 className="font-semibold mb-2">Dungeons</h3>
+                                        <div className="text-sm mb-4">
+                                            Total Dungeons Completed: {char.dungeons.total}
+                                        </div>
+                                        <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+                                            {Object.entries(
+                                                Object.entries(char.dungeons.list).reduce<{
+                                                    [key: string]: { normal: number; corrupted: number };
+                                                }>((acc, [name, count]) => {
+                                                    const isCorrupted = name.startsWith("Corrupted ");
+                                                    const baseName = isCorrupted ? name.replace("Corrupted ", "") : name;
+
+                                                    if (!acc[baseName]) {
+                                                        acc[baseName] = { normal: 0, corrupted: 0 };
+                                                    }
+
+                                                    if (isCorrupted) {
+                                                        acc[baseName].corrupted += count;
+                                                    } else {
+                                                        acc[baseName].normal += count;
+                                                    }
+
+                                                    return acc;
+                                                }, {})
+                                            ).map(([name, counts]) => (
+                                                <Card key={name} className='flex p-2 gap-2'>
+                                                    <Image
+                                                        src={`/icons/dungeon/${name.replace(' ', '_').replace('-', '_').replace("'s", '').toLowerCase()}.webp`}
+                                                        alt={name}
+                                                        width={64}
+                                                        height={64}
+                                                    />
+                                                    <div>
+                                                        <span>{name}</span>
+                                                        <div className='flex flex-row gap-3'>
+                                                            {counts.normal > 0 && (
+                                                                <div className='flex gap-1 items-center'>
+                                                                    <MiscIcon id='dungeon_key' size={24} />
+                                                                    {counts.normal}
+                                                                </div>
+                                                            )}
+                                                            {counts.corrupted > 0 && (
+                                                                <div className='flex gap-1 items-center'>
+                                                                    <MiscIcon id='corrupted_dungeon_key' size={24} />
+                                                                    {counts.corrupted}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </Card>
+                                            ))}
+                                        </div>
+                                    </section>
+
 
                                     <section>
                                         <h3 className="font-semibold mb-2">Quests</h3>
