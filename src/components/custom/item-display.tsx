@@ -48,14 +48,14 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
         </div>
 
         <div className="flex justify-center items-center">
-          <CardTitle className={`text-lg ${isCombatItem && `text-${item.rarity}`} font-thin ${item.type == 'ingredient' && 'text-[#AAAAAA]'}`}>
+          <CardTitle className={`flex justify-center items-center ${item.internalName.length >= 13 ? (item.internalName.length >= 16 ? (item.internalName.length >= 19 ? 'text-xs flex-col' : 'text-sm') : 'text-md') : 'text-lg'} ${isCombatItem && `text-${item.rarity}`} font-thin ${item.type == 'ingredient' && 'text-[#AAAAAA]'}`}>
             {item.internalName}
             {item.type == 'ingredient' && (
               <StarFormatter tier={item.tier} />
             )}
             {item.type == 'material' && (
               <span className="text-[#FFAA00] ml-2">
-                [<span className="text-[#FFFF55]">{Array.from({ length: item.tier }, () => '✫').join('')}</span><span className="text-[#555555]">{Array.from({ length: 3-item.tier }, () => '✫').join('')}</span>]
+                [<span className="text-[#FFFF55]">{Array.from({ length: item.tier }, () => '✫').join('')}</span><span className="text-[#555555]">{Array.from({ length: 3 - item.tier }, () => '✫').join('')}</span>]
               </span>
             )}
           </CardTitle>
