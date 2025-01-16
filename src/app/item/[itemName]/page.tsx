@@ -279,7 +279,7 @@ export default function ItemPage() {
                             )}
                         </CardContent>
                     </Card>
-                    {!itemData.identified && (
+                    {isCombatItem && !itemData.identified && (
                         <Card className="w-full max-w-2xl mx-auto">
                             <CardHeader>
                                 <CardTitle>Identification Cost</CardTitle>
