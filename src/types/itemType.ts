@@ -236,7 +236,6 @@ export interface ToolItem extends ItemBase {
 
 export interface IngredientItem extends ItemBase {
     type: 'ingredient'
-    identified: true
     tier: number
     requirements: {
         level: number
