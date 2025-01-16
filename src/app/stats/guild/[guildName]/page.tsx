@@ -12,6 +12,7 @@ import GuildEventDisplay from '@/components/custom/guild-event-display'
 import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 import Link from 'next/link'
 import Banner from '@/components/custom/banner'
+import { ExternalLink } from 'lucide-react'
 
 function formatTimeAgo(timestamp: number | string | undefined): string {
     if (!timestamp) return 'Never';
@@ -147,14 +148,24 @@ export default function GuildStatsPage() {
 
                                             return (
                                                 <TableRow key={uuid} className={`${member.online ? 'bg-green-500/20 hover:bg-green-300/20' : ''}`}>
-                                                    <TableCell>
-                                                        <Link href={`/stats/player/${uuid}`} className='flex items-center cursor-pointer'>
+                                                    <TableCell className='group hover:scale-105 transition-transform duration-200'>
+                                                        <Link href={`/stats/player/${uuid}`} className='flex items-center cursor-pointer gap-2'>
                                                             <img
                                                                 src={`/api/player/icon/${uuid}`}
                                                                 alt={member.username}
                                                                 className="w-8 h-8"
                                                             />
-                                                            <span className="ml-2 font-mono text-lg">{member.username}</span>
+                                                            {member.online ? (
+                                                                <div className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center">
+                                                                    <div className="w-2 h-2 rounded-full bg-green-500" />
+                                                                </div>
+                                                            ) : (
+                                                                <div className="w-4 h-4 rounded-full bg-muted flex items-center justify-center">
+                                                                    <div className="w-2 h-2 rounded-full bg-muted-foreground/50" />
+                                                                </div>
+                                                            )}
+                                                            <span className="font-mono text-lg">{member.username}</span>
+                                                            <ExternalLink className='hidden opacity-0 group-hover:inline-block group-hover:opacity-100 h-4 w-4 text-muted-foreground transition-all duration-500'/>
                                                         </Link>
                                                     </TableCell>
                                                     <TableCell>
