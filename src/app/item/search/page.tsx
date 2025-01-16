@@ -37,12 +37,6 @@ export default function PageSwitch() {
                             />
                         </TabsContent>
                         <TabsContent value="ingredient">
-                            <Alert variant='destructive' className="mb-4">
-                                <span className="font-mono font-bold text-lg">
-                                    the rarity search is currently not working due to wynncraft api issue,
-                                    it will be working when i finish my own item database.
-                                </span>
-                            </Alert>
                             <IngredientSearch
                                 results={results}
                                 setResults={setResults}
