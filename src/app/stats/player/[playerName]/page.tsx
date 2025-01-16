@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
@@ -72,7 +72,7 @@ export default function PlayerStatsPage() {
     const [isPlayerGuildLoading, setIsPlayerGuildLoading] = useState(true);
     const [sortBy, setSortBy] = useState<'createDate' | 'combatLevel' | 'totalLevel'>('combatLevel');
 
-    const sortedCharacters = React.useMemo(() => {
+    const sortedCharacters = useMemo(() => {
         if (!playerData) return [];
         return Object.entries(playerData.characters).sort((a, b) => {
             switch (sortBy) {
@@ -182,8 +182,8 @@ export default function PlayerStatsPage() {
                         <StatCard title="Wars" value={playerData.globalData.wars} />
                         <StatCard title="Mobs Killed" value={playerData.globalData.killedMobs} />
                         <StatCard title="Chests Found" value={playerData.globalData.chestsFound} />
-                        <StatCard title="Dungeons Completed" value={playerData.globalData.dungeons.total} />
                         <StatCard title="Raids Completed" value={playerData.globalData.raids.total} />
+                        <StatCard title="Dungeons Completed" value={playerData.globalData.dungeons.total} />
                         <StatCard title="Quests Completed" value={playerData.globalData.completedQuests} />
                     </div>
                     <GuildEventDisplay query={{ uuid: playerData.uuid }} />
@@ -357,6 +357,28 @@ export default function PlayerStatsPage() {
                                         </div>
                                     </section>
 
+                                    <section>
+                                        <h3 className="font-semibold mb-2">Raids</h3>
+                                        <div className="text-sm mb-4">
+                                            Total Raids Completed: {char.raids.total}
+                                        </div>
+                                        <div className='grid sm:grid-cols-2 gap-4'>
+                                            {Object.entries(char.raids.list).map(([name, count]) => (
+                                                <Card key={name} className='flex p-2 gap-2'>
+                                                    <Image
+                                                        src={`/icons/raid/${name}.webp`}
+                                                        alt={name}
+                                                        width={64}
+                                                        height={64}
+                                                    />
+                                                    <div className='flex flex-col'>
+                                                        <span>{name}</span>
+                                                        {count}
+                                                    </div>
+                                                </Card>
+                                            ))}
+                                        </div>
+                                    </section>
 
                                     <section>
                                         <h3 className="font-semibold mb-2">Quests</h3>
