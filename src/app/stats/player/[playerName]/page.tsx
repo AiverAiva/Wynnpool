@@ -208,7 +208,7 @@ export default function PlayerStatsPage() {
                 {sortedCharacters.map(([id, char]) => (
                     <Dialog key={id}>
                         <DialogTrigger asChild>
-                            <Card className={`relative overflow-hidden p-4 cursor-pointer hover:bg-accent transition-colors ${id == playerData.activeCharacter && playerData.online ? 'outline outline-green-500' : ''}`}>
+                            <Card className={`relative overflow-hidden p-4 cursor-pointer hover:scale-105 transition-all duration-200 hover:bg-accent ${id == playerData.activeCharacter && playerData.online ? 'outline outline-green-500' : ''}`}>
                                 <div className="flex items-center justify-between">
                                     <div className='w-full'>
                                         <h2 className="text-lg font-bold tracking-tight flex items-center justify-between flex">
