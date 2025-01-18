@@ -13,6 +13,7 @@ import '@/assets/css/wynncraft.css'
 import { getClassInfo } from "@/types/classType"
 import Link from "next/link"
 import { ItemIcon } from "./WynnIcon"
+import { cn } from "@/lib/utils"
 
 interface ItemDisplayProps {
   item: Item
@@ -40,15 +41,26 @@ function getFormattedText(number: number) {
 
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
   const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory' || item.type === 'tome' || item.type === 'charm'
+  const itemNameLength = isCombatItem ? item.internalName.length - 8 : item.internalName.length
+  var itemNameSize = 'text-lg'
+
+  if (itemNameLength >= 13) itemNameSize = 'text-md'
+  if (itemNameLength >= 16) itemNameSize = 'text-sm'
+  if (itemNameLength >= 19) itemNameSize = 'text-xs flex-col'
   return (
-    <Card className="w-full max-w-2xl mx-auto h-fit font-ascii">
+    <Card className="w-full max-w-2xl mx-auto h-fit font-ascii text-[#AAAAAA]">
       <CardHeader>
         <div className="flex justify-center items-center">
-          <ItemIcon item={item} size={64} />
+          <ItemIcon item={item} size={64} className="w-16 h-16" />
         </div>
 
         <div className="flex justify-center items-center">
-          <CardTitle className={`flex justify-center items-center ${item.internalName.length >= 13 ? (item.internalName.length >= 16 ? (item.internalName.length >= 19 ? 'text-xs flex-col' : 'text-sm') : 'text-md') : 'text-lg'} ${isCombatItem && `text-${item.rarity}`} font-thin ${item.type == 'ingredient' && 'text-[#AAAAAA]'}`}>
+          <CardTitle className=
+            {`flex justify-center items-center font-thin 
+                ${itemNameSize} 
+                ${isCombatItem && `text-${item.rarity}`}
+                ${item.type == 'ingredient' && 'text-[#AAAAAA]'}
+              `}>
             {item.internalName}
             {item.type == 'ingredient' && (
               <StarFormatter tier={item.tier} />
@@ -97,7 +109,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
           )}
 
           {isCombatItem && item.requirements && (
-            <ul className="list-disc list-inside text-sm text-gray-400">
+            <ul className="list-disc list-inside text-sm">
               {Object.entries(item.requirements).map(([key, value]) => {
                 let displayValue;
                 if (typeof value === 'string' || typeof value === 'number') {
@@ -137,18 +149,19 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
                   return val > 0 ? 'text-green-500' : 'text-red-500'; // Regular keys
                 };
 
+                const displayName = getIdentificationInfo(key)?.displayName ?? key
                 return (
                   <div key={key} className="flex items-center justify-between text-sm">
                     {typeof value === 'number' ? (
                       <>
                         <span style={{ flex: '1', textAlign: 'left' }}></span>
-                        <span className="flex-grow text-center">{getIdentificationInfo(key)?.displayName}</span>
+                        <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
                         <span className={`${getColorClass(value)}`} style={{ flex: '1', textAlign: 'right' }}>{value}{getIdentificationInfo(key)?.unit}</span>
                       </>
                     ) : (
                       <>
                         <span className={getColorClass(value.min)} style={{ flex: '1', textAlign: 'left' }}>{value.min}{getIdentificationInfo(key)?.unit}</span>
-                        <span className="flex-grow text-center">{`${getIdentificationInfo(key)?.displayName}`}</span>
+                        <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
                         <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{value.max}{getIdentificationInfo(key)?.unit}</span>
                       </>
                     )}
@@ -272,19 +285,57 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
 
 
 const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
+  const colorMap: Record<string, string> = {
+    baseHealth: 'text-[#AA0000]',
+    baseDamage: 'text-[#FFAA00]',
+    Earth: 'text-[#00AA00]',
+    Thunder: 'text-[#FFFF55]',
+    Water: 'text-[#55FFFF]',
+    Fire: 'text-[#FF5555]',
+    Air: 'text-[#FFFFFF]',
+  };
+
+  const textMap: Record<string, string> = {
+    baseHealth: 'Health',
+    baseDamage: 'Neutral',
+    Earth: 'Earth',
+    Thunder: 'Thunder',
+    Water: 'Water',
+    Fire: 'Fire',
+    Air: 'Air',
+  };
+
+  const matchedKey = Object.keys(colorMap).find((key) => name.includes(key));
+  const color = matchedKey ? colorMap[matchedKey] : '';
+  const text = matchedKey ? <span className={color}>{textMap[matchedKey]}&ensp;</span> : null;
+
+  const type = name.includes('Damage')
+    ? 'Damage'
+    : name.includes('Defence')
+    ? 'Defence'
+    : '';
+
   return (
-    <div className="flex items-center">
-      <span className="font-common text-lg h-6">{getIdentificationInfo(name)?.symbol}</span>
-      <span className={getIdentificationInfo(name)?.symbol && "ml-2"}>{getIdentificationInfo(name)?.displayName}</span>
+    <div className="flex items-center h-5">
+      <div>
+        <span className={cn('font-common text-lg h-4 -mt-3', color)}>
+          {getIdentificationInfo(name)?.symbol}
+        </span>
+        <span className={getIdentificationInfo(name)?.symbol && 'ml-2'}>
+          {text}
+          {type}
+        </span>
+      </div>
       {typeof value === 'number' ? (
-        <span className="ml-1">{value}</span>
+        <span className="ml-1 h-4">{getFormattedText(value)}</span>
       ) : (
-        <span className="ml-1">{value.min}-{value.max}</span>
-      )
-      }
+        <span className="ml-1 h-4">
+          {value.min}-{value.max}
+        </span>
+      )}
     </div>
-  )
-}
+  );
+};
 
 const StarFormatter: React.FC<any> = ({ tier }) => {
   switch (tier) {
