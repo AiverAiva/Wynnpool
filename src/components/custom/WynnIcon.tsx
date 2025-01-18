@@ -79,7 +79,7 @@ const getImageSrc = (item: Item): string => {
   return `/icons/items/barrier.webp`;
 };
 
-const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
+const ItemIcon: FC<{ item: Item, size?: number, className?: string }> = ({ item, size = 32, className }) => {
   const src = getImageSrc(item);
 
   return (
@@ -91,6 +91,7 @@ const ItemIcon: FC<{ item: Item, size?: number }> = ({ item, size = 32 }) => {
       style={{
         imageRendering: 'pixelated', // Preserve pixel art look
       }}
+      className={cn(className)}
     />
   );
 };
