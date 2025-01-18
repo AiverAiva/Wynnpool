@@ -134,6 +134,7 @@ const identificationMap: Record<string, IdentificationInfo> = {
     "neutralSpellDamage": { unit: "%", displayName: "Neutral Spell Damage" },
     "mainAttackNeutraDamageBonus": { unit: "%", displayName: "Attack Neutral Damage Bonus" },
     "rawMaxMana": { unit: "", displayName: "Max Mana" },
+    "mainAttackRange": { unit: "%", displayName: "Main Attack Range" },
 
     //req specific
     "level": { displayName: "Combat Level" },
