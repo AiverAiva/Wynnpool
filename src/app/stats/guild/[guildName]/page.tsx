@@ -6,13 +6,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Spinner } from '@/components/ui/spinner'
 import GuildEventDisplay from '@/components/custom/guild-event-display'
 import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 import Link from 'next/link'
 import Banner from '@/components/custom/banner'
-import { ExternalLink } from 'lucide-react'
+import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
 import api from '@/utils/api'
 
 function formatTimeAgo(timestamp: number | string | undefined): string {
@@ -37,11 +37,34 @@ function formatTimeAgo(timestamp: number | string | undefined): string {
     return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
 }
 
+type Role = 'owner' | 'chief' | 'strategist' | 'captain' | 'recruiter' | 'recruit';
+
+interface Member {
+    username: string;
+    online: boolean;
+    contributed: number;
+    joined: string;
+    role: string;
+    lastSeen: number | null;
+}
+
+type SortKey = keyof Member;
+interface SortConfig {
+    key: SortKey;
+    direction: 'asc' | 'desc';
+}
+
+interface LastSeenData {
+    [uuid: string]: {
+        lastSeen: number | null;
+    } | undefined;
+}
 export default function GuildStatsPage() {
     const { guildName } = useParams();
     const [guildData, setGuildData] = useState<any>();
-    const [lastSeenData, setLastSeenData] = useState<any>();
+    const [lastSeenData, setLastSeenData] = useState<LastSeenData>({});
     const [isLoading, setIsLoading] = useState(true);
+    const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'role', direction: 'asc' });
 
     useEffect(() => {
         async function fetchGuildData() {
@@ -74,10 +97,60 @@ export default function GuildStatsPage() {
         fetchGuildData()
     }, [guildName])
 
+    const roles: Role[] = ['owner', 'chief', 'strategist', 'captain', 'recruiter', 'recruit'];
+
+    const sortedMembers = useMemo(() => {
+        if (!guildData) return [];
+
+        let sortableItems = roles.flatMap(role =>
+            Object.entries(guildData.members[role] || {}).map(([uuid, member]) => ({
+                uuid,
+                ...member as Member,
+                role,
+                lastSeen: lastSeenData[uuid]?.lastSeen ?? null
+            }))
+        );
+
+        if (sortConfig.key) {
+            sortableItems.sort((a, b) => {
+                if (sortConfig.key === 'username') {
+                    return a.username.localeCompare(b.username) * (sortConfig.direction === 'asc' ? 1 : -1);
+                }
+                if (sortConfig.key === 'role') {
+                    const roleOrder: { [key in Role]: number } = { owner: 0, chief: 1, strategist: 2, captain: 3, recruiter: 4, recruit: 5 };
+                    return (roleOrder[a.role] - roleOrder[b.role]) * (sortConfig.direction === 'asc' ? 1 : -1);
+                }
+                if (sortConfig.key === 'contributed') {
+                    return (b.contributed - a.contributed) * (sortConfig.direction === 'asc' ? 1 : -1);
+                }
+                if (sortConfig.key === 'joined') {
+                    return (new Date(a.joined).getTime() - new Date(b.joined).getTime()) * (sortConfig.direction === 'asc' ? 1 : -1);
+                }
+                if (sortConfig.key === 'lastSeen') {
+                    if (a.online && b.online) return 0;
+                    if (a.online) return sortConfig.direction === 'asc' ? -1 : 1;
+                    if (b.online) return sortConfig.direction === 'asc' ? 1 : -1;
+                    if (a.lastSeen === null && b.lastSeen === null) return 0;
+                    if (a.lastSeen === null) return sortConfig.direction === 'asc' ? 1 : -1;
+                    if (b.lastSeen === null) return sortConfig.direction === 'asc' ? -1 : 1;
+                    return (b.lastSeen - a.lastSeen) * (sortConfig.direction === 'asc' ? 1 : -1);
+                }
+                return 0;
+            });
+        }
+        return sortableItems;
+    }, [guildData, lastSeenData, sortConfig]);
+
+    const requestSort = (key: SortKey) => {
+        setSortConfig(prevConfig => ({
+            key,
+            direction: prevConfig.key === key && prevConfig.direction === 'asc' ? 'desc' : 'asc',
+        }));
+    };
+
+
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
     if (!guildData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Guild Not Found.</span></div>
-
-    const roles = ['owner', 'chief', 'strategist', 'captain', 'recruiter', 'recruit']
 
     return (
         <div className="container mx-auto p-4">
@@ -134,56 +207,73 @@ export default function GuildStatsPage() {
                             <Table>
                                 <TableHeader>
                                     <TableRow>
-                                        <TableHead>Username</TableHead>
-                                        <TableHead>Role</TableHead>
-                                        <TableHead>Contribution</TableHead>
-                                        <TableHead>Joined</TableHead>
-                                        <TableHead>Last Seen</TableHead>
+                                        {[
+                                            { key: 'username', label: 'Username' },
+                                            { key: 'role', label: 'Role' },
+                                            { key: 'contributed', label: 'Contribution' },
+                                            { key: 'joined', label: 'Joined' },
+                                            { key: 'lastSeen', label: 'Last Seen' }
+                                        ].map(({ key, label }) => (
+                                            <TableHead key={key} className="cursor-pointer transition-colors">
+                                                <div
+                                                    className="flex items-center justify-between hover:bg-muted/50 rounded-md py-2 px-4 transition-all duration-200"
+                                                    onClick={() => requestSort(key as SortKey)}
+                                                >
+                                                    <span>{label}</span>
+                                                    <div className="flex flex-col ml-2">
+                                                        <ChevronUp
+                                                            className={`h-3 w-3 ${sortConfig.key === key && sortConfig.direction === 'asc'
+                                                                ? 'text-primary'
+                                                                : 'text-muted-foreground/65'
+                                                                }`}
+                                                        />
+                                                        <ChevronDown
+                                                            className={`h-3 w-3 ${sortConfig.key === key && sortConfig.direction === 'desc'
+                                                                ? 'text-primary'
+                                                                : 'text-muted-foreground/65'
+                                                                }`}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </TableHead>
+                                        ))}
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
-                                    {roles.flatMap(role =>
-                                        Object.entries(guildData.members[role] || {}).map(([uuid, member]: [string, any]) => {
-                                            const lastSeenInfo = lastSeenData[uuid];
-                                            const lastSeen = lastSeenInfo ? formatTimeAgo(lastSeenInfo.lastSeen * 1000) : 'Never';
-
-                                            return (
-                                                <TableRow key={uuid} className={`${member.online ? 'bg-green-500/20 hover:bg-green-300/20' : ''}`}>
-                                                    <TableCell className='group hover:scale-105 transition-transform duration-200'>
-                                                        <Link href={`/stats/player/${uuid}`} className='flex items-center cursor-pointer gap-2'>
-                                                            <img
-                                                                src={`/api/player/icon/${uuid}`}
-                                                                alt={member.username}
-                                                                className="w-8 h-8"
-                                                            />
-                                                            {member.online ? (
-                                                                <div className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center">
-                                                                    <div className="w-2 h-2 rounded-full bg-green-500" />
-                                                                </div>
-                                                            ) : (
-                                                                <div className="w-4 h-4 rounded-full bg-muted flex items-center justify-center">
-                                                                    <div className="w-2 h-2 rounded-full bg-muted-foreground/50" />
-                                                                </div>
-                                                            )}
-                                                            <span className="font-mono text-lg">{member.username}</span>
-                                                            <ExternalLink className='hidden opacity-0 group-hover:inline-block group-hover:opacity-100 h-4 w-4 text-muted-foreground transition-all duration-500'/>
-                                                        </Link>
-                                                    </TableCell>
-                                                    <TableCell>
-                                                        <Badge className="text-md font-mono capitalize">{role}</Badge>
-                                                    </TableCell>
-                                                    <TableCell>{member.contributed.toLocaleString()}</TableCell>
-                                                    <TableCell>{new Date(member.joined).toLocaleDateString()}</TableCell>
-                                                    <TableCell>{member.online ? (
-                                                        <span className='font-bold'>Online</span>
-                                                    ) : (
-                                                        lastSeen
-                                                    )}</TableCell>
-                                                </TableRow>
-                                            )
-                                        }
-                                        )
-                                    )}
+                                    {sortedMembers.map((member) => {
+                                        const lastSeen = member.online ? 'Online' : (member.lastSeen ? formatTimeAgo(member.lastSeen * 1000) : 'Never');
+                                        // theres something wrong with wynncraft api thats not showing the correct online status, prob to be fixed?
+                                        return (
+                                            <TableRow key={member.uuid} className={`${member.online ? 'bg-green-500/20 hover:bg-green-300/20' : ''}`}>
+                                                <TableCell className='group hover:scale-105 transition-transform duration-200'>
+                                                    <Link href={`/stats/player/${member.uuid}`} className='flex items-center cursor-pointer gap-2'>
+                                                        <img
+                                                            src={`/api/player/icon/${member.uuid}`}
+                                                            alt={member.username}
+                                                            className="w-8 h-8"
+                                                        />
+                                                        {member.online ? (
+                                                            <div className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center">
+                                                                <div className="w-2 h-2 rounded-full bg-green-500" />
+                                                            </div>
+                                                        ) : (
+                                                            <div className="w-4 h-4 rounded-full bg-muted flex items-center justify-center">
+                                                                <div className="w-2 h-2 rounded-full bg-muted-foreground/50" />
+                                                            </div>
+                                                        )}
+                                                        <span className="font-mono text-lg">{member.username}</span>
+                                                        <ExternalLink className='hidden opacity-0 group-hover:inline-block group-hover:opacity-100 h-4 w-4 text-muted-foreground transition-all duration-500' />
+                                                    </Link>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Badge className="text-md font-mono capitalize">{member.role}</Badge>
+                                                </TableCell>
+                                                <TableCell>{member.contributed.toLocaleString()}</TableCell>
+                                                <TableCell>{new Date(member.joined).toLocaleDateString()}</TableCell>
+                                                <TableCell>{lastSeen}</TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
                                 </TableBody>
                             </Table>
                         </CardContent>
