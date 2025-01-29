@@ -13,7 +13,7 @@ export default function GuildLayout({
 export async function generateMetadata({ params }: { params: Promise<{ guildName: string }> }) {
     const { guildName } = await params;
 
-    const res = await fetch(`${process.env.BASE_URL}/api/guild/${guildName}`)
+    const res = await fetch(`${process.env.BASE_URL}/guild/${guildName}`)
     if (!res.ok) {
         return {
             title: 'Guild Not Found',

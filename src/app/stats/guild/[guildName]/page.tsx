@@ -45,7 +45,7 @@ export default function GuildStatsPage() {
     useEffect(() => {
         async function fetchGuildData() {
             try {
-                const res = await fetch(`/api/guild/${guildName}`)
+                const res = await fetch(`https://api.wynnpool.com/guild/${guildName}`)
                 if (!res.ok) {
                     throw new Error('Failed to fetch guild data')
                 }
