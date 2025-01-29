@@ -8,22 +8,14 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-
-interface HistoryFile {
-    filename: string
-    timestamp: number
-}
-
-interface LootrunPoolHistoryProps {
-    historyFiles: HistoryFile[]
-}
+import { ArrowLeftIcon } from 'lucide-react'
 
 interface LootItem {
     Item: string
     Tracker: string
 }
 
-interface LootData {
+interface HistoryFile {
     Loot: {
         [key: string]: {
             Shiny: LootItem
@@ -40,6 +32,10 @@ interface LootData {
     Timestamp: number
 }
 
+interface LootrunPoolHistoryProps {
+    historyFiles: HistoryFile[]
+}
+
 const rarityColors = {
     Shiny: 'bg-pink-500 text-white',
     Mythic: 'bg-fuchsia-800 text-white',
@@ -49,17 +45,8 @@ const rarityColors = {
     Unique: 'bg-amber-300 text-amber-950'
 }
 
-
 export function LootrunPoolHistory({ historyFiles }: LootrunPoolHistoryProps) {
     const [selectedFile, setSelectedFile] = useState<HistoryFile | null>(null)
-    const [fileContent, setFileContent] = useState<LootData | null>(null)
-
-    const handleFileClick = async (file: HistoryFile) => {
-        setSelectedFile(file)
-        const response = await fetch(`/api/lootrun-pool/history?filename=${file.filename}`)
-        const content = await response.json()
-        setFileContent(content)
-    }
 
     const formatDate = (timestamp: number) => {
         const date = new Date(timestamp * 1000)
@@ -71,12 +58,12 @@ export function LootrunPoolHistory({ historyFiles }: LootrunPoolHistoryProps) {
     }
 
     const handleDownload = () => {
-        if (fileContent) {
-            const blob = new Blob([JSON.stringify(fileContent)], { type: 'application/json' });
+        if (selectedFile) {
+            const blob = new Blob([JSON.stringify(selectedFile)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${selectedFile?.filename}`;
+            a.download = `Lootpool_${selectedFile?.Timestamp}`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -92,34 +79,27 @@ export function LootrunPoolHistory({ historyFiles }: LootrunPoolHistoryProps) {
             </Button>
             <h1 className="text-4xl font-bold mb-4">Lootrun Pool History</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {historyFiles.map((file) => (
-
-                    <Sheet key={file.filename}>
+                {historyFiles.map((file, index) => (
+                    <Sheet key={index}>
                         <SheetTrigger asChild>
-                            <Card className="cursor-pointer hover:bg-accent" onClick={() => handleFileClick(file)}>
+                            <Card className="cursor-pointer hover:bg-accent" onClick={() => setSelectedFile(file)}>
                                 <CardHeader>
-                                    <CardTitle>{formatDate(file.timestamp)}</CardTitle>
+                                    <CardTitle>{formatDate(file.Timestamp)}</CardTitle>
                                 </CardHeader>
-                                <CardContent>
-                                    <p>{file.filename}</p>
-                                </CardContent>
                             </Card>
                         </SheetTrigger>
                         <SheetContent className="w-[400px] sm:w-[540px] md:w-[720px] lg:w-[960px]">
-                            {/* <div className="overflow-auto"> */}
-
                             <SheetHeader>
-                                <SheetTitle>{formatDate(file.timestamp)}</SheetTitle>
-                                <SheetDescription>{file.filename}</SheetDescription>
+                                <SheetTitle>{formatDate(file.Timestamp)}</SheetTitle>
                             </SheetHeader>
-                            {fileContent && (
-                                <Tabs defaultValue={Object.keys(fileContent.Loot)[0]} className="mt-4 relative">
+                            {selectedFile && (
+                                <Tabs defaultValue={Object.keys(selectedFile.Loot)[0]} className="mt-4 relative">
                                     <TabsList className="grid w-full grid-cols-5">
-                                        {Object.keys(fileContent.Loot).map((area) => (
+                                        {Object.keys(selectedFile.Loot).map((area) => (
                                             <TabsTrigger key={area} value={area}>{area}</TabsTrigger>
                                         ))}
                                     </TabsList>
-                                    {Object.entries(fileContent.Loot).map(([area, categories]) => (
+                                    {Object.entries(selectedFile.Loot).map(([area, categories]) => (
                                         <TabsContent key={area} value={area}>
                                             <Card>
                                                 <CardHeader>
@@ -135,30 +115,28 @@ export function LootrunPoolHistory({ historyFiles }: LootrunPoolHistoryProps) {
                                                                         <div className="flex items-center space-x-2" key={item}>
                                                                             <Image
                                                                                 unoptimized
-                                                                                src={fileContent.Icon[item] && fileContent.Icon[item].startsWith('http')
-                                                                                    ? fileContent.Icon[item]
-                                                                                    : (fileContent.Icon[item] ? `/icons/items/${fileContent.Icon[item]}` : '/icons/items/barrier.webp')}
+                                                                                src={selectedFile.Icon[item] && selectedFile.Icon[item].startsWith('http')
+                                                                                    ? selectedFile.Icon[item]
+                                                                                    : (selectedFile.Icon[item] ? `/icons/items/${selectedFile.Icon[item]}` : '/icons/items/barrier.webp')}
                                                                                 alt={item}
                                                                                 width={32}
                                                                                 height={32}
                                                                             />
                                                                             <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{item}</Badge>
                                                                         </div>
-
                                                                     )) : (
                                                                         <div className="flex items-center space-x-2">
                                                                             <Image
                                                                                 unoptimized
-                                                                                src={fileContent.Icon[items.Item] && fileContent.Icon[items.Item].startsWith('http')
-                                                                                    ? fileContent.Icon[items.Item]
-                                                                                    : (fileContent.Icon[items.Item] ? `/icons/items/${fileContent.Icon[items.Item]}` : '/icons/items/barrier.webp')}
+                                                                                src={selectedFile.Icon[items.Item] && selectedFile.Icon[items.Item].startsWith('http')
+                                                                                    ? selectedFile.Icon[items.Item]
+                                                                                    : (selectedFile.Icon[items.Item] ? `/icons/items/${selectedFile.Icon[items.Item]}` : '/icons/items/barrier.webp')}
                                                                                 alt={items.Item}
                                                                                 width={32}
                                                                                 height={32}
                                                                             />
-                                                                            <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{items.Item}</Badge>
+                                                                            <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{items.Item}<span className='font-mono text-xs font-thin'>&ensp;{items.Tracker}</span></Badge>
                                                                         </div>
-
                                                                     )}
                                                                 </div>
                                                             </div>
@@ -173,31 +151,10 @@ export function LootrunPoolHistory({ historyFiles }: LootrunPoolHistoryProps) {
                                     </Button>
                                 </Tabs>
                             )}
-                            {/* </div> */}
                         </SheetContent>
-
                     </Sheet>
                 ))}
             </div>
         </div>
     )
-    function ArrowLeftIcon(props: any) {
-        return (
-            <svg
-                {...props}
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            >
-                <path d="m12 19-7-7 7-7" />
-                <path d="M19 12H5" />
-            </svg>
-        )
-    }
 }
