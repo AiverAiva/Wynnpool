@@ -1,21 +1,20 @@
-import { promises as fs } from 'fs'
-import path from 'path'
+'use client'
+
 import { LootrunPoolHistory } from './lootrun-pool-history'
+import { useEffect, useState } from 'react'
+import api from '@/utils/api'
+import { Spinner } from '@/components/ui/spinner'
 
-async function getHistoryFiles() {
-  const historyDir = path.join(process.cwd(), 'src/data/history/lootrun_pool')
-  const files = await fs.readdir(historyDir)
-  return files
-    .filter(file => file.endsWith('.json'))
-    .map(file => {
-      const timestamp = parseInt(file.split('_').pop()?.split('.')[0] || '0', 10)
-      return { filename: file, timestamp }
-    })
-    .sort((a, b) => b.timestamp - a.timestamp)
-}
+export default function LootrunPoolHistoryPage() {
+  const [lootData, setLootData] = useState<any | null>(null)
 
-export default async function LootrunPoolHistoryPage() {
-  const historyFiles = await getHistoryFiles()
+  useEffect(() => {
+    fetch(api('/lootrun-pool?showAll=true'))
+      .then(response => response.json())
+      .then(data => setLootData(data))
+  }, [])
 
-  return <LootrunPoolHistory historyFiles={historyFiles} />
+  if (!lootData) return <div className="flex justify-center items-center h-screen"><Spinner size="large" /></div>
+
+  return <LootrunPoolHistory historyFiles={lootData} />
 }

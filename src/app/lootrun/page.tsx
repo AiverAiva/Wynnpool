@@ -11,6 +11,7 @@ import Countdown from '@/components/custom/countdown'
 import { Spinner } from '@/components/ui/spinner'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import api from '@/utils/api'
 
 interface LootItem {
     Item: string
@@ -48,11 +49,11 @@ export default function LootRunPool() {
     const [countdown, setCountdown] = useState<number | null>(null);
 
     useEffect(() => {
-        fetch('/api/lootrun-pool')
+        fetch(api('/lootrun-pool'))
             .then(response => response.json())
             .then(data => setLootData(data))
     }, [])
-
+    
     useEffect(() => {
         if (lootData) {
             const nextUpdate = lootData.Timestamp + 7 * 86400; // 7 days in seconds
