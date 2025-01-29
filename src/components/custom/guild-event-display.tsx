@@ -42,7 +42,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
         setError(null);
 
         try {
-            const response = await fetch('/api/guild/event', {
+            const response = await fetch('https://api.wynnpool.com/guild/event', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query, page, limit: 10 }),
