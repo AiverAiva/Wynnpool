@@ -129,7 +129,7 @@ export default function ServerStatusDisplay() {
 function getSortValue(server: string, data: ServerData, key: SortKey, latestTimestamp: number): number | string {
     switch (key) {
         case 'server':
-            return parseInt(server.replace('WC', ''))
+            return server;
         case 'players':
             return data.players.length
         case 'uptime':
