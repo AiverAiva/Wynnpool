@@ -15,6 +15,7 @@ import { GuildEvent } from '@/types/guildType';
 import { Skeleton } from '../ui/skeleton';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import api from '@/utils/api';
 
 interface GuildEventDisplayProps {
     query: Record<string, any>;
@@ -42,7 +43,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
         setError(null);
 
         try {
-            const response = await fetch('https://api.wynnpool.com/guild/event', {
+            const response = await fetch(api('/guild/event'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query, page, limit: 10 }),

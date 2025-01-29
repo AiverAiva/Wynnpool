@@ -17,6 +17,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Image from 'next/image';
 import { MiscIcon } from '@/components/custom/WynnIcon';
+import api from '@/utils/api';
 
 interface PlayerGuild {
     guild_uuid: string;
@@ -91,7 +92,7 @@ export default function PlayerStatsPage() {
     useEffect(() => {
         async function fetchPlayerData() {
             try {
-                const res = await fetch(`https://api.wynnpool.com/player/${playerName}`)
+                const res = await fetch(api(`/player/${playerName}`))
                 if (!res.ok) {
                     throw new Error('Failed to fetch player data')
                 }
@@ -101,7 +102,7 @@ export default function PlayerStatsPage() {
                 setPlayerData(data)
 
                 setIsLoading(false)
-                const resGuild = await fetch(`https://api.wynnpool.com/player/guild/${data.uuid}`)
+                const resGuild = await fetch(api(`/player/guild/${data.uuid}`))
                 if (!resGuild.ok) {
                     throw new Error('Failed to fetch player guild data')
                 }

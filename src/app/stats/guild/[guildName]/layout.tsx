@@ -1,3 +1,5 @@
+import api from "@/utils/api";
+
 export default function GuildLayout({
     children, // will be a page or nested layout
 }: {
@@ -13,7 +15,7 @@ export default function GuildLayout({
 export async function generateMetadata({ params }: { params: Promise<{ guildName: string }> }) {
     const { guildName } = await params;
 
-    const res = await fetch(`${process.env.BASE_URL}/guild/${guildName}`)
+    const res = await fetch(api(`/guild/${guildName}`))
     if (!res.ok) {
         return {
             title: 'Guild Not Found',

@@ -13,6 +13,7 @@ import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 import Link from 'next/link'
 import Banner from '@/components/custom/banner'
 import { ExternalLink } from 'lucide-react'
+import api from '@/utils/api'
 
 function formatTimeAgo(timestamp: number | string | undefined): string {
     if (!timestamp) return 'Never';
@@ -45,14 +46,14 @@ export default function GuildStatsPage() {
     useEffect(() => {
         async function fetchGuildData() {
             try {
-                const res = await fetch(`https://api.wynnpool.com/guild/${guildName}`)
+                const res = await fetch(api(`/guild/${guildName}`))
                 if (!res.ok) {
                     throw new Error('Failed to fetch guild data')
                 }
 
                 const data = await res.json()
                 setGuildData(data)
-                const lastSeenRes = await fetch('/api/guild/last-seen', {
+                const lastSeenRes = await fetch(api('/guild/last-seen'), {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

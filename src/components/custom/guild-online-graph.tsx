@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/select"
 import { Spinner } from "../ui/spinner"
 import { useEffect, useState } from "react"
+import api from "@/utils/api"
 
 interface OnlineCountData {
     timestamp: number
@@ -82,8 +83,8 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                     default:
                         startTime = now - 24 * 60 * 60
                 }
-
-                const response = await fetch(`/api/guild/online-count`, {
+ 
+                const response = await fetch(api('/guild/online-count'), {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
