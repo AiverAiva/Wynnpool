@@ -11,6 +11,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { cn } from '@/lib/utils';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import CurrencyDisplay from '@/components/custom/currency-display';
+import api from '@/utils/api';
 
 
 export default function ItemPage() {
@@ -37,7 +38,7 @@ export default function ItemPage() {
     useEffect(() => {
         async function fetchItemData() {
             try {
-                const res = await fetch(`/api/item/${itemName}`)
+                const res = await fetch(api(`/item/${itemName}`))
                 if (!res.ok) {
                     throw new Error('Failed to fetch item data')
                 }

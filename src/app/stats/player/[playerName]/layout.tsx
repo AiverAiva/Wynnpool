@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ playerNam
         openGraph: {
             title: `${playerData.username} - Player Stats`,
             description: `Detailed player statistics for ${playerData.username}.`,
-            url: `${process.env.BASE_URL}/player/${playerData.username}`,
+            url: `https://wynnpool.com/player/${playerData.username}`,
             images: [
                 {
                     url: `https://vzge.me/bust/512/${playerData.uuid}`,

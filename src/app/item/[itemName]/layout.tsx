@@ -1,5 +1,6 @@
 import { getImageSrc } from "@/components/custom/WynnIcon";
 import { Item } from "@/types/itemType";
+import api from "@/utils/api";
 
 export default function PlayerLayout({
     children, // will be a page or nested layout
@@ -16,7 +17,7 @@ export default function PlayerLayout({
 export async function generateMetadata({ params }: { params: Promise<{ itemName: string }> }) {
     const { itemName } = await params;
 
-    const res = await fetch(`${process.env.BASE_URL}/api/item/${itemName}`)
+    const res = await fetch(api(`/api/item/${itemName}`))
     if (!res.ok) {
         return {
             title: 'Item Not Found',
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ itemName:
         openGraph: {
             title: `${itemData.internalName} - Item Info`,
             description: `View item information for ${itemData.internalName}.`,
-            url: `${process.env.BASE_URL}/item/${itemData.internalName}`,
+            url: `https://wynnpool.com/item/${itemData.internalName}`,
             images: [
                 {
                     url: iconUrl, 
