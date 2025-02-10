@@ -35,7 +35,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
     const [totalPages, setTotalPages] = useState<number>(1);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false); // Track accordion open state
+    const [openItem, setOpenItem] = useState<string | undefined>(undefined);
     const pathname = usePathname()
 
     const fetchData = async () => {
@@ -94,7 +94,7 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
                 message =
                     <span>
                         <Link href={`/stats/player/${event.uuid}`} className='font-bold hover:underline'>{event.name}</Link>
-                        &ensp;Joined 
+                        &ensp;Joined
                         {pathname.includes('/player/') && (
                             <span>
                                 &ensp;<Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`}>{event.guild_name}</Link>&ensp;
@@ -163,8 +163,9 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
                     <Accordion
                         type="single"
                         collapsible
-                        value={isAccordionOpen ? 'item-1' : undefined}
-                        onValueChange={(value) => setIsAccordionOpen(value === 'item-1')}>
+                        value={openItem}
+                        onValueChange={(value) => setOpenItem(value)}
+                    >
                         <AccordionItem value="item-1" className="border-b-0 -mb-6">
                             <AccordionTrigger className='hover:no-underline hover:text-foreground/60 transition-color duration-200'>Player Activity</AccordionTrigger>
                             <AccordionContent>
