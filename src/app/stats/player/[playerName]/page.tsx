@@ -18,6 +18,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Image from 'next/image';
 import { MiscIcon } from '@/components/custom/WynnIcon';
 import api from '@/utils/api';
+import { ChevronDown, Trophy } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Separator } from '@/components/ui/separator';
 
 interface PlayerGuild {
     guild_uuid: string;
@@ -188,6 +191,7 @@ export default function PlayerStatsPage() {
                         <StatCard title="Quests Completed" value={playerData.globalData.completedQuests} />
                     </div>
                     <GuildEventDisplay query={{ uuid: playerData.uuid }} />
+                    <PlayerRankings data={playerData} />
                 </CardContent>
             </Card>
 
@@ -303,83 +307,8 @@ export default function PlayerStatsPage() {
                                         </div>
                                     </section>
 
-                                    <section>
-                                        <h3 className="font-semibold mb-2">Dungeons</h3>
-                                        <div className="text-sm mb-4">
-                                            Total Dungeons Completed: {char.dungeons.total}
-                                        </div>
-                                        <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4'>
-                                            {Object.entries(
-                                                Object.entries(char.dungeons.list).reduce<{
-                                                    [key: string]: { normal: number; corrupted: number };
-                                                }>((acc, [name, count]) => {
-                                                    const isCorrupted = name.startsWith("Corrupted ");
-                                                    const baseName = isCorrupted ? name.replace("Corrupted ", "") : name;
-
-                                                    if (!acc[baseName]) {
-                                                        acc[baseName] = { normal: 0, corrupted: 0 };
-                                                    }
-
-                                                    if (isCorrupted) {
-                                                        acc[baseName].corrupted += count;
-                                                    } else {
-                                                        acc[baseName].normal += count;
-                                                    }
-
-                                                    return acc;
-                                                }, {})
-                                            ).map(([name, counts]) => (
-                                                <Card key={name} className='flex p-2 gap-2'>
-                                                    <Image
-                                                        src={`/icons/dungeon/${name.replace(' ', '_').replace('-', '_').replace("'s", '').toLowerCase()}.webp`}
-                                                        alt={name}
-                                                        width={64}
-                                                        height={64}
-                                                    />
-                                                    <div>
-                                                        <span>{name}</span>
-                                                        <div className='flex flex-row gap-3'>
-                                                            {counts.normal > 0 && (
-                                                                <div className='flex gap-1 items-center'>
-                                                                    <MiscIcon id='dungeon_key' size={24} />
-                                                                    {counts.normal}
-                                                                </div>
-                                                            )}
-                                                            {counts.corrupted > 0 && (
-                                                                <div className='flex gap-1 items-center'>
-                                                                    <MiscIcon id='corrupted_dungeon_key' size={24} />
-                                                                    {counts.corrupted}
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                </Card>
-                                            ))}
-                                        </div>
-                                    </section>
-
-                                    <section>
-                                        <h3 className="font-semibold mb-2">Raids</h3>
-                                        <div className="text-sm mb-4">
-                                            Total Raids Completed: {char.raids.total}
-                                        </div>
-                                        <div className='grid sm:grid-cols-2 gap-4'>
-                                            {Object.entries(char.raids.list).map(([name, count]) => (
-                                                <Card key={name} className='flex p-2 gap-2'>
-                                                    <Image
-                                                        src={`/icons/raid/${name}.webp`}
-                                                        alt={name}
-                                                        width={64}
-                                                        height={64}
-                                                    />
-                                                    <div className='flex flex-col'>
-                                                        <span>{name}</span>
-                                                        {count}
-                                                    </div>
-                                                </Card>
-                                            ))}
-                                        </div>
-                                    </section>
+                                    <DungeonStats dungeons={char.dungeons} />
+                                    <RaidStats raids={char.raids} />
 
                                     <section>
                                         <h3 className="font-semibold mb-2">Quests</h3>
@@ -424,3 +353,224 @@ function StatCard({ title, value }: { title: string; value: number | string }) {
         </Card>
     )
 }
+
+
+function RaidStats({ raids }: { raids: any }) {
+    return (
+        <section>
+            <h3 className="font-semibold mb-2">Raids</h3>
+            <div className="text-sm mb-4">
+                Total Raids Completed: {raids.total}
+            </div>
+            <div className='grid sm:grid-cols-2 gap-4'>
+                {Object.entries(raids.list).map(([name, count]) => (
+                    <Card key={name} className='flex p-2 gap-2'>
+                        <Image
+                            src={`/icons/raid/${name}.webp`}
+                            alt={name}
+                            width={64}
+                            height={64}
+                        />
+                        <div className='flex flex-row justify-between items-center w-full'>
+                            <span>{name}</span>
+                            <Badge variant="outline" className="m-1 py-2 px-4">
+                                {count as number}
+                            </Badge>
+                        </div>
+                    </Card>
+                ))}
+            </div>
+        </section>
+    )
+}
+
+function DungeonStats({ dungeons }: { dungeons: any }) {
+    return (
+        <section>
+            <h3 className="font-semibold mb-2">Dungeons</h3>
+            <div className="text-sm mb-4">
+                Total Dungeons Completed: {dungeons.total}
+            </div>
+            <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
+                {Object.entries(
+                    Object.entries(dungeons.list).reduce<{
+                        [key: string]: { normal: number; corrupted: number };
+                    }>((acc, [name, count]) => {
+                        const isCorrupted = name.startsWith("Corrupted ");
+                        const baseName = isCorrupted ? name.replace("Corrupted ", "") : name;
+
+                        if (!acc[baseName]) {
+                            acc[baseName] = { normal: 0, corrupted: 0 };
+                        }
+
+                        if (isCorrupted) {
+                            acc[baseName].corrupted += count as number;
+                        } else {
+                            acc[baseName].normal += count as number;
+                        }
+
+                        return acc;
+                    }, {})
+                ).map(([name, counts]) => (
+                    <Card key={name} className='flex p-2 gap-2'>
+                        <Image
+                            src={`/icons/dungeon/${name.replace(' ', '_').replace('-', '_').replace("'s", '').toLowerCase()}.webp`}
+                            alt={name}
+                            width={72}
+                            height={72}
+                        />
+                        <div className='flex justify-between items-center w-full'>
+                            <span>{name}</span>
+                            <div className='flex flex-col '>
+                                {counts.normal > 0 && (
+                                    <div className='flex gap-1 items-center'>
+                                        <Badge variant="outline" className="m-1">
+                                            <MiscIcon id='dungeon_key' size={24} />
+                                            {counts.normal}
+                                        </Badge>
+                                    </div>
+                                )}
+                                {counts.corrupted > 0 && (
+                                    <div className='flex gap-1 items-center'>
+                                        <Badge variant="outline" className="mx-1">
+                                            <MiscIcon id='corrupted_dungeon_key' size={24} />
+                                            {counts.corrupted}
+                                        </Badge>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </Card>
+                ))}
+            </div>
+        </section>
+    )
+}
+
+const categories = {
+    Content: ["playerContent", "globalPlayerContent", "warsCompletion"],
+    Level: ["combatGlobalLevel", "totalSoloLevel", "combatSoloLevel", "professionsGlobalLevel", "totalGlobalLevel"],
+    Proffesion: ["tailoringLevel", "farmingLevel", "woodworkingLevel", "scribingLevel", "armouringLevel", "jewelingLevel", "fishingLevel", "miningLevel", "cookingLevel", "weaponsmithingLevel", "alchemismLevel", "woodcuttingLevel"],
+    Gamemode: ["ironmanContent", "ultimateIronmanContent", "hardcoreLegacyLevel", "hardcoreContent", "craftsmanContent", "huntedContent", "hicContent", "hichContent", "huichContent", "huicContent"],
+    Raids: ["grootslangCompletion", "grootslangSrPlayers", "colossusSrPlayers", "colossusCompletion", "orphionSrPlayers", "orphionCompletion", "namelessSrPlayers", "namelessCompletion"]
+};
+
+const leaderboardNames: { [key: string]: string } = {
+    playerContent: "Total Completion",
+    globalPlayerContent: "Global Total Completion", 
+    warsCompletion: "Wars (Completions)",
+
+    combatSoloLevel: "Combat (Solo Class)",
+    combatGlobalLevel: "Combat (All Classes)",
+    totalSoloLevel: "Total (Solo Class)",
+    totalGlobalLevel: "Total (All Classes)",
+    professionsSoloLevel: "Professions (Solo Class)",
+    professionsGlobalLevel: "Professions (All Classes)",
+
+    tailoringLevel: "Tailoring",
+    farmingLevel: "Farming",
+    woodworkingLevel: "Woodworking",
+    scribingLevel: "Scribing",
+    armouringLevel: "Armouring",
+    jewelingLevel: "Jeweling",
+    fishingLevel: "Fishing",
+    miningLevel: "Mining",
+    cookingLevel: "Cooking",
+    weaponsmithingLevel: "Weaponsmithing",
+    alchemismLevel: "Alchemism",
+    woodcuttingLevel: "Woodcutting",
+
+    ironmanContent: "Ironman",
+    ultimateIronmanContent: "Ultimate Ironman",
+    hardcoreLegacyLevel: "Hardcore Legacy",
+    hardcoreContent: "Hardcore",
+    craftsmanContent: "Craftsman",
+    huntedContent: "Hunted",
+    hicContent: "HIC",
+    hichContent: "HICH",
+    huichContent: "HUICH",
+    huicContent: "HUIC",
+
+    grootslangCompletion: "NOTG Completions",
+    grootslangSrPlayers: "NOTG Rating",
+    colossusCompletion: "TCC Completions",
+    colossusSrPlayers: "TCC Rating",
+    orphionCompletion: "NOL Completions",
+    orphionSrPlayers: "NOL Rating",
+    namelessCompletion: "TNA Completions",
+    namelessSrPlayers: "TNA Rating",
+  };
+
+
+  function RankingItem({ name, current, previous }: { name: string; current: number; previous: number }) {
+    const diff = previous - current;
+    const displayName = leaderboardNames[name] || name;
+  
+    return (
+      <div className="flex justify-between items-center py-1 text-sm">
+        <span className="font-medium">{displayName}</span>
+        <div className="flex items-center">
+          <span className="font-bold">{current.toLocaleString()}</span>
+          {diff !== 0 && (
+            <Badge variant="default" className={`ml-2 text-xs px-1 ${diff > 0 ? "bg-green-500/70" : "bg-red-500/70"}`}>
+              {diff > 0 ? `+${diff}` : diff}
+            </Badge>
+          )}
+        </div>
+      </div>
+    );
+  }
+  
+  function CategoryCard({ category, items, data }: { category: string; items: string[]; data: Player }) {
+    const filteredItems = items.filter(item => data.ranking[item] !== undefined);
+    if (filteredItems.length === 0) return null;
+  
+    return (
+      <Card className="p-4">
+        <h3 className="font-semibold text-base mb-2">{category}</h3>
+        <div className="space-y-1">
+          {filteredItems
+            .sort((a, b) => data.ranking[a] - data.ranking[b])
+            .map(item => (
+              <RankingItem
+                key={item}
+                name={item}
+                current={data.ranking[item]}
+                previous={data.previousRanking[item] || data.ranking[item]}
+              />
+            ))}
+        </div>
+      </Card>
+    );
+  }
+  
+
+  function PlayerRankings({ data }: { data: Player }) {
+    const [openItem, setOpenItem] = useState<string | undefined>(undefined);
+  
+    return (
+      <Card className="mt-4">
+        <CardContent>
+          <Accordion
+            type="single"
+            collapsible
+            value={openItem}
+            onValueChange={(value) => setOpenItem(value)}
+          >
+            <AccordionItem value="rankings" className="border-b-0 -mb-6">
+              <AccordionTrigger className="hover:no-underline hover:text-foreground/60 transition-colors duration-200">
+                Rankings
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {Object.entries(categories).map(([category, items]) => (
+                    <CategoryCard key={category} category={category} items={items} data={data} />
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </CardContent>
+      </Card>
+    );
+  }
