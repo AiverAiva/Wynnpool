@@ -17,7 +17,7 @@ export default function PlayerLayout({
 export async function generateMetadata({ params }: { params: Promise<{ itemName: string }> }) {
     const { itemName } = await params;
 
-    const res = await fetch(api(`/api/item/${itemName}`))
+    const res = await fetch(api(`/item/${itemName}`))
     if (!res.ok) {
         return {
             title: 'Item Not Found',
