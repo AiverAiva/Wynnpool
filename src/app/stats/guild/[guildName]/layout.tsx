@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ guildName
         openGraph: {
             title: `[${guildData.prefix}] ${guildData.name} - Guild Stats`,
             description: `Detailed player statistics for ${guildData.name}.`,
-            url: `${process.env.BASE_URL}/guild/${guildData.name}`
+            url: `https://wynnpool.com/guild/${guildData.name}`
         },
         twitter: {
             card: 'summary_large_image',
