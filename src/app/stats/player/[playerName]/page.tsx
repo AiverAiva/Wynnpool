@@ -71,9 +71,7 @@ function formatTimeAgo(dateString: string): string {
 export default function PlayerStatsPage() {
     const { playerName } = useParams();
     const [playerData, setPlayerData] = useState<Player>();
-    const [playerGuildData, setPlayerGuildData] = useState<PlayerGuild>();
     const [isLoading, setIsLoading] = useState(true);
-    const [isPlayerGuildLoading, setIsPlayerGuildLoading] = useState(true);
     const [sortBy, setSortBy] = useState<'createDate' | 'combatLevel' | 'totalLevel'>('combatLevel');
 
     const sortedCharacters = useMemo(() => {
@@ -103,20 +101,10 @@ export default function PlayerStatsPage() {
                 const data = await res.json()
 
                 setPlayerData(data)
-
-                setIsLoading(false)
-                const resGuild = await fetch(api(`/player/guild/${data.uuid}`))
-                if (!resGuild.ok) {
-                    throw new Error('Failed to fetch player guild data')
-                }
-                const dataGuild = await resGuild.json()
-                setPlayerGuildData(dataGuild)
-                setIsPlayerGuildLoading(false)
             } catch (err) {
                 console.error('An error occurred while fetching the player data.', err)
             } finally {
                 setIsLoading(false)
-                setIsPlayerGuildLoading(false)
             }
         }
         fetchPlayerData()
@@ -166,14 +154,12 @@ export default function PlayerStatsPage() {
                                 <CardTitle className="text-2xl">{getPlayerDisplayName(playerData.username)}</CardTitle>
                             </div>
                             <CardDescription className="flex flex-col">
-                                {!isPlayerGuildLoading ? (
-                                    playerGuildData ? (
-                                        <span className='text-md font-mono'><span className='font-bold capitalize'>{playerGuildData.player_rank}</span> of <Link href={`/stats/guild/${playerGuildData.guild_name}`} className='font-bold cursor-pointer hover:underline'>{playerGuildData.guild_name} [{playerGuildData.guild_prefix}]</Link></span>
-                                    ) : (
-                                        <span>No guild</span>
-                                    )
+                                {playerData.guild ? (
+                                    <span className='text-md font-mono'>
+                                        <span className='font-bold capitalize'>{playerData.guild.rank}</span> of <Link href={`/stats/guild/${playerData.guild.name}`} className='font-bold cursor-pointer hover:underline'>{playerData.guild.name} [{playerData.guild.prefix}]</Link>
+                                    </span>
                                 ) : (
-                                    <Skeleton className='h-5 w-48' />
+                                    <span>No guild</span>
                                 )}
                                 Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>
@@ -457,7 +443,7 @@ const categories = {
 
 const leaderboardNames: { [key: string]: string } = {
     playerContent: "Total Completion",
-    globalPlayerContent: "Global Total Completion", 
+    globalPlayerContent: "Global Total Completion",
     warsCompletion: "Wars (Completions)",
 
     combatSoloLevel: "Combat (Solo Class)",
@@ -499,78 +485,78 @@ const leaderboardNames: { [key: string]: string } = {
     orphionSrPlayers: "NOL Rating",
     namelessCompletion: "TNA Completions",
     namelessSrPlayers: "TNA Rating",
-  };
+};
 
 
-  function RankingItem({ name, current, previous }: { name: string; current: number; previous: number }) {
+function RankingItem({ name, current, previous }: { name: string; current: number; previous: number }) {
     const diff = previous - current;
     const displayName = leaderboardNames[name] || name;
-  
+
     return (
-      <div className="flex justify-between items-center py-1 text-sm">
-        <span className="font-medium">{displayName}</span>
-        <div className="flex items-center">
-          <span className="font-bold">{current.toLocaleString()}</span>
-          {diff !== 0 && (
-            <Badge variant="default" className={`ml-2 text-xs px-1 ${diff > 0 ? "bg-green-500/70" : "bg-red-500/70"}`}>
-              {diff > 0 ? `+${diff}` : diff}
-            </Badge>
-          )}
+        <div className="flex justify-between items-center py-1 text-sm">
+            <span className="font-medium">{displayName}</span>
+            <div className="flex items-center">
+                <span className="font-bold">{current.toLocaleString()}</span>
+                {diff !== 0 && (
+                    <Badge variant="default" className={`ml-2 text-xs px-1 ${diff > 0 ? "bg-green-500/70" : "bg-red-500/70"}`}>
+                        {diff > 0 ? `+${diff}` : diff}
+                    </Badge>
+                )}
+            </div>
         </div>
-      </div>
     );
-  }
-  
-  function CategoryCard({ category, items, data }: { category: string; items: string[]; data: Player }) {
+}
+
+function CategoryCard({ category, items, data }: { category: string; items: string[]; data: Player }) {
     const filteredItems = items.filter(item => data.ranking[item] !== undefined);
     if (filteredItems.length === 0) return null;
-  
-    return (
-      <Card className="p-4">
-        <h3 className="font-semibold text-base mb-2">{category}</h3>
-        <div className="space-y-1">
-          {filteredItems
-            .sort((a, b) => data.ranking[a] - data.ranking[b])
-            .map(item => (
-              <RankingItem
-                key={item}
-                name={item}
-                current={data.ranking[item]}
-                previous={data.previousRanking[item] || data.ranking[item]}
-              />
-            ))}
-        </div>
-      </Card>
-    );
-  }
-  
 
-  function PlayerRankings({ data }: { data: Player }) {
-    const [openItem, setOpenItem] = useState<string | undefined>(undefined);
-  
     return (
-      <Card className="mt-4">
-        <CardContent>
-          <Accordion
-            type="single"
-            collapsible
-            value={openItem}
-            onValueChange={(value) => setOpenItem(value)}
-          >
-            <AccordionItem value="rankings" className="border-b-0 -mb-6">
-              <AccordionTrigger className="hover:no-underline hover:text-foreground/60 transition-colors duration-200">
-                Rankings
-              </AccordionTrigger>
-              <AccordionContent>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {Object.entries(categories).map(([category, items]) => (
-                    <CategoryCard key={category} category={category} items={items} data={data} />
-                  ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </CardContent>
-      </Card>
+        <Card className="p-4">
+            <h3 className="font-semibold text-base mb-2">{category}</h3>
+            <div className="space-y-1">
+                {filteredItems
+                    .sort((a, b) => data.ranking[a] - data.ranking[b])
+                    .map(item => (
+                        <RankingItem
+                            key={item}
+                            name={item}
+                            current={data.ranking[item]}
+                            previous={data.previousRanking[item] || data.ranking[item]}
+                        />
+                    ))}
+            </div>
+        </Card>
     );
-  }
+}
+
+
+function PlayerRankings({ data }: { data: Player }) {
+    const [openItem, setOpenItem] = useState<string | undefined>(undefined);
+
+    return (
+        <Card className="mt-4">
+            <CardContent>
+                <Accordion
+                    type="single"
+                    collapsible
+                    value={openItem}
+                    onValueChange={(value) => setOpenItem(value)}
+                >
+                    <AccordionItem value="rankings" className="border-b-0 -mb-6">
+                        <AccordionTrigger className="hover:no-underline hover:text-foreground/60 transition-colors duration-200">
+                            Rankings
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {Object.entries(categories).map(([category, items]) => (
+                                    <CategoryCard key={category} category={category} items={items} data={data} />
+                                ))}
+                            </div>
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+            </CardContent>
+        </Card>
+    );
+}
