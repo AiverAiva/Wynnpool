@@ -183,6 +183,7 @@ const navCategories = [
     items: [
       { name: 'Home', href: '/' },
       { name: 'Annihilation', href: '/annihilation' },
+      { name: 'Stats', href: '/stats' },
       { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
     ],
   },
@@ -264,6 +265,14 @@ export function Navbar() {
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/stats" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <p className={`transition-colors hover:text-foreground/80 ${pathname === '/stats' ? 'text-foreground' : 'text-foreground/60'
+                      } `}>Stats</p>
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/annihilation" legacyBehavior passHref>
