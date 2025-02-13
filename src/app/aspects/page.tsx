@@ -12,6 +12,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { AspectData } from '@/types/aspectType'
+import api from '@/utils/api'
 
 type LootCategory = 'Mythic' | 'Fabled' | 'Legendary'
 type LootSection = 'TNA' | 'TCC' | 'NOL' | 'NOTG'
@@ -34,7 +35,7 @@ export default function AspectPool() {
   useEffect(() => {
     setIsLoading(true)
     Promise.all([
-      fetch('/api/aspects-pool').then(response => response.json()),
+      fetch(api('/aspect-pool')).then(response => response.json()),
       fetch('/api/aspects-data').then(response => response.json())
     ])
       .then(([lootData, aspectData]) => {

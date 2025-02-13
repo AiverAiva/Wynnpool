@@ -10,8 +10,9 @@ import { Button } from '@/components/ui/button'
 import { AspectData } from '@/types/aspectType'
 
 interface HistoryFile {
-    filename: string
-    timestamp: number
+    Loot: any
+    Icon: any
+    Timestamp: number
 }
 
 interface AspectPoolHistoryProps {
@@ -20,7 +21,7 @@ interface AspectPoolHistoryProps {
 
 export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
     const [selectedFile, setSelectedFile] = useState<HistoryFile | null>(null)
-    const [fileContent, setFileContent] = useState<any>(null)
+    // const [fileContent, setFileContent] = useState<any>(null)
     const [aspectData, setAspectData] = useState<AspectData | null>({})
 
     useEffect(() => {
@@ -35,13 +36,6 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
             })
     }, [])
 
-    const handleFileClick = async (file: HistoryFile) => {
-        setSelectedFile(file)
-        const response = await fetch(`/api/aspects-pool/history?filename=${file.filename}`)
-        const content = await response.json()
-        setFileContent(content)
-    }
-
     const formatDate = (timestamp: number) => {
         const date = new Date(timestamp * 1000)
         return date.toLocaleDateString('en-US', {
@@ -52,12 +46,12 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
     }
 
     const handleDownload = () => {
-        if (fileContent) {
-            const blob = new Blob([JSON.stringify(fileContent)], { type: 'application/json' });
+        if (selectedFile) {
+            const blob = new Blob([JSON.stringify(selectedFile)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${selectedFile?.filename}`;
+            a.download = `Aspectpool_${selectedFile?.Timestamp}`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -80,16 +74,16 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
             </Button>
             <h1 className="text-4xl font-bold mb-4">Aspect Pool History</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {historyFiles.map((file) => (
-
-                    <Sheet key={file.filename}>
+                {historyFiles.map((file, index) => (
+                    console.log(file),
+                    <Sheet key={index}>
                         <SheetTrigger asChild>
-                            <Card className="cursor-pointer hover:bg-accent" onClick={() => handleFileClick(file)}>
+                            <Card className="cursor-pointer hover:bg-accent" onClick={() => setSelectedFile(file)}>
                                 <CardHeader>
-                                    <CardTitle>{formatDate(file.timestamp)}</CardTitle>
+                                    <CardTitle>{formatDate(file.Timestamp)}</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <p>{file.filename}</p>
+                                    <p>{file.Timestamp}</p>
                                 </CardContent>
                             </Card>
                         </SheetTrigger>
@@ -97,18 +91,18 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
                             {/* <div className="overflow-auto"> */}
 
                             <SheetHeader>
-                                <SheetTitle>{formatDate(file.timestamp)}</SheetTitle>
-                                <SheetDescription>{file.filename}</SheetDescription>
+                                <SheetTitle>{formatDate(file.Timestamp)}</SheetTitle>
+                                <SheetDescription>{file.Timestamp}</SheetDescription>
                             </SheetHeader>
-                            {fileContent && (
+                            {selectedFile && (
                                 <Tabs defaultValue="TNA" className="mt-4 relative">
                                     <TabsList className="grid w-full grid-cols-4">
-                                        {Object.keys(fileContent.Loot).map((section) => (
+                                        {Object.keys(selectedFile.Loot).map((section) => (
                                             <TabsTrigger key={section} value={section}>{section}</TabsTrigger>
                                         ))}
                                     </TabsList>
 
-                                    {Object.entries(fileContent.Loot).map(([section, categories]: [string, any]) => (
+                                    {Object.entries(selectedFile.Loot).map(([section, categories]: [string, any]) => (
                                         <TabsContent key={section} value={section} className="relative">
                                             <Card>
                                                 <CardHeader>

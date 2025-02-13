@@ -1,21 +1,23 @@
-import { promises as fs } from 'fs'
-import path from 'path'
+'use client'
+
 import { AspectPoolHistory } from './aspect-pool-history'
+import { useEffect, useState } from 'react'
+import api from '@/utils/api'
+import { Spinner } from '@/components/ui/spinner'
 
-async function getHistoryFiles() {
-  const historyDir = path.join(process.cwd(), 'src/data/history/aspects_pool')
-  const files = await fs.readdir(historyDir)
-  return files
-    .filter(file => file.endsWith('.json'))
-    .map(file => {
-      const timestamp = parseInt(file.split('_').pop()?.split('.')[0] || '0', 10)
-      return { filename: file, timestamp }
-    })
-    .sort((a, b) => b.timestamp - a.timestamp)
-}
+export default function AspectPoolHistoryPage() {
+  // const historyFiles = await getHistoryFiles()
 
-export default async function AspectPoolHistoryPage() {
-  const historyFiles = await getHistoryFiles()
+  // return <AspectPoolHistory historyFiles={historyFiles} />
+  const [lootData, setLootData] = useState<any | null>(null)
 
-  return <AspectPoolHistory historyFiles={historyFiles} />
+  useEffect(() => {
+    fetch(api('/aspect-pool?showAll=true'))
+      .then(response => response.json())
+      .then(data => setLootData(data))
+  }, [])
+
+  if (!lootData) return <div className="flex justify-center items-center h-screen"><Spinner size="large" /></div>
+
+  return <AspectPoolHistory historyFiles={lootData} />
 }
