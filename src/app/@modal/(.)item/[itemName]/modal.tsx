@@ -157,7 +157,6 @@ function ItemDetail({ itemName }: { itemName: string }) {
                                                 <span className='font-bold'>Name:&ensp;</span>{drop.name}
                                             </span>
                                             {drop.coords ? (
-                                                console.log(drop.coords),
                                                 <span className='font-mono text-md flex'>
                                                     <span className='font-bold'>Coordinates:&ensp;</span>
                                                     {drop.coords.some(coord => Array.isArray(coord)) ? (
