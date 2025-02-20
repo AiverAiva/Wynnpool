@@ -2,12 +2,14 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import ItemSearch from "./itemSearch"
-import '@/assets/css/wynncraft.css'
 import { ItemDisplay } from "@/components/custom/item-display"
 import { useState } from "react"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AlertCircle } from "lucide-react"
+import ItemSearch from "./itemSearch"
 import IngredientSearch from "./ingredientSearch"
-import { Alert } from "@/components/ui/alert"
+
+import '@/assets/css/wynncraft.css'
 
 export default function PageSwitch() {
     const [results, setResults] = useState<Record<string, any> | null>(null);
@@ -19,7 +21,7 @@ export default function PageSwitch() {
                 <Tabs defaultValue="item" className="">
                     <CardHeader className="flex flex-row justify-between">
                         <div>
-                            <CardTitle>Item Search (WIP)</CardTitle>
+                            <CardTitle>Item Search</CardTitle>
                             <CardDescription>Search for items using various criteria</CardDescription>
                         </div>
                         <TabsList className="grid grid-cols-2">
@@ -70,14 +72,13 @@ export default function PageSwitch() {
                 </Card>
             )}
             {error && (
-                <Card className="w-full max-w-4xl mx-auto mt-4 border-red-500">
-                    <CardHeader>
-                        <CardTitle className="text-red-500">Error</CardTitle>
-                    </CardHeader>
-                    <CardContent>
+                <Alert className="w-full mx-auto mt-4 border-red-500">
+                    <AlertCircle className="w-4 h-4" />
+                    <AlertTitle className="text-red-500">Error</AlertTitle>
+                    <AlertDescription>
                         <p className="text-red-500">{error}</p>
-                    </CardContent>
-                </Card>
+                    </AlertDescription>
+                </Alert>
             )}
         </div>
     )
