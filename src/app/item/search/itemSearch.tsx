@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ChevronsUpDown, Loader2, RotateCcw, X } from 'lucide-react'
+import { ChevronsUpDown, Loader2, RotateCcw, X, GripVertical } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { ItemTypeIcon } from '@/components/custom/WynnIcon'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
@@ -14,6 +14,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
 import { DualSlider } from '@/components/ui/dual-slider'
 import { getIdentificationInfo } from '@/types/itemType'
+import { DndContext, closestCenter } from "@dnd-kit/core"
+import { SortableContext, useSortable, arrayMove,verticalListSortingStrategy } from "@dnd-kit/sortable"
+import { CSS } from "@dnd-kit/utilities";
 
 const itemTypes = {
     weapon: ['bow', 'spear', 'wand', 'relik', 'dagger'],
@@ -157,7 +160,7 @@ export default function ItemSearch({
         if (selectedTypes.length > 0) payload.type = selectedTypes
         if (selectedTiers.length > 0) payload.tier = selectedTiers
         payload.levelRange = levelRange
-        payload.identifications = selectedIdentifications.filter(id => id !== '');
+        payload.identifications = selectedIdentifications.filter(id => id !== '' && id != null);
         if (selectedMajorId !== '') payload.majorIds = [selectedMajorId];
 
         try {
@@ -302,69 +305,109 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
     selectedIdentifications,
     setSelectedIdentifications,
 }) => {
-    const [identificationBoxes, setIdentificationBoxes] = useState<string[]>([''])
+    const [identificationBoxes, setIdentificationBoxes] = useState<string[]>(['']);
 
     const addBox = () => {
-        setIdentificationBoxes((prev) => [...prev, ''])
-    }
+        setIdentificationBoxes((prev) => [...prev, '']);
+    };
 
     const removeBox = (index: number) => {
         setIdentificationBoxes((prev) => {
-            const updated = [...prev]
-            const removed = updated.splice(index, 1)[0]
+            const updated = [...prev];
+            const removed = updated.splice(index, 1)[0];
             if (removed) {
                 setSelectedIdentifications((prevSelected) =>
                     prevSelected.filter((id) => id !== removed)
-                )
+                );
             }
-            return updated
-        })
-    }
+            return updated;
+        });
+    };
 
     const updateBox = (value: string, index: number) => {
         setIdentificationBoxes((prev) => {
             const updated = [...prev];
             const oldValue = updated[index];
             updated[index] = value;
-        
+
             setSelectedIdentifications((prevSelected) => {
                 const newSelection = prevSelected.filter((id) => id !== oldValue);
                 return value && !newSelection.includes(value) ? [...newSelection, value] : newSelection;
             });
-        
+
             return updated;
         });
-        
-    }
+    };
+
+    const onDragEnd = (event: any) => {
+        const { active, over } = event;
+        if (!over || active.id === over.id) return;
+
+        const oldIndex = identificationBoxes.indexOf(active.id);
+        const newIndex = identificationBoxes.indexOf(over.id);
+        const reorderedBoxes = arrayMove(identificationBoxes, oldIndex, newIndex);
+
+        setIdentificationBoxes(reorderedBoxes);
+        setSelectedIdentifications((prev) => arrayMove(prev, oldIndex, newIndex));
+    };
 
     return (
         <div className="space-y-4">
-            {identificationBoxes.map((value, index) => (
-                <div key={index} className="flex items-center gap-4">
-                    <ResponsiveComboBox
-                        availableOptions={Object.entries(availableIdentifications).filter(([id, label]) => (
-                            !selectedIdentifications.includes(id) || id === value
-                        )).reduce((acc, [id, label]) => ({ ...acc, [id]: label }), {})}
-                        value={availableIdentifications[value]}
-                        currentLabel='Select an Identification...'
-                        onChange={(val) => updateBox(val, index)}
-                    />
-                    <Button
-                        variant="destructive"
-                        onClick={() => removeBox(index)}
-                    >
-                        <X className='h-8 w-8'/>
-                    </Button>
-                </div>
-            ))}
+            <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+                <SortableContext items={identificationBoxes} strategy={verticalListSortingStrategy}>
+                    {identificationBoxes.map((value, index) => (
+                        <IdentificationSortableItem
+                            key={value || `box-${index}`}
+                            id={value || `box-${index}`}
+                            value={value}
+                            index={index}
+                            availableIdentifications={availableIdentifications}
+                            selectedIdentifications={selectedIdentifications}
+                            updateBox={updateBox}
+                            removeBox={removeBox}
+                        />
+                    ))}
+                </SortableContext>
+            </DndContext>
+
             {identificationBoxes.length < 5 && (
                 <Button variant="ghost" onClick={addBox} className='w-full'>
                     + Add Identification
                 </Button>
             )}
         </div>
-    )
-}
+    );
+};
+
+const IdentificationSortableItem = ({ id, value, index, availableIdentifications, selectedIdentifications, updateBox, removeBox }: any) => {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
+
+    return (
+        <div ref={setNodeRef} style={style} className="flex items-center gap-4">
+            <Button variant='ghost' {...attributes} {...listeners} className="cursor-grab" disabled={value == ''}>
+                <GripVertical className="h-5 w-5 text-gray-500" />
+            </Button>
+
+            <ResponsiveComboBox
+                availableOptions={Object.entries(availableIdentifications)
+                    .filter(([id, label]) => !selectedIdentifications.includes(id) || id === value)
+                    .reduce((acc, [id, label]) => ({ ...acc, [id]: label }), {})}
+                value={availableIdentifications[value]}
+                currentLabel="Select an Identification..."
+                onChange={(val) => updateBox(val, index)}
+            />
+
+            <Button variant="destructive" onClick={() => removeBox(index)}>
+                <X className="h-8 w-8" />
+            </Button>
+        </div>
+    );
+};
 
 interface ResponsiveComboBoxProps {
     availableOptions: any
