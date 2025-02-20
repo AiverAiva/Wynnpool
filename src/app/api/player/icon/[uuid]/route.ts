@@ -100,7 +100,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const cachedImage = await PlayerIcon.findOne({ uuid }).lean();
     if (cachedImage) {
       console.log(`Serving cached image for UUID: ${uuid}`);
-      const blob = new Blob([cachedImage.image.buffer], { type: cachedImage.contentType || 'image/png' });
+      const blob = new Blob([cachedImage.image.buffer as BlobPart], { type: cachedImage.contentType || 'image/png' });
       return new NextResponse(blob, {
         status: 200,
         headers: {
