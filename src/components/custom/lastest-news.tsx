@@ -45,11 +45,13 @@ export default function WynncraftNews() {
   }
 
   const truncateContent = (content: string, maxLength: number) => {
-    const strippedContent = content.replace(/<[^>]+>/g, '')
+    const strippedContent = content.replace(/<[^>]+>/g, '');
     return strippedContent.length > maxLength 
       ? strippedContent.substring(0, maxLength) + '...' 
       : strippedContent
   }
+
+  console.log(news);
 
   return (
       <Card>
@@ -72,7 +74,7 @@ export default function WynncraftNews() {
                   <p className="text-sm text-muted-foreground mb-2">
                     {formatDate(item.date)} by {item.author}
                   </p>
-                  <p className="text-sm mb-2">{truncateContent(item.content, 150)}</p>
+                  <p className="text-sm mb-2" dangerouslySetInnerHTML={{__html: truncateContent(item.content, 150)}}></p>
                   <a 
                     href={item.forumThread} 
                     target="_blank" 
