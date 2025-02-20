@@ -13,7 +13,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import CurrencyDisplay from '@/components/custom/currency-display';
 import api from '@/utils/api';
 
-
 export default function ItemPage() {
     const { itemName } = useParams();
     const [isLoading, setIsLoading] = useState(true);
