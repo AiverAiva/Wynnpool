@@ -51,7 +51,9 @@ export default function WynncraftNews() {
       : strippedContent
   }
 
-  console.log(news);
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Debug - Latest news:', news);
+  }
 
   return (
       <Card>
