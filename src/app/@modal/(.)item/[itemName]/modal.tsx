@@ -10,11 +10,11 @@ import api from '@/utils/api';
 import { cn } from '@/lib/utils';
 import { Check, Copy } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { getIdentificationCost } from '@/types/itemType';
+import { getIdentificationCost, Item } from '@/types/itemType';
 import CurrencyDisplay from '@/components/custom/currency-display';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-function ItemDetail({ itemName }: any) {
+function ItemDetail({ itemName }: { itemName: string }) {
     const [isLoading, setIsLoading] = useState(true);
     const [itemData, setItemData] = useState<Item | null>(null);
     const [copied, setCopied] = useState<boolean>(false);
@@ -324,7 +324,7 @@ function ItemDetail({ itemName }: any) {
     )
 }
 
-export function Modal({ itemName }: any) {
+export function Modal({ itemName }: { itemName: string }) {
     const router = useRouter();
     
     return (
