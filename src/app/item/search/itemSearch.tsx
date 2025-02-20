@@ -119,7 +119,7 @@ export default function ItemSearch({
     const [query, setQuery] = useState('')
     const [selectedTypes, setSelectedTypes] = useState<string[]>([])
     const [selectedTiers, setSelectedTiers] = useState<string[]>(tiers)
-    const [levelRange, setLevelRange] = useState<number[]>([1, 106])
+    const [levelRange, setLevelRange] = useState<[number, number]>([1, 106]);
     const [isLoading, setIsLoading] = useState(false)
     const [identifications, setIdentifications] = useState<string[]>([])
     const [selectedIdentifications, setSelectedIdentifications] = useState<string[]>([]);
@@ -449,13 +449,13 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
                                 {Object.entries(availableOptions).map(([id, label]) => (
                                     <CommandItem
                                         key={id}
-                                        value={label}
+                                        value={String(label)}
                                         onSelect={() => {
                                             onChange(id)
                                             setOpen(false)
                                         }}
                                     >
-                                        {label}
+                                        {String(label)}
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
@@ -482,10 +482,10 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
                             <CommandGroup>
                                 {Object.entries(availableOptions).map((value, label) => (
                                     <CommandItem
-                                        key={value}
-                                        value={value}
+                                        key={String(value)}
+                                        value={String(value)}
                                         onSelect={() => {
-                                            onChange(value)
+                                            onChange(String(value))
                                             setOpen(false)
                                         }}
                                     >
