@@ -193,10 +193,10 @@ export default function ItemSearch({
     };
 
     return (
-        <div className='lg:flex gap-4 w-full space-y-6 lg:space-y-0'>
-            <div className='w-[360px] md:w-full lg:w-2/5'>
-                <div className="space-y-6">
-                    <div className='w-auto'>
+        <div className=' gap-4 w-full space-y-6 lg:space-y-0'>
+            <div className='flex flex-col md:flex-row gap-6 mb-6'>
+                <div className='lg:w-2/5 space-y-6'>
+                    <div className='w-auto grid gap-2'>
                         <Label htmlFor="query">Item Name</Label>
                         <Input
                             id="query"
@@ -205,10 +205,11 @@ export default function ItemSearch({
                             placeholder="Enter item name..."
                         />
                     </div>
-                    <div className='flex flex-wrap gap-2'>
+
+                    <div className='flex flex-wrap gap-4'>
                         {Object.entries(itemTypes).map(([category, types]) => (
-                            <div key={category} className="mt-2">
-                                <h4 className="font-semibold mb-2 capitalize">{category}</h4>
+                            <div key={category} className='grid gap-2'>
+                                <Label>{category[0].toUpperCase() + category.slice(1)}</Label>
                                 <MultiSelectTabs
                                     options={types}
                                     selectedOptions={selectedTypes}
@@ -217,20 +218,24 @@ export default function ItemSearch({
                             </div>
                         ))}
                     </div>
-                    <div className='relative w-fit'>
-                        <div className="absolute right-0 top-0">
+
+                    <div className='grid gap-2 w-fit'>
+                        <div className='flex items-center justify-between'>
+                            <Label>Rarity</Label>
+
                             <Button onClick={() => (selectedTiers.length === tiers.length ? setSelectedTiers([]) : setSelectedTiers(tiers))} variant="secondary" className='h-6 w-24'>
                                 {selectedTiers.length === tiers.length ? 'None' : 'All'}
                             </Button>
                         </div>
-                        <h4 className="font-semibold mb-2 capitalize">Rarity</h4>
+
                         <RarityTabs
                             options={tiers}
                             selectedOptions={selectedTiers}
                             onChange={setSelectedTiers}
                         />
                     </div>
-                    <div>
+
+                    <div className='grid gap-2'>
                         <Label>Level Range</Label>
                         <DualSlider
                             min={1}
@@ -241,43 +246,46 @@ export default function ItemSearch({
                         />
                     </div>
                 </div>
-                <div className='mt-6'>
-                    <Button onClick={handleSearch} disabled={isLoading}>
-                        {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        Search
-                    </Button>
-                    <Button onClick={clearFilters} className="ml-2" variant="outline">
-                        Clear Filters
-                    </Button>
-                </div>
-            </div>
-            <div className='w-[360px] md:w-full lg:w-3/5 lg:flex-grow space-y-4'>
-                <div>
-                    <Label htmlFor="query">Major id</Label>
-                    <div className='flex items-center gap-4'>
-                        <ResponsiveComboBox
-                            availableOptions={majorIds}
-                            value={selectedMajorId}
-                            currentLabel='Select a Major id...'
-                            onChange={(val) => setselectedMajorId(val)}
+            
+                <div className='lg:w-3/5 space-y-6'>
+                    <div className='grid gap-2'>
+                        <Label htmlFor="query">Major id</Label>
+                        <div className='flex items-center gap-4'>
+                            <ResponsiveComboBox
+                                availableOptions={majorIds}
+                                value={selectedMajorId}
+                                currentLabel='Select a Major id...'
+                                onChange={(val) => setselectedMajorId(val)}
+                            />
+                            <Button
+                                variant="outline"
+                                disabled={selectedMajorId == ''}
+                                onClick={() => setselectedMajorId('')}
+                            >
+                                <RotateCcw />
+                            </Button>
+                        </div>
+                    </div>
+                    <div className='grid gap-2'>
+                        <Label htmlFor="query">Identifications</Label>
+                        <IdentificationBox
+                            availableIdentifications={identifications}
+                            selectedIdentifications={selectedIdentifications}
+                            setSelectedIdentifications={setSelectedIdentifications}
                         />
-                        <Button
-                            variant="outline"
-                            disabled={selectedMajorId == ''}
-                            onClick={() => setselectedMajorId('')}
-                        >
-                            <RotateCcw />
-                        </Button>
                     </div>
                 </div>
-                <div>
-                    <Label htmlFor="query">Identifications</Label>
-                    <IdentificationBox
-                        availableIdentifications={identifications}
-                        selectedIdentifications={selectedIdentifications}
-                        setSelectedIdentifications={setSelectedIdentifications}
-                    />
-                </div>
+            </div>
+
+            <div>
+                <Button onClick={handleSearch} disabled={isLoading}>
+                    {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    Search
+                </Button>
+
+                <Button onClick={clearFilters} className="ml-2" variant="outline">
+                    Clear Filters
+                </Button>
             </div>
         </div>
     )
