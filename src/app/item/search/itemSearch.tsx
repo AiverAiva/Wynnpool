@@ -1,18 +1,19 @@
 'use client'
 
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ChevronsUpDown, Loader2 } from 'lucide-react'
+import { ChevronsUpDown, Loader2, RotateCcw, X } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { ItemTypeIcon } from '@/components/custom/WynnIcon'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
-import React from 'react'
-
+import { DualSlider } from '@/components/ui/dual-slider'
+import { getIdentificationInfo } from '@/types/itemType'
 
 const itemTypes = {
     weapon: ['bow', 'spear', 'wand', 'relik', 'dagger'],
@@ -41,7 +42,6 @@ interface MultiSelectTabsProps {
 
 function MultiSelectTabs({ options, selectedOptions, onChange }: MultiSelectTabsProps) {
     return (
-        // <div className=' 
         <div className="flex flex-wrap gap-2 p-1 bg-secondary rounded-md w-fit">
             {options.map((option) => (
                 <button
@@ -66,6 +66,7 @@ function MultiSelectTabs({ options, selectedOptions, onChange }: MultiSelectTabs
         </div>
     )
 }
+
 function RarityTabs({ options, selectedOptions, onChange }: MultiSelectTabsProps) {
     return (
         <div className="flex flex-wrap gap-2 p-2 bg-secondary rounded-md w-fit">
@@ -114,7 +115,7 @@ export default function ItemSearch({
 }: ItemSearchProps) {
     const [query, setQuery] = useState('')
     const [selectedTypes, setSelectedTypes] = useState<string[]>([])
-    const [selectedTiers, setSelectedTiers] = useState<string[]>([])
+    const [selectedTiers, setSelectedTiers] = useState<string[]>(tiers)
     const [levelRange, setLevelRange] = useState<number[]>([1, 106])
     const [isLoading, setIsLoading] = useState(false)
     const [identifications, setIdentifications] = useState<string[]>([])
@@ -126,8 +127,16 @@ export default function ItemSearch({
         fetch('/api/item/metadata')
             .then((response) => response.json())
             .then((data) => {
-                setIdentifications(data.identifications)
-                setMajorIds(data.majorIds)
+                const identificationsLabeled: any = {};
+                const majorsIdsLabeled: any = Object.fromEntries(data.majorIds.map((m: string) => [m, m]));
+
+                data.identifications.forEach((identification: string) => {
+                    const identificationInfo = getIdentificationInfo(identification);
+                    identificationsLabeled[identification] = (identificationInfo?.detailedName || identificationInfo?.displayName) ?? identification;
+                })
+
+                setIdentifications(identificationsLabeled)
+                setMajorIds(majorsIdsLabeled)
             })
     }, [])
 
@@ -221,16 +230,16 @@ export default function ItemSearch({
                             onChange={setSelectedTiers}
                         />
                     </div>
-                    {/* <div>
-                                    <Label>Level Range: {levelRange[0]} - {levelRange[1]}</Label>
-                                    <Slider
-                                        min={1}
-                                        max={100}
-                                        step={1}
-                                        value={levelRange}
-                                        onValueChange={setLevelRange}
-                                    />
-                                </div> */}
+                    <div>
+                        <Label>Level Range</Label>
+                        <DualSlider
+                            min={1}
+                            max={106}
+                            step={1}
+                            value={levelRange}
+                            onValueChange={setLevelRange}
+                        />
+                    </div>
                 </div>
                 <div className='mt-6'>
                     <Button onClick={handleSearch} disabled={isLoading}>
@@ -254,10 +263,10 @@ export default function ItemSearch({
                         />
                         <Button
                             variant="outline"
+                            disabled={selectedMajorId == ''}
                             onClick={() => setselectedMajorId('')}
-                            className="h-8 w-8"
                         >
-                            ↻
+                            <RotateCcw />
                         </Button>
                     </div>
                 </div>
@@ -306,22 +315,18 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
 
     const updateBox = (value: string, index: number) => {
         setIdentificationBoxes((prev) => {
-            const updated = [...prev]
-            const oldValue = updated[index]
-            updated[index] = value
-
-            if (oldValue) {
-                setSelectedIdentifications((prevSelected) =>
-                    prevSelected.filter((id) => id !== oldValue)
-                )
-            }
-
-            if (value) {
-                setSelectedIdentifications((prevSelected) => [...prevSelected, value])
-            }
-
-            return updated
-        })
+            const updated = [...prev];
+            const oldValue = updated[index];
+            updated[index] = value;
+        
+            setSelectedIdentifications((prevSelected) => {
+                const newSelection = prevSelected.filter((id) => id !== oldValue);
+                return value && !newSelection.includes(value) ? [...newSelection, value] : newSelection;
+            });
+        
+            return updated;
+        });
+        
     }
 
     return (
@@ -329,19 +334,18 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
             {identificationBoxes.map((value, index) => (
                 <div key={index} className="flex items-center gap-4">
                     <ResponsiveComboBox
-                        availableOptions={availableIdentifications.filter(
-                            (id) => !selectedIdentifications.includes(id) || id === value
-                        )}
-                        value={value}
+                        availableOptions={Object.entries(availableIdentifications).filter(([id, label]) => (
+                            !selectedIdentifications.includes(id) || id === value
+                        )).reduce((acc, [id, label]) => ({ ...acc, [id]: label }), {})}
+                        value={availableIdentifications[value]}
                         currentLabel='Select an Identification...'
                         onChange={(val) => updateBox(val, index)}
                     />
                     <Button
                         variant="destructive"
                         onClick={() => removeBox(index)}
-                        className="h-8 w-8"
                     >
-                        ✕
+                        <X className='h-8 w-8'/>
                     </Button>
                 </div>
             ))}
@@ -355,7 +359,7 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
 }
 
 interface ResponsiveComboBoxProps {
-    availableOptions: string[]
+    availableOptions: any
     value: string
     currentLabel?: string
     onChange: (value: string) => void
@@ -391,16 +395,16 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
                         <CommandList>
                             <CommandEmpty>No results found.</CommandEmpty>
                             <CommandGroup>
-                                {availableOptions.map((option) => (
+                                {Object.entries(availableOptions).map(([id, label]) => (
                                     <CommandItem
-                                        key={option}
-                                        value={option}
+                                        key={id}
+                                        value={label}
                                         onSelect={() => {
-                                            onChange(option)
+                                            onChange(id)
                                             setOpen(false)
                                         }}
                                     >
-                                        {option}
+                                        {label}
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
@@ -425,16 +429,16 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
                         <CommandList>
                             <CommandEmpty>No results found.</CommandEmpty>
                             <CommandGroup>
-                                {availableOptions.map((option) => (
+                                {Object.entries(availableOptions).map((value, label) => (
                                     <CommandItem
-                                        key={option}
-                                        value={option}
+                                        key={value}
+                                        value={value}
                                         onSelect={() => {
-                                            onChange(option)
+                                            onChange(value)
                                             setOpen(false)
                                         }}
                                     >
-                                        {option}
+                                        {label}
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
