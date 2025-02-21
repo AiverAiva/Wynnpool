@@ -15,7 +15,7 @@ import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
 import { DualSlider } from '@/components/ui/dual-slider'
 import { getIdentificationInfo } from '@/types/itemType'
 import { DndContext, closestCenter } from "@dnd-kit/core"
-import { SortableContext, useSortable, arrayMove,verticalListSortingStrategy } from "@dnd-kit/sortable"
+import { SortableContext, useSortable, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities";
 
 const itemTypes = {
@@ -249,11 +249,11 @@ export default function ItemSearch({
                         />
                     </div>
                 </div>
-            
+
                 <div className='lg:w-3/5 space-y-6'>
                     <div className='grid gap-2'>
                         <Label htmlFor="query">Major id</Label>
-                        <div className='flex items-center gap-4'>
+                        <div className='flex items-center gap-2'>
                             <ResponsiveComboBox
                                 availableOptions={majorIds}
                                 value={selectedMajorId}
@@ -388,8 +388,8 @@ const IdentificationSortableItem = ({ id, value, index, availableIdentifications
     };
 
     return (
-        <div ref={setNodeRef} style={style} className="flex items-center gap-4">
-            <Button variant='ghost' {...attributes} {...listeners} className="cursor-grab" disabled={value == ''}>
+        <div ref={setNodeRef} style={style} className="flex items-center gap-2">
+            <Button variant='ghost' {...attributes} {...listeners} className="px-3 cursor-grab" disabled={value == ''}>
                 <GripVertical className="h-5 w-5 text-gray-500" />
             </Button>
 
