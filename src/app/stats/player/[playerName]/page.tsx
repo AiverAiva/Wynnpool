@@ -21,6 +21,7 @@ import api from '@/utils/api';
 import { ChevronDown, Trophy } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
+import SkinViewerComponent from '@/components/custom/SkinViewer';
 
 interface PlayerGuild {
     guild_uuid: string;
@@ -121,11 +122,10 @@ export default function PlayerStatsPage() {
                 {/* https://ui.shadcn.com/docs/components/dialog add a share button for sharing profiles here*/}
                 <CardHeader>
                     <div className="flex items-center space-x-4 ">
-                        <img
-                            src={`https://vzge.me/bust/512/${playerData.uuid}`}
-                            alt={playerData.username}
-                            className="h-32 w-32"
-                        // style={{ imageRendering: 'pixelated' }}
+                        <SkinViewerComponent
+                            skinUrl={`https://mineskin.eu/skin/${playerData.uuid}`}
+                            width={150}
+                            height={200}
                         />
                         <div className="flex flex-col w-full sm:relative">
                             <div className={`sm:absolute top-0 w-fit mb-2 right-0 px-4 py-1 text-md font-mono text-white rounded-full ${playerData.online ? "bg-green-500" : "bg-accent"}`}>
