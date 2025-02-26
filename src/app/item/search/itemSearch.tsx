@@ -17,6 +17,7 @@ import { getIdentificationInfo } from '@/types/itemType'
 import { DndContext, closestCenter } from "@dnd-kit/core"
 import { SortableContext, useSortable, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities";
+import api from '@/utils/api'
 
 const itemTypes = {
     weapon: ['bow', 'spear', 'wand', 'relik', 'dagger'],
@@ -116,7 +117,7 @@ export default function ItemSearch({
     error,
     setError,
 }: ItemSearchProps) {
-    const [query, setQuery] = useState('')
+    const [nameQuery, setNameQuery] = useState('')
     const [selectedTypes, setSelectedTypes] = useState<string[]>([])
     const [selectedTiers, setSelectedTiers] = useState<string[]>(tiers)
     const [levelRange, setLevelRange] = useState<[number, number]>([1, 106]);
@@ -155,21 +156,64 @@ export default function ItemSearch({
             return
         }
 
-        const payload: any = {}
-        if (query) payload.query = query
-        if (selectedTypes.length > 0) payload.type = selectedTypes
-        if (selectedTiers.length > 0) payload.tier = selectedTiers
-        payload.levelRange = levelRange
-        payload.identifications = selectedIdentifications.filter(id => id !== '' && id != null);
-        if (selectedMajorId !== '') payload.majorIds = [selectedMajorId];
+        const query: any = {
+            $and: []
+        };
 
+        if (nameQuery) {
+            query.$and.push({ id: { $regex: nameQuery, $options: 'i' } }); // Case-insensitive search for item name
+        }
+
+        const typeFilters = selectedTypes.map((selectedType) => {
+            for (const [mainType, subTypes] of Object.entries(itemTypes)) {
+                if (subTypes.includes(selectedType)) {
+                    return { type: mainType, [`${mainType}Type`]: selectedType };
+                }
+            }
+            return null;
+        }).filter(Boolean); // Remove null values
+
+        if (typeFilters.length > 0) {
+            query.$and.push({ $or: typeFilters });
+        }
+
+        if (selectedTiers.length > 0) {
+            query.$and.push({ rarity: { $in: selectedTiers } });
+        }
+
+        if (levelRange) {
+            query.$and.push({ 'requirements.level': { $gte: levelRange[0], $lte: levelRange[1] } });
+        }
+
+        if (selectedMajorId) {
+            query.$and.push({ [`majorIds.${selectedMajorId}`]: { $exists: true } });
+        }
+
+        if (selectedIdentifications.length > 0) {
+            const identificationQueries = selectedIdentifications.map((id) => ({
+                $or: [
+                    { [`identifications.${id}`]: { $exists: true } }, // For numbers
+                    { [`identifications.${id}.raw`]: { $exists: true } } // For objects with "raw"
+                ]
+            }));
+
+            query.$and.push({ $or: identificationQueries });
+        }
+        // if (query) payload.query = query
+        // if (selectedTypes.length > 0) payload.type = selectedTypes
+        // if (selectedTiers.length > 0) payload.tier = selectedTiers
+        // payload.levelRange = levelRange
+        // payload.identifications = selectedIdentifications.filter(id => id !== '' && id != null);
+        // if (selectedMajorId !== '') payload.majorIds = [selectedMajorId];
+
+        console.log(query)
         try {
-            const response = await fetch('/api/item/search', {
+            const response = await fetch(api('/item/search'), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(payload),
+                body: JSON.stringify(query),
             })
 
             if (!response.ok) {
@@ -187,7 +231,7 @@ export default function ItemSearch({
     }
 
     const clearFilters = () => {
-        setQuery('');
+        setNameQuery('');
         setSelectedTypes([]);
         setSelectedTiers([]);
         setLevelRange([1, 106]);
@@ -203,8 +247,8 @@ export default function ItemSearch({
                         <Label htmlFor="query">Item Name</Label>
                         <Input
                             id="query"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
+                            value={nameQuery}
+                            onChange={(e) => setNameQuery(e.target.value)}
                             placeholder="Enter item name..."
                         />
                     </div>
