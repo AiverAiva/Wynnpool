@@ -123,13 +123,19 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
 
                                                                         return (
                                                                             <div key={item} className="flex items-center space-x-2">
-                                                                                <Image
+                                                                                {className ? <Image
                                                                                     unoptimized
                                                                                     src={`/icons/aspects/aspect_${className.toLowerCase()}.${aspectInfo?.rarity === 'Mythic' ? 'gif' : 'png'}`}
                                                                                     alt={item}
                                                                                     width={32}
                                                                                     height={32}
-                                                                                />
+                                                                                /> : <Image
+                                                                                    unoptimized
+                                                                                    src="/icons/items/barrier.webp"
+                                                                                    alt={item}
+                                                                                    width={32}
+                                                                                    height={32}
+                                                                                />}
                                                                                 <span>{item}</span>
                                                                             </div>
                                                                         )
