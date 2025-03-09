@@ -1,6 +1,17 @@
 {
     "Archer": [
         {
+            "name": "Aspect of the Beastmaster",
+            "id": "unknownAspect",
+            "rarity": "Fabled",
+            "description": "Summons effectiveness",
+            "tiers": {
+                "Tier 1": "Hound's movement speed +15%, Snake's weakness effect +2%, Crow's distraction duration +0.1s",
+                "Tier 2": "Hound's movement speed +25%, Snake's weakness effect +3%, Crow's distraction duration +0.15s",
+                "Tier 3": "Hound's movement speed +35%, Snake's weakness effect +4%, Crow's distraction duration +0.2s"
+            }
+        },
+        {
             "name": "Aspect of Chaotic Demolition",
             "id": "basalticTrapMaxAspect",
             "rarity": "Fabled",
