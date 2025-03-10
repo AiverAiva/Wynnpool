@@ -9,6 +9,7 @@ import { PlusCircle, MinusCircle, RefreshCw } from 'lucide-react'
 import api from '@/utils/api'
 import { ItemDisplay } from '@/components/custom/item-display'
 import { ItemDiffViewer } from './ItemDiff'
+import { Spinner } from '@/components/ui/spinner'
 
 interface ChangelogData {
     add?: any[];
@@ -94,7 +95,9 @@ export default function ChangelogPage() {
 
                         <TabsContent value={selectedTab || ""}>
                             {isLoading ? (
-                                <p>Loading changelog data...</p>
+                                <div className='h-64 flex item-center justify-center'>
+                                    <Spinner className='h-16 w-16'/>
+                                </div>
                             ) : changelogData ? (
                                 <div className="space-y-6">
                                     {/* Added Items */}
