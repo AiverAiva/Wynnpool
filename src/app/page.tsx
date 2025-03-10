@@ -9,6 +9,7 @@ import WynncraftNews from '@/components/custom/lastest-news'
 import ServerStatusDisplay from '@/components/custom/server-status'
 import { SparklesText } from '@/components/ui/sparkles-text'
 import { GlobalSearch } from "@/components/custom/global-search"
+import { ChangelogList } from "@/components/custom/changelog-list"
 
 export default function HomePage() {
   return (
@@ -94,7 +95,8 @@ export default function HomePage() {
               <WynncraftNews />
             </TabsContent>
             <TabsContent value="items">
-              <Card>
+              <ChangelogList />
+              {/* <Card>
                 <CardHeader>
                   <CardTitle>Item changelogs (WIP)</CardTitle>
                   <CardDescription>Check out the latest changes to the items</CardDescription>
@@ -106,7 +108,7 @@ export default function HomePage() {
                     <li>CCC(Unique)</li>
                   </ul>
                 </CardContent>
-              </Card>
+              </Card> */}
             </TabsContent>
             <TabsContent value="events">
               <Card>
