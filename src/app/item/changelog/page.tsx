@@ -107,7 +107,7 @@ export default function ChangelogPage() {
                                                 <PlusCircle className="mr-2 h-5 w-5 text-green-500" />
                                                 Added Items
                                             </h3>
-                                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                                 {changelogData.add.map((item, index) => (
                                                     <Card key={index} className="border-l-4 border-green-500">
                                                         <ItemDisplay item={item} />
@@ -125,7 +125,7 @@ export default function ChangelogPage() {
                                                 <RefreshCw className="mr-2 h-5 w-5 text-blue-500" />
                                                 Modified Items
                                             </h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                                 {changelogData.modify.map((item, index) => (
                                                     <Card key={index} className="border-l-4 border-blue-500">
                                                         
