@@ -108,7 +108,7 @@ export default function ChangelogPage() {
                                                 <PlusCircle className="mr-2 h-5 w-5 text-green-500" />
                                                 Added Items
                                             </h3>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                                                 {changelogData.add.map((item, index) => (
                                                     <Card key={index} className="border-l-4 border-green-500">
                                                         <ItemDisplay item={item} />
