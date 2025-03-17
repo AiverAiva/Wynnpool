@@ -35,11 +35,11 @@ function getFormattedText(number: number) {
 const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem }) => {
   const { before, after } = modifiedItem
   const isCombatItem =
-    before.type === "weapon" ||
-    before.type === "armour" ||
-    before.type === "accessory" ||
-    before.type === "tome" ||
-    before.type === "charm"
+    before.type && after.type === "weapon" ||
+    before.type && after.type === "armour" ||
+    before.type && after.type === "accessory" ||
+    before.type && after.type === "tome" ||
+    before.type && after.type === "charm"
   const itemNameLength = isCombatItem ? before.internalName.length - 8 : before.internalName.length
   let itemNameSize = "text-lg"
 
@@ -121,24 +121,24 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                       const beforeValue = before.base?.[key]
                       const afterValue = after.base?.[key]
 
-                      if (!beforeValue) {
+                      if (!beforeValue && afterValue) {
                         // Added stat
                         return (
                           <li key={key} className="text-green-500">
                             + {key}: {afterValue.min}-{afterValue.max} (Base: {afterValue.raw})
                           </li>
                         )
-                      } else if (!afterValue) {
+                      } else if (!afterValue && beforeValue) {
                         // Removed stat
                         return (
                           <li key={key} className="text-red-500">
                             - {key}: {beforeValue.min}-{beforeValue.max} (Base: {beforeValue.raw})
                           </li>
                         )
-                      } else if (
+                      } else if (beforeValue && afterValue &&(
                         beforeValue.min !== afterValue.min ||
                         beforeValue.max !== afterValue.max ||
-                        beforeValue.raw !== afterValue.raw
+                        beforeValue.raw !== afterValue.raw)
                       ) {
                         // Changed stat
                         return (
@@ -172,7 +172,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                       const displayName = getIdentificationInfo(key)?.displayName ?? key
                       const unit = getIdentificationInfo(key)?.unit ?? ""
 
-                      if (!beforeValue) {
+                      if (!beforeValue && afterValue) {
                         // Added identification
                         return (
                           <div key={key} className="flex items-center justify-between text-sm">
@@ -183,7 +183,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                             </span>
                           </div>
                         )
-                      } else if (!afterValue) {
+                      } else if (!afterValue && beforeValue) {
                         // Removed identification
                         return (
                           <div key={key} className="flex items-center justify-between text-sm">
@@ -194,7 +194,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                             </span>
                           </div>
                         )
-                      } else if (JSON.stringify(beforeValue) !== JSON.stringify(afterValue)) {
+                      } else if (afterValue&&beforeValue&&JSON.stringify(beforeValue) !== JSON.stringify(afterValue)) {
                         // Changed identification
                         return (
                           <div key={key} className="flex items-center justify-between text-sm">
