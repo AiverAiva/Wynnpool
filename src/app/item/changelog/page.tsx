@@ -10,6 +10,7 @@ import api from '@/utils/api'
 import { ItemDisplay } from '@/components/custom/item-display'
 import { ItemDiffViewer } from './ItemDiff'
 import { Spinner } from '@/components/ui/spinner'
+import ModifiedItemDisplay from '@/components/custom/ModifiedItemDisplay'
 
 interface ChangelogData {
     add?: any[];
@@ -129,13 +130,13 @@ export default function ChangelogPage() {
                                                 {changelogData.modify.map((item, index) => (
                                                     <Card key={index} className="border-l-4 border-blue-500">
                                                         
-                                                        <CardHeader className="p-4">
+                                                        {/* <CardHeader className="p-4">
                                                             <div className="flex justify-between items-center">
                                                                 <CardTitle className="text-lg">{item.itemName}</CardTitle>
                                                                 <Badge>{item.after.rarity}</Badge>
                                                             </div>
                                                             <CardDescription>{item.after.type}</CardDescription>
-                                                        </CardHeader>
+                                                        </CardHeader> */}
                                                         {/* <CardContent>
                                                             <h4 className="text-sm font-semibold">Changes:</h4>
                                                             <ul className="text-sm">
@@ -154,7 +155,8 @@ export default function ChangelogPage() {
                                                                 )}
                                                             </ul>
                                                         </CardContent> */}
-                                                        <ItemDiffViewer {...item}/>
+                                                        <ModifiedItemDisplay modifiedItem={item} />
+                                                        {/* <ItemDiffViewer {...item}/> */}
                                                     </Card>
                                                 ))}
                                             </div>
