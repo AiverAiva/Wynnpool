@@ -339,6 +339,18 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                 </div>
               </div>
             )}
+
+            {JSON.stringify(before.majorIds) !== JSON.stringify(after.majorIds) && (
+              <div className="space-y-2">
+                <h4 className="font-medium">Major ID</h4>
+                <div className="text-sm space-y-2">
+                  {/* Get all unique Major IDs from both before & after */}
+                  {[...new Set([...Object.keys(before.majorIds || {}), ...Object.keys(after.majorIds || {})])].map((majorId) => (
+                    HighlightMajorIdChanges(before.majorIds?.[majorId] || "", after.majorIds?.[majorId] || "")
+                  ))}
+                </div>
+              </div>
+            )}
           </TabsContent>
 
           <TabsContent value="before" className="space-y-4 pt-4">
@@ -464,7 +476,13 @@ const DisplayItemState: React.FC<{ item: Item }> = ({ item }) => {
           </span>
         </p>
       )}
-
+      {item.majorIds && (
+        <ul className="list-disc list-inside">
+          {Object.entries(item.majorIds).map(([key, value]) => (
+            <div className="text-sm" key={key} dangerouslySetInnerHTML={{ __html: value }} />
+          ))}
+        </ul>
+      )}
       {item.lore && (
         <>
           <Separator />
@@ -496,6 +514,32 @@ function HighlightLoreChanges(before: string, after: string) {
       ))}
     </p>
   );
+}
+
+function stripHtml(html: string): string {
+  if (!html) return "";
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  return doc.body.textContent || "";
+}
+
+function HighlightMajorIdChanges(beforeHtml: string, afterHtml: string) {
+  const beforeText = stripHtml(beforeHtml);
+  const afterText = stripHtml(afterHtml);
+
+  const diffResult = diffWords(beforeText, afterText);
+
+  const highlightedHtml = diffResult
+    .map((part) => {
+      if (part.removed) {
+        return `<span class="text-red-500 line-through bg-red-500/30 px-1 rounded">${part.value}</span>`;
+      } else if (part.added) {
+        return `<span class="text-green-500 bg-green-500/30 px-1 rounded">${part.value}</span>`;
+      }
+      return part.value;
+    })
+    .join("");
+
+  return <div className="text-sm" dangerouslySetInnerHTML={{ __html: highlightedHtml }} />;
 }
 
 const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
