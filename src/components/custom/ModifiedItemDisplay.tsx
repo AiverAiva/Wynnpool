@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getClassInfo } from "@/types/classType"
 import { ItemIcon } from "./WynnIcon"
 import { cn } from "@/lib/utils"
+import { diffWords } from "diff";
 
 interface ModifiedItemDisplayProps {
   modifiedItem: {
@@ -135,7 +136,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                             - {key}: {beforeValue.min}-{beforeValue.max} (Base: {beforeValue.raw})
                           </li>
                         )
-                      } else if (beforeValue && afterValue &&(
+                      } else if (beforeValue && afterValue && (
                         beforeValue.min !== afterValue.min ||
                         beforeValue.max !== afterValue.max ||
                         beforeValue.raw !== afterValue.raw)
@@ -194,7 +195,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                             </span>
                           </div>
                         )
-                      } else if (afterValue&&beforeValue&&JSON.stringify(beforeValue) !== JSON.stringify(afterValue)) {
+                      } else if (afterValue && beforeValue && JSON.stringify(beforeValue) !== JSON.stringify(afterValue)) {
                         // Changed identification
                         return (
                           <div key={key} className="flex items-center justify-between text-sm">
@@ -245,6 +246,15 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                   <span>Powder Slots: </span>
                   <span className="text-red-500 line-through">{before.powderSlots}</span>
                   <span className="text-green-500 ml-1">{after.powderSlots}</span>
+                </div>
+              </div>
+            )}
+            {/* Lore  */}
+            {before.lore !== after.lore && (
+              <div className="space-y-2">
+                <h4 className="font-medium">Lore</h4>
+                <div className="text-sm">
+                  {HighlightLoreChanges(before.lore || '', after.lore || '')}
                 </div>
               </div>
             )}
@@ -382,6 +392,29 @@ const DisplayItemState: React.FC<{ item: Item }> = ({ item }) => {
       )}
     </div>
   )
+}
+
+function HighlightLoreChanges(before: string, after: string) {
+  const diffResult = diffWords(before, after);
+
+  return (
+    <p className="text-sm">
+      {diffResult.map((part: any, index: any) => (
+        <span
+          key={index}
+          className={
+            part.removed
+              ? "text-red-600 line-through bg-red-500/30 px-1 rounded"
+              : part.added
+                ? "text-green-600 bg-green-500/30 px-1 rounded"
+                : ""
+          }
+        >
+          {part.value}
+        </span>
+      ))}
+    </p>
+  );
 }
 
 const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
