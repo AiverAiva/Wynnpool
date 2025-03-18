@@ -12,6 +12,7 @@ import { ItemIcon } from "./WynnIcon"
 import { cn } from "@/lib/utils"
 import { diffChars, diffWords } from "diff";
 import { TrendingDown, TrendingUp } from "lucide-react"
+import { mapEasingToNativeEasing } from "framer-motion"
 
 interface ModifiedItemDisplayProps {
   modifiedItem: {
@@ -133,20 +134,40 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                     .map((key) => {
                       const beforeValue = before.base?.[key]
                       const afterValue = after.base?.[key]
+                      const name = getIdentificationInfo(key)?.displayName ?? key
+                      
+                      const matchedKey = Object.keys(colorMap).find((colorkey) => key.includes(colorkey))
+                      const color = matchedKey ? colorMap[matchedKey] : ""
+                      const text = matchedKey ? <span className={color}>{textMap[matchedKey]}&ensp;</span> : null
+                      const type = name.includes("Damage") ? "Damage" : name.includes("Defence") ? "Defence" : ""
 
                       if (!beforeValue && afterValue) {
                         // Added stat
                         return (
-                          <li key={key} className="text-green-500">
-                            + {key}: {afterValue.min}-{afterValue.max} (Base: {afterValue.raw})
-                          </li>
+                          <div key={key} className="bg-green-500/30 px-1 rounded">
+                            <span className={cn("font-common text-lg h-4 -mt-3", color)}>{getIdentificationInfo(key)?.symbol}</span>
+                            <span className={getIdentificationInfo(key)?.symbol && "ml-2"}>
+                              {text}
+                              {type}
+                            </span>
+                            <span className="ml-1 h-4">
+                              {afterValue.min}-{afterValue.max}
+                            </span>
+                          </div>
                         )
                       } else if (!afterValue && beforeValue) {
                         // Removed stat
                         return (
-                          <li key={key} className="text-red-500">
-                            - {key}: {beforeValue.min}-{beforeValue.max} (Base: {beforeValue.raw})
-                          </li>
+                          <div key={key} className="bg-red-500/30 px-1 rounded">
+                            <span className={cn("font-common text-lg h-4 -mt-3", color)}>{getIdentificationInfo(key)?.symbol}</span>
+                            <span className={getIdentificationInfo(key)?.symbol && "ml-2"}>
+                              {text}
+                              {type}
+                            </span>
+                            <span className="ml-1 h-4">
+                              {beforeValue.min}-{beforeValue.max} 
+                            </span>
+                          </div>
                         )
                       } else if (beforeValue && afterValue && (
                         beforeValue.min !== afterValue.min ||
@@ -155,16 +176,20 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                       ) {
                         // Changed stat
                         return (
-                          <li key={key}>
-                            {key}:
-                            <span className="text-red-500 line-through ml-1">
-                              {beforeValue.min}-{beforeValue.max} (Base: {beforeValue.raw})
+                          <div key={key}>
+                            <span className={cn("font-common text-lg h-4 -mt-3", color)}>{getIdentificationInfo(key)?.symbol}</span>
+                            <span className={getIdentificationInfo(key)?.symbol && "ml-2"}>
+                              {text}
+                              {type}
+                            </span>
+                            <span className="ml-1 h-4 opacity-50">
+                              {beforeValue.min}-{beforeValue.max} 
                             </span>
                             {getTrendIcon(afterValue.raw - beforeValue.raw, key)}
-                            <span className="text-green-500 ml-1">
-                              {afterValue.min}-{afterValue.max} (Base: {afterValue.raw})
+                            <span className="ml-1 h-4">
+                              {afterValue.min}-{afterValue.max}
                             </span>
-                          </li>
+                          </div>
                         )
                       }
                       return null
@@ -242,23 +267,6 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                         } else if (typeof afterValue === "object" && typeof beforeValue === "object") {
                           diff = (afterValue.min + afterValue.max) / 2 - (beforeValue.min + beforeValue.max) / 2
                         }
-                        // return (
-                        //   <div key={key} className="flex items-center justify-between text-sm">
-                        //     <span>{displayName}: </span>
-                        //     <div>
-                        //       <span className="text-red-500 line-through">
-                        //         {typeof beforeValue === "number" ? beforeValue : `${beforeValue.min}-${beforeValue.max}`}
-                        //         {unit}
-                        //       </span>
-                        //       {getTrendIcon(diff)}
-                        //       <span className="text-green-500">
-                        //         {typeof afterValue === "number" ? afterValue : `${afterValue.min}-${afterValue.max}`}
-                        //         {unit}
-                        //       </span>
-                        //     </div>
-                        //   </div>
-                        // )
-
 
                         return (
                           <div key={key} className="flex items-center justify-between text-sm">
@@ -542,27 +550,28 @@ function HighlightMajorIdChanges(beforeHtml: string, afterHtml: string) {
   return <div className="text-sm" dangerouslySetInnerHTML={{ __html: highlightedHtml }} />;
 }
 
+const colorMap: Record<string, string> = {
+  baseHealth: "text-[#AA0000]",
+  baseDamage: "text-[#FFAA00]",
+  Earth: "text-[#00AA00]",
+  Thunder: "text-[#FFFF55]",
+  Water: "text-[#55FFFF]",
+  Fire: "text-[#FF5555]",
+  Air: "text-[#FFFFFF]",
+}
+
+const textMap: Record<string, string> = {
+  baseHealth: "Health",
+  baseDamage: "Neutral",
+  Earth: "Earth",
+  Thunder: "Thunder",
+  Water: "Water",
+  Fire: "Fire",
+  Air: "Air",
+}
+
 const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
-  const colorMap: Record<string, string> = {
-    baseHealth: "text-[#AA0000]",
-    baseDamage: "text-[#FFAA00]",
-    Earth: "text-[#00AA00]",
-    Thunder: "text-[#FFFF55]",
-    Water: "text-[#55FFFF]",
-    Fire: "text-[#FF5555]",
-    Air: "text-[#FFFFFF]",
-  }
-
-  const textMap: Record<string, string> = {
-    baseHealth: "Health",
-    baseDamage: "Neutral",
-    Earth: "Earth",
-    Thunder: "Thunder",
-    Water: "Water",
-    Fire: "Fire",
-    Air: "Air",
-  }
-
+  console.log(name)
   const matchedKey = Object.keys(colorMap).find((key) => name.includes(key))
   const color = matchedKey ? colorMap[matchedKey] : ""
   const text = matchedKey ? <span className={color}>{textMap[matchedKey]}&ensp;</span> : null
@@ -588,6 +597,7 @@ const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
     </div>
   )
 }
+
 
 export default ModifiedItemDisplay
 
