@@ -5,13 +5,13 @@ import type React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { getIdentificationInfo, type Item } from "@/types/itemType"
+import { formattedAttackSpeed, getIdentificationInfo, type Item } from "@/types/itemType"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getClassInfo } from "@/types/classType"
 import { ItemIcon } from "./WynnIcon"
 import { cn } from "@/lib/utils"
 import { diffChars, diffWords } from "diff";
-import { TrendingDown, TrendingUp } from "lucide-react"
+import { MoveRight, TrendingDown, TrendingUp } from "lucide-react"
 import { mapEasingToNativeEasing } from "framer-motion"
 
 interface ModifiedItemDisplayProps {
@@ -45,6 +45,7 @@ const getTrendIcon = (diff: number, key: string) => {
   }
   return diff > 0 ? <TrendingUp className="inline text-green-600 w-4 h-4" /> : <TrendingDown className="inline text-red-600 w-4 h-4" />; // Regular keys
 };
+
 const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem }) => {
   const { before, after } = modifiedItem
   const isCombatItem =
@@ -99,18 +100,6 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
             </Badge>
           </div>
         )}
-
-        {after.type === "weapon" && after.attackSpeed && (
-          <CardDescription>
-            <div className="flex justify-center items-center text-xs">
-              {`${after.attackSpeed
-                .replace("_", " ")
-                .split(" ")
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(" ")} Attack Speed`}
-            </div>
-          </CardDescription>
-        )}
       </CardHeader>
 
       <CardContent>
@@ -124,8 +113,17 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
           <TabsContent value="changes" className="space-y-4 pt-4">
             <h3 className="font-semibold text-center">Item Modifications</h3>
 
-            {/* TODO attack speed, requirement */}
+            {/* TODO requirement, dropdata, base stats for armor and accessory */}
             {/* Base Stats Changes */}
+            {after.type === "weapon" && before.type === "weapon" && after.attackSpeed !== before.attackSpeed && (
+              <div className="space-y-2">
+                <h4 className="font-medium">Attack Speed</h4>
+                <div className="flex justify-center items-center text-xs gap-3">
+                  {formattedAttackSpeed(before.attackSpeed)} <MoveRight /> {formattedAttackSpeed(after.attackSpeed)}
+                </div>
+              </div>
+
+            )}
             {before.base && after.base && JSON.stringify(before.base) !== JSON.stringify(after.base) && (
               <div className="space-y-2">
                 <h4 className="font-medium">Base Stats</h4>
@@ -135,7 +133,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                       const beforeValue = before.base?.[key]
                       const afterValue = after.base?.[key]
                       const name = getIdentificationInfo(key)?.displayName ?? key
-                      
+
                       const matchedKey = Object.keys(colorMap).find((colorkey) => key.includes(colorkey))
                       const color = matchedKey ? colorMap[matchedKey] : ""
                       const text = matchedKey ? <span className={color}>{textMap[matchedKey]}&ensp;</span> : null
@@ -165,7 +163,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                               {type}
                             </span>
                             <span className="ml-1 h-4">
-                              {beforeValue.min}-{beforeValue.max} 
+                              {beforeValue.min}-{beforeValue.max}
                             </span>
                           </div>
                         )
@@ -183,7 +181,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                               {type}
                             </span>
                             <span className="ml-1 h-4 opacity-50">
-                              {beforeValue.min}-{beforeValue.max} 
+                              {beforeValue.min}-{beforeValue.max}
                             </span>
                             {getTrendIcon(afterValue.raw - beforeValue.raw, key)}
                             <span className="ml-1 h-4">
@@ -385,6 +383,11 @@ const DisplayItemState: React.FC<{ item: Item }> = ({ item }) => {
 
   return (
     <div className="space-y-4">
+      {item.type == 'weapon' && item.attackSpeed && (
+        <div className="flex justify-center items-center text-xs">
+          {formattedAttackSpeed(item.attackSpeed)}
+        </div>
+      )}
       {item.base && (
         <ul className="list-disc list-inside text-sm">
           {Object.entries(item.base).map(([name, value]) => (
@@ -571,7 +574,6 @@ const textMap: Record<string, string> = {
 }
 
 const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
-  console.log(name)
   const matchedKey = Object.keys(colorMap).find((key) => name.includes(key))
   const color = matchedKey ? colorMap[matchedKey] : ""
   const text = matchedKey ? <span className={color}>{textMap[matchedKey]}&ensp;</span> : null
