@@ -10,7 +10,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getClassInfo } from "@/types/classType"
 import { ItemIcon } from "./WynnIcon"
 import { cn } from "@/lib/utils"
-import { diffWords } from "diff";
+import { diffChars, diffWords } from "diff";
+import { TrendingDown, TrendingUp } from "lucide-react"
 
 interface ModifiedItemDisplayProps {
   modifiedItem: {
@@ -23,16 +24,26 @@ interface ModifiedItemDisplayProps {
   }
 }
 
-function getColor(number: number) {
-  if (number > 0) return "text-green-500"
-  if (number < 0) return "text-red-500"
-}
+const getColorClass = (val: number, key: string) => {
+  const isCost = key.toLowerCase().includes('cost');
+  if (isCost) {
+    return val < 0 ? 'text-green-500' : 'text-red-500'; // Cost keys are inverted
+  }
+  return val > 0 ? 'text-green-500' : 'text-red-500'; // Regular keys
+};
 
 function getFormattedText(number: number) {
   if (number > 0) return "+" + number
   if (number < 0) return number
 }
 
+const getTrendIcon = (diff: number, key: string) => {
+  const isCost = key.toLowerCase().includes('cost');
+  if (isCost) {
+    return diff < 0 ? <TrendingUp className="inline text-green-600 w-4 h-4" /> : <TrendingDown className="inline text-red-600 w-4 h-4" />; // Cost keys are inverted
+  }
+  return diff > 0 ? <TrendingUp className="inline text-green-600 w-4 h-4" /> : <TrendingDown className="inline text-red-600 w-4 h-4" />; // Regular keys
+};
 const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem }) => {
   const { before, after } = modifiedItem
   const isCombatItem =
@@ -112,8 +123,9 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
           <TabsContent value="changes" className="space-y-4 pt-4">
             <h3 className="font-semibold text-center">Item Modifications</h3>
 
+            {/* TODO attack speed, requirement */}
             {/* Base Stats Changes */}
-            {before.base && after.base && (
+            {before.base && after.base && JSON.stringify(before.base) !== JSON.stringify(after.base) && (
               <div className="space-y-2">
                 <h4 className="font-medium">Base Stats</h4>
                 <ul className="list-disc list-inside text-sm">
@@ -148,6 +160,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                             <span className="text-red-500 line-through ml-1">
                               {beforeValue.min}-{beforeValue.max} (Base: {beforeValue.raw})
                             </span>
+                            {getTrendIcon(afterValue.raw - beforeValue.raw, key)}
                             <span className="text-green-500 ml-1">
                               {afterValue.min}-{afterValue.max} (Base: {afterValue.raw})
                             </span>
@@ -162,7 +175,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
             )}
 
             {/* Identifications Changes */}
-            {(before.identifications || after.identifications) && (
+            {(before.identifications || after.identifications) && JSON.stringify(before.identifications) !== JSON.stringify(after.identifications) && (
               <div className="space-y-2">
                 <h4 className="font-medium">Identifications</h4>
                 <ul className="list-disc list-inside">
@@ -176,40 +189,108 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                       if (!beforeValue && afterValue) {
                         // Added identification
                         return (
-                          <div key={key} className="flex items-center justify-between text-sm">
-                            <span className="text-green-500">
+                          <div key={key} className="flex items-center justify-between text-sm bg-green-500/30 px-1 rounded">
+                            {/* <span className="text-green-500">
                               + {displayName}:{" "}
                               {typeof afterValue === "number" ? afterValue : `${afterValue.min}-${afterValue.max}`}
                               {unit}
-                            </span>
+                            </span> */}
+                            {typeof afterValue === 'number' ? (
+                              <>
+                                <span style={{ flex: '1', textAlign: 'left' }}></span>
+                                <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
+                                <span className={`${getColorClass(afterValue, key)}`} style={{ flex: '1', textAlign: 'right' }}>{afterValue}{getIdentificationInfo(key)?.unit}</span>
+                              </>
+                            ) : (
+                              <>
+                                <span className={getColorClass(afterValue.min, key)} style={{ flex: '1', textAlign: 'left' }}>{afterValue.min}{getIdentificationInfo(key)?.unit}</span>
+                                <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
+                                <span className={getColorClass(afterValue.max, key)} style={{ flex: '1', textAlign: 'right' }}>{afterValue.max}{unit}</span>
+                              </>
+                            )}
                           </div>
                         )
                       } else if (!afterValue && beforeValue) {
                         // Removed identification
                         return (
-                          <div key={key} className="flex items-center justify-between text-sm">
-                            <span className="text-red-500">
+                          <div key={key} className="flex items-center justify-between text-sm bg-red-500/30 px-1 rounded">
+                            {/* <span className="text-red-500">
                               - {displayName}:{" "}
                               {typeof beforeValue === "number" ? beforeValue : `${beforeValue.min}-${beforeValue.max}`}
                               {unit}
-                            </span>
+                            </span> */}
+                            {typeof beforeValue === 'number' ? (
+                              <>
+                                <span style={{ flex: '1', textAlign: 'left' }}></span>
+                                <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
+                                <span className={`${getColorClass(beforeValue, key)}`} style={{ flex: '1', textAlign: 'right' }}>{beforeValue}{unit}</span>
+                              </>
+                            ) : (
+                              <>
+                                <span className={getColorClass(beforeValue.min, key)} style={{ flex: '1', textAlign: 'left' }}>{beforeValue.min}{unit}</span>
+                                <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
+                                <span className={getColorClass(beforeValue.max, key)} style={{ flex: '1', textAlign: 'right' }}>{beforeValue.max}{unit}</span>
+                              </>
+                            )}
                           </div>
                         )
                       } else if (afterValue && beforeValue && JSON.stringify(beforeValue) !== JSON.stringify(afterValue)) {
                         // Changed identification
+                        var diff = 0
+                        if (typeof afterValue === "number" && typeof beforeValue === "number") {
+                          diff = afterValue - beforeValue
+                        } else if (typeof afterValue === "object" && typeof beforeValue === "object") {
+                          diff = (afterValue.min + afterValue.max) / 2 - (beforeValue.min + beforeValue.max) / 2
+                        }
+                        // return (
+                        //   <div key={key} className="flex items-center justify-between text-sm">
+                        //     <span>{displayName}: </span>
+                        //     <div>
+                        //       <span className="text-red-500 line-through">
+                        //         {typeof beforeValue === "number" ? beforeValue : `${beforeValue.min}-${beforeValue.max}`}
+                        //         {unit}
+                        //       </span>
+                        //       {getTrendIcon(diff)}
+                        //       <span className="text-green-500">
+                        //         {typeof afterValue === "number" ? afterValue : `${afterValue.min}-${afterValue.max}`}
+                        //         {unit}
+                        //       </span>
+                        //     </div>
+                        //   </div>
+                        // )
+
+
                         return (
                           <div key={key} className="flex items-center justify-between text-sm">
-                            <span>{displayName}: </span>
-                            <span className="text-red-500 line-through">
-                              {typeof beforeValue === "number" ? beforeValue : `${beforeValue.min}-${beforeValue.max}`}
-                              {unit}
-                            </span>
-                            <span className="text-green-500">
-                              {typeof afterValue === "number" ? afterValue : `${afterValue.min}-${afterValue.max}`}
-                              {unit}
-                            </span>
+                            {typeof beforeValue === 'number' && typeof afterValue === 'number' && (
+                              <>
+                                <span style={{ flex: '1', textAlign: 'left' }}></span>
+                                <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
+                                <div style={{ flex: '1', textAlign: 'right' }}>
+                                  <span className={`${cn(getColorClass(beforeValue, key), 'opacity-50')}`}>{beforeValue}{unit}</span>
+                                  {getTrendIcon(diff, key)}
+                                  <span className={`${getColorClass(afterValue, key)}`}>{afterValue}{unit}</span>
+                                </div>
+                              </>
+                            )}
+                            {typeof beforeValue === 'object' && typeof afterValue === 'object' && (
+                              <>
+                                <div style={{ flex: '1', textAlign: 'left' }}>
+                                  <span className={cn(getColorClass(beforeValue.min, key), 'opacity-50')}>{beforeValue.min}{unit}</span>
+                                  {getTrendIcon(diff, key)}
+                                  <span className={`${getColorClass(afterValue.min, key)}`}>{afterValue.min}{unit}</span>
+                                </div>
+                                <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
+                                <div style={{ flex: '1', textAlign: 'right' }}>
+                                  <span className={cn(getColorClass(beforeValue.max, key), 'opacity-50')}>{beforeValue.max}{unit}</span>
+                                  {getTrendIcon(diff, key)}
+                                  <span className={getColorClass(afterValue.max, key)}>{afterValue.max}{unit}</span>
+                                </div>
+                              </>
+                            )}
                           </div>
-                        )
+                        );
+
                       }
                       return null
                     })
