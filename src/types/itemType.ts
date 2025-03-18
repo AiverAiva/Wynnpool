@@ -215,7 +215,7 @@ export interface WeaponItem extends ItemBase {
     type: 'weapon'
     rarity: Rarity
     attackSpeed: string
-    averageDPS: number
+    averageDps: number
 }
 
 export interface AccessoryItem extends ItemBase {

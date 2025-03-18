@@ -105,6 +105,11 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
               {Object.entries(item.base).map(([name, value]) => (
                 <BaseStatsFormatter value={value} name={name} key={name} />
               ))}
+              {item.type === "weapon" && (
+                <div className="flex ml-6 gap-1 mt-1 h-4 items-center text-sm">
+                  <span className="text-primary/80">Average DPS</span> {item.averageDps}
+                </div>
+              )}
             </ul>
           )}
 
@@ -312,8 +317,8 @@ const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
   const type = name.includes('Damage')
     ? 'Damage'
     : name.includes('Defence')
-    ? 'Defence'
-    : '';
+      ? 'Defence'
+      : '';
 
   return (
     <div className="flex items-center h-5">

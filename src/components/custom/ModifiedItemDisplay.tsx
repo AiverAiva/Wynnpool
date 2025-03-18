@@ -115,18 +115,23 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
 
             {/* TODO requirement, dropdata, base stats for armor and accessory */}
             {/* Base Stats Changes */}
+
             {after.type === "weapon" && before.type === "weapon" && after.attackSpeed !== before.attackSpeed && (
               <div className="space-y-2">
                 <h4 className="font-medium">Attack Speed</h4>
                 <div className="flex justify-center items-center text-xs gap-3">
-                  {formattedAttackSpeed(before.attackSpeed)} <MoveRight /> {formattedAttackSpeed(after.attackSpeed)}
+                  <span className="opacity-50">{formattedAttackSpeed(before.attackSpeed)}</span>
+                  <MoveRight />
+                  {formattedAttackSpeed(after.attackSpeed)}
                 </div>
               </div>
-
             )}
+
+
             {before.base && after.base && JSON.stringify(before.base) !== JSON.stringify(after.base) && (
               <div className="space-y-2">
                 <h4 className="font-medium">Base Stats</h4>
+
                 <ul className="list-disc list-inside text-sm">
                   {Object.keys({ ...before.base, ...after.base })
                     .map((key) => {
@@ -193,6 +198,17 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                       return null
                     })
                     .filter(Boolean)}
+                  {after.type === "weapon" && before.type === "weapon" && after.attackSpeed !== before.attackSpeed && (
+                    <div className="flex ml-6 mt-2 h-4 items-center text-sm">
+                      <span className="text-primary/80">Average DPS</span>
+                      <span className="opacity-50 ml-1">{before.averageDps}</span>
+                      {getTrendIcon(after.averageDps - before.averageDps, '')}
+                      <span className="ml-1">{after.averageDps}</span>
+                    </div>
+                  )}
+                  {/* <div className="flex ml-5 gap-1 mt-3 h-4 items-center text-sm">
+                    <span className="text-primary/80">Average</span> Damage {item.averageDps}
+                  </div> */}
                 </ul>
               </div>
             )}
@@ -393,7 +409,13 @@ const DisplayItemState: React.FC<{ item: Item }> = ({ item }) => {
           {Object.entries(item.base).map(([name, value]) => (
             <BaseStatsFormatter value={value} name={name} key={name} />
           ))}
+          {item.type === "weapon" && (
+            <div className="flex ml-6 gap-1 mt-1 h-4 items-center text-sm">
+              <span className="text-primary/80">Average DPS</span> {item.averageDps}
+            </div>
+          )}
         </ul>
+
       )}
 
       {isCombatItem && item.requirements && (
