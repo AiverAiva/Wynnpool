@@ -306,3 +306,11 @@ export function getIdentificationCost(rarity: string, level: number): number {
             return 0;
     }
 }
+
+export function formattedAttackSpeed(attackSpeed: string) {
+    return `${attackSpeed
+        .replace("_", " ")
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")} Attack Speed`
+}
