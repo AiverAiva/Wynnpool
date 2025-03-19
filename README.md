@@ -150,20 +150,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- player/server data
-    - [x] player/guild searching ( :white_check_mark: 2024/12/12)
-    - [ ] leaderboard stuff
-- stuff about items/build making
-    - [ ] build library
-    - [ ] build making
-    - [ ] Item searching __Current Working On__
-    - [ ] item crafter
-    - [ ] changelog -> tree/item
-- (Lootpool) -> in game content 
-    - [x] lr pool ( :white_check_mark: 2024/11/13)
-    - [x] aspect pool  ( :white_check_mark: 2024/11/11) 
-
-Detailed infomation in [Discord Server](https://discord.gg/QVxPPqHFMk).
+Please join [Discord Server](https://discord.gg/QVxPPqHFMk) for detailed infomation.
 See the [open issues](https://github.com/AiverAiva/Wynnpool/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
