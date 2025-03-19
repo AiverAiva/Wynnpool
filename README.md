@@ -17,7 +17,7 @@
 <div align="center">
   <span>(lf logo!)</span>
   <br />
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/AiverAiva/Wynnpool">
     <img src="public/vercel.svg" alt="Logo" width="80" height="80">
   </a>
   
@@ -164,7 +164,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     - [x] aspect pool  ( :white_check_mark: 2024/11/11) 
 
 Detailed infomation in [Discord Server](https://discord.gg/QVxPPqHFMk).
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/AiverAiva/Wynnpool/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
