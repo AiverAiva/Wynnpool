@@ -3,15 +3,20 @@
 import { notFound, useParams, usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '@/components/ui/spinner';
-import { getIdentificationCost, Item } from '@/types/itemType';
+import { getIdentificationCost, Item, ItemChangelog } from '@/types/itemType';
 import { ItemDisplay } from '@/components/custom/item-display';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Copy } from 'lucide-react';
+import { Check, ChevronDown, ChevronUp, Clock, Copy, Minus, Plus, RefreshCw } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import CurrencyDisplay from '@/components/custom/currency-display';
 import api from '@/utils/api';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
+import ItemHistory from '@/components/custom/item/ItemHistory';
 
 export default function ItemPage() {
     const { itemName } = useParams();
@@ -322,6 +327,9 @@ export default function ItemPage() {
                     )}
                 </div>
             </div>
+            {isCombatItem && itemData.changelog && (
+                <ItemHistory changelog={itemData.changelog} />
+            )}
         </div>
     )
 }
