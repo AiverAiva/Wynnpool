@@ -212,14 +212,6 @@ export interface ItemBase {
     changelog?: ItemChangelog[]
 }
 
-export interface ItemChangelog extends ItemBase {
-    itemName: string;
-    status: 'add' | 'remove' | 'modify';
-    timestamp: number;
-    before?: Item;
-    after?: Item;
-} 
-
 export interface WeaponItem extends ItemBase {
     type: 'weapon'
     rarity: Rarity
@@ -296,6 +288,14 @@ export interface Charm extends ItemBase {
 }
 
 export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem | Tome | Charm 
+
+export type ItemChangelog = Item & {
+    itemName: string;
+    status: 'add' | 'remove' | 'modify';
+    timestamp: number;
+    before?: Item;
+    after?: Item;
+} 
 
 export function getIdentificationCost(rarity: string, level: number): number {
     switch (rarity) {
