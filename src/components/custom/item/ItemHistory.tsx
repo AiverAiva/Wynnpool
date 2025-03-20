@@ -123,7 +123,7 @@ export default function ItemHistory({ changelog, maxEntries = 5 }: ItemHistoryPr
                                                     <ModifiedItemDisplay modifiedItem={entry} />
                                                     // </Link>
                                                 )}
-                                                {entry.status === "add" || entry.status === "remove" && (
+                                                {(entry.status === "add" || entry.status === "remove") && (
                                                     // <Link
                                                     //   href={`/changelog/${entry.timestamp}/item/${entry._id}`}
                                                     //   className="text-sm text-primary hover:underline inline-block mt-1"
