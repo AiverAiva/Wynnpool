@@ -16,7 +16,6 @@ import { mapEasingToNativeEasing } from "framer-motion"
 
 interface ModifiedItemDisplayProps {
   modifiedItem: {
-    _id: string
     itemName: string
     status: string
     timestamp: number

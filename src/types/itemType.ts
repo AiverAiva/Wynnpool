@@ -209,7 +209,16 @@ export interface ItemBase {
         [key: string]: string
     }
     droppedBy?: DroppedByInfo[]
+    changelog?: ItemChangelog[]
 }
+
+export interface ItemChangelog extends ItemBase {
+    itemName: string;
+    status: 'add' | 'remove' | 'modify';
+    timestamp: number;
+    before?: Item;
+    after?: Item;
+} 
 
 export interface WeaponItem extends ItemBase {
     type: 'weapon'
@@ -286,7 +295,7 @@ export interface Charm extends ItemBase {
     rarity: Rarity
 }
 
-export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem | Tome | Charm
+export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem | Tome | Charm 
 
 export function getIdentificationCost(rarity: string, level: number): number {
     switch (rarity) {
