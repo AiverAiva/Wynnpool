@@ -129,7 +129,6 @@ export default function ItemHistory({ changelog, maxEntries = 5 }: ItemHistoryPr
                                                     //   className="text-sm text-primary hover:underline inline-block mt-1"
                                                     // >
 
-                                                    // @ts-ignore
                                                     <ItemDisplay item={entry} />
                                                     // </Link>
                                                 )}
