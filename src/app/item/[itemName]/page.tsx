@@ -6,7 +6,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { getIdentificationCost, Item, ItemChangelog } from '@/types/itemType';
 import { ItemDisplay } from '@/components/custom/item-display';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, ChevronDown, ChevronUp, Clock, Copy, Minus, Plus, RefreshCw } from 'lucide-react';
+import { Check, ChevronDown, ChevronUp, Clock, Copy, Dices, Minus, Plus, RefreshCw } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -17,6 +17,7 @@ import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import ItemHistory from '@/components/custom/item/ItemHistory';
+import ItemRollSimulator from '@/components/custom/ItemRollSimulator';
 
 export default function ItemPage() {
     const { itemName } = useParams();
@@ -68,6 +69,16 @@ export default function ItemPage() {
             <div className='flex justify-between gap-4 mb-4 flex-col md:flex-row'>
                 <div className='md:w-2/5 lg:w-1/3'>
                     <ItemDisplay item={itemData} />
+                    {!itemData.identified && (
+                        <ItemRollSimulator
+                            item={itemData}
+                            trigger={
+                                <Button size="lg" className="w-full gap-2 mt-4" variant='outline'>
+                                    <Dices className="h-8 w-8" /> Open Roll Simulator
+                                </Button>
+                            }
+                        />
+                    )}
                 </div>
                 <div className='flex flex-col md:w-3/5 lg:w-2/3 gap-4'>
                     <Card className="flex items-center justify-between px-4 py-2 bg-green-500 rounded-lg">
