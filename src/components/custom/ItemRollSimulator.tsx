@@ -173,10 +173,11 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     const getRollColor = (percentage: number, inverted = false) => {
         if (inverted) percentage = 100 - percentage
 
-        if (percentage >= 90) return "text-green-500"
-        if (percentage >= 75) return "text-emerald-400"
-        if (percentage >= 50) return "text-amber-400"
-        if (percentage >= 25) return "text-orange-500"
+        if (percentage >= 96) return "text-cyan-500"
+        if (percentage >= 80) return "text-green-500"
+        if (percentage >= 60) return "text-yellow-400"
+        if (percentage >= 40) return "text-amber-400"
+        if (percentage >= 20) return "text-orange-500"
         return "text-red-500"
     }
 
