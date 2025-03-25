@@ -100,7 +100,7 @@ export function Navbar() {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
-                    <ListItem href="/item/search" title="Item search" className={pathname === "/item/search" ? 'bg-accent/50' : ''}>
+                    <ListItem href="/item/search" title="Item Search" className={pathname === "/item/search" ? 'bg-accent/50' : ''}>
                       Find the items with a selected filter.
                     </ListItem>
                     <ListItem href="/item/changelog" title="Item Changelog" className={pathname === "/item/changelog" ? 'bg-accent/50' : ''}>
