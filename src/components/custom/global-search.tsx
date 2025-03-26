@@ -21,7 +21,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { ItemDisplay, SmallItemCard } from "./item-display";
+import { ItemDisplay, SmallItemCard } from "../wynncraft/item/item-display";
 import { Button } from "../ui/button";
 
 type SearchResult = | {

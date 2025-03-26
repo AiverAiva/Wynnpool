@@ -9,7 +9,7 @@ import { ChevronDown, ChevronUp, Clock, Plus, Minus, RefreshCw } from "lucide-re
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Item, ItemChangelog } from "@/types/itemType"
-import { ItemDisplay } from "../item-display"
+import { ItemDisplay } from "../../wynncraft/item/item-display"
 import ModifiedItemDisplay from "../ModifiedItemDisplay"
 
 interface ItemHistoryProps {

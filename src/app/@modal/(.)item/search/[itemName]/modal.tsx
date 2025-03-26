@@ -13,7 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { getIdentificationCost, Item } from '@/types/itemType';
 import CurrencyDisplay from '@/components/custom/currency-display';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { ItemDisplay } from "@/components/custom/item-display";
+import { ItemDisplay } from "@/components/wynncraft/item/item-display";
 
 function ItemDetail({ itemName }: { itemName: string }) {
     const [isLoading, setIsLoading] = useState(true);

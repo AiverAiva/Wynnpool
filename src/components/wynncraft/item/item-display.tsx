@@ -12,7 +12,7 @@ import Image from 'next/image'
 import '@/assets/css/wynncraft.css'
 import { getClassInfo } from "@/types/classType"
 import Link from "next/link"
-import { ItemIcon } from "./WynnIcon"
+import { ItemIcon } from "../../custom/WynnIcon"
 import { cn } from "@/lib/utils"
 
 interface ItemDisplayProps {
