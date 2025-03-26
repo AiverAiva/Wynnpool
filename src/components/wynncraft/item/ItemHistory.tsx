@@ -9,7 +9,7 @@ import { ChevronDown, ChevronUp, Clock, Plus, Minus, RefreshCw } from "lucide-re
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Item, ItemChangelog } from "@/types/itemType"
-import { ItemDisplay } from "./item-display"
+import { ItemDisplay } from "./ItemDisplay"
 import ModifiedItemDisplay from "../../custom/ModifiedItemDisplay"
 
 interface ItemHistoryProps {
