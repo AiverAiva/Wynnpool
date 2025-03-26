@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { PlusCircle, MinusCircle, RefreshCw } from 'lucide-react'
 import api from '@/utils/api'
-import { ItemDisplay } from '@/components/wynncraft/item/item-display'
+import { ItemDisplay } from '@/components/wynncraft/item/ItemDisplay'
 import { ItemDiffViewer } from './ItemDiff'
 import { Spinner } from '@/components/ui/spinner'
 import ModifiedItemDisplay from '@/components/custom/ModifiedItemDisplay'
