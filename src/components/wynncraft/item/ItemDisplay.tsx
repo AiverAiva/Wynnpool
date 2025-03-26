@@ -223,9 +223,6 @@ const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
           <span className="text-[#555555] text-xs -mt-2">Crafting Ingredient</span>
         </div>
       )}
-      {item.type == 'weapon' && item.attackSpeed && (
-        <AttackSpeed attackSpeed={item.attackSpeed} />
-      )}
     </div>
   );
 }
@@ -235,6 +232,9 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
 
   return (
     <div className="space-y-4 p-6 pt-0">
+      {item.type == 'weapon' && item.attackSpeed && (
+        <AttackSpeed attackSpeed={item.attackSpeed} />
+      )}
       {item.base && (
         <ul className="list-disc list-inside text-sm">
           {Object.entries(item.base).map(([name, value]) => (
