@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils"
 import { diffChars, diffWords } from "diff";
 import { MoveRight, TrendingDown, TrendingUp } from "lucide-react"
 import { mapEasingToNativeEasing } from "framer-motion"
+import { ItemContent, ItemHeader } from "./ItemDisplay"
 
 interface ModifiedItemDisplayProps {
   modifiedItem: {
@@ -375,153 +376,15 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
           </TabsContent>
 
           <TabsContent value="before" className="space-y-4 pt-4">
-            <DisplayItemState item={before} />
+            <ItemContent item={before} />
           </TabsContent>
 
           <TabsContent value="after" className="space-y-4 pt-4">
-            <DisplayItemState item={after} />
+            <ItemContent item={after} />
           </TabsContent>
         </Tabs>
       </CardContent>
     </Card>
-  )
-}
-
-// Component to display a single item state (before or after)
-const DisplayItemState: React.FC<{ item: Item }> = ({ item }) => {
-  const isCombatItem =
-    item.type === "weapon" ||
-    item.type === "armour" ||
-    item.type === "accessory" ||
-    item.type === "tome" ||
-    item.type === "charm"
-
-  return (
-    <div className="space-y-4">
-      {item.type == 'weapon' && item.attackSpeed && (
-        <div className="flex justify-center items-center text-xs">
-          {formattedAttackSpeed(item.attackSpeed)}
-        </div>
-      )}
-      {item.base && (
-        <ul className="list-disc list-inside text-sm">
-          {Object.entries(item.base).map(([name, value]) => (
-            <BaseStatsFormatter value={value} name={name} key={name} />
-          ))}
-          {item.type === "weapon" && (
-            <div className="flex ml-6 gap-1 mt-1 h-4 items-center text-sm">
-              <span className="text-primary/80">Average DPS</span> {item.averageDps}
-            </div>
-          )}
-        </ul>
-
-      )}
-
-      {isCombatItem && item.requirements && (
-        <ul className="list-disc list-inside text-sm">
-          {Object.entries(item.requirements).map(([key, value]) => {
-            let displayValue
-            if (typeof value === "string" || typeof value === "number") {
-              displayValue = value
-            } else if (Array.isArray(value)) {
-              displayValue = value.join(", ")
-            } else if (typeof value === "object" && value !== null) {
-              displayValue = `${value.min} - ${value.max}`
-            } else {
-              displayValue = "Unknown value"
-            }
-
-            return (
-              <div key={key}>
-                {getIdentificationInfo(key) ? (
-                  key === "classRequirement" ? (
-                    <>
-                      {getIdentificationInfo(key)?.displayName}: {getClassInfo(value as string)!.displayName}
-                    </>
-                  ) : (
-                    <>
-                      {getIdentificationInfo(key)?.displayName}: {displayValue}
-                    </>
-                  )
-                ) : (
-                  <>
-                    {key}: {displayValue}
-                  </>
-                )}
-              </div>
-            )
-          })}
-        </ul>
-      )}
-
-      {item.identifications && (
-        <ul className="list-disc list-inside">
-          {Object.entries(item.identifications).map(([key, value]) => {
-            const getColorClass = (val: number) => {
-              const isCost = key.toLowerCase().includes("cost")
-              if (isCost) {
-                return val < 0 ? "text-green-500" : "text-red-500" // Cost keys are inverted
-              }
-              return val > 0 ? "text-green-500" : "text-red-500" // Regular keys
-            }
-
-            const displayName = getIdentificationInfo(key)?.displayName ?? key
-            return (
-              <div key={key} className="flex items-center justify-between text-sm">
-                {typeof value === "number" ? (
-                  <>
-                    <span style={{ flex: "1", textAlign: "left" }}></span>
-                    <span className={cn("flex-grow text-center", displayName.length >= 13 && "text-xs")}>
-                      {displayName}
-                    </span>
-                    <span className={`${getColorClass(value)}`} style={{ flex: "1", textAlign: "right" }}>
-                      {value}
-                      {getIdentificationInfo(key)?.unit}
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className={getColorClass(value.min)} style={{ flex: "1", textAlign: "left" }}>
-                      {value.min}
-                      {getIdentificationInfo(key)?.unit}
-                    </span>
-                    <span className={cn("flex-grow text-center", displayName.length >= 13 && "text-xs")}>
-                      {displayName}
-                    </span>
-                    <span className={getColorClass(value.max)} style={{ flex: "1", textAlign: "right" }}>
-                      {value.max}
-                      {getIdentificationInfo(key)?.unit}
-                    </span>
-                  </>
-                )}
-              </div>
-            )
-          })}
-        </ul>
-      )}
-
-      {item.powderSlots && (
-        <p className="text-sm">
-          Powder Slots&ensp;
-          <span className="text-primary/50">
-            [<span className="font-five">{Array.from({ length: item.powderSlots }, () => "O").join("")}</span>]
-          </span>
-        </p>
-      )}
-      {item.majorIds && (
-        <ul className="list-disc list-inside">
-          {Object.entries(item.majorIds).map(([key, value]) => (
-            <div className="text-sm" key={key} dangerouslySetInnerHTML={{ __html: value }} />
-          ))}
-        </ul>
-      )}
-      {item.lore && (
-        <>
-          <Separator />
-          <p className="text-sm italic text-muted-foreground">{item.lore}</p>
-        </>
-      )}
-    </div>
   )
 }
 
