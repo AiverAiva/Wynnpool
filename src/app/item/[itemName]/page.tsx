@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
-import ItemHistory from '@/components/custom/item/ItemHistory';
+import ItemHistory from '@/components/wynncraft/item/ItemHistory';
 import ItemRollSimulator from '@/components/custom/ItemRollSimulator';
 
 export default function ItemPage() {
