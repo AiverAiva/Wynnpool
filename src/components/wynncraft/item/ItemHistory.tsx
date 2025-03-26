@@ -10,7 +10,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Item, ItemChangelog } from "@/types/itemType"
 import { ItemDisplay } from "./ItemDisplay"
-import ModifiedItemDisplay from "../../custom/ModifiedItemDisplay"
+import ModifiedItemDisplay from "./ModifiedItemDisplay"
 
 interface ItemHistoryProps {
     changelog: ItemChangelog[]
