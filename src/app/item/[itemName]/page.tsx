@@ -4,7 +4,7 @@ import { notFound, useParams, usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '@/components/ui/spinner';
 import { getIdentificationCost, Item, ItemChangelog } from '@/types/itemType';
-import { ItemDisplay } from '@/components/custom/item-display';
+import { ItemDisplay } from '@/components/wynncraft/item/item-display';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, ChevronDown, ChevronUp, Clock, Copy, Dices, Minus, Plus, RefreshCw } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
