@@ -130,9 +130,6 @@ const StarFormatter: React.FC<any> = ({ tier }) => {
   }
 }
 
-export { ItemDisplay, SmallItemCard }
-
-
 interface IdentificationProps {
   id: string
   value: number | {
@@ -233,7 +230,7 @@ const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
   );
 }
 
-const ItemContent: React.FC<{ item: Item, embeded: boolean }> = ({ item, embeded = false }) => {
+const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embeded = false }) => {
   const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory' || item.type === 'tome' || item.type === 'charm'
 
   return (
@@ -396,3 +393,5 @@ const ItemContent: React.FC<{ item: Item, embeded: boolean }> = ({ item, embeded
     </div>
   );
 }
+
+export { ItemHeader, ItemContent, ItemDisplay, SmallItemCard } 
