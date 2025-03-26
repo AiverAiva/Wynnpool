@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator"
 import { formattedAttackSpeed, getIdentificationInfo, type Item } from "@/types/itemType"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getClassInfo } from "@/types/classType"
-import { ItemIcon } from "./WynnIcon"
+import { ItemIcon } from "../../custom/WynnIcon"
 import { cn } from "@/lib/utils"
 import { diffChars, diffWords } from "diff";
 import { MoveRight, TrendingDown, TrendingUp } from "lucide-react"

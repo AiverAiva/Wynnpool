@@ -10,7 +10,7 @@ import api from '@/utils/api'
 import { ItemDisplay } from '@/components/wynncraft/item/ItemDisplay'
 import { ItemDiffViewer } from './ItemDiff'
 import { Spinner } from '@/components/ui/spinner'
-import ModifiedItemDisplay from '@/components/custom/ModifiedItemDisplay'
+import ModifiedItemDisplay from '@/components/wynncraft/item/ModifiedItemDisplay'
 
 interface ChangelogData {
     add?: any[];
