@@ -213,6 +213,58 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
               </div>
             )}
 
+            {/* // bg-green-500/30 px-1 rounded */}
+            {before.requirements && after.requirements && JSON.stringify(before.requirements) !== JSON.stringify(after.requirements) && (
+              <div className="space-y-2">
+                <h4 className="font-medium">Requirements</h4>
+                <div className="list-disc list-inside text-sm space-y-1">
+                  {(
+                    Object.keys({ ...before.requirements, ...after.requirements }) as (keyof Item["requirements"])[]
+                  )
+                    .filter((key) => JSON.stringify(before.requirements?.[key]) !== JSON.stringify(after.requirements?.[key])) // ✅ Only show modified requirements
+                    .map((key) => {
+                      const beforeValue = before.requirements?.[key];
+                      const afterValue = after.requirements?.[key];
+
+                      // Convert different types of values to readable format
+                      const formatValue = (value: unknown) => {
+                        if (typeof value === "string") return getClassInfo(value)?.displayName ?? value;
+                        if (typeof value === "number") return value;
+                        if (Array.isArray(value)) return value.join(", ");
+                        if (typeof value === "object" && value !== null) {
+                          const range = value as { min: number; max: number };
+                          return `${range.min} - ${range.max}`;
+                        }
+                        return "Unknown";
+                      };
+
+                      return (
+                        <>
+                          {beforeValue && !afterValue && (
+                            <div key={`${key}-before`} className="bg-red-500/30 px-1 rounded  text-red-500">
+                              {getIdentificationInfo(key)?.displayName || key}: {formatValue(beforeValue)}
+                            </div>
+                          )}
+                          {afterValue && !beforeValue && (
+                            <div key={`${key}-after`} className="bg-green-500/30 px-1 rounded text-green-500">
+                              {getIdentificationInfo(key)?.displayName || key}: {formatValue(afterValue)}
+                            </div>
+                          )}
+                          {beforeValue && afterValue && (
+                            <div key={key} className="">
+                              {getIdentificationInfo(key)?.displayName || key}:{" "}
+                              {formatValue(beforeValue)}
+                              {beforeValue && afterValue && " → "}
+                              {formatValue(afterValue)}
+                            </div>
+                          )}
+                        </>
+                      );
+                    })}
+                </div>
+              </div>
+            )}
+
             {/* Identifications Changes */}
             {(before.identifications || after.identifications) && JSON.stringify(before.identifications) !== JSON.stringify(after.identifications) && (
               <div className="space-y-2">
@@ -344,7 +396,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
                         ? `${before.icon.value.id}#${before.icon.value.name}`
                         : String(before.icon.value)}
                     </span>
-                    <span className="text-green-500 ml-1">
+                    <span className="text-green-500">
                       {after.icon.format === "attribute" && typeof after.icon.value === "object"
                         ? `${after.icon.value.id}#${after.icon.value.name}`
                         : String(after.icon.value)}
@@ -471,34 +523,6 @@ const textMap: Record<string, string> = {
   Fire: "Fire",
   Air: "Air",
 }
-
-const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
-  const matchedKey = Object.keys(colorMap).find((key) => name.includes(key))
-  const color = matchedKey ? colorMap[matchedKey] : ""
-  const text = matchedKey ? <span className={color}>{textMap[matchedKey]}&ensp;</span> : null
-
-  const type = name.includes("Damage") ? "Damage" : name.includes("Defence") ? "Defence" : ""
-
-  return (
-    <div className="flex items-center h-5">
-      <div>
-        <span className={cn("font-common text-lg h-4 -mt-3", color)}>{getIdentificationInfo(name)?.symbol}</span>
-        <span className={getIdentificationInfo(name)?.symbol && "ml-2"}>
-          {text}
-          {type}
-        </span>
-      </div>
-      {typeof value === "number" ? (
-        <span className="ml-1 h-4">{getFormattedText(value)}</span>
-      ) : (
-        <span className="ml-1 h-4">
-          {value.min}-{value.max}
-        </span>
-      )}
-    </div>
-  )
-}
-
 
 export default ModifiedItemDisplay
 

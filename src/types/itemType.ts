@@ -41,6 +41,7 @@ const identificationMap: Record<string, IdentificationInfo> = {
     "agility": { unit: "", displayName: "Agility Min", detailedName: "Required Agility" },
     "level": { displayName: "Combat Level", detailedName: "Required Combat Level" },
     "classRequirement": { displayName: "Class Req", detailedName: "Required Class" },
+    "quest": { displayName: "Quest Req", detailedName: "Required Quest" },
 
     // Additional Stats
     "rawIntelligence": { unit: "", displayName: "Intelligence" },
