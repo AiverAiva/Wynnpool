@@ -322,24 +322,39 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
             )}
 
             {/* Icon Changes */}
-            {before.icon && after.icon && JSON.stringify(before.icon) !== JSON.stringify(after.icon) && (
-              <div className="space-y-2">
-                <h4 className="font-medium">Icon</h4>
-                <div className="text-sm">
-                  <span>Icon changed: </span>
-                  <span className="text-red-500 line-through">
-                    {before.icon.format === "attribute" &&
-                      typeof before.icon.value === "object" &&
-                      before.icon.value.customModelData}
-                  </span>
-                  <span className="text-green-500 ml-1">
-                    {after.icon.format === "attribute" &&
-                      typeof after.icon.value === "object" &&
-                      after.icon.value.customModelData}
-                  </span>
+            {before.icon && after.icon && (
+              (before.icon.format !== after.icon.format ||
+                JSON.stringify(
+                  before.icon.format === "attribute" && typeof before.icon.value === "object"
+                    ? { id: before.icon.value.id, name: before.icon.value.name }
+                    : before.icon.value
+                ) !==
+                JSON.stringify(
+                  after.icon.format === "attribute" && typeof after.icon.value === "object"
+                    ? { id: after.icon.value.id, name: after.icon.value.name }
+                    : after.icon.value
+                )
+              ) && (
+                <div className="space-y-2">
+                  <h4 className="font-medium">Icon</h4>
+                  <div className="text-sm flex flex-col">
+                    <span>Icon changed: </span>
+                    <span className="text-red-500 line-through">
+                      {before.icon.format === "attribute" && typeof before.icon.value === "object"
+                        ? `${before.icon.value.id}#${before.icon.value.name}`
+                        : String(before.icon.value)}
+                    </span>
+                    <span className="text-green-500 ml-1">
+                      {after.icon.format === "attribute" && typeof after.icon.value === "object"
+                        ? `${after.icon.value.id}#${after.icon.value.name}`
+                        : String(after.icon.value)}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )
             )}
+
+
 
             {/* Other Changes */}
             {before.powderSlots !== after.powderSlots && (
