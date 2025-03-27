@@ -172,8 +172,10 @@ export default function PlayerStatsPage() {
                         <StatCard title="Wars" value={playerData.globalData.wars} />
                         <StatCard title="Mobs Killed" value={playerData.globalData.killedMobs} />
                         <StatCard title="Chests Found" value={playerData.globalData.chestsFound} />
-                        <StatCard title="Raids Completed" value={playerData.globalData.raids.total} />
-                        <StatCard title="Dungeons Completed" value={playerData.globalData.dungeons.total} />
+                        <RaidCard title="Raids Completed" raids={playerData.globalData.raids} />
+                        <DungeonCard title="Dungeons Completed" dungeons={playerData.globalData.dungeons} />
+                        {/* <StatCard title="Raids Completed" value={playerData.globalData.raids.total} />
+                        <StatCard title="Dungeons Completed" value={playerData.globalData.dungeons.total} /> */}
                         <StatCard title="Quests Completed" value={playerData.globalData.completedQuests} />
                     </div>
                     <GuildEventDisplay query={{ uuid: playerData.uuid }} />
@@ -340,6 +342,55 @@ function StatCard({ title, value }: { title: string; value: number | string }) {
     )
 }
 
+function DungeonCard({ title, dungeons }: { title: string, dungeons: any }) {
+    if (!dungeons) return
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Card className='transition-all duration-150 hover:bg-accent cursor-pointer hover:scale-105'>
+                    <CardHeader className="p-4 flex flex-row justify-between item-center">
+                        <div>
+                            <CardTitle className="text-sm font-medium">{title}</CardTitle>
+                            <CardDescription className="text-2xl font-bold">{dungeons.total}</CardDescription>
+                        </div>
+                        <ChevronDown className='h-6 w-6 self-center' />
+                    </CardHeader>
+                </Card>
+            </DialogTrigger>
+            <DialogContent className="max-w-3xl max-w-screen-lg">
+                <DialogHeader>
+                    <DialogTitle>Dungeon Details</DialogTitle>
+                </DialogHeader>
+                <DungeonStats dungeons={dungeons} />
+            </DialogContent>
+        </Dialog>
+    )
+}
+
+function RaidCard({ title, raids }: { title: string, raids: any }) {
+    if (!raids) return
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Card className='transition-all duration-150 hover:bg-accent cursor-pointer hover:scale-105'>
+                    <CardHeader className="p-4 flex flex-row justify-between item-center">
+                        <div>
+                            <CardTitle className="text-sm font-medium">{title}</CardTitle>
+                            <CardDescription className="text-2xl font-bold">{raids.total}</CardDescription>
+                        </div>
+                        <ChevronDown className='h-6 w-6 self-center' />
+                    </CardHeader>
+                </Card>
+            </DialogTrigger>
+            <DialogContent className="max-w-3xl max-w-screen-lg">
+                <DialogHeader>
+                    <DialogTitle>Raids Details</DialogTitle>
+                </DialogHeader>
+                <RaidStats raids={raids} />
+            </DialogContent>
+        </Dialog>
+    )
+}
 
 function RaidStats({ raids }: { raids: any }) {
     return (
