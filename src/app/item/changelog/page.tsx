@@ -3,11 +3,12 @@
 import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { PlusCircle, MinusCircle, RefreshCw } from 'lucide-react'
+import { PlusCircle, MinusCircle, RefreshCw, ChevronDown, ChevronRight } from 'lucide-react'
 import api from '@/utils/api'
 import { ItemDisplay } from '@/components/wynncraft/item/ItemDisplay'
 import { Spinner } from '@/components/ui/spinner'
 import ModifiedItemDisplay from '@/components/wynncraft/item/ModifiedItemDisplay'
+import { motion } from 'framer-motion'
 
 interface ChangelogData {
     add?: any[];
@@ -21,6 +22,18 @@ export default function ChangelogPage() {
     const [selectedTab, setSelectedTab] = useState<string | null>(null);
     const [changelogData, setChangelogData] = useState<ChangelogData | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [expandedSections, setExpandedSections] = useState<Record<"add" | "modify" | "remove", boolean>>({
+        add: false,
+        modify: false,
+        remove: false,
+    });
+
+    const toggleSection = (section: "add" | "modify" | "remove") => {
+        setExpandedSections((prev) => ({
+            ...prev,
+            [section]: !prev[section],
+        }));
+    };
 
     // Fetch list of available timestamps
     useEffect(() => {
@@ -93,89 +106,74 @@ export default function ChangelogPage() {
 
                         <TabsContent value={selectedTab || ""}>
                             {isLoading ? (
-                                <div className='h-64 flex item-center justify-center'>
-                                    <Spinner className='h-16 w-16'/>
+                                <div className="h-64 flex items-center justify-center">
+                                    <Spinner className="h-16 w-16" />
                                 </div>
                             ) : changelogData ? (
-                                <div className="space-y-6">
-                                    {/* Added Items */}
-                                    {changelogData.add && changelogData.add.length > 0 && (
-                                        <div>
-                                            <h3 className="text-xl font-semibold flex items-center mb-3">
-                                                <PlusCircle className="mr-2 h-5 w-5 text-green-500" />
-                                                Added Items
-                                            </h3>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                                                {changelogData.add.map((item, index) => (
-                                                    <Card key={index} className="border-l-4 border-green-500">
-                                                        <ItemDisplay item={item} />
-                                                    </Card>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
+                                <div className="space-y-4">
+                                    {/* Section Component */}
+                                    {(["add", "modify", "remove"] as const).map((section) => {
+                                        const items = changelogData[section];
+                                        if (!items || items.length === 0) return null;
 
-                                    {/* Modified Items */}
-                                    {changelogData.modify && changelogData.modify.length > 0 && (
+                                        const colors = {
+                                            add: "green",
+                                            modify: "blue",
+                                            remove: "red",
+                                        };
 
-                                        <div>
-                                            <h3 className="text-xl font-semibold flex items-center mb-3">
-                                                <RefreshCw className="mr-2 h-5 w-5 text-blue-500" />
-                                                Modified Items
-                                            </h3>
-                                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                                {changelogData.modify.map((item, index) => (
-                                                    <Card key={index} className="border-l-4 border-blue-500">
-                                                        
-                                                        {/* <CardHeader className="p-4">
-                                                            <div className="flex justify-between items-center">
-                                                                <CardTitle className="text-lg">{item.itemName}</CardTitle>
-                                                                <Badge>{item.after.rarity}</Badge>
-                                                            </div>
-                                                            <CardDescription>{item.after.type}</CardDescription>
-                                                        </CardHeader> */}
-                                                        {/* <CardContent>
-                                                            <h4 className="text-sm font-semibold">Changes:</h4>
-                                                            <ul className="text-sm">
-                                                                {Object.keys(item.before).map((key) =>
-                                                                    JSON.stringify(item.before[key]) !==
-                                                                        JSON.stringify(item.after[key]) ? (
-                                                                        <li key={key} className="flex flex-col">
-                                                                            <span className="text-red-500 line-through">
-                                                                                {key}: {JSON.stringify(item.before[key])}
-                                                                            </span>
-                                                                            <span className="text-green-500">
-                                                                                {key}: {JSON.stringify(item.after[key])}
-                                                                            </span>
-                                                                        </li>
-                                                                    ) : null
+                                        const icons = {
+                                            add: <PlusCircle className={`mr-2 h-5 w-5 text-${colors[section]}-500`} />,
+                                            modify: <RefreshCw className={`mr-2 h-5 w-5 text-${colors[section]}-500`} />,
+                                            remove: <MinusCircle className={`mr-2 h-5 w-5 text-${colors[section]}-500`} />,
+                                        };
+
+                                        // Set column layout dynamically
+                                        const gridClass =
+                                            section === "modify"
+                                                ? "grid grid-cols-1 sm:grid-cols-2 gap-4"
+                                                : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4";
+
+                                        return (
+                                            <div key={section} className="border border-accent rounded-lg overflow-hidden">
+                                                {/* Header */}
+                                                <div
+                                                    className="flex items-center justify-between p-4 bg-background hover:bg-accent transition cursor-pointer"
+                                                    onClick={() => toggleSection(section)}
+                                                >
+                                                    <div className="flex items-center text-lg font-semibold">
+                                                        {expandedSections[section] ? (
+                                                            <ChevronDown className="mr-2 h-5 w-5" />
+                                                        ) : (
+                                                            <ChevronRight className="mr-2 h-5 w-5" />
+                                                        )}
+                                                        {icons[section]}
+                                                        {section.charAt(0).toUpperCase() + section.slice(1)} Items
+                                                    </div>
+                                                </div>
+
+                                                {/* Content (Animated) */}
+                                                <motion.div
+                                                    initial={false}
+                                                    animate={{ height: expandedSections[section] ? "auto" : 0 }}
+                                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className={`${gridClass} p-4 bg-background`}>
+                                                        {items.map((item, index) => (
+                                                            <Card key={index} className={`border-l-4 border-${colors[section]}-500`}>
+                                                                {section === "modify" ? (
+                                                                    <ModifiedItemDisplay modifiedItem={item} />
+                                                                ) : (
+                                                                    <ItemDisplay item={item} />
                                                                 )}
-                                                            </ul>
-                                                        </CardContent> */}
-                                                        <ModifiedItemDisplay modifiedItem={item} />
-                                                        {/* <ItemDiffViewer {...item}/> */}
-                                                    </Card>
-                                                ))}
+                                                            </Card>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
                                             </div>
-                                        </div>
-                                    )}
-
-                                    {/* Removed Items */}
-                                    {changelogData.remove && changelogData.remove.length > 0 && (
-                                        <div>
-                                            <h3 className="text-xl font-semibold flex items-center mb-3">
-                                                <MinusCircle className="mr-2 h-5 w-5 text-red-500" />
-                                                Removed Items
-                                            </h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                {changelogData.remove.map((item, index) => (
-                                                    <Card key={index} className="border-l-4 border-red-500">
-                                                        <ItemDisplay item={item} />
-                                                    </Card>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
+                                        );
+                                    })}
                                 </div>
                             ) : (
                                 <p>No data available for this update.</p>
