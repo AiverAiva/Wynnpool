@@ -3,12 +3,9 @@
 import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { PlusCircle, MinusCircle, RefreshCw } from 'lucide-react'
 import api from '@/utils/api'
 import { ItemDisplay } from '@/components/wynncraft/item/ItemDisplay'
-import { ItemDiffViewer } from './ItemDiff'
 import { Spinner } from '@/components/ui/spinner'
 import ModifiedItemDisplay from '@/components/wynncraft/item/ModifiedItemDisplay'
 
