@@ -136,7 +136,7 @@ export default function ItemSearch({
 
                 data.identifications.forEach((identification: string) => {
                     const identificationInfo = getIdentificationInfo(identification);
-                    identificationsLabeled[identification] = (identificationInfo?.detailedName || identificationInfo?.displayName) ?? identification;
+                    identificationsLabeled[identification] = identificationInfo?.displayName ?? identification;
                 })
 
                 setIdentifications(identificationsLabeled)
