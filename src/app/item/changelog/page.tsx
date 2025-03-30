@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { PlusCircle, MinusCircle, RefreshCw, ChevronDown, ChevronRight, Search, X } from "lucide-react"
+import { PlusCircle, MinusCircle, RefreshCw, ChevronDown, ChevronRight, Search, X, Clock } from "lucide-react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import api from "@/utils/api"
 import { ItemDisplay } from "@/components/wynncraft/item/ItemDisplay"
 import { Spinner } from "@/components/ui/spinner"
@@ -12,6 +13,7 @@ import { motion } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface ChangelogData {
   add?: any[]
@@ -35,10 +37,13 @@ const tiers = Object.keys(tiersColors)
 // Ingredient tiers
 const ingredientTiers = [0, 1, 2, 3]
 
+// Number of recent changelogs to show as tabs
+const RECENT_TABS_COUNT = 5
+
 // Helper function to get the appropriate color for item tier
 export default function ChangelogPage() {
   const [changelogTimestamps, setChangelogTimestamps] = useState<number[]>([])
-  const [selectedTab, setSelectedTab] = useState<string | null>(null)
+  const [selectedTab, setSelectedTab] = useState<string>("")
   const [changelogData, setChangelogData] = useState<ChangelogData | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [expandedSections, setExpandedSections] = useState<Record<"add" | "modify" | "remove", boolean>>({
@@ -113,7 +118,7 @@ export default function ChangelogPage() {
     fetchChangelogData()
   }, [selectedTab])
 
-  const formatDate = (timestamp: number, isLatest: boolean) => {
+  const formatDate = (timestamp: number, isLatest = false) => {
     return `${new Date(timestamp * 1000).toLocaleDateString("en-US", {
       year: "numeric",
       month: "short",
@@ -162,6 +167,15 @@ export default function ChangelogPage() {
   const filteredModify = filterItems(changelogData?.modify)
   const filteredRemove = filterItems(changelogData?.remove)
 
+  // Split timestamps into recent and older
+  const recentTimestamps = changelogTimestamps.slice(0, RECENT_TABS_COUNT)
+  const olderTimestamps = changelogTimestamps.slice(RECENT_TABS_COUNT)
+
+
+  // Check if the selected tab is in the older timestamps
+  const isOlderTimestampSelected = olderTimestamps.includes(Number(selectedTab))
+  const olderSelectValue = isOlderTimestampSelected ? selectedTab : ""
+
   return (
     <div className="container mx-auto p-4 max-w-screen-xl duration-150">
       <Card className="w-full">
@@ -171,14 +185,52 @@ export default function ChangelogPage() {
         </CardHeader>
         <CardContent>
           <Tabs value={selectedTab || ""} onValueChange={setSelectedTab} className="w-full">
-            <TabsList className="mb-4 flex flex-wrap">
-              {changelogTimestamps.map((timestamp, index) => (
-                <TabsTrigger key={timestamp} value={String(timestamp)}>
-                  {formatDate(timestamp, index === 0)}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            {changelogTimestamps.length > 0 ? (
+              <div className="mb-6">
+                {/* Recent dates as tabs */}
+                <TabsList className="mb-2 flex flex-col sm:flex-row w-full h-auto">
+                  {recentTimestamps.map((timestamp, index) => (
+                    <TabsTrigger
+                      key={timestamp}
+                      value={String(timestamp)}
+                      className="flex-1 h-auto py-2 whitespace-normal text-left sm:text-center"
+                    >
+                      {formatDate(timestamp, index === 0)}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
 
+                {/* Older dates in dropdown */}
+                {olderTimestamps.length > 0 && (
+                  <div className="mt-2">
+                    <Select value={olderSelectValue} onValueChange={setSelectedTab}>
+                      <SelectTrigger className="w-full">
+                        <div className="flex items-center">
+                          <Clock className="mr-2 h-4 w-4" />
+                          <SelectValue placeholder="Older changelogs..." />
+                        </div>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {olderTimestamps.map((timestamp) => (
+                          <SelectItem key={timestamp} value={String(timestamp)}>
+                            {formatDate(timestamp)}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                <Skeleton className="h-12 w-full rounded-lg" />
+                <Skeleton className="h-10 w-full rounded-lg mt-4" />
+                <Skeleton className="h-4 w-[125px] rounded-lg mt-4" />
+                <Skeleton className="h-10 w-full rounded-lg mt-2" />
+                <Skeleton className="h-4 w-[125px] rounded-lg mt-4" />
+                <Skeleton className="h-10 w-full rounded-lg mt-2" />
+              </>
+            )}
             <TabsContent value={selectedTab || ""}>
               {isLoading ? (
                 <div className="h-64 flex items-center justify-center">
@@ -236,35 +288,35 @@ export default function ChangelogPage() {
                         <div className="flex flex-wrap gap-2">
                           {itemTypeFilter === "combat"
                             ? tiers.map((tier) => (
-                                <Button
-                                  key={tier}
-                                  variant={rarityFilters.includes(tier) ? "default" : "outline"}
-                                  onClick={() => toggleRarityFilter(tier)}
-                                  size="sm"
-                                  className="capitalize"
-                                  style={{
-                                    color: rarityFilters.includes(tier)
-                                      ? "white"
-                                      : tiersColors[tier as keyof typeof tiersColors],
-                                    borderColor: tiersColors[tier as keyof typeof tiersColors],
-                                    backgroundColor: rarityFilters.includes(tier)
-                                      ? tiersColors[tier as keyof typeof tiersColors]
-                                      : "transparent",
-                                  }}
-                                >
-                                  {tier}
-                                </Button>
-                              ))
+                              <Button
+                                key={tier}
+                                variant={rarityFilters.includes(tier) ? "default" : "outline"}
+                                onClick={() => toggleRarityFilter(tier)}
+                                size="sm"
+                                className="capitalize"
+                                style={{
+                                  color: rarityFilters.includes(tier)
+                                    ? "white"
+                                    : tiersColors[tier as keyof typeof tiersColors],
+                                  borderColor: tiersColors[tier as keyof typeof tiersColors],
+                                  backgroundColor: rarityFilters.includes(tier)
+                                    ? tiersColors[tier as keyof typeof tiersColors]
+                                    : "transparent",
+                                }}
+                              >
+                                {tier}
+                              </Button>
+                            ))
                             : ingredientTiers.map((tier) => (
-                                <Button
-                                  key={`tier-${tier}`}
-                                  variant={rarityFilters.includes(String(tier)) ? "default" : "outline"}
-                                  onClick={() => toggleRarityFilter(String(tier))}
-                                  size="sm"
-                                >
-                                  Tier {tier}
-                                </Button>
-                              ))}
+                              <Button
+                                key={`tier-${tier}`}
+                                variant={rarityFilters.includes(String(tier)) ? "default" : "outline"}
+                                onClick={() => toggleRarityFilter(String(tier))}
+                                size="sm"
+                              >
+                                Tier {tier}
+                              </Button>
+                            ))}
                         </div>
                       </div>
                     </div>
@@ -362,7 +414,11 @@ export default function ChangelogPage() {
                   })}
                 </div>
               ) : (
-                <p>No data available for this update.</p>
+                <>
+                  <Skeleton className="h-16 w-full rounded-xl mt-6" />
+                  <Skeleton className="h-16 w-full rounded-xl mt-6" />
+                  <Skeleton className="h-16 w-full rounded-xl mt-6" />
+                </>
               )}
             </TabsContent>
           </Tabs>
