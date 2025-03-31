@@ -340,8 +340,8 @@ export default function LootRunPool() {
                                             )}
                                         >
                                             <CardHeader className="p-4 pb-2">
-                                                <CardTitle className="text-lg flex items-center gap-2 justify-between">
-                                                    <div className='text-lg flex items-center gap-2'>
+                                                <CardTitle className={`${name.length > 14 ? 'text-sm' : 'text-lg'} flex items-center gap-2 justify-between`}>
+                                                    <div className='flex items-center gap-2'>
                                                         {item.icon ? (
                                                             <div className="relative w-8 h-8 flex-shrink-0">
                                                                 <Image
@@ -359,7 +359,7 @@ export default function LootRunPool() {
                                                         ) : (
                                                             <div className="w-8 h-8 bg-muted rounded-md flex-shrink-0"></div>
                                                         )}
-                                                        <span className="truncate">{name}</span>
+                                                        <span className='truncate'>{name}</span>
                                                     </div>
                                                     <ItemPoolHistoryModal
                                                         itemName={name}
