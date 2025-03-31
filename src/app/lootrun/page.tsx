@@ -12,10 +12,11 @@ import { Spinner } from '@/components/ui/spinner'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import api from '@/utils/api'
-import { ArrowUpDown, CheckCircle2, Search, Sparkles } from 'lucide-react'
+import { ArrowUpDown, CalendarSearch, CheckCircle2, Info, Search, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { ItemPoolHistoryModal } from '@/components/custom/ItemPoolHistoryModal'
 
 interface LootItem {
     Item: string
@@ -339,25 +340,37 @@ export default function LootRunPool() {
                                             )}
                                         >
                                             <CardHeader className="p-4 pb-2">
-                                                <CardTitle className="text-lg flex items-center gap-2">
-                                                    {item.icon ? (
-                                                        <div className="relative w-8 h-8 flex-shrink-0">
-                                                            <Image
-                                                                src={item.icon.startsWith("http") ? item.icon : `/icons/items/${item.icon}`}
-                                                                alt={name}
-                                                                width={32}
-                                                                height={32}
-                                                                className="object-contain"
-                                                                onError={(e) => {
-                                                                    // Fallback for missing icons
-                                                                    ; (e.target as HTMLImageElement).src = "/placeholder.svg?height=32&width=32"
-                                                                }}
-                                                            />
-                                                        </div>
-                                                    ) : (
-                                                        <div className="w-8 h-8 bg-muted rounded-md flex-shrink-0"></div>
-                                                    )}
-                                                    <span className="truncate">{name}</span>
+                                                <CardTitle className="text-lg flex items-center gap-2 justify-between">
+                                                    <div className='text-lg flex items-center gap-2'>
+                                                        {item.icon ? (
+                                                            <div className="relative w-8 h-8 flex-shrink-0">
+                                                                <Image
+                                                                    src={item.icon.startsWith("http") ? item.icon : `/icons/items/${item.icon}`}
+                                                                    alt={name}
+                                                                    width={32}
+                                                                    height={32}
+                                                                    className="object-contain"
+                                                                    onError={(e) => {
+                                                                        // Fallback for missing icons
+                                                                        ; (e.target as HTMLImageElement).src = "/placeholder.svg?height=32&width=32"
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                        ) : (
+                                                            <div className="w-8 h-8 bg-muted rounded-md flex-shrink-0"></div>
+                                                        )}
+                                                        <span className="truncate">{name}</span>
+                                                    </div>
+                                                    <ItemPoolHistoryModal
+                                                        itemName={name}
+                                                        trigger={
+                                                            // disabled={!searchTerm}
+                                                            <Button variant={'ghost'} className='h-8 w-8'>
+                                                                <CalendarSearch />
+                                                                {/* <Info className="h-4 w-4" /> */}
+                                                            </Button>
+                                                        }
+                                                    />
                                                 </CardTitle>
                                             </CardHeader>
                                             <CardContent className="p-4 pt-0">
