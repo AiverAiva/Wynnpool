@@ -194,7 +194,7 @@ export function ItemPoolHistoryModal({
                         <>
                             <div className="relative w-12 h-12 flex-shrink-0">
                                 <Image
-                                    src={data.icon || "/placeholder.svg"}
+                                    src={data.icon.startsWith("http") ? data.icon : `/icons/items/${data.icon}`}
                                     alt={data.itemName}
                                     width={48}
                                     height={48}
