@@ -103,6 +103,7 @@ export default function AspectPool() {
 
   return (
     <div className="min-h-screen bg-background">
+      <div className="mt-[80px]" />
       <main className="container mx-auto p-6 max-w-screen-lg duration-150">
         {lootData && aspectData && (
           <>

@@ -154,6 +154,7 @@ export default function GuildStatsPage() {
 
     return (
         <div className="container mx-auto p-4">
+            <div className="mt-[80px]" />
             <Card className="mb-8">
                 <div className='flex'>
                     {guildData.banner && (

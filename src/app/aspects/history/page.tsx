@@ -19,5 +19,10 @@ export default function AspectPoolHistoryPage() {
 
   if (!lootData) return <div className="flex justify-center items-center h-screen"><Spinner size="large" /></div>
 
-  return <AspectPoolHistory historyFiles={lootData} />
+  return (
+    <div>
+      <div className="mt-[80px]" />
+      <AspectPoolHistory historyFiles={lootData} />
+    </div>
+  )
 }

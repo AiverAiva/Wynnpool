@@ -16,5 +16,10 @@ export default function LootrunPoolHistoryPage() {
 
   if (!lootData) return <div className="flex justify-center items-center h-screen"><Spinner size="large" /></div>
 
-  return <LootrunPoolHistory historyFiles={lootData} />
+  return (
+    <div>
+      <div className="mt-[80px]" />
+      <LootrunPoolHistory historyFiles={lootData} />
+    </div>
+  )
 }

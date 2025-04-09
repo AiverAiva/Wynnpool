@@ -80,6 +80,7 @@ export default function StatsPage() {
 
   return (
     <div className="container mx-auto p-4 max-w-screen-lg">
+      <div className="mt-[80px]" />
       <span className='text-3xl font-mono'>this page is incomplete af :3 <br/>if u want to see any stats join discord and suggest it :D</span>
       <Card>
         <CardHeader>

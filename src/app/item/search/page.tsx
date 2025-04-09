@@ -17,6 +17,7 @@ export default function PageSwitch() {
 
     return (
         <div className="container mx-auto p-4 max-w-screen-xl duration-150">
+            <div className="mt-[80px]" />
             <Card className="mt-4">
                 <Tabs defaultValue="item" className="">
                     <CardHeader className="flex flex-row justify-between">
