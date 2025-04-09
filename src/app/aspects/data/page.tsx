@@ -77,6 +77,7 @@ export default function AspectDataPage() {
 
   return (
     <div className="container mx-auto p-4 max-w-screen-lg">
+      <div className="mt-[80px]" />
       <h1 className="text-3xl font-bold mb-4">Aspect Data</h1>
       <ScrollArea className="h-[calc(100vh-100px)]">
         {Object.entries(data).map(([className, aspects]) => (

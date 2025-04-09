@@ -66,6 +66,7 @@ export default function ItemPage() {
 
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
+            <div className="mt-[80px]" />
             <div className='flex justify-between gap-4 mb-4 flex-col md:flex-row'>
                 <div className='md:w-2/5 lg:w-1/3'>
                     <ItemDisplay item={itemData} />

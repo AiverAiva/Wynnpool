@@ -178,6 +178,7 @@ export default function ChangelogPage() {
 
   return (
     <div className="container mx-auto p-4 max-w-screen-xl duration-150">
+      <div className="mt-[80px]" />
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="text-3xl">Item Changelog</CardTitle>

@@ -14,6 +14,7 @@ import { ChangelogList } from "@/components/custom/changelog-list"
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
+      <div className="mt-[80px]" />
       <main className="container mx-auto px-4 py-8 max-w-screen-lg">
         <section className="text-center mb-12">
           <div className='sm:flex mb-4 justify-center items-center'>

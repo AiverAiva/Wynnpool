@@ -55,6 +55,7 @@ export default function CountdownPage() {
     return (
         <div className='bg-background'>
             <div className="min-h-screen flex items-center justify-center ">
+                <div className="mt-[80px]" />
                 <Card className="w-full max-w-2xl">
                     <CardHeader>
                         <CardTitle className="text-xl text-center font-thin">Countdown to next <p className="text-3xl font-bold">Banish the beyond</p></CardTitle>

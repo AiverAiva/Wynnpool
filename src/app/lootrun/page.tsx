@@ -199,6 +199,7 @@ export default function LootRunPool() {
 
     return (
         <div className="container mx-auto p-4 max-w-screen-lg">
+            <div className="mt-[80px]" />
             <h1 className="text-4xl font-bold mb-4">Lootrun Pool</h1>
             <Card className="mb-4 relative">
                 <CardHeader className="flex justify-center items-center">
