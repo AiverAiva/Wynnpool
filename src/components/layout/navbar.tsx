@@ -55,8 +55,8 @@ export function Navbar() {
   }
 
   return (
-    <header className="bg-background/30 shadow-xs flex max-w-5xl h-[60px] sticky fixed items-center justify-between rounded-2xl inset-x-0 top-4 z-50 px-8 mx-auto backdrop-blur saturate-100 backdrop-blur-[10px] transition-colors">
-      <div className="container flex h-14 mx-auto px-4 py-4 flex justify-between items-center">
+    <header className="fixed top-4 inset-x-0 z-50 mx-auto max-w-5xl px-8 h-[60px] rounded-2xl bg-background/30 shadow-xs backdrop-blur backdrop-saturate-100 transition-colors">
+      <div className="container flex justify-between items-center h-full px-4">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="hidden font-bold sm:inline-block text-xl">
@@ -104,7 +104,7 @@ export function Navbar() {
                       Find the items with a selected filter.
                     </ListItem>
                     <ListItem href="/item/changelog" title="Item Changelog" className={pathname === "/item/changelog" ? 'bg-accent/50' : ''}>
-                    Track changes to items across game updates.
+                      Track changes to items across game updates.
                     </ListItem>
                     <ListItem href="/aspects/data" title="Aspect Data" className={pathname === "/aspects/data" ? 'bg-accent/50' : ''}>
                       A page with all the aspects and their effects, cateogrized by class.
