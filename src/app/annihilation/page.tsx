@@ -108,7 +108,7 @@ export default function AnnihilationEvents() {
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out"
                     style={{
                         backgroundImage:
-                            "url(/images/background/annihilation.png)",
+                            "url(/images/background/annihilation.webp)",
                         backgroundPosition: "center 30%",
                         transform: `scale(${calculateZoom()})`,
                     }}
