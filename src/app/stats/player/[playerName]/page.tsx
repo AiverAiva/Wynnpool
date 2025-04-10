@@ -301,6 +301,9 @@ export default function PlayerStatsPage() {
 
                                     <section>
                                         <h3 className="font-semibold mb-2">Quests</h3>
+                                        <div className="text-sm mb-4">
+                                            Total Quests Completed: {char.quests.length}/{QuestList.length}
+                                        </div>
                                         <Card className="p-2">
                                             <ScrollArea className="h-[300px]">
                                                 <div className="flex flex-wrap gap-1 text-xs">
