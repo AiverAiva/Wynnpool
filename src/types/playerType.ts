@@ -1,4 +1,4 @@
-import { Code, CodeXml, Star } from 'lucide-react';
+import { Code, CodeXml, Star, PiggyBank } from 'lucide-react';
 import { createElement } from 'react';
 
 export const cutePlayers = [
@@ -7,7 +7,14 @@ export const cutePlayers = [
         name: 'AiverAiva',
         emoji: '🐢',
         quote: 'i cutes veri mucc',
-        icon: createElement(CodeXml, { className: 'w-4 h-4 text-muted-foreground' })
+        icon: createElement(CodeXml, { className: 'w-4 h-4 text-muted-foreground' })  //developer
+    },
+    {
+        uuid: 'f33dfcce-8e29-49b9-a528-93729f95fa39',
+        name: 'Flufe',
+        emoji: '🐉',
+        quote: 'Dungeons are cool',   
+        icon: createElement(PiggyBank, { className: 'w-4 h-4 text-muted-foreground' })  //funder 
     }
 ];
 
