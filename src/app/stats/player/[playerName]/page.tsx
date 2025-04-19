@@ -491,7 +491,7 @@ function DungeonStats({ dungeons }: { dungeons: any }) {
 const categories = {
     Content: ["playerContent", "globalPlayerContent", "warsCompletion"],
     Level: ["combatGlobalLevel", "totalSoloLevel", "combatSoloLevel", "professionsGlobalLevel", "totalGlobalLevel"],
-    Proffesion: ["tailoringLevel", "farmingLevel", "woodworkingLevel", "scribingLevel", "armouringLevel", "jewelingLevel", "fishingLevel", "miningLevel", "cookingLevel", "weaponsmithingLevel", "alchemismLevel", "woodcuttingLevel"],
+    Profession: ["tailoringLevel", "farmingLevel", "woodworkingLevel", "scribingLevel", "armouringLevel", "jewelingLevel", "fishingLevel", "miningLevel", "cookingLevel", "weaponsmithingLevel", "alchemismLevel", "woodcuttingLevel"],
     Gamemode: ["ironmanContent", "ultimateIronmanContent", "hardcoreLegacyLevel", "hardcoreContent", "craftsmanContent", "huntedContent", "hicContent", "hichContent", "huichContent", "huicContent"],
     Raids: ["grootslangCompletion", "grootslangSrPlayers", "colossusSrPlayers", "colossusCompletion", "orphionSrPlayers", "orphionCompletion", "namelessSrPlayers", "namelessCompletion"]
 };
