@@ -68,26 +68,26 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
       
       <AttackSpeed speed={original.attackSpeed} />
       
-      <DamageDisplay 
+      {/* <DamageDisplay 
         baseDamage={original.base.baseDamage}
         baseAirDamage={original.base.baseAirDamage}
         dps={original.averageDps}
         powders={input.powders || []}
-      />
+      /> */}
       
       <MajorIds majorIds={original.majorIds} />
       
-      <Requirements 
+      {/* <Requirements 
         level={original.requirements.level}
         classRequirement={original.requirements.classRequirement}
         agility={original.requirements.agility}
-      />
+      /> */}
       
-      <BaseStats 
+      {/* <BaseStats 
         strength={original.identifications.rawStrength}
         dexterity={original.identifications.rawDexterity}
         agility={original.identifications.rawAgility}
-      />
+      /> */}
       
       <IdentificationStats stats={processedIdentifications} />
       
