@@ -13,11 +13,11 @@ import { useMediaQuery } from '@/hooks/use-media-query'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
 import { DualSlider } from '@/components/ui/dual-slider'
-import { getIdentificationInfo } from '@/types/itemType'
 import { DndContext, closestCenter } from "@dnd-kit/core"
 import { SortableContext, useSortable, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities";
 import api from '@/lib/api'
+import { getIdentificationInfo } from '@/lib/itemUtils'
 
 const itemTypes = {
     weapon: ['bow', 'spear', 'wand', 'relik', 'dagger'],
