@@ -1,5 +1,3 @@
-import { RARITY_COLORS } from "./types";
-
 export function formatNumber(num: number): string {
   return num.toLocaleString();
 }
@@ -12,27 +10,11 @@ export function formatAttackSpeed(speed: string): string {
   return speed.split('_').map(capitalize).join(' ');
 }
 
-export function calculateRollPercentage(value: number, min: number, max: number, raw: number): number {
-  // First calculate the actual value from the input percentage
-  const actualValue = Math.ceil((value / 100) * raw);
-  
-  // Then calculate the roll percentage based on min value and raw value
-  return ((actualValue - min) / raw) * 100;
-}
-
 export function getStarsFromRollPercentage(percentage: number): number {
   if (percentage >= 100) return 3;
   if (percentage >= 94) return 2;
   if (percentage >= 71) return 1;
   return 0;
-}
-
-export function getColorFromRollPercentage(percentage: number): string {
-  if (percentage >= 100) return '#00FF00'; // 3 stars - bright green
-  if (percentage >= 94) return '#AAFF00';  // 2 stars - yellow-green
-  if (percentage >= 71) return '#FFFF00';  // 1 star - yellow
-  if (percentage >= 50) return '#FFAA00';  // orange
-  return '#FF5555';                        // red
 }
 
 export function calculateIdentificationRoll(
@@ -42,8 +24,7 @@ export function calculateIdentificationRoll(
 ): {
   roll: number;
   stars: number;
-  color: string;
-  formattedPercentage: string;
+  formattedPercentage: number;
   displayValue: number;
 } {
   let { min, max, raw } = original;
@@ -65,7 +46,7 @@ export function calculateIdentificationRoll(
     rollPercentage = ((actualValue - min) / raw) * 100;
   } else {
     // Negative ID
-    actualValue = Math.floor(((inputValue - 70) / 100) * raw + max);
+    actualValue = Math.round(((inputValue - 70) / 100) * raw + max);
     rollPercentage = (1 - (max - actualValue) / (max - min)) * 100;
   }
 
@@ -76,19 +57,13 @@ export function calculateIdentificationRoll(
   displayValue=actualValue
 
   const stars = getStarsFromRollPercentage(rollPercentage);
-  const color = getColorFromRollPercentage(rollPercentage);
 
   return {
     roll: rollPercentage,
     stars,
-    color,
-    formattedPercentage: `${rollPercentage.toFixed(5)}%`,
+    formattedPercentage: rollPercentage,
     displayValue
   };
-}
-
-export function getRarityColor(rarity: keyof typeof RARITY_COLORS): string {
-  return RARITY_COLORS[rarity] || RARITY_COLORS.normal;
 }
 
 export function calculateDamageRange(baseDamage: { min: number; max: number }, powders: any[]): {
@@ -105,17 +80,4 @@ export function calculateDamageRange(baseDamage: { min: number; max: number }, p
   }
   
   return { min: minDamage, max: maxDamage };
-}
-
-export function formatIdentificationName(key: string): string {
-  const nameMap: { [key: string]: string } = {
-    walkSpeed: "Walk Speed",
-    mainAttackDamage: "Main Attack Damage",
-    healthRegen: "Health Regen",
-    rawStrength: "Strength",
-    rawDexterity: "Dexterity",
-    rawAgility: "Agility",
-  };
-  
-  return nameMap[key] || key.replace(/([A-Z])/g, ' $1').trim();
 }

@@ -164,3 +164,30 @@ export function formattedAttackSpeed(attackSpeed: string) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ")} Attack Speed`
 }
+
+// Get color based on roll percentage
+export const getRollPercentageColor = (percentage: number, inverted = false) => {
+    if (inverted) percentage = 100 - percentage
+
+    if (percentage >= 95) return "text-cyan-500"
+    if (percentage >= 80) return "text-green-500"
+    if (percentage >= 60) return "text-yellow-300"
+    if (percentage >= 40) return "text-amber-400"
+    if (percentage >= 20) return "text-orange-500"
+    return "text-red-500"
+}
+
+export const getRollPercentageString = (percentage: number) => {
+    const truncated = Math.trunc(percentage * 100) / 100;
+    return `${truncated.toFixed(2)}%`;
+};
+
+export function getIdentificationColor(number: number) {
+    if (number > 0) return 'text-green-500'
+    if (number < 0) return 'text-red-500'
+}
+
+export function getFormattedIdNumber(number: number) {
+    if (number > 0) return '+' + number
+    if (number < 0) return number
+}
