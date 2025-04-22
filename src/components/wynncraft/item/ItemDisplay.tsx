@@ -15,6 +15,7 @@ import Link from "next/link"
 import { ItemIcon } from "../../custom/WynnIcon"
 import { cn } from "@/lib/utils"
 import MajorIds from "./MajorIds"
+import AttackSpeed from "./AttackSpeed"
 
 interface ItemDisplayProps {
   item: Item
@@ -167,14 +168,6 @@ const Identification: React.FC<IdentificationProps> = ({ id, value }) => {
           <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{value.max}{displayUnit}</span>
         </>
       )}
-    </div>
-  );
-}
-
-const AttackSpeed: React.FC<{ attackSpeed: string }> = ({ attackSpeed }) => {
-  return (
-    <div className="flex justify-center items-center text-xs">
-      {`${attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
     </div>
   );
 }
