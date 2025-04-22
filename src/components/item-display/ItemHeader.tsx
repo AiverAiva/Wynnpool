@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { getRarityColor } from '@/utils/utils';
 
 interface ItemHeaderProps {
   name: string;

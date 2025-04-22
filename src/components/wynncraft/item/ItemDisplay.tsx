@@ -16,7 +16,7 @@ import { ItemIcon } from "../../custom/WynnIcon"
 import { cn } from "@/lib/utils"
 import MajorIds from "./MajorIds"
 import AttackSpeed from "./AttackSpeed"
-import { getIdentificationInfo } from "@/lib/itemUtils"
+import { getFormattedIdNumber, getIdentificationColor, getIdentificationInfo } from "@/lib/itemUtils"
 
 interface ItemDisplayProps {
   item: Item
@@ -30,16 +30,6 @@ const SmallItemCard: React.FC<ItemDisplayProps> = ({ item }) => {
       <span key={item.internalName} className='text-md font-mono'>{item.internalName}</span>
     </Card>
   )
-}
-
-function getColor(number: number) {
-  if (number > 0) return 'text-green-500'
-  if (number < 0) return 'text-red-500'
-}
-
-function getFormattedText(number: number) {
-  if (number > 0) return '+' + number
-  if (number < 0) return number
 }
 
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
@@ -94,7 +84,7 @@ const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
         </span>
       </div>
       {typeof value === 'number' ? (
-        <span className="ml-1 h-4">{getFormattedText(value)}</span>
+        <span className="ml-1 h-4">{getFormattedIdNumber(value)}</span>
       ) : (
         <span className="ml-1 h-4">
           {value.min}-{value.max}
@@ -286,7 +276,7 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
             <div className="flex flex-col text-sm text-gray-400">
               {Object.entries(item.ingredientPositionModifiers).map(([key, value]) => (value !== 0 && (
                 <div key={key} className="flex flex-col">
-                  <span><span className={getColor(value)}>{value > 0 && '+'}{value}{getIdentificationInfo(key)?.unit}</span> Ingredient Effectiveness</span>
+                  <span><span className={getIdentificationColor(value)}>{value > 0 && '+'}{value}{getIdentificationInfo(key)?.unit}</span> Ingredient Effectiveness</span>
                   <span>({getIdentificationInfo(key)?.displayName})</span>
                 </div>
               )
@@ -298,7 +288,7 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
               {Object.entries(item.itemOnlyIDs).map(([key, value]) => (
                 key !== 'durabilityModifier' && value !== 0 && (
                   <div key={key} className="flex items-center gap-2">
-                    <span className={getColor(value * -1)}>{value > 0 && '+'}{value} {getIdentificationInfo(key.replace('Requirement', ''))?.displayName}</span>
+                    <span className={getIdentificationColor(value * -1)}>{value > 0 && '+'}{value} {getIdentificationInfo(key.replace('Requirement', ''))?.displayName}</span>
                   </div>
                 )
               ))}
@@ -308,8 +298,8 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
             <div className="flex flex-col text-[13.5px]">
               <div className="flex">
                 {item.itemOnlyIDs.durabilityModifier !== 0 && (
-                  <span className={getColor(item.itemOnlyIDs.durabilityModifier)}>
-                    {getFormattedText(item.itemOnlyIDs.durabilityModifier / 1000)} Durability
+                  <span className={getIdentificationColor(item.itemOnlyIDs.durabilityModifier)}>
+                    {getFormattedIdNumber(item.itemOnlyIDs.durabilityModifier / 1000)} Durability
                   </span>
                 )}
                 {item.itemOnlyIDs.durabilityModifier !== 0 &&
@@ -317,14 +307,14 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
                     <span className="text-gray-400">&ensp;or&ensp;</span>
                   )}
                 {item.consumableOnlyIDs.duration !== 0 && (
-                  <span className={getColor(item.consumableOnlyIDs.duration)}>
-                    {getFormattedText(item.consumableOnlyIDs.duration)}s Duration
+                  <span className={getIdentificationColor(item.consumableOnlyIDs.duration)}>
+                    {getFormattedIdNumber(item.consumableOnlyIDs.duration)}s Duration
                   </span>
                 )}
               </div>
               {item.consumableOnlyIDs.charges != 0 && (
-                <span className={getColor(item.consumableOnlyIDs.charges)}>
-                  {getFormattedText(item.consumableOnlyIDs.charges)} Charges
+                <span className={getIdentificationColor(item.consumableOnlyIDs.charges)}>
+                  {getFormattedIdNumber(item.consumableOnlyIDs.charges)} Charges
                 </span>
               )}
             </div>

@@ -19,8 +19,7 @@ interface ItemDisplayProps {
 export interface IdentificationStat {
   name: string;
   value: number;
-  percentage: string;
-  color: string;
+  percentage: number;
   stars: number;
   displayValue: number;
 }
@@ -36,7 +35,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
       
       if (!originalStat || typeof originalStat !== 'object') return null;
       
-      const { roll, stars, color, formattedPercentage, displayValue } = calculateIdentificationRoll(
+      const { roll, stars, formattedPercentage, displayValue } = calculateIdentificationRoll(
         key,
         originalStat,
         value
@@ -46,7 +45,6 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
         name: key,
         value,
         percentage: formattedPercentage,
-        color,
         stars,
         displayValue
       };

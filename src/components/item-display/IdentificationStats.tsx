@@ -2,14 +2,12 @@
 
 import React from 'react';
 import StarRating from './StarRating';
-import { formatIdentificationName } from '@/utils/utils';
-import { getIdentificationInfo } from '@/lib/itemUtils';
+import { getFormattedIdNumber, getIdentificationColor, getIdentificationInfo, getRollPercentageColor, getRollPercentageString } from '@/lib/itemUtils';
 
 interface IdentificationStat {
   name: string;
   value: number;
-  percentage: string;
-  color: string;
+  percentage: number;
   stars: number;
   displayValue: number;
 }
@@ -25,13 +23,15 @@ const IdentificationStats: React.FC<IdentificationStatsProps> = ({ stats }) => {
     <div className="mb-3">
       {stats.map((stat, index) => (
         <div key={index} className="flex items-center">
-          <span className="text-green-400">
-            +{stat.displayValue}{getIdentificationInfo(stat.name)?.unit}<StarRating stars={stat.stars} /> {getIdentificationInfo(stat.name)?.displayName}
+          <span className={getIdentificationColor(stat.displayValue)}>
+            {getFormattedIdNumber(stat.displayValue)}{getIdentificationInfo(stat.name)?.unit}<StarRating stars={stat.stars} />
           </span>
-          <span className="ml-1" style={{ color: stat.color }}>
-            [{stat.percentage}]
+          <span className="text-gray-400 ml-1">
+            {getIdentificationInfo(stat.name)?.displayName}
           </span>
-
+          <span className={`ml-1 ${getRollPercentageColor(stat.percentage)}`}>
+            [{getRollPercentageString(stat.percentage)}]
+          </span>
         </div>
       ))}
     </div>
