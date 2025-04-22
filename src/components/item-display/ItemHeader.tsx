@@ -13,8 +13,6 @@ interface ItemHeaderProps {
 }
 
 const ItemHeader: React.FC<ItemHeaderProps> = ({ name, rarity, shinyStat }) => {
-  const rarityColor = getRarityColor(rarity);
-  
   return (
     <div className="mb-2">
       <div className="flex items-center">
@@ -22,10 +20,9 @@ const ItemHeader: React.FC<ItemHeaderProps> = ({ name, rarity, shinyStat }) => {
           <span className="text-yellow-300 mr-2">✦</span>
         )}
         <h2 
-          className="text-xl font-bold tracking-wide"
-          style={{ color: rarityColor }}
+          className={`text-${rarity} text-xl font-bold tracking-wide`}
         >
-          {name} {rarity === "mythic" && "[5]"}
+          {name}
         </h2>
       </div>
       {shinyStat && (

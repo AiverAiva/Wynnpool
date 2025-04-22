@@ -4,12 +4,12 @@ import React from 'react';
 import { ItemData } from '@/utils/types';
 import { calculateIdentificationRoll } from '@/utils/utils';
 import ItemHeader from './ItemHeader';
-import AttackSpeed from './AttackSpeed';
+import AttackSpeed from '../wynncraft/item/AttackSpeed';
 import DamageDisplay from './DamageDisplay';
 import Requirements from './Requirements';
 import BaseStats from './BaseStats';
 import IdentificationStats from './IdentificationStats';
-import MajorIds from './MajorIds';
+import MajorIds from '../wynncraft/item/MajorIds';
 import PowderSlots from './PowderSlots';
 
 interface ItemDisplayProps {
@@ -37,6 +37,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
       if (!originalStat || typeof originalStat !== 'object') return null;
       
       const { roll, stars, color, formattedPercentage, displayValue } = calculateIdentificationRoll(
+        key,
         originalStat,
         value
       );
@@ -66,7 +67,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
         shinyStat={shinyStat}
       />
       
-      <AttackSpeed speed={original.attackSpeed} />
+      {/* <AttackSpeed attackSpeed={original.attackSpeed} /> */}
       
       {/* <DamageDisplay 
         baseDamage={original.base.baseDamage}
@@ -75,7 +76,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
         powders={input.powders || []}
       /> */}
       
-      <MajorIds majorIds={original.majorIds} />
+      {/* <MajorIds majorIds={original.majorIds} /> */}
       
       {/* <Requirements 
         level={original.requirements.level}
@@ -91,10 +92,10 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
       
       <IdentificationStats stats={processedIdentifications} />
       
-      <PowderSlots 
+      {/* <PowderSlots 
         total={original.powderSlots}
         powders={input.powders || []}
-      />
+      /> */}
     </div>
   );
 };
