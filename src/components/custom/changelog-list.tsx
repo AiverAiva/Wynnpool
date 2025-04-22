@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { CalendarIcon, Clock, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import api from '@/utils/api'
+import api from '@/lib/api'
 
 interface ChangelogListProps {
   limit?: number;
