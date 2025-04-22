@@ -3,7 +3,7 @@
 import { notFound, useParams, usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '@/components/ui/spinner';
-import { getIdentificationCost, Item, ItemChangelog } from '@/types/itemType';
+import { Item, ItemChangelog } from '@/types/itemType';
 import { ItemDisplay } from '@/components/wynncraft/item/ItemDisplay';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, ChevronDown, ChevronUp, Clock, Copy, Dices, Minus, Plus, RefreshCw } from 'lucide-react';
@@ -18,6 +18,7 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import ItemHistory from '@/components/wynncraft/item/ItemHistory';
 import ItemRollSimulator from '@/components/custom/ItemRollSimulator';
+import { getIdentificationCost } from '@/lib/itemUtils';
 
 export default function ItemPage() {
     const { itemName } = useParams();

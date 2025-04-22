@@ -11,8 +11,9 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Dice1Icon as Dice, RefreshCw, Sparkles, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { getIdentificationInfo, type Item } from "@/types/itemType"
+import { Item } from "@/types/itemType"
 import { ItemIcon } from "@/components/custom/WynnIcon"
+import { getIdentificationInfo } from "@/lib/itemUtils"
 
 interface ItemRollSimulatorProps {
     item: Item
