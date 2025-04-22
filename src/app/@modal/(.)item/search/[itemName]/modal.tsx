@@ -10,10 +10,11 @@ import api from '@/lib/api';
 import { cn } from '@/lib/utils';
 import { Check, Copy } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { getIdentificationCost, Item } from '@/types/itemType';
+import { Item } from '@/types/itemType';
 import CurrencyDisplay from '@/components/custom/currency-display';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { ItemDisplay } from "@/components/wynncraft/item/ItemDisplay";
+import { getIdentificationCost } from "@/lib/itemUtils";
 
 function ItemDetail({ itemName }: { itemName: string }) {
     const [isLoading, setIsLoading] = useState(true);
