@@ -5,7 +5,7 @@ import type React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { formattedAttackSpeed, getIdentificationInfo, type Item } from "@/types/itemType"
+import { Item } from "@/types/itemType"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getClassInfo } from "@/types/classType"
 import { ItemIcon } from "../../custom/WynnIcon"
@@ -14,6 +14,7 @@ import { diffChars, diffWords } from "diff";
 import { MoveRight, TrendingDown, TrendingUp } from "lucide-react"
 import { mapEasingToNativeEasing } from "framer-motion"
 import { ItemContent, ItemHeader } from "./ItemDisplay"
+import { formattedAttackSpeed, getIdentificationInfo } from "@/lib/itemUtils"
 
 interface ModifiedItemDisplayProps {
   modifiedItem: {

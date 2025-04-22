@@ -7,7 +7,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { getIdentificationInfo, Item } from "@/types/itemType"
+import { Item } from "@/types/itemType"
 import Image from 'next/image'
 import '@/assets/css/wynncraft.css'
 import { getClassInfo } from "@/types/classType"
@@ -16,6 +16,7 @@ import { ItemIcon } from "../../custom/WynnIcon"
 import { cn } from "@/lib/utils"
 import MajorIds from "./MajorIds"
 import AttackSpeed from "./AttackSpeed"
+import { getIdentificationInfo } from "@/lib/itemUtils"
 
 interface ItemDisplayProps {
   item: Item
@@ -350,9 +351,9 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
       {item.type == 'material' && (
         <span className="text-sm text-gray-400">Use this material to craft: <span className="capitalize text-white">{item.craftable.join(', ')}</span></span>
       )}
-      
+
       {item.majorIds && <MajorIds majorIds={item.majorIds} />}
-      
+
       {item.powderSlots && (
         <p className="text-sm">
           Powder Slots&ensp;
@@ -370,8 +371,6 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
       {item.restrictions && (
         <p className="text-red-500 capitalize">{item.restrictions}</p>
       )}
-
-
 
       {embeded && (
         <div className="flex justify-end">
