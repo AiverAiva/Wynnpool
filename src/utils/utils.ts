@@ -15,7 +15,7 @@ export function getStarsFromRollPercentage(percentage: number): number {
   if (percentage >= 94) return 2;
   if (percentage >= 71) return 1;
   return 0;
-}
+} 
 
 export function calculateIdentificationRoll(
   key: string,
