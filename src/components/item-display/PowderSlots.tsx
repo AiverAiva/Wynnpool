@@ -21,7 +21,7 @@ const PowderSlots: React.FC<PowderSlotsProps> = ({ total, powders }) => {
             <span
               key={index}
               className="mx-0.5 text-lg"
-              style={{ color: ELEMENT_COLORS[powder.element] }}
+              // style={{ color: ELEMENT_COLORS[powder.element] }}
             >
               ❖
             </span>

@@ -36,6 +36,7 @@ export function getColorFromRollPercentage(percentage: number): string {
 }
 
 export function calculateIdentificationRoll(
+  key: string,
   original: { min: number; max: number; raw: number },
   inputValue: number
 ): {
@@ -45,29 +46,43 @@ export function calculateIdentificationRoll(
   formattedPercentage: string;
   displayValue: number;
 } {
-  const { min, max, raw } = original;
-  
-  // Calculate the actual value from the input percentage
-  const actualValue = Math.ceil((inputValue / 100) * raw);
-  
-  // Calculate the display value (the actual percentage shown to user)
-  const displayValue = Math.ceil((inputValue / 100) * raw);
-  // Math.ceil((actualValue / raw) * 100);
-  
-  // Calculate the roll percentage
-  const rollPercentage = ((actualValue - min) / raw) * 100;
-  
-  // Get stars based on the roll percentage
+  let { min, max, raw } = original;
+
+  // Invert values if key includes "cost"
+  if (key.toLowerCase().includes("cost")) {
+    min = -min;
+    max = -max;
+    raw = -raw;
+  }
+
+  let actualValue: number;
+  let displayValue: number;
+  let rollPercentage: number;
+
+  if (raw >= 0) {
+    // Normal (positive) ID
+    actualValue = Math.round((inputValue / 100) * raw);
+    rollPercentage = ((actualValue - min) / raw) * 100;
+  } else {
+    // Negative ID
+    actualValue = Math.floor(((inputValue - 70) / 100) * raw + max);
+    rollPercentage = (1 - (max - actualValue) / (max - min)) * 100;
+  }
+
+  if (key.toLowerCase().includes("cost")) {
+    actualValue = -actualValue
+  }
+
+  displayValue=actualValue
+
   const stars = getStarsFromRollPercentage(rollPercentage);
-  
-  // Get color based on percentage
   const color = getColorFromRollPercentage(rollPercentage);
 
   return {
     roll: rollPercentage,
     stars,
     color,
-    formattedPercentage: `${rollPercentage.toFixed(1)}%`,
+    formattedPercentage: `${rollPercentage.toFixed(5)}%`,
     displayValue
   };
 }
