@@ -18,12 +18,12 @@ interface IdentificationStatsProps {
 
 const IdentificationStats: React.FC<IdentificationStatsProps> = ({ stats }) => {
   if (!stats || stats.length === 0) return null;
-
+  
   return (
     <div className="mb-3">
       {stats.map((stat, index) => (
         <div key={index} className="flex items-center">
-          <span className={getIdentificationColor(stat.displayValue)}>
+          <span className={stat.name.toLowerCase().includes('cost') ? getIdentificationColor(stat.displayValue, true) : getIdentificationColor(stat.displayValue)}>
             {getFormattedIdNumber(stat.displayValue)}{getIdentificationInfo(stat.name)?.unit}<StarRating stars={stat.stars} />
           </span>
           <span className="text-gray-400 ml-1">

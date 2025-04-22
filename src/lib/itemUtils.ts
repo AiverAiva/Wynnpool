@@ -1,4 +1,7 @@
+import { IdentificationStat } from "@/components/item-display/ItemDisplay";
 import { IdentificationInfo } from "@/types/itemType";
+import { ItemData } from "@/utils/types";
+import { calculateIdentificationRoll } from "@/utils/utils";
 
 const identificationMap: Record<string, IdentificationInfo> = {
     // Base stats
@@ -182,7 +185,8 @@ export const getRollPercentageString = (percentage: number) => {
     return `${truncated.toFixed(2)}%`;
 };
 
-export function getIdentificationColor(number: number) {
+export function getIdentificationColor(number: number, inverted?: boolean) {
+    if (inverted) number=-number
     if (number > 0) return 'text-green-500'
     if (number < 0) return 'text-red-500'
 }
@@ -190,4 +194,30 @@ export function getIdentificationColor(number: number) {
 export function getFormattedIdNumber(number: number) {
     if (number > 0) return '+' + number
     if (number < 0) return number
+}
+
+export function processIdentification(data: ItemData) {
+    const { original, input, weights } = data;
+    return Object.entries(input.identifications)
+    .filter(([key]) => original.identifications[key])
+    .map(([key, value]) => {
+      const originalStat = original.identifications[key];
+
+      if (!originalStat || typeof originalStat !== 'object') return null;
+
+      const { roll, stars, formattedPercentage, displayValue } = calculateIdentificationRoll(
+        key,
+        originalStat,
+        value
+      );
+
+      return {
+        name: key,
+        value,
+        percentage: formattedPercentage,
+        stars,
+        displayValue
+      };
+    })
+    .filter((item): item is IdentificationStat => item !== null)
 }
