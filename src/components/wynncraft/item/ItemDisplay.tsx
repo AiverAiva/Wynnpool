@@ -14,6 +14,7 @@ import { getClassInfo } from "@/types/classType"
 import Link from "next/link"
 import { ItemIcon } from "../../custom/WynnIcon"
 import { cn } from "@/lib/utils"
+import MajorIds from "./MajorIds"
 
 interface ItemDisplayProps {
   item: Item
@@ -356,13 +357,9 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
       {item.type == 'material' && (
         <span className="text-sm text-gray-400">Use this material to craft: <span className="capitalize text-white">{item.craftable.join(', ')}</span></span>
       )}
-      {item.majorIds && (
-        <ul className="list-disc list-inside">
-          {Object.entries(item.majorIds).map(([key, value]) => (
-            <div className="text-sm" key={key} dangerouslySetInnerHTML={{ __html: value }} />
-          ))}
-        </ul>
-      )}
+      
+      {item.majorIds && <MajorIds majorIds={item.majorIds} />}
+      
       {item.powderSlots && (
         <p className="text-sm">
           Powder Slots&ensp;
