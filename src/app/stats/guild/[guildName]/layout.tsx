@@ -1,4 +1,4 @@
-import api from "@/utils/api";
+import api from "@/lib/api";
 
 export default function GuildLayout({
     children, // will be a page or nested layout

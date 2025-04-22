@@ -17,7 +17,7 @@ import { getIdentificationInfo } from '@/types/itemType'
 import { DndContext, closestCenter } from "@dnd-kit/core"
 import { SortableContext, useSortable, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities";
-import api from '@/utils/api'
+import api from '@/lib/api'
 
 const itemTypes = {
     weapon: ['bow', 'spear', 'wand', 'relik', 'dagger'],

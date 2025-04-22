@@ -12,7 +12,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { AspectData } from '@/types/aspectType'
-import api from '@/utils/api'
+import api from '@/lib/api'
 
 type LootCategory = 'Mythic' | 'Fabled' | 'Legendary'
 type LootSection = 'TNA' | 'TCC' | 'NOL' | 'NOTG'

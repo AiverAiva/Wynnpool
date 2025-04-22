@@ -8,7 +8,7 @@ import { Sparkles, MapPin, Calendar, Target, Info, Clock, AlertCircle } from 'lu
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
-import api from "@/utils/api"
+import api from "@/lib/api"
 
 interface PoolEntry {
     type: "normal" | "shiny"

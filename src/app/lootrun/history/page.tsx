@@ -2,7 +2,7 @@
 
 import { LootrunPoolHistory } from './lootrun-pool-history'
 import { useEffect, useState } from 'react'
-import api from '@/utils/api'
+import api from '@/lib/api'
 import { Spinner } from '@/components/ui/spinner'
 
 export default function LootrunPoolHistoryPage() {

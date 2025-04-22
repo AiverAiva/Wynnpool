@@ -13,7 +13,7 @@ import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 import Link from 'next/link'
 import Banner from '@/components/custom/banner'
 import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
-import api from '@/utils/api'
+import api from '@/lib/api'
 
 function formatTimeAgo(timestamp: number | string | undefined): string {
     if (!timestamp) return 'Never';

@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PlusCircle, MinusCircle, RefreshCw, ChevronDown, ChevronRight, Search, X, Clock } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import api from "@/utils/api"
+import api from "@/lib/api"
 import { ItemDisplay } from "@/components/wynncraft/item/ItemDisplay"
 import { Spinner } from "@/components/ui/spinner"
 import ModifiedItemDisplay from "@/components/wynncraft/item/ModifiedItemDisplay"
