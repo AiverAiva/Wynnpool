@@ -4,16 +4,7 @@ import { useState, useEffect } from 'react';
 import ItemDisplay from '@/components/item-display';
 import { getIdentificationInfo, getRollPercentageString, processIdentification } from '@/lib/itemUtils';
 
-type ProcessedID = {
-  name: string;
-  percentage: number;
-};
-
-type WeightMap = {
-  [key: string]: number;
-};
-
-export function calculateWeightedScore(
+function calculateWeightedScore(
   ids: { name: string; percentage: number }[],
   weightMap: Record<string, number>
 ): { total: number; detailed: { name: string; score: number }[] } {
