@@ -1,11 +1,10 @@
 'use client'
 
 import { Card, CardTitle } from "@/components/ui/card";
-import { getRollPercentageColor, getRollPercentageString } from '@/lib/itemUtils';
+import { getRollPercentageColor, getRollPercentageString, processIdentification } from '@/lib/itemUtils';
 import { CombatItem, Item, type ItemIconObject, Powder } from "@/types/itemType";
 import React from 'react';
 import { ItemContent } from "./ItemDisplay";
-import { processIdentification } from "@/app/item/analyze/page";
 import { ItemIcon } from "@/components/custom/WynnIcon";
 import { Badge } from "@/components/ui/badge";
 import '@/assets/css/wynncraft.css'
