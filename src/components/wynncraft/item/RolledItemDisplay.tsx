@@ -55,6 +55,7 @@ export interface ItemAnalyzeData {
 export interface IdentificationStat {
     name: string;
     value: number;
+    stars: number;
     percentage: number;
     displayValue: number;
 }

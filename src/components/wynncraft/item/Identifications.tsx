@@ -10,6 +10,7 @@ import { off } from 'process';
 interface RolledIdentification {
   name: string;
   value: number;
+  stars: number;
   percentage: number;
   displayValue: number;
 }
@@ -73,7 +74,7 @@ const RolledIdentifications: React.FC<RolledIdentificationsProps> = ({ stats }) 
         return (
           <div key={index} className="flex items-center">
             <span className={getIdentificationColor(stat.displayValue, stat.name)}>
-              {getFormattedIdNumber(stat.displayValue)}{getIdentificationInfo(stat.name)?.unit}<StarRating percentage={stat.percentage} />
+              {getFormattedIdNumber(stat.displayValue)}{getIdentificationInfo(stat.name)?.unit}<StarRating starAmount={stat.stars} />
             </span>
             <span className="text-gray-400 ml-1">
               {getIdentificationInfo(stat.name)?.displayName}

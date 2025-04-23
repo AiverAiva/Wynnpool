@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { getIdentificationInfo, getRollPercentageString, getStarsFromRollPercentage, processIdentification } from '@/lib/itemUtils';
+import { getIdentificationInfo, getRollPercentageString, getStarsFromRollValue, processIdentification } from '@/lib/itemUtils';
 import { IdentificationStat, ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
