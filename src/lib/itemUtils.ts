@@ -1,7 +1,4 @@
-import { IdentificationStat } from "@/components/item-display/ItemDisplay";
 import { IdentificationInfo } from "@/types/itemType";
-import { ItemData } from "@/utils/types";
-import { calculateIdentificationRoll } from "@/utils/utils";
 
 const identificationMap: Record<string, IdentificationInfo> = {
     // Base stats
@@ -171,7 +168,6 @@ export function formattedAttackSpeed(attackSpeed: string) {
 // Get color based on roll percentage
 export const getRollPercentageColor = (percentage: number, inverted = false) => {
     if (inverted) percentage = 100 - percentage
-
     if (percentage >= 95) return "text-cyan-500"
     if (percentage >= 80) return "text-green-500"
     if (percentage >= 60) return "text-yellow-300"
@@ -185,8 +181,8 @@ export const getRollPercentageString = (percentage: number) => {
     return `${truncated.toFixed(2)}%`;
 };
 
-export function getIdentificationColor(number: number, inverted?: boolean) {
-    if (inverted) number=-number
+export function getIdentificationColor(number: number, key?: string) {
+    if (key?.toLowerCase().includes('cost')) number = -number
     if (number > 0) return 'text-green-500'
     if (number < 0) return 'text-red-500'
 }
@@ -196,28 +192,10 @@ export function getFormattedIdNumber(number: number) {
     if (number < 0) return number
 }
 
-export function processIdentification(data: ItemData) {
-    const { original, input, weights } = data;
-    return Object.entries(input.identifications)
-    .filter(([key]) => original.identifications[key])
-    .map(([key, value]) => {
-      const originalStat = original.identifications[key];
-
-      if (!originalStat || typeof originalStat !== 'object') return null;
-
-      const { roll, stars, formattedPercentage, displayValue } = calculateIdentificationRoll(
-        key,
-        originalStat,
-        value
-      );
-
-      return {
-        name: key,
-        value,
-        percentage: formattedPercentage,
-        stars,
-        displayValue
-      };
-    })
-    .filter((item): item is IdentificationStat => item !== null)
+export function getStarsFromRollPercentage(percentage: number): number {
+    if (percentage >= 100) return 3;
+    if (percentage >= 94) return 2;
+    if (percentage >= 71) return 1;
+    return 0;
 }
+
