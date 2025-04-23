@@ -1,16 +1,15 @@
 "use client";
 
-import { getStarsFromRollPercentage } from '@/lib/itemUtils';
 import React from 'react';
 
 interface StarRatingProps {
-  percentage: number;
+  starAmount: number;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ percentage }) => {
+const StarRating: React.FC<StarRatingProps> = ({ starAmount }) => {
   return (
     <span className="inline-flex items-center">
-      {Array.from({ length: getStarsFromRollPercentage(percentage) }).map((_, i) => (
+      {Array.from({ length: starAmount }).map((_, i) => (
         <span
           key={i}
           className="text-xs"
