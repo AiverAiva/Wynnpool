@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { getIdentificationInfo, getRollPercentageString, getStarsFromRollPercentage } from '@/lib/itemUtils';
+import { getIdentificationInfo, getRollPercentageString, getStarsFromRollPercentage, processIdentification } from '@/lib/itemUtils';
 import { IdentificationStat, ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -39,82 +39,6 @@ export interface Weight {
   identifications: Record<string, number>;
   description: string;
   userId: string;
-}
-
-export function calculateIdentificationRoll(
-  key: string,
-  original: { min: number; max: number; raw: number },
-  inputValue: number
-): {
-  roll: number;
-  stars: number;
-  formattedPercentage: number;
-  displayValue: number;
-} {
-  let { min, max, raw } = original;
-
-  // Invert values if key includes "cost"
-  if (key.toLowerCase().includes("cost")) {
-    min = -min;
-    max = -max;
-    raw = -raw;
-  }
-
-  let actualValue: number;
-  let displayValue: number;
-  let rollPercentage: number;
-
-  if (raw >= 0) {
-    // Normal (positive) ID
-    actualValue = Math.round((inputValue / 100) * raw);
-    rollPercentage = ((actualValue - min) / raw) * 100;
-  } else {
-    // Negative ID
-    actualValue = Math.round(((inputValue - 70) / 100) * raw + max);
-    rollPercentage = (1 - (max - actualValue) / (max - min)) * 100;
-  }
-
-  if (key.toLowerCase().includes("cost")) {
-    actualValue = -actualValue
-  }
-
-  displayValue = actualValue
-
-  const stars = getStarsFromRollPercentage(rollPercentage);
-
-  return {
-    roll: rollPercentage,
-    stars,
-    formattedPercentage: rollPercentage,
-    displayValue
-  };
-}
-
-export function processIdentification(data: ItemAnalyzeData) {
-  const { original, input, weights } = data;
-
-  if (!original?.identifications || !input?.identifications) return [];
-
-  return Object.entries(input.identifications)
-    .filter(([key]) => original.identifications && key in original.identifications)
-    .map(([key, value]) => {
-      const originalStat = original.identifications?.[key];
-      if (!originalStat || typeof originalStat !== 'object') return null;
-
-      const { roll, stars, formattedPercentage, displayValue } = calculateIdentificationRoll(
-        key,
-        originalStat,
-        value
-      );
-
-      return {
-        name: key,
-        value,
-        percentage: formattedPercentage,
-        displayValue
-      };
-    })
-    .filter((item): item is IdentificationStat => item !== null);
 }
 
 export default function Home() {
