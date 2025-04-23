@@ -15,7 +15,7 @@ import { GuildEvent } from '@/types/guildType';
 import { Skeleton } from '../ui/skeleton';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import api from '@/utils/api';
+import api from '@/lib/api';
 
 interface GuildEventDisplayProps {
     query: Record<string, any>;

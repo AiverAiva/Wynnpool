@@ -31,7 +31,7 @@ const navCategories = [
     ],
   },
   {
-    category: 'Loopool',
+    category: 'Lootpool',
     items: [
       { name: 'Lootrun', href: '/lootrun' },
       { name: 'Aspects', href: '/aspects' },
@@ -40,9 +40,10 @@ const navCategories = [
   {
     category: 'Loadout',
     items: [
-      { name: 'Aspects Data', href: '/aspects/data' },
       { name: 'Item Search', href: '/item/search' },
       { name: 'Item Changelog', href: '/item/changelog' },
+      { name: 'Item Analyze', href: '/item/analyze' },
+      { name: 'Aspects Data', href: '/aspects/data' },
     ],
   },
 ];
@@ -105,6 +106,9 @@ export function Navbar() {
                     </ListItem>
                     <ListItem href="/item/changelog" title="Item Changelog" className={pathname === "/item/changelog" ? 'bg-accent/50' : ''}>
                       Track changes to items across game updates.
+                    </ListItem>
+                    <ListItem href="/item/analyze" title="Item Analyze" className={pathname === "/item/analyze" ? 'bg-accent/50' : ''}>
+                    Discover your item's potential with expert-crafted weight sets!
                     </ListItem>
                     <ListItem href="/aspects/data" title="Aspect Data" className={pathname === "/aspects/data" ? 'bg-accent/50' : ''}>
                       A page with all the aspects and their effects, cateogrized by class.
