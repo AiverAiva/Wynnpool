@@ -24,7 +24,7 @@ const Requirements: React.FC<ItemRequirement> = (requirements) => {
           <div key={key}>
             {getIdentificationInfo(key) ? (
               key == 'classRequirement' ? (
-                <>{getIdentificationInfo(key)?.displayName}: {getClassInfo(value as string)!.displayName}</>
+                <>{getIdentificationInfo(key)?.displayName}: {getClassInfo(value as string)?.displayName || value}</>
               ) : (
                 <>{getIdentificationInfo(key)?.displayName}: {displayValue}</>
               )
