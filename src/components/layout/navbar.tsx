@@ -107,7 +107,7 @@ export function Navbar() {
                     <ListItem href="/item/changelog" title="Item Changelog" className={pathname === "/item/changelog" ? 'bg-accent/50' : ''}>
                       Track changes to items across game updates.
                     </ListItem>
-                    <ListItem href="/item/analyze" title="Item Analyze" className={pathname === "/item/Analyze" ? 'bg-accent/50' : ''}>
+                    <ListItem href="/item/analyze" title="Item Analyze" className={pathname === "/item/analyze" ? 'bg-accent/50' : ''}>
                     Discover your item's potential with expert-crafted weight sets!
                     </ListItem>
                     <ListItem href="/aspects/data" title="Aspect Data" className={pathname === "/aspects/data" ? 'bg-accent/50' : ''}>
