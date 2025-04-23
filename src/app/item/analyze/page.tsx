@@ -98,8 +98,10 @@ export default function Home() {
         <Badge variant="outline" className="text-foreground/50">Beta Version</Badge>
         <div className='flex flex-col items-center'> 
           <h1 className="text-3xl font-bold text-primary">Wynncraft Item Analyzer</h1>
-          <p className='text-primary/50'>Detailed Infomation on <Link href="https://weight.wynnpool.com/" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>weight.wynnpool.com</Link></p>
-          <p className='text-primary/50'>Having questions about weights? Join <Link href="https://discord.gg/QZn4Qk3mSP" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>Wynnpool Official Discord</Link></p>
+          <p className='text-primary/50'>Weight for every item on <Link href="https://weight.wynnpool.com/" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>weight.wynnpool.com</Link></p>
+          <p className='text-primary/50'>Having questions about weights?</p>
+          <p className='text-primary/50'>Join <Link href="https://discord.gg/QZn4Qk3mSP" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>Wynnpool Official Discord</Link></p>
+          <p className='text-red-300 mt-3'>Reminder: If you are having problem with fetching item, try disabling extended-encoding on Wynntils.</p>
         </div>
         <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-4">
           <Input
