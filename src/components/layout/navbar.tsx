@@ -42,7 +42,7 @@ const navCategories = [
     items: [
       { name: 'Item Search', href: '/item/search' },
       { name: 'Item Changelog', href: '/item/changelog' },
-      { name: 'Item Analyze', href: '/item/Analyze' },
+      { name: 'Item Analyze', href: '/item/analyze' },
       { name: 'Aspects Data', href: '/aspects/data' },
     ],
   },
