@@ -20,11 +20,16 @@ const BaseStats: React.FC<BaseStatsProps> = (base) => {
   );
 };
 
-const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
+interface BaseStatsFormatterProps {
+  name: string;
+  value: number | IdentificationValue;
+}
+
+const BaseStatsFormatter: React.FC<BaseStatsFormatterProps> = ({ name, value }) => {
   const matchedKey = Object.keys(colorMap).find((key) => name.includes(key));
   const color = matchedKey ? colorMap[matchedKey] : '';
   const text = matchedKey ? <span className={color}>{textMap[matchedKey]}&ensp;</span> : null;
-
+  // …
   const type = name.includes('Damage')
     ? 'Damage'
     : name.includes('Defence')
