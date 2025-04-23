@@ -27,7 +27,7 @@ const Identifications: React.FC<IdentificationsObject> = (identifications) => {
   return (
     <div className="list-disc list-inside">
       {Object.entries(identifications).map(([key, value]) => (
-        <Identification id={key} value={value} />
+        <Identification key={key} id={key} value={value} />
       ))}
     </div>
   );
