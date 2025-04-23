@@ -1,22 +1,19 @@
 
-//             {item.averageDps && (
-//                 <h3 className="font-semibold">Average DPS</h3>
-//                 <p>{item.averageDps}</p>
-//               <h3 className="font-semibold">Base Damage</h3>
-//               <p>{item.base.baseDamage.min} to {item.base.baseDamage.max} (Base: {item.base.baseDamage.raw})</p>
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import '@/assets/css/wynncraft.css'
 import { Badge } from "@/components/ui/badge"
+import { Card, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { getFormattedIdNumber, getIdentificationColor, getIdentificationInfo } from "@/lib/itemUtils"
 import { Item } from "@/types/itemType"
 import Image from 'next/image'
-import '@/assets/css/wynncraft.css'
-import { getClassInfo } from "@/types/classType"
 import Link from "next/link"
 import { ItemIcon } from "../../custom/WynnIcon"
-import { cn } from "@/lib/utils"
-import MajorIds from "./MajorIds"
 import AttackSpeed from "./AttackSpeed"
-import { getFormattedIdNumber, getIdentificationColor, getIdentificationInfo } from "@/lib/itemUtils"
+import BaseStats from "./BaseStats"
+import { Identifications } from "./Identifications"
+import MajorIds from "./MajorIds"
+import PowderSlots from "./PowderSlots"
+import Requirements from "./Requirements"
 
 interface ItemDisplayProps {
   item: Item
@@ -40,59 +37,6 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
     </Card>
   )
 }
-
-const BaseStatsFormatter: React.FC<any> = ({ name, value }) => {
-  const colorMap: Record<string, string> = {
-    baseHealth: 'text-[#AA0000]',
-    baseDamage: 'text-[#FFAA00]',
-    Earth: 'text-[#00AA00]',
-    Thunder: 'text-[#FFFF55]',
-    Water: 'text-[#55FFFF]',
-    Fire: 'text-[#FF5555]',
-    Air: 'text-[#FFFFFF]',
-  };
-
-  const textMap: Record<string, string> = {
-    baseHealth: 'Health',
-    baseDamage: 'Neutral',
-    Earth: 'Earth',
-    Thunder: 'Thunder',
-    Water: 'Water',
-    Fire: 'Fire',
-    Air: 'Air',
-  };
-
-  const matchedKey = Object.keys(colorMap).find((key) => name.includes(key));
-  const color = matchedKey ? colorMap[matchedKey] : '';
-  const text = matchedKey ? <span className={color}>{textMap[matchedKey]}&ensp;</span> : null;
-
-  const type = name.includes('Damage')
-    ? 'Damage'
-    : name.includes('Defence')
-      ? 'Defence'
-      : '';
-
-  return (
-    <div className="flex items-center h-5">
-      <div>
-        <span className={cn('font-common text-lg h-4 -mt-3', color)}>
-          {getIdentificationInfo(name)?.symbol}
-        </span>
-        <span className={getIdentificationInfo(name)?.symbol && 'ml-2'}>
-          {text}
-          {type}
-        </span>
-      </div>
-      {typeof value === 'number' ? (
-        <span className="ml-1 h-4">{getFormattedIdNumber(value)}</span>
-      ) : (
-        <span className="ml-1 h-4">
-          {value.min}-{value.max}
-        </span>
-      )}
-    </div>
-  );
-};
 
 const StarFormatter: React.FC<any> = ({ tier }) => {
   switch (tier) {
@@ -121,46 +65,6 @@ const StarFormatter: React.FC<any> = ({ tier }) => {
         </span>
       )
   }
-}
-
-interface IdentificationProps {
-  id: string
-  value: number | {
-    min: number
-    max: number
-    raw: number
-  }
-}
-
-const Identification: React.FC<IdentificationProps> = ({ id, value }) => {
-  const displayName = getIdentificationInfo(id)?.displayName ?? id
-  const displayUnit = getIdentificationInfo(id)?.unit ?? ''
-
-  const getColorClass = (val: number) => {
-    const isCost = id.toLowerCase().includes('cost');
-    if (isCost) {
-      return val < 0 ? 'text-green-500' : 'text-red-500'; // Cost keys are inverted
-    }
-    return val > 0 ? 'text-green-500' : 'text-red-500'; // Regular keys
-  };
-
-  return (
-    <div className="flex items-center justify-between text-sm">
-      {typeof value === 'number' ? (
-        <>
-          <span style={{ flex: '1', textAlign: 'left' }}></span>
-          <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
-          <span className={`${getColorClass(value)}`} style={{ flex: '1', textAlign: 'right' }}>{value}{displayUnit}</span>
-        </>
-      ) : (
-        <>
-          <span className={getColorClass(value.min)} style={{ flex: '1', textAlign: 'left' }}>{value.min}{displayUnit}</span>
-          <span className={cn("flex-grow text-center", (displayName.length >= 13 && 'text-xs'))}>{displayName}</span>
-          <span className={getColorClass(value.max)} style={{ flex: '1', textAlign: 'right' }}>{value.max}{displayUnit}</span>
-        </>
-      )}
-    </div>
-  );
 }
 
 const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
@@ -217,59 +121,15 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
 
   return (
     <div className="space-y-4 p-6 pt-0">
-      {item.type == 'weapon' && item.attackSpeed && (
-        <AttackSpeed attackSpeed={item.attackSpeed} />
+      {item.type == 'weapon' && <AttackSpeed attackSpeed={item.attackSpeed} />}
+      <BaseStats {...item.base} />
+      {item.type === "weapon" && (
+        <div className="flex ml-6 gap-1 -mt-4 h-4 items-center text-sm">
+          <span className="text-primary/80">Average DPS</span> {item.averageDps}
+        </div>
       )}
-      {item.base && (
-        <ul className="list-disc list-inside text-sm">
-          {Object.entries(item.base).map(([name, value]) => (
-            <BaseStatsFormatter value={value} name={name} key={name} />
-          ))}
-          {item.type === "weapon" && (
-            <div className="flex ml-6 gap-1 mt-1 h-4 items-center text-sm">
-              <span className="text-primary/80">Average DPS</span> {item.averageDps}
-            </div>
-          )}
-        </ul>
-      )}
-
-      {isCombatItem && item.requirements && (
-        <ul className="list-disc list-inside text-sm">
-          {Object.entries(item.requirements).map(([key, value]) => {
-            let displayValue;
-            if (typeof value === 'string' || typeof value === 'number') {
-              displayValue = value;
-            } else if (Array.isArray(value)) {
-              displayValue = value.join(', ');
-            } else if (typeof value === 'object' && value !== null) {
-              displayValue = `${value.min} - ${value.max}`;
-            } else {
-              displayValue = 'Unknown value';
-            }
-
-            return (
-              <div key={key}>
-                {getIdentificationInfo(key) ? (
-                  key == 'classRequirement' ? (
-                    <>{getIdentificationInfo(key)?.displayName}: {getClassInfo(value as string)!.displayName}</>
-                  ) : (
-                    <>{getIdentificationInfo(key)?.displayName}: {displayValue}</>
-                  )
-                ) : (
-                  <>{key}: {displayValue}</>
-                )}
-              </div>
-            );
-          })}
-        </ul>
-      )}
-      {item.identifications && (
-        <ul className="list-disc list-inside">
-          {Object.entries(item.identifications).map(([key, value]) => (
-            <Identification id={key} value={value} />
-          ))}
-        </ul>
-      )}
+      {isCombatItem && item.requirements && <Requirements {...item.requirements} />}
+      {item.identifications && <Identifications {...item.identifications} />}
       {item.type == 'ingredient' && (
         <>
           {Object.entries(item.ingredientPositionModifiers).some(([key, value]) => value !== 0) && (
@@ -342,16 +202,8 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
         <span className="text-sm text-gray-400">Use this material to craft: <span className="capitalize text-white">{item.craftable.join(', ')}</span></span>
       )}
 
-      {item.majorIds && <MajorIds majorIds={item.majorIds} />}
-
-      {item.powderSlots && (
-        <p className="text-sm">
-          Powder Slots&ensp;
-          <span className="text-primary/50">
-            [<span className="font-five">{Array.from({ length: item.powderSlots }, () => 'O').join('')}</span>]
-          </span>
-        </p>
-      )}
+      <MajorIds majorIds={item.majorIds} />
+      <PowderSlots powderSlots={item.powderSlots} />
       {item.lore && (
         <>
           <Separator />
@@ -373,4 +225,4 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
   );
 }
 
-export { ItemHeader, ItemContent, ItemDisplay, SmallItemCard } 
+export { ItemContent, ItemDisplay, ItemHeader, SmallItemCard }

@@ -1,8 +1,13 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import ItemDisplay from '@/components/item-display';
-import { getIdentificationInfo, getRollPercentageString, processIdentification } from '@/lib/itemUtils';
+import { getIdentificationInfo, getRollPercentageString, getStarsFromRollPercentage } from '@/lib/itemUtils';
+import { IdentificationStat, ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import Link from 'next/link';
 
 function calculateWeightedScore(
   ids: { name: string; percentage: number }[],
@@ -36,6 +41,82 @@ export interface Weight {
   userId: string;
 }
 
+export function calculateIdentificationRoll(
+  key: string,
+  original: { min: number; max: number; raw: number },
+  inputValue: number
+): {
+  roll: number;
+  stars: number;
+  formattedPercentage: number;
+  displayValue: number;
+} {
+  let { min, max, raw } = original;
+
+  // Invert values if key includes "cost"
+  if (key.toLowerCase().includes("cost")) {
+    min = -min;
+    max = -max;
+    raw = -raw;
+  }
+
+  let actualValue: number;
+  let displayValue: number;
+  let rollPercentage: number;
+
+  if (raw >= 0) {
+    // Normal (positive) ID
+    actualValue = Math.round((inputValue / 100) * raw);
+    rollPercentage = ((actualValue - min) / raw) * 100;
+  } else {
+    // Negative ID
+    actualValue = Math.round(((inputValue - 70) / 100) * raw + max);
+    rollPercentage = (1 - (max - actualValue) / (max - min)) * 100;
+  }
+
+  if (key.toLowerCase().includes("cost")) {
+    actualValue = -actualValue
+  }
+
+  displayValue = actualValue
+
+  const stars = getStarsFromRollPercentage(rollPercentage);
+
+  return {
+    roll: rollPercentage,
+    stars,
+    formattedPercentage: rollPercentage,
+    displayValue
+  };
+}
+
+export function processIdentification(data: ItemAnalyzeData) {
+  const { original, input, weights } = data;
+
+  if (!original?.identifications || !input?.identifications) return [];
+
+  return Object.entries(input.identifications)
+    .filter(([key]) => original.identifications && key in original.identifications)
+    .map(([key, value]) => {
+      const originalStat = original.identifications?.[key];
+      if (!originalStat || typeof originalStat !== 'object') return null;
+
+      const { roll, stars, formattedPercentage, displayValue } = calculateIdentificationRoll(
+        key,
+        originalStat,
+        value
+      );
+
+      return {
+        name: key,
+        value,
+        percentage: formattedPercentage,
+        displayValue
+      };
+    })
+    .filter((item): item is IdentificationStat => item !== null);
+}
+
 export default function Home() {
   // State for the item input, fetched data, and loading status
   const [inputValue, setInputValue] = useState<string>('');
@@ -62,7 +143,6 @@ export default function Home() {
       }
 
       const data = await response.json();
-      console.log(data)
       if (data) {
         setDemoData(data); // Save item data to state if the response is valid
       } else {
@@ -87,72 +167,71 @@ export default function Home() {
       fetchItemData(inputValue);
     }
   };
-  if (demoData) console.log(demoData.original.identified)
   return (
-    <div className="min-h-screen bg-gray-800 flex flex-col items-center justify-center p-6">
-      (beta version)
-      <h1 className="text-2xl text-white font-bold mb-6">Wynncraft Item Analyze</h1>
+    <div className="container mx-auto p-4 max-w-screen-lg">
+      <div className="min-h-screen bg-background flex flex-col items-center justify-start px-4 py-12 space-y-6">
+        <div className='mt-[80px]' />
+        <Badge variant="outline" className="text-foreground/50">Beta Version</Badge>
+        <div className='flex flex-col items-center'> 
+          <h1 className="text-3xl font-bold text-primary">Wynncraft Item Analyzer</h1>
+          <p className='text-primary/50'>Detailed Infomation on <Link href="https://weight.wynnpool.com/" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>weight.wynnpool.com</Link></p>
+          <p className='text-primary/50'>Having questions about weights? Join <Link href="https://discord.gg/QZn4Qk3mSP" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>Wynnpool Official Discord</Link></p>
+        </div>
+        <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-4">
+          <Input
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder="Enter Wynntils Item String"
+            className="text-primary placeholder-gray-400"
+          />
+          <Button type="submit" className="w-full">
+            {loading ? "Loading..." : "Analyze"}
+          </Button>
+        </form>
 
+        {error && <p className="text-red-500 text-sm">{error}</p>}
 
-      {/* Input form to enter item */}
-      <form onSubmit={handleSubmit} className="mb-6 w-full max-w-md">
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          className="w-full p-3 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-          placeholder="Enter Wynntils Item String"
-        />
-        <button
-          type="submit"
-          className="w-full p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none"
-        >
-          {loading ? 'Loading...' : 'Analyze'}
-        </button>
-      </form>
+        {demoData?.original?.identified && (
+          <div className="text-yellow-400">⚠️ This item is already identified.</div>
+        )}
 
-      {/* Error message if any */}
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-
-      {/* Show item display if demoData is valid */}
-      {demoData?.original.identified && <div>This item is pre-identified</div>}
-      {demoData && !loading && !error && !demoData.original.identified && (
-        <div className="flex w-fit bg-gray-900 rounded-lg overflow-hidden shadow-xl transform transition-all hover:scale-105 duration-300">
-          <ItemDisplay data={demoData} />
-
-          {/* 🧮 Multiple Weight Sets Section */}
-          {demoData.weights && demoData.weights.length > 0 && (
-            <div className="p-4 space-y-6">
-              <h2 className="text-white text-lg font-semibold">Weight Calculations</h2>
-              <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+        {demoData && !loading && !error && !demoData.original.identified && (
+          <div className="flex justify-center w-full space-y-6 mt-6 gap-4">
+            <RolledItemDisplay data={demoData} />
+            {demoData.weights?.length > 0 && (
+              <div className="grid grid-cols-1 space-y-4">
                 {(() => {
-                  const processed = processIdentification(demoData);
-
+                  const processed = processIdentification(demoData)
                   return demoData.weights.map((weight: Weight) => {
-                    const result = calculateWeightedScore(processed, weight.identifications);
+                    const result = calculateWeightedScore(processed, weight.identifications)
                     return (
-                      <div key={weight.weight_id} className="bg-gray-800 p-4 rounded-lg shadow">
-                        <h3 className="text-blue-400 font-bold mb-2">🏋️ {weight.weight_name} [{getRollPercentageString(result.total * 100)}]</h3>
-                        <ul className="text-gray-300 text-sm space-y-1">
-                          {Object.entries(weight.identifications).map(([key, value]) => {
-                            const truncated = Math.trunc(value * 100);
-
-                            return (
-                              <li key={key}>
-                                <span className="text-white">{getIdentificationInfo(key)?.displayName}</span>: {truncated.toFixed(2)}%
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    );
-                  });
+                      <Card key={weight.weight_id} className='w-fit h-fit'>
+                        <CardContent className="p-4 space-y-2">
+                          <h3 className="text-blue-400 font-semibold text-sm">
+                            🏋️ {weight.weight_name} [{getRollPercentageString(result.total * 100)}]
+                          </h3>
+                          <ul className="text-gray-300 text-sm space-y-1">
+                            {Object.entries(weight.identifications).map(([key, value]) => {
+                              const percent = Math.trunc(value * 10000) / 100
+                              return (
+                                <li key={key}>
+                                  <span className="text-primary">
+                                    {getIdentificationInfo(key)?.displayName}
+                                  </span>: {percent.toFixed(2)}%
+                                </li>
+                              )
+                            })}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    )
+                  })
                 })()}
               </div>
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

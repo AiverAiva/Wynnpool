@@ -18,14 +18,47 @@ export interface DroppedByInfo {
     coords: number[] | number[][]
 }
 
+export interface IdentificationValue {
+    min: number;
+    raw: number;
+    max: number;
+}
+
+export interface IdentificationsObject {
+    [key: string]: number | IdentificationValue
+}
+
+export interface ItemIconObject {
+    format: string;
+    value: {
+        id: string;
+        customModelData: string;
+        name: string;
+    } | string;
+}
+
+export interface ItemRequirement {
+    level?: number
+    levelRange?: {
+        min: number
+        max: number
+    }
+    strength?: number
+    dexterity?: number
+    intelligence?: number
+    defence?: number
+    agility?: number
+    quest?: string
+    class_requirement?: string
+    skills?: string[]
+}
+
 export interface ItemBase {
-    internalName: string
+    internalName: string //this is actually an id, not the ingame display name
+    itemName?: string // this one is for some of my api endpoints that returns itemName instead of internalName 
     type: string
     subType?: string
-    icon: {
-        value: { id: string; name: string; customModelData: string } | string
-        format: string
-    }
+    icon: ItemIconObject
     identified?: boolean
     allow_craftsman?: boolean
     powderSlots?: number
@@ -40,35 +73,11 @@ export interface ItemBase {
         event: string
     }
     base?: {
-        [key: string]: {
-            min: number
-            max: number
-            raw: number
-        }
+        [key: string]: IdentificationValue
     }
-    requirements?: {
-        level?: number
-        levelRange?: {
-            min: number
-            max: number
-        }
-        strength?: number
-        dexterity?: number
-        intelligence?: number
-        defence?: number
-        agility?: number
-        quest?: string
-        class_requirement?: string
-        skills?: string[]
-    }
-    identifications?: {
-        [key: string]: number | {
-            min: number
-            max: number
-            raw: number
-        }
-    }
-    majorIds?: {
+    requirements?: ItemRequirement
+    identifications?: IdentificationsObject
+    majorIds: {
         [key: string]: string
     }
     droppedBy?: DroppedByInfo[]
@@ -150,7 +159,8 @@ export interface Charm extends ItemBase {
     rarity: Rarity
 }
 
-export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem | Tome | Charm 
+export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem | Tome | Charm
+export type CombatItem = WeaponItem | ArmourItem | Tome | Charm
 
 export type ItemChangelog = Item & {
     itemName: string;
@@ -158,4 +168,9 @@ export type ItemChangelog = Item & {
     timestamp: number;
     before?: Item;
     after?: Item;
-} 
+}
+
+export interface Powder {
+    element: number;
+    tier: number;
+}

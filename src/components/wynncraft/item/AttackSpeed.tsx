@@ -3,10 +3,11 @@
 import React from 'react';
 
 interface AttackSpeedProps {
-  attackSpeed: string;
+  attackSpeed: string | undefined;
 }
 
 const AttackSpeed: React.FC<AttackSpeedProps> = ({ attackSpeed }) => {
+  if (!attackSpeed) return
   return (
     <div className="flex justify-center items-center text-xs">
       {`${attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
