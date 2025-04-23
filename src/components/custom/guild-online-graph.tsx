@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select"
 import { Spinner } from "../ui/spinner"
 import { useEffect, useState } from "react"
-import api from "@/utils/api"
+import api from "@/lib/api"
 
 interface OnlineCountData {
     timestamp: number

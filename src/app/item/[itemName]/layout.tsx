@@ -1,6 +1,6 @@
 import { getImageSrc } from "@/components/custom/WynnIcon";
 import { Item } from "@/types/itemType";
-import api from "@/utils/api";
+import api from "@/lib/api";
 
 export default function PlayerLayout({
     children, // will be a page or nested layout

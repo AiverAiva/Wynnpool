@@ -11,8 +11,9 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Dice1Icon as Dice, RefreshCw, Sparkles, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { getIdentificationInfo, type Item } from "@/types/itemType"
+import { Item } from "@/types/itemType"
 import { ItemIcon } from "@/components/custom/WynnIcon"
+import { getIdentificationInfo, getRollPercentageColor } from "@/lib/itemUtils"
 
 interface ItemRollSimulatorProps {
     item: Item
@@ -169,18 +170,6 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
         updateRolledItem(newRolledIds)
     }
 
-    // Get color based on roll percentage
-    const getRollColor = (percentage: number, inverted = false) => {
-        if (inverted) percentage = 100 - percentage
-
-        if (percentage >= 96) return "text-cyan-500"
-        if (percentage >= 80) return "text-green-500"
-        if (percentage >= 60) return "text-yellow-400"
-        if (percentage >= 40) return "text-amber-400"
-        if (percentage >= 20) return "text-orange-500"
-        return "text-red-500"
-    }
-
     // Check if a stat is inverted (where lower is better)
     const isInvertedStat = (key: string) => {
         return (
@@ -282,7 +271,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                             <div className="space-y-4">
                                 {rolledIds.map((id, index) => {
                                     // const inverted = isInvertedStat(id.key)
-                                    const rollColor = getRollColor(id.percentage, false) //inverted
+                                    const rollColor = getRollPercentageColor(id.percentage, false) //inverted
 
                                     return (
                                         <div key={id.key} className="space-y-1">
