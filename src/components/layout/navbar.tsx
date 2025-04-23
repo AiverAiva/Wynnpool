@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ModeToggle } from '@/components/layout/mode-toggle'
-import { Menu } from 'lucide-react'
+import { ExternalLink, Menu } from 'lucide-react'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -43,6 +43,7 @@ const navCategories = [
       { name: 'Item Search', href: '/item/search' },
       { name: 'Item Changelog', href: '/item/changelog' },
       { name: 'Item Analyze', href: '/item/analyze' },
+      { name: 'Item Weight', href: 'https://weight.wynnpool.com/' },
       { name: 'Aspects Data', href: '/aspects/data' },
     ],
   },
@@ -99,8 +100,8 @@ export function Navbar() {
                 >
                   Loadout
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
+                <NavigationMenuContent className='flex'>
+                  <ul className="grid gap-3 p-6 w-[300px] lg:grid-cols-1">
                     <ListItem href="/item/search" title="Item Search" className={pathname === "/item/search" ? 'bg-accent/50' : ''}>
                       Find the items with a selected filter.
                     </ListItem>
@@ -108,8 +109,13 @@ export function Navbar() {
                       Track changes to items across game updates.
                     </ListItem>
                     <ListItem href="/item/analyze" title="Item Analyze" className={pathname === "/item/analyze" ? 'bg-accent/50' : ''}>
-                    Discover your item's potential with expert-crafted weight sets!
+                      Discover your item's potential with expert-crafted weight sets!
                     </ListItem>
+                    <ListItem href="https://weight.wynnpool.com/" title="Item Weight">
+                      <div className='flex'>Check the weight of every items. <ExternalLink className='w-4 h-4 ml-2' /></div>
+                    </ListItem>
+                  </ul>
+                  <ul className="grid gap-3 p-6 w-[300px] lg:grid-cols-1">
                     <ListItem href="/aspects/data" title="Aspect Data" className={pathname === "/aspects/data" ? 'bg-accent/50' : ''}>
                       A page with all the aspects and their effects, cateogrized by class.
                     </ListItem>
