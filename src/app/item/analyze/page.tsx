@@ -101,7 +101,8 @@ export default function Home() {
           <p className='text-primary/50'>Weight for every item on <Link href="https://weight.wynnpool.com/" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>weight.wynnpool.com</Link></p>
           <p className='text-primary/50'>Having questions about weights?</p>
           <p className='text-primary/50'>Join <Link href="https://discord.gg/QZn4Qk3mSP" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>Wynnpool Official Discord</Link></p>
-          <p className='text-red-300 mt-3'>Reminder: If you are having problem with fetching item, try disabling extended-encoding on Wynntils.</p>
+          <p className='text-red-300 mt-3'>Reminder: If you are having problem with fetching item</p>
+          <p className='text-red-300'>Please join the discord server above for support</p>
         </div>
         <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-4">
           <Input
