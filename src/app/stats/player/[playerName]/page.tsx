@@ -273,7 +273,7 @@ export default function PlayerStatsPage() {
 
                                     <section>
                                         <h3 className="font-semibold mb-2">Professions</h3>
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                                             {Object.entries(char.professions).map(([profession, data]) => (
                                                 <Card key={profession} className="bg-background transition-colors overflow-hidden">
                                                     <CardContent className="p-3 flex items-center justify-between">
