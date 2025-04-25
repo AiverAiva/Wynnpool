@@ -362,10 +362,12 @@ function DungeonCard({ title, dungeons }: { title: string, dungeons: any }) {
                 </Card>
             </DialogTrigger>
             <DialogContent className="max-w-3xl max-w-screen-lg">
-                <DialogHeader>
-                    <DialogTitle>Dungeon Details</DialogTitle>
-                </DialogHeader>
-                <DungeonStats dungeons={dungeons} />
+                <ScrollArea className='max-h-[65vh]'>
+                    <DialogHeader>
+                        <DialogTitle>Dungeon Details</DialogTitle>
+                    </DialogHeader>
+                    <DungeonStats dungeons={dungeons} />
+                </ScrollArea>
             </DialogContent>
         </Dialog>
     )
