@@ -23,7 +23,7 @@ export default function HomePage() {
           <p className="text-xl text-muted-foreground mb-8">Your ultimate utility for up-to-date Wynncraft information</p>
           <GlobalSearch />
         </section>
-        
+
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Quick Access</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -43,17 +43,17 @@ export default function HomePage() {
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Support on Patreon</CardTitle>
+                <CardTitle>Support us!</CardTitle>
                 <CardDescription>Help keeping Wynnpool no ads by donating</CardDescription>
               </CardHeader>
               <CardContent>
-                <Link href="https://www.patreon.com/AiverAiva">
-                  <Button
+                <Link href="https://buymeacoffee.com/aiveraiva">
+                <Button
                     variant="outline"
                     className="w-full flex items-center justify-center"
                   >
                     <Heart className="h-4 w-4 mr-2" />
-                    Support Now
+                    Buy me a coffee
                   </Button>
                 </Link>
               </CardContent>
