@@ -2,9 +2,8 @@
 
 import { Card, CardTitle } from "@/components/ui/card";
 import { getRollPercentageColor, getRollPercentageString, processIdentification } from '@/lib/itemUtils';
-import { CombatItem, Item, type ItemIconObject, Powder } from "@/types/itemType";
+import { CombatItem, type ItemIconObject, Powder } from "@/types/itemType";
 import React from 'react';
-import { ItemContent } from "./ItemDisplay";
 import { ItemIcon } from "@/components/custom/WynnIcon";
 import { Badge } from "@/components/ui/badge";
 import '@/assets/css/wynncraft.css'
@@ -60,6 +59,12 @@ export interface IdentificationStat {
     displayValue: number;
 }
 
+export function calculateOverallPercentage(ids: IdentificationStat[]): number {
+    if (ids.length === 0) return 0;
+    const total = ids.reduce((sum, id) => sum + id.percentage, 0);
+    return total / ids.length;
+}
+
 const RolledItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
     const { original, input, weights } = data;
     const processedIdentifications = processIdentification(data)
@@ -69,12 +74,6 @@ const RolledItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
         displayName: input.shinyStat.displayName,
         value: input.shinyStat.value,
     } : undefined;
-
-    function calculateOverallPercentage(ids: IdentificationStat[]): number {
-        if (ids.length === 0) return 0;
-        const total = ids.reduce((sum, id) => sum + id.percentage, 0);
-        return total / ids.length;
-    }
 
     return (
         <Card className="w-full max-w-sm h-fit font-ascii p-6 text-[#AAAAAA] space-y-6">
@@ -110,7 +109,7 @@ interface ItemHeaderProps {
     icon?: ItemIconObject;
 }
 
-const ItemHeader: React.FC<ItemHeaderProps> = ({ item, shinyStat, overall, icon }) => {
+export const ItemHeader: React.FC<ItemHeaderProps> = ({ item, shinyStat, overall, icon }) => {
     const itemNameLength = item.internalName.length - 8
     var itemNameSize = 'text-lg'
 
