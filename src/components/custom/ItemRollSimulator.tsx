@@ -5,15 +5,13 @@ import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Slider } from "@/components/ui/slider"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Dice1Icon as Dice, RefreshCw, Sparkles, Zap } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { Dice1Icon as Dice } from "lucide-react"
 import { CombatItem, Item } from "@/types/itemType"
 import { ItemIcon } from "@/components/custom/WynnIcon"
-import { getIdentificationInfo, getRollPercentageColor, processIdentification } from "@/lib/itemUtils"
-import { IdentificationStat, ItemAnalyzeData } from "../wynncraft/item/RolledItemDisplay"
+import { processIdentification } from "@/lib/itemUtils"
+import { calculateOverallPercentage, IdentificationStat, ItemAnalyzeData, ItemHeader } from "../wynncraft/item/RolledItemDisplay"
 import { RolledIdentifications } from "../wynncraft/item/Identifications"
 
 interface ItemRollSimulatorProps {
@@ -126,6 +124,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
         )
     }
 
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -135,7 +134,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                     </Button>
                 )}
             </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                     <DialogTitle className="flex items-center justify-between">
                         <span>Item Roll Simulator</span>
@@ -152,7 +151,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Item Preview */}
-                    <Card className="md:col-span-1 h-fit">
+                    {/* <Card className="md:col-span-1 h-fit">
                         <CardContent className="p-4">
                             <div className="flex flex-col items-center">
                                 <div className="relative my-2">
@@ -177,7 +176,6 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                             <Separator className="my-3" />
 
                             <div className="space-y-2 text-sm">
-                                {/* Base Stats */}
                                 {rolledItem.base &&
                                     Object.entries(rolledItem.base).map(([key, value]) => (
                                         <div key={key} className="flex justify-between">
@@ -186,7 +184,6 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                         </div>
                                     ))}
 
-                                {/* Requirements */}
                                 {rolledItem.requirements && (
                                     <>
                                         <Separator className="my-2" />
@@ -207,18 +204,24 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                 </>
                             )}
                         </CardContent>
-                    </Card>
+                    </Card> */}
 
                     {/* Roll Controls */}
 
-                    <Card className="md:col-span-2">
-                        <CardContent className="p-4">
-                            <h3 className="font-medium mb-3">Identification Rolls</h3>
-                            <div className="font-ascii">
+                    {/* <Card className="md:col-span-2 w-full font-ascii">
+                        <CardContent className="p-4 space-y-6">
+
+                        </CardContent>
+                    </Card> */}
+                    <div className="md:col-span-3 font-ascii p-4 space-y-6">
+                        <ItemHeader item={item} overall={calculateOverallPercentage(RolledIdentificationss)} />
+                        {/* <RolledIdentifications stats={RolledIdentificationss} /> */}
+                        <div className="flex justify-center">
+                            <div className="flex flex-col items-start text-center space-y-4">
                                 <RolledIdentifications stats={RolledIdentificationss} />
                             </div>
-                        </CardContent>
-                    </Card>
+                        </div>
+                    </div>
                 </div>
             </DialogContent>
         </Dialog>
