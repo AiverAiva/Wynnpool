@@ -255,15 +255,6 @@ export function calculateIdentificationRoll(
   displayValue = actualValue
 
   const stars = getStarsFromRollValue(inputValue, raw <= 0);
-  // which line
-  console.log(
-    {
-      roll: rollPercentage,
-      stars,
-      formattedPercentage: rollPercentage,
-      displayValue
-    }
-  )
   return {
     roll: rollPercentage,
     stars,

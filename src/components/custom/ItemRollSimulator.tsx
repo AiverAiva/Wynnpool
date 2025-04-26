@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -11,16 +10,18 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Dice1Icon as Dice, RefreshCw, Sparkles, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Item } from "@/types/itemType"
+import { CombatItem, Item } from "@/types/itemType"
 import { ItemIcon } from "@/components/custom/WynnIcon"
-import { getIdentificationInfo, getRollPercentageColor } from "@/lib/itemUtils"
+import { getIdentificationInfo, getRollPercentageColor, processIdentification } from "@/lib/itemUtils"
+import { IdentificationStat, ItemAnalyzeData } from "../wynncraft/item/RolledItemDisplay"
+import { RolledIdentifications } from "../wynncraft/item/Identifications"
 
 interface ItemRollSimulatorProps {
-    item: Item
+    item: CombatItem
     trigger?: React.ReactNode
 }
 
-interface RolledIdentification {
+interface RolledIdentificationType {
     key: string
     displayName: string
     unit: string
@@ -33,111 +34,57 @@ interface RolledIdentification {
 
 const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) => {
     const [rolledItem, setRolledItem] = useState<Item>({ ...item })
-    const [rolledIds, setRolledIds] = useState<RolledIdentification[]>([])
+    const [RolledIdentificationss, setRolledIdentificationss] = useState<IdentificationStat[]>([])
+    const [rolledIds, setRolledIds] = useState<RolledIdentificationType[]>([])
     const [isRolling, setIsRolling] = useState(false)
 
     // Initialize rolled identifications
     useEffect(() => {
-        if (item.identifications) {
-            const initialRolls = Object.entries(item.identifications).map(([key, value]) => {
-                const idInfo = getIdentificationInfo(key) || { displayName: key, unit: "" }
-
-                // Handle both number and range values
-                if (typeof value === "number") {
-                    return {
-                        key,
-                        displayName: idInfo.displayName,
-                        unit: idInfo.unit || "",
-                        min: value,
-                        max: value,
-                        raw: value,
-                        current: value,
-                        percentage: 100,
-                    }
-                } else {
-                    // Calculate a random value between min and max for initial state
-                    const current = Math.floor(Math.random() * (value.max - value.min + 1)) + value.min
-                    const range = value.max - value.min
-                    const percentage = range === 0 ? 100 : Math.round(((current - value.min) / range) * 100)
-
-                    return {
-                        key,
-                        displayName: idInfo.displayName,
-                        unit: idInfo.unit || "",
-                        min: value.min,
-                        max: value.max,
-                        raw: value.raw,
-                        current,
-                        percentage,
-                    }
-                }
-            })
-
-            setRolledIds(initialRolls)
-        }
+        simulateRoll()
     }, [item])
 
     // Roll a single identification
-    const rollSingleId = (index: number) => {
-        const newRolledIds = [...rolledIds]
-        const id = newRolledIds[index]
 
-        // Only roll if there's a range
-        if (id.min !== id.max) {
-            id.current = Math.floor(Math.random() * (id.max - id.min + 1)) + id.min
-            id.percentage = Math.round(((id.current - id.min) / (id.max - id.min)) * 100)
+    const simulateRoll = () => {
+        const result: Record<string, number> = {};
+
+        if (!item.identifications) return
+        for (const [key, value] of Object.entries(item.identifications)) {
+            // Only roll for identifications that are objects (not flat values like rawStrength)
+            if (typeof value === "object" && value !== null && 'raw' in value) {
+                let base = value.raw;
+
+                // Determine if it's a positive or negative identification
+                let isNegative = base < 0;
+                let isCost = key.toLowerCase().includes("cost");
+
+                // Invert polarity if it's a cost
+                if (isCost) isNegative = !isNegative;
+
+                let roll;
+                if (isNegative) {
+                    // For negative IDs, roll from 1.3x down to 0.7x
+                    roll = (Math.random() * (130 - 70) + 70)
+                } else {
+                    // For positive IDs, roll from 0.3x up to 1.3x
+                    roll = (Math.random() * (130 - 30) + 30)
+                }
+
+                // Round to nearest integer
+                result[key] = Math.round(roll);
+            }
         }
 
-        setRolledIds(newRolledIds)
-        updateRolledItem(newRolledIds)
-    }
+        const data: ItemAnalyzeData = {
+            'original': item,
+            'input': { 'identifications': result, 'itemName': item.internalName }
+        }
 
-    // Roll all identifications
-    const rollAllIds = () => {
-        setIsRolling(true)
-
-        // Create animation effect with multiple rolls
-        let rollCount = 0
-        const maxRolls = 4
-        const interval = setInterval(() => {
-            const newRolledIds = rolledIds.map((id) => {
-                if (id.min === id.max) return id
-
-                const current = Math.floor(Math.random() * (id.max - id.min + 1)) + id.min
-                const percentage = Math.round(((current - id.min) / (id.max - id.min)) * 100)
-
-                return {
-                    ...id,
-                    current,
-                    percentage,
-                }
-            })
-
-            setRolledIds(newRolledIds)
-
-            rollCount++
-            if (rollCount >= maxRolls) {
-                clearInterval(interval)
-                setIsRolling(false)
-                updateRolledItem(newRolledIds)
-            }
-        }, 50)
-    }
-
-    // Perfect roll - set all values to maximum
-    const perfectRoll = () => {
-        const newRolledIds = rolledIds.map((id) => ({
-            ...id,
-            current: id.max,
-            percentage: 100,
-        }))
-
-        setRolledIds(newRolledIds)
-        updateRolledItem(newRolledIds)
+        return setRolledIdentificationss(processIdentification(data))
     }
 
     // Update the rolled item with new identification values
-    const updateRolledItem = (newRolledIds: RolledIdentification[]) => {
+    const updateRolledItem = (newRolledIds: RolledIdentificationType[]) => {
         const newIdentifications: Record<string, number | { min: number; max: number; raw: number }> = {}
 
         newRolledIds.forEach((id) => {
@@ -193,12 +140,12 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                     <DialogTitle className="flex items-center justify-between">
                         <span>Item Roll Simulator</span>
                         <div className="flex gap-2">
-                            <Button variant="outline" size="sm" className="gap-1" onClick={rollAllIds} disabled={isRolling}>
+                            <Button variant="outline" size="sm" className="gap-1" onClick={simulateRoll} disabled={isRolling}>
                                 <Dice className="h-3.5 w-3.5" /> Roll All
                             </Button>
-                            <Button variant="outline" size="sm" className="gap-1" onClick={perfectRoll}>
+                            {/* <Button variant="outline" size="sm" className="gap-1" onClick={perfectRoll}>
                                 <Sparkles className="h-3.5 w-3.5" /> Perfect Roll
-                            </Button>
+                            </Button> */}
                         </div>
                     </DialogTitle>
                 </DialogHeader>
@@ -267,93 +214,9 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                     <Card className="md:col-span-2">
                         <CardContent className="p-4">
                             <h3 className="font-medium mb-3">Identification Rolls</h3>
-
-                            <div className="space-y-4">
-                                {rolledIds.map((id, index) => {
-                                    // const inverted = isInvertedStat(id.key)
-                                    const rollColor = getRollPercentageColor(id.percentage, false) //inverted
-
-                                    return (
-                                        <div key={id.key} className="space-y-1">
-                                            <div className="flex items-center justify-between">
-                                                <span className="text-sm">{id.displayName}</span>
-                                                <div className="flex items-center gap-2">
-                                                    <div className="text-sm font-medium">
-                                                        {id.current}
-                                                        {id.unit}
-                                                    </div>
-                                                    {id.min !== id.max && (
-                                                        <span className={cn("text-sm font-medium", rollColor)}>
-                                                            [{id.percentage}%]
-                                                        </span>
-                                                    )}
-                                                    {/* <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-6 w-6"
-                            onClick={() => rollSingleId(index)}
-                            disabled={id.min === id.max}
-                          >
-                            <RefreshCw className="h-3.5 w-3.5" />
-                          </Button> */}
-                                                </div>
-                                            </div>
-
-                                            {id.min !== id.max && (
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-xs text-muted-foreground w-8">
-                                                        {id.min}
-                                                        {id.unit}
-                                                    </span>
-                                                    <div className="flex-1" />
-                                                    {/* <Slider
-                            value={[id.current]}
-                            min={id.min}
-                            max={id.max}
-                            step={1}
-                            className="flex-1"
-                            onValueChange={(value) => handleSliderChange(index, value)}
-                          /> */}
-                                                    <span className="text-xs text-muted-foreground w-8">
-                                                        {id.max}
-                                                        {id.unit}
-                                                    </span>
-                                                </div>
-                                            )}
-
-                                            {/* {id.min !== id.max && (
-                        <div className="h-1.5 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                          <div
-                            className={cn(
-                              "h-full rounded-full transition-all",
-                              id.percentage >= 90
-                                ? "bg-green-500"
-                                : id.percentage >= 75
-                                  ? "bg-emerald-400"
-                                  : id.percentage >= 50
-                                    ? "bg-amber-400"
-                                    : id.percentage >= 25
-                                      ? "bg-orange-500"
-                                      : "bg-red-500",
-                            )}
-                            style={{ width: `${id.percentage}%` }}
-                          ></div>
-                        </div>
-                      )} */}
-                                        </div>
-                                    )
-                                })}
+                            <div className="font-ascii">
+                                <RolledIdentifications stats={RolledIdentificationss} />
                             </div>
-
-                            {/* <div className="mt-6 flex justify-between items-center">
-                                <div className="text-xs text-muted-foreground">
-                                    Tip: Click on individual refresh buttons or use the sliders to fine-tune rolls
-                                </div>
-                                <Button variant="default" className="gap-2" onClick={rollAllIds} disabled={isRolling}>
-                                    <Zap className="h-4 w-4" />
-                                    {isRolling ? "Rolling..." : "Roll All"}
-                                </Button>
-                            </div> */}
                         </CardContent>
                     </Card>
                 </div>

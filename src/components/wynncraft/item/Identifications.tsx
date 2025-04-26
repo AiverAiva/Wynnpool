@@ -5,7 +5,7 @@ import { StarRating } from './StarRating';
 import { getFormattedIdNumber, getIdentificationColor, getIdentificationInfo, getRollPercentageColor, getRollPercentageString } from '@/lib/itemUtils';
 import { cn } from '@/lib/utils';
 import { IdentificationsObject, IdentificationValue } from '@/types/itemType';
-import { off } from 'process';
+
 
 interface RolledIdentification {
   name: string;
@@ -24,7 +24,6 @@ interface RolledIdentificationsProps {
 // }
 
 const Identifications: React.FC<IdentificationsObject> = (identifications) => {
-  console.log(identifications)
   return (
     <div className="list-disc list-inside">
       {Object.entries(identifications).map(([key, value]) => (

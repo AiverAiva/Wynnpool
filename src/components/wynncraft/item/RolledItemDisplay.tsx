@@ -26,8 +26,8 @@ interface Input {
     identifications: {
         [key: string]: number;
     };
-    powderSlots: number;
-    powders: Powder[];
+    powderSlots?: number;
+    powders?: Powder[];
     shinyStat?: ShinyStatType;
 }
 
@@ -49,7 +49,7 @@ interface Weight {
 export interface ItemAnalyzeData {
     original: CombatItem;
     input: Input;
-    weights: Weight[];
+    weights?: Weight[];
 }
 
 export interface IdentificationStat {
