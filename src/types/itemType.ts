@@ -160,7 +160,7 @@ export interface Charm extends ItemBase {
 }
 
 export type Item = WeaponItem | ArmourItem | AccessoryItem | ToolItem | IngredientItem | MaterialItem | Tome | Charm
-export type CombatItem = WeaponItem | ArmourItem | Tome | Charm
+export type CombatItem = WeaponItem | ArmourItem | AccessoryItem | Tome | Charm
 
 export type ItemChangelog = Item & {
     itemName: string;
