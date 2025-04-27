@@ -1,24 +1,21 @@
 'use client'
 
-import { notFound, useParams, usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react';
-import { Spinner } from '@/components/ui/spinner';
-import { Item, ItemChangelog } from '@/types/itemType';
-import { ItemDisplay } from '@/components/wynncraft/item/ItemDisplay';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, ChevronDown, ChevronUp, Clock, Copy, Dices, Minus, Plus, RefreshCw } from 'lucide-react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { cn } from '@/lib/utils';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import CurrencyDisplay from '@/components/custom/currency-display';
-import api from '@/lib/api';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import ItemHistory from '@/components/wynncraft/item/ItemHistory';
 import ItemRollSimulator from '@/components/custom/ItemRollSimulator';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Spinner } from '@/components/ui/spinner';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { ItemDisplay } from '@/components/wynncraft/item/ItemDisplay';
+import ItemHistory from '@/components/wynncraft/item/ItemHistory';
+import api from '@/lib/api';
 import { getIdentificationCost } from '@/lib/itemUtils';
+import { cn } from '@/lib/utils';
+import { Item } from '@/types/itemType';
+import { Check, Copy, Dices } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function ItemPage() {
     const { itemName } = useParams();
@@ -71,7 +68,7 @@ export default function ItemPage() {
             <div className='flex justify-between gap-4 mb-4 flex-col md:flex-row'>
                 <div className='md:w-2/5 lg:w-1/3'>
                     <ItemDisplay item={itemData} />
-                    {!itemData.identified && (
+                    {!itemData.identified && isCombatItem && (
                         <ItemRollSimulator
                             item={itemData}
                             trigger={
