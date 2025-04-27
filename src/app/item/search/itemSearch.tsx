@@ -160,8 +160,8 @@ export default function ItemSearch({
             $and: []
         };
 
-        if (nameQuery) {
-            query.$and.push({ id: { $regex: nameQuery, $options: 'i' } }); // Case-insensitive search for item name
+        if (nameQuery.trim()) {
+            query.$and.push({ id: { $regex: nameQuery.trim(), $options: 'i' } }); // Case-insensitive search for item name
         }
 
         const typeFilters = selectedTypes.map((selectedType) => {
