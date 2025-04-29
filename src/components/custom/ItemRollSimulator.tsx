@@ -72,8 +72,8 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                             ? ((maxVal - finalRoll) / (maxVal - minVal)) * 100
                             : ((finalRoll - minVal) / (maxVal - minVal)) * 100
                         : isSpellCost
-                            ? ((finalRoll - minVal) / (maxVal - minVal)) * 100
-                            : ((maxVal - finalRoll) / (maxVal - minVal)) * 100
+                            ? ((finalRoll - minVal) / (maxVal - minVal)) * 100 * 5 / 3
+                            : ((maxVal - finalRoll) / (maxVal - minVal)) * 100 * 5 / 3
                     : 100;
 
                 // Assign star level if applicable
