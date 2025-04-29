@@ -28,72 +28,76 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     }, [item])
 
     const simulateRoll = () => {
-        if (!item.identifications) return
+        if (!item.identifications) return;
 
         const result: AnotherRolledIdentificationsProps = {};
-        const amp = 0.05 * ampTier;
+        const ampMultiplier = 0.05 * ampTier;
         const IDs = item.identifications;
 
-        let statCount = 0;;
+        let identificationCount = 0;
         let overall = 0;
+
+        const getRoll = (isNegative: boolean) =>
+            isNegative
+                ? (Math.ceil(Math.random() * 61) - 1) / 100 + 0.7
+                : (Math.ceil(Math.random() * 101) - 1) / 100 + 0.3;
+
+        const getStarLevel = (roll: number) => {
+            if (roll >= 1.3) return 3;
+            if (roll >= 1.25) return 2;
+            if (roll >= 1.0) return 1;
+            return 0;
+        };
 
         for (const [stat, value] of Object.entries(IDs)) {
             if (typeof value === 'object' && 'raw' in value) {
-                let id_rolled;
-                let max_val, min_val, percentage, amp_roll;
+                const isSpellCost = stat.toLowerCase().includes('spellcost');
+                const base = value.raw;
+                const isPositive = base > 0;
 
-                let positive_roll = (Math.ceil((Math.random() * 101) - 1) / 100) + 0.3;
-                let negative_roll = (Math.ceil((Math.random() * 61) - 1) / 100) + 0.7;
-                let star = 0;
-                amp_roll = parseFloat((positive_roll + (1.3 - positive_roll) * amp).toFixed(2));
-                if (value.raw > 0) {
-                    max_val = Math.round(value.raw * 1.3);
-                    if (!stat.toLowerCase().includes('spellcost')) {
-                        if (amp_roll >= 1.0 && amp_roll < 1.25) star = 1;
-                        else if (amp_roll >= 1.25 && amp_roll < 1.3) star = 2;
-                        else if (amp_roll === 1.3) star = 3;
-                    }
+                let roll = getRoll(!isPositive); // negative if stat is positive
+                let ampRoll = parseFloat((roll + (1.3 - roll) * ampMultiplier).toFixed(2));
 
-                    if (stat.toLowerCase().includes('spellcost')) {
-                        id_rolled = Math.round(value.raw * negative_roll);
+                let finalRoll = isSpellCost
+                    ? Math.round(base * (isPositive ? getRoll(true) : ampRoll))
+                    : Math.round(base * (isPositive ? ampRoll : getRoll(true)));
 
-                        min_val = Math.round(value.raw * 0.7);
-                        percentage = min_val !== max_val ? ((max_val - id_rolled) / (max_val - min_val)) * 100 : 100;
-                    } else {
-                        id_rolled = Math.round(value.raw * amp_roll);
+                let maxVal = Math.round(base * 1.3);
+                let minVal = Math.round(base * (isSpellCost ? 0.7 : 0.3));
 
-                        min_val = Math.round(value.raw * 0.3);
-                        percentage = min_val !== max_val ? ((id_rolled - min_val) / (max_val - min_val)) * 100 : 100;
-                    }
+                // Calculate percentage
+                let percentage = minVal !== maxVal
+                    ? isPositive
+                        ? isSpellCost
+                            ? ((maxVal - finalRoll) / (maxVal - minVal)) * 100
+                            : ((finalRoll - minVal) / (maxVal - minVal)) * 100
+                        : isSpellCost
+                            ? ((finalRoll - minVal) / (maxVal - minVal)) * 100
+                            : ((maxVal - finalRoll) / (maxVal - minVal)) * 100
+                    : 100;
 
-                    overall += percentage;
-                    statCount++;
-                    result[stat] = { raw: id_rolled, percentage: Number(percentage.toFixed(1)), star: star };
-                } else {
-                    max_val = Math.round(value.raw * 1.3);
+                // Assign star level if applicable
+                let star = !isSpellCost && isPositive ? getStarLevel(ampRoll) : 0;
 
-                    if (stat.toLowerCase().includes('spellcost')) {
-                        id_rolled = Math.round(value.raw * amp_roll);
-                        min_val = Math.round(value.raw * 0.3);
-                        percentage = min_val !== max_val ? ((id_rolled - min_val) / (max_val - min_val)) * 100 : 100;
-                    } else {
-                        id_rolled = Math.round(value.raw * negative_roll);
-                        min_val = Math.round(value.raw * 0.7);
-                        percentage = min_val !== max_val ? ((max_val - id_rolled) / (max_val - min_val)) * 100 : 100;
-                    }
+                overall += percentage;
+                identificationCount++;
 
-                    overall += percentage;
-                    statCount++;
-                    result[stat] = { raw: id_rolled, percentage: Number(percentage.toFixed(1)), star: star };
-                }
+                result[stat] = {
+                    raw: finalRoll,
+                    percentage: Number(percentage.toFixed(1)),
+                    star,
+                };
             } else {
                 result[stat] = value;
             }
-            statCount > 0 && setItemOverall(Number((overall / statCount).toFixed(2)));
         }
 
-        return setRolledIdentifications(result)
-    }
+        if (identificationCount > 0) {
+            setItemOverall(Number((overall / identificationCount).toFixed(2)));
+        }
+
+        return setRolledIdentifications(result);
+    };
 
     return (
         <Dialog>
@@ -125,7 +129,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                 </Select>
                             </div>
                             <Button variant="outline" size="sm" className="gap-1" onClick={simulateRoll} disabled={isRolling}>
-                                <Dice className="h-4 w-4" /> Roll All
+                                <Dice className="h-4 w-4" /> Roll
                             </Button>
                         </div>
                     </DialogTitle>
@@ -148,4 +152,3 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
 }
 
 export default ItemRollSimulator
-
