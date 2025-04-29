@@ -105,28 +105,47 @@ export interface AnotherRolledIdentificationsProps {
 
 const AnotherRolledIdentifications: React.FC<AnotherRolledIdentificationsProps> = (ids) => {
   return (
-    <div className="list-disc list-inside text-sm">
-      {Object.entries(ids).map(([key, value]) => {
-        if (typeof value === 'object' && 'raw' in value) {
-          const colorClass = getRollPercentageColor(value.percentage);
+    <div className="list-disc list-inside text-sm space-y-2">
+      <div>
+        {Object.entries(ids).map(([key, value]) => {
+          if (typeof value === 'number') {
+            return (
+              <div key={key} className="flex items-center">
+                <span className={getIdentificationColor(value, key)}>
+                  {getFormattedIdNumber(value)}{getIdentificationInfo(key)?.unit}
+                </span>
+                <span className="text-gray-400 ml-1">
+                  {getIdentificationInfo(key)?.displayName}
+                </span>
+              </div>
+            );
+          }
+        })}
+      </div>
+      <div>
+        {Object.entries(ids).map(([key, value]) => {
+          if (typeof value === 'object' && 'raw' in value) {
+            const colorClass = getRollPercentageColor(value.percentage);
 
-          return (
-            <div key={key} className="flex items-center">
-              <span className={getIdentificationColor(value.raw, key)}>
-                {getFormattedIdNumber(value.raw)}{getIdentificationInfo(key)?.unit}<StarRating starAmount={value.star} />
-              </span>
-              <span className="text-gray-400 ml-1">
-                {getIdentificationInfo(key)?.displayName}
-              </span>
-              <span className={`ml-1 ${colorClass}`}>
-                [{getRollPercentageString(value.percentage)}]
-              </span>
-            </div>
-          );
-        }
-      })}
+            return (
+              <div key={key} className="flex items-center">
+                <span className={getIdentificationColor(value.raw, key)}>
+                  {getFormattedIdNumber(value.raw)}{getIdentificationInfo(key)?.unit}<StarRating starAmount={value.star} />
+                </span>
+                <span className="text-gray-400 ml-1">
+                  {getIdentificationInfo(key)?.displayName}
+                </span>
+                <span className={`ml-1 ${colorClass}`}>
+                  [{getRollPercentageString(value.percentage)}]
+                </span>
+              </div>
+            );
+          }
+        })}
+      </div>
     </div>
   );
 };
 
 export { Identifications, RolledIdentifications, AnotherRolledIdentifications }
+
