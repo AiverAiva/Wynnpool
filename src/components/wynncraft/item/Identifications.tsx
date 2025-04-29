@@ -88,4 +88,45 @@ const RolledIdentifications: React.FC<RolledIdentificationsProps> = ({ stats }) 
   );
 };
 
-export { Identifications, RolledIdentifications }
+interface AnotherRolledIdentification {
+  raw: number;
+  percentage: number;
+  star: number;
+  // name: string;
+  // value: number;
+  // stars: number;
+  // percentage: number;
+  // displayValue: number;
+}
+
+export interface AnotherRolledIdentificationsProps {
+  [key: string]: AnotherRolledIdentification | number;
+}
+
+const AnotherRolledIdentifications: React.FC<AnotherRolledIdentificationsProps> = (ids) => {
+  return (
+    <div className="list-disc list-inside text-sm">
+      {Object.entries(ids).map(([key, value]) => {
+        if (typeof value === 'object' && 'raw' in value) {
+          const colorClass = getRollPercentageColor(value.percentage);
+
+          return (
+            <div key={key} className="flex items-center">
+              <span className={getIdentificationColor(value.raw, key)}>
+                {getFormattedIdNumber(value.raw)}{getIdentificationInfo(key)?.unit}<StarRating starAmount={value.star} />
+              </span>
+              <span className="text-gray-400 ml-1">
+                {getIdentificationInfo(key)?.displayName}
+              </span>
+              <span className={`ml-1 ${colorClass}`}>
+                [{getRollPercentageString(value.percentage)}]
+              </span>
+            </div>
+          );
+        }
+      })}
+    </div>
+  );
+};
+
+export { Identifications, RolledIdentifications, AnotherRolledIdentifications }

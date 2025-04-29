@@ -1,39 +1,25 @@
 "use client"
 
-import type React from "react"
-import { useState, useEffect } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { CombatItem } from "@/types/itemType"
 import { Dice1Icon as Dice } from "lucide-react"
-import { CombatItem, Item } from "@/types/itemType"
-import { ItemIcon } from "@/components/custom/WynnIcon"
-import { processIdentification } from "@/lib/itemUtils"
-import { calculateOverallPercentage, IdentificationStat, ItemAnalyzeData, ItemHeader } from "../wynncraft/item/RolledItemDisplay"
-import { RolledIdentifications } from "../wynncraft/item/Identifications"
+import type React from "react"
+import { useEffect, useState } from "react"
+import { AnotherRolledIdentifications, AnotherRolledIdentificationsProps } from "../wynncraft/item/Identifications"
+import { ItemHeader } from "../wynncraft/item/RolledItemDisplay"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { Label } from "../ui/label"
 
 interface ItemRollSimulatorProps {
     item: CombatItem
     trigger?: React.ReactNode
 }
 
-interface RolledIdentificationType {
-    key: string
-    displayName: string
-    unit: string
-    min: number
-    max: number
-    raw: number
-    current: number
-    percentage: number
-}
-
 const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) => {
-    const [rolledItem, setRolledItem] = useState<Item>({ ...item })
-    const [RolledIdentificationss, setRolledIdentificationss] = useState<IdentificationStat[]>([])
-    const [rolledIds, setRolledIds] = useState<RolledIdentificationType[]>([])
+    const [RolledIdentifications, setRolledIdentifications] = useState<AnotherRolledIdentificationsProps>({})
+    const [ampTier, setAmpTier] = useState<number>(0)
+    const [itemOverall, setItemOverall] = useState<number>(0)
     const [isRolling, setIsRolling] = useState(false)
 
     // Initialize rolled identifications
@@ -41,89 +27,73 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
         simulateRoll()
     }, [item])
 
-    // Roll a single identification
-
     const simulateRoll = () => {
-        const result: Record<string, number> = {};
-
         if (!item.identifications) return
-        for (const [key, value] of Object.entries(item.identifications)) {
-            // Only roll for identifications that are objects (not flat values like rawStrength)
-            if (typeof value === "object" && value !== null && 'raw' in value) {
-                let base = value.raw;
 
-                // Determine if it's a positive or negative identification
-                let isNegative = base < 0;
-                let isCost = key.toLowerCase().includes("cost");
+        const result: AnotherRolledIdentificationsProps = {};
+        const amp = 0.05 * ampTier;
+        const IDs = item.identifications;
 
-                // Invert polarity if it's a cost
-                if (isCost) isNegative = !isNegative;
+        let statCount = 0;;
+        let overall = 0;
 
-                let roll;
-                if (isNegative) {
-                    // For negative IDs, roll from 1.3x down to 0.7x
-                    roll = (Math.random() * (130 - 70) + 70)
+        for (const [stat, value] of Object.entries(IDs)) {
+            if (typeof value === 'object' && 'raw' in value) {
+                let id_rolled;
+                let max_val, min_val, percentage, amp_roll;
+
+                let positive_roll = (Math.ceil((Math.random() * 101) - 1) / 100) + 0.3;
+                let negative_roll = (Math.ceil((Math.random() * 61) - 1) / 100) + 0.7;
+                let star = 0;
+                amp_roll = parseFloat((positive_roll + (1.3 - positive_roll) * amp).toFixed(2));
+                if (value.raw > 0) {
+                    max_val = Math.round(value.raw * 1.3);
+                    if (!stat.toLowerCase().includes('spellcost')) {
+                        if (amp_roll >= 1.0 && amp_roll < 1.25) star = 1;
+                        else if (amp_roll >= 1.25 && amp_roll < 1.3) star = 2;
+                        else if (amp_roll === 1.3) star = 3;
+                    }
+
+                    if (stat.toLowerCase().includes('spellcost')) {
+                        id_rolled = Math.round(value.raw * negative_roll);
+
+                        min_val = Math.round(value.raw * 0.7);
+                        percentage = min_val !== max_val ? ((max_val - id_rolled) / (max_val - min_val)) * 100 : 100;
+                    } else {
+                        id_rolled = Math.round(value.raw * amp_roll);
+
+                        min_val = Math.round(value.raw * 0.3);
+                        percentage = min_val !== max_val ? ((id_rolled - min_val) / (max_val - min_val)) * 100 : 100;
+                    }
+
+                    overall += percentage;
+                    statCount++;
+                    result[stat] = { raw: id_rolled, percentage: Number(percentage.toFixed(1)), star: star };
                 } else {
-                    // For positive IDs, roll from 0.3x up to 1.3x
-                    roll = (Math.random() * (130 - 30) + 30)
+                    max_val = Math.round(value.raw * 1.3);
+
+                    if (stat.toLowerCase().includes('spellcost')) {
+                        id_rolled = Math.round(value.raw * amp_roll);
+                        min_val = Math.round(value.raw * 0.3);
+                        percentage = min_val !== max_val ? ((id_rolled - min_val) / (max_val - min_val)) * 100 : 100;
+                    } else {
+                        id_rolled = Math.round(value.raw * negative_roll);
+                        min_val = Math.round(value.raw * 0.7);
+                        percentage = min_val !== max_val ? ((max_val - id_rolled) / (max_val - min_val)) * 100 : 100;
+                    }
+
+                    overall += percentage;
+                    statCount++;
+                    result[stat] = { raw: id_rolled, percentage: Number(percentage.toFixed(1)), star: star };
                 }
-
-                // Round to nearest integer
-                result[key] = Math.round(roll);
-            }
-        }
-
-        const data: ItemAnalyzeData = {
-            'original': item,
-            'input': { 'identifications': result, 'itemName': item.internalName }
-        }
-
-        return setRolledIdentificationss(processIdentification(data))
-    }
-
-    // Update the rolled item with new identification values
-    const updateRolledItem = (newRolledIds: RolledIdentificationType[]) => {
-        const newIdentifications: Record<string, number | { min: number; max: number; raw: number }> = {}
-
-        newRolledIds.forEach((id) => {
-            if (id.min === id.max) {
-                newIdentifications[id.key] = id.current
             } else {
-                newIdentifications[id.key] = {
-                    min: id.min,
-                    max: id.max,
-                    raw: id.raw,
-                }
+                result[stat] = value;
             }
-        })
+            statCount > 0 && setItemOverall(Number((overall / statCount).toFixed(2)));
+        }
 
-        setRolledItem({
-            ...rolledItem,
-            identifications: newIdentifications,
-        })
+        return setRolledIdentifications(result)
     }
-
-    // Handle manual slider change
-    const handleSliderChange = (index: number, value: number[]) => {
-        const newRolledIds = [...rolledIds]
-        const id = newRolledIds[index]
-
-        id.current = value[0]
-        id.percentage = Math.round(((id.current - id.min) / (id.max - id.min)) * 100)
-
-        setRolledIds(newRolledIds)
-        updateRolledItem(newRolledIds)
-    }
-
-    // Check if a stat is inverted (where lower is better)
-    const isInvertedStat = (key: string) => {
-        return (
-            key.toLowerCase().includes("cost") ||
-            key.toLowerCase().includes("mana") ||
-            key.toLowerCase().includes("walkspeed")
-        )
-    }
-
 
     return (
         <Dialog>
@@ -134,91 +104,40 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                     </Button>
                 )}
             </DialogTrigger>
-            <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-6">
                 <DialogHeader>
-                    <DialogTitle className="flex items-center justify-between">
+                    <DialogTitle className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <span>Item Roll Simulator</span>
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2 items-center">
+                            <div className="flex items-center gap-2">
+                                <Label htmlFor="amp-tier" className="text-sm">Amplifier Tier</Label>
+                                <Select value={ampTier.toString()} onValueChange={(value) => setAmpTier(Number(value))}>
+                                    <SelectTrigger className="w-[80px] h-8 text-sm" id="amp-tier">
+                                        <SelectValue placeholder="0" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {[0, 1, 2, 3].map((tier) => (
+                                            <SelectItem key={tier} value={tier.toString()}>
+                                                {tier}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
                             <Button variant="outline" size="sm" className="gap-1" onClick={simulateRoll} disabled={isRolling}>
-                                <Dice className="h-3.5 w-3.5" /> Roll All
+                                <Dice className="h-4 w-4" /> Roll All
                             </Button>
-                            {/* <Button variant="outline" size="sm" className="gap-1" onClick={perfectRoll}>
-                                <Sparkles className="h-3.5 w-3.5" /> Perfect Roll
-                            </Button> */}
                         </div>
                     </DialogTitle>
                 </DialogHeader>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Item Preview */}
-                    {/* <Card className="md:col-span-1 h-fit">
-                        <CardContent className="p-4">
-                            <div className="flex flex-col items-center">
-                                <div className="relative my-2">
-                                    <ItemIcon item={rolledItem} size={64} className="w-16 h-16" />
-                                </div>
-                                <h3 className="text-lg font-medium text-center">{rolledItem.internalName}</h3>
-                                {"rarity" in rolledItem && (
-                                    <Badge className="mt-1">
-                                        <p className="font-thin">
-                                            {(rolledItem as any).rarity.charAt(0).toUpperCase() + (rolledItem as any).rarity.slice(1)} Item
-                                        </p>
-                                    </Badge>
-                                )}
-                                <div className="text-xs text-center mt-2 text-muted-foreground">
-                                    {rolledItem.type === "weapon" &&
-                                        "weaponType" in rolledItem &&
-                                        "attackSpeed" in rolledItem &&
-                                        `${(rolledItem as any).weaponType} - ${(rolledItem as any).attackSpeed.replace("_", " ")}`}
-                                </div>
-                            </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div className="md:col-span-3 space-y-6 font-ascii">
+                        <ItemHeader item={item} overall={itemOverall} />
 
-                            <Separator className="my-3" />
-
-                            <div className="space-y-2 text-sm">
-                                {rolledItem.base &&
-                                    Object.entries(rolledItem.base).map(([key, value]) => (
-                                        <div key={key} className="flex justify-between">
-                                            <span>{key.replace("base", "").replace("Damage", " Damage")}:</span>
-                                            <span>{typeof value === "number" ? value : `${value.min}-${value.max}`}</span>
-                                        </div>
-                                    ))}
-
-                                {rolledItem.requirements && (
-                                    <>
-                                        <Separator className="my-2" />
-                                        {Object.entries(rolledItem.requirements).map(([key, value]) => (
-                                            <div key={key} className="flex justify-between">
-                                                <span>{key === "classRequirement" ? "Class" : key}:</span>
-                                                <span>{String(value)}</span>
-                                            </div>
-                                        ))}
-                                    </>
-                                )}
-                            </div>
-
-                            {rolledItem.lore && (
-                                <>
-                                    <Separator className="my-3" />
-                                    <p className="text-xs italic text-muted-foreground">{rolledItem.lore}</p>
-                                </>
-                            )}
-                        </CardContent>
-                    </Card> */}
-
-                    {/* Roll Controls */}
-
-                    {/* <Card className="md:col-span-2 w-full font-ascii">
-                        <CardContent className="p-4 space-y-6">
-
-                        </CardContent>
-                    </Card> */}
-                    <div className="md:col-span-3 font-ascii p-4 space-y-6">
-                        <ItemHeader item={item} overall={calculateOverallPercentage(RolledIdentificationss)} />
-                        {/* <RolledIdentifications stats={RolledIdentificationss} /> */}
                         <div className="flex justify-center">
-                            <div className="flex flex-col items-start text-center space-y-4">
-                                <RolledIdentifications stats={RolledIdentificationss} />
+                            <div className="flex flex-col items-start space-y-4">
+                                <AnotherRolledIdentifications {...RolledIdentifications} />
                             </div>
                         </div>
                     </div>
