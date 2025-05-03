@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { getIdentificationInfo, getRollPercentageString, processIdentification } from '@/lib/itemUtils';
+import { getIdentificationInfo, processIdentification } from '@/lib/itemUtils';
 import { ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -23,7 +23,7 @@ function calculateWeightedScore(
   });
 
   return {
-    total: parseFloat(total.toFixed(3)),
+    total: parseFloat(total.toFixed(4)),
     detailed,
   };
 }
@@ -135,7 +135,7 @@ export default function Home() {
                       <Card key={weight.weight_id} className='w-fit h-fit'>
                         <CardContent className="p-4 space-y-2">
                           <h3 className="text-blue-400 font-semibold text-sm">
-                            🏋️ {weight.weight_name} [{getRollPercentageString(result.total * 100)}]
+                            🏋️ {weight.weight_name} [{(result.total * 100).toFixed(2)}%]
                           </h3>
                           <ul className="text-gray-300 text-sm space-y-1">
                             {Object.entries(weight.identifications).map(([key, value]) => {
