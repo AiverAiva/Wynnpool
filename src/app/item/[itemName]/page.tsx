@@ -41,7 +41,7 @@ export default function ItemPage() {
     useEffect(() => {
         async function fetchItemData() {
             try {
-                const res = await fetch(api(`/item/${itemName}`))
+                const res = await fetch(api(`/item/${itemName}?changelog=true`))
                 if (!res.ok) {
                     throw new Error('Failed to fetch item data')
                 }
