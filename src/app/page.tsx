@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Database, Heart } from "lucide-react"
+import { Database, Heart, Search } from "lucide-react"
 import Link from "next/link"
 import WynncraftNews from '@/components/custom/lastest-news'
 import ServerStatusDisplay from '@/components/custom/server-status'
@@ -48,12 +48,29 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <Link href="https://buymeacoffee.com/aiveraiva">
-                <Button
+                  <Button
                     variant="outline"
                     className="w-full flex items-center justify-center"
                   >
                     <Heart className="h-4 w-4 mr-2" />
                     Buy me a coffee
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Item Analyze</CardTitle>
+                <CardDescription>Analyze how good your item is!</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="/item/analyze">
+                  <Button
+                    variant="outline"
+                    className="w-full flex items-center justify-center"
+                  >
+                    <Search />
+                    Analyze Item
                   </Button>
                 </Link>
               </CardContent>
