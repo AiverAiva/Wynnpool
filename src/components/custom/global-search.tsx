@@ -19,46 +19,46 @@ import { Button } from "../ui/button"
 
 type SearchResult =
   | {
-      query?: string
-      players?: Record<string, string> // Mapping of UUID to username
-      guilds?: Record<
-        string,
-        {
-          name: string
-          prefix: string
-        }
-      >
-      guildsPrefix?: Record<
-        string,
-        {
-          name: string
-          prefix: string
-        }
-      >
-      mergedGuilds?: Record<
-        //Merging guilds and guildsPrefix
-        string,
-        {
-          name: string
-          prefix: string
-        }
-      >
-      territories?: Record<
-        string,
-        {
-          start: [number, number] // Coordinates [X, Z]
-          end: [number, number] // Coordinates [X, Z]
-        }
-      >
-      discoveries?: Record<
-        string,
-        {
-          start: [number, number] // Coordinates [X, Z]
-          end: [number, number] // Coordinates [X, Z]
-        }
-      >
-      items?: Record<string, Item>
-    }
+    query?: string
+    players?: Record<string, string> // Mapping of UUID to username
+    guilds?: Record<
+      string,
+      {
+        name: string
+        prefix: string
+      }
+    >
+    guildsPrefix?: Record<
+      string,
+      {
+        name: string
+        prefix: string
+      }
+    >
+    mergedGuilds?: Record<
+      //Merging guilds and guildsPrefix
+      string,
+      {
+        name: string
+        prefix: string
+      }
+    >
+    territories?: Record<
+      string,
+      {
+        start: [number, number] // Coordinates [X, Z]
+        end: [number, number] // Coordinates [X, Z]
+      }
+    >
+    discoveries?: Record<
+      string,
+      {
+        start: [number, number] // Coordinates [X, Z]
+        end: [number, number] // Coordinates [X, Z]
+      }
+    >
+    items?: Record<string, Item>
+  }
   | { error: string }
 
 // Maximum number of search history items to store
@@ -74,6 +74,7 @@ const GlobalSearch: React.FC<any> = () => {
   const [searchHistory, setSearchHistory] = useState<string[]>([])
   const [showHistory, setShowHistory] = useState(false)
   const debounceTimeout = useRef<number | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Load search history from cookies on component mount
   useEffect(() => {
@@ -88,6 +89,20 @@ const GlobalSearch: React.FC<any> = () => {
         console.error("Error parsing search history from cookie:", error)
       }
     }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === '/' && document.activeElement?.tagName !== 'INPUT') {
+        if (isDialogOpen) return
+        e.preventDefault();
+        setIsDialogOpen(true);
+        setTimeout(() => {
+          inputRef.current?.focus();
+        }, 0); // delay needed to ensure dialog is mounted
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [])
 
   // Save search to history if it returned valid results
@@ -368,7 +383,7 @@ const GlobalSearch: React.FC<any> = () => {
                       ))}
                     </div>
                     <Separator className="my-4" />
-                  </div> 
+                  </div>
                 ) : (
                   <div>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
