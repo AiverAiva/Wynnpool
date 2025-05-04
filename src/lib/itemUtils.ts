@@ -217,9 +217,9 @@ export function calculateIdentificationRoll(
   displayValue: number;
 } {
   let { min, max, raw } = original;
-
+  const isCost = key.toLowerCase().includes("cost")
   // Invert values if key includes "cost"
-  if (key.toLowerCase().includes("cost")) {
+  if (isCost) {
     min = -min;
     max = -max;
     raw = -raw;
@@ -237,13 +237,18 @@ export function calculateIdentificationRoll(
 
   if (raw >= 0) {
     // Normal (positive) ID
-    actualValue = Math.round((inputValue * raw) / 100);
+    if (isCost) {
+      actualValue = -1 * Math.round(-1 * (inputValue * raw) / 100);
+    } else {
+      actualValue = Math.round((inputValue * raw) / 100);
+    }
     // actualValue = (inputValue * raw) / 100
     rollPercentage = ((actualValue - min) / raw) * 100;
 
   } else {
     // Negative ID
     actualValue = Math.round((inputValue * raw) / 100)
+
     // round magnitude, then re-apply negative sign
     const absRaw = Math.abs(raw);
     const magnitude = Math.round((inputValue * absRaw) / 100);
@@ -252,7 +257,7 @@ export function calculateIdentificationRoll(
     rollPercentage = (1 - (max - actualValue) / (max - min)) * 100;
   }
 
-  if (key.toLowerCase().includes("cost")) {
+  if (isCost) {
     actualValue = -actualValue
   }
 
