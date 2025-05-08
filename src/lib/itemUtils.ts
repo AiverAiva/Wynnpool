@@ -179,7 +179,7 @@ export function formattedAttackSpeed(attackSpeed: string) {
 // ^wynntils color^ //
 export const getRollPercentageColor = (percentage: number, inverted = false) => {
   if (inverted) percentage = 100 - percentage
-  if (percentage >= 96) return "text-cyan-500"
+  if (percentage >= 95) return "text-cyan-500"
   if (percentage >= 80) return "text-green-500"
   if (percentage >= 30) return "text-yellow-300"
   return "text-red-500"
