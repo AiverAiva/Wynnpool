@@ -14,6 +14,7 @@ import Link from 'next/link'
 import Banner from '@/components/custom/banner'
 import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
 import api from '@/lib/api'
+import { getMaxGuildMembers } from '@/lib/guildUtils'
 
 function formatTimeAgo(timestamp: number | string | undefined): string {
     if (!timestamp) return 'Never';
@@ -181,7 +182,7 @@ export default function GuildStatsPage() {
                                     <Progress value={guildData.xpPercent} className="mt-2" />
                                 </StatCard>
                                 <StatCard title="Territories" value={guildData.territories} />
-                                <StatCard title="Total Members" value={guildData.members.total} />
+                                <StatCard title="Total Members" value={`${guildData.members.total} / ${getMaxGuildMembers(guildData.level)}`} />
                                 <StatCard title="Online Members" value={guildData.online} />
                                 <StatCard title="Created" value={new Date(guildData.created).toLocaleDateString()} />
                             </div>
