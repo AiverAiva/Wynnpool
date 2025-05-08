@@ -123,7 +123,7 @@ export default function Home() {
         )}
 
         {demoData && !loading && !error && !demoData.original.identified && (
-          <div className="flex justify-center w-full space-y-6 mt-6 gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center w-full space-y-6 mt-6 gap-4">
             <RolledItemDisplay data={demoData} />
             {demoData.weights?.length > 0 && (
               <div className="grid grid-cols-1 space-y-4">
