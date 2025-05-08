@@ -247,12 +247,15 @@ export function calculateIdentificationRoll(
 
   } else {
     // Negative ID
-    actualValue = Math.round((inputValue * raw) / 100)
 
-    // round magnitude, then re-apply negative sign
-    const absRaw = Math.abs(raw);
-    const magnitude = Math.round((inputValue * absRaw) / 100);
-    actualValue = -magnitude;
+    if (isCost) {
+      // round magnitude, then re-apply negative sign
+      const absRaw = Math.abs(raw);
+      const magnitude = Math.round((inputValue * absRaw) / 100);
+      actualValue = -magnitude;
+    } else {
+      actualValue = Math.round((inputValue * raw) / 100)
+    }
     // actualValue = (inputValue * raw) / 100
     rollPercentage = (1 - (max - actualValue) / (max - min)) * 100;
   }
