@@ -167,15 +167,24 @@ export function formattedAttackSpeed(attackSpeed: string) {
 }
 
 // Get color based on roll percentage
+// export const getRollPercentageColor = (percentage: number, inverted = false) => {
+//   if (inverted) percentage = 100 - percentage
+//   if (percentage >= 95) return "text-cyan-500"
+//   if (percentage >= 80) return "text-green-500"
+//   if (percentage >= 60) return "text-yellow-300"
+//   if (percentage >= 40) return "text-amber-400"
+//   if (percentage >= 20) return "text-orange-500"
+//   return "text-red-500"
+// }
+// ^wynntils color^ //
 export const getRollPercentageColor = (percentage: number, inverted = false) => {
   if (inverted) percentage = 100 - percentage
-  if (percentage >= 95) return "text-cyan-500"
+  if (percentage >= 96) return "text-cyan-500"
   if (percentage >= 80) return "text-green-500"
-  if (percentage >= 60) return "text-yellow-300"
-  if (percentage >= 40) return "text-amber-400"
-  if (percentage >= 20) return "text-orange-500"
+  if (percentage >= 30) return "text-yellow-300"
   return "text-red-500"
 }
+// ^legacy color^ //
 
 export const getRollPercentageString = (percentage: number) => {
   const truncated = Math.trunc(percentage * 100) / 100;
