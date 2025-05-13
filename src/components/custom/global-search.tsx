@@ -89,7 +89,7 @@ const GlobalSearch: React.FC<any> = () => {
         console.error("Error parsing search history from cookie:", error)
       }
     }
-
+    
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === '/' && document.activeElement?.tagName !== 'INPUT') {
         if (isDialogOpen) return
@@ -149,9 +149,13 @@ const GlobalSearch: React.FC<any> = () => {
     Cookies.remove(SEARCH_HISTORY_COOKIE)
   }
 
+
+  const latestQuery = useRef<string>("")
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setQuery(value)
+    latestQuery.current = value
 
     if (value.trim() === "") {
       setResults(null)
@@ -187,11 +191,12 @@ const GlobalSearch: React.FC<any> = () => {
         data.mergedGuilds = mergedGuilds
       }
 
-      setResults(data)
-      setIsDialogOpen(true)
-
-      // Save to history if valid results
-      saveToSearchHistory(searchQuery, data)
+      if (searchQuery === latestQuery.current) {
+        setResults(data)
+        setIsDialogOpen(true)
+        // Save to history if valid results
+        saveToSearchHistory(searchQuery, data)
+      }
     } catch (error) {
       console.error("Error fetching search results:", error)
     } finally {
