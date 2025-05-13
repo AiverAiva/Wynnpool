@@ -34,9 +34,9 @@ export async function generateMetadata({ params }: { params: Promise<{ guildName
     const stats = [
         `View detailed statistics for ${guildData.name} on our platform.`,
         ``,
-        `🏰 **Level:** ${guildData.level}`,
-        `🎯 **Wars:** ${guildData.wars}`,
-        `👥 **Members:** ${guildData.members.length}`,
+        `• 🏰 Level: ${guildData.level}`,
+        `• 🎯 Wars: ${guildData.wars}`,
+        `• 👥 Members: ${guildData.members.total}`,
     ];
 
     return {
