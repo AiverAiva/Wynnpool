@@ -284,7 +284,7 @@ export default function GuildStatsPage() {
                             <div className="mt-2 relative">
                                 <HoverCard open={isTouch ? open : undefined} onOpenChange={setOpen} openDelay={0}>
                                     <HoverCardTrigger asChild>
-                                        <div className="cursor-help">
+                                        <div className="cursor-help" onClick={toggleCard}>
                                             <div className="flex justify-between text-xs mb-1">
                                                 <span className="text-muted-foreground">XP Progress</span>
                                                 <span className="font-medium">
