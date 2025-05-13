@@ -103,6 +103,19 @@ export default function GuildStatsPage() {
     const [lastSeenData, setLastSeenData] = useState<LastSeenData>({});
     const [isLoading, setIsLoading] = useState(true);
     const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'role', direction: 'asc' });
+    const [isTouch, setIsTouch] = useState(false)
+    const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        const checkTouch = () => {
+            setIsTouch(('ontouchstart' in window) || navigator.maxTouchPoints > 0)
+        }
+        checkTouch()
+    }, [])
+
+    const toggleCard = () => {
+        if (isTouch) setOpen(prev => !prev)
+    }
 
     useEffect(() => {
         async function fetchGuildData() {
@@ -269,7 +282,7 @@ export default function GuildStatsPage() {
 
                             {/* XP Progress with hover card */}
                             <div className="mt-2 relative">
-                                <HoverCard openDelay={0}>
+                                <HoverCard open={isTouch ? open : undefined} onOpenChange={setOpen} openDelay={0}>
                                     <HoverCardTrigger asChild>
                                         <div className="cursor-help">
                                             <div className="flex justify-between text-xs mb-1">
@@ -284,7 +297,7 @@ export default function GuildStatsPage() {
                                             />
                                             <div className="absolute right-0 -bottom-4 flex items-center text-xs text-muted-foreground">
                                                 <Info className="h-3 w-3 mr-1 opacity-70" />
-                                                <span>Hover for details</span>
+                                                <span>{isTouch ? "Tap for details" : "Hover for details"}</span>
                                             </div>
                                         </div>
                                     </HoverCardTrigger>
