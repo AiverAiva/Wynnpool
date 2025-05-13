@@ -12,9 +12,11 @@ import GuildEventDisplay from '@/components/custom/guild-event-display'
 import GuildOnlineGraph from '@/components/custom/guild-online-graph'
 import Link from 'next/link'
 import Banner from '@/components/custom/banner'
-import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
+import { ChevronDown, ChevronUp, ExternalLink, Info, Shield, Trophy, Users, Map } from 'lucide-react'
 import api from '@/lib/api'
 import { getMaxGuildMembers } from '@/lib/guildUtils'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
 function formatTimeAgo(timestamp: number | string | undefined): string {
     if (!timestamp) return 'Never';
@@ -36,6 +38,41 @@ function formatTimeAgo(timestamp: number | string | undefined): string {
     if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
     if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
     return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+}
+
+function calculateGuildXPRequired(level: number, base = 20000): number {
+    let totalXP = 0;
+
+    for (let n = 1; n <= level; n++) {
+        totalXP += Math.pow(1.15, n - 1);
+    }
+
+    return Math.round(totalXP * base); // Round to nearest whole number
+}
+
+const formatNumber = (num: number): string => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+function formatNumberWithUnit(num: number): string {
+    const absNum = Math.abs(num);
+
+    if (absNum < 1_000_000) return num.toString();
+
+    const units = [
+        { value: 1_000_000_000_000, symbol: "T" },
+        { value: 1_000_000_000, symbol: "B" },
+        { value: 1_000_000, symbol: "M" },
+    ];
+
+    for (const unit of units) {
+        if (absNum >= unit.value) {
+            const formatted = (num / unit.value).toFixed(1).replace(/\.0$/, "");
+            return `${formatted}${unit.symbol}`;
+        }
+    }
+
+    return num.toString(); // fallback, shouldn't be reached
 }
 
 type Role = 'owner' | 'chief' | 'strategist' | 'captain' | 'recruiter' | 'recruit';
@@ -153,6 +190,10 @@ export default function GuildStatsPage() {
     if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
     if (!guildData) return <div className="items-center justify-center h-screen flex"><span className='font-mono text-2xl'>Guild Not Found.</span></div>
 
+    const totalXpRequired = calculateGuildXPRequired(guildData.level)
+    const currentXp = Math.round(totalXpRequired * guildData.xpPercent / 100)
+    const raidXp = Math.round(totalXpRequired * 0.1 / 100) //0.1%
+
     return (
         <div className="container mx-auto p-4">
             <div className="mt-[80px]" />
@@ -164,23 +205,128 @@ export default function GuildStatsPage() {
                         </div>
                     )}
                     <div className='w-full'>
-                        <CardHeader>
-                            <div className='flex justify-between gap-2'>
-                                <div>
-                                    <CardTitle className="text-3xl">{guildData.name}</CardTitle>
-                                    <CardDescription>
-                                        Prefix: {guildData.prefix} | Level: {guildData.level} | Wars: {guildData.wars}
-                                    </CardDescription>
+                        <CardHeader className="pb-2 mb-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                                {/* Banner - visible on all screen sizes */}
+                                <Banner
+                                    className="rounded-lg sm:hidden flex-shrink-0"
+                                    size={80}
+                                    {...guildData.banner}
+                                />
+
+                                {/* Guild name and info */}
+                                <div className="flex-grow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <CardTitle className="text-2xl sm:text-3xl font-bold">
+                                            {guildData.name}
+                                        </CardTitle>
+                                        <Badge variant="outline" className="text-primary border-primary/30 bg-primary/10">
+                                            {guildData.prefix}
+                                        </Badge>
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground mb-2">
+                                        {/* Level with tooltip */}
+                                        <TooltipProvider>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <div className="flex items-center gap-1">
+                                                        <Shield className="h-4 w-4 text-primary" />
+                                                        <span>Level {guildData.level}</span>
+                                                    </div>
+                                                </TooltipTrigger>
+                                                <TooltipContent side="bottom">
+                                                    <p>Guild level</p>
+                                                </TooltipContent>
+                                            </Tooltip>
+                                        </TooltipProvider>
+
+                                        {/* Wars with tooltip */}
+                                        <TooltipProvider>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <div className="flex items-center gap-1">
+                                                        <Trophy className="h-4 w-4 text-yellow-500" />
+                                                        <span>{guildData.wars} Wars</span>
+                                                    </div>
+                                                </TooltipTrigger>
+                                                <TooltipContent side="bottom">
+                                                    <p>Total wars participated in</p>
+                                                </TooltipContent>
+                                            </Tooltip>
+                                        </TooltipProvider>
+
+                                        {/* Territories if available */}
+                                        {guildData.territories != 0 && (
+                                            <div className="flex items-center gap-1">
+                                                <Map className="h-4 w-4 text-green-500" />
+                                                <span>{guildData.territories} Territories</span>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                                {/* justify-between */}
-                                <Banner className='rounded-lg flex sm:hidden ' size={75} {...guildData.banner} />
+                            </div>
+
+                            {/* XP Progress with hover card */}
+                            <div className="mt-2 relative">
+                                <HoverCard openDelay={0}>
+                                    <HoverCardTrigger asChild>
+                                        <div className="cursor-help">
+                                            <div className="flex justify-between text-xs mb-1">
+                                                <span className="text-muted-foreground">XP Progress</span>
+                                                <span className="font-medium">
+                                                    {formatNumberWithUnit(currentXp)} / {formatNumberWithUnit(totalXpRequired)} XP ({guildData.xpPercent}%)
+                                                </span>
+                                            </div>
+                                            <Progress
+                                                value={guildData.xpPercent}
+                                                className="h-3 bg-muted/50"
+                                            />
+                                            <div className="absolute right-0 -bottom-4 flex items-center text-xs text-muted-foreground">
+                                                <Info className="h-3 w-3 mr-1 opacity-70" />
+                                                <span>Hover for details</span>
+                                            </div>
+                                        </div>
+                                    </HoverCardTrigger>
+                                    <HoverCardContent className="w-80 p-4">
+                                        <div className="space-y-3">
+                                            <h4 className="text-sm font-semibold">Guild XP Details</h4>
+
+                                            <div className="grid grid-cols-2 gap-2 text-sm">
+                                                <div className="text-muted-foreground">Current Level:</div>
+                                                <div className="font-medium">{guildData.level}</div>
+
+                                                <div className="text-muted-foreground">XP Progress:</div>
+                                                <div className="font-medium">{guildData.xpPercent}%</div>
+
+                                                <div className="text-muted-foreground">Current XP:</div>
+                                                <div className="font-medium">{formatNumber(currentXp)}</div>
+
+                                                <div className="text-muted-foreground">XP Required:</div>
+                                                <div className="font-medium">{formatNumber(totalXpRequired)}</div>
+
+                                                <div className="text-muted-foreground">XP Remaining:</div>
+                                                <div className="font-medium">{formatNumber(totalXpRequired - currentXp)}</div>
+
+                                                <div className="text-muted-foreground">XP from Raid:</div>
+                                                <div className="font-medium text-green-500">{formatNumberWithUnit(raidXp)} (0.1%)</div>
+
+                                                <div className="text-muted-foreground">Raids to Level:</div>
+                                                <div className="font-medium">
+                                                    {Math.ceil((100 - guildData.xpPercent) / 0.1)}
+                                                </div>
+                                            </div>
+
+                                            {/* <div className="text-xs text-muted-foreground pt-2 border-t">
+                                                
+                                            </div> */}
+                                        </div>
+                                    </HoverCardContent>
+                                </HoverCard>
                             </div>
                         </CardHeader>
                         <CardContent>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <StatCard title="XP Progress" value={`${guildData.xpPercent}%`}>
-                                    <Progress value={guildData.xpPercent} className="mt-2" />
-                                </StatCard>
                                 <StatCard title="Territories" value={guildData.territories} />
                                 <StatCard title="Total Members" value={`${guildData.members.total} / ${getMaxGuildMembers(guildData.level)}`} />
                                 <StatCard title="Online Members" value={guildData.online} />
