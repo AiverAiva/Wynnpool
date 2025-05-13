@@ -1,4 +1,6 @@
 import api from "@/lib/api";
+import { getBannerColorHex } from "@/lib/colorUtils";
+import { Metadata } from "next";
 
 export default function GuildLayout({
     children, // will be a page or nested layout
@@ -12,7 +14,7 @@ export default function GuildLayout({
     )
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ guildName: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ guildName: string }> }): Promise<Metadata> {
     const { guildName } = await params;
 
     const res = await fetch(api(`/guild/${guildName}`))
@@ -25,18 +27,31 @@ export async function generateMetadata({ params }: { params: Promise<{ guildName
 
     const guildData = await res.json();
 
+    const color = guildData.banner?.base
+        ? getBannerColorHex(guildData.banner.base)
+        : undefined;
+
+    const stats = [
+        `View detailed statistics for ${guildData.name} on our platform.`,
+        ``,
+        `🏰 **Level:** ${guildData.level}`,
+        `🎯 **Wars:** ${guildData.wars}`,
+        `👥 **Members:** ${guildData.members.length}`,
+    ];
+
     return {
         title: `[${guildData.prefix}] ${guildData.name} - Guild Stats`,
-        description: `View detailed statistics for ${guildData.name} on our platform.`,
+        description: stats.join('\n'),
         openGraph: {
             title: `[${guildData.prefix}] ${guildData.name} - Guild Stats`,
-            description: `Detailed player statistics for ${guildData.name}.`,
-            url: `https://wynnpool.com/guild/${guildData.name}`
+            description: stats.join('\n'),
+            url: `https://wynnpool.com/stats/guild/${guildData.name}`,
         },
         twitter: {
-            card: 'summary_large_image',
+            card: 'summary',
             title: `[${guildData.prefix}] ${guildData.name} - Guild Stats`,
-            description: `Detailed player statistics for ${guildData.name}.`
+            description: stats.join('\n'),
         },
+        themeColor: color
     };
 }
