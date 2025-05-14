@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input"
 // import { Pagination } from '@/components/ui/pagination'
 import api from '@/lib/api'
 import { Button } from '@/components/ui/button'
+import { ExternalLink } from 'lucide-react'
+import Link from 'next/link'
 
 interface Guild {
   rank: number;
@@ -81,7 +83,7 @@ export default function StatsPage() {
   return (
     <div className="container mx-auto p-4 max-w-screen-lg">
       <div className="mt-[80px]" />
-      <span className='text-3xl font-mono'>this page is incomplete af :3 <br/>if u want to see any stats join discord and suggest it :D</span>
+      <span className='text-3xl font-mono'>this page is incomplete af :3 <br />if u want to see any stats join discord and suggest it :D</span>
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Guild Leaderboard</CardTitle>
@@ -104,9 +106,15 @@ export default function StatsPage() {
             </TableHeader>
             <TableBody>
               {currentGuilds.map((guild) => (
-                <TableRow key={guild.guild_uuid}>
+                console.log(guild),
+                <TableRow key={guild.guild_uuid} className='group'>
                   <TableCell>{guild.rank}</TableCell>
-                  <TableCell>{guild.guild_name}</TableCell>
+                  <TableCell className='cursor-pointer flex items-center'>
+                    <Link href={`/stats/guild/${guild.guild_name}`}>
+                      {guild.guild_name}
+                      <ExternalLink className='ml-2 hidden opacity-0 group-hover:inline-block group-hover:opacity-100 h-4 w-4 text-muted-foreground transition-all duration-500' />
+                    </Link>
+                  </TableCell>
                   <TableCell>{guild.avg_online.toFixed(2)}</TableCell>
                 </TableRow>
               ))}
