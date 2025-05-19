@@ -17,11 +17,29 @@ function calculateWeightedScore(
 
   const detailed = ids.map((id) => {
     const weight = weightMap[id.name] ?? 0;
-    const score = (id.percentage / 100) * weight;
-    total += score;
+    const score: number = 0
+
+    if (weight < 0) {
+      // If the weight is negative, we need to invert the percentage
+      const invertedPercentage = 100 - id.percentage;
+      total += Math.abs((invertedPercentage / 100) * weight);
+    } else {
+      total += (id.percentage / 100) * weight;
+    }
+
     return { name: id.name, score: parseFloat(score.toFixed(3)) };
   });
-
+  // return keys.reduce((acc, key) => {
+  //   const inputVal = entry.identifications[key];
+  //   const { formattedPercentage } = calculateIdentificationRoll(key, idRanges[key], inputVal);
+    // if (weight.identifications[key] < 0) {
+    //   // If the weight is negative, we need to invert the percentage
+    //   const invertedPercentage = 100 - formattedPercentage;
+    //   return acc + Math.abs((invertedPercentage / 100) * (weight.identifications[key] || 0));
+    // } else {
+    //   return acc + (formattedPercentage / 100) * (weight.identifications[key] || 0);
+    // }
+  // }, 0);
   return {
     total: parseFloat(total.toFixed(4)),
     detailed,
