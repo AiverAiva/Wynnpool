@@ -19,6 +19,7 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import React from 'react'
+import UserAuthDisplay from '../user-auth-display'
 
 const navCategories = [
   {
@@ -179,6 +180,7 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
           <ModeToggle />
+          <UserAuthDisplay />
         </div>
       </div>
     </header>
