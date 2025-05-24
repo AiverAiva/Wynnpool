@@ -22,6 +22,7 @@ import { ChevronDown, Trophy } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import SkinViewerComponent from '@/components/custom/SkinViewer';
+import { TooltipPortal } from '@radix-ui/react-tooltip';
 
 interface PlayerGuild {
     guild_uuid: string;
@@ -202,7 +203,7 @@ export default function PlayerStatsPage() {
                 {sortedCharacters.map(([id, char]) => (
                     <Dialog key={id}>
                         <DialogTrigger asChild>
-                            <Card className={`relative overflow-hidden p-4 cursor-pointer hover:scale-105 transition-all duration-200 hover:bg-accent ${id == playerData.activeCharacter && playerData.online ? 'outline outline-green-500' : ''}`}>
+                            <Card className={`relative p-4 z-0 cursor-pointer hover:scale-105 transition-all duration-200 hover:bg-accent ${id == playerData.activeCharacter && playerData.online ? 'outline outline-green-500' : ''}`}>
                                 <div className="flex items-center justify-between">
                                     <div className='w-full'>
                                         <h2 className="text-lg font-bold tracking-tight flex items-center justify-between flex">
@@ -234,9 +235,11 @@ export default function PlayerStatsPage() {
                                                                         className={'h-4'}
                                                                     />
                                                                 </TooltipTrigger>
-                                                                <TooltipContent side="bottom">
-                                                                    <p>{`${mode == 'hardcore' && char.deaths > 0 ? 'Defeated ' : ''}${formattedMode}`}</p>
-                                                                </TooltipContent>
+                                                                <TooltipPortal>
+                                                                    <TooltipContent side="top" className='z-20'>
+                                                                        <p>{`${mode == 'hardcore' && char.deaths > 0 ? 'Defeated ' : ''}${formattedMode}`}</p>
+                                                                    </TooltipContent>
+                                                                </TooltipPortal>
                                                             </Tooltip>
                                                         );
                                                     })}
@@ -250,7 +253,9 @@ export default function PlayerStatsPage() {
                                         )}
                                     </div>
                                 </div>
-                                <Progress className="absolute bottom-0 left-0 w-full rounded-none h-1" value={char.xpPercent} />
+                                <div className="absolute bottom-0 left-0 w-full overflow-hidden rounded-b-md z-10">
+                                    <Progress className="rounded-none h-1" value={char.xpPercent} />
+                                </div>
                             </Card>
                         </DialogTrigger>
                         <DialogContent className="max-w-3xl max-w-screen-lg">
