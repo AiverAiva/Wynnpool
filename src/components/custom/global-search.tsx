@@ -95,7 +95,7 @@ const GlobalSearch: React.FC<any> = () => {
         console.error("Error parsing search history from cookie:", error)
       }
     }
-    
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === '/' && document.activeElement?.tagName !== 'INPUT') {
         if (isDialogOpen) return
@@ -456,9 +456,15 @@ const GlobalSearch: React.FC<any> = () => {
                           >
                             <Clock className="h-3.5 w-3.5 mr-2 text-muted-foreground" />
                             {historyItem.query}
-                            <Badge className="text-xs">
-                              {historyItem.type.charAt(0).toUpperCase() + historyItem.type.slice(1)}
-                            </Badge>
+
+                            {historyItem.type
+                              ? (
+                                <Badge className="text-xs">
+                                  {historyItem.type.charAt(0).toUpperCase() + historyItem.type.slice(1)}
+                                </Badge>
+                              ) : ""
+                            }
+
                           </Button>
                           <Button
                             variant="ghost"
