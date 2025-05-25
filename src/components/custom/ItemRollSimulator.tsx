@@ -21,10 +21,12 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     const [ampTier, setAmpTier] = useState<number>(0)
     const [itemOverall, setItemOverall] = useState<number>(0)
     const [isRolling, setIsRolling] = useState(false)
+    const [rerollCount, setRerollCount] = useState(0);
 
     // Initialize rolled identifications
     useEffect(() => {
         simulateRoll()
+        setRerollCount(0)
     }, [item])
 
     const simulateRoll = () => {
@@ -96,6 +98,8 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
             setItemOverall(Number((overall / identificationCount).toFixed(2)));
         }
 
+        setRerollCount((prev) => prev + 1);
+
         return setRolledIdentifications(result);
     };
 
@@ -131,6 +135,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                             <Button variant="outline" size="sm" className="gap-1" onClick={simulateRoll} disabled={isRolling}>
                                 <Dice className="h-4 w-4" /> Roll
                             </Button>
+                            <span className="ml-2 text-xs text-muted-foreground">Rerolls: {rerollCount}</span>
                         </div>
                     </DialogTitle>
                 </DialogHeader>
