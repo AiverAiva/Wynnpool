@@ -17,6 +17,10 @@ import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from ".
 import { SmallItemCard } from "../wynncraft/item/ItemDisplay"
 import { Button } from "../ui/button"
 import { useRouter } from "next/navigation"
+import { Badge } from "../ui/badge"
+
+// Change searchHistory to store objects: { query: string, type: "item" | "player" | "guild" }
+type SearchHistoryEntry = { query: string; type: "item" | "player" | "guild" };
 
 type SearchResult =
   | {
@@ -72,7 +76,7 @@ const GlobalSearch: React.FC<any> = () => {
   const [results, setResults] = useState<SearchResult | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [searchHistory, setSearchHistory] = useState<string[]>([])
+  const [searchHistory, setSearchHistory] = useState<SearchHistoryEntry[]>([])
   const [showHistory, setShowHistory] = useState(false)
   const debounceTimeout = useRef<number | null>(null)
   const inputRef = useRef<HTMLInputElement>(null);
@@ -108,39 +112,26 @@ const GlobalSearch: React.FC<any> = () => {
   }, [])
 
   // Save search to history if it returned valid results
-  const saveToSearchHistory = (searchQuery: string, searchResult: SearchResult) => {
-    // Only save if there are actual results and not an error
-    if (
-      "error" in searchResult ||
-      ((!searchResult.players || Object.keys(searchResult.players).length === 0) &&
-        (!searchResult.mergedGuilds || Object.keys(searchResult.mergedGuilds).length === 0) &&
-        (!searchResult.items || Object.keys(searchResult.items).length === 0))
-    ) {
-      return
-    }
-
-    // Don't add duplicates
-    if (searchHistory.includes(searchQuery)) {
-      // Move to the top if it exists
-      const newHistory = [searchQuery, ...searchHistory.filter((item) => item !== searchQuery)].slice(
-        0,
-        MAX_SEARCH_HISTORY,
-      )
-
+  const saveToSearchHistory = (searchQuery: string, type: "item" | "player" | "guild") => {
+    if (searchHistory.some((entry) => entry.query === searchQuery && entry.type === type)) {
+      // Move to top if exists
+      const newHistory = [
+        { query: searchQuery, type },
+        ...searchHistory.filter((entry) => !(entry.query === searchQuery && entry.type === type)),
+      ].slice(0, MAX_SEARCH_HISTORY)
       setSearchHistory(newHistory)
-      Cookies.set(SEARCH_HISTORY_COOKIE, JSON.stringify(newHistory), { expires: 30 }) // Expires in 30 days
+      Cookies.set(SEARCH_HISTORY_COOKIE, JSON.stringify(newHistory), { expires: 30 })
       return
     }
-
     // Add new search to history
-    const newHistory = [searchQuery, ...searchHistory].slice(0, MAX_SEARCH_HISTORY)
+    const newHistory = [{ query: searchQuery, type }, ...searchHistory].slice(0, MAX_SEARCH_HISTORY)
     setSearchHistory(newHistory)
     Cookies.set(SEARCH_HISTORY_COOKIE, JSON.stringify(newHistory), { expires: 30 }) // Expires in 30 days
   }
 
   // Remove an item from search history
-  const removeFromHistory = (searchQuery: string) => {
-    const newHistory = searchHistory.filter((item) => item !== searchQuery)
+  const removeFromHistory = (searchQuery: string, type: "item" | "player" | "guild") => {
+    const newHistory = searchHistory.filter((entry) => !(entry.query === searchQuery && entry.type === type))
     setSearchHistory(newHistory)
     Cookies.set(SEARCH_HISTORY_COOKIE, JSON.stringify(newHistory), { expires: 30 })
   }
@@ -197,7 +188,7 @@ const GlobalSearch: React.FC<any> = () => {
         setResults(data)
         setIsDialogOpen(true)
         // Save to history if valid results
-        saveToSearchHistory(searchQuery, data)
+        // saveToSearchHistory(searchQuery, data)
       }
     } catch (error) {
       console.error("Error fetching search results:", error)
@@ -214,10 +205,32 @@ const GlobalSearch: React.FC<any> = () => {
     }
   }
 
-  const handleHistoryItemClick = (historyItem: string) => {
-    setQuery(historyItem)
-    performSearch(historyItem)
-    setShowHistory(false)
+  const handleHistoryItemClick = (historyItem: SearchHistoryEntry) => {
+    if (historyItem.type === "player") {
+      // Try to find uuid from current results, fallback to search by name
+      if (results && typeof results === "object" && !("error" in results) && results.players) {
+        const exactPlayer = Object.entries(results.players).find(
+          ([, name]) => name.toLowerCase() === historyItem.query.trim().toLowerCase()
+        );
+        if (exactPlayer) {
+          router.push(`/stats/player/${exactPlayer[0]}`);
+          setIsDialogOpen(false);
+          return;
+        }
+      }
+      // fallback: just use name as uuid (may not work, but preserves old behavior)
+      router.push(`/stats/player/${historyItem.query}`);
+      setIsDialogOpen(false);
+      return;
+    }
+    if (historyItem.type === "guild") {
+      router.push(`/stats/guild/${historyItem.query}`);
+      setIsDialogOpen(false);
+      return;
+    }
+    // item
+    router.push(`/item/${historyItem.query}`);
+    setIsDialogOpen(false);
   }
 
   // Add onKeyDown handler for Enter key
@@ -229,7 +242,8 @@ const GlobalSearch: React.FC<any> = () => {
           (itemName) => itemName.toLowerCase() === query.trim().toLowerCase()
         );
         if (exactItem) {
-          router.push(`/item/${exactItem}`); // Use canonical casing
+          saveToSearchHistory(exactItem, "item");
+          router.push(`/item/${exactItem}`);
           setIsDialogOpen(false);
           e.preventDefault();
           return;
@@ -241,7 +255,8 @@ const GlobalSearch: React.FC<any> = () => {
           ([uuid, name]) => name.toLowerCase() === query.trim().toLowerCase()
         );
         if (exactPlayer) {
-          router.push(`/stats/player/${exactPlayer[0]}`); // Use canonical casing via uuid
+          saveToSearchHistory(exactPlayer[1], "player");
+          router.push(`/stats/player/${exactPlayer[0]}`);
           setIsDialogOpen(false);
           e.preventDefault();
           return;
@@ -255,7 +270,8 @@ const GlobalSearch: React.FC<any> = () => {
             guild.prefix.toLowerCase() === query.trim().toLowerCase()
         );
         if (exactGuild) {
-          router.push(`/stats/guild/${exactGuild.name}`); // Use canonical casing
+          saveToSearchHistory(exactGuild.name, "guild");
+          router.push(`/stats/guild/${exactGuild.name}`);
           setIsDialogOpen(false);
           e.preventDefault();
           return;
@@ -347,18 +363,25 @@ const GlobalSearch: React.FC<any> = () => {
                           <h2 className="font-bold mb-2">Players</h2>
                           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                             {Object.entries(results.players).map(([uuid, name]) => (
-                              <Link href={`/stats/player/${uuid}`} key={uuid}>
-                                <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
-                                  <CardContent className="flex flex-col justify-between p-2 h-full">
-                                    <div className="flex items-center gap-3">
-                                      <img src={`/api/player/icon/${uuid}`} alt={name} className="w-8 h-8" />
-                                      <div>
-                                        <span className="font-mono">{getPlayerDisplayName(name)}</span>
+                              <span
+                                key={uuid}
+                                onClick={() => {
+                                  saveToSearchHistory(name, "player");
+                                }}
+                              >
+                                <Link href={`/stats/player/${uuid}`}>
+                                  <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
+                                    <CardContent className="flex flex-col justify-between p-2 h-full">
+                                      <div className="flex items-center gap-3">
+                                        <img src={`/api/player/icon/${uuid}`} alt={name} className="w-8 h-8" />
+                                        <div>
+                                          <span className="font-mono">{getPlayerDisplayName(name)}</span>
+                                        </div>
                                       </div>
-                                    </div>
-                                  </CardContent>
-                                </Card>
-                              </Link>
+                                    </CardContent>
+                                  </Card>
+                                </Link>
+                              </span>
                             ))}
                           </div>
                         </div>
@@ -368,13 +391,20 @@ const GlobalSearch: React.FC<any> = () => {
                           <h2 className="font-bold mb-2">Guilds</h2>
                           <ul>
                             {Object.entries(results.mergedGuilds).map(([id, guild]) => (
-                              <Link href={`/stats/guild/${guild.name}`} key={id}>
-                                <Card className="w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2">
-                                  <li className="text-md font-mono">
-                                    [{guild.prefix}] {guild.name}
-                                  </li>
-                                </Card>
-                              </Link>
+                              <span
+                                key={id}
+                                onClick={() => {
+                                  saveToSearchHistory(guild.name, "guild");
+                                }}
+                              >
+                                <Link href={`/stats/guild/${guild.name}`}>
+                                  <Card className="w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2">
+                                    <li className="text-md font-mono">
+                                      [{guild.prefix}] {guild.name}
+                                    </li>
+                                  </Card>
+                                </Link>
+                              </span>
                             ))}
                           </ul>
                         </div>
@@ -384,10 +414,16 @@ const GlobalSearch: React.FC<any> = () => {
                           <h2 className="font-bold mb-2">Items</h2>
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                             {Object.keys(results.items).map((itemName) => (
-                              <Link href={`/item/${itemName}`} key={itemName}>
-                                <SmallItemCard item={results.items![itemName]} />
-                                {/* <ItemDisplay item={results.items![itemName]} embeded={true}/> */}
-                              </Link>
+                              <span
+                                key={itemName}
+                                onClick={() => {
+                                  saveToSearchHistory(itemName, "item");
+                                }}
+                              >
+                                <Link href={`/item/${itemName}`}>
+                                  <SmallItemCard item={results.items![itemName]} />
+                                </Link>
+                              </span>
                             ))}
                           </div>
                         </div>
@@ -419,7 +455,10 @@ const GlobalSearch: React.FC<any> = () => {
                             onClick={() => handleHistoryItemClick(historyItem)}
                           >
                             <Clock className="h-3.5 w-3.5 mr-2 text-muted-foreground" />
-                            {historyItem}
+                            {historyItem.query}
+                            <Badge className="text-xs">
+                              {historyItem.type.charAt(0).toUpperCase() + historyItem.type.slice(1)}
+                            </Badge>
                           </Button>
                           <Button
                             variant="ghost"
@@ -427,7 +466,7 @@ const GlobalSearch: React.FC<any> = () => {
                             className="opacity-0 group-hover:opacity-100 transition-opacity h-6 w-6 p-0"
                             onClick={(e) => {
                               e.stopPropagation()
-                              removeFromHistory(historyItem)
+                              removeFromHistory(historyItem.query, historyItem.type)
                             }}
                           >
                             <X className="h-3 w-3" />
