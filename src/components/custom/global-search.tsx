@@ -16,6 +16,7 @@ import Cookies from "js-cookie"
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog"
 import { SmallItemCard } from "../wynncraft/item/ItemDisplay"
 import { Button } from "../ui/button"
+import { useRouter } from "next/navigation"
 
 type SearchResult =
   | {
@@ -75,6 +76,7 @@ const GlobalSearch: React.FC<any> = () => {
   const [showHistory, setShowHistory] = useState(false)
   const debounceTimeout = useRef<number | null>(null)
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   // Load search history from cookies on component mount
   useEffect(() => {
@@ -218,6 +220,50 @@ const GlobalSearch: React.FC<any> = () => {
     setShowHistory(false)
   }
 
+  // Add onKeyDown handler for Enter key
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && results && typeof results === "object" && !("error" in results)) {
+      // Item match
+      if (results.items) {
+        const exactItem = Object.keys(results.items).find(
+          (itemName) => itemName.toLowerCase() === query.trim().toLowerCase()
+        );
+        if (exactItem) {
+          router.push(`/item/${exactItem}`); // Use canonical casing
+          setIsDialogOpen(false);
+          e.preventDefault();
+          return;
+        }
+      }
+      // Player match
+      if (results.players) {
+        const exactPlayer = Object.entries(results.players).find(
+          ([uuid, name]) => name.toLowerCase() === query.trim().toLowerCase()
+        );
+        if (exactPlayer) {
+          router.push(`/stats/player/${exactPlayer[0]}`); // Use canonical casing via uuid
+          setIsDialogOpen(false);
+          e.preventDefault();
+          return;
+        }
+      }
+      // Guild match (by name or prefix)
+      if (results.mergedGuilds) {
+        const exactGuild = Object.values(results.mergedGuilds).find(
+          (guild) =>
+            guild.name.toLowerCase() === query.trim().toLowerCase() ||
+            guild.prefix.toLowerCase() === query.trim().toLowerCase()
+        );
+        if (exactGuild) {
+          router.push(`/stats/guild/${exactGuild.name}`); // Use canonical casing
+          setIsDialogOpen(false);
+          e.preventDefault();
+          return;
+        }
+      }
+    }
+  };
+
   useEffect(() => {
     return () => {
       // Clear the debounce timeout when the component unmounts
@@ -239,6 +285,7 @@ const GlobalSearch: React.FC<any> = () => {
             value={query}
             onChange={handleInputChange}
             onFocus={handleInputFocus}
+            onKeyDown={handleInputKeyDown}
             className="pl-10 z-10"
           />
         </div>
@@ -261,10 +308,11 @@ const GlobalSearch: React.FC<any> = () => {
                   placeholder="Search for items, guilds, or players..."
                   value={query}
                   onChange={handleInputChange}
+                  onKeyDown={handleInputKeyDown}
                   className="pl-10"
                 />
               </div>
-              <DialogClose className="w-8 h-8">
+              <DialogClose asChild>
                 <Button variant="outline" size="icon">
                   <X className="h-4 w-4" />
                 </Button>
