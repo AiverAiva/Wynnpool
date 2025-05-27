@@ -296,11 +296,14 @@ export default function PlayerStatsPage() {
                                                 "{char.nickname}"
                                             </span>
                                         )}
+                                        {!char.nickname && char.gamemode.length > 0 && (
+                                            <div className='h-4' />
+                                        )}
                                     </div>
                                 </div>
                                 <div className="absolute bottom-0 left-0 w-full overflow-hidden rounded-b-md z-10">
                                     <div className='flex justify-end'>
-                                        <span className='px-2 text-xs font-mono text-muted-foreground'>
+                                        <span className='mr-4 text-xs font-mono text-muted-foreground'>
                                             {formatNumberWithUnit(char.xp)}{char.level < 106 && `/${formatNumberWithUnit(getPlayerLevelXP(char.level)!)}`}
                                         </span>
                                     </div>
