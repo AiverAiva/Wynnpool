@@ -70,6 +70,51 @@ function formatTimeAgo(dateString: string): string {
     return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
 }
 
+
+function formatNumberWithUnit(num: number): string {
+    const absNum = Math.abs(num);
+
+    if (absNum < 1_000_000) return num.toString();
+
+    const units = [
+        { value: 1_000_000_000_000, symbol: "T" },
+        { value: 1_000_000_000, symbol: "B" },
+        { value: 1_000_000, symbol: "M" },
+    ];
+
+    for (const unit of units) {
+        if (absNum >= unit.value) {
+            const formatted = (num / unit.value).toFixed(1).replace(/\.0$/, "");
+            return `${formatted}${unit.symbol}`;
+        }
+    }
+
+    return num.toString(); // fallback, shouldn't be reached
+}
+
+const xpList: number[] = [
+    110, 190, 275, 385, 505, 645, 790, 940, 1100, 1370,
+    1570, 1800, 2090, 2400, 2720, 3100, 3600, 4150, 4800, 5300,
+    5900, 6750, 7750, 8900, 10200, 11650, 13300, 15200, 17150, 19600,
+    22100, 24900, 28000, 31500, 35500, 39900, 44700, 50000, 55800, 62000,
+    68800, 76400, 84700, 93800, 103800, 114800, 126800, 140000, 154500, 170300,
+    187600, 206500, 227000, 249500, 274000, 300500, 329500, 361000, 395000, 432200,
+    472300, 515800, 562800, 613700, 668600, 728000, 792000, 860000, 935000, 1040400,
+    1154400, 1282600, 1414800, 1567500, 1730400, 1837000, 1954800, 2077600, 2194400, 2325600,
+    2455000, 2645000, 2845000, 3141100, 3404710, 3782160, 4151400, 4604100, 5057300, 5533840,
+    6087120, 6685120, 7352800, 8080800, 8725600, 9578400, 10545600, 11585600, 12740000, 14418250,
+    16280000, 21196500, 23315500, 25649000, 249232940
+];
+
+function getPlayerLevelXP(level: number): number | undefined {
+    level -= 1; // Adjust level to match the xpList index (0-based)
+    if (level < 0 || level >= xpList.length) {
+        console.error('level out of bounds. Must be between 0 and 104 inclusive.');
+        return undefined;
+    }
+    return xpList[level];
+}
+
 export default function PlayerStatsPage() {
     const { playerName } = useParams();
     const [playerData, setPlayerData] = useState<Player>();
@@ -254,6 +299,11 @@ export default function PlayerStatsPage() {
                                     </div>
                                 </div>
                                 <div className="absolute bottom-0 left-0 w-full overflow-hidden rounded-b-md z-10">
+                                    <div className='flex justify-end'>
+                                        <span className='px-2 text-xs font-mono text-muted-foreground'>
+                                            {formatNumberWithUnit(char.xp)}{char.level < 106 && `/${formatNumberWithUnit(getPlayerLevelXP(char.level)!)}`}
+                                        </span>
+                                    </div>
                                     <Progress className="rounded-none h-1" value={char.xpPercent} />
                                 </div>
                             </Card>
