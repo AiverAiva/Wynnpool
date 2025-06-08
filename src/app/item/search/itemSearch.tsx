@@ -267,6 +267,19 @@ export default function ItemSearch({
                                     selectedOptions={selectedTypes}
                                     onChange={setSelectedTypes}
                                 />
+                                <Button
+                                    onClick={() => {
+                                        const allSelected = types.every(type => selectedTypes.includes(type));
+                                        setSelectedTypes(allSelected
+                                            ? selectedTypes.filter(type => !types.includes(type))
+                                            : [...selectedTypes, ...types.filter(type => !selectedTypes.includes(type))]
+                                        );
+                                    }}
+                                    variant="secondary"
+                                    className="h-6 w-full"
+                                >
+                                    {types.every(type => selectedTypes.includes(type)) ? 'None' : 'All'}
+                                </Button>
                             </div>
                         ))}
                     </div>
@@ -274,15 +287,15 @@ export default function ItemSearch({
                     <div className='grid gap-2 w-fit'>
                         <div className='flex items-center justify-between'>
                             <Label>Rarity</Label>
-                            <Button onClick={() => (selectedTiers.length === tiers.length ? setSelectedTiers([]) : setSelectedTiers(tiers))} variant="secondary" className='h-6 w-24'>
-                                {selectedTiers.length === tiers.length ? 'None' : 'All'}
-                            </Button>
                         </div>
                         <RarityTabs
                             options={tiers}
                             selectedOptions={selectedTiers}
                             onChange={setSelectedTiers}
                         />
+                        <Button onClick={() => (selectedTiers.length === tiers.length ? setSelectedTiers([]) : setSelectedTiers(tiers))} variant="secondary" className='h-6 w-full'>
+                            {selectedTiers.length === tiers.length ? 'None' : 'All'}
+                        </Button>
                     </div>
 
                     {/* Restriction Tabs */}
