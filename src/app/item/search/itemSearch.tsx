@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ChevronsUpDown, Loader2, RotateCcw, X, GripVertical } from 'lucide-react'
+import { ChevronsUpDown, Loader2, RotateCcw, X, GripVertical, Triangle } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { ItemTypeIcon } from '@/components/custom/WynnIcon'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
@@ -132,6 +132,7 @@ export default function ItemSearch({
     const [majorIds, setMajorIds] = useState<string[]>([])
     const [selectedMajorId, setselectedMajorId] = useState<string>('');
     const [selectedRestrictions, setSelectedRestrictions] = useState<string[]>([]);
+    const [identificationSortOrders, setIdentificationSortOrders] = useState<Record<string, 'asc' | 'desc'>>({});
 
     useEffect(() => {
         fetch('/api/item/metadata')
@@ -225,7 +226,32 @@ export default function ItemSearch({
                 throw new Error('Failed to fetch results')
             }
 
-            const data = await response.json()
+            let data = await response.json()
+
+            // Sort results by selectedIdentifications order and their sort order
+            if (selectedIdentifications.length > 0 && Array.isArray(data)) {
+                data = data.map((item: any) => {
+                    item._identificationSort = selectedIdentifications.map(id => {
+                        // Use .raw if available, else value
+                        const val = item.identifications?.[id];
+                        if (val && typeof val === 'object' && 'raw' in val) return val.raw;
+                        return val ?? -Infinity;
+                    });
+                    return item;
+                }).sort((a: any, b: any) => {
+                    for (let i = 0; i < selectedIdentifications.length; i++) {
+                        const id = selectedIdentifications[i];
+                        const order = identificationSortOrders[id] || 'desc';
+                        if (a._identificationSort[i] !== b._identificationSort[i]) {
+                            return order === 'desc'
+                                ? (b._identificationSort[i] - a._identificationSort[i])
+                                : (a._identificationSort[i] - b._identificationSort[i]);
+                        }
+                    }
+                    return 0;
+                });
+            }
+
             setResults(data)
         } catch (err) {
             setError('An error occurred while searching for items.')
@@ -348,6 +374,8 @@ export default function ItemSearch({
                             availableIdentifications={identifications}
                             selectedIdentifications={selectedIdentifications}
                             setSelectedIdentifications={setSelectedIdentifications}
+                            identificationSortOrders={identificationSortOrders}
+                            setIdentificationSortOrders={setIdentificationSortOrders}
                         />
                     </div>
                 </div>
@@ -371,12 +399,16 @@ interface IdentificationBoxProps {
     availableIdentifications: string[]
     selectedIdentifications: string[]
     setSelectedIdentifications: React.Dispatch<React.SetStateAction<string[]>>
+    identificationSortOrders: Record<string, 'asc' | 'desc'>;
+    setIdentificationSortOrders: React.Dispatch<React.SetStateAction<Record<string, 'asc' | 'desc'>>>;
 }
 
 const IdentificationBox: React.FC<IdentificationBoxProps> = ({
     availableIdentifications,
     selectedIdentifications,
     setSelectedIdentifications,
+    identificationSortOrders,
+    setIdentificationSortOrders,
 }) => {
     const [identificationBoxes, setIdentificationBoxes] = useState<string[]>(['']);
 
@@ -438,6 +470,14 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
                             selectedIdentifications={selectedIdentifications}
                             updateBox={updateBox}
                             removeBox={removeBox}
+                            sortOrder={identificationSortOrders[value] || 'desc'}
+                            toggleSortOrder={() => {
+                                if (!value) return;
+                                setIdentificationSortOrders(prev => ({
+                                    ...prev,
+                                    [value]: prev[value] === 'asc' ? 'desc' : 'asc',
+                                }));
+                            }}
                         />
                     ))}
                 </SortableContext>
@@ -452,7 +492,7 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
     );
 };
 
-const IdentificationSortableItem = ({ id, value, index, availableIdentifications, selectedIdentifications, updateBox, removeBox }: any) => {
+const IdentificationSortableItem = ({ id, value, index, availableIdentifications, selectedIdentifications, updateBox, removeBox, sortOrder, toggleSortOrder }: any) => {
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
     const style = {
@@ -462,7 +502,7 @@ const IdentificationSortableItem = ({ id, value, index, availableIdentifications
 
     return (
         <div ref={setNodeRef} style={style} className="flex items-center gap-2">
-            <Button variant='ghost' {...attributes} {...listeners} className="px-3 cursor-grab" disabled={value == ''}>
+            <Button variant='ghost' {...attributes} {...listeners} className="px-2 cursor-grab" disabled={value == ''}>
                 <GripVertical className="h-5 w-5 text-gray-500" />
             </Button>
 
@@ -475,7 +515,13 @@ const IdentificationSortableItem = ({ id, value, index, availableIdentifications
                 onChange={(val) => updateBox(val, index)}
             />
 
-            <Button variant="destructive" onClick={() => removeBox(index)}>
+            {value && (
+                <Button variant="outline" className="px-2" size="icon" onClick={toggleSortOrder}>
+                    <Triangle className={cn("h-4 w-4", sortOrder === 'desc' ? 'rotate-180 text-primary' : 'text-primary')} />
+                </Button>
+            )}
+
+            <Button variant="destructive" className="px-2" onClick={() => removeBox(index)}>
                 <X className="h-8 w-8" />
             </Button>
         </div>
