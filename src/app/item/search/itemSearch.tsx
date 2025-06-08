@@ -38,6 +38,11 @@ const tiersColors = {
 
 const tiers = Object.keys(tiersColors);
 
+const restrictionOptions = [
+    { value: 'untradable', label: 'Untradable' },
+    { value: 'quest item', label: 'Quest Item' },
+]
+
 interface MultiSelectTabsProps {
     options: string[]
     selectedOptions: string[]
@@ -126,21 +131,20 @@ export default function ItemSearch({
     const [selectedIdentifications, setSelectedIdentifications] = useState<string[]>([]);
     const [majorIds, setMajorIds] = useState<string[]>([])
     const [selectedMajorId, setselectedMajorId] = useState<string>('');
+    const [selectedRestrictions, setSelectedRestrictions] = useState<string[]>([]);
 
     useEffect(() => {
         fetch('/api/item/metadata')
             .then((response) => response.json())
             .then((data) => {
                 const identificationsLabeled: any = {};
-                const majorsIdsLabeled: any = Object.fromEntries(data.majorIds.map((m: string) => [m, m]));
-
+                setMajorIds(data.majorIds || []);
                 data.identifications.forEach((identification: string) => {
                     const identificationInfo = getIdentificationInfo(identification);
-                    identificationsLabeled[identification] = identificationInfo?.displayName ?? identification;
+                    let name = identificationInfo?.detailedName || identificationInfo?.displayName || identification;
+                    identificationsLabeled[identification] = name;
                 })
-
                 setIdentifications(identificationsLabeled)
-                setMajorIds(majorsIdsLabeled)
             })
     }, [])
 
@@ -199,12 +203,13 @@ export default function ItemSearch({
 
             query.$and.push({ $or: identificationQueries });
         }
-        // if (query) payload.query = query
-        // if (selectedTypes.length > 0) payload.type = selectedTypes
-        // if (selectedTiers.length > 0) payload.tier = selectedTiers
-        // payload.levelRange = levelRange
-        // payload.identifications = selectedIdentifications.filter(id => id !== '' && id != null);
-        // if (selectedMajorId !== '') payload.majorIds = [selectedMajorId];
+
+        if (selectedRestrictions.includes('untradable')) {
+            query.$and.push({ restrictions: 'untradable' });
+        }
+        if (selectedRestrictions.includes('quest item')) {
+            query.$and.push({ restrictions: 'quest item' });
+        }
 
         console.log(query)
         try {
@@ -269,16 +274,24 @@ export default function ItemSearch({
                     <div className='grid gap-2 w-fit'>
                         <div className='flex items-center justify-between'>
                             <Label>Rarity</Label>
-
                             <Button onClick={() => (selectedTiers.length === tiers.length ? setSelectedTiers([]) : setSelectedTiers(tiers))} variant="secondary" className='h-6 w-24'>
                                 {selectedTiers.length === tiers.length ? 'None' : 'All'}
                             </Button>
                         </div>
-
                         <RarityTabs
                             options={tiers}
                             selectedOptions={selectedTiers}
                             onChange={setSelectedTiers}
+                        />
+                    </div>
+
+                    {/* Restriction Tabs */}
+                    <div className='grid gap-2 w-fit'>
+                        <Label>Restriction</Label>
+                        <RestrictionTabs
+                            options={restrictionOptions}
+                            selectedOptions={selectedRestrictions}
+                            onChange={setSelectedRestrictions}
                         />
                     </div>
 
@@ -299,7 +312,10 @@ export default function ItemSearch({
                         <Label htmlFor="query">Major id</Label>
                         <div className='flex items-center gap-2'>
                             <ResponsiveComboBox
-                                availableOptions={majorIds}
+                                availableOptions={majorIds.reduce((acc: any, id: string) => {
+                                    acc[id] = id;
+                                    return acc;
+                                }, {})}
                                 value={selectedMajorId}
                                 currentLabel='Select a Major id...'
                                 onChange={(val) => setselectedMajorId(val)}
@@ -514,7 +530,7 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
                 <Button variant="outline" className='w-full'>
-                    {currentLabel}
+                    {value || currentLabel}
                 </Button>
             </DrawerTrigger>
             <DrawerContent>
@@ -524,16 +540,16 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
                         <CommandList>
                             <CommandEmpty>No results found.</CommandEmpty>
                             <CommandGroup>
-                                {Object.entries(availableOptions).map((value, label) => (
+                                {Object.entries(availableOptions).map(([id, label]) => (
                                     <CommandItem
-                                        key={String(value)}
-                                        value={String(value)}
+                                        key={id}
+                                        value={String(label)}
                                         onSelect={() => {
-                                            onChange(String(value))
+                                            onChange(id)
                                             setOpen(false)
                                         }}
                                     >
-                                        {label}
+                                        {String(label)}
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
@@ -542,5 +558,37 @@ const ResponsiveComboBox: React.FC<ResponsiveComboBoxProps> = ({
                 </div>
             </DrawerContent>
         </Drawer>
+    )
+}
+
+interface RestrictionTabsProps {
+    options: { value: string, label: string }[];
+    selectedOptions: string[];
+    onChange: (selected: string[]) => void;
+}
+
+function RestrictionTabs({ options, selectedOptions, onChange }: RestrictionTabsProps) {
+    return (
+        <div className="flex flex-wrap gap-2 p-1 bg-secondary rounded-md w-fit">
+            {options.map((option) => (
+                <button
+                    key={option.value}
+                    onClick={() => {
+                        const newSelected = selectedOptions.includes(option.value)
+                            ? []
+                            : [option.value];
+                        onChange(newSelected)
+                    }}
+                    className={cn(
+                        "px-2 py-1 rounded-md text-sm font-medium transition-colors",
+                        selectedOptions.includes(option.value)
+                            ? "bg-background text-primary"
+                            : "bg-accent text-primary hover:dark:bg-background/30 hover:bg-primary/10"
+                    )}
+                >
+                    {option.label}
+                </button>
+            ))}
+        </div>
     )
 }
