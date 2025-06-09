@@ -19,6 +19,7 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import React from 'react'
+import UserAuthDisplay from './user-auth-display'
 
 const navCategories = [
   {
@@ -148,7 +149,7 @@ export function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 w-full">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden">
@@ -178,7 +179,10 @@ export function Navbar() {
               </div>
             </SheetContent>
           </Sheet>
-          <ModeToggle />
+          <div className='space-x-2 flex-grow flex justify-end items-center'>
+            <ModeToggle />
+            <UserAuthDisplay />
+          </div>
         </div>
       </div>
     </header>
