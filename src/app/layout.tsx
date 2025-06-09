@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -54,14 +55,13 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          // disableTransitionOnChange
         >
           <Navbar />
-
-          {children}
-          {modal}
+          <ScrollArea className="h-[100dvh] w-full">
+            {children}
+            {modal}
+          </ScrollArea>
         </ThemeProvider>
-        
         <footer className="border-t mt-12">
           <div className="container mx-auto px-4 py-6 text-center text-muted-foreground">
             <p>Copyright Wynnpool &copy; 2024 - 2025. All rights reserved. Not affiliated with Wynncraft.</p>
