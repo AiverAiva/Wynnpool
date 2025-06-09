@@ -46,7 +46,7 @@ export default function UserAuthDisplay() {
     }
 
     if (user) {
-        const userName = user.discordProfile?.username || user.discordProfile?.global_name || "User";
+        const userName = user.discordProfile?.global_name || user.discordProfile?.username || "User";
         const avatarUrl = user.discordProfile?.avatar
             ? `https://cdn.discordapp.com/avatars/${user.discordId}/${user.discordProfile.avatar}.png`
             : undefined;
@@ -70,7 +70,7 @@ export default function UserAuthDisplay() {
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
                         <div className="p-2">
-                            <span>This login is only for weight team to modify items</span>
+                            <span>Coming Soon!</span>
                         </div>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
