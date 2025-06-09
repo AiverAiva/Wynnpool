@@ -74,8 +74,9 @@ export default function UserAuthDisplay() {
                         </div>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => {
-                        window.location.href = api('/auth/logout');
+                    <DropdownMenuItem onClick={async () => {
+                        await fetch(api('/auth/logout'), { credentials: 'include' });
+                        setUser(null);
                     }} className="text-red-500">
                         <LogOut className="mr-2 h-4 w-4" />
                         <span>Log out</span>
