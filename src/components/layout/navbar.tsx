@@ -179,8 +179,8 @@ export function Navbar() {
               </div>
             </SheetContent>
           </Sheet>
-          <ModeToggle />
-          <div className='flex-grow flex justify-end items-center'>
+          <div className='space-x-2 flex-grow flex justify-end items-center'>
+            <ModeToggle />
             <UserAuthDisplay />
           </div>
         </div>
