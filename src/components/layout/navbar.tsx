@@ -181,7 +181,7 @@ export function Navbar() {
           </Sheet>
           <div className='space-x-2 flex-grow flex justify-end items-center'>
             <ModeToggle />
-            <UserAuthDisplay />
+            {/* <UserAuthDisplay /> */}
           </div>
         </div>
       </div>
