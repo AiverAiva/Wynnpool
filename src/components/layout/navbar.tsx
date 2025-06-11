@@ -44,6 +44,7 @@ const navCategories = [
       { name: 'Item Search', href: '/item/search' },
       { name: 'Item Changelog', href: '/item/changelog' },
       { name: 'Item Analyze', href: '/item/analyze' },
+      { name: 'Item Leaderboard', href: 'https://weight.wynnpool.com/ranking' },
       { name: 'Item Weight', href: 'https://weight.wynnpool.com/' },
       { name: 'Aspects Data', href: '/aspects/data' },
     ],
@@ -96,7 +97,7 @@ export function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger
-                  className={`transition-colors hover:text-foreground/80 ${isActive(['/item/search', '/aspects/data']) ? 'text-foreground' : 'text-foreground/60'
+                  className={`transition-colors hover:text-foreground/80 ${isActive(['/item/search', '/aspects/data', "/item/changelog", "/item/ranking", "/item/weight"]) ? 'text-foreground' : 'text-foreground/60'
                     } `}
                 >
                   Loadout
@@ -111,6 +112,9 @@ export function Navbar() {
                     </ListItem>
                     <ListItem href="/item/analyze" title="Item Analyze" className={pathname === "/item/analyze" ? 'bg-accent/50' : ''}>
                       Discover your item's potential with expert-crafted weight sets!
+                    </ListItem>
+                    <ListItem href="https://weight.wynnpool.com/ranking" title="Item Leaderboard">
+                      <div className='flex'>Find the best items in the game. <ExternalLink className='w-4 h-4 ml-2' /></div>
                     </ListItem>
                     <ListItem href="https://weight.wynnpool.com/" title="Item Weight">
                       <div className='flex'>Check the weight of every items. <ExternalLink className='w-4 h-4 ml-2' /></div>
