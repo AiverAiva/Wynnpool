@@ -44,8 +44,8 @@ const navCategories = [
       { name: 'Item Search', href: '/item/search' },
       { name: 'Item Changelog', href: '/item/changelog' },
       { name: 'Item Analyze', href: '/item/analyze' },
-      { name: 'Item Leaderboard', href: 'https://weight.wynnpool.com/ranking' },
-      { name: 'Item Weight', href: 'https://weight.wynnpool.com/' },
+      { name: 'Item Leaderboard', href: '/item/ranking' },
+      { name: 'Item Weight', href: '/item/weight' },
       { name: 'Aspects Data', href: '/aspects/data' },
     ],
   },
@@ -113,11 +113,11 @@ export function Navbar() {
                     <ListItem href="/item/analyze" title="Item Analyze" className={pathname === "/item/analyze" ? 'bg-accent/50' : ''}>
                       Discover your item's potential with expert-crafted weight sets!
                     </ListItem>
-                    <ListItem href="https://weight.wynnpool.com/ranking" title="Item Leaderboard">
-                      <div className='flex'>Find the best items in the game. <ExternalLink className='w-4 h-4 ml-2' /></div>
+                    <ListItem href="/item/ranking" title="Item Leaderboard" className={pathname === "/item/ranking" ? 'bg-accent/50' : ''}>
+                      Find the best items in the game, ranked by their weighted score.
                     </ListItem>
-                    <ListItem href="https://weight.wynnpool.com/" title="Item Weight">
-                      <div className='flex'>Check the weight of every items. <ExternalLink className='w-4 h-4 ml-2' /></div>
+                    <ListItem href="/item/weight" title="Item Weight" className={pathname === "/item/weight" ? 'bg-accent/50' : ''}>
+                      Check the weight of every item.
                     </ListItem>
                   </ul>
                   <ul className="grid gap-3 p-6 w-[300px] lg:grid-cols-1">

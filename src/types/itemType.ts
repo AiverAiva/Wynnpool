@@ -29,7 +29,7 @@ export interface IdentificationsObject {
 }
 
 export interface ItemIconObject {
-    format: string;
+    format: "attribute" | "legacy" | "skin";
     value: {
         id: string;
         customModelData: string;
@@ -86,6 +86,7 @@ export interface ItemBase {
 
 export interface WeaponItem extends ItemBase {
     type: 'weapon'
+    weaponType: string
     rarity: Rarity
     attackSpeed: string
     averageDps: number
