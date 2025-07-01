@@ -8,7 +8,7 @@ import { CombatItem } from "@/types/itemType";
 import { calculateIdentificationRoll, getRollPercentageString } from "@/lib/itemUtils";
 import { ArrowDownWideNarrow, ArrowUpNarrowWide } from "lucide-react";
 import api from "@/lib/api";
-import { RolledItemDisplayWithoutCardBecauseIMLAZY } from "@/components/wynncraft/item/RolledItemDisplay";
+import { RolledItemDisplay } from "@/components/wynncraft/item/RolledItemDisplay";
 
 interface Item { internalName: string; }
 
@@ -191,7 +191,7 @@ export default function ItemWeightedLB({ item, open, onClose }: { item: Item; op
                 <TabsContent key={tab.weight_id} value={tab.weight_id}>
                   <div className="space-y-3">
                     {ranked.map((entry, i) => {
-                      if (!selectedItem) continue;
+                      if (!selectedItem) return null;
                       const demoData = { input: entry, original: selectedItem };
                       return (
                         <Popover key={entry.originalString}>
@@ -222,7 +222,7 @@ export default function ItemWeightedLB({ item, open, onClose }: { item: Item; op
                             </div>
                           </PopoverTrigger>
                           <PopoverContent className="w-fit">
-                            <RolledItemDisplayWithoutCardBecauseIMLAZY data={demoData} />
+                            <RolledItemDisplay data={demoData} withCard={false} />
                           </PopoverContent>
                         </Popover>
                       );

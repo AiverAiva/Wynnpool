@@ -116,11 +116,6 @@ const RolledItemDisplay: React.FC<ItemDisplayPropsWithWrapper> = ({ data, withCa
     );
 }
 
-// Alias for backward compatibility
-const RolledItemDisplayWithoutCardBecauseIMLAZY: React.FC<ItemDisplayProps> = (props) => (
-    <RolledItemDisplay {...props} withCard={false} />
-)
-
 interface ItemHeaderProps {
     item: CombatItem
     shinyStat?: {
@@ -176,4 +171,4 @@ export const ItemHeader: React.FC<ItemHeaderProps> = ({ item, shinyStat, overall
     );
 };
 
-export { RolledItemDisplay, RolledItemDisplayWithoutCardBecauseIMLAZY };
+export { RolledItemDisplay };

@@ -16,7 +16,7 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
   const [ownerName, setOwnerName] = useState("");
   const [loading, setLoading] = useState(false);
   type SubmissionError = 'DECODE_FAILED' | 'STORE_FAILED' | 'NETWORK_ERROR';
-  const [error, setError] = useState<SubmissionError | null>(null);
+  const [error, setError] = useState<SubmissionError | null | string>(null);
 
   const handleSubmit = async () => {
     // Client-side validation
