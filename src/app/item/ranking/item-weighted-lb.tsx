@@ -191,7 +191,8 @@ export default function ItemWeightedLB({ item, open, onClose }: { item: Item; op
                 <TabsContent key={tab.weight_id} value={tab.weight_id}>
                   <div className="space-y-3">
                     {ranked.map((entry, i) => {
-                      const demoData = { input: entry, original: selectedItem! };
+                      if (!selectedItem) continue;
+                      const demoData = { input: entry, original: selectedItem };
                       return (
                         <Popover key={entry.originalString}>
                           <PopoverTrigger asChild>
