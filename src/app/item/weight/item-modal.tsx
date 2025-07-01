@@ -107,13 +107,13 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
         credentials: "include", // Include cookies for auth
       }
     );
-
     if (res.ok) {
       const updated = await fetch(api(`/item/${item.internalName}/weight`)).then((r) => r.json());
       setWeights(updated);
       setEditableWeight(null);
     } else {
-      console.error("Failed to save weight");
+      const errorData = await res.json().catch(() => ({}));
+      alert(`Failed to save weight: ${errorData.message || res.statusText}`);
     }
     setSubmitting(false);
   };
