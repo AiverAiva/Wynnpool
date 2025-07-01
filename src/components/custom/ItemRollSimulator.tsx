@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { CombatItem } from "@/types/itemType"
 import { Dice1Icon as Dice, AlertTriangle } from "lucide-react"
 import type React from "react"
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useRef } from "react"
 import { AnotherRolledIdentifications, AnotherRolledIdentificationsProps } from "../wynncraft/item/Identifications"
 import { ItemHeader } from "../wynncraft/item/RolledItemDisplay"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
@@ -28,6 +28,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     const [overallRequirement, setOverallRequirement] = useState<{ value?: number, enabled: boolean }>({ enabled: false }); // For overall item requirement
     const [isAutoRolling, setIsAutoRolling] = useState(false);
     const [autoRollStatus, setAutoRollStatus] = useState<string | null>(null);
+    const autoRollCancelRef = useRef(false);
 
 
     // Initialize rolled identifications and requirements structure
@@ -67,58 +68,66 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
             return 0;
         };
 
-        for (const [stat, value] of Object.entries(IDs)) {
-            if (typeof value === 'object' && 'raw' in value) {
-                if (selectedAugment === "Corkian Insulator" && lockedIdentification === stat && RolledIdentifications[stat] && RolledIdentifications[stat].hasOwnProperty('percentage')) {
-                    newRolledIDs[stat] = RolledIdentifications[stat];
-                    currentOverallSum += (RolledIdentifications[stat] as { percentage: number }).percentage;
+        for (const [idName, idValue] of Object.entries(IDs)) {
+            if (typeof idValue === 'object' && 'raw' in idValue) {
+                if (selectedAugment === "Corkian Insulator" && lockedIdentification === idName && RolledIdentifications[idName] && RolledIdentifications[idName].hasOwnProperty('percentage')) {
+                    newRolledIDs[idName] = RolledIdentifications[idName];
+                    currentOverallSum += (RolledIdentifications[idName] as { percentage: number }).percentage;
+                    identificationCount++;
+                    continue;
+                }
+                if (selectedAugment === "Corkian Isolator" && lockedIdentification && lockedIdentification !== idName && RolledIdentifications[idName] && RolledIdentifications[idName].hasOwnProperty('percentage')) {
+                    newRolledIDs[idName] = RolledIdentifications[idName];
+                    currentOverallSum += (RolledIdentifications[idName] as { percentage: number }).percentage;
                     identificationCount++;
                     continue;
                 }
 
-                if (selectedAugment === "Corkian Isolator" && lockedIdentification && lockedIdentification !== stat && RolledIdentifications[stat] && RolledIdentifications[stat].hasOwnProperty('percentage')) {
-                    newRolledIDs[stat] = RolledIdentifications[stat];
-                    currentOverallSum += (RolledIdentifications[stat] as { percentage: number }).percentage;
+                let rolledValue;
+                let maxRoll, minRoll, percent, ampSim;
+                const rollPos = (Math.ceil((Math.random() * 101) - 1) / 100) + 0.3;
+                const rollNeg = (Math.ceil((Math.random() * 61) - 1) / 100) + 0.7;
+                let starLevel = 0;
+                ampSim = parseFloat((rollPos + (1.3 - rollPos) * ampMultiplier).toFixed(2));
+
+                if (idValue.raw > 0) {
+                    maxRoll = Math.round(idValue.raw * 1.3);
+                    if (!idName.toLowerCase().includes('spellcost')) {
+                        if (ampSim >= 1.0 && ampSim < 1.25) starLevel = 1;
+                        else if (ampSim >= 1.25 && ampSim < 1.3) starLevel = 2;
+                        else if (ampSim === 1.3) starLevel = 3;
+                    }
+
+                    if (idName.toLowerCase().includes('spellcost')) {
+                        rolledValue = Math.round(idValue.raw * rollNeg);
+                        minRoll = Math.round(idValue.raw * 0.7);
+                        percent = minRoll !== maxRoll ? ((maxRoll - rolledValue) / (maxRoll - minRoll)) * 100 : 100;
+                    } else {
+                        rolledValue = Math.round(idValue.raw * ampSim);
+                        minRoll = Math.round(idValue.raw * 0.3);
+                        percent = minRoll !== maxRoll ? ((rolledValue - minRoll) / (maxRoll - minRoll)) * 100 : 100;
+                    }
+
+                    currentOverallSum += percent;
                     identificationCount++;
-                    continue;
+                    newRolledIDs[idName] = { raw: rolledValue, percentage: Number(percent.toFixed(1)), star: starLevel };
+                } else {
+                    maxRoll = Math.round(idValue.raw * 1.3);
+                    if (idName.toLowerCase().includes('spellcost')) {
+                        rolledValue = Math.round(idValue.raw * ampSim);
+                        minRoll = Math.round(idValue.raw * 0.3);
+                        percent = minRoll !== maxRoll ? ((rolledValue - minRoll) / (maxRoll - minRoll)) * 100 : 100;
+                    } else {
+                        rolledValue = Math.round(idValue.raw * rollNeg);
+                        minRoll = Math.round(idValue.raw * 0.7);
+                        percent = minRoll !== maxRoll ? ((maxRoll - rolledValue) / (maxRoll - minRoll)) * 100 : 100;
+                    }
+                    currentOverallSum += percent;
+                    identificationCount++;
+                    newRolledIDs[idName] = { raw: rolledValue, percentage: Number(percent.toFixed(1)), star: starLevel };
                 }
-
-                const isSpellCost = stat.toLowerCase().includes('spellcost');
-                const base = value.raw;
-                const isPositive = base > 0;
-
-                let roll = getRoll(!isPositive);
-                let ampRoll = parseFloat((roll + (1.3 - roll) * ampMultiplier).toFixed(2));
-
-                let finalRoll = isSpellCost
-                    ? Math.round(base * (isPositive ? getRoll(true) : ampRoll))
-                    : Math.round(base * (isPositive ? ampRoll : getRoll(true)));
-
-                let maxVal = Math.round(base * 1.3);
-                let minVal = Math.round(base * (isSpellCost ? 0.7 : 0.3));
-
-                let percentage = minVal !== maxVal
-                    ? isPositive
-                        ? isSpellCost
-                            ? ((maxVal - finalRoll) / (maxVal - minVal)) * 100
-                            : ((finalRoll - minVal) / (maxVal - minVal)) * 100
-                        : isSpellCost
-                            ? ((finalRoll - minVal) / (maxVal - minVal)) * 100
-                            : ((maxVal - finalRoll) / (maxVal - minVal)) * 100 * 5 / 3
-                    : 100;
-
-                let star = !isSpellCost && isPositive ? getStarLevel(ampRoll) : 0;
-
-                currentOverallSum += percentage;
-                identificationCount++;
-
-                newRolledIDs[stat] = { // Corrected to use newRolledIDs
-                    raw: finalRoll,
-                    percentage: Number(percentage.toFixed(1)),
-                    star,
-                };
             } else {
-                newRolledIDs[stat] = value; // Corrected to use newRolledIDs
+                newRolledIDs[idName] = idValue;
             }
         }
 
@@ -143,13 +152,11 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
 
 
     const handleRequirementChange = (statKey: string, value: string) => {
-
-    const handleRequirementChange = (statKey: string, value: string) => {
         setRequirements(prev => ({
             ...prev,
             [statKey]: { ...prev[statKey], value: value === "" ? undefined : Number(value) }
         }));
-    };
+    };  
 
     const toggleRequirement = (statKey: string) => {
         setRequirements(prev => ({
@@ -182,23 +189,19 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
         return true;
     };
 
+
     const autoRoll = useCallback(async () => {
         if (isAutoRolling) return;
         setIsAutoRolling(true);
         setIsRolling(true);
         setAutoRollStatus("Rolling...");
+        autoRollCancelRef.current = false;
 
         let currentAttempt = 0;
-        const maxAttempts = 10000; // Safety break for auto-rolling
-
-        // Ensure requirements state is up-to-date if it was modified elsewhere (though ideally it's stable)
-        // For this version, we assume `requirements` and `overallRequirement` are correctly set by user interactions before calling autoRoll.
-
         let simResult = { newRolledIDs: RolledIdentifications, overall: itemOverall, idCount: Object.keys(RolledIdentifications).length };
 
-        while (currentAttempt < maxAttempts) {
-            simResult = stableSimulateRoll(); // This now correctly updates state and returns values
-
+        while (!autoRollCancelRef.current) {
+            simResult = stableSimulateRoll();
             if (checkRequirements(simResult.newRolledIDs, simResult.overall)) {
                 const rollsTaken = selectedAugment === "Corkian Simulator" ? "N/A (Simulator Active)" : currentAttempt + 1;
                 setAutoRollStatus(`Requirements met after ${rollsTaken} auto-roll${currentAttempt === 0 && selectedAugment !== "Corkian Simulator" ? "" : "s"}.`);
@@ -207,16 +210,15 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                 return;
             }
             currentAttempt++;
-            if (currentAttempt % 200 === 0) { // Yield to event loop occasionally to prevent freezing
+            if (currentAttempt % 500 === 0) {
                 setAutoRollStatus(`Rolling... Attempt ${currentAttempt + 1}`);
                 await new Promise(resolve => setTimeout(resolve, 0));
             }
         }
-
-        setAutoRollStatus(`Max auto-rolls (${maxAttempts}) reached. Requirements not met.`);
+        setAutoRollStatus("Auto-roll stopped by user.");
         setIsAutoRolling(false);
         setIsRolling(false);
-    }, [isAutoRolling, stableSimulateRoll, checkRequirements, RolledIdentifications, itemOverall, selectedAugment, requirements, overallRequirement]); // Added requirements and overallRequirement
+    }, [isAutoRolling, stableSimulateRoll, checkRequirements, RolledIdentifications, itemOverall, selectedAugment, requirements, overallRequirement]);
 
 
     return (
@@ -248,11 +250,26 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                     </SelectContent>
                                 </Select>
                             </div>
-                            <Button variant="outline" size="sm" className="gap-1" onClick={() => { stableSimulateRoll(); setAutoRollStatus(null); }} disabled={isRolling || isAutoRolling}>
-                                <Dice className="h-4 w-4" /> Roll
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="gap-1"
+                                onClick={isAutoRolling
+                                    ? () => { autoRollCancelRef.current = true; setIsAutoRolling(false); }
+                                    : () => { stableSimulateRoll(); setAutoRollStatus(null); }
+                                }
+                                disabled={isAutoRolling ? false : isRolling}
+                            >
+                                <Dice className="h-4 w-4" /> {isAutoRolling ? "Stop" : "Roll"}
                             </Button>
-                             <Button variant="outline" size="sm" className="gap-1" onClick={autoRoll} disabled={isRolling || isAutoRolling}>
-                                <Dice className="h-4 w-4" /> {isAutoRolling ? "Rolling..." : "Roll until Req."}
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="gap-1"
+                                onClick={autoRoll}
+                                disabled={isRolling || isAutoRolling}
+                            >
+                                <Dice className="h-4 w-4" /> Roll until Req.
                             </Button>
                             <span className="ml-2 text-xs text-muted-foreground">Rerolls: {rerollCount}</span>
                         </div>
@@ -289,21 +306,21 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                 {selectedAugment === "Corkian Insulator" ? "Lock ID" : "Isolate ID"}
                             </Label>
                             <Select
-                                value={lockedIdentification || ""}
-                                onValueChange={(value) => setLockedIdentification(value === "" ? null : value)}
+                                value={lockedIdentification ?? "__none__"}
+                                onValueChange={(value) => setLockedIdentification(value === "__none__" ? null : value)}
                             >
                                 <SelectTrigger className="w-[180px] h-8 text-sm" id="locked-id-select">
                                     <SelectValue placeholder="Select ID" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="">None</SelectItem>
-                                    {Object.keys(item.identifications).map((idKey) => (
-                                        typeof item.identifications[idKey] === 'object' && 'raw' in item.identifications[idKey] && (
+                                    <SelectItem value="__none__">None</SelectItem>
+                                    {item.identifications ? Object.keys(item.identifications).map((idKey) => (
+                                        typeof item.identifications![idKey] === 'object' && 'raw' in item.identifications![idKey] && (
                                             <SelectItem key={idKey} value={idKey}>
                                                 {idKey}
                                             </SelectItem>
                                         )
-                                    ))}
+                                    )) : null}
                                 </SelectContent>
                             </Select>
                         </div>
