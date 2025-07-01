@@ -65,7 +65,11 @@ export function calculateOverallPercentage(ids: IdentificationStat[]): number {
     return total / ids.length;
 }
 
-const RolledItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
+interface ItemDisplayPropsWithWrapper extends ItemDisplayProps {
+    withCard?: boolean;
+}
+
+const RolledItemDisplay: React.FC<ItemDisplayPropsWithWrapper> = ({ data, withCard = true }) => {
     const { original, input, weights } = data;
     const processedIdentifications = processIdentification(data)
 
@@ -75,14 +79,14 @@ const RolledItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
         value: input.shinyStat.value,
     } : undefined;
 
-    return (
-        <Card className="w-full max-w-sm h-fit font-ascii p-6 text-[#AAAAAA] space-y-6">
+    const content = (
+        <>
             <ItemHeader
                 item={original}
                 shinyStat={shinyStat}
                 overall={calculateOverallPercentage(processedIdentifications)}
             />
-            <span className="text-red-500 text-orange-500 text-amber-400 text-yellow-300 text-green-500 text-cyan-500"/>
+            <span className="text-red-500 text-orange-500 text-amber-400 text-yellow-300 text-green-500 text-cyan-500" />
             {/* <ItemContent item={item} /> */}
             <div className="flex justify-center">
                 <div className="flex flex-col items-start text-center space-y-4">
@@ -95,8 +99,21 @@ const RolledItemDisplay: React.FC<ItemDisplayProps> = ({ data }) => {
                     )}
                 </div>
             </div>
-        </Card>
-    )
+        </>
+    );
+
+    if (withCard) {
+        return (
+            <Card className="w-full max-w-sm h-fit font-ascii p-6 text-[#AAAAAA] space-y-6">
+                {content}
+            </Card>
+        );
+    }
+    return (
+        <div className="w-full max-w-sm h-fit font-ascii p-6 text-[#AAAAAA] space-y-6">
+            {content}
+        </div>
+    );
 }
 
 interface ItemHeaderProps {
