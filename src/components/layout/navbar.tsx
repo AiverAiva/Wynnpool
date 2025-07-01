@@ -51,6 +51,11 @@ const navCategories = [
   },
 ];
 
+/**
+ * Renders the main responsive navigation bar for the application.
+ *
+ * Displays a fixed header with navigation links, dropdown menus, theme toggle, and user authentication status. Adapts layout for desktop and mobile screens, providing a slide-in menu on mobile devices.
+ */
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()

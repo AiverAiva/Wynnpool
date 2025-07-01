@@ -38,6 +38,16 @@ interface IdentificationRange {
   max: number;
 }
 
+/**
+ * Displays a weighted leaderboard dialog for a given item, ranking verified item entries by identification scores.
+ *
+ * Fetches and displays verified item data, available weight profiles, and item identification ranges. Renders a tabbed interface showing the top 10 ranked entries for each weight profile, with options to sort order and filter to shiny-only items. Each leaderboard entry provides detailed roll information via a popover.
+ *
+ * @param item - The item for which to display the leaderboard
+ * @param open - Whether the leaderboard dialog is open
+ * @param onClose - Callback to close the dialog
+ * @returns A React element rendering the weighted leaderboard dialog
+ */
 export default function ItemWeightedLB({ item, open, onClose }: { item: Item; open: boolean; onClose: () => void }) {
   const [verifiedItems, setVerifiedItems] = useState<VerifiedItem[]>([]);
   const [weights, setWeights] = useState<Weight[]>([]);

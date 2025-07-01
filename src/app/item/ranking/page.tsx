@@ -11,6 +11,11 @@ import api from "@/lib/api";
 
 type ItemEntry = [string, any];
 
+/**
+ * Displays a page with rankings for mythic weapons and armors, allowing users with permission to submit new items.
+ *
+ * Fetches user roles to determine submission access and retrieves all mythic weapons and armors, grouping them by weapon type or as armor. Renders a responsive grid of items by category, each with an icon and internal name. Selecting an item opens a detailed leaderboard modal. If permitted, users can open a modal to submit new items.
+ */
 export default function RankingPage() {
     const [groupedItems, setGroupedItems] = useState<Record<string, [string, Item][]>>({});
     const [selectedItem, setSelectedItem] = useState<Item | null>(null);

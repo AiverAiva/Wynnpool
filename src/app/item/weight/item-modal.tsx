@@ -47,6 +47,19 @@ const STATIC_IDS = [
   "rawIntelligence",
 ];
 
+/**
+ * Displays a modal dialog for viewing, creating, editing, and deleting weights associated with a specific item.
+ *
+ * The modal fetches and displays a list of weights for the given item, showing details such as type, name, author, timestamp, description, and identification percentages. If the user has permission, they can add new weights, edit existing ones, or delete them. Editing allows modification of the weight's name, description, and identification percentages, with validation to ensure the total absolute percentage equals 100%. All changes are persisted via API requests, and the UI reflects loading and submitting states.
+ *
+ * @param item - The item whose weights are being managed.
+ * @param open - Controls whether the modal is visible.
+ * @param onClose - Callback to close the modal.
+ * @param user - The current user information.
+ * @param isAllowed - Whether the user has permission to modify weights.
+ *
+ * @returns A React modal component for managing item weights.
+ */
 export default function ItemModal({ item, open, onClose, user, isAllowed }: Props) {
   const [weights, setWeights] = useState<Weight[]>([]);
   const [editableWeight, setEditableWeight] = useState<Weight | null>(null);
@@ -374,6 +387,11 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
   );
 }
 
+/**
+ * Renders a skeleton placeholder mimicking the layout of a weight card during loading.
+ *
+ * Displays animated blocks representing text and percentage bars to indicate loading state.
+ */
 function WeightSkeleton() {
   return (
     <div className="border p-3 rounded-md space-y-2 animate-pulse">

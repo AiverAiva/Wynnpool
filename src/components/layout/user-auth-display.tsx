@@ -26,6 +26,11 @@ async function fetchUser() {
     }
 }
 
+/**
+ * Displays the current user's authentication status and provides login or logout options using Discord OAuth.
+ *
+ * Renders a loading indicator while user data is being fetched. If a user is authenticated, shows their Discord avatar and a dropdown menu with user information and a logout option. If not authenticated, displays a "Login with Discord" button that redirects to the Discord OAuth login flow.
+ */
 export default function UserAuthDisplay() {
     const [user, setUser] = useState<any | null>(null);
     const [loading, setLoading] = useState(true);

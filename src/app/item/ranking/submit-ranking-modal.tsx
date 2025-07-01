@@ -11,6 +11,14 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import api from "@/lib/api";
 
+/**
+ * Displays a modal dialog for submitting a verified item string and owner name.
+ *
+ * Allows users to input an item string and an optional owner name, then submit the data for verification and storage. Handles asynchronous API requests, displays loading and error states, and resets input fields upon successful submission.
+ *
+ * @param open - Whether the modal is visible
+ * @param onClose - Callback to close the modal
+ */
 export default function SubmitRankingModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [itemString, setItemString] = useState("");
   const [ownerName, setOwnerName] = useState("");

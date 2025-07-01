@@ -17,6 +17,11 @@ import api from "@/lib/api";
 
 type ItemEntry = [string, any];
 
+/**
+ * Displays a categorized list of mythic items, allowing users to view item details in a modal.
+ *
+ * Fetches and groups mythic weapons and armor by category, determines user permissions, and renders an interactive grid. Clicking an item opens a modal with detailed information, including user-specific data and permission-based features.
+ */
 export default function MythicItemsPage() {
     const [groupedItems, setGroupedItems] = useState<Record<string, [string, Item][]>>({});
     const [selectedItem, setSelectedItem] = useState<Item | null>(null);
