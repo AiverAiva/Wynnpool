@@ -57,10 +57,8 @@ export default function RootLayout({
           enableSystem
         >
           <Navbar />
-          <ScrollArea className="h-[100dvh] w-full">
-            {children}
-            {modal}
-          </ScrollArea>
+          {children}
+          {modal}
         </ThemeProvider>
         <footer className="border-t mt-12">
           <div className="container mx-auto px-4 py-6 text-center text-muted-foreground">
