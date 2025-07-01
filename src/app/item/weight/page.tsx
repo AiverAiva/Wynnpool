@@ -100,16 +100,21 @@ export default function MythicItemsPage() {
                                         <ItemIcon item={item} size={40} />
                                         <strong>{item.internalName}</strong>
                                     </div>
-
-                                    {selectedItem?.internalName === item.internalName && (
-                                        <ItemModal item={item} open={true} onClose={() => setSelectedItem(null)} user={user} isAllowed={isAllowed} />
-                                    )}
                                 </div>
                             ))}
-
                         </div>
                     </div>
                 ))}
+                {/* Single modal instance for all items */}
+                {selectedItem && (
+                    <ItemModal
+                        item={selectedItem}
+                        open={!!selectedItem}
+                        onClose={() => setSelectedItem(null)}
+                        user={user}
+                        isAllowed={isAllowed}
+                    />
+                )}
             </main>
         </div>
     );
