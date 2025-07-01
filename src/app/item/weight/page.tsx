@@ -26,12 +26,18 @@ export default function MythicItemsPage() {
 
     useEffect(() => {
         fetch(api("/user/me/quick"), { credentials: "include" })
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error('Authentication failed');
+                return res.json();
+            })
             .then(data => {
                 setUser(data);
                 setIsAllowed(data.roles?.includes("ITEM_WEIGHT"));
             })
-            .catch(() => setIsAllowed(false));
+            .catch((err) => {
+                console.error('Auth error:', err);
+                setIsAllowed(false);
+            });
     }, []);
 
     useEffect(() => {
