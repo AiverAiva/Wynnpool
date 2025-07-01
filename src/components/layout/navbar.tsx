@@ -117,7 +117,7 @@ export function Navbar() {
                       Find the best items in the game, ranked by their weighted score.
                     </ListItem>
                     <ListItem href="/item/weight" title="Item Weight" className={pathname === "/item/weight" ? 'bg-accent/50' : ''}>
-                      Check the weight of every items.
+                      Check the weight of every item.
                     </ListItem>
                   </ul>
                   <ul className="grid gap-3 p-6 w-[300px] lg:grid-cols-1">
