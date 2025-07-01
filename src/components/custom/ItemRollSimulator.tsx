@@ -3,9 +3,10 @@
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { CombatItem } from "@/types/itemType"
-import { Dice1Icon as Dice, AlertTriangle } from "lucide-react"
+import { Dice1Icon as Dice, AlertTriangle, ChevronUpIcon, ChevronDownIcon } from "lucide-react"
 import type React from "react"
 import { useEffect, useState, useCallback, useRef } from "react"
+import { getIdentificationInfo } from '@/lib/itemUtils';
 import { AnotherRolledIdentifications, AnotherRolledIdentificationsProps } from "../wynncraft/item/Identifications"
 import { ItemHeader } from "../wynncraft/item/RolledItemDisplay"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
@@ -24,8 +25,8 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     const [rerollCount, setRerollCount] = useState(0);
     const [selectedAugment, setSelectedAugment] = useState<string>("None");
     const [lockedIdentification, setLockedIdentification] = useState<string | null>(null);
-    const [requirements, setRequirements] = useState<{ [key: string]: { value?: number, enabled: boolean } }>({}); // For individual stat requirements
-    const [overallRequirement, setOverallRequirement] = useState<{ value?: number, enabled: boolean }>({ enabled: false }); // For overall item requirement
+    const [requirements, setRequirements] = useState<{ [key: string]: { value?: number, enabled: boolean, direction?: 'gte' | 'lte' } }>({}); // For individual stat requirements
+    const [overallRequirement, setOverallRequirement] = useState<{ value?: number, enabled: boolean, direction?: 'gte' | 'lte' }>({ enabled: false, direction: 'gte' }); // For overall item requirement
     const [isAutoRolling, setIsAutoRolling] = useState(false);
     const [autoRollStatus, setAutoRollStatus] = useState<string | null>(null);
     const autoRollCancelRef = useRef(false);
@@ -33,11 +34,11 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
 
     // Initialize rolled identifications and requirements structure
     useEffect(() => {
-        const initialReqs: { [key: string]: { value?: number, enabled: boolean } } = {};
+        const initialReqs: { [key: string]: { value?: number, enabled: boolean, direction?: 'gte' | 'lte' } } = {};
         if (item.identifications) {
             for (const idKey of Object.keys(item.identifications)) {
                 if (typeof item.identifications[idKey] === 'object' && 'raw' in item.identifications[idKey]) {
-                    initialReqs[idKey] = { enabled: false, value: undefined };
+                    initialReqs[idKey] = { enabled: false, value: undefined, direction: 'gte' };
                 }
             }
         }
@@ -156,7 +157,17 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
             ...prev,
             [statKey]: { ...prev[statKey], value: value === "" ? undefined : Number(value) }
         }));
-    };  
+    };
+
+    const toggleRequirementDirection = (statKey: string) => {
+        setRequirements(prev => ({
+            ...prev,
+            [statKey]: {
+                ...prev[statKey],
+                direction: prev[statKey]?.direction === 'gte' ? 'lte' : 'gte'
+            }
+        }));
+    };
 
     const toggleRequirement = (statKey: string) => {
         setRequirements(prev => ({
@@ -169,20 +180,36 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
         setOverallRequirement(prev => ({ ...prev, value: value === "" ? undefined : Number(value) }));
     };
 
+    const toggleOverallRequirementDirection = () => {
+        setOverallRequirement(prev => ({
+            ...prev,
+            direction: prev.direction === 'gte' ? 'lte' : 'gte'
+        }));
+    };
+
     const toggleOverallRequirement = () => {
         setOverallRequirement(prev => ({ ...prev, enabled: !prev.enabled }));
     };
 
     const checkRequirements = (rolledIds: AnotherRolledIdentificationsProps, currentOverall: number): boolean => {
         if (overallRequirement.enabled && typeof overallRequirement.value === 'number') {
-            if (currentOverall < overallRequirement.value) return false;
+            const direction = overallRequirement.direction || 'gte';
+            if (direction === 'gte') {
+                if (currentOverall < overallRequirement.value) return false;
+            } else {
+                if (currentOverall > overallRequirement.value) return false;
+            }
         }
 
         for (const statKey in requirements) {
             if (requirements[statKey].enabled && typeof requirements[statKey].value === 'number') {
                 const rolledValue = rolledIds[statKey] as { percentage: number } | undefined;
-                if (!rolledValue || rolledValue.percentage < requirements[statKey].value!) {
-                    return false;
+                const direction = requirements[statKey].direction || 'gte';
+                if (!rolledValue) return false;
+                if (direction === 'gte') {
+                    if (rolledValue.percentage < requirements[statKey].value!) return false;
+                } else {
+                    if (rolledValue.percentage > requirements[statKey].value!) return false;
                 }
             }
         }
@@ -317,7 +344,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                     {item.identifications ? Object.keys(item.identifications).map((idKey) => (
                                         typeof item.identifications![idKey] === 'object' && 'raw' in item.identifications![idKey] && (
                                             <SelectItem key={idKey} value={idKey}>
-                                                {idKey}
+                                                <span>{getIdentificationInfo(idKey)?.displayName || idKey}</span>
                                             </SelectItem>
                                         )
                                     )) : null}
@@ -337,7 +364,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                             </div>
                         </div>
 
-                        <div className="mt-6 border-t pt-4">
+                        <div className="mt-6 border-t pt-4 font-sans">
                             <h3 className="text-lg font-semibold mb-2">Set Roll Requirements</h3>
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2">
@@ -349,6 +376,30 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                         className="h-4 w-4"
                                     />
                                     <Label htmlFor="overall-req-enabled" className="text-sm">Overall %:</Label>
+                                    <button
+                                        type="button"
+                                        className={`mx-1 flex items-center justify-center rounded-md border-2 transition-colors duration-150 focus:outline-none focus:ring-2
+                                            ${overallRequirement.direction === 'lte'
+                                                ? 'border-red-500 text-red-600 dark:border-red-400 dark:text-red-300 bg-red-50 dark:bg-red-900 hover:bg-red-100 dark:hover:bg-red-800'
+                                                : 'border-green-500 text-green-600 dark:border-green-400 dark:text-green-300 bg-green-50 dark:bg-green-900 hover:bg-green-100 dark:hover:bg-green-800'}
+                                            `}
+                                        style={{ width: 36, height: 36 }}
+                                        title={
+                                            overallRequirement.direction === 'lte'
+                                                ? 'Click to require ≤ (at most) this value'
+                                                : 'Click to require ≥ (at least) this value'
+                                        }
+                                        aria-label={
+                                            overallRequirement.direction === 'lte'
+                                                ? 'Set requirement to at most'
+                                                : 'Set requirement to at least'
+                                        }
+                                        onClick={toggleOverallRequirementDirection}
+                                    >
+                                        {overallRequirement.direction === 'lte'
+                                            ? <ChevronDownIcon className="w-6 h-6" />
+                                            : <ChevronUpIcon className="w-6 h-6" />}
+                                    </button>
                                     <input
                                         type="number"
                                         id="overall-req"
@@ -361,6 +412,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                 </div>
                                 {item.identifications && Object.entries(item.identifications).map(([statKey, statValue]) => {
                                     if (typeof statValue === 'object' && 'raw' in statValue) {
+                                        const displayName = getIdentificationInfo(statKey)?.displayName || statKey;
                                         return (
                                             <div key={statKey} className="flex items-center gap-2">
                                                 <input
@@ -370,7 +422,31 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                                     onChange={() => toggleRequirement(statKey)}
                                                     className="h-4 w-4"
                                                 />
-                                                <Label htmlFor={`${statKey}-req-enabled`} className="text-sm min-w-[150px] truncate" title={statKey}>{statKey} %:</Label>
+                                                <Label htmlFor={`${statKey}-req-enabled`} className="text-sm min-w-[150px] truncate" title={displayName}>{displayName} %:</Label>
+                                                <button
+                                                    type="button"
+                                                    className={`mx-1 flex items-center justify-center rounded-md border-2 transition-colors duration-150 focus:outline-none focus:ring-2
+                                                        ${requirements[statKey]?.direction === 'lte'
+                                                            ? 'border-red-500 text-red-600 dark:border-red-400 dark:text-red-300 bg-red-50 dark:bg-red-900 hover:bg-red-100 dark:hover:bg-red-800'
+                                                            : 'border-green-500 text-green-600 dark:border-green-400 dark:text-green-300 bg-green-50 dark:bg-green-900 hover:bg-green-100 dark:hover:bg-green-800'}
+                                                        `}
+                                                    style={{ width: 36, height: 36 }}
+                                                    title={
+                                                        requirements[statKey]?.direction === 'lte'
+                                                            ? 'Click to require ≤ (at most) this value'
+                                                            : 'Click to require ≥ (at least) this value'
+                                                    }
+                                                    aria-label={
+                                                        requirements[statKey]?.direction === 'lte'
+                                                            ? 'Set requirement to at most'
+                                                            : 'Set requirement to at least'
+                                                    }
+                                                    onClick={() => toggleRequirementDirection(statKey)}
+                                                >
+                                                    {requirements[statKey]?.direction === 'lte'
+                                                        ? <ChevronDownIcon className="w-6 h-6" />
+                                                        : <ChevronUpIcon className="w-6 h-6" />}
+                                                </button>
                                                 <input
                                                     type="number"
                                                     id={`${statKey}-req`}
