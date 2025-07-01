@@ -29,7 +29,7 @@ export interface IdentificationsObject {
 }
 
 export interface ItemIconObject {
-    format: string;
+    format: "attribute" | "legacy" | "skin";
     value: {
         id: string;
         customModelData: string;
