@@ -18,6 +18,16 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async () => {
+    // Client-side validation
+    if (!itemString.trim()) {
+      setError("Item string is required");
+      return;
+    }
+    if (!ownerName.trim()) {
+      setError("Owner name is required");
+      return;
+    }
+
     setLoading(true);
     setError(null);
     try {
@@ -27,7 +37,10 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
         body: JSON.stringify({ item: itemString }),
       });
 
-      if (!summaryRes.ok) throw new Error("Failed to decode item string.");
+      if (!summaryRes.ok) {
+        const errorText = await summaryRes.text();
+        throw new Error(`Failed to decode item string: ${errorText}`);
+      }
 
       const summary = await summaryRes.json();
 
