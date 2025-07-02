@@ -44,7 +44,7 @@ const navCategories = [
       { name: 'Item Search', href: '/item/search' },
       { name: 'Item Changelog', href: '/item/changelog' },
       { name: 'Item Analyze', href: '/item/analyze' },
-      { name: 'Item Leaderboard', href: '/item/ranking' },
+      { name: 'Item Ranking', href: '/item/ranking' },
       { name: 'Item Weight', href: '/item/weight' },
       { name: 'Aspects Data', href: '/aspects/data' },
     ],
@@ -113,7 +113,7 @@ export function Navbar() {
                     <ListItem href="/item/analyze" title="Item Analyze" className={pathname === "/item/analyze" ? 'bg-accent/50' : ''}>
                       Discover your item's potential with expert-crafted weight sets!
                     </ListItem>
-                    <ListItem href="/item/ranking" title="Item Leaderboard" className={pathname === "/item/ranking" ? 'bg-accent/50' : ''}>
+                    <ListItem href="/item/ranking" title="Item Ranking" className={pathname === "/item/ranking" ? 'bg-accent/50' : ''}>
                       Find the best items in the game, ranked by their weighted score.
                     </ListItem>
                     <ListItem href="/item/weight" title="Item Weight" className={pathname === "/item/weight" ? 'bg-accent/50' : ''}>
