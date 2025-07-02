@@ -3,9 +3,10 @@
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { CombatItem } from "@/types/itemType"
-import { Dice1Icon as Dice } from "lucide-react"
+import { Dice1Icon as Dice, AlertTriangle, ChevronUpIcon, ChevronDownIcon } from "lucide-react"
 import type React from "react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback, useRef } from "react"
+import { getIdentificationInfo } from '@/lib/itemUtils';
 import { AnotherRolledIdentifications, AnotherRolledIdentificationsProps } from "../wynncraft/item/Identifications"
 import { ItemHeader } from "../wynncraft/item/RolledItemDisplay"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
@@ -22,22 +23,39 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     const [itemOverall, setItemOverall] = useState<number>(0)
     const [isRolling, setIsRolling] = useState(false)
     const [rerollCount, setRerollCount] = useState(0);
+    const [selectedAugment, setSelectedAugment] = useState<string>("None");
+    const [lockedIdentification, setLockedIdentification] = useState<string | null>(null);
+    const [requirements, setRequirements] = useState<{ [key: string]: { value?: number, enabled: boolean, direction?: 'gte' | 'lte' } }>({}); // For individual stat requirements
+    const [overallRequirement, setOverallRequirement] = useState<{ value?: number, enabled: boolean, direction?: 'gte' | 'lte' }>({ enabled: false, direction: 'gte' }); // For overall item requirement
+    const [isAutoRolling, setIsAutoRolling] = useState(false);
+    const [autoRollStatus, setAutoRollStatus] = useState<string | null>(null);
+    const autoRollCancelRef = useRef(false);
 
-    // Initialize rolled identifications
+
+    // Initialize rolled identifications and requirements structure
     useEffect(() => {
-        simulateRoll()
-        setRerollCount(0)
-    }, [item])
+        const initialReqs: { [key: string]: { value?: number, enabled: boolean, direction?: 'gte' | 'lte' } } = {};
+        if (item.identifications) {
+            for (const idKey of Object.keys(item.identifications)) {
+                if (typeof item.identifications[idKey] === 'object' && 'raw' in item.identifications[idKey]) {
+                    initialReqs[idKey] = { enabled: false, value: undefined, direction: 'gte' };
+                }
+            }
+        }
+        setRequirements(initialReqs);
+        setOverallRequirement({ enabled: false, value: undefined });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [item]); // item is the primary dependency here
 
-    const simulateRoll = () => {
-        if (!item.identifications) return;
+    const stableSimulateRoll = useCallback(() => {
+        if (!item.identifications) return { newRolledIDs: {}, overall: 0, idCount: 0 };
 
-        const result: AnotherRolledIdentificationsProps = {};
+        const newRolledIDs: AnotherRolledIdentificationsProps = {};
         const ampMultiplier = 0.05 * ampTier;
         const IDs = item.identifications;
 
         let identificationCount = 0;
-        let overall = 0;
+        let currentOverallSum = 0;
 
         const getRoll = (isNegative: boolean) =>
             isNegative
@@ -51,57 +69,184 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
             return 0;
         };
 
-        for (const [stat, value] of Object.entries(IDs)) {
-            if (typeof value === 'object' && 'raw' in value) {
-                const isSpellCost = stat.toLowerCase().includes('spellcost');
-                const base = value.raw;
-                const isPositive = base > 0;
+        for (const [idName, idValue] of Object.entries(IDs)) {
+            if (typeof idValue === 'object' && 'raw' in idValue) {
+                if (selectedAugment === "Corkian Insulator" && lockedIdentification === idName && RolledIdentifications[idName] && RolledIdentifications[idName].hasOwnProperty('percentage')) {
+                    newRolledIDs[idName] = RolledIdentifications[idName];
+                    currentOverallSum += (RolledIdentifications[idName] as { percentage: number }).percentage;
+                    identificationCount++;
+                    continue;
+                }
+                if (selectedAugment === "Corkian Isolator" && lockedIdentification && lockedIdentification !== idName && RolledIdentifications[idName] && RolledIdentifications[idName].hasOwnProperty('percentage')) {
+                    newRolledIDs[idName] = RolledIdentifications[idName];
+                    currentOverallSum += (RolledIdentifications[idName] as { percentage: number }).percentage;
+                    identificationCount++;
+                    continue;
+                }
 
-                let roll = getRoll(!isPositive); // negative if stat is positive
-                let ampRoll = parseFloat((roll + (1.3 - roll) * ampMultiplier).toFixed(2));
+                let rolledValue;
+                let maxRoll, minRoll, percent, ampSim;
+                const rollPos = (Math.ceil((Math.random() * 101) - 1) / 100) + 0.3;
+                const rollNeg = (Math.ceil((Math.random() * 61) - 1) / 100) + 0.7;
+                let starLevel = 0;
+                ampSim = parseFloat((rollPos + (1.3 - rollPos) * ampMultiplier).toFixed(2));
 
-                let finalRoll = isSpellCost
-                    ? Math.round(base * (isPositive ? getRoll(true) : ampRoll))
-                    : Math.round(base * (isPositive ? ampRoll : getRoll(true)));
+                if (idValue.raw > 0) {
+                    maxRoll = Math.round(idValue.raw * 1.3);
+                    if (!idName.toLowerCase().includes('spellcost')) {
+                        if (ampSim >= 1.0 && ampSim < 1.25) starLevel = 1;
+                        else if (ampSim >= 1.25 && ampSim < 1.3) starLevel = 2;
+                        else if (ampSim === 1.3) starLevel = 3;
+                    }
 
-                let maxVal = Math.round(base * 1.3);
-                let minVal = Math.round(base * (isSpellCost ? 0.7 : 0.3));
+                    if (idName.toLowerCase().includes('spellcost')) {
+                        rolledValue = Math.round(idValue.raw * rollNeg);
+                        minRoll = Math.round(idValue.raw * 0.7);
+                        percent = minRoll !== maxRoll ? ((maxRoll - rolledValue) / (maxRoll - minRoll)) * 100 : 100;
+                    } else {
+                        rolledValue = Math.round(idValue.raw * ampSim);
+                        minRoll = Math.round(idValue.raw * 0.3);
+                        percent = minRoll !== maxRoll ? ((rolledValue - minRoll) / (maxRoll - minRoll)) * 100 : 100;
+                    }
 
-                // Calculate percentage
-                let percentage = minVal !== maxVal
-                    ? isPositive
-                        ? isSpellCost
-                            ? ((maxVal - finalRoll) / (maxVal - minVal)) * 100
-                            : ((finalRoll - minVal) / (maxVal - minVal)) * 100
-                        : isSpellCost
-                            ? ((finalRoll - minVal) / (maxVal - minVal)) * 100
-                            : ((maxVal - finalRoll) / (maxVal - minVal)) * 100 * 5 / 3
-                    : 100;
-
-                // Assign star level if applicable
-                let star = !isSpellCost && isPositive ? getStarLevel(ampRoll) : 0;
-
-                overall += percentage;
-                identificationCount++;
-
-                result[stat] = {
-                    raw: finalRoll,
-                    percentage: Number(percentage.toFixed(1)),
-                    star,
-                };
+                    currentOverallSum += percent;
+                    identificationCount++;
+                    newRolledIDs[idName] = { raw: rolledValue, percentage: Number(percent.toFixed(1)), star: starLevel };
+                } else {
+                    maxRoll = Math.round(idValue.raw * 1.3);
+                    if (idName.toLowerCase().includes('spellcost')) {
+                        rolledValue = Math.round(idValue.raw * ampSim);
+                        minRoll = Math.round(idValue.raw * 0.3);
+                        percent = minRoll !== maxRoll ? ((rolledValue - minRoll) / (maxRoll - minRoll)) * 100 : 100;
+                    } else {
+                        rolledValue = Math.round(idValue.raw * rollNeg);
+                        minRoll = Math.round(idValue.raw * 0.7);
+                        percent = minRoll !== maxRoll ? ((maxRoll - rolledValue) / (maxRoll - minRoll)) * 100 : 100;
+                    }
+                    currentOverallSum += percent;
+                    identificationCount++;
+                    newRolledIDs[idName] = { raw: rolledValue, percentage: Number(percent.toFixed(1)), star: starLevel };
+                }
             } else {
-                result[stat] = value;
+                newRolledIDs[idName] = idValue;
             }
         }
 
-        if (identificationCount > 0) {
-            setItemOverall(Number((overall / identificationCount).toFixed(2)));
+        const finalOverall = identificationCount > 0 ? Number((currentOverallSum / identificationCount).toFixed(2)) : 0;
+
+        if (selectedAugment !== "Corkian Simulator") {
+            setRerollCount((prev) => prev + 1);
         }
 
-        setRerollCount((prev) => prev + 1);
+        setRolledIdentifications(newRolledIDs);
+        setItemOverall(finalOverall);
 
-        return setRolledIdentifications(result);
+        return { newRolledIDs, overall: finalOverall, idCount: identificationCount };
+    }, [item.identifications, ampTier, selectedAugment, lockedIdentification, RolledIdentifications, setRerollCount, setRolledIdentifications, setItemOverall]);
+
+    // Effect to perform the first roll when the component mounts or item changes
+     useEffect(() => {
+        stableSimulateRoll();
+        setRerollCount(0);
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [item]); // stableSimulateRoll is memoized, item is the trigger
+
+
+    const handleRequirementChange = (statKey: string, value: string) => {
+        setRequirements(prev => ({
+            ...prev,
+            [statKey]: { ...prev[statKey], value: value === "" ? undefined : Number(value) }
+        }));
     };
+
+    const toggleRequirementDirection = (statKey: string) => {
+        setRequirements(prev => ({
+            ...prev,
+            [statKey]: {
+                ...prev[statKey],
+                direction: prev[statKey]?.direction === 'gte' ? 'lte' : 'gte'
+            }
+        }));
+    };
+
+    const toggleRequirement = (statKey: string) => {
+        setRequirements(prev => ({
+            ...prev,
+            [statKey]: { ...prev[statKey], enabled: !prev[statKey]?.enabled }
+        }));
+    };
+
+    const handleOverallRequirementChange = (value: string) => {
+        setOverallRequirement(prev => ({ ...prev, value: value === "" ? undefined : Number(value) }));
+    };
+
+    const toggleOverallRequirementDirection = () => {
+        setOverallRequirement(prev => ({
+            ...prev,
+            direction: prev.direction === 'gte' ? 'lte' : 'gte'
+        }));
+    };
+
+    const toggleOverallRequirement = () => {
+        setOverallRequirement(prev => ({ ...prev, enabled: !prev.enabled }));
+    };
+
+    const checkRequirements = (rolledIds: AnotherRolledIdentificationsProps, currentOverall: number): boolean => {
+        if (overallRequirement.enabled && typeof overallRequirement.value === 'number') {
+            const direction = overallRequirement.direction || 'gte';
+            if (direction === 'gte') {
+                if (currentOverall < overallRequirement.value) return false;
+            } else {
+                if (currentOverall > overallRequirement.value) return false;
+            }
+        }
+
+        for (const statKey in requirements) {
+            if (requirements[statKey].enabled && typeof requirements[statKey].value === 'number') {
+                const rolledValue = rolledIds[statKey] as { percentage: number } | undefined;
+                const direction = requirements[statKey].direction || 'gte';
+                if (!rolledValue) return false;
+                if (direction === 'gte') {
+                    if (rolledValue.percentage < requirements[statKey].value!) return false;
+                } else {
+                    if (rolledValue.percentage > requirements[statKey].value!) return false;
+                }
+            }
+        }
+        return true;
+    };
+
+
+    const autoRoll = useCallback(async () => {
+        if (isAutoRolling) return;
+        setIsAutoRolling(true);
+        setIsRolling(true);
+        setAutoRollStatus("Rolling...");
+        autoRollCancelRef.current = false;
+
+        let currentAttempt = 0;
+        let simResult = { newRolledIDs: RolledIdentifications, overall: itemOverall, idCount: Object.keys(RolledIdentifications).length };
+
+        while (!autoRollCancelRef.current) {
+            simResult = stableSimulateRoll();
+            if (checkRequirements(simResult.newRolledIDs, simResult.overall)) {
+                const rollsTaken = selectedAugment === "Corkian Simulator" ? "N/A (Simulator Active)" : currentAttempt + 1;
+                setAutoRollStatus(`Requirements met after ${rollsTaken} auto-roll${currentAttempt === 0 && selectedAugment !== "Corkian Simulator" ? "" : "s"}.`);
+                setIsAutoRolling(false);
+                setIsRolling(false);
+                return;
+            }
+            currentAttempt++;
+            if (currentAttempt % 500 === 0) {
+                setAutoRollStatus(`Rolling... Attempt ${currentAttempt + 1}`);
+                await new Promise(resolve => setTimeout(resolve, 0));
+            }
+        }
+        setAutoRollStatus("Auto-roll stopped by user.");
+        setIsAutoRolling(false);
+        setIsRolling(false);
+    }, [isAutoRolling, stableSimulateRoll, checkRequirements, RolledIdentifications, itemOverall, selectedAugment, requirements, overallRequirement]);
+
 
     return (
         <Dialog>
@@ -119,7 +264,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                         <div className="flex flex-wrap gap-2 items-center">
                             <div className="flex items-center gap-2">
                                 <Label htmlFor="amp-tier" className="text-sm">Amplifier Tier</Label>
-                                <Select value={ampTier.toString()} onValueChange={(value) => setAmpTier(Number(value))}>
+                                <Select value={ampTier.toString()} onValueChange={(value) => { setAmpTier(Number(value)); setAutoRollStatus(null); }}>
                                     <SelectTrigger className="w-[80px] h-8 text-sm" id="amp-tier">
                                         <SelectValue placeholder="0" />
                                     </SelectTrigger>
@@ -132,13 +277,82 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                     </SelectContent>
                                 </Select>
                             </div>
-                            <Button variant="outline" size="sm" className="gap-1" onClick={simulateRoll} disabled={isRolling}>
-                                <Dice className="h-4 w-4" /> Roll
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="gap-1"
+                                onClick={isAutoRolling
+                                    ? () => { autoRollCancelRef.current = true; setIsAutoRolling(false); }
+                                    : () => { stableSimulateRoll(); setAutoRollStatus(null); }
+                                }
+                                disabled={isAutoRolling ? false : isRolling}
+                            >
+                                <Dice className="h-4 w-4" /> {isAutoRolling ? "Stop" : "Roll"}
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="gap-1"
+                                onClick={autoRoll}
+                                disabled={isRolling || isAutoRolling}
+                            >
+                                <Dice className="h-4 w-4" /> Roll until Req.
                             </Button>
                             <span className="ml-2 text-xs text-muted-foreground">Rerolls: {rerollCount}</span>
                         </div>
                     </DialogTitle>
                 </DialogHeader>
+                {autoRollStatus && (
+                    <div className={`p-2 my-2 text-sm rounded-md ${autoRollStatus.includes("met") ? 'bg-green-100 text-green-700' : autoRollStatus.includes("Max") ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'}`}>
+                        {autoRollStatus.includes("Max") && <AlertTriangle className="inline h-4 w-4 mr-1" />}
+                        {autoRollStatus}
+                    </div>
+                )}
+                <div className="flex flex-col md:flex-row gap-4 mb-4">
+                    <div className="flex items-center gap-2">
+                        <Label htmlFor="augment-select" className="text-sm">Augment</Label>
+                        <Select value={selectedAugment} onValueChange={(value) => {
+                            setSelectedAugment(value);
+                            setLockedIdentification(null); // Reset locked ID when augment changes
+                        }}>
+                            <SelectTrigger className="w-[180px] h-8 text-sm" id="augment-select">
+                                <SelectValue placeholder="None" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="None">None</SelectItem>
+                                <SelectItem value="Corkian Insulator">Corkian Insulator</SelectItem>
+                                <SelectItem value="Corkian Isolator">Corkian Isolator</SelectItem>
+                                <SelectItem value="Corkian Simulator">Corkian Simulator</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
+
+                    {(selectedAugment === "Corkian Insulator" || selectedAugment === "Corkian Isolator") && item.identifications && (
+                        <div className="flex items-center gap-2">
+                            <Label htmlFor="locked-id-select" className="text-sm">
+                                {selectedAugment === "Corkian Insulator" ? "Lock ID" : "Isolate ID"}
+                            </Label>
+                            <Select
+                                value={lockedIdentification ?? "__none__"}
+                                onValueChange={(value) => setLockedIdentification(value === "__none__" ? null : value)}
+                            >
+                                <SelectTrigger className="w-[180px] h-8 text-sm" id="locked-id-select">
+                                    <SelectValue placeholder="Select ID" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="__none__">None</SelectItem>
+                                    {item.identifications ? Object.keys(item.identifications).map((idKey) => (
+                                        typeof item.identifications![idKey] === 'object' && 'raw' in item.identifications![idKey] && (
+                                            <SelectItem key={idKey} value={idKey}>
+                                                <span>{getIdentificationInfo(idKey)?.displayName || idKey}</span>
+                                            </SelectItem>
+                                        )
+                                    )) : null}
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    )}
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                     <div className="md:col-span-3 space-y-6 font-ascii">
@@ -149,6 +363,107 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                 <AnotherRolledIdentifications {...RolledIdentifications} />
                             </div>
                         </div>
+
+                        <div className="mt-6 border-t pt-4 font-sans">
+                            <h3 className="text-lg font-semibold mb-2">Set Roll Requirements</h3>
+                            <div className="space-y-2">
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        id="overall-req-enabled"
+                                        checked={overallRequirement.enabled}
+                                        onChange={toggleOverallRequirement}
+                                        className="h-4 w-4"
+                                    />
+                                    <Label htmlFor="overall-req-enabled" className="text-sm">Overall %:</Label>
+                                    <button
+                                        type="button"
+                                        className={`mx-1 flex items-center justify-center rounded-md border-2 transition-colors duration-150 focus:outline-none focus:ring-2
+                                            ${overallRequirement.direction === 'lte'
+                                                ? 'border-red-500 text-red-600 dark:border-red-400 dark:text-red-300 bg-red-50 dark:bg-red-900 hover:bg-red-100 dark:hover:bg-red-800'
+                                                : 'border-green-500 text-green-600 dark:border-green-400 dark:text-green-300 bg-green-50 dark:bg-green-900 hover:bg-green-100 dark:hover:bg-green-800'}
+                                            `}
+                                        style={{ width: 36, height: 36 }}
+                                        title={
+                                            overallRequirement.direction === 'lte'
+                                                ? 'Click to require ≤ (at most) this value'
+                                                : 'Click to require ≥ (at least) this value'
+                                        }
+                                        aria-label={
+                                            overallRequirement.direction === 'lte'
+                                                ? 'Set requirement to at most'
+                                                : 'Set requirement to at least'
+                                        }
+                                        onClick={toggleOverallRequirementDirection}
+                                    >
+                                        {overallRequirement.direction === 'lte'
+                                            ? <ChevronDownIcon className="w-6 h-6" />
+                                            : <ChevronUpIcon className="w-6 h-6" />}
+                                    </button>
+                                    <input
+                                        type="number"
+                                        id="overall-req"
+                                        value={overallRequirement.value === undefined ? "" : overallRequirement.value}
+                                        onChange={(e) => handleOverallRequirementChange(e.target.value)}
+                                        disabled={!overallRequirement.enabled}
+                                        className="w-20 h-8 text-sm border rounded px-2 disabled:bg-gray-100"
+                                        placeholder="e.g. 80"
+                                    />
+                                </div>
+                                {item.identifications && Object.entries(item.identifications).map(([statKey, statValue]) => {
+                                    if (typeof statValue === 'object' && 'raw' in statValue) {
+                                        const displayName = getIdentificationInfo(statKey)?.displayName || statKey;
+                                        return (
+                                            <div key={statKey} className="flex items-center gap-2">
+                                                <input
+                                                    type="checkbox"
+                                                    id={`${statKey}-req-enabled`}
+                                                    checked={requirements[statKey]?.enabled || false}
+                                                    onChange={() => toggleRequirement(statKey)}
+                                                    className="h-4 w-4"
+                                                />
+                                                <Label htmlFor={`${statKey}-req-enabled`} className="text-sm min-w-[150px] truncate" title={displayName}>{displayName} %:</Label>
+                                                <button
+                                                    type="button"
+                                                    className={`mx-1 flex items-center justify-center rounded-md border-2 transition-colors duration-150 focus:outline-none focus:ring-2
+                                                        ${requirements[statKey]?.direction === 'lte'
+                                                            ? 'border-red-500 text-red-600 dark:border-red-400 dark:text-red-300 bg-red-50 dark:bg-red-900 hover:bg-red-100 dark:hover:bg-red-800'
+                                                            : 'border-green-500 text-green-600 dark:border-green-400 dark:text-green-300 bg-green-50 dark:bg-green-900 hover:bg-green-100 dark:hover:bg-green-800'}
+                                                        `}
+                                                    style={{ width: 36, height: 36 }}
+                                                    title={
+                                                        requirements[statKey]?.direction === 'lte'
+                                                            ? 'Click to require ≤ (at most) this value'
+                                                            : 'Click to require ≥ (at least) this value'
+                                                    }
+                                                    aria-label={
+                                                        requirements[statKey]?.direction === 'lte'
+                                                            ? 'Set requirement to at most'
+                                                            : 'Set requirement to at least'
+                                                    }
+                                                    onClick={() => toggleRequirementDirection(statKey)}
+                                                >
+                                                    {requirements[statKey]?.direction === 'lte'
+                                                        ? <ChevronDownIcon className="w-6 h-6" />
+                                                        : <ChevronUpIcon className="w-6 h-6" />}
+                                                </button>
+                                                <input
+                                                    type="number"
+                                                    id={`${statKey}-req`}
+                                                    value={requirements[statKey]?.value === undefined ? "" : requirements[statKey]?.value}
+                                                    onChange={(e) => handleRequirementChange(statKey, e.target.value)}
+                                                    disabled={!requirements[statKey]?.enabled}
+                                                    className="w-20 h-8 text-sm border rounded px-2 disabled:bg-gray-100"
+                                                    placeholder="e.g. 90"
+                                                />
+                                            </div>
+                                        );
+                                    }
+                                    return null;
+                                })}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </DialogContent>
