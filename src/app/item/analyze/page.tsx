@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { getIdentificationInfo, processIdentification } from '@/lib/itemUtils';
+import { getIdentificationInfo, processIdentification, calculateIdentificationRoll } from '@/lib/itemUtils';
 import { ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +11,7 @@ import ItemWeightedLB from '@/app/item/ranking/item-weighted-lb'; // Assuming th
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import api from '@/lib/api';
 
 function calculateWeightedScore(
   ids: { name: string; percentage: number }[],
@@ -112,33 +113,48 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
+
   };
 
-import { calculateIdentificationRoll } from '@/lib/itemUtils'; // Added for rank suggestion
-import api from '@/lib/api'; // Ensure api is imported
 
-// Define a simplified structure for what we expect from item database for ranking
-interface RankableItem {
-  identifications: Record<string, number>; // Rolled values
-  // Add any other properties needed if different from VerifiedItem in ItemWeightedLB
+
+
+// --- FIXED: Type for idRanges and filter helper ---
+type IdRange = { min: number; max: number; raw: number };
+
+function isValidIdRange(obj: any): obj is IdRange {
+  return obj && typeof obj.min === 'number' && typeof obj.max === 'number' && typeof obj.raw === 'number';
 }
 
+function filterValidIdRanges(idRanges: Record<string, any>): Record<string, IdRange> {
+  const result: Record<string, IdRange> = {};
+  for (const key in idRanges) {
+    if (isValidIdRange(idRanges[key])) {
+      result[key] = idRanges[key];
+    }
+  }
+  return result;
+}
 
+// --- FIXED: calculateOverallScoreForItem to only use valid idRanges ---
 const calculateOverallScoreForItem = (
-  itemIdentifications: Record<string, number>, // The rolled IDs of the item (e.g., itemData.input.identifications)
-  idRanges: Record<string, { min: number; max: number; raw: number }> // Base ID ranges for the item type (e.g., itemData.original.identifications)
+  itemIdentifications: Record<string, number>,
+  idRanges: Record<string, any>
 ): number => {
-  const keys = Object.keys(itemIdentifications).filter(k => !!idRanges[k]);
+  const validIdRanges = filterValidIdRanges(idRanges);
+  const keys = Object.keys(itemIdentifications).filter(k => validIdRanges[k]);
   if (keys.length === 0) return 0;
-
   const sumOfPercentages = keys.reduce((acc, key) => {
-    const rollInfo = calculateIdentificationRoll(key, idRanges[key], itemIdentifications[key]);
+    const rollInfo = calculateIdentificationRoll(key, validIdRanges[key], itemIdentifications[key]);
     return acc + rollInfo.formattedPercentage;
   }, 0);
-
-  // Return score as a percentage (0-100)
   return sumOfPercentages / keys.length;
 };
+
+// --- FIXED: RankableItem interface for DB items ---
+interface RankableItem {
+  identifications: Record<string, number>;
+}
 
 
   const checkItemRankSuggestion = async (itemData: ItemAnalyzeData) => {
