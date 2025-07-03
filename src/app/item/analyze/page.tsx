@@ -4,10 +4,13 @@ import { useState } from 'react';
 import { getIdentificationInfo, processIdentification } from '@/lib/itemUtils';
 import { ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import ItemWeightedLB from '@/app/item/ranking/item-weighted-lb'; // Assuming this is the correct path
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 function calculateWeightedScore(
   ids: { name: string; percentage: number }[],
@@ -65,11 +68,23 @@ export default function Home() {
   const [demoData, setDemoData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [rankSuggestion, setRankSuggestion] = useState<string | null>(null);
 
-  // Function to handle the API request
+  // States for comparison mode
+  const [compareItemAString, setCompareItemAString] = useState<string>('');
+  const [compareItemBString, setCompareItemBString] = useState<string>('');
+  const [compareDataA, setCompareDataA] = useState<any>(null);
+  const [compareDataB, setCompareDataB] = useState<any>(null);
+  const [compareLoading, setCompareLoading] = useState<boolean>(false);
+  const [compareError, setCompareError] = useState<string | null>(null);
+
+  // Function to handle the API request for single item analysis
   const fetchItemData = async (item: string) => {
     setLoading(true);
     setError(null);
+    setDemoData(null); // Clear previous single item data
+    setRankSuggestion(null);
+
 
     try {
       const response = await fetch('https://api.wynnpool.com/item/full-decode', {
@@ -87,6 +102,7 @@ export default function Home() {
       const data = await response.json();
       if (data) {
         setDemoData(data); // Save item data to state if the response is valid
+        checkItemRankSuggestion(data); // Check for rank suggestion
       } else {
         throw new Error('Invalid item data');
       }
@@ -96,6 +112,106 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  const checkItemRankSuggestion = async (itemData: any) => {
+    if (!itemData?.input?.identifications || !itemData?.original?.identifications) {
+      setRankSuggestion(null);
+      return;
+    }
+
+    const processedIds = processIdentification(itemData);
+    const goodIdsCount = processedIds.filter(id => id.percentage > 3).length;
+
+    let percentileThreshold = 0;
+    if (goodIdsCount === 2) {
+      percentileThreshold = 99;
+    } else if (goodIdsCount === 3) {
+      percentileThreshold = 92.5;
+    } else if (goodIdsCount >= 4 && goodIdsCount <= 6) {
+      percentileThreshold = 85;
+    } else {
+      setRankSuggestion(null);
+      return;
+    }
+
+    // Calculate overall score (average of all IDs)
+    const overallScore = processedIds.reduce((sum, id) => sum + id.percentage, 0) / processedIds.length;
+
+    if (overallScore * 100 >= percentileThreshold) {
+      // Fetch leaderboard data
+      try {
+        const response = await fetch(`/api/item/${itemData.original.internalName}/ranking`); // Assuming an API endpoint like this
+        if (!response.ok) {
+          throw new Error('Failed to fetch leaderboard data');
+        }
+        const leaderboard: any[] = await response.json(); // Define a proper type for leaderboard entries
+
+        // Simplified ranking logic: find the first item with a lower score
+        // This assumes the leaderboard is sorted descending
+        let potentialRank = leaderboard.length + 1;
+        for (let i = 0; i < leaderboard.length; i++) {
+          // Assuming leaderboard items have a 'score' property calculated similarly
+          // This part needs to align with how scores are actually stored/calculated in your backend for rankings
+          const leaderboardItemScore = leaderboard[i].score; // Adjust this based on actual data structure
+          if (overallScore > leaderboardItemScore) {
+            potentialRank = i + 1;
+            break;
+          }
+        }
+        setRankSuggestion(`This item is possibly good enough to be ranked at #${potentialRank}!`);
+      } catch (e) {
+        console.error("Failed to get rank suggestion:", e);
+        setRankSuggestion("Could not fetch rank suggestion at this time.");
+      }
+    } else {
+      setRankSuggestion(null);
+    }
+  };
+
+  // Fetch data for comparison mode
+  const fetchCompareItemData = async (itemString: string, itemSetter: React.Dispatch<React.SetStateAction<any>>) => {
+    // Re-uses the single item fetch logic but targets comparison state setters
+    // This could be further optimized by abstracting the core fetch logic
+    try {
+      const response = await fetch('https://api.wynnpool.com/item/full-decode', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ item: itemString }),
+      });
+      if (!response.ok) throw new Error(`Failed to fetch item data for ${itemString}`);
+      const data = await response.json();
+      if (data) {
+        itemSetter(data);
+      } else {
+        throw new Error(`Invalid item data for ${itemString}`);
+      }
+    } catch (err: any) {
+      throw err; // Rethrow to be caught by handleCompare
+    }
+  };
+
+  const handleCompare = async () => {
+    if (!compareItemAString.trim() || !compareItemBString.trim()) {
+      setCompareError("Please enter both item strings.");
+      return;
+    }
+    setCompareLoading(true);
+    setCompareError(null);
+    setCompareDataA(null);
+    setCompareDataB(null);
+
+    try {
+      await Promise.all([
+        fetchCompareItemData(compareItemAString, setCompareDataA),
+        fetchCompareItemData(compareItemBString, setCompareDataB),
+      ]);
+    } catch (error: any) {
+      setCompareError(error.message || "Failed to fetch one or both items for comparison.");
+    } finally {
+      setCompareLoading(false);
+    }
+  };
+
 
   // Handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -109,12 +225,61 @@ export default function Home() {
       fetchItemData(inputValue);
     }
   };
+
+  const renderWeightComparison = () => {
+    if (!compareDataA || !compareDataB || !compareDataA.weights || !compareDataB.weights) {
+      return <p>Loading comparison data or weights unavailable...</p>;
+    }
+
+    // Assuming weights are matched by name or ID. For simplicity, let's use weight_name.
+    // A more robust solution might involve matching by weight_id if names can vary.
+    const allWeightNames = new Set([
+      ...compareDataA.weights.map((w: Weight) => w.weight_name),
+      ...compareDataB.weights.map((w: Weight) => w.weight_name)
+    ]);
+
+    const processedA = processIdentification(compareDataA);
+    const processedB = processIdentification(compareDataB);
+
+    return (
+      <div className="space-y-4">
+        <div className="grid grid-cols-3 gap-4 items-center font-semibold mb-2">
+          <div className="text-lg">Item A Weights</div>
+          <div></div> {/* Spacer for the arrow */}
+          <div className="text-lg">Item B Weights</div>
+        </div>
+        {Array.from(allWeightNames).map(weightName => {
+          const weightA = compareDataA.weights.find((w: Weight) => w.weight_name === weightName);
+          const weightB = compareDataB.weights.find((w: Weight) => w.weight_name === weightName);
+
+          const scoreA = weightA ? calculateWeightedScore(processedA, weightA.identifications).total * 100 : null;
+          const scoreB = weightB ? calculateWeightedScore(processedB, weightB.identifications).total * 100 : null;
+
+          return (
+            <div key={weightName} className="grid grid-cols-3 gap-4 items-center py-2 border-b">
+              <div className="truncate">
+                <p className="font-medium">{weightName}</p>
+                {scoreA !== null ? `${scoreA.toFixed(2)}%` : <span className="text-gray-400">N/A</span>}
+              </div>
+              <div className="text-center text-2xl text-primary/70">↔</div>
+              <div className="truncate text-right">
+                <p className="font-medium">{weightName}</p>
+                {scoreB !== null ? `${scoreB.toFixed(2)}%` : <span className="text-gray-400">N/A</span>}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+
   return (
     <div className="container mx-auto p-4 max-w-screen-lg">
       <div className="min-h-screen bg-background flex flex-col items-center justify-start px-4 py-12 space-y-6">
         <div className='mt-[80px]' />
         <Badge variant="outline" className="text-foreground/50">Beta Version</Badge>
-        <div className='flex flex-col items-center'> 
+        <div className='flex flex-col items-center'>
           <h1 className="text-3xl font-bold text-primary">Wynncraft Item Analyzer</h1>
           <p className='text-primary/50'>Weight for every item on <Link href="https://weight.wynnpool.com/" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>weight.wynnpool.com</Link></p>
           <p className='text-primary/50'>Having questions about weights?</p>
@@ -122,60 +287,164 @@ export default function Home() {
           <p className='text-red-300 mt-3'>Reminder: If you are having problem with fetching item</p>
           <p className='text-red-300'>Please join the discord server above for support</p>
         </div>
-        <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-4">
-          <Input
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Enter Wynntils Item String"
-            className="text-primary placeholder-gray-400"
-          />
-          <Button type="submit" className="w-full">
-            {loading ? "Loading..." : "Analyze"}
-          </Button>
-        </form>
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        <Tabs defaultValue="analyze" className="w-full max-w-xl">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="analyze">Analyze Single Item</TabsTrigger>
+            <TabsTrigger value="compare">Compare Two Items</TabsTrigger>
+          </TabsList>
+          <TabsContent value="analyze">
+            <form onSubmit={handleSubmit} className="w-full space-y-4 mt-4">
+              <Input
+                value={inputValue}
+                onChange={handleInputChange}
+                placeholder="Enter Wynntils Item String"
+                className="text-primary placeholder-gray-400"
+              />
+              <Button type="submit" className="w-full">
+                {loading ? "Loading..." : "Analyze"}
+              </Button>
+            </form>
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          </TabsContent>
+          <TabsContent value="compare">
+            <div className="w-full space-y-4 mt-4">
+              <Input
+                value={compareItemAString}
+                onChange={(e) => setCompareItemAString(e.target.value)}
+                placeholder="Paste Item A String"
+                className="text-primary placeholder-gray-400"
+              />
+              <Input
+                value={compareItemBString}
+                onChange={(e) => setCompareItemBString(e.target.value)}
+                placeholder="Paste Item B String"
+                className="text-primary placeholder-gray-400"
+              />
+              <Button onClick={handleCompare} className="w-full" disabled={compareLoading}>
+                {compareLoading ? "Comparing..." : "Compare Items"}
+              </Button>
+              {compareError && <p className="text-red-500 text-sm mt-2">{compareError}</p>}
+            </div>
+          </TabsContent>
+        </Tabs>
 
-        {demoData?.original?.identified && (
-          <div className="text-yellow-400">⚠️ This item is already identified.</div>
-        )}
-
-        {demoData && !loading && !error && !demoData.original.identified && (
-          <div className="flex flex-col sm:flex-row items-center justify-center w-full space-y-6 mt-6 gap-4">
-            <RolledItemDisplay data={demoData} />
-            {demoData.weights?.length > 0 && (
-              <div className="grid grid-cols-1 space-y-4">
-                {(() => {
-                  const processed = processIdentification(demoData)
-                  return demoData.weights.map((weight: Weight) => {
-                    const result = calculateWeightedScore(processed, weight.identifications)
-                    return (
-                      <Card key={weight.weight_id} className='w-fit h-fit'>
-                        <CardContent className="p-4 space-y-2">
-                          <h3 className="text-blue-400 font-semibold text-sm">
-                            🏋️ {weight.weight_name} [{(result.total * 100).toFixed(2)}%]
-                          </h3>
-                          <ul className="text-gray-300 text-sm space-y-1">
-                            {Object.entries(weight.identifications).map(([key, value]) => {
-                              const percent = Math.trunc(value * 10000) / 100
-                              return (
-                                <li key={key}>
-                                  <span className="text-primary">
-                                    {getIdentificationInfo(key)?.displayName}
-                                  </span>: {percent.toFixed(2)}%
-                                </li>
-                              )
-                            })}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                    )
-                  })
-                })()}
+        {/* Display area for single analysis results (conditionally rendered based on demoData) */}
+        {/* This content appears when demoData is populated from the "Analyze Single Item" tab */}
+        {demoData && !loading && !error && (
+          <>
+            {rankSuggestion && (
+              <div className="text-green-500 font-semibold my-2 p-2 bg-green-100 border border-green-300 rounded w-full max-w-xl">
+                {rankSuggestion}
               </div>
             )}
+            {demoData.original?.identified && (
+              <div className="text-yellow-400 mt-2 w-full max-w-xl">⚠️ This item is already identified.</div>
+            )}
+            {!demoData.original?.identified && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 w-full max-w-screen-lg">
+                <div className="md:col-span-1">
+                  <RolledItemDisplay data={demoData} />
+                </div>
+                <div className="md:col-span-2 space-y-6">
+                  {demoData.weights?.length > 0 && (
+                    <Card>
+                      <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
+                      <CardContent>
+                        <Accordion type="single" collapsible className="w-full">
+                          {(() => {
+                            const processed = processIdentification(demoData);
+                            return demoData.weights.map((weight: Weight) => {
+                              const result = calculateWeightedScore(processed, weight.identifications);
+                              return (
+                                <AccordionItem value={weight.weight_id} key={weight.weight_id}>
+                                  <AccordionTrigger>
+                                    <div className="flex justify-between w-full pr-4">
+                                      <span>{weight.weight_name}</span>
+                                      <span className="text-blue-400 font-semibold">
+                                        [{(result.total * 100).toFixed(2)}%]
+                                      </span>
+                                    </div>
+                                  </AccordionTrigger>
+                                  <AccordionContent>
+                                    <ul className="text-gray-300 text-sm space-y-1 pl-4">
+                                      {Object.entries(weight.identifications).map(([key, value]) => {
+                                        const idInfo = getIdentificationInfo(key);
+                                        const percent = Math.trunc(value * 10000) / 100;
+                                        return (
+                                          <li key={key}>
+                                            <span className="text-primary">
+                                              {idInfo?.displayName || key}
+                                            </span>: {percent.toFixed(2)}%
+                                          </li>
+                                        );
+                                      })}
+                                    </ul>
+                                  </AccordionContent>
+                                </AccordionItem>
+                              );
+                            });
+                          })()}
+                        </Accordion>
+                      </CardContent>
+                    </Card>
+                  )}
+                  {demoData.original?.internalName && (
+                    <Card>
+                      <CardHeader><CardTitle>Item Leaderboard</CardTitle></CardHeader>
+                      <CardContent>
+                        <ItemWeightedLB
+                          item={{ internalName: demoData.original.internalName }}
+                          open={true}
+                          onClose={() => {}}
+                        />
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Display area for comparison results (conditionally rendered based on compareDataA and compareDataB) */}
+        {/* This content appears when compareDataA and compareDataB are populated from the "Compare Two Items" tab */}
+        {!compareLoading && compareDataA && compareDataB && (
+          <div className="w-full max-w-3xl mt-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center text-xl">Item Comparison Results</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2 text-center">Item A: {compareDataA.original?.name || compareDataA.input?.name || 'Unknown'}</h3>
+                    {compareDataA.original?.identified ? (
+                      <p className="text-yellow-400 text-center">⚠️ Item A is already identified.</p>
+                    ) : compareDataA.input ? (
+                      <RolledItemDisplay data={compareDataA} />
+                    ) : (
+                      <p className="text-center text-gray-400">Could not display Item A details.</p>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2 text-center">Item B: {compareDataB.original?.name || compareDataB.input?.name || 'Unknown'}</h3>
+                    {compareDataB.original?.identified ? (
+                      <p className="text-yellow-400 text-center">⚠️ Item B is already identified.</p>
+                    ) : compareDataB.input ? (
+                      <RolledItemDisplay data={compareDataB} />
+                    ) : (
+                      <p className="text-center text-gray-400">Could not display Item B details.</p>
+                    )}
+                  </div>
+                </div>
+                {renderWeightComparison()}
+              </CardContent>
+            </Card>
           </div>
         )}
+        {compareLoading && <p className="mt-4 text-center">Loading comparison data...</p>}
+        {/* Note: compareError is shown within its tab. If global compare error display is needed, add here. */}
       </div>
     </div>
   );
