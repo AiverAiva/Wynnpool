@@ -87,7 +87,8 @@ export default function Home() {
 
 
     try {
-      const response = await fetch('https://api.wynnpool.com/item/full-decode', {
+      // const response = await fetch('https://api.wynnpool.com/item/full-decode', {
+      const response = await fetch(api('/item/full-decode'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,7 +103,7 @@ export default function Home() {
       const data = await response.json();
       if (data) {
         setDemoData(data); // Save item data to state if the response is valid
-        checkItemRankSuggestion(data); // Check for rank suggestion
+        checkItemRankSuggestion(data); // Re-enable rank suggestion check
       } else {
         throw new Error('Invalid item data');
       }
@@ -113,58 +114,111 @@ export default function Home() {
     }
   };
 
-  const checkItemRankSuggestion = async (itemData: any) => {
-    if (!itemData?.input?.identifications || !itemData?.original?.identifications) {
+import { calculateIdentificationRoll } from '@/lib/itemUtils'; // Added for rank suggestion
+import api from '@/lib/api'; // Ensure api is imported
+
+// Define a simplified structure for what we expect from item database for ranking
+interface RankableItem {
+  identifications: Record<string, number>; // Rolled values
+  // Add any other properties needed if different from VerifiedItem in ItemWeightedLB
+}
+
+
+const calculateOverallScoreForItem = (
+  itemIdentifications: Record<string, number>, // The rolled IDs of the item (e.g., itemData.input.identifications)
+  idRanges: Record<string, { min: number; max: number; raw: number }> // Base ID ranges for the item type (e.g., itemData.original.identifications)
+): number => {
+  const keys = Object.keys(itemIdentifications).filter(k => !!idRanges[k]);
+  if (keys.length === 0) return 0;
+
+  const sumOfPercentages = keys.reduce((acc, key) => {
+    const rollInfo = calculateIdentificationRoll(key, idRanges[key], itemIdentifications[key]);
+    return acc + rollInfo.formattedPercentage;
+  }, 0);
+
+  // Return score as a percentage (0-100)
+  return sumOfPercentages / keys.length;
+};
+
+
+  const checkItemRankSuggestion = async (itemData: ItemAnalyzeData) => {
+    // itemData now expected to be ItemAnalyzeData for better type safety
+    if (!itemData?.input?.identifications || !itemData?.original?.identifications || !itemData.original.internalName) {
       setRankSuggestion(null);
       return;
     }
 
-    const processedIds = processIdentification(itemData);
-    const goodIdsCount = processedIds.filter(id => id.percentage > 3).length;
+    const processedUserItemIds = processIdentification(itemData);
+    const goodIdsCount = processedUserItemIds.filter(id => id.percentage > 3).length;
 
     let percentileThreshold = 0;
-    if (goodIdsCount === 2) {
-      percentileThreshold = 99;
-    } else if (goodIdsCount === 3) {
-      percentileThreshold = 92.5;
-    } else if (goodIdsCount >= 4 && goodIdsCount <= 6) {
-      percentileThreshold = 85;
-    } else {
+    if (goodIdsCount === 2) percentileThreshold = 99;
+    else if (goodIdsCount === 3) percentileThreshold = 92.5;
+    else if (goodIdsCount >= 4 && goodIdsCount <= 6) percentileThreshold = 85;
+    else {
       setRankSuggestion(null);
       return;
     }
 
-    // Calculate overall score (average of all IDs)
-    const overallScore = processedIds.reduce((sum, id) => sum + id.percentage, 0) / processedIds.length;
+    const userItemOverallScore = calculateOverallScoreForItem(itemData.input.identifications, itemData.original.identifications);
 
-    if (overallScore * 100 >= percentileThreshold) {
-      // Fetch leaderboard data
-      try {
-        const response = await fetch(`/api/item/${itemData.original.internalName}/ranking`); // Assuming an API endpoint like this
-        if (!response.ok) {
-          throw new Error('Failed to fetch leaderboard data');
-        }
-        const leaderboard: any[] = await response.json(); // Define a proper type for leaderboard entries
-
-        // Simplified ranking logic: find the first item with a lower score
-        // This assumes the leaderboard is sorted descending
-        let potentialRank = leaderboard.length + 1;
-        for (let i = 0; i < leaderboard.length; i++) {
-          // Assuming leaderboard items have a 'score' property calculated similarly
-          // This part needs to align with how scores are actually stored/calculated in your backend for rankings
-          const leaderboardItemScore = leaderboard[i].score; // Adjust this based on actual data structure
-          if (overallScore > leaderboardItemScore) {
-            potentialRank = i + 1;
-            break;
-          }
-        }
-        setRankSuggestion(`This item is possibly good enough to be ranked at #${potentialRank}!`);
-      } catch (e) {
-        console.error("Failed to get rank suggestion:", e);
-        setRankSuggestion("Could not fetch rank suggestion at this time.");
-      }
-    } else {
+    if (userItemOverallScore < percentileThreshold) {
       setRankSuggestion(null);
+      // console.log(`User item score ${userItemOverallScore} below threshold ${percentileThreshold}`);
+      return;
+    }
+
+    // console.log(`User item score ${userItemOverallScore} meets threshold ${percentileThreshold}. Fetching DB for ranking.`);
+
+    try {
+      // Fetch all verified items for this base item type
+      // The structure of items from this endpoint needs to be RankableItem compatible
+      const dbItemsResponse = await fetch(api(`/item/database/${itemData.original.internalName}`));
+      if (!dbItemsResponse.ok) throw new Error('Failed to fetch item database for ranking.');
+      const dbItems: RankableItem[] = await dbItemsResponse.json();
+
+      // Fetch full item details for ID ranges (might be redundant if itemData.original is already this)
+      // Assuming itemData.original.identifications already contains the necessary ID ranges.
+      const idRanges = itemData.original.identifications;
+
+      const allScores: { score: number; isUserItem: boolean }[] = [];
+
+      // Calculate score for the user's item
+      allScores.push({ score: userItemOverallScore, isUserItem: true });
+
+      // Calculate scores for all items from the database
+      dbItems.forEach(dbItem => {
+        // Ensure dbItem.identifications is not null or undefined
+        if (dbItem.identifications) {
+            const score = calculateOverallScoreForItem(dbItem.identifications, idRanges);
+            allScores.push({ score: score, isUserItem: false });
+        }
+      });
+
+      // Sort scores in descending order
+      allScores.sort((a, b) => b.score - a.score);
+
+      // Find the rank of the user's item
+      let potentialRank = -1;
+      for (let i = 0; i < allScores.length; i++) {
+        if (allScores[i].isUserItem) {
+          potentialRank = i + 1;
+          break;
+        }
+      }
+
+      // console.log(`Potential rank: ${potentialRank}, Total items in ranking: ${allScores.length}`);
+
+      if (potentialRank !== -1 && potentialRank <= 10) {
+        setRankSuggestion(`This item is possibly good enough to be ranked at #${potentialRank}! (Overall score: ${userItemOverallScore.toFixed(2)}%)`);
+      } else {
+        // console.log("Item is good but not top 10, or rank couldn't be determined.");
+        setRankSuggestion(null); // Not top 10 or user item not found (should not happen if pushed correctly)
+      }
+
+    } catch (e: any) {
+      console.error("Failed to get rank suggestion:", e);
+      setRankSuggestion("Could not fetch rank suggestion at this time.");
     }
   };
 
@@ -173,7 +227,8 @@ export default function Home() {
     // Re-uses the single item fetch logic but targets comparison state setters
     // This could be further optimized by abstracting the core fetch logic
     try {
-      const response = await fetch('https://api.wynnpool.com/item/full-decode', {
+      // const response = await fetch('https://api.wynnpool.com/item/full-decode', {
+      const response = await fetch(api('/item/full-decode'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ item: itemString }),
@@ -395,8 +450,7 @@ export default function Home() {
                       <CardContent>
                         <ItemWeightedLB
                           item={{ internalName: demoData.original.internalName }}
-                          open={true}
-                          onClose={() => {}}
+                         isEmbedded={true}
                         />
                       </CardContent>
                     </Card>
