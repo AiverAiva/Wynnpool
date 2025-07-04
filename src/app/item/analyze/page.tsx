@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { getIdentificationInfo, processIdentification } from '@/lib/itemUtils';
+import { getIdentificationInfo, processIdentification, calculateIdentificationRoll } from '@/lib/itemUtils';
+import api from '@/lib/api';
 import { ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -35,13 +36,13 @@ function calculateWeightedScore(
   // return keys.reduce((acc, key) => {
   //   const inputVal = entry.identifications[key];
   //   const { formattedPercentage } = calculateIdentificationRoll(key, idRanges[key], inputVal);
-    // if (weight.identifications[key] < 0) {
-    //   // If the weight is negative, we need to invert the percentage
-    //   const invertedPercentage = 100 - formattedPercentage;
-    //   return acc + Math.abs((invertedPercentage / 100) * (weight.identifications[key] || 0));
-    // } else {
-    //   return acc + (formattedPercentage / 100) * (weight.identifications[key] || 0);
-    // }
+  // if (weight.identifications[key] < 0) {
+  //   // If the weight is negative, we need to invert the percentage
+  //   const invertedPercentage = 100 - formattedPercentage;
+  //   return acc + Math.abs((invertedPercentage / 100) * (weight.identifications[key] || 0));
+  // } else {
+  //   return acc + (formattedPercentage / 100) * (weight.identifications[key] || 0);
+  // }
   // }, 0);
   return {
     total: parseFloat(total.toFixed(4)),
@@ -68,7 +69,7 @@ export default function Home() {
   const [demoData, setDemoData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [rankSuggestion, setRankSuggestion] = useState<string | null>(null);
+  const [rankSuggestion, setRankSuggestion] = useState<React.ReactNode | null>(null);
 
   // States for comparison mode
   const [compareItemAString, setCompareItemAString] = useState<string>('');
@@ -77,7 +78,9 @@ export default function Home() {
   const [compareDataB, setCompareDataB] = useState<any>(null);
   const [compareLoading, setCompareLoading] = useState<boolean>(false);
   const [compareError, setCompareError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<string>("analyze"); // State for active tab
+
+  // Tab state
+  const [activeTab, setActiveTab] = useState<'analyze' | 'compare'>('analyze');
 
   // Function to handle the API request for single item analysis
   const fetchItemData = async (item: string) => {
@@ -115,111 +118,350 @@ export default function Home() {
     }
   };
 
-import { calculateIdentificationRoll } from '@/lib/itemUtils'; // Added for rank suggestion
-import api from '@/lib/api'; // Ensure api is imported
-
-// Define a simplified structure for what we expect from item database for ranking
-interface RankableItem {
-  identifications: Record<string, number>; // Rolled values
-  // Add any other properties needed if different from VerifiedItem in ItemWeightedLB
-}
 
 
-const calculateOverallScoreForItem = (
-  itemIdentifications: Record<string, number>, // The rolled IDs of the item (e.g., itemData.input.identifications)
-  idRanges: Record<string, { min: number; max: number; raw: number }> // Base ID ranges for the item type (e.g., itemData.original.identifications)
-): number => {
-  const keys = Object.keys(itemIdentifications).filter(k => !!idRanges[k]);
-  if (keys.length === 0) return 0;
+  // Define a simplified structure for what we expect from item database for ranking
+  interface RankableItem {
+    identifications: Record<string, number>; // Rolled values
+    // Add any other properties needed if different from VerifiedItem in ItemWeightedLB
+  }
 
-  const sumOfPercentages = keys.reduce((acc, key) => {
-    const rollInfo = calculateIdentificationRoll(key, idRanges[key], itemIdentifications[key]);
-    return acc + rollInfo.formattedPercentage;
-  }, 0);
 
-  // Return score as a percentage (0-100)
-  return sumOfPercentages / keys.length;
-};
-
+  // Helper type for idRanges
+  type IdRange = { min: number; max: number; raw: number };
+  function isValidIdRange(obj: any): obj is IdRange {
+    return obj && typeof obj.min === 'number' && typeof obj.max === 'number' && typeof obj.raw === 'number';
+  }
+  function filterValidIdRanges(idRanges: Record<string, any>): Record<string, IdRange> {
+    const result: Record<string, IdRange> = {};
+    for (const key in idRanges) {
+      if (isValidIdRange(idRanges[key])) {
+        result[key] = idRanges[key];
+      }
+    }
+    return result;
+  }
+  const calculateOverallScoreForItem = (
+    itemIdentifications: Record<string, number>,
+    idRanges: Record<string, any>
+  ): number => {
+    const validIdRanges = filterValidIdRanges(idRanges);
+    const keys = Object.keys(itemIdentifications).filter(k => validIdRanges[k]);
+    if (keys.length === 0) return 0;
+    const sumOfPercentages = keys.reduce((acc, key) => {
+      const rollInfo = calculateIdentificationRoll(key, validIdRanges[key], itemIdentifications[key]);
+      return acc + rollInfo.formattedPercentage;
+    }, 0);
+    return sumOfPercentages / keys.length;
+  };
 
   const checkItemRankSuggestion = async (itemData: ItemAnalyzeData) => {
-    // itemData now expected to be ItemAnalyzeData for better type safety
+    console.log('[DEBUG] --- checkItemRankSuggestion START ---');
+    console.log('[DEBUG] itemData.weights:', itemData.weights);
+    // Debugging: log the input data
+    console.log('[DEBUG] checkItemRankSuggestion called with:', itemData);
     if (!itemData?.input?.identifications || !itemData?.original?.identifications || !itemData.original.internalName) {
       setRankSuggestion(null);
+      console.log('[DEBUG] Missing required itemData fields:', {
+        hasInputIdentifications: !!itemData?.input?.identifications,
+        hasOriginalIdentifications: !!itemData?.original?.identifications,
+        hasInternalName: !!itemData?.original?.internalName
+      });
       return;
     }
 
     const processedUserItemIds = processIdentification(itemData);
-    const goodIdsCount = processedUserItemIds.filter(id => id.percentage > 3).length;
-
-    let percentileThreshold = 0;
-    if (goodIdsCount === 2) percentileThreshold = 99;
-    else if (goodIdsCount === 3) percentileThreshold = 92.5;
-    else if (goodIdsCount >= 4 && goodIdsCount <= 6) percentileThreshold = 85;
-    else {
-      setRankSuggestion(null);
-      return;
+    console.log('[DEBUG] processedUserItemIds:', processedUserItemIds);
+    // Calculate valid IDs count for each weight (based only on weight data, not user item)
+    let validIdsCountPerWeight: Record<string, number> = {};
+    if (itemData.weights && itemData.weights.length > 0) {
+      console.log('[DEBUG] Checking threshold for each weight...');
+      itemData.weights.forEach(weight => {
+        // Only count identifications in the weight where the weight value is >= 0.03 (3%)
+        const count = Object.values(weight.identifications).filter(val => Math.abs(val) >= 0.03).length;
+        validIdsCountPerWeight[weight.weight_id] = count;
+      });
     }
-
-    const userItemOverallScore = calculateOverallScoreForItem(itemData.input.identifications, itemData.original.identifications);
-
-    if (userItemOverallScore < percentileThreshold) {
-      setRankSuggestion(null);
-      // console.log(`User item score ${userItemOverallScore} below threshold ${percentileThreshold}`);
-      return;
+    // Fallback: use all weight identifications if no weights (rare)
+    let fallbackValidIdsCount = 0;
+    if (!itemData.weights || itemData.weights.length === 0) {
+      if (itemData.input && itemData.input.identifications) {
+        fallbackValidIdsCount = Object.values(itemData.input.identifications).filter(val => Math.abs(val) >= 0.03).length;
+      }
     }
+    console.log('[DEBUG] validIdsCountPerWeight:', validIdsCountPerWeight);
+    console.log('[DEBUG] fallbackValidIdsCount:', fallbackValidIdsCount);
 
-    // console.log(`User item score ${userItemOverallScore} meets threshold ${percentileThreshold}. Fetching DB for ranking.`);
+    // STEP 1: Check if the item is "good enough" (meets the id:percent threshold for any weight)
+    // We'll use the same logic as getPercentileThreshold, but require the user's score to be above the threshold for that weight
+    // Helper for threshold (moved out of function scope to avoid redeclaration)
+    const getPercentileThresholdLocal = (count: number) => {
+      if (count === 2) return 99;
+      if (count === 3) return 92.5;
+      if (count >= 4 && count <= 6) return 85;
+      return 0;
+    };
 
+    // For each weight, check if the user's score is above the threshold
+    let passesThresholdForAnyWeight = false;
+    let userScoreByWeight: Record<string, number> = {};
+    if (itemData.weights && itemData.weights.length > 0) {
+      for (const weight of itemData.weights) {
+        console.log(`[DEBUG] Weight: ${weight.weight_name}, weight_id: ${weight.weight_id}`);
+        const count = validIdsCountPerWeight[weight.weight_id] || 0;
+        const threshold = getPercentileThresholdLocal(count);
+        console.log(`[DEBUG]   validIdsCount: ${count}, threshold: ${threshold}`);
+        // Calculate user score for this weight (same as leaderboard logic)
+        const idRanges = itemData.original.identifications;
+        const keys = Object.keys(itemData.input.identifications).filter(k => typeof idRanges[k] === 'object' && idRanges[k] !== null && 'min' in idRanges[k] && 'max' in idRanges[k] && 'raw' in idRanges[k]);
+        const userScore = keys.reduce((acc, key) => {
+          const inputVal = itemData.input.identifications[key];
+          const idRange = idRanges[key];
+          if (!idRange || typeof idRange !== 'object' || !('min' in idRange && 'max' in idRange && 'raw' in idRange)) return acc;
+          const { formattedPercentage } = calculateIdentificationRoll(key, idRange, inputVal);
+          if (weight.identifications[key] < 0) {
+            const invertedPercentage = 100 - formattedPercentage;
+            return acc + Math.abs((invertedPercentage / 100) * (weight.identifications[key] || 0));
+          } else {
+            return acc + (formattedPercentage / 100) * (weight.identifications[key] || 0);
+          }
+        }, 0) * 100;
+        console.log(`[DEBUG]   userScore: ${userScore}`);
+        userScoreByWeight[weight.weight_id] = userScore;
+        if (userScore >= threshold) {
+          passesThresholdForAnyWeight = true;
+          console.log(`[DEBUG]   PASSES threshold for weight: ${weight.weight_name}`);
+          break; // Only need to pass for one weight
+        } else {
+          console.log(`[DEBUG]   DOES NOT PASS threshold for weight: ${weight.weight_name}`);
+        }
+      }
+    }
+    // Fallback: check overall (legacy behavior)
+    // Always calculate userItemOverallScore so it is available for leaderboard logic
+    let passesOverallThreshold = false;
+    const idRanges = itemData.original.identifications;
+    const validIdRanges = filterValidIdRanges(idRanges);
+    const keys = Object.keys(itemData.input.identifications).filter(k => validIdRanges[k]);
+    let userItemOverallScore: number = keys.length === 0 ? 0 : keys.reduce((acc, key) => {
+      const rollInfo = calculateIdentificationRoll(key, validIdRanges[key], itemData.input.identifications[key]);
+      return acc + rollInfo.formattedPercentage;
+    }, 0) / keys.length;
+    if (!passesThresholdForAnyWeight) {
+      console.log('[DEBUG] Checking overall fallback threshold...');
+      // Use the fallback valid id count for threshold
+      const threshold = getPercentileThresholdLocal(fallbackValidIdsCount);
+      console.log(`[DEBUG]   userItemOverallScore: ${userItemOverallScore}, threshold: ${threshold}`);
+      if (userItemOverallScore >= threshold) {
+        passesOverallThreshold = true;
+        console.log('[DEBUG]   PASSES overall threshold');
+      } else {
+        console.log('[DEBUG]   DOES NOT PASS overall threshold');
+      }
+    }
+    // If not good enough, do not show suggestion
+
+    console.log('[DEBUG] --- Checking leaderboard for each weight ---');
+
+    // For each weight, determine the percentile threshold based on its valid id count
+    // (moved to getPercentileThresholdLocal above)
+    // No early return, always check leaderboard
+
+    let weightRankResults: { name: string; rank: number; score: number }[] = [];
+    let anyRanked = false;
     try {
       // Fetch all verified items for this base item type
-      // The structure of items from this endpoint needs to be RankableItem compatible
       const dbItemsResponse = await fetch(api(`/item/database/${itemData.original.internalName}`));
       if (!dbItemsResponse.ok) throw new Error('Failed to fetch item database for ranking.');
       const dbItems: RankableItem[] = await dbItemsResponse.json();
-
-      // Fetch full item details for ID ranges (might be redundant if itemData.original is already this)
-      // Assuming itemData.original.identifications already contains the necessary ID ranges.
       const idRanges = itemData.original.identifications;
 
-      const allScores: { score: number; isUserItem: boolean }[] = [];
+      // Helper to get unique user key for deduplication
+      const getUserKey = (item: any) => JSON.stringify(item.identifications);
 
-      // Calculate score for the user's item
-      allScores.push({ score: userItemOverallScore, isUserItem: true });
+      // If there are weights, check each one (reference ItemWeightedLB logic)
+      if (itemData.weights && itemData.weights.length > 0) {
+        for (const weight of itemData.weights) {
+          console.log(`[DEBUG] [LB] Weight: ${weight.weight_name}`);
+          // Reference: calculateScore from ItemWeightedLB
+          // 1. Get keys present in both user item and idRanges
+          const keys = Object.keys(itemData.input.identifications).filter(k => typeof idRanges[k] === 'object' && idRanges[k] !== null && 'min' in idRanges[k] && 'max' in idRanges[k] && 'raw' in idRanges[k]);
+          // 2. Calculate user score for this weight
+          const userScore = keys.reduce((acc, key) => {
+            const inputVal = itemData.input.identifications[key];
+            const idRange = idRanges[key];
+            if (!idRange || typeof idRange !== 'object' || !('min' in idRange && 'max' in idRange && 'raw' in idRange)) return acc;
+            const { formattedPercentage } = calculateIdentificationRoll(key, idRange, inputVal);
+            if (weight.identifications[key] < 0) {
+              // If the weight is negative, we need to invert the percentage
+              const invertedPercentage = 100 - formattedPercentage;
+              return acc + Math.abs((invertedPercentage / 100) * (weight.identifications[key] || 0));
+            } else {
+              return acc + (formattedPercentage / 100) * (weight.identifications[key] || 0);
+            }
+          }, 0) * 100;
+          console.log(`[DEBUG] Weight: ${weight.weight_name}, userScore:`, userScore);
 
-      // Calculate scores for all items from the database
+          // Calculate scores for all items in DB for this weight
+          const allScores: { score: number; isUserItem: boolean; key: string; dbItem?: any }[] = [];
+          const userKey = getUserKey(itemData.input);
+          allScores.push({ score: userScore, isUserItem: true, key: userKey });
+          dbItems.forEach(dbItem => {
+            if (dbItem.identifications) {
+              // Use the same keys logic as above
+              const dbKeys = Object.keys(dbItem.identifications).filter(k => typeof idRanges[k] === 'object' && idRanges[k] !== null && 'min' in idRanges[k] && 'max' in idRanges[k] && 'raw' in idRanges[k]);
+              const dbScore = dbKeys.reduce((acc, key) => {
+                const inputVal = dbItem.identifications[key];
+                const idRange = idRanges[key];
+                if (!idRange || typeof idRange !== 'object' || !('min' in idRange && 'max' in idRange && 'raw' in idRange)) return acc;
+                const { formattedPercentage } = calculateIdentificationRoll(key, idRange, inputVal);
+                if (weight.identifications[key] < 0) {
+                  const invertedPercentage = 100 - formattedPercentage;
+                  return acc + Math.abs((invertedPercentage / 100) * (weight.identifications[key] || 0));
+                } else {
+                  return acc + (formattedPercentage / 100) * (weight.identifications[key] || 0);
+                }
+              }, 0) * 100;
+              const dbKey = getUserKey(dbItem);
+              allScores.push({ score: dbScore, isUserItem: false, key: dbKey, dbItem });
+            }
+          });
+          // Remove duplicate entries by key (keep highest score for each unique key)
+          const uniqueScoresMap = new Map();
+          allScores.forEach(entry => {
+            if (!uniqueScoresMap.has(entry.key) || uniqueScoresMap.get(entry.key).score < entry.score) {
+              uniqueScoresMap.set(entry.key, entry);
+            }
+          });
+          const uniqueScores = Array.from(uniqueScoresMap.values());
+          uniqueScores.sort((a, b) => b.score - a.score);
+          // Debug: print the sorted scores for this weight
+          console.log(`[DEBUG] Weight: ${weight.weight_name}, sorted uniqueScores:`, uniqueScores.map((s, idx) => ({ idx: idx + 1, score: s.score, isUserItem: s.isUserItem, key: s.key, dbItem: s.dbItem })));
+          let potentialRank = -1;
+          for (let i = 0; i < uniqueScores.length; i++) {
+            if (i < 10) {
+              const entry = uniqueScores[i];
+              console.log(`[DEBUG]   LB #${i + 1}: score=${entry.score}, isUserItem=${entry.isUserItem}`);
+            }
+            if (uniqueScores[i].isUserItem) {
+              potentialRank = i + 1;
+              break;
+            }
+          }
+          console.log(`[DEBUG] Weight: ${weight.weight_name}, potentialRank:`, potentialRank, 'userKey:', userKey, 'uniqueScores:', uniqueScores);
+          // Only show suggestion if leaderboard has at least 10 unique entries\
+          // && uniqueScores.length >= 10
+          if (potentialRank !== -1 && potentialRank <= 10 ) {
+            console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB)`);
+            weightRankResults.push({ name: weight.weight_name, rank: potentialRank, score: userScore });
+            anyRanked = true;
+          } else {
+            console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRank}, total=${uniqueScores.length})`);
+          }
+        }
+      }
+      // Fallback: also check overall (legacy behavior)
+      // Move allScores, userItemOverallScore, etc. declaration above this block to avoid block-scope issues
+      console.log('[DEBUG] --- Checking leaderboard for overall ---');
+      // userItemOverallScore already declared above, so just use it here
+      // Move this block after userItemOverallScore is declared and assigned
+      // userItemOverallScore is already declared above, so do not redeclare it here
+      // Find the previous declaration and move this block after it
+      // Find the first declaration of userItemOverallScore
+      // (should be above, after fallback threshold check)
+      // So, just use it here
+      // Only build allScoresOverall after userItemOverallScore is assigned
+      let allScoresOverall: { score: number; isUserItem: boolean; key: string }[] = [];
+      const userKeyOverall = getUserKey(itemData.input);
+      // Only push if userItemOverallScore is assigned (after threshold check)
+      if (typeof userItemOverallScore === 'number') {
+        allScoresOverall.push({ score: userItemOverallScore, isUserItem: true, key: userKeyOverall });
+      }
       dbItems.forEach(dbItem => {
-        // Ensure dbItem.identifications is not null or undefined
         if (dbItem.identifications) {
-            const score = calculateOverallScoreForItem(dbItem.identifications, idRanges);
-            allScores.push({ score: score, isUserItem: false });
+          const score = calculateOverallScoreForItem(dbItem.identifications, idRanges);
+          const dbKey = getUserKey(dbItem);
+          allScoresOverall.push({ score: score, isUserItem: false, key: dbKey });
         }
       });
-
-      // Sort scores in descending order
-      allScores.sort((a, b) => b.score - a.score);
-
-      // Find the rank of the user's item
-      let potentialRank = -1;
-      for (let i = 0; i < allScores.length; i++) {
-        if (allScores[i].isUserItem) {
-          potentialRank = i + 1;
+      // Remove duplicate entries by key
+      const uniqueScoresMapOverall = new Map();
+      allScoresOverall.forEach(entry => {
+        if (!uniqueScoresMapOverall.has(entry.key) || uniqueScoresMapOverall.get(entry.key).score < entry.score) {
+          uniqueScoresMapOverall.set(entry.key, entry);
+        }
+      });
+      const uniqueScoresOverall = Array.from(uniqueScoresMapOverall.values());
+      uniqueScoresOverall.sort((a, b) => b.score - a.score);
+      // Debug print top 10 leaderboard entries
+      for (let j = 0; j < Math.min(10, uniqueScoresOverall.length); j++) {
+        const entry = uniqueScoresOverall[j];
+        console.log(`[DEBUG]   LB #${j + 1}: score=${entry.score}, isUserItem=${entry.isUserItem}`);
+      }
+      let potentialRankOverall = -1;
+      for (let i = 0; i < uniqueScoresOverall.length; i++) {
+        if (uniqueScoresOverall[i].isUserItem) {
+          potentialRankOverall = i + 1;
           break;
         }
       }
-
-      // console.log(`Potential rank: ${potentialRank}, Total items in ranking: ${allScores.length}`);
-
-      if (potentialRank !== -1 && potentialRank <= 10) {
-        setRankSuggestion(`This item is possibly good enough to be ranked at #${potentialRank}! (Overall score: ${userItemOverallScore.toFixed(2)}%)`);
+      console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall)`);
+      // Only show suggestion if leaderboard has at least 10 unique entries
+      //  && uniqueScoresOverall.length >= 10
+      if (potentialRankOverall !== -1 && potentialRankOverall <= 10) {
+        weightRankResults.push({ name: 'Overall', rank: potentialRankOverall, score: userItemOverallScore });
+        anyRanked = true;
       } else {
-        // console.log("Item is good but not top 10, or rank couldn't be determined.");
-        setRankSuggestion(null); // Not top 10 or user item not found (should not happen if pushed correctly)
+        console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRankOverall}, total=${uniqueScoresOverall.length})`);
       }
-
+      // The block below is redundant and causes scoping issues. The leaderboard logic for overall is already handled above using userItemOverallScore.
+      // Removed duplicate/redeclaration of userItemOverallScore and related leaderboard logic.
+      if (anyRanked && weightRankResults.length > 0) {
+        console.log("3qwaeinujaeniu as", anyRanked, weightRankResults, passesThresholdForAnyWeight, passesOverallThreshold)
+        // Only show suggestion if the item actually passed a threshold (for any weight or overall)
+        if (passesThresholdForAnyWeight || passesOverallThreshold) {
+          console.log('[DEBUG] --- checkItemRankSuggestion END (SHOW SUGGESTION) ---');
+          console.log('[DEBUG] weightRankResults:', weightRankResults);
+          setRankSuggestion(
+            // Styled suggestion message as a React element
+            <div className="rounded-lg border border-green-400 bg-green-50 dark:bg-green-900/40 p-4 text-green-800 dark:text-green-200 flex flex-col gap-2">
+              <div className="flex items-center gap-2 text-lg font-semibold">
+                <span className="inline-block text-green-500 dark:text-green-300">🏆</span>
+                <span>This item is possibly ranked in the <span className="text-green-600 dark:text-green-200 font-bold">top 10</span> for:</span>
+              </div>
+              <ul className="pl-4 list-disc">
+                {weightRankResults.map(r => (
+                  <li key={r.name} className="font-medium">
+                    <span className="text-green-700 dark:text-green-100">{r.name}</span>
+                    {': '}<span className="font-bold">#{r.rank}</span> <span className="text-green-500">({r.score.toFixed(2)}%)</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        } else {
+          // Defensive: should not happen, but if it does, do not show suggestion
+          console.log('[DEBUG] No threshold passed, not setting suggestion.');
+          setRankSuggestion(null);
+        }
+      } else {
+        console.log('[DEBUG] No ranks found, not setting suggestion.');
+        setRankSuggestion(null);
+      }
+      if (!passesThresholdForAnyWeight && !passesOverallThreshold) {
+        setRankSuggestion(null);
+        console.log('[DEBUG] Item does not meet threshold for any weight or overall. No suggestion.');
+        console.log('[DEBUG] --- checkItemRankSuggestion END (NO SUGGESTION) ---');
+        return;
+      }
     } catch (e: any) {
-      console.error("Failed to get rank suggestion:", e);
-      setRankSuggestion("Could not fetch rank suggestion at this time.");
+      console.error("[DEBUG] Failed to get rank suggestion:", e);
+      setRankSuggestion(
+        <div className="rounded-lg border border-red-400 bg-red-50 dark:bg-red-900/40 p-4 text-red-800 dark:text-red-200 flex items-center gap-2">
+          <span className="inline-block text-red-500 dark:text-red-300">❌</span>
+          <span>Could not fetch rank suggestion at this time.</span>
+        </div>
+      );
     }
   };
 
@@ -247,10 +489,7 @@ const calculateOverallScoreForItem = (
   };
 
   const handleCompare = async () => {
-    const trimmedA = compareItemAString.trim();
-    const trimmedB = compareItemBString.trim();
-
-    if (!trimmedA || !trimmedB) {
+    if (!compareItemAString.trim() || !compareItemBString.trim()) {
       setCompareError("Please enter both item strings.");
       return;
     }
@@ -261,8 +500,8 @@ const calculateOverallScoreForItem = (
 
     try {
       await Promise.all([
-        fetchCompareItemData(trimmedA, setCompareDataA),
-        fetchCompareItemData(trimmedB, setCompareDataB),
+        fetchCompareItemData(compareItemAString, setCompareDataA),
+        fetchCompareItemData(compareItemBString, setCompareDataB),
       ]);
     } catch (error: any) {
       setCompareError(error.message || "Failed to fetch one or both items for comparison.");
@@ -280,19 +519,17 @@ const calculateOverallScoreForItem = (
   // Handle form submission or input change event
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const trimmedInputValue = inputValue.trim();
-    if (trimmedInputValue !== '') {
-      fetchItemData(trimmedInputValue);
+    if (inputValue.trim() !== '') {
+      fetchItemData(inputValue);
     }
   };
 
-  const renderWeightComparison = () => {
+  // Enhanced: renderWeightComparison now takes A and B, and shows which side is better
+  const renderWeightComparison = (compareDataA: any, compareDataB: any) => {
     if (!compareDataA || !compareDataB || !compareDataA.weights || !compareDataB.weights) {
       return <p>Loading comparison data or weights unavailable...</p>;
     }
 
-    // Assuming weights are matched by name or ID. For simplicity, let's use weight_name.
-    // A more robust solution might involve matching by weight_id if names can vary.
     const allWeightNames = new Set([
       ...compareDataA.weights.map((w: Weight) => w.weight_name),
       ...compareDataB.weights.map((w: Weight) => w.weight_name)
@@ -305,7 +542,7 @@ const calculateOverallScoreForItem = (
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-4 items-center font-semibold mb-2">
           <div className="text-lg">Item A Weights</div>
-          <div></div> {/* Spacer for the arrow */}
+          <div></div>
           <div className="text-lg">Item B Weights</div>
         </div>
         {Array.from(allWeightNames).map(weightName => {
@@ -313,38 +550,26 @@ const calculateOverallScoreForItem = (
           const weightB = compareDataB.weights.find((w: Weight) => w.weight_name === weightName);
 
           const scoreA = weightA ? calculateWeightedScore(processedA, weightA.identifications).total * 100 : null;
-          const scoreA = weightA ? calculateWeightedScore(processedA, weightA.identifications).total * 100 : null;
           const scoreB = weightB ? calculateWeightedScore(processedB, weightB.identifications).total * 100 : null;
 
-          let itemAColor = "text-primary"; // Default color
-          let itemBColor = "text-primary"; // Default color
-
+          let winner: 'A' | 'B' | null = null;
           if (scoreA !== null && scoreB !== null) {
-            if (scoreA > scoreB) {
-              itemAColor = "text-green-500 font-semibold";
-              itemBColor = "text-red-500";
-            } else if (scoreB > scoreA) {
-              itemBColor = "text-green-500 font-semibold";
-              itemAColor = "text-red-500";
-            }
-            // If scores are equal, they remain default color (or you can add a specific color for ties)
-          } else if (scoreA !== null && scoreB === null) {
-            itemAColor = "text-green-500 font-semibold"; // Item A has a score, B doesn't
-          } else if (scoreB !== null && scoreA === null) {
-            itemBColor = "text-green-500 font-semibold"; // Item B has a score, A doesn't
+            if (scoreA > scoreB) winner = 'A';
+            else if (scoreB > scoreA) winner = 'B';
           }
 
-
           return (
-            <div key={weightName} className="grid grid-cols-3 gap-2 items-center py-3 border-b last:border-b-0">
-              <div className={`truncate ${itemAColor}`}>
-                <p className={`font-medium ${itemAColor}`}>{weightName}</p>
+            <div key={weightName} className="grid grid-cols-3 gap-4 items-center py-2 border-b">
+              <div className={winner === 'A' ? 'truncate font-bold text-green-600 dark:text-green-300' : 'truncate'}>
+                <p className="font-medium">{weightName}</p>
                 {scoreA !== null ? `${scoreA.toFixed(2)}%` : <span className="text-gray-400">N/A</span>}
+                {winner === 'A' && <span className="ml-2 text-green-500 dark:text-green-300">▲</span>}
               </div>
-              <div className="text-center text-xl text-primary/70">vs</div>
-              <div className={`truncate text-right ${itemBColor}`}>
-                <p className={`font-medium ${itemBColor}`}>{weightName}</p>
+              <div className="text-center text-2xl text-primary/70">↔</div>
+              <div className={winner === 'B' ? 'truncate text-right font-bold text-green-600 dark:text-green-300' : 'truncate text-right'}>
+                <p className="font-medium">{weightName}</p>
                 {scoreB !== null ? `${scoreB.toFixed(2)}%` : <span className="text-gray-400">N/A</span>}
+                {winner === 'B' && <span className="ml-2 text-green-500 dark:text-green-300">▲</span>}
               </div>
             </div>
           );
@@ -358,7 +583,6 @@ const calculateOverallScoreForItem = (
     <div className="container mx-auto p-4 max-w-screen-lg">
       <div className="min-h-screen bg-background flex flex-col items-center justify-start px-4 py-12 space-y-6">
         <div className='mt-[80px]' />
-        <Badge variant="outline" className="text-foreground/50">Beta Version</Badge>
         <div className='flex flex-col items-center'>
           <h1 className="text-3xl font-bold text-primary">Wynncraft Item Analyzer</h1>
           <p className='text-primary/50'>Weight for every item on <Link href="https://weight.wynnpool.com/" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>weight.wynnpool.com</Link></p>
@@ -368,7 +592,12 @@ const calculateOverallScoreForItem = (
           <p className='text-red-300'>Please join the discord server above for support</p>
         </div>
 
-        <Tabs defaultValue="analyze" className="w-full max-w-xl" onValueChange={setActiveTab}>
+        <Tabs
+          defaultValue={activeTab}
+          value={activeTab}
+          onValueChange={(val) => setActiveTab(val as 'analyze' | 'compare')}
+          className="w-full max-w-xl"
+        >
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="analyze">Analyze Single Item</TabsTrigger>
             <TabsTrigger value="compare">Compare Two Items</TabsTrigger>
@@ -392,13 +621,13 @@ const calculateOverallScoreForItem = (
               <Input
                 value={compareItemAString}
                 onChange={(e) => setCompareItemAString(e.target.value)}
-                placeholder="Paste Item A String"
+                placeholder="Paste First String"
                 className="text-primary placeholder-gray-400"
               />
               <Input
                 value={compareItemBString}
                 onChange={(e) => setCompareItemBString(e.target.value)}
-                placeholder="Paste Item B String"
+                placeholder="Paste Second String"
                 className="text-primary placeholder-gray-400"
               />
               <Button onClick={handleCompare} className="w-full" disabled={compareLoading}>
@@ -409,23 +638,22 @@ const calculateOverallScoreForItem = (
           </TabsContent>
         </Tabs>
 
-        {/* Display area for single analysis results (conditionally rendered based on demoData and activeTab) */}
-        {activeTab === "analyze" && demoData && !loading && !error && (
+        {/* Display area for single analysis results (conditionally rendered based on demoData) */}
+        {/* This content appears when demoData is populated from the "Analyze Single Item" tab */}
+        {activeTab === 'analyze' && demoData && !loading && !error && (
           <>
             {rankSuggestion && (
-              <div className="text-green-500 font-semibold my-2 p-2 bg-green-100 border border-green-300 rounded w-full max-w-xl">
-                {rankSuggestion}
-              </div>
+              <div className="my-2 w-full max-w-xl">{rankSuggestion}</div>
             )}
             {demoData.original?.identified && (
               <div className="text-yellow-400 mt-2 w-full max-w-xl">⚠️ This item is already identified.</div>
             )}
             {!demoData.original?.identified && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 w-full max-w-screen-lg"> {/* Changed md:grid-cols-3 to md:grid-cols-2 */}
-                <div className="md:col-span-1"> {/* This will now take 1 of 2 columns */}
+              <div className="flex flex-col md:flex-row gap-6 mt-6 w-full max-w-screen-lg">
+                <div className="flex-1 min-w-0 flex flex-col space-y-6">
                   <RolledItemDisplay data={demoData} />
                 </div>
-                <div className="md:col-span-1 space-y-6"> {/* This will now take 1 of 2 columns */}
+                <div className="flex-1 min-w-0 flex flex-col space-y-6">
                   {demoData.weights?.length > 0 && (
                     <Card>
                       <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
@@ -433,53 +661,33 @@ const calculateOverallScoreForItem = (
                         <Accordion type="single" collapsible className="w-full">
                           {(() => {
                             const processed = processIdentification(demoData);
-                            return demoData.weights.map((weight: Weight) => {
+                            // Sort weights by score descending
+                            const weightsWithScore = demoData.weights.map((weight: Weight): { weight: Weight; score: number } => {
                               const result = calculateWeightedScore(processed, weight.identifications);
-                              const currentWeightScore = result.total * 100;
-                              let specificWeightSuggestionMessage = null;
-
-                              if (weight.identifications) {
-                                const meaningfulContributorsInWeightDefinitionCount = Object.values(
-                                  weight.identifications
-                                ).filter(factor => factor > 0.03).length; // Count factors > 3%
-
-                                if (
-                                  (meaningfulContributorsInWeightDefinitionCount === 2 && currentWeightScore >= 99) ||
-                                  (meaningfulContributorsInWeightDefinitionCount === 3 && currentWeightScore >= 92.5) ||
-                                  (meaningfulContributorsInWeightDefinitionCount >= 4 &&
-                                   meaningfulContributorsInWeightDefinitionCount <= 6 && currentWeightScore >= 85)
-                                ) {
-                                  specificWeightSuggestionMessage = `This item is exceptionally good for '${weight.weight_name}' (Score: ${currentWeightScore.toFixed(2)}%)!`;
-                                }
-                              }
-
+                              return { weight, score: result.total };
+                            });
+                            weightsWithScore.sort((a: { weight: Weight; score: number }, b: { weight: Weight; score: number }) => b.score - a.score);
+                            return weightsWithScore.map(({ weight, score }: { weight: Weight; score: number }) => {
                               return (
                                 <AccordionItem value={weight.weight_id} key={weight.weight_id}>
-                                  <AccordionTrigger className="hover:no-underline">
-                                    <div className="flex flex-col items-start text-left w-full pr-2"> {/* Ensure text aligns left */}
-                                      <div className="flex justify-between w-full">
-                                        <span>{weight.weight_name}</span>
-                                        <span className="text-blue-400 font-semibold">
-                                          [{currentWeightScore.toFixed(2)}%]
-                                        </span>
-                                      </div>
-                                      {specificWeightSuggestionMessage && (
-                                        <div className="text-xs text-green-400 mt-1 font-normal"> {/* Suggestion styling */}
-                                          {specificWeightSuggestionMessage}
-                                        </div>
-                                      )}
+                                  <AccordionTrigger>
+                                    <div className="flex justify-between w-full pr-4">
+                                      <span>{weight.weight_name}</span>
+                                      <span className="text-blue-400 font-semibold">
+                                        [{(score * 100).toFixed(2)}%]
+                                      </span>
                                     </div>
                                   </AccordionTrigger>
                                   <AccordionContent>
                                     <ul className="text-gray-300 text-sm space-y-1 pl-4">
                                       {Object.entries(weight.identifications).map(([key, value]) => {
                                         const idInfo = getIdentificationInfo(key);
-                                        const factorPercent = value * 100;
+                                        const percent = Math.trunc((value as number) * 10000) / 100;
                                         return (
                                           <li key={key}>
                                             <span className="text-primary">
                                               {idInfo?.displayName || key}
-                                            </span>: {factorPercent.toFixed(2)}% factor
+                                            </span>: {percent.toFixed(2)}%
                                           </li>
                                         );
                                       })}
@@ -499,7 +707,7 @@ const calculateOverallScoreForItem = (
                       <CardContent>
                         <ItemWeightedLB
                           item={{ internalName: demoData.original.internalName }}
-                         isEmbedded={true}
+                          isEmbedded={true}
                         />
                       </CardContent>
                     </Card>
@@ -510,8 +718,9 @@ const calculateOverallScoreForItem = (
           </>
         )}
 
-        {/* Display area for comparison results (conditionally rendered based on compareDataA, compareDataB and activeTab) */}
-        {activeTab === "compare" && !compareLoading && compareDataA && compareDataB && (
+        {/* Display area for comparison results (conditionally rendered based on compareDataA and compareDataB) */}
+        {/* This content appears when compareDataA and compareDataB are populated from the "Compare Two Items" tab */}
+        {activeTab === 'compare' && !compareLoading && compareDataA && compareDataB && (
           <div className="w-full max-w-3xl mt-6">
             <Card>
               <CardHeader>
@@ -520,7 +729,7 @@ const calculateOverallScoreForItem = (
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 text-center">Item A: {compareDataA.original?.name || compareDataA.input?.name || 'Unknown'}</h3>
+                    {/* <h3 className="font-semibold text-lg mb-2 text-center">Item A: {compareDataA.original?.name || compareDataA.input?.name || 'Unknown'}</h3> */}
                     {compareDataA.original?.identified ? (
                       <p className="text-yellow-400 text-center">⚠️ Item A is already identified.</p>
                     ) : compareDataA.input ? (
@@ -530,7 +739,7 @@ const calculateOverallScoreForItem = (
                     )}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 text-center">Item B: {compareDataB.original?.name || compareDataB.input?.name || 'Unknown'}</h3>
+                    {/* <h3 className="font-semibold text-lg mb-2 text-center">Item B: {compareDataB.original?.name || compareDataB.input?.name || 'Unknown'}</h3> */}
                     {compareDataB.original?.identified ? (
                       <p className="text-yellow-400 text-center">⚠️ Item B is already identified.</p>
                     ) : compareDataB.input ? (
@@ -540,7 +749,7 @@ const calculateOverallScoreForItem = (
                     )}
                   </div>
                 </div>
-                {renderWeightComparison()}
+                {renderWeightComparison(compareDataA, compareDataB)}
               </CardContent>
             </Card>
           </div>
