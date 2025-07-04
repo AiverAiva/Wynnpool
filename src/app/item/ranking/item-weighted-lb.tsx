@@ -55,8 +55,11 @@ export default function ItemWeightedLB({ item, open, onClose, isEmbedded = false
   const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
   const [shinyOnly, setShinyOnly] = useState(false);
 
+  // Only fetch if the internalName string actually changes
+  const [lastInternalName, setLastInternalName] = useState<string | null>(null);
   useEffect(() => {
-    if (!item.internalName) return;
+    if (!item.internalName || item.internalName === lastInternalName) return;
+    setLastInternalName(item.internalName);
     setLoading(true);
 
     fetch(api(`/item/${item.internalName}/weight`))
@@ -80,7 +83,7 @@ export default function ItemWeightedLB({ item, open, onClose, isEmbedded = false
       .catch(console.error)
       .finally(() => setLoading(false));
 
-  }, [item]);
+  }, [item.internalName]);
 
   function calculateScore(entry: VerifiedItem, weight?: Weight): number {
     // If no weight passed, compute average of all IDs
