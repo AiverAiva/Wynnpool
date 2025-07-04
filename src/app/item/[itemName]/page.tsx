@@ -335,11 +335,11 @@ export default function ItemPage() {
                             </CardContent>
                         </Card>
                     )}
+                    {isCombatItem && itemData.changelog && (
+                        <ItemHistory changelog={itemData.changelog} />
+                    )}
                 </div>
             </div>
-            {isCombatItem && itemData.changelog && (
-                <ItemHistory changelog={itemData.changelog} />
-            )}
         </div>
     )
 }
