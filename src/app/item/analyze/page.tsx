@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { getIdentificationInfo, processIdentification, calculateIdentificationRoll } from '@/lib/itemUtils';
+import { getIdentificationInfo, processIdentification } from '@/lib/itemUtils';
 import { ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,7 +11,6 @@ import ItemWeightedLB from '@/app/item/ranking/item-weighted-lb'; // Assuming th
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import api from '@/lib/api';
 
 function calculateWeightedScore(
   ids: { name: string; percentage: number }[],
@@ -78,6 +77,7 @@ export default function Home() {
   const [compareDataB, setCompareDataB] = useState<any>(null);
   const [compareLoading, setCompareLoading] = useState<boolean>(false);
   const [compareError, setCompareError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("analyze"); // State for active tab
 
   // Function to handle the API request for single item analysis
   const fetchItemData = async (item: string) => {
@@ -113,48 +113,33 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
-
   };
 
+import { calculateIdentificationRoll } from '@/lib/itemUtils'; // Added for rank suggestion
+import api from '@/lib/api'; // Ensure api is imported
 
-
-
-// --- FIXED: Type for idRanges and filter helper ---
-type IdRange = { min: number; max: number; raw: number };
-
-function isValidIdRange(obj: any): obj is IdRange {
-  return obj && typeof obj.min === 'number' && typeof obj.max === 'number' && typeof obj.raw === 'number';
+// Define a simplified structure for what we expect from item database for ranking
+interface RankableItem {
+  identifications: Record<string, number>; // Rolled values
+  // Add any other properties needed if different from VerifiedItem in ItemWeightedLB
 }
 
-function filterValidIdRanges(idRanges: Record<string, any>): Record<string, IdRange> {
-  const result: Record<string, IdRange> = {};
-  for (const key in idRanges) {
-    if (isValidIdRange(idRanges[key])) {
-      result[key] = idRanges[key];
-    }
-  }
-  return result;
-}
 
-// --- FIXED: calculateOverallScoreForItem to only use valid idRanges ---
 const calculateOverallScoreForItem = (
-  itemIdentifications: Record<string, number>,
-  idRanges: Record<string, any>
+  itemIdentifications: Record<string, number>, // The rolled IDs of the item (e.g., itemData.input.identifications)
+  idRanges: Record<string, { min: number; max: number; raw: number }> // Base ID ranges for the item type (e.g., itemData.original.identifications)
 ): number => {
-  const validIdRanges = filterValidIdRanges(idRanges);
-  const keys = Object.keys(itemIdentifications).filter(k => validIdRanges[k]);
+  const keys = Object.keys(itemIdentifications).filter(k => !!idRanges[k]);
   if (keys.length === 0) return 0;
+
   const sumOfPercentages = keys.reduce((acc, key) => {
-    const rollInfo = calculateIdentificationRoll(key, validIdRanges[key], itemIdentifications[key]);
+    const rollInfo = calculateIdentificationRoll(key, idRanges[key], itemIdentifications[key]);
     return acc + rollInfo.formattedPercentage;
   }, 0);
+
+  // Return score as a percentage (0-100)
   return sumOfPercentages / keys.length;
 };
-
-// --- FIXED: RankableItem interface for DB items ---
-interface RankableItem {
-  identifications: Record<string, number>;
-}
 
 
   const checkItemRankSuggestion = async (itemData: ItemAnalyzeData) => {
@@ -262,7 +247,10 @@ interface RankableItem {
   };
 
   const handleCompare = async () => {
-    if (!compareItemAString.trim() || !compareItemBString.trim()) {
+    const trimmedA = compareItemAString.trim();
+    const trimmedB = compareItemBString.trim();
+
+    if (!trimmedA || !trimmedB) {
       setCompareError("Please enter both item strings.");
       return;
     }
@@ -273,8 +261,8 @@ interface RankableItem {
 
     try {
       await Promise.all([
-        fetchCompareItemData(compareItemAString, setCompareDataA),
-        fetchCompareItemData(compareItemBString, setCompareDataB),
+        fetchCompareItemData(trimmedA, setCompareDataA),
+        fetchCompareItemData(trimmedB, setCompareDataB),
       ]);
     } catch (error: any) {
       setCompareError(error.message || "Failed to fetch one or both items for comparison.");
@@ -292,8 +280,9 @@ interface RankableItem {
   // Handle form submission or input change event
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (inputValue.trim() !== '') {
-      fetchItemData(inputValue);
+    const trimmedInputValue = inputValue.trim();
+    if (trimmedInputValue !== '') {
+      fetchItemData(trimmedInputValue);
     }
   };
 
@@ -324,17 +313,37 @@ interface RankableItem {
           const weightB = compareDataB.weights.find((w: Weight) => w.weight_name === weightName);
 
           const scoreA = weightA ? calculateWeightedScore(processedA, weightA.identifications).total * 100 : null;
+          const scoreA = weightA ? calculateWeightedScore(processedA, weightA.identifications).total * 100 : null;
           const scoreB = weightB ? calculateWeightedScore(processedB, weightB.identifications).total * 100 : null;
 
+          let itemAColor = "text-primary"; // Default color
+          let itemBColor = "text-primary"; // Default color
+
+          if (scoreA !== null && scoreB !== null) {
+            if (scoreA > scoreB) {
+              itemAColor = "text-green-500 font-semibold";
+              itemBColor = "text-red-500";
+            } else if (scoreB > scoreA) {
+              itemBColor = "text-green-500 font-semibold";
+              itemAColor = "text-red-500";
+            }
+            // If scores are equal, they remain default color (or you can add a specific color for ties)
+          } else if (scoreA !== null && scoreB === null) {
+            itemAColor = "text-green-500 font-semibold"; // Item A has a score, B doesn't
+          } else if (scoreB !== null && scoreA === null) {
+            itemBColor = "text-green-500 font-semibold"; // Item B has a score, A doesn't
+          }
+
+
           return (
-            <div key={weightName} className="grid grid-cols-3 gap-4 items-center py-2 border-b">
-              <div className="truncate">
-                <p className="font-medium">{weightName}</p>
+            <div key={weightName} className="grid grid-cols-3 gap-2 items-center py-3 border-b last:border-b-0">
+              <div className={`truncate ${itemAColor}`}>
+                <p className={`font-medium ${itemAColor}`}>{weightName}</p>
                 {scoreA !== null ? `${scoreA.toFixed(2)}%` : <span className="text-gray-400">N/A</span>}
               </div>
-              <div className="text-center text-2xl text-primary/70">↔</div>
-              <div className="truncate text-right">
-                <p className="font-medium">{weightName}</p>
+              <div className="text-center text-xl text-primary/70">vs</div>
+              <div className={`truncate text-right ${itemBColor}`}>
+                <p className={`font-medium ${itemBColor}`}>{weightName}</p>
                 {scoreB !== null ? `${scoreB.toFixed(2)}%` : <span className="text-gray-400">N/A</span>}
               </div>
             </div>
@@ -359,7 +368,7 @@ interface RankableItem {
           <p className='text-red-300'>Please join the discord server above for support</p>
         </div>
 
-        <Tabs defaultValue="analyze" className="w-full max-w-xl">
+        <Tabs defaultValue="analyze" className="w-full max-w-xl" onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="analyze">Analyze Single Item</TabsTrigger>
             <TabsTrigger value="compare">Compare Two Items</TabsTrigger>
@@ -400,9 +409,8 @@ interface RankableItem {
           </TabsContent>
         </Tabs>
 
-        {/* Display area for single analysis results (conditionally rendered based on demoData) */}
-        {/* This content appears when demoData is populated from the "Analyze Single Item" tab */}
-        {demoData && !loading && !error && (
+        {/* Display area for single analysis results (conditionally rendered based on demoData and activeTab) */}
+        {activeTab === "analyze" && demoData && !loading && !error && (
           <>
             {rankSuggestion && (
               <div className="text-green-500 font-semibold my-2 p-2 bg-green-100 border border-green-300 rounded w-full max-w-xl">
@@ -413,11 +421,11 @@ interface RankableItem {
               <div className="text-yellow-400 mt-2 w-full max-w-xl">⚠️ This item is already identified.</div>
             )}
             {!demoData.original?.identified && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 w-full max-w-screen-lg">
-                <div className="md:col-span-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 w-full max-w-screen-lg"> {/* Changed md:grid-cols-3 to md:grid-cols-2 */}
+                <div className="md:col-span-1"> {/* This will now take 1 of 2 columns */}
                   <RolledItemDisplay data={demoData} />
                 </div>
-                <div className="md:col-span-2 space-y-6">
+                <div className="md:col-span-1 space-y-6"> {/* This will now take 1 of 2 columns */}
                   {demoData.weights?.length > 0 && (
                     <Card>
                       <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
@@ -427,26 +435,51 @@ interface RankableItem {
                             const processed = processIdentification(demoData);
                             return demoData.weights.map((weight: Weight) => {
                               const result = calculateWeightedScore(processed, weight.identifications);
+                              const currentWeightScore = result.total * 100;
+                              let specificWeightSuggestionMessage = null;
+
+                              if (weight.identifications) {
+                                const meaningfulContributorsInWeightDefinitionCount = Object.values(
+                                  weight.identifications
+                                ).filter(factor => factor > 0.03).length; // Count factors > 3%
+
+                                if (
+                                  (meaningfulContributorsInWeightDefinitionCount === 2 && currentWeightScore >= 99) ||
+                                  (meaningfulContributorsInWeightDefinitionCount === 3 && currentWeightScore >= 92.5) ||
+                                  (meaningfulContributorsInWeightDefinitionCount >= 4 &&
+                                   meaningfulContributorsInWeightDefinitionCount <= 6 && currentWeightScore >= 85)
+                                ) {
+                                  specificWeightSuggestionMessage = `This item is exceptionally good for '${weight.weight_name}' (Score: ${currentWeightScore.toFixed(2)}%)!`;
+                                }
+                              }
+
                               return (
                                 <AccordionItem value={weight.weight_id} key={weight.weight_id}>
-                                  <AccordionTrigger>
-                                    <div className="flex justify-between w-full pr-4">
-                                      <span>{weight.weight_name}</span>
-                                      <span className="text-blue-400 font-semibold">
-                                        [{(result.total * 100).toFixed(2)}%]
-                                      </span>
+                                  <AccordionTrigger className="hover:no-underline">
+                                    <div className="flex flex-col items-start text-left w-full pr-2"> {/* Ensure text aligns left */}
+                                      <div className="flex justify-between w-full">
+                                        <span>{weight.weight_name}</span>
+                                        <span className="text-blue-400 font-semibold">
+                                          [{currentWeightScore.toFixed(2)}%]
+                                        </span>
+                                      </div>
+                                      {specificWeightSuggestionMessage && (
+                                        <div className="text-xs text-green-400 mt-1 font-normal"> {/* Suggestion styling */}
+                                          {specificWeightSuggestionMessage}
+                                        </div>
+                                      )}
                                     </div>
                                   </AccordionTrigger>
                                   <AccordionContent>
                                     <ul className="text-gray-300 text-sm space-y-1 pl-4">
                                       {Object.entries(weight.identifications).map(([key, value]) => {
                                         const idInfo = getIdentificationInfo(key);
-                                        const percent = Math.trunc(value * 10000) / 100;
+                                        const factorPercent = value * 100;
                                         return (
                                           <li key={key}>
                                             <span className="text-primary">
                                               {idInfo?.displayName || key}
-                                            </span>: {percent.toFixed(2)}%
+                                            </span>: {factorPercent.toFixed(2)}% factor
                                           </li>
                                         );
                                       })}
@@ -477,9 +510,8 @@ interface RankableItem {
           </>
         )}
 
-        {/* Display area for comparison results (conditionally rendered based on compareDataA and compareDataB) */}
-        {/* This content appears when compareDataA and compareDataB are populated from the "Compare Two Items" tab */}
-        {!compareLoading && compareDataA && compareDataB && (
+        {/* Display area for comparison results (conditionally rendered based on compareDataA, compareDataB and activeTab) */}
+        {activeTab === "compare" && !compareLoading && compareDataA && compareDataB && (
           <div className="w-full max-w-3xl mt-6">
             <Card>
               <CardHeader>
