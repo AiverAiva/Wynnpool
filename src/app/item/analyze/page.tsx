@@ -196,10 +196,12 @@ export default function Home() {
     // We'll use the same logic as getPercentileThreshold, but require the user's score to be above the threshold for that weight
     // Helper for threshold (moved out of function scope to avoid redeclaration)
     const getPercentileThresholdLocal = (count: number) => {
+      if (count === 1) return 100;
       if (count === 2) return 99;
       if (count === 3) return 92.5;
       if (count >= 4 && count <= 6) return 85;
-      return 0;
+      return 80;
+      // return 0;
     };
 
     // For each weight, check if the user's score is above the threshold
@@ -352,9 +354,16 @@ export default function Home() {
           // Only show suggestion if leaderboard has at least 10 unique entries\
           // && uniqueScores.length >= 10
           if (potentialRank !== -1 && potentialRank <= 10 ) {
-            console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB)`);
-            weightRankResults.push({ name: weight.weight_name, rank: potentialRank, score: userScore });
-            anyRanked = true;
+            // Check threshold for this weight before adding to results
+            const count = validIdsCountPerWeight[weight.weight_id] || 0;
+            const threshold = getPercentileThresholdLocal(count);
+            if (userScore >= threshold) {
+              console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB) and passes threshold (${userScore} >= ${threshold})`);
+              weightRankResults.push({ name: weight.weight_name, rank: potentialRank, score: userScore });
+              anyRanked = true;
+            } else {
+              console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB) but does NOT pass threshold (${userScore} < ${threshold}), not adding to results.`);
+            }
           } else {
             console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRank}, total=${uniqueScores.length})`);
           }
@@ -431,12 +440,15 @@ export default function Home() {
               </div>
               <ul className="pl-4 list-disc">
                 {weightRankResults.map(r => (
-                  <li key={r.name} className="font-medium">
+                  <div key={r.name} className="font-medium">
                     <span className="text-green-700 dark:text-green-100">{r.name}</span>
                     {': '}<span className="font-bold">#{r.rank}</span> <span className="text-green-500">({r.score.toFixed(2)}%)</span>
-                  </li>
+                  </div>
                 ))}
               </ul>
+              <div className="flex items-center gap-2 text-lg font-semibold">
+                <span>Join our <Link href={'https://discord.gg/QVxPPqHFMk'} className='text-cyan-300 hover:text-cyan-500 transition-all hover:underline'>Discord</Link> for submitting item.</span>
+              </div>
             </div>
           );
         } else {
@@ -585,7 +597,7 @@ export default function Home() {
         <div className='mt-[80px]' />
         <div className='flex flex-col items-center'>
           <h1 className="text-3xl font-bold text-primary">Wynncraft Item Analyzer</h1>
-          <p className='text-primary/50'>Weight for every item on <Link href="https://weight.wynnpool.com/" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>weight.wynnpool.com</Link></p>
+          <p className='text-primary/50'>Weight for every item on <Link href="/item/weight" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>Item Weights</Link></p>
           <p className='text-primary/50'>Having questions about weights?</p>
           <p className='text-primary/50'>Join <Link href="https://discord.gg/QZn4Qk3mSP" className='transition-color duration-150 text-blue-600 hover:text-blue-800'>Wynnpool Official Discord</Link></p>
           <p className='text-red-300 mt-3'>Reminder: If you are having problem with fetching item</p>
@@ -649,69 +661,77 @@ export default function Home() {
               <div className="text-yellow-400 mt-2 w-full max-w-xl">⚠️ This item is already identified.</div>
             )}
             {!demoData.original?.identified && (
-              <div className="flex flex-col md:flex-row gap-6 mt-6 w-full max-w-screen-lg">
-                <div className="flex-1 min-w-0 flex flex-col space-y-6">
-                  <RolledItemDisplay data={demoData} />
+              <div className="flex flex-col items-center gap-6 mt-6 w-full max-w-screen-lg">
+                {/* Item display always on top, centered */}
+                <div className="w-full flex justify-center">
+                  <div className="max-w-md w-full flex flex-col items-center">
+                    <RolledItemDisplay data={demoData} />
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0 flex flex-col space-y-6">
-                  {demoData.weights?.length > 0 && (
-                    <Card>
-                      <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
-                      <CardContent>
-                        <Accordion type="single" collapsible className="w-full">
-                          {(() => {
-                            const processed = processIdentification(demoData);
-                            // Sort weights by score descending
-                            const weightsWithScore = demoData.weights.map((weight: Weight): { weight: Weight; score: number } => {
-                              const result = calculateWeightedScore(processed, weight.identifications);
-                              return { weight, score: result.total };
-                            });
-                            weightsWithScore.sort((a: { weight: Weight; score: number }, b: { weight: Weight; score: number }) => b.score - a.score);
-                            return weightsWithScore.map(({ weight, score }: { weight: Weight; score: number }) => {
-                              return (
-                                <AccordionItem value={weight.weight_id} key={weight.weight_id}>
-                                  <AccordionTrigger>
-                                    <div className="flex justify-between w-full pr-4">
-                                      <span>{weight.weight_name}</span>
-                                      <span className="text-blue-400 font-semibold">
-                                        [{(score * 100).toFixed(2)}%]
-                                      </span>
-                                    </div>
-                                  </AccordionTrigger>
-                                  <AccordionContent>
-                                    <ul className="text-gray-300 text-sm space-y-1 pl-4">
-                                      {Object.entries(weight.identifications).map(([key, value]) => {
-                                        const idInfo = getIdentificationInfo(key);
-                                        const percent = Math.trunc((value as number) * 10000) / 100;
-                                        return (
-                                          <li key={key}>
-                                            <span className="text-primary">
-                                              {idInfo?.displayName || key}
-                                            </span>: {percent.toFixed(2)}%
-                                          </li>
-                                        );
-                                      })}
-                                    </ul>
-                                  </AccordionContent>
-                                </AccordionItem>
-                              );
-                            });
-                          })()}
-                        </Accordion>
-                      </CardContent>
-                    </Card>
-                  )}
-                  {demoData.original?.internalName && (
-                    <Card>
-                      <CardHeader><CardTitle>Item Leaderboard</CardTitle></CardHeader>
-                      <CardContent>
-                        <ItemWeightedLB
-                          item={{ internalName: demoData.original.internalName }}
-                          isEmbedded={true}
-                        />
-                      </CardContent>
-                    </Card>
-                  )}
+                {/* Weights and leaderboard below, stacked on mobile, side-by-side on desktop */}
+                <div className="flex flex-col md:flex-row gap-6 w-full">
+                  <div className="flex-1 min-w-0 flex flex-col space-y-6">
+                    {demoData.weights?.length > 0 && (
+                      <Card>
+                        <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
+                        <CardContent>
+                          <Accordion type="single" collapsible className="w-full">
+                            {(() => {
+                              const processed = processIdentification(demoData);
+                              // Sort weights by score descending
+                              const weightsWithScore = demoData.weights.map((weight: Weight): { weight: Weight; score: number } => {
+                                const result = calculateWeightedScore(processed, weight.identifications);
+                                return { weight, score: result.total };
+                              });
+                              weightsWithScore.sort((a: { weight: Weight; score: number }, b: { weight: Weight; score: number }) => b.score - a.score);
+                              return weightsWithScore.map(({ weight, score }: { weight: Weight; score: number }) => {
+                                return (
+                                  <AccordionItem value={weight.weight_id} key={weight.weight_id}>
+                                    <AccordionTrigger>
+                                      <div className="flex justify-between w-full pr-4">
+                                        <span>{weight.weight_name}</span>
+                                        <span className="text-blue-400 font-semibold">
+                                          [{(score * 100).toFixed(2)}%]
+                                        </span>
+                                      </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                      <ul className="text-gray-300 text-sm space-y-1 pl-4">
+                                        {Object.entries(weight.identifications).map(([key, value]) => {
+                                          const idInfo = getIdentificationInfo(key);
+                                          const percent = Math.trunc((value as number) * 10000) / 100;
+                                          return (
+                                            <li key={key}>
+                                              <span className="text-primary">
+                                                {idInfo?.displayName || key}
+                                              </span>: {percent.toFixed(2)}%
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                                    </AccordionContent>
+                                  </AccordionItem>
+                                );
+                              });
+                            })()}
+                          </Accordion>
+                        </CardContent>
+                      </Card>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0 flex flex-col space-y-6">
+                    {demoData.original?.internalName && (
+                      <Card>
+                        <CardHeader><CardTitle>Item Leaderboard</CardTitle></CardHeader>
+                        <CardContent>
+                          <ItemWeightedLB
+                            item={{ internalName: demoData.original.internalName }}
+                            isEmbedded={true}
+                          />
+                        </CardContent>
+                      </Card>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
