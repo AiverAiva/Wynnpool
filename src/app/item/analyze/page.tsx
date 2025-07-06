@@ -492,27 +492,25 @@ export default function Home() {
   };
 
   // Fetch data for comparison mode
-  const fetchCompareItemData = async (itemString: string, itemSetter: React.Dispatch<React.SetStateAction<any>>) => {
-    // Re-uses the single item fetch logic but targets comparison state setters
-    // This could be further optimized by abstracting the core fetch logic
-    try {
-      // const response = await fetch('https://api.wynnpool.com/item/full-decode', {
-      const response = await fetch(api('/item/full-decode'), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ item: itemString }),
-      });
-      if (!response.ok) throw new Error(`Failed to fetch item data for ${itemString}`);
-      const data = await response.json();
-      if (data) {
-        itemSetter(data);
-      } else {
-        throw new Error(`Invalid item data for ${itemString}`);
-      }
-    } catch (err: any) {
-      throw err; // Rethrow to be caught by handleCompare
-    }
-  };
+const fetchCompareItemData = async (
+  itemString: string,
+  itemSetter: React.Dispatch<React.SetStateAction<any>>
+) => {
+  // Re-uses the single item fetch logic but targets comparison state setters
+  // This could be further optimized by abstracting the core fetch logic
+  const response = await fetch(api('/item/full-decode'), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ item: itemString }),
+  });
+  if (!response.ok) throw new Error(`Failed to fetch item data for ${itemString}`);
+  const data = await response.json();
+  if (data) {
+    itemSetter(data);
+  } else {
+    throw new Error(`Invalid item data for ${itemString}`);
+  }
+};
 
   const handleCompare = async () => {
     if (!compareItemAString.trim() || !compareItemBString.trim()) {
