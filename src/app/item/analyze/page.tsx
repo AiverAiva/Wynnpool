@@ -797,6 +797,18 @@ export default function Home() {
         )}
         {compareLoading && <p className="mt-4 text-center">Loading comparison data...</p>}
         {/* Note: compareError is shown within its tab. If global compare error display is needed, add here. */}
+
+        {/* FAQ section: only show when no item is analyzed and not loading or error */}
+        {activeTab === 'analyze' && !demoData && !loading && !error && (
+          <div className="w-full max-w-xl mt-12 border-t border-border pt-8">
+            <h2 className="text-xl font-bold mb-2">FAQ</h2>
+            <div className="mb-2">
+              <span className="font-semibold">Q: How do I copy a string of an item?</span>
+              <br />
+              <span className="">A: Get <Link href="https://wynntils.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600 transition-colors duration-150">Wynntils</Link>, press <span className="font-mono bg-muted px-1 rounded">F3</span> when hovering on your item in inventory.</span>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
