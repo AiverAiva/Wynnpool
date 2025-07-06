@@ -156,26 +156,25 @@ export default function Home() {
   };
 
   const checkItemRankSuggestion = async (itemData: ItemAnalyzeData) => {
-    console.log('[DEBUG] --- checkItemRankSuggestion START ---');
-    console.log('[DEBUG] itemData.weights:', itemData.weights);
-    // Debugging: log the input data
-    console.log('[DEBUG] checkItemRankSuggestion called with:', itemData);
+    const isDev = process.env.NODE_ENV === 'development';
     if (!itemData?.input?.identifications || !itemData?.original?.identifications || !itemData.original.internalName) {
       setRankSuggestion(null);
-      console.log('[DEBUG] Missing required itemData fields:', {
-        hasInputIdentifications: !!itemData?.input?.identifications,
-        hasOriginalIdentifications: !!itemData?.original?.identifications,
-        hasInternalName: !!itemData?.original?.internalName
-      });
+      if (isDev) {
+        console.log('[DEBUG] Missing required itemData fields:', {
+          hasInputIdentifications: !!itemData?.input?.identifications,
+          hasOriginalIdentifications: !!itemData?.original?.identifications,
+          hasInternalName: !!itemData?.original?.internalName
+        });
+      }
       return;
     }
 
     const processedUserItemIds = processIdentification(itemData);
-    console.log('[DEBUG] processedUserItemIds:', processedUserItemIds);
+    if (isDev) console.log('[DEBUG] processedUserItemIds:', processedUserItemIds);
     // Calculate valid IDs count for each weight (based only on weight data, not user item)
     let validIdsCountPerWeight: Record<string, number> = {};
     if (itemData.weights && itemData.weights.length > 0) {
-      console.log('[DEBUG] Checking threshold for each weight...');
+      if (isDev) console.log('[DEBUG] Checking threshold for each weight...');
       itemData.weights.forEach(weight => {
         // Only count identifications in the weight where the weight value is >= 0.03 (3%)
         const count = Object.values(weight.identifications).filter(val => Math.abs(val) >= 0.03).length;
@@ -185,12 +184,14 @@ export default function Home() {
     // Fallback: use all weight identifications if no weights (rare)
     let fallbackValidIdsCount = 0;
     if (!itemData.weights || itemData.weights.length === 0) {
-      if (itemData.input && itemData.input.identifications) {
+      if (itemData.input?.identifications) {
         fallbackValidIdsCount = Object.values(itemData.input.identifications).filter(val => Math.abs(val) >= 0.03).length;
       }
     }
-    console.log('[DEBUG] validIdsCountPerWeight:', validIdsCountPerWeight);
-    console.log('[DEBUG] fallbackValidIdsCount:', fallbackValidIdsCount);
+    if (isDev) {
+      console.log('[DEBUG] validIdsCountPerWeight:', validIdsCountPerWeight);
+      console.log('[DEBUG] fallbackValidIdsCount:', fallbackValidIdsCount);
+    }
 
     // STEP 1: Check if the item is "good enough" (meets the id:percent threshold for any weight)
     // We'll use the same logic as getPercentileThreshold, but require the user's score to be above the threshold for that weight
@@ -209,11 +210,11 @@ export default function Home() {
     let userScoreByWeight: Record<string, number> = {};
     if (itemData.weights && itemData.weights.length > 0) {
       for (const weight of itemData.weights) {
-        console.log(`[DEBUG] Weight: ${weight.weight_name}, weight_id: ${weight.weight_id}`);
+        if (isDev) console.log(`[DEBUG] Weight: ${weight.weight_name}, weight_id: ${weight.weight_id}`);
         // Only count identifications in the weight where the scaled value is >= 0.04 (4%)
         const count = Object.values(weight.identifications).filter(val => Math.abs(val) >= 0.04).length;
         const threshold = getStatThreshold(count);
-        console.log(`[DEBUG]   validIdsCount: ${count}, threshold: ${threshold}`);
+        if (isDev) console.log(`[DEBUG]   validIdsCount: ${count}, threshold: ${threshold}`);
         // Calculate user score for this weight (same as leaderboard logic)
         const idRanges = itemData.original.identifications;
         const keys = Object.keys(itemData.input.identifications).filter(k => typeof idRanges[k] === 'object' && idRanges[k] !== null && 'min' in idRanges[k] && 'max' in idRanges[k] && 'raw' in idRanges[k]);
@@ -229,14 +230,14 @@ export default function Home() {
             return acc + (formattedPercentage / 100) * (weight.identifications[key] || 0);
           }
         }, 0) * 100;
-        console.log(`[DEBUG]   userScore: ${userScore}`);
+        if (isDev) console.log(`[DEBUG]   userScore: ${userScore}`);
         userScoreByWeight[weight.weight_id] = userScore;
         if (userScore >= threshold) {
           passesThresholdForAnyWeight = true;
-          console.log(`[DEBUG]   PASSES threshold for weight: ${weight.weight_name}`);
+          if (isDev) console.log(`[DEBUG]   PASSES threshold for weight: ${weight.weight_name}`);
           break; // Only need to pass for one weight
         } else {
-          console.log(`[DEBUG]   DOES NOT PASS threshold for weight: ${weight.weight_name}`);
+          if (isDev) console.log(`[DEBUG]   DOES NOT PASS threshold for weight: ${weight.weight_name}`);
         }
       }
     }
@@ -251,20 +252,20 @@ export default function Home() {
       return acc + rollInfo.formattedPercentage;
     }, 0) / keys.length;
     if (!passesThresholdForAnyWeight) {
-      console.log('[DEBUG] Checking overall fallback threshold...');
+      if (isDev) console.log('[DEBUG] Checking overall fallback threshold...');
       // Use the fallback valid id count for threshold
       const threshold = getStatThreshold(fallbackValidIdsCount);
-      console.log(`[DEBUG]   userItemOverallScore: ${userItemOverallScore}, threshold: ${threshold}`);
+      if (isDev) console.log(`[DEBUG]   userItemOverallScore: ${userItemOverallScore}, threshold: ${threshold}`);
       if (userItemOverallScore >= threshold) {
         passesOverallThreshold = true;
-        console.log('[DEBUG]   PASSES overall threshold');
+        if (isDev) console.log('[DEBUG]   PASSES overall threshold');
       } else {
-        console.log('[DEBUG]   DOES NOT PASS overall threshold');
+        if (isDev) console.log('[DEBUG]   DOES NOT PASS overall threshold');
       }
     }
     // If not good enough, do not show suggestion
 
-    console.log('[DEBUG] --- Checking leaderboard for each weight ---');
+    if (isDev) console.log('[DEBUG] --- Checking leaderboard for each weight ---');
 
     // For each weight, determine the percentile threshold based on its valid id count
     // (moved to getPercentileThresholdLocal above)
@@ -285,7 +286,7 @@ export default function Home() {
       // If there are weights, check each one (reference ItemWeightedLB logic)
       if (itemData.weights && itemData.weights.length > 0) {
         for (const weight of itemData.weights) {
-          console.log(`[DEBUG] [LB] Weight: ${weight.weight_name}`);
+          if (isDev) console.log(`[DEBUG] [LB] Weight: ${weight.weight_name}`);
           // Reference: calculateScore from ItemWeightedLB
           // 1. Get keys present in both user item and idRanges
           const keys = Object.keys(itemData.input.identifications).filter(k => typeof idRanges[k] === 'object' && idRanges[k] !== null && 'min' in idRanges[k] && 'max' in idRanges[k] && 'raw' in idRanges[k]);
@@ -303,7 +304,7 @@ export default function Home() {
               return acc + (formattedPercentage / 100) * (weight.identifications[key] || 0);
             }
           }, 0) * 100;
-          console.log(`[DEBUG] Weight: ${weight.weight_name}, userScore:`, userScore);
+          if (isDev) console.log(`[DEBUG] Weight: ${weight.weight_name}, userScore:`, userScore);
 
           // Calculate scores for all items in DB for this weight
           const allScores: { score: number; isUserItem: boolean; key: string; dbItem?: any }[] = [];
@@ -339,19 +340,19 @@ export default function Home() {
           const uniqueScores = Array.from(uniqueScoresMap.values());
           uniqueScores.sort((a, b) => b.score - a.score);
           // Debug: print the sorted scores for this weight
-          console.log(`[DEBUG] Weight: ${weight.weight_name}, sorted uniqueScores:`, uniqueScores.map((s, idx) => ({ idx: idx + 1, score: s.score, isUserItem: s.isUserItem, key: s.key, dbItem: s.dbItem })));
+          if (isDev) console.log(`[DEBUG] Weight: ${weight.weight_name}, sorted uniqueScores:`, uniqueScores.map((s, idx) => ({ idx: idx + 1, score: s.score, isUserItem: s.isUserItem, key: s.key, dbItem: s.dbItem })));
           let potentialRank = -1;
           for (let i = 0; i < uniqueScores.length; i++) {
             if (i < 10) {
               const entry = uniqueScores[i];
-              console.log(`[DEBUG]   LB #${i + 1}: score=${entry.score}, isUserItem=${entry.isUserItem}`);
+              if (isDev) console.log(`[DEBUG]   LB #${i + 1}: score=${entry.score}, isUserItem=${entry.isUserItem}`);
             }
             if (uniqueScores[i].isUserItem) {
               potentialRank = i + 1;
               break;
             }
           }
-          console.log(`[DEBUG] Weight: ${weight.weight_name}, potentialRank:`, potentialRank, 'userKey:', userKey, 'uniqueScores:', uniqueScores);
+          if (isDev) console.log(`[DEBUG] Weight: ${weight.weight_name}, potentialRank:`, potentialRank, 'userKey:', userKey, 'uniqueScores:', uniqueScores);
           // Only show suggestion if leaderboard has at least 10 unique entries\
           // && uniqueScores.length >= 10
           if (potentialRank !== -1 && potentialRank <= 10 ) {
@@ -359,20 +360,20 @@ export default function Home() {
             const count = validIdsCountPerWeight[weight.weight_id] || 0;
             const threshold = getStatThreshold(count);
             if (userScore >= threshold) {
-              console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB) and passes threshold (${userScore} >= ${threshold})`);
+              if (isDev) console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB) and passes threshold (${userScore} >= ${threshold})`);
               weightRankResults.push({ name: weight.weight_name, rank: potentialRank, score: userScore });
               anyRanked = true;
             } else {
-              console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB) but does NOT pass threshold (${userScore} < ${threshold}), not adding to results.`);
+              if (isDev) console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB) but does NOT pass threshold (${userScore} < ${threshold}), not adding to results.`);
             }
           } else {
-            console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRank}, total=${uniqueScores.length})`);
+            if (isDev) console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRank}, total=${uniqueScores.length})`);
           }
         }
       }
       // Fallback: also check overall (legacy behavior)
       // Move allScores, userItemOverallScore, etc. declaration above this block to avoid block-scope issues
-      console.log('[DEBUG] --- Checking leaderboard for overall ---');
+      if (isDev) console.log('[DEBUG] --- Checking leaderboard for overall ---');
       // userItemOverallScore already declared above, so just use it here
       // Move this block after userItemOverallScore is declared and assigned
       // userItemOverallScore is already declared above, so do not redeclare it here
@@ -406,7 +407,7 @@ export default function Home() {
       // Debug print top 10 leaderboard entries
       for (let j = 0; j < Math.min(10, uniqueScoresOverall.length); j++) {
         const entry = uniqueScoresOverall[j];
-        console.log(`[DEBUG]   LB #${j + 1}: score=${entry.score}, isUserItem=${entry.isUserItem}`);
+        if (isDev) console.log(`[DEBUG]   LB #${j + 1}: score=${entry.score}, isUserItem=${entry.isUserItem}`);
       }
       let potentialRankOverall = -1;
       for (let i = 0; i < uniqueScoresOverall.length; i++) {
@@ -415,7 +416,7 @@ export default function Home() {
           break;
         }
       }
-      console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall)`);
+      if (isDev) console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall)`);
       // Only show suggestion if leaderboard has at least 10 unique entries
       //  && uniqueScoresOverall.length >= 10
       if (potentialRankOverall !== -1 && potentialRankOverall <= 10) {
@@ -425,23 +426,22 @@ export default function Home() {
           .length;
         const overallThreshold = getStatThreshold(overallValidIdCount);
         if (userItemOverallScore >= overallThreshold) {
-          console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) and passes threshold (${userItemOverallScore} >= ${overallThreshold})`);
+        if (isDev) console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) and passes threshold (${userItemOverallScore} >= ${overallThreshold})`);
           weightRankResults.push({ name: 'Overall', rank: potentialRankOverall, score: userItemOverallScore });
           anyRanked = true;
         } else {
-          console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) but does NOT pass threshold (${userItemOverallScore} < ${overallThreshold}), not adding to results.`);
+        if (isDev) console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) but does NOT pass threshold (${userItemOverallScore} < ${overallThreshold}), not adding to results.`);
         }
       } else {
-        console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRankOverall}, total=${uniqueScoresOverall.length})`);
+      if (isDev) console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRankOverall}, total=${uniqueScoresOverall.length})`);
       }
       // The block below is redundant and causes scoping issues. The leaderboard logic for overall is already handled above using userItemOverallScore.
       // Removed duplicate/redeclaration of userItemOverallScore and related leaderboard logic.
       if (anyRanked && weightRankResults.length > 0) {
-        console.log("3qwaeinujaeniu as", anyRanked, weightRankResults, passesThresholdForAnyWeight, passesOverallThreshold)
+        if (isDev) console.log("3qwaeinujaeniu as", anyRanked, weightRankResults, passesThresholdForAnyWeight, passesOverallThreshold)
         // Only show suggestion if the item actually passed a threshold (for any weight or overall)
         if (passesThresholdForAnyWeight || passesOverallThreshold) {
-          console.log('[DEBUG] --- checkItemRankSuggestion END (SHOW SUGGESTION) ---');
-          console.log('[DEBUG] weightRankResults:', weightRankResults);
+          // Debug logs removed for production
           setRankSuggestion(
             // Styled suggestion message as a React element
             <div className="rounded-lg border border-green-400 bg-green-50 dark:bg-green-900/40 p-4 text-green-800 dark:text-green-200 flex flex-col gap-2">
@@ -467,21 +467,23 @@ export default function Home() {
           );
         } else {
           // Defensive: should not happen, but if it does, do not show suggestion
-          console.log('[DEBUG] No threshold passed, not setting suggestion.');
+          if (isDev) console.log('[DEBUG] No threshold passed, not setting suggestion.');
           setRankSuggestion(null);
         }
       } else {
-        console.log('[DEBUG] No ranks found, not setting suggestion.');
+        if (isDev) console.log('[DEBUG] No ranks found, not setting suggestion.');
         setRankSuggestion(null);
       }
       if (!passesThresholdForAnyWeight && !passesOverallThreshold) {
         setRankSuggestion(null);
-        console.log('[DEBUG] Item does not meet threshold for any weight or overall. No suggestion.');
-        console.log('[DEBUG] --- checkItemRankSuggestion END (NO SUGGESTION) ---');
+        if (isDev) {
+          console.log('[DEBUG] Item does not meet threshold for any weight or overall. No suggestion.');
+          console.log('[DEBUG] --- checkItemRankSuggestion END (NO SUGGESTION) ---');
+        }
         return;
       }
     } catch (e: any) {
-      console.error("[DEBUG] Failed to get rank suggestion:", e);
+      if (isDev) console.error("[DEBUG] Failed to get rank suggestion:", e);
       setRankSuggestion(
         <div className="rounded-lg border border-red-400 bg-red-50 dark:bg-red-900/40 p-4 text-red-800 dark:text-red-200 flex items-center gap-2">
           <span className="inline-block text-red-500 dark:text-red-300">❌</span>
@@ -576,6 +578,7 @@ const fetchCompareItemData = async (
           const scoreA = weightA ? calculateWeightedScore(processedA, weightA.identifications).total * 100 : null;
           const scoreB = weightB ? calculateWeightedScore(processedB, weightB.identifications).total * 100 : null;
 
+          // if (isDev) console.log(scoreA, scoreB, "1298371hd9uan")
           let winner: 'A' | 'B' | null = null;
           if (scoreA !== null && scoreB !== null) {
             if (scoreA > scoreB) winner = 'A';
