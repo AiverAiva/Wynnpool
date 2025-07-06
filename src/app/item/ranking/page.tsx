@@ -93,6 +93,13 @@ export default function RankingPage() {
                     )}
                 </div>
 
+                {/* Database warning */}
+                <div className="mb-6">
+                  <div className="text-yellow-800 dark:text-yellow-200 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-300 rounded p-3 text-sm">
+                    As our database is relatively new, the rankings may be missing a lot of better ranked mythics. Please do not rely on these rankings for now while we collect more data.
+                  </div>
+                </div>
+
                 {Object.entries(groupedItems).map(([category, items]) => (
                     <div key={category} className="mt-6">
                         <h2 className="text-xl font-semibold capitalize mb-2">{category}</h2>

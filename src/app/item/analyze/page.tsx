@@ -460,6 +460,9 @@ export default function Home() {
               <div className="flex items-center gap-2 text-lg font-semibold">
                 <span>Join our <Link href={'https://discord.gg/QVxPPqHFMk'} className='text-cyan-300 hover:text-cyan-500 transition-all hover:underline'>Discord</Link> for submitting item.</span>
               </div>
+              <div className="mt-2 text-sm text-yellow-700 dark:text-yellow-300 bg-yellow-50 dark:bg-yellow-900/30 rounded p-2 border border-yellow-300">
+                As our database is relatively new, the rankings may be missing a lot of better ranked mythics. Please do not rely on these rankings for now while we collect more data.
+              </div>
             </div>
           );
         } else {
