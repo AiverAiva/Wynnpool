@@ -194,15 +194,15 @@ export default function Home() {
 
     // STEP 1: Check if the item is "good enough" (meets the id:percent threshold for any weight)
     // We'll use the same logic as getPercentileThreshold, but require the user's score to be above the threshold for that weight
-    // Helper for threshold (moved out of function scope to avoid redeclaration)
-    const getPercentileThresholdLocal = (count: number) => {
+    // Helper for threshold (applies to both weighted and overall)
+    function getStatThreshold(count: number) {
       if (count === 1) return 100;
-      if (count === 2) return 99;
-      if (count === 3) return 92.5;
-      if (count >= 4 && count <= 6) return 85;
+      if (count === 2) return 99.5;
+      if (count === 3) return 91;
+      if (count === 4) return 88;
+      if (count === 5) return 84;
       return 80;
-      // return 0;
-    };
+    }
 
     // For each weight, check if the user's score is above the threshold
     let passesThresholdForAnyWeight = false;
@@ -210,8 +210,9 @@ export default function Home() {
     if (itemData.weights && itemData.weights.length > 0) {
       for (const weight of itemData.weights) {
         console.log(`[DEBUG] Weight: ${weight.weight_name}, weight_id: ${weight.weight_id}`);
-        const count = validIdsCountPerWeight[weight.weight_id] || 0;
-        const threshold = getPercentileThresholdLocal(count);
+        // Only count identifications in the weight where the scaled value is >= 0.04 (4%)
+        const count = Object.values(weight.identifications).filter(val => Math.abs(val) >= 0.04).length;
+        const threshold = getStatThreshold(count);
         console.log(`[DEBUG]   validIdsCount: ${count}, threshold: ${threshold}`);
         // Calculate user score for this weight (same as leaderboard logic)
         const idRanges = itemData.original.identifications;
@@ -252,7 +253,7 @@ export default function Home() {
     if (!passesThresholdForAnyWeight) {
       console.log('[DEBUG] Checking overall fallback threshold...');
       // Use the fallback valid id count for threshold
-      const threshold = getPercentileThresholdLocal(fallbackValidIdsCount);
+      const threshold = getStatThreshold(fallbackValidIdsCount);
       console.log(`[DEBUG]   userItemOverallScore: ${userItemOverallScore}, threshold: ${threshold}`);
       if (userItemOverallScore >= threshold) {
         passesOverallThreshold = true;
@@ -356,7 +357,7 @@ export default function Home() {
           if (potentialRank !== -1 && potentialRank <= 10 ) {
             // Check threshold for this weight before adding to results
             const count = validIdsCountPerWeight[weight.weight_id] || 0;
-            const threshold = getPercentileThresholdLocal(count);
+            const threshold = getStatThreshold(count);
             if (userScore >= threshold) {
               console.log(`[DEBUG]   User is rank ${potentialRank} of ${uniqueScores.length} (LB) and passes threshold (${userScore} >= ${threshold})`);
               weightRankResults.push({ name: weight.weight_name, rank: potentialRank, score: userScore });
@@ -418,8 +419,18 @@ export default function Home() {
       // Only show suggestion if leaderboard has at least 10 unique entries
       //  && uniqueScoresOverall.length >= 10
       if (potentialRankOverall !== -1 && potentialRankOverall <= 10) {
-        weightRankResults.push({ name: 'Overall', rank: potentialRankOverall, score: userItemOverallScore });
-        anyRanked = true;
+        // Count only identifications that are objects for overall threshold, and scaled >= 0.04 (4%)
+        const overallValidIdCount = Object.entries(itemData.original?.identifications || {})
+          .filter(([_, v]) => typeof v === 'object' && v !== null && typeof v.raw === 'number' && Math.abs(v.raw) >= 0.04)
+          .length;
+        const overallThreshold = getStatThreshold(overallValidIdCount);
+        if (userItemOverallScore >= overallThreshold) {
+          console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) and passes threshold (${userItemOverallScore} >= ${overallThreshold})`);
+          weightRankResults.push({ name: 'Overall', rank: potentialRankOverall, score: userItemOverallScore });
+          anyRanked = true;
+        } else {
+          console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) but does NOT pass threshold (${userItemOverallScore} < ${overallThreshold}), not adding to results.`);
+        }
       } else {
         console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRankOverall}, total=${uniqueScoresOverall.length})`);
       }
@@ -661,77 +672,87 @@ export default function Home() {
               <div className="text-yellow-400 mt-2 w-full max-w-xl">⚠️ This item is already identified.</div>
             )}
             {!demoData.original?.identified && (
-              <div className="flex flex-col items-center gap-6 mt-6 w-full max-w-screen-lg">
-                {/* Item display always on top, centered */}
-                <div className="w-full flex justify-center">
-                  <div className="max-w-md w-full flex flex-col items-center">
+              <div className="flex flex-col md:flex-row md:items-start items-center gap-6 mt-6 w-full max-w-screen-lg">
+                {/* Item display always on the left, centered on mobile */}
+                <div className="w-full md:w-auto flex justify-center md:justify-start md:items-start">
+                  <div className="max-w-md w-full flex flex-col items-center md:items-start">
                     <RolledItemDisplay data={demoData} />
                   </div>
                 </div>
-                {/* Weights and leaderboard below, stacked on mobile, side-by-side on desktop */}
-                <div className="flex flex-col md:flex-row gap-6 w-full">
-                  <div className="flex-1 min-w-0 flex flex-col space-y-6">
-                    {demoData.weights?.length > 0 && (
-                      <Card>
-                        <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
-                        <CardContent>
-                          <Accordion type="single" collapsible className="w-full">
-                            {(() => {
-                              const processed = processIdentification(demoData);
-                              // Sort weights by score descending
-                              const weightsWithScore = demoData.weights.map((weight: Weight): { weight: Weight; score: number } => {
-                                const result = calculateWeightedScore(processed, weight.identifications);
-                                return { weight, score: result.total };
-                              });
-                              weightsWithScore.sort((a: { weight: Weight; score: number }, b: { weight: Weight; score: number }) => b.score - a.score);
-                              return weightsWithScore.map(({ weight, score }: { weight: Weight; score: number }) => {
-                                return (
-                                  <AccordionItem value={weight.weight_id} key={weight.weight_id}>
-                                    <AccordionTrigger>
-                                      <div className="flex justify-between w-full pr-4">
-                                        <span>{weight.weight_name}</span>
-                                        <span className="text-blue-400 font-semibold">
-                                          [{(score * 100).toFixed(2)}%]
-                                        </span>
-                                      </div>
-                                    </AccordionTrigger>
-                                    <AccordionContent>
-                                      <ul className="text-gray-300 text-sm space-y-1 pl-4">
-                                        {Object.entries(weight.identifications).map(([key, value]) => {
-                                          const idInfo = getIdentificationInfo(key);
-                                          const percent = Math.trunc((value as number) * 10000) / 100;
-                                          return (
-                                            <li key={key}>
-                                              <span className="text-primary">
-                                                {idInfo?.displayName || key}
-                                              </span>: {percent.toFixed(2)}%
-                                            </li>
-                                          );
-                                        })}
-                                      </ul>
-                                    </AccordionContent>
-                                  </AccordionItem>
-                                );
-                              });
-                            })()}
-                          </Accordion>
-                        </CardContent>
-                      </Card>
-                    )}
-                  </div>
-                  <div className="flex-1 min-w-0 flex flex-col space-y-6">
-                    {demoData.original?.internalName && (
-                      <Card>
-                        <CardHeader><CardTitle>Item Leaderboard</CardTitle></CardHeader>
-                        <CardContent>
-                          <ItemWeightedLB
-                            item={{ internalName: demoData.original.internalName }}
-                            isEmbedded={true}
-                          />
-                        </CardContent>
-                      </Card>
-                    )}
-                  </div>
+                {/* Right side: Tabs for Weights/Leaderboard */}
+                <div className="w-full md:w-[480px] flex flex-col space-y-6">
+                  <Tabs defaultValue="weights" className="w-full" id="weights-leaderboard-tabs">
+                    <TabsList className="grid w-full grid-cols-2 mb-2">
+                      <TabsTrigger value="weights">Item Weights</TabsTrigger>
+                      <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="weights">
+                      {demoData.weights?.length > 0 ? (
+                        <Card>
+                          <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
+                          <CardContent>
+                            <Accordion type="single" collapsible className="w-full">
+                              {(() => {
+                                const processed = processIdentification(demoData);
+                                // Sort weights by score descending
+                                const weightsWithScore = demoData.weights.map((weight: Weight): { weight: Weight; score: number } => {
+                                  const result = calculateWeightedScore(processed, weight.identifications);
+                                  return { weight, score: result.total };
+                                });
+                                weightsWithScore.sort((a: { weight: Weight; score: number }, b: { weight: Weight; score: number }) => b.score - a.score);
+                                return weightsWithScore.map(({ weight, score }: { weight: Weight; score: number }) => {
+                                  return (
+                                    <AccordionItem value={weight.weight_id} key={weight.weight_id}>
+                                      <AccordionTrigger>
+                                        <div className="flex justify-between w-full pr-4">
+                                          <span>{weight.weight_name}</span>
+                                          <span className="text-blue-400 font-semibold">
+                                            [{(score * 100).toFixed(2)}%]
+                                          </span>
+                                        </div>
+                                      </AccordionTrigger>
+                                      <AccordionContent>
+                                        <ul className="text-gray-300 text-sm space-y-1 pl-4">
+                                          {Object.entries(weight.identifications).map(([key, value]) => {
+                                            const idInfo = getIdentificationInfo(key);
+                                            const percent = Math.trunc((value as number) * 10000) / 100;
+                                            return (
+                                              <li key={key}>
+                                                <span className="text-primary">
+                                                  {idInfo?.displayName || key}
+                                                </span>: {percent.toFixed(2)}%
+                                              </li>
+                                            );
+                                          })}
+                                        </ul>
+                                      </AccordionContent>
+                                    </AccordionItem>
+                                  );
+                                });
+                              })()}
+                            </Accordion>
+                          </CardContent>
+                        </Card>
+                      ) : (
+                        <div className="text-center text-gray-400">No weights available.</div>
+                      )}
+                    </TabsContent>
+                    <TabsContent value="leaderboard" className="md:items-start md:justify-start flex flex-col">
+                      {demoData.original?.internalName ? (
+                        <Card className="w-full">
+                          <CardHeader><CardTitle>Item Leaderboard</CardTitle></CardHeader>
+                          <CardContent>
+                            <ItemWeightedLB
+                              item={{ internalName: demoData.original.internalName }}
+                              isEmbedded={true}
+                            />
+                          </CardContent>
+                        </Card>
+                      ) : (
+                        <div className="text-center text-gray-400">No leaderboard available.</div>
+                      )}
+                    </TabsContent>
+                  </Tabs>
                 </div>
               </div>
             )}
