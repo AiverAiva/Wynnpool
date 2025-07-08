@@ -42,6 +42,7 @@ function formatTimeAgo(timestamp: number | string | undefined): string {
 
 function calculateGuildXPRequired(level: number, base = 20000): number {
     let totalXP = 0;
+    if (level > 130) level = 130; // Cap level at 130
 
     for (let n = 1; n <= level; n++) {
         totalXP += Math.pow(1.15, n - 1);
