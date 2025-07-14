@@ -51,7 +51,17 @@ export default function AspectPool() {
 
   useEffect(() => {
     if (lootData) {
-      const nextUpdate = lootData.Timestamp + 7 * 86400; // 7 days in seconds
+      // Calculate next Friday 17:00 GMT+0 after lootData.Timestamp
+      const timestampDate = new Date(lootData.Timestamp * 1000);
+      let nextFriday = new Date(timestampDate);
+      nextFriday.setUTCHours(17, 0, 0, 0); // 17:00:00 GMT+0
+      const dayOfWeek = nextFriday.getUTCDay();
+      let daysToAdd = (5 - dayOfWeek + 7) % 7;
+      if (daysToAdd === 0 && timestampDate.getUTCHours() >= 17) {
+        daysToAdd = 7; // If it's already Friday after 5PM, go to next week
+      }
+      nextFriday.setUTCDate(nextFriday.getUTCDate() + daysToAdd);
+      const nextUpdate = Math.floor(nextFriday.getTime() / 1000);
       setCountdown(nextUpdate);
     }
   }, [lootData]);

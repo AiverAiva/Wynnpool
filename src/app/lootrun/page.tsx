@@ -84,35 +84,64 @@ export default function LootRunPool() {
 
     useEffect(() => {
         if (lootData) {
-            const nextUpdate = lootData.Timestamp + 7 * 86400; // 7 days in seconds
+            // Calculate next Friday 6PM GMT+0 after lootData.Timestamp
+            const timestampDate = new Date(lootData.Timestamp * 1000);
+            // Get the next Friday
+            let nextFriday = new Date(timestampDate);
+            nextFriday.setUTCHours(18, 0, 0, 0); // 18:00:00 GMT+0
+            // 0 = Sunday, 5 = Friday
+            const dayOfWeek = nextFriday.getUTCDay();
+            let daysToAdd = (5 - dayOfWeek + 7) % 7;
+            if (daysToAdd === 0 && timestampDate.getUTCHours() >= 18) {
+                daysToAdd = 7; // If it's already Friday after 6PM, go to next week
+            }
+            nextFriday.setUTCDate(nextFriday.getUTCDate() + daysToAdd);
+            const nextUpdate = Math.floor(nextFriday.getTime() / 1000);
             setCountdown(nextUpdate);
         }
     }, [lootData])
 
-    // Format timestamp to readable date
+    // Format timestamp to readable date (end of pool = next Friday 6PM GMT+0 after timestamp)
     const formatDate = (timestamp: number | null) => {
         if (!timestamp) return "Not Available"
 
-        // Add 7 days to the timestamp (7 days * 24 hours * 60 minutes * 60 seconds)
-        const endTimestamp = timestamp + 7 * 24 * 60 * 60
+        // Find the next Friday 6PM GMT+0 after the timestamp
         const date = new Date(timestamp * 1000)
-        const endDate = new Date(endTimestamp * 1000)
+        let nextFriday = new Date(date)
+        nextFriday.setUTCHours(18, 0, 0, 0)
+        const dayOfWeek = nextFriday.getUTCDay()
+        let daysToAdd = (5 - dayOfWeek + 7) % 7
+        if (daysToAdd === 0 && date.getUTCHours() >= 18) {
+            daysToAdd = 7
+        }
+        nextFriday.setUTCDate(nextFriday.getUTCDate() + daysToAdd)
 
-        return endDate.toLocaleDateString("en-US", {
+        return nextFriday.toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
             year: "numeric",
         })
     }
 
-    // Check if item is currently in pool
+    // Check if item is currently in pool (from timestamp to next Friday 6PM GMT+0)
     const isInPool = (timestamp: number | null) => {
         if (!timestamp) return false
 
         const now = Date.now() / 1000
-        const endTimestamp = timestamp + 7 * 24 * 60 * 60
+        const start = timestamp
+        // Calculate end: next Friday 6PM GMT+0 after timestamp
+        const date = new Date(timestamp * 1000)
+        let nextFriday = new Date(date)
+        nextFriday.setUTCHours(18, 0, 0, 0)
+        const dayOfWeek = nextFriday.getUTCDay()
+        let daysToAdd = (5 - dayOfWeek + 7) % 7
+        if (daysToAdd === 0 && date.getUTCHours() >= 18) {
+            daysToAdd = 7
+        }
+        nextFriday.setUTCDate(nextFriday.getUTCDate() + daysToAdd)
+        const end = Math.floor(nextFriday.getTime() / 1000)
 
-        return now >= timestamp && now <= endTimestamp
+        return now >= start && now <= end
     }
 
     // Get relative time (e.g., "2 days ago" or "in 3 days")
@@ -120,7 +149,17 @@ export default function LootRunPool() {
         if (!timestamp) return ""
 
         const now = Date.now() / 1000
-        const endTimestamp = timestamp + 7 * 24 * 60 * 60
+        // Calculate end: next Friday 6PM GMT+0 after timestamp
+        const date = new Date(timestamp * 1000)
+        let nextFriday = new Date(date)
+        nextFriday.setUTCHours(18, 0, 0, 0)
+        const dayOfWeek = nextFriday.getUTCDay()
+        let daysToAdd = (5 - dayOfWeek + 7) % 7
+        if (daysToAdd === 0 && date.getUTCHours() >= 18) {
+            daysToAdd = 7
+        }
+        nextFriday.setUTCDate(nextFriday.getUTCDate() + daysToAdd)
+        const endTimestamp = Math.floor(nextFriday.getTime() / 1000)
 
         // If currently in pool
         if (now >= timestamp && now <= endTimestamp) {
