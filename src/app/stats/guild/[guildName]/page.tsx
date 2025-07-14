@@ -410,9 +410,10 @@ export default function GuildStatsPage() {
                                                 <TableCell className='group hover:scale-105 transition-transform duration-200'>
                                                     <Link href={`/stats/player/${member.uuid}`} className='flex items-center cursor-pointer gap-2'>
                                                         <img
-                                                            src={`/api/player/icon/${member.uuid}`}
+                                                            src={`https://vzge.me/face/128/${member.uuid}.png`}
                                                             alt={member.username}
                                                             className="w-8 h-8"
+                                                            loading="lazy"
                                                         />
                                                         {member.online ? (
                                                             <div className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center">

@@ -22,7 +22,7 @@ generateImageList()
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ['cdn.wynncraft.com', 'mc-heads.net'],
+    domains: ['cdn.wynncraft.com', 'mc-heads.net', 'vzge.me'],
   },
 };
 
