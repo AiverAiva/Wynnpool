@@ -355,7 +355,7 @@ export default function Home() {
           if (isDev) console.log(`[DEBUG] Weight: ${weight.weight_name}, potentialRank:`, potentialRank, 'userKey:', userKey, 'uniqueScores:', uniqueScores);
           // Only show suggestion if leaderboard has at least 10 unique entries\
           // && uniqueScores.length >= 10
-          if (potentialRank !== -1 && potentialRank <= 10 ) {
+          if (potentialRank !== -1 && potentialRank <= 10) {
             // Check threshold for this weight before adding to results
             const count = validIdsCountPerWeight[weight.weight_id] || 0;
             const threshold = getStatThreshold(count);
@@ -426,14 +426,14 @@ export default function Home() {
           .length;
         const overallThreshold = getStatThreshold(overallValidIdCount);
         if (userItemOverallScore >= overallThreshold) {
-        if (isDev) console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) and passes threshold (${userItemOverallScore} >= ${overallThreshold})`);
+          if (isDev) console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) and passes threshold (${userItemOverallScore} >= ${overallThreshold})`);
           weightRankResults.push({ name: 'Overall', rank: potentialRankOverall, score: userItemOverallScore });
           anyRanked = true;
         } else {
-        if (isDev) console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) but does NOT pass threshold (${userItemOverallScore} < ${overallThreshold}), not adding to results.`);
+          if (isDev) console.log(`[DEBUG]   User is rank ${potentialRankOverall} of ${uniqueScoresOverall.length} (LB Overall) but does NOT pass threshold (${userItemOverallScore} < ${overallThreshold}), not adding to results.`);
         }
       } else {
-      if (isDev) console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRankOverall}, total=${uniqueScoresOverall.length})`);
+        if (isDev) console.log(`[DEBUG]   User is NOT top 10 or leaderboard too small (rank=${potentialRankOverall}, total=${uniqueScoresOverall.length})`);
       }
       // The block below is redundant and causes scoping issues. The leaderboard logic for overall is already handled above using userItemOverallScore.
       // Removed duplicate/redeclaration of userItemOverallScore and related leaderboard logic.
@@ -494,25 +494,25 @@ export default function Home() {
   };
 
   // Fetch data for comparison mode
-const fetchCompareItemData = async (
-  itemString: string,
-  itemSetter: React.Dispatch<React.SetStateAction<any>>
-) => {
-  // Re-uses the single item fetch logic but targets comparison state setters
-  // This could be further optimized by abstracting the core fetch logic
-  const response = await fetch(api('/item/full-decode'), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ item: itemString }),
-  });
-  if (!response.ok) throw new Error(`Failed to fetch item data for ${itemString}`);
-  const data = await response.json();
-  if (data) {
-    itemSetter(data);
-  } else {
-    throw new Error(`Invalid item data for ${itemString}`);
-  }
-};
+  const fetchCompareItemData = async (
+    itemString: string,
+    itemSetter: React.Dispatch<React.SetStateAction<any>>
+  ) => {
+    // Re-uses the single item fetch logic but targets comparison state setters
+    // This could be further optimized by abstracting the core fetch logic
+    const response = await fetch(api('/item/full-decode'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item: itemString }),
+    });
+    if (!response.ok) throw new Error(`Failed to fetch item data for ${itemString}`);
+    const data = await response.json();
+    if (data) {
+      itemSetter(data);
+    } else {
+      throw new Error(`Invalid item data for ${itemString}`);
+    }
+  };
 
   const handleCompare = async () => {
     if (!compareItemAString.trim() || !compareItemBString.trim()) {
@@ -669,95 +669,113 @@ const fetchCompareItemData = async (
         {/* This content appears when demoData is populated from the "Analyze Single Item" tab */}
         {activeTab === 'analyze' && demoData && !loading && !error && (
           <>
-            {rankSuggestion && (
-              <div className="my-2 w-full max-w-xl">{rankSuggestion}</div>
-            )}
-            {demoData.original?.identified && (
-              <div className="text-yellow-400 mt-2 w-full max-w-xl">⚠️ This item is already identified.</div>
-            )}
-            {!demoData.original?.identified && (
-              <div className="flex flex-col md:flex-row md:items-start items-center gap-6 mt-6 w-full max-w-screen-lg">
-                {/* Item display always on the left, centered on mobile */}
-                <div className="w-full md:w-auto flex justify-center md:justify-start md:items-start">
-                  <div className="max-w-md w-full flex flex-col items-center md:items-start">
-                    <RolledItemDisplay data={demoData} />
+            {demoData.original?.rarity === "mythic" ? (
+              <>
+                {rankSuggestion && (
+                  <div className="my-2 w-full max-w-xl">{rankSuggestion}</div>
+                )}
+                {!demoData.original?.identified && (
+                  <div className="flex flex-col md:flex-row md:items-start items-center gap-6 mt-6 w-full max-w-screen-lg">
+                    {/* Item display always on the left, centered on mobile */}
+                    <div className="w-full md:w-auto flex justify-center md:justify-start md:items-start">
+                      <div className="max-w-md w-full flex flex-col items-center md:items-start">
+                        <RolledItemDisplay data={demoData} />
+                      </div>
+                    </div>
+                    {/* Right side: Tabs for Weights/Leaderboard */}
+                    <div className="w-full md:w-[480px] flex flex-col space-y-6">
+                      <Tabs defaultValue="weights" className="w-full" id="weights-leaderboard-tabs">
+                        <TabsList className="grid w-full grid-cols-2 mb-2">
+                          <TabsTrigger value="weights">Item Weights</TabsTrigger>
+                          <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="weights">
+                          {demoData.weights?.length > 0 ? (
+                            <Card>
+                              <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
+                              <CardContent>
+                                <Accordion type="single" collapsible className="w-full">
+                                  {(() => {
+                                    const processed = processIdentification(demoData);
+                                    // Sort weights by score descending
+                                    const weightsWithScore = demoData.weights.map((weight: Weight): { weight: Weight; score: number } => {
+                                      const result = calculateWeightedScore(processed, weight.identifications);
+                                      return { weight, score: result.total };
+                                    });
+                                    weightsWithScore.sort((a: { weight: Weight; score: number }, b: { weight: Weight; score: number }) => b.score - a.score);
+                                    return weightsWithScore.map(({ weight, score }: { weight: Weight; score: number }) => {
+                                      return (
+                                        <AccordionItem value={weight.weight_id} key={weight.weight_id}>
+                                          <AccordionTrigger>
+                                            <div className="flex justify-between w-full pr-4">
+                                              <span>{weight.weight_name}</span>
+                                              <span className="text-blue-400 font-semibold">
+                                                [{(score * 100).toFixed(2)}%]
+                                              </span>
+                                            </div>
+                                          </AccordionTrigger>
+                                          <AccordionContent>
+                                            <ul className="text-gray-300 text-sm space-y-1 pl-4">
+                                              {Object.entries(weight.identifications).map(([key, value]) => {
+                                                const idInfo = getIdentificationInfo(key);
+                                                const percent = Math.trunc((value as number) * 10000) / 100;
+                                                return (
+                                                  <li key={key}>
+                                                    <span className="text-primary">
+                                                      {idInfo?.displayName || key}
+                                                    </span>: {percent.toFixed(2)}%
+                                                  </li>
+                                                );
+                                              })}
+                                            </ul>
+                                          </AccordionContent>
+                                        </AccordionItem>
+                                      );
+                                    });
+                                  })()}
+                                </Accordion>
+                              </CardContent>
+                            </Card>
+                          ) : (
+                            <div className="text-center text-gray-400">No weights available.</div>
+                          )}
+                        </TabsContent>
+                        <TabsContent value="leaderboard" className="md:items-start md:justify-start flex flex-col">
+                          {demoData.original?.internalName ? (
+                            <Card className="w-full">
+                              <CardHeader><CardTitle>Item Leaderboard</CardTitle></CardHeader>
+                              <CardContent>
+                                <ItemWeightedLB
+                                  item={{ internalName: demoData.original.internalName }}
+                                  isEmbedded={true}
+                                />
+                              </CardContent>
+                            </Card>
+                          ) : (
+                            <div className="text-center text-gray-400">No leaderboard available.</div>
+                          )}
+                        </TabsContent>
+                      </Tabs>
+                    </div>
                   </div>
-                </div>
-                {/* Right side: Tabs for Weights/Leaderboard */}
-                <div className="w-full md:w-[480px] flex flex-col space-y-6">
-                  <Tabs defaultValue="weights" className="w-full" id="weights-leaderboard-tabs">
-                    <TabsList className="grid w-full grid-cols-2 mb-2">
-                      <TabsTrigger value="weights">Item Weights</TabsTrigger>
-                      <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="weights">
-                      {demoData.weights?.length > 0 ? (
-                        <Card>
-                          <CardHeader><CardTitle>Item Weights</CardTitle></CardHeader>
-                          <CardContent>
-                            <Accordion type="single" collapsible className="w-full">
-                              {(() => {
-                                const processed = processIdentification(demoData);
-                                // Sort weights by score descending
-                                const weightsWithScore = demoData.weights.map((weight: Weight): { weight: Weight; score: number } => {
-                                  const result = calculateWeightedScore(processed, weight.identifications);
-                                  return { weight, score: result.total };
-                                });
-                                weightsWithScore.sort((a: { weight: Weight; score: number }, b: { weight: Weight; score: number }) => b.score - a.score);
-                                return weightsWithScore.map(({ weight, score }: { weight: Weight; score: number }) => {
-                                  return (
-                                    <AccordionItem value={weight.weight_id} key={weight.weight_id}>
-                                      <AccordionTrigger>
-                                        <div className="flex justify-between w-full pr-4">
-                                          <span>{weight.weight_name}</span>
-                                          <span className="text-blue-400 font-semibold">
-                                            [{(score * 100).toFixed(2)}%]
-                                          </span>
-                                        </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                        <ul className="text-gray-300 text-sm space-y-1 pl-4">
-                                          {Object.entries(weight.identifications).map(([key, value]) => {
-                                            const idInfo = getIdentificationInfo(key);
-                                            const percent = Math.trunc((value as number) * 10000) / 100;
-                                            return (
-                                              <li key={key}>
-                                                <span className="text-primary">
-                                                  {idInfo?.displayName || key}
-                                                </span>: {percent.toFixed(2)}%
-                                              </li>
-                                            );
-                                          })}
-                                        </ul>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  );
-                                });
-                              })()}
-                            </Accordion>
-                          </CardContent>
-                        </Card>
-                      ) : (
-                        <div className="text-center text-gray-400">No weights available.</div>
-                      )}
-                    </TabsContent>
-                    <TabsContent value="leaderboard" className="md:items-start md:justify-start flex flex-col">
-                      {demoData.original?.internalName ? (
-                        <Card className="w-full">
-                          <CardHeader><CardTitle>Item Leaderboard</CardTitle></CardHeader>
-                          <CardContent>
-                            <ItemWeightedLB
-                              item={{ internalName: demoData.original.internalName }}
-                              isEmbedded={true}
-                            />
-                          </CardContent>
-                        </Card>
-                      ) : (
-                        <div className="text-center text-gray-400">No leaderboard available.</div>
-                      )}
-                    </TabsContent>
-                  </Tabs>
-                </div>
+                )}
+              </>
+            ) : (
+              <div className="flex flex-col items-center mt-6 w-full max-w-screen-lg">
+                {demoData.original?.identified ? (
+                  <div className="flex justify-center text-yellow-400 mt-2 w-full max-w-xl">⚠️ This item is pre-identified.</div>
+                ) : (
+                  <>
+                    <div className="w-full md:w-auto flex justify-center md:justify-start md:items-start">
+                      <div className="max-w-md w-full flex flex-col items-center md:items-start">
+                        <RolledItemDisplay data={demoData} />
+                      </div>
+                    </div>
+                    <div className="mt-4 text-center">
+                      Weight/Leaderboard feature is currently only available for <span className="font-bold text-purple-400">Mythic</span> items.
+                    </div>
+                  </>
+                )}
               </div>
             )}
           </>
