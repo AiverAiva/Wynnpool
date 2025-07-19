@@ -115,7 +115,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 2. Install NPM packages
    ```sh
-   npm install --force
+   yarn install
    ```
 3. Create .env
    ```sh
@@ -124,7 +124,7 @@ This is an example of how to list things you need to use the software and how to
    Open the .env file in a text editor and update the values
 4. Run the project in dev
    ```sh
-   npm run dev
+   yarn dev
    ```
 <!-- 5. Change git remote url to avoid accidental pushes to base project
    ```sh
