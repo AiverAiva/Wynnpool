@@ -106,6 +106,7 @@ export function ChangelogList({ limit = 5 }: ChangelogListProps) {
                 href={`/item/changelog/`}
                 // href={`/changelog/${timestamp}`}
                 className="flex justify-between items-center py-3 px-2 border-b last:border-0 hover:bg-muted/50 rounded-md transition-colors"
+                prefetch={false}
               >
                 <div className="flex items-center gap-2">
                   <span className="font-medium">{formatDate(timestamp)}</span>
@@ -122,7 +123,7 @@ export function ChangelogList({ limit = 5 }: ChangelogListProps) {
       {!loading && !error && timestamps.length > limit && (
         <CardFooter className="flex justify-center pt-2 pb-4">
           <Button variant="outline" asChild>
-            <Link href="/changelog" className="flex items-center gap-2">
+            <Link href="/changelog" className="flex items-center gap-2" prefetch={false}>
               Show more changelogs
               <ArrowRight className="h-4 w-4" />
             </Link>

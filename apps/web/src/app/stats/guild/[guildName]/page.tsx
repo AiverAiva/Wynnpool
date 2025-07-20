@@ -408,7 +408,7 @@ export default function GuildStatsPage() {
                                         return (
                                             <TableRow key={member.uuid} className={`${member.online ? 'bg-green-500/20 hover:bg-green-300/20' : ''}`}>
                                                 <TableCell className='group hover:scale-105 transition-transform duration-200'>
-                                                    <Link href={`/stats/player/${member.uuid}`} className='flex items-center cursor-pointer gap-2'>
+                                                    <Link href={`/stats/player/${member.uuid}`} className='flex items-center cursor-pointer gap-2' prefetch={false}>
                                                         <img
                                                             src={`https://vzge.me/face/128/${member.uuid}.png`}
                                                             alt={member.username}
