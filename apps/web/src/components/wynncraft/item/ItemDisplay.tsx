@@ -216,7 +216,7 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
 
       {embeded && (
         <div className="flex justify-end">
-          <Link href={`/item/search/${item.internalName}`}>
+          <Link href={`/item/search/${item.internalName}`} prefetch={false}>
             <span className="font-mono text-sm italic hover:underline text-gray-500 cursor-pointer transition trasition-all">more details...</span>
           </Link>
         </div>

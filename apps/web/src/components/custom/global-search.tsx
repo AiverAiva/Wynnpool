@@ -369,7 +369,7 @@ const GlobalSearch: React.FC<any> = () => {
                                   saveToSearchHistory(name, "player");
                                 }}
                               >
-                                <Link href={`/stats/player/${uuid}`}>
+                                <Link href={`/stats/player/${uuid}`} prefetch={false}>
                                   <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
                                     <CardContent className="flex flex-col justify-between p-2 h-full">
                                       <div className="flex items-center gap-3">
@@ -397,7 +397,7 @@ const GlobalSearch: React.FC<any> = () => {
                                   saveToSearchHistory(guild.name, "guild");
                                 }}
                               >
-                                <Link href={`/stats/guild/${guild.name}`}>
+                                <Link href={`/stats/guild/${guild.name}`} prefetch={false}>
                                   <Card className="w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2">
                                     <li className="text-md font-mono">
                                       [{guild.prefix}] {guild.name}
@@ -420,7 +420,7 @@ const GlobalSearch: React.FC<any> = () => {
                                   saveToSearchHistory(itemName, "item");
                                 }}
                               >
-                                <Link href={`/item/${itemName}`}>
+                                <Link href={`/item/${itemName}`} prefetch={false}>
                                   <SmallItemCard item={results.items![itemName]} />
                                 </Link>
                               </span>
@@ -486,7 +486,7 @@ const GlobalSearch: React.FC<any> = () => {
                   <div>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {cutePlayers.map(({ uuid, name, quote, icon }) => (
-                        <Link href={`/stats/player/${uuid}`} key={uuid}>
+                        <Link href={`/stats/player/${uuid}`} key={uuid} prefetch={false}>
                           <li className="relative">
                             <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
                               <CardContent className="flex flex-col justify-between p-4 h-full">

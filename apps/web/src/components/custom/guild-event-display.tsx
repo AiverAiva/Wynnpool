@@ -93,11 +93,11 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
                 bgColor = 'bg-green-600/20';
                 message =
                     <span>
-                        <Link href={`/stats/player/${event.uuid}`} className='font-bold hover:underline'>{event.name}</Link>
+                        <Link href={`/stats/player/${event.uuid}`} className='font-bold hover:underline' prefetch={false}>{event.name}</Link>
                         &ensp;Joined
                         {pathname.includes('/player/') && (
                             <span>
-                                &ensp;<Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`}>{event.guild_name}</Link>&ensp;
+                                &ensp;<Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`} prefetch={false}>{event.guild_name}</Link>&ensp;
                             </span>
                         )}
                     </span>;
@@ -108,11 +108,11 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
                 bgColor = 'bg-red-600/20';
                 message =
                     <span>
-                        <Link href={`/stats/player/${event.uuid}`} className='font-bold hover:underline'>{event.name}</Link>
+                        <Link href={`/stats/player/${event.uuid}`} prefetch={false} className='font-bold hover:underline'>{event.name}</Link>
                         &ensp;Left&ensp;
                         {pathname.includes('/player/') && (
                             <span>
-                                <Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`}>{event.guild_name}</Link>&ensp;
+                                <Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`} prefetch={false}>{event.guild_name}</Link>&ensp;
                             </span>
                         )}
                         as&ensp;{event.rank}
@@ -124,11 +124,11 @@ const GuildEventDisplay: React.FC<GuildEventDisplayProps> = ({ query }) => {
                 bgColor = 'bg-cyan-600/20';
                 message =
                     <span>
-                        <Link href={`/stats/player/${event.uuid}`} className='font-bold hover:underline'>{event.name}</Link>'s rank changed to {event.new_rank} from {event.old_rank}
+                        <Link href={`/stats/player/${event.uuid}`} prefetch={false} className='font-bold hover:underline'>{event.name}</Link>'s rank changed to {event.new_rank} from {event.old_rank}
                         {pathname.includes('/player/') && (
                             <span>
                                 &ensp;in&ensp;
-                                <Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`}>{event.guild_name}</Link>
+                                <Link className='font-bold hover:underline cursor-pointer' href={`/stats/guild/${event.guild_name}`} prefetch={false}>{event.guild_name}</Link>
                             </span>
                         )}
                     </span>;
