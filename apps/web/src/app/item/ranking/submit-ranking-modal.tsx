@@ -112,8 +112,10 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
         <DialogHeader>
           <DialogTitle>Submit Verified Item</DialogTitle>
         </DialogHeader>
-        <div className="flex flex-row gap-6 items-stretch h-full">
-          <div className="min-h-[300px] w-[340px] flex items-center justify-center rounded-md border bg-background">
+        <div className="flex flex-col md:flex-row gap-6 items-stretch h-full">
+          <div
+            className="min-h-[300px] w-full md:w-[340px] flex items-center justify-center rounded-md border bg-background mx-auto"
+          >
             {loading ? (
               <span className="text-sm text-muted-foreground animate-pulse">Loading preview...</span>
             ) : decodedData ? (
