@@ -110,7 +110,7 @@ export default function StatsPage() {
                 <TableRow key={guild.guild_uuid} className='group'>
                   <TableCell>{guild.rank}</TableCell>
                   <TableCell className='cursor-pointer flex items-center'>
-                    <Link href={`/stats/guild/${guild.guild_name}`}>
+                    <Link href={`/stats/guild/${guild.guild_name}`} prefetch={false}>
                       {guild.guild_name}
                       <ExternalLink className='ml-2 hidden opacity-0 group-hover:inline-block group-hover:opacity-100 h-4 w-4 text-muted-foreground transition-all duration-500' />
                     </Link>
