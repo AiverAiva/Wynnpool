@@ -24,17 +24,26 @@ export default function WynncraftNews() {
     const fetchNews = async () => {
       try {
         const response = await fetch('/api/latest-news')
+
         if (!response.ok) {
-          throw new Error('Failed to fetch news')
+          throw new Error(`HTTP error! status: ${response.status}`)
         }
+
         const data = await response.json()
+
+        if (!Array.isArray(data)) {
+          throw new Error("Invalid data format: expected array")
+        }
+
         setNews(data)
-        setIsLoading(false)
       } catch (err) {
+        console.error('Error fetching news:', err)
         setError('Failed to load news. Please try again later.')
+      } finally {
         setIsLoading(false)
       }
     }
+
 
     fetchNews()
   }, [])
@@ -46,8 +55,8 @@ export default function WynncraftNews() {
 
   const truncateContent = (content: string, maxLength: number) => {
     const strippedContent = content.replace(/<[^>]+>/g, '');
-    return strippedContent.length > maxLength 
-      ? strippedContent.substring(0, maxLength) + '...' 
+    return strippedContent.length > maxLength
+      ? strippedContent.substring(0, maxLength) + '...'
       : strippedContent
   }
 
@@ -56,40 +65,40 @@ export default function WynncraftNews() {
   }
 
   return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Latest News</CardTitle>
-          <CardDescription>Stay informed about recent changes to Wynncraft</CardDescription>
-        </CardHeader>
-        <CardContent>
-          {isLoading ? (
-            <div className="flex justify-center items-center h-32">
-              <Spinner size="large" />
-            </div>
-          ) : error ? (
-            <p className="text-red-500">{error}</p>
-          ) : (
-            <ul className="space-y-4">
-              {news.slice(0, 3).map((item, index) => (
-                <li key={index} className="border-b pb-4 last:border-b-0 last:pb-0">
-                  <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    {formatDate(item.date)} by {item.author}
-                  </p>
-                  <p className="text-sm mb-2" dangerouslySetInnerHTML={{__html: truncateContent(item.content, 150)}}></p>
-                  <a 
-                    href={item.forumThread} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-sm text-primary hover:underline flex items-center"
-                  >
-                    Read more <ExternalLink className="h-4 w-4 ml-1" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </CardContent>
-      </Card>
+    <Card>
+      <CardHeader>
+        <CardTitle>Latest News</CardTitle>
+        <CardDescription>Stay informed about recent changes to Wynncraft</CardDescription>
+      </CardHeader>
+      <CardContent>
+        {isLoading ? (
+          <div className="flex justify-center items-center h-32">
+            <Spinner size="large" />
+          </div>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : (
+          <ul className="space-y-4">
+            {Array.isArray(news) && news.slice(0, 3).map((item, index) => (
+              <li key={index} className="border-b pb-4 last:border-b-0 last:pb-0">
+                <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  {formatDate(item.date)} by {item.author}
+                </p>
+                <p className="text-sm mb-2" dangerouslySetInnerHTML={{ __html: truncateContent(item.content, 150) }}></p>
+                <a
+                  href={item.forumThread}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary hover:underline flex items-center"
+                >
+                  Read more <ExternalLink className="h-4 w-4 ml-1" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </CardContent>
+    </Card>
   )
 }
