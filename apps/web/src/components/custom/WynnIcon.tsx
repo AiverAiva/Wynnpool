@@ -13,7 +13,7 @@ interface IconProps {
 }
 
 interface ItemTypeIconProps {
-  type: string; 
+  type: string;
   size?: number;
 }
 
@@ -52,7 +52,7 @@ const ItemTypeIcon: React.FC<ItemTypeIconProps> = ({ type, size = 32 }) => {
         height: size, // Set to the specific height of the icon
         backgroundImage: 'url(/icons/items/all.png)',
         backgroundPosition: `${iconPos}`,
-        backgroundSize: '1200% 200%', 
+        backgroundSize: '1200% 200%',
         backgroundRepeat: 'no-repeat', // Prevent repeating the sprite
         imageRendering: 'pixelated', // Preserve pixel art look
       }}
@@ -62,7 +62,9 @@ const ItemTypeIcon: React.FC<ItemTypeIconProps> = ({ type, size = 32 }) => {
 
 
 const getImageSrc = (item: Item): string => {
-  if (item.icon) {
+  if (item.type === 'armour') {
+    return `/textures/wynn/armor/${item.armourType}/${item.armourMaterial}_${item.armourType}.png`;
+  } else if (item.icon) {
     if (item.icon.format === 'attribute' || item.icon.format === 'legacy') {
       const iconValue =
         typeof item.icon.value === 'object'
@@ -73,8 +75,6 @@ const getImageSrc = (item: Item): string => {
     if (item.icon.format === 'skin') {
       return `https://mc-heads.net/head/${item.icon.value}`;
     }
-  } else if (item.type === 'armour') {
-    return `https://cdn.wynncraft.com/nextgen/itemguide/3.3/${item.armourMaterial}_${item.armourType}.webp`;
   }
   return `/icons/items/barrier.webp`;
 };
