@@ -1,3 +1,4 @@
+import { LargeNumberLike } from 'crypto';
 import { Code, CodeXml, Star, PiggyBank } from 'lucide-react';
 import { createElement } from 'react';
 
@@ -13,7 +14,7 @@ export const cutePlayers = [
         uuid: 'f33dfcce-8e29-49b9-a528-93729f95fa39',
         name: 'Flufe',
         emoji: '🐉',
-        quote: 'Dungeons are cool',   
+        quote: 'Dungeons are cool',
         icon: createElement(PiggyBank, { className: 'w-4 h-4 text-muted-foreground' })  //funder 
     }
 ];
@@ -23,7 +24,93 @@ export function getPlayerDisplayName(name: string): string {
     return player ? `${name} ${player.emoji}` : name;
 }
 
-export interface Player {
+interface GlobalData {
+    wars: number;
+    totalLevel: number;
+    mobsKilled: number;
+    chestsFound: number;
+    dungeons: {
+        total: number;
+        list: Record<string, number>;
+    };
+    raids: {
+        total: number;
+        list: Record<string, number>;
+    };
+    completedQuests: number;
+    pvp: {
+        kills: number;
+        deaths: number;
+    };
+    worldEvents: number;
+    lootruns: number;
+    caves: number;
+}
+
+interface CharacterData {
+    type: string;
+    nickname: string;
+    level: number;
+    xp: number;
+    xpPercent: number;
+    totalLevel: number;
+    wars: number;
+    playtime: number;
+    mobsKilled: number;
+    chestsFound: number;
+    blocksWalked: number;
+    itemsIdentified: number;
+    logins: number;
+    deaths: number;
+    discoveries: number;
+    pvp: {
+        kills: number;
+        deaths: number;
+    };
+    gamemode: string[]; // e.g., ["hunted", "hardcore"]
+    skillPoints: {
+        strength: number;
+        dexterity: number;
+        intelligence: number;
+        defence: number;
+        agility: number;
+    };
+    professions: Record<
+        string,
+        {
+            level: number;
+            xpPercent: number;
+        }
+    >;
+    dungeons: {
+        total: number;
+        list: Record<string, number>; // Key: Dungeon Name, Value: Number of completions
+    };
+    raids: {
+        total: number;
+        list: Record<string, number>; // Key: Raid Name, Value: Number of completions
+    };
+    quests: string[]; // List of completed quest names
+}
+
+// interface OnlineData {
+//     currentServer: string;
+// }
+
+/*
+        mainAccess: MainAccess;
+        //hides feature stats & global stats
+
+        characterDataAccess: CharData;
+        //when this is true, charaterBuildAccess doesnt exist and it hides the entire charater list
+
+        characterBuildAccess: undefined,
+        
+        onlineStatus: OnlineStatus;
+        //doesnt hide anything, but online: boolean is always false, and server: string changes normally
+*/
+
+export interface PlayerBase {
     username: string;
     online: boolean;
     server: string;
@@ -38,87 +125,68 @@ export interface Player {
     shortenedRank: string;
     supportRank: string;
     veteran: boolean;
-    firstJoin: string;
-    lastJoin: string;
-    playtime: number;
     guild: {
         name: string;
         prefix: string;
         rank: string;
         rankStars: string;
     };
-    globalData: {
-        wars: number;
-        totalLevel: number;
-        killedMobs: number;
-        chestsFound: number;
-        dungeons: {
-            total: number;
-            list: Record<string, number>; // Key: Dungeon Name, Value: Number of completions
-        };
-        raids: {
-            total: number;
-            list: Record<string, number>; // Key: Raid Name, Value: Number of completions
-        };
-        completedQuests: number;
-        pvp: {
-            kills: number;
-            deaths: number;
-        };
-    };
     forumLink: number | null;
     ranking: Record<string, number>; // Key: Ranking Type, Value: Rank
     previousRanking: Record<string, number>; // Key: Ranking Type, Value: Previous Rank
     publicProfile: boolean;
-    characters: Record<
-        string,
-        {
-            type: string;
-            nickname: string;
-            level: number;
-            xp: number;
-            xpPercent: number;
-            totalLevel: number;
-            wars: number;
-            playtime: number;
-            mobsKilled: number;
-            chestsFound: number;
-            blocksWalked: number;
-            itemsIdentified: number;
-            logins: number;
-            deaths: number;
-            discoveries: number;
-            pvp: {
-                kills: number;
-                deaths: number;
-            };
-            gamemode: string[]; // e.g., ["hunted", "hardcore"]
-            skillPoints: {
-                strength: number;
-                dexterity: number;
-                intelligence: number;
-                defence: number;
-                agility: number;
-            };
-            professions: Record<
-                string,
-                {
-                    level: number;
-                    xpPercent: number;
-                }
-            >;
-            dungeons: {
-                total: number;
-                list: Record<string, number>; // Key: Dungeon Name, Value: Number of completions
-            };
-            raids: {
-                total: number;
-                list: Record<string, number>; // Key: Raid Name, Value: Number of completions
-            };
-            quests: string[]; // List of completed quest names
-        }
-    >;
+    characters: Record<string, CharacterData> | null;
+    restrictions: {
+        mainAccess: boolean;
+        characterDataAccess: boolean;
+        characterBuildAccess: boolean;
+        onlineStatus: boolean;
+    }
+    globalData: GlobalData | undefined; //this is not exist when mainAccess is true 
+    playtime: number | undefined; //this doesnt exist when mainAccess is true
+    firstJoin: string | undefined; //this doesnt exist when mainAccess is true
+    lastJoin: string | undefined; //this doesnt exist when mainAccess is true
 }
+
+export interface mainAccess extends PlayerBase {
+    restrictions: PlayerBase["restrictions"] & {
+        mainAccess: false;
+    };
+    globalData: GlobalData; //this is not exist when mainAccess is true 
+    playtime: number; //this doesnt exist when mainAccess is true
+    firstJoin: string; //this doesnt exist when mainAccess is true
+    lastJoin: string; //this doesnt exist when mainAccess is true
+}
+
+export interface characterDataAccess extends PlayerBase {
+    restrictions: PlayerBase["restrictions"] & {
+        characterDataAccess: false;
+    };
+    characters: Record<string, CharacterData>; //this is null when true
+}
+
+export type Player = mainAccess | characterDataAccess
+// export type Player<
+//     MainAccess extends boolean = boolean,
+//     CharData extends boolean = boolean,
+//     OnlineStatus extends boolean = boolean
+// > = PlayerBase & {
+//     restrictions: {
+//         mainAccess: MainAccess;
+//         //hides feature stats & global stats
+
+//         characterDataAccess: CharData;
+//         //when this is true, charaterBuildAccess doesnt exist and it hides the entire charater list
+
+//         characterBuildAccess: undefined,
+
+//         onlineStatus: OnlineStatus;
+//         //doesnt hide anything, but online: boolean is always false, and server: string changes normally
+//     };
+// } & (MainAccess extends false ? { globalData: GlobalData } : { globalData?: undefined })
+//     & (CharData extends false ? { characters: Record<string, CharacterData>; } : { characters: null })
+// & (OnlineStatus extends false ? { onlineData: OnlineData } : { onlineData?: undefined });
+
 
 export const QuestList: string[] = [
     "A Hunter's Calling",
@@ -383,4 +451,4 @@ export const QuestList: string[] = [
     "Mini-Quest - Gather Sorghum II",
     "Mini-Quest - Gather Sorghum IV",
     "Mini-Quest - Gather Sorghum III"
-    ]
+]

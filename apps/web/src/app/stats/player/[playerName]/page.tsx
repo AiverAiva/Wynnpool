@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { getPlayerDisplayName, Player, QuestList } from '@/types/playerType';
+import { getPlayerDisplayName, Player, PlayerBase, QuestList } from '@/types/playerType';
 import { Spinner } from '@/components/ui/spinner';
 import GuildEventDisplay from '@/components/custom/guild-event-display';
 import Link from 'next/link';
@@ -23,14 +23,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Separator } from '@/components/ui/separator';
 import SkinViewerComponent from '@/components/custom/SkinViewer';
 import { TooltipPortal } from '@radix-ui/react-tooltip';
-
-interface PlayerGuild {
-    guild_uuid: string;
-    guild_name: string;
-    guild_prefix: string;
-    player_uuid: string;
-    player_rank: string;
-}
 
 function formatDateWithSuffix(dateString: string): string {
     const date = new Date(dateString);
@@ -122,7 +114,11 @@ export default function PlayerStatsPage() {
     const [sortBy, setSortBy] = useState<'createDate' | 'combatLevel' | 'totalLevel'>('combatLevel');
 
     const sortedCharacters = useMemo(() => {
-        if (!playerData) return [];
+        if (!playerData ||
+            !playerData.characters ||
+            playerData.restrictions.characterDataAccess
+        ) return [];
+
         return Object.entries(playerData.characters).sort((a, b) => {
             switch (sortBy) {
                 case 'createDate':
@@ -182,9 +178,11 @@ export default function PlayerStatsPage() {
                                     <span className='font-bold'>Offline</span>
                                 )}
                             </div>
-                            <span className="italic text-sm text-gray-500">
-                                Joined {formatDateWithSuffix(playerData.firstJoin)}
-                            </span>
+                            {!playerData.restrictions.mainAccess && playerData.firstJoin &&
+                                <span className="italic text-sm text-gray-500">
+                                    Joined {formatDateWithSuffix(playerData.firstJoin)}
+                                </span>
+                            }
                             {!playerData.online && playerData.lastJoin && (
                                 <span className="italic text-sm text-gray-500">
                                     Last seen {formatTimeAgo(playerData.lastJoin)}
@@ -208,186 +206,207 @@ export default function PlayerStatsPage() {
                                 ) : (
                                     <span>No guild</span>
                                 )}
-                                Total Level: {playerData.globalData.totalLevel} | Playtime: {Math.round(playerData.playtime)} hours
                             </CardDescription>
                         </div>
 
                     </div>
                 </CardHeader>
-                <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <StatCard title="Wars" value={playerData.globalData.wars} />
-                        <StatCard title="Mobs Killed" value={playerData.globalData.killedMobs} />
-                        <StatCard title="Chests Found" value={playerData.globalData.chestsFound} />
-                        <RaidCard title="Raids Completed" raids={playerData.globalData.raids} />
-                        <DungeonCard title="Dungeons Completed" dungeons={playerData.globalData.dungeons} />
-                        {/* <StatCard title="Raids Completed" value={playerData.globalData.raids.total} />
+                {!playerData.restrictions.mainAccess && playerData.globalData && (
+                    <CardContent>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            {playerData.playtime && (
+                                <StatCard title="Playtime" value={`${Math.round(playerData.playtime)} hours`} />
+                            )}
+                            <RaidCard title="Raids Completed" raids={playerData.globalData.raids} />
+                            <DungeonCard title="Dungeons Completed" dungeons={playerData.globalData.dungeons} />
+                            <StatCard title="Mobs Killed" value={playerData.globalData.mobsKilled} />
+                            <StatCard title="Wars" value={playerData.globalData.wars} />
+                            <StatCard title="Quests Completed" value={playerData.globalData.completedQuests} />
+                            <StatCard title="Chests Found" value={playerData.globalData.chestsFound} />
+                            <StatCard title="World Events" value={playerData.globalData.worldEvents} />
+                            <StatCard title="Lootruns Completed" value={playerData.globalData.lootruns} />
+                            <StatCard title="Caves Discovered" value={playerData.globalData.caves} />
+                            {/* <StatCard title="Raids Completed" value={playerData.globalData.raids.total} />
                         <StatCard title="Dungeons Completed" value={playerData.globalData.dungeons.total} /> */}
-                        <StatCard title="Quests Completed" value={playerData.globalData.completedQuests} />
-                    </div>
-                    <GuildEventDisplay query={{ uuid: playerData.uuid }} />
-                    <PlayerRankings data={playerData} />
-                </CardContent>
+                        </div>
+                        <GuildEventDisplay query={{ uuid: playerData.uuid }} />
+                        <PlayerRankings data={playerData} />
+                    </CardContent>
+                )}
             </Card>
 
-            <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Characters</h2>
-                <Select onValueChange={(value) => setSortBy(value as any)} defaultValue={sortBy}>
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Sort by" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="combatLevel">Combat Level</SelectItem>
-                        <SelectItem value="createDate">Create Date</SelectItem>
-                        <SelectItem value="totalLevel">Total Level</SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
+            {!playerData.restrictions.characterDataAccess ? (
+                <>
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-2xl font-bold">Characters</h2>
+                        <Select onValueChange={(value) => setSortBy(value as any)} defaultValue={sortBy}>
+                            <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Sort by" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="combatLevel">Combat Level</SelectItem>
+                                <SelectItem value="createDate">Create Date</SelectItem>
+                                <SelectItem value="totalLevel">Total Level</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {sortedCharacters.map(([id, char]) => (
-                    <Dialog key={id}>
-                        <DialogTrigger asChild>
-                            <Card className={`relative p-4 z-0 cursor-pointer hover:scale-105 transition-all duration-200 hover:bg-accent ${id == playerData.activeCharacter && playerData.online ? 'outline outline-green-500' : ''}`}>
-                                <div className="flex items-center justify-between">
-                                    <div className='w-full'>
-                                        <h2 className="text-lg font-bold tracking-tight flex items-center justify-between flex">
-                                            <span className="text-primary">{char.type}</span>
-                                            <span className="text-muted-foreground font-medium">
-                                                Level {char.level}
-                                            </span>
-                                        </h2>
-                                        <div className='flex justify-between items-center'>
-                                            <p className="text-sm text-muted-foreground">
-                                                Total Level: {char.totalLevel}
-                                            </p>
-                                            <div className='flex items-center space-x-2'>
-                                                <TooltipProvider delayDuration={50}>
-                                                    {char.gamemode.sort().map((mode, index) => {
-                                                        if (mode == 'ironman' && char.gamemode.includes('ultimate_ironman')) return
-                                                        const formattedMode = mode
-                                                            .split('_')
-                                                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                                                            .join(' ');
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {sortedCharacters.map(([id, char]) => (
+                            <Dialog key={id}>
+                                <DialogTrigger asChild>
+                                    <Card className={`relative p-4 z-0 cursor-pointer hover:scale-105 transition-all duration-200 hover:bg-accent ${id == playerData.activeCharacter && playerData.online ? 'outline outline-green-500' : ''}`}>
+                                        <div className="flex items-center justify-between">
+                                            <div className='w-full'>
+                                                <h2 className="text-lg font-bold tracking-tight flex items-center justify-between flex">
+                                                    <span className="text-primary">{char.type}</span>
+                                                    <span className="text-muted-foreground font-medium">
+                                                        Level {char.level}
+                                                    </span>
+                                                </h2>
+                                                <div className='flex justify-between items-center'>
+                                                    <p className="text-sm text-muted-foreground">
+                                                        Total Level: {char.totalLevel}
+                                                    </p>
+                                                    <div className='flex items-center space-x-2'>
+                                                        <TooltipProvider delayDuration={50}>
+                                                            {char.gamemode.sort().map((mode, index) => {
+                                                                if (mode == 'ironman' && char.gamemode.includes('ultimate_ironman')) return
+                                                                const formattedMode = mode
+                                                                    .split('_')
+                                                                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                                                                    .join(' ');
 
-                                                        return (
-                                                            <Tooltip key={index}>
-                                                                <TooltipTrigger>
-                                                                    {/* <div className='hover:bg-background transition-colors transition-duration-200 rounded-md p-1.5'> */}
-                                                                    <img
-                                                                        src={`/icons/gamemode/${mode == 'hardcore' && char.deaths > 0 ? 'defeated_' : ''}${mode}.svg`}
-                                                                        alt={formattedMode}
-                                                                        className={'h-4'}
-                                                                    />
-                                                                </TooltipTrigger>
-                                                                <TooltipPortal>
-                                                                    <TooltipContent side="top" className='z-20'>
-                                                                        <p>{`${mode == 'hardcore' && char.deaths > 0 ? 'Defeated ' : ''}${formattedMode}`}</p>
-                                                                    </TooltipContent>
-                                                                </TooltipPortal>
-                                                            </Tooltip>
-                                                        );
-                                                    })}
-                                                </TooltipProvider>
+                                                                return (
+                                                                    <Tooltip key={index}>
+                                                                        <TooltipTrigger>
+                                                                            {/* <div className='hover:bg-background transition-colors transition-duration-200 rounded-md p-1.5'> */}
+                                                                            <img
+                                                                                src={`/icons/gamemode/${mode == 'hardcore' && char.deaths > 0 ? 'defeated_' : ''}${mode}.svg`}
+                                                                                alt={formattedMode}
+                                                                                className={'h-4'}
+                                                                            />
+                                                                        </TooltipTrigger>
+                                                                        <TooltipPortal>
+                                                                            <TooltipContent side="top" className='z-20'>
+                                                                                <p>{`${mode == 'hardcore' && char.deaths > 0 ? 'Defeated ' : ''}${formattedMode}`}</p>
+                                                                            </TooltipContent>
+                                                                        </TooltipPortal>
+                                                                    </Tooltip>
+                                                                );
+                                                            })}
+                                                        </TooltipProvider>
+                                                    </div>
+                                                </div>
+                                                {char.nickname && (
+                                                    <span className='text-sm font-medium italic text-muted-foreground/80'>
+                                                        "{char.nickname}"
+                                                    </span>
+                                                )}
+                                                {!char.nickname && char.gamemode.length > 0 && (
+                                                    <div className='h-4' />
+                                                )}
                                             </div>
                                         </div>
-                                        {char.nickname && (
-                                            <span className='text-sm font-medium italic text-muted-foreground/80'>
-                                                "{char.nickname}"
-                                            </span>
-                                        )}
-                                        {!char.nickname && char.gamemode.length > 0 && (
-                                            <div className='h-4' />
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="absolute bottom-0 left-0 w-full overflow-hidden rounded-b-md z-10">
-                                    <div className='flex justify-end'>
-                                        <span className='mr-4 text-xs font-mono text-muted-foreground'>
-                                            {formatNumberWithUnit(char.xp)}{char.level < 106 && `/${formatNumberWithUnit(getPlayerLevelXP(char.level)!)}`}
-                                        </span>
-                                    </div>
-                                    <Progress className="rounded-none h-1" value={char.xpPercent} />
-                                </div>
-                            </Card>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-3xl max-w-screen-lg">
-                            <DialogHeader>
-                                <DialogTitle>{char.type} Details</DialogTitle>
-                            </DialogHeader>
-                            <ScrollArea className='h-[70vh]'>
-                                <div className="mt-4 space-y-6">
-                                    <section>
-                                        <h3 className="font-semibold mb-2">Character Stats</h3>
-                                        <div className="grid grid-cols-2 gap-4">
-                                            <StatCard title="Combat Level" value={char.level} />
-                                            <StatCard title="Total Level" value={char.totalLevel} />
-                                            <StatCard title="Playtime" value={`${Math.round(char.playtime)} hours`} />
-                                            <StatCard title="Mobs Killed" value={char.mobsKilled} />
-                                            <StatCard title="Chests Found" value={char.chestsFound} />
-                                            <StatCard title="Deaths" value={char.deaths} />
+                                        <div className="absolute bottom-0 left-0 w-full overflow-hidden rounded-b-md z-10">
+                                            <div className='flex justify-end'>
+                                                <span className='mr-4 text-xs font-mono text-muted-foreground'>
+                                                    {formatNumberWithUnit(char.xp)}{char.level < 106 && `/${formatNumberWithUnit(getPlayerLevelXP(char.level)!)}`}
+                                                </span>
+                                            </div>
+                                            <Progress className="rounded-none h-1" value={char.xpPercent} />
                                         </div>
-                                    </section>
-
-                                    <section>
-                                        <h3 className="font-semibold mb-2">Professions</h3>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                            {Object.entries(char.professions).map(([profession, data]) => (
-                                                <Card key={profession} className="bg-background transition-colors overflow-hidden">
-                                                    <CardContent className="p-3 flex items-center justify-between">
-                                                        <div className="flex items-center gap-2">
-                                                            <img
-                                                                src={`/icons/profession/${profession}.webp`}
-                                                                alt={profession}
-                                                                className="h-6 w-6"
-                                                            // style={{ imageRendering: 'pixelated' }}
-                                                            />
-                                                            <span className="capitalize text-sm">{profession}</span>
-                                                        </div>
-                                                        <Badge variant="outline" className="ml-2">
-                                                            {data.level}
-                                                        </Badge>
-                                                    </CardContent>
-                                                    <Progress value={data.xpPercent} className='h-1 rounded-none w-full' />
-                                                </Card>
-                                            ))}
-                                        </div>
-                                    </section>
-
-                                    <DungeonStats dungeons={char.dungeons} />
-                                    <RaidStats raids={char.raids} />
-
-                                    <section>
-                                        <h3 className="font-semibold mb-2">Quests</h3>
-                                        <div className="text-sm mb-4">
-                                            Total Quests Completed: {char.quests.length}/{QuestList.length}
-                                        </div>
-                                        <Card className="p-2">
-                                            <ScrollArea className="h-[300px]">
-                                                <div className="flex flex-wrap gap-1 text-xs">
-                                                    {QuestList
-                                                        .sort((a, b) => {
-                                                            const aIncluded: any = char.quests.includes(a);
-                                                            const bIncluded: any = char.quests.includes(b);
-                                                            return bIncluded - aIncluded; // Included quests first
-                                                        })
-                                                        .map((quest) => (
-                                                            <Link prefetch={false} key={quest} href={`https://wynncraft.wiki.gg/wiki/${quest.replace(' ', '_').replace('À', '')}`}>
-                                                                <div className={cn(char.quests.includes(quest) ? "bg-green-950/30 text-green-400 hover:bg-green-950/60" : "bg-muted/50 text-muted-foreground hover:bg-muted ", "flex items-center gap-2 p-2 rounded-lg transition-colors cursor-default group cursor-pointer")}>
-                                                                    <span>{quest}</span>
-                                                                </div>
-                                                            </Link>
-                                                        ))}
+                                    </Card>
+                                </DialogTrigger>
+                                <DialogContent className="max-w-3xl max-w-screen-lg">
+                                    <DialogHeader>
+                                        <DialogTitle>{char.type} Details</DialogTitle>
+                                    </DialogHeader>
+                                    <ScrollArea className='h-[70vh]'>
+                                        <div className="mt-4 space-y-6">
+                                            <section>
+                                                <h3 className="font-semibold mb-2">Character Stats</h3>
+                                                <div className="grid grid-cols-2 gap-4">
+                                                    <StatCard title="Combat Level" value={char.level} />
+                                                    <StatCard title="Total Level" value={char.totalLevel} />
+                                                    <StatCard title="Playtime" value={`${Math.round(char.playtime)} hours`} />
+                                                    <StatCard title="Mobs Killed" value={char.mobsKilled} />
+                                                    <StatCard title="Chests Found" value={char.chestsFound} />
+                                                    <StatCard title="Deaths" value={char.deaths} />
                                                 </div>
-                                            </ScrollArea>
-                                        </Card>
-                                    </section>
-                                </div>
-                            </ScrollArea>
-                        </DialogContent>
-                    </Dialog>
-                ))}
-            </div>
+                                            </section>
+
+                                            <section>
+                                                <h3 className="font-semibold mb-2">Professions</h3>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                                                    {Object.entries(char.professions).map(([profession, data]) => (
+                                                        <Card key={profession} className="bg-background transition-colors overflow-hidden">
+                                                            <CardContent className="p-3 flex items-center justify-between">
+                                                                <div className="flex items-center gap-2">
+                                                                    <img
+                                                                        src={`/icons/profession/${profession}.webp`}
+                                                                        alt={profession}
+                                                                        className="h-6 w-6"
+                                                                    // style={{ imageRendering: 'pixelated' }}
+                                                                    />
+                                                                    <span className="capitalize text-sm">{profession}</span>
+                                                                </div>
+                                                                <Badge variant="outline" className="ml-2">
+                                                                    {data.level}
+                                                                </Badge>
+                                                            </CardContent>
+                                                            <Progress value={data.xpPercent} className='h-1 rounded-none w-full' />
+                                                        </Card>
+                                                    ))}
+                                                </div>
+                                            </section>
+
+                                            <DungeonStats dungeons={char.dungeons} />
+                                            <RaidStats raids={char.raids} />
+
+                                            <section>
+                                                <h3 className="font-semibold mb-2">Quests</h3>
+                                                <div className="text-sm mb-4">
+                                                    Total Quests Completed: {char.quests.length}/{QuestList.length}
+                                                </div>
+                                                <Card className="p-2">
+                                                    <ScrollArea className="h-[300px]">
+                                                        <div className="flex flex-wrap gap-1 text-xs">
+                                                            {QuestList
+                                                                .sort((a, b) => {
+                                                                    const aIncluded: any = char.quests.includes(a);
+                                                                    const bIncluded: any = char.quests.includes(b);
+                                                                    return bIncluded - aIncluded; // Included quests first
+                                                                })
+                                                                .map((quest) => (
+                                                                    <Link prefetch={false} key={quest} href={`https://wynncraft.wiki.gg/wiki/${quest.replace(' ', '_').replace('À', '')}`}>
+                                                                        <div className={cn(char.quests.includes(quest) ? "bg-green-950/30 text-green-400 hover:bg-green-950/60" : "bg-muted/50 text-muted-foreground hover:bg-muted ", "flex items-center gap-2 p-2 rounded-lg transition-colors cursor-default group cursor-pointer")}>
+                                                                            <span>{quest}</span>
+                                                                        </div>
+                                                                    </Link>
+                                                                ))}
+                                                        </div>
+                                                    </ScrollArea>
+                                                </Card>
+                                            </section>
+                                        </div>
+                                    </ScrollArea>
+                                </DialogContent>
+                            </Dialog>
+                        ))}
+                    </div>
+                </>
+            ) : (
+                <div className="w-full h-[50vh] flex flex-col items-center justify-center border rounded-lg">
+                    <span className="font-mono text-lg italic">Private Charater Data</span>
+                    <img
+                        src={`/turtles/not_found.png`}
+                        alt='NOT FOUND'
+                        className="h-32"
+                    />
+                </div>
+            )}
+
         </div >
     )
 }
@@ -405,7 +424,7 @@ function StatCard({ title, value }: { title: string; value: number | string }) {
 }
 
 function DungeonCard({ title, dungeons }: { title: string, dungeons: any }) {
-    if (!dungeons) return
+    if (!dungeons || dungeons.total == 0) return
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -432,7 +451,7 @@ function DungeonCard({ title, dungeons }: { title: string, dungeons: any }) {
 }
 
 function RaidCard({ title, raids }: { title: string, raids: any }) {
-    if (!raids) return
+    if (!raids || raids.total == 0) return
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -622,7 +641,7 @@ function RankingItem({ name, current, previous }: { name: string; current: numbe
     );
 }
 
-function CategoryCard({ category, items, data }: { category: string; items: string[]; data: Player }) {
+function CategoryCard({ category, items, data }: { category: string; items: string[]; data: PlayerBase }) {
     const filteredItems = items.filter(item => data.ranking[item] !== undefined);
     if (filteredItems.length === 0) return null;
 
@@ -646,7 +665,7 @@ function CategoryCard({ category, items, data }: { category: string; items: stri
 }
 
 
-function PlayerRankings({ data }: { data: Player }) {
+function PlayerRankings({ data }: { data: PlayerBase }) {
     const [openItem, setOpenItem] = useState<string | undefined>(undefined);
 
     return (
