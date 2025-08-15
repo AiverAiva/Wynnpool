@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { SponsoredWhale } from "@/components/custom/sponsor-tab";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -57,6 +58,7 @@ export default function RootLayout({
           enableSystem
         >
           <Navbar />
+          <SponsoredWhale />
           {children}
           {modal}
         </ThemeProvider>
