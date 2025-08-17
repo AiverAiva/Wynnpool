@@ -23,6 +23,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Separator } from '@/components/ui/separator';
 import SkinViewerComponent from '@/components/custom/SkinViewer';
 import { TooltipPortal } from '@radix-ui/react-tooltip';
+import { DetailCard } from '@/components/wynncraft/player/DetailCard';
+import { PlayerRanking } from '@/components/wynncraft/player/PlayerRanking';
 
 function formatDateWithSuffix(dateString: string): string {
     const date = new Date(dateString);
@@ -170,6 +172,7 @@ export default function PlayerStatsPage() {
                             width={150}
                             height={200}
                         />
+
                         <div className="flex flex-col w-full sm:relative">
                             <div className={`sm:absolute top-0 w-fit mb-2 right-0 px-4 py-1 text-md font-mono text-white rounded-full ${playerData.online ? "bg-green-500" : "bg-accent"}`}>
                                 {playerData.online ? (
@@ -217,8 +220,10 @@ export default function PlayerStatsPage() {
                             {playerData.playtime && (
                                 <StatCard title="Playtime" value={`${Math.round(playerData.playtime)} hours`} />
                             )}
-                            <RaidCard title="Raids Completed" raids={playerData.globalData.raids} />
-                            <DungeonCard title="Dungeons Completed" dungeons={playerData.globalData.dungeons} />
+
+                            <DetailCard title="Raids Completed" playerData={playerData} />
+                            <DetailCard title="Dungeons Completed" playerData={playerData} />
+
                             <StatCard title="Mobs Killed" value={playerData.globalData.mobsKilled} />
                             <StatCard title="Wars" value={playerData.globalData.wars} />
                             <StatCard title="Quests Completed" value={playerData.globalData.completedQuests} />
@@ -230,7 +235,7 @@ export default function PlayerStatsPage() {
                         <StatCard title="Dungeons Completed" value={playerData.globalData.dungeons.total} /> */}
                         </div>
                         <GuildEventDisplay query={{ uuid: playerData.uuid }} />
-                        <PlayerRankings data={playerData} />
+                        <PlayerRanking data={playerData} />
                     </CardContent>
                 )}
             </Card>
@@ -423,7 +428,7 @@ function StatCard({ title, value }: { title: string; value: number | string }) {
     )
 }
 
-function DungeonCard({ title, dungeons }: { title: string, dungeons: any }) {
+export function DungeonCard({ title, dungeons }: { title: string, dungeons: any }) {
     if (!dungeons || dungeons.total == 0) return
     return (
         <Dialog>
@@ -450,7 +455,7 @@ function DungeonCard({ title, dungeons }: { title: string, dungeons: any }) {
     )
 }
 
-function RaidCard({ title, raids }: { title: string, raids: any }) {
+export function RaidCard({ title, raids }: { title: string, raids: any }) {
     if (!raids || raids.total == 0) return
     return (
         <Dialog>
