@@ -228,9 +228,13 @@ export default function PlayerStatsPage() {
                             <StatCard title="Wars" value={playerData.globalData.wars} />
                             <StatCard title="Quests Completed" value={playerData.globalData.completedQuests} />
                             <StatCard title="Chests Found" value={playerData.globalData.chestsFound} />
-                            <StatCard title="World Events" value={playerData.globalData.worldEvents} />
+
+
+                            {/* these are pmuch content book number, not completion count, maybe not using for now */}
+                            {/* <StatCard title="World Events" value={playerData.globalData.worldEvents} />
                             <StatCard title="Lootruns Completed" value={playerData.globalData.lootruns} />
-                            <StatCard title="Caves Discovered" value={playerData.globalData.caves} />
+                            <StatCard title="Caves Discovered" value={playerData.globalData.caves} /> */}
+
                             {/* <StatCard title="Raids Completed" value={playerData.globalData.raids.total} />
                         <StatCard title="Dungeons Completed" value={playerData.globalData.dungeons.total} /> */}
                         </div>
