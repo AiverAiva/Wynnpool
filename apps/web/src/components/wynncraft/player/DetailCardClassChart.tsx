@@ -216,7 +216,7 @@ export function ClassRaidChart({ playerData, raidType }: ClassRaidChartProps) {
                                     <h3 className="font-semibold text-base">{dungeonName}</h3>
                                     {dungeonVariants.map((dungeon) => (
                                         <div key={`${dungeonName}-${dungeon.type}`} className="flex space-x-2 items-center">
-                                            <Badge variant="outline" className="w-24 h-6 flex items-center justify-center rounded-full">
+                                            <Badge variant="outline" className="w-16 sm:w-24 h-6 flex items-center justify-center rounded-full">
                                                 {dungeon.type === "normal" ?
                                                     <MiscIcon id='dungeon_key' size={24} />
                                                     :
@@ -253,7 +253,9 @@ export function ClassRaidChart({ playerData, raidType }: ClassRaidChartProps) {
                                                                                 // only clear if not pinned
                                                                                 if (!hoveredSegment?.pinned) setHoveredSegment(null)
                                                                             }}
-                                                                            onClick={(e) => {
+                                                                            onPointerDown={(e) => {
+                                                                                e.preventDefault()
+                                                                                e.stopPropagation()
                                                                                 const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
                                                                                 setHoveredSegment(prev => {
                                                                                     const isSame = prev && prev.characterData.characterId === characterData.characterId && prev.raidName === `${dungeonName} (${dungeon.type})`
@@ -326,7 +328,7 @@ export function ClassRaidChart({ playerData, raidType }: ClassRaidChartProps) {
                             <div className="w-full ml-3 space-y-3">
                                 <h3 className="font-semibold text-base">{raid.raidName}</h3>
                                 <div className="flex items-center space-x-2">
-                                    <Badge variant="outline" className="w-24 h-6 flex items-center justify-center rounded-full">
+                                    <Badge variant="outline" className="w-16 sm:w-24 h-6 flex items-center justify-center rounded-full">
                                         {raid.total}
                                     </Badge>
                                     <div className="flex-grow">
@@ -356,7 +358,9 @@ export function ClassRaidChart({ playerData, raidType }: ClassRaidChartProps) {
                                                             onMouseLeave={() => {
                                                                 if (!hoveredSegment?.pinned) setHoveredSegment(null)
                                                             }}
-                                                            onClick={(e) => {
+                                                            onPointerDown={(e) => {
+                                                                e.preventDefault()
+                                                                e.stopPropagation()
                                                                 const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
                                                                 setHoveredSegment(prev => {
                                                                     const isSame = prev && prev.characterData.characterId === characterData.characterId && prev.raidName === raid.raidName
