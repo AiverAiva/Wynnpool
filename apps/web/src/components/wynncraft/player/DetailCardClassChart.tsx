@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { createPortal } from "react-dom"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
@@ -50,9 +51,29 @@ interface ClassRaidChartProps {
 }
 
 export function ClassRaidChart({ playerData, raidType }: ClassRaidChartProps) {
-    const [hoveredSegment, setHoveredSegment] = useState<{ raidName: string; characterData: CharacterRaidData } | null>(
-        null,
-    )
+    const [hoveredSegment, setHoveredSegment] = useState<{
+        raidName: string
+        characterData: CharacterRaidData
+        anchorRect?: DOMRect | null
+        total?: number
+        parentName?: string
+        parentType?: "normal" | "corrupted"
+        pinned?: boolean
+    } | null>(null)
+
+    // Close pinned tooltip when clicking/tapping outside tooltip or segments
+    useEffect(() => {
+        function onPointerDown(e: PointerEvent) {
+            if (!hoveredSegment || !hoveredSegment.pinned) return
+            const target = e.target as HTMLElement | null
+            if (!target) return
+            if (target.closest('[data-tooltip]') || target.closest('[data-tooltip-seg]')) return
+            setHoveredSegment(null)
+        }
+
+        document.addEventListener("pointerdown", onPointerDown)
+        return () => document.removeEventListener("pointerdown", onPointerDown)
+    }, [hoveredSegment])
 
     const calculateTotal = (): number => {
         return Object.values(playerData.characters).reduce(
@@ -217,73 +238,43 @@ export function ClassRaidChart({ playerData, raidType }: ClassRaidChartProps) {
                                                                         width: `${characterData.percentage}%`,
                                                                         minWidth: characterData.percentage > 0 ? "2px" : "0",
                                                                     }}
-                                                                    onMouseEnter={() =>
-                                                                        setHoveredSegment({ raidName: `${dungeonName} (${dungeon.type})`, characterData })
-                                                                    }
-                                                                    onMouseLeave={() => setHoveredSegment(null)}
+                                                                            onMouseEnter={(e) => {
+                                                                                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+                                                                                setHoveredSegment({
+                                                                                    raidName: `${dungeonName} (${dungeon.type})`,
+                                                                                    characterData,
+                                                                                    anchorRect: rect,
+                                                                                    total: dungeon.total,
+                                                                                    parentName: dungeonName,
+                                                                                    parentType: dungeon.type,
+                                                                                })
+                                                                            }}
+                                                                            onMouseLeave={() => {
+                                                                                // only clear if not pinned
+                                                                                if (!hoveredSegment?.pinned) setHoveredSegment(null)
+                                                                            }}
+                                                                            onClick={(e) => {
+                                                                                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+                                                                                setHoveredSegment(prev => {
+                                                                                    const isSame = prev && prev.characterData.characterId === characterData.characterId && prev.raidName === `${dungeonName} (${dungeon.type})`
+                                                                                    if (isSame) return null
+                                                                                    return {
+                                                                                        raidName: `${dungeonName} (${dungeon.type})`,
+                                                                                        characterData,
+                                                                                        anchorRect: rect,
+                                                                                        total: dungeon.total,
+                                                                                        parentName: dungeonName,
+                                                                                        parentType: dungeon.type,
+                                                                                        pinned: true,
+                                                                                    }
+                                                                                })
+                                                                            }}
+                                                                            data-tooltip-seg
                                                                 />
                                                             )
                                                         })}
                                                     </div>
-
-                                                    {hoveredSegment && hoveredSegment.raidName === `${dungeonName} (${dungeon.type})` && (
-                                                        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10">
-                                                            <Card className="shadow-lg border-2">
-                                                                <CardContent className="p-3 min-w-56">
-                                                                    <div className="flex items-center gap-2 mb-2">
-                                                                        <div
-                                                                            className={`w-3 h-3 rounded-full`}
-                                                                            style={{
-                                                                                backgroundColor: getHexColorFromId(hoveredSegment.characterData.characterId),
-                                                                            }}
-                                                                        //  ${getColorClasses(generateCharacterColor(hoveredSegment.characterData.characterId))}
-                                                                        />
-                                                                        <span className="font-semibold">
-                                                                            {hoveredSegment.characterData.reskin || hoveredSegment.characterData.class}
-                                                                        </span>
-                                                                    </div>
-                                                                    <div className="text-sm space-y-1">
-                                                                        {/* <div>
-                                                                                    <span className="text-muted-foreground">Character ID:</span>{" "}
-                                                                                    <span className="font-medium">{hoveredSegment.characterData.characterId}</span>
-                                                                                </div> */}
-                                                                        <div>
-                                                                            <span className="text-muted-foreground">Class:</span>{" "}
-                                                                            <span className="font-medium">{hoveredSegment.characterData.class}</span>
-                                                                            {hoveredSegment.characterData.reskin && (
-                                                                                <span className="text-muted-foreground">
-                                                                                    {" "}
-                                                                                    ({hoveredSegment.characterData.reskin})
-                                                                                </span>
-                                                                            )}
-                                                                        </div>
-                                                                        <div>
-                                                                            <span className="text-muted-foreground">Combat Level:</span>{" "}
-                                                                            <span className="font-medium">{hoveredSegment.characterData.level}</span>
-                                                                        </div>
-                                                                        {hoveredSegment.characterData.nickname && (
-                                                                            <div>
-                                                                                <span className="text-muted-foreground">Nickname:</span>{" "}
-                                                                                <span className="font-medium">{hoveredSegment.characterData.nickname}</span>
-                                                                            </div>
-                                                                        )}
-                                                                        <div className="border-t pt-1 mt-2">
-                                                                            <div>
-                                                                                <span className="text-muted-foreground">Completions:</span>{" "}
-                                                                                <span className="font-medium">{hoveredSegment.characterData.count}</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="text-xs mt-1">
-                                                                            <span className="font-medium">
-                                                                                {hoveredSegment.characterData.percentage.toFixed(1)}%
-                                                                            </span>
-                                                                            <span className="text-muted-foreground"> of {dungeon.total} total {dungeon.type == "corrupted" && "Corrupted "}{dungeonName} completions</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </CardContent>
-                                                            </Card>
-                                                        </div>
-                                                    )}
+                                                    
                                                 </div>
                                             </div>
 
@@ -352,71 +343,40 @@ export function ClassRaidChart({ playerData, raidType }: ClassRaidChartProps) {
                                                                 width: `${characterData.percentage}%`,
                                                                 minWidth: characterData.percentage > 0 ? "2px" : "0",
                                                             }}
-                                                            onMouseEnter={() => setHoveredSegment({ raidName: raid.raidName, characterData })}
-                                                            onMouseLeave={() => setHoveredSegment(null)}
+                                                            onMouseEnter={(e) => {
+                                                                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+                                                                setHoveredSegment({
+                                                                    raidName: raid.raidName,
+                                                                    characterData,
+                                                                    anchorRect: rect,
+                                                                    total: raid.total,
+                                                                    parentName: raid.raidName,
+                                                                })
+                                                            }}
+                                                            onMouseLeave={() => {
+                                                                if (!hoveredSegment?.pinned) setHoveredSegment(null)
+                                                            }}
+                                                            onClick={(e) => {
+                                                                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+                                                                setHoveredSegment(prev => {
+                                                                    const isSame = prev && prev.characterData.characterId === characterData.characterId && prev.raidName === raid.raidName
+                                                                    if (isSame) return null
+                                                                    return {
+                                                                        raidName: raid.raidName,
+                                                                        characterData,
+                                                                        anchorRect: rect,
+                                                                        total: raid.total,
+                                                                        parentName: raid.raidName,
+                                                                        pinned: true,
+                                                                    }
+                                                                })
+                                                            }}
+                                                            data-tooltip-seg
                                                         />
                                                     )
                                                 })}
                                             </div>
-
-                                            {hoveredSegment && hoveredSegment.raidName === raid.raidName && (
-                                                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10">
-                                                    <Card className="shadow-lg border-2">
-                                                        <CardContent className="p-3 min-w-56">
-                                                            <div className="flex items-center gap-2 mb-2">
-                                                                <div
-                                                                    className={`w-3 h-3 rounded-full`}
-                                                                    style={{
-                                                                        backgroundColor: getHexColorFromId(hoveredSegment.characterData.characterId),
-                                                                    }}
-                                                                //  ${getColorClasses(generateCharacterColor(hoveredSegment.characterData.characterId))}
-                                                                />
-                                                                <span className="font-semibold">
-                                                                    {hoveredSegment.characterData.reskin || hoveredSegment.characterData.class}
-                                                                </span>
-                                                            </div>
-                                                            <div className="text-sm space-y-1">
-                                                                {/* <div>
-                                                                                    <span className="text-muted-foreground">Character ID:</span>{" "}
-                                                                                    <span className="font-medium">{hoveredSegment.characterData.characterId}</span>
-                                                                                </div> */}
-                                                                <div>
-                                                                    <span className="text-muted-foreground">Class:</span>{" "}
-                                                                    <span className="font-medium">{hoveredSegment.characterData.class}</span>
-                                                                    {hoveredSegment.characterData.reskin && (
-                                                                        <span className="text-muted-foreground">
-                                                                            {" "}
-                                                                            ({hoveredSegment.characterData.reskin})
-                                                                        </span>
-                                                                    )}
-                                                                </div>
-                                                                <div>
-                                                                    <span className="text-muted-foreground">Combat Level:</span>{" "}
-                                                                    <span className="font-medium">{hoveredSegment.characterData.level}</span>
-                                                                </div>
-                                                                {hoveredSegment.characterData.nickname && (
-                                                                    <div>
-                                                                        <span className="text-muted-foreground">Nickname:</span>{" "}
-                                                                        <span className="font-medium">{hoveredSegment.characterData.nickname}</span>
-                                                                    </div>
-                                                                )}
-                                                                <div className="border-t pt-1 mt-2">
-                                                                    <div>
-                                                                        <span className="text-muted-foreground">Completions:</span>{" "}
-                                                                        <span className="font-medium">{hoveredSegment.characterData.count}</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="text-xs mt-1">
-                                                                    <span className="font-medium">
-                                                                        {hoveredSegment.characterData.percentage.toFixed(1)}%
-                                                                    </span>
-                                                                    <span className="text-muted-foreground"> of {raid.total} total {raid.raidName} completions</span>
-                                                                </div>
-                                                            </div>
-                                                        </CardContent>
-                                                    </Card>
-                                                </div>
-                                            )}
+                                            
                                         </div>
                                     </div>
 
@@ -449,7 +409,85 @@ export function ClassRaidChart({ playerData, raidType }: ClassRaidChartProps) {
             )}
             {/* </CardContent>
             </Card> */}
+            {hoveredSegment && (
+                <PortalTooltip anchorRect={hoveredSegment.anchorRect ?? null} interactive={!!hoveredSegment.pinned}>
+                    <div data-tooltip>
+                        <Card className="shadow-lg border-2" >
+                        <CardContent className="p-3 min-w-56">
+                            <div className="flex items-center gap-2 mb-2">
+                                <div
+                                    className={`w-3 h-3 rounded-full`}
+                                    style={{
+                                        backgroundColor: getHexColorFromId(hoveredSegment.characterData.characterId),
+                                    }}
+                                />
+                                <span className="font-semibold">
+                                    {hoveredSegment.characterData.reskin || hoveredSegment.characterData.class}
+                                </span>
+                            </div>
+                            <div className="text-sm space-y-1">
+                                <div>
+                                    <span className="text-muted-foreground">Class:</span>{" "}
+                                    <span className="font-medium">{hoveredSegment.characterData.class}</span>
+                                    {hoveredSegment.characterData.reskin && (
+                                        <span className="text-muted-foreground"> ({hoveredSegment.characterData.reskin})</span>
+                                    )}
+                                </div>
+                                <div>
+                                    <span className="text-muted-foreground">Combat Level:</span>{" "}
+                                    <span className="font-medium">{hoveredSegment.characterData.level}</span>
+                                </div>
+                                {hoveredSegment.characterData.nickname && (
+                                    <div>
+                                        <span className="text-muted-foreground">Nickname:</span>{" "}
+                                        <span className="font-medium">{hoveredSegment.characterData.nickname}</span>
+                                    </div>
+                                )}
+                                <div className="border-t pt-1 mt-2">
+                                    <div>
+                                        <span className="text-muted-foreground">Completions:</span>{" "}
+                                        <span className="font-medium">{hoveredSegment.characterData.count}</span>
+                                    </div>
+                                </div>
+                                <div className="text-xs mt-1">
+                                    <span className="font-medium">{hoveredSegment.characterData.percentage.toFixed(1)}%</span>
+                                    <span className="text-muted-foreground"> of {hoveredSegment.total} total {hoveredSegment.parentType === "corrupted" ? "Corrupted " : ""}{hoveredSegment.parentName} completions</span>
+                                </div>
+                            </div>
+                        </CardContent>
+                        </Card>
+                    </div>
+                </PortalTooltip>
+            )}
         </div>
+    )
+}
+
+function PortalTooltip({ anchorRect, children, interactive = false }: { anchorRect?: DOMRect | null; children: React.ReactNode; interactive?: boolean }) {
+    if (!anchorRect) return null
+
+    // tweak these to nudge the tooltip (px)
+    const OFFSET_X = 0 // positive moves right
+    const OFFSET_Y = 20 // negative moves up, positive moves down
+
+    const computedLeft = anchorRect.left + anchorRect.width / 2 + OFFSET_X
+    const computedTop = anchorRect.top + OFFSET_Y
+
+    const style: React.CSSProperties = {
+        position: "fixed",
+        left: computedLeft,
+        top: computedTop,
+        transform: "translate(-50%, 0)",
+        zIndex: 9999,
+        pointerEvents: interactive ? "auto" : "none",
+    }
+
+    return createPortal(
+        <div style={style}>
+            {children}
+        </div>,
+        // eslint-disable-next-line no-restricted-globals
+        typeof document !== "undefined" ? document.body : (null as any),
     )
 }
 
