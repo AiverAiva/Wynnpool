@@ -123,8 +123,9 @@ export interface PowderDataBlock {
 export interface ShinyDataBlock {
     id: DataBlockId.ShinyData;
     name: 'ShinyData';
-    statId: number;
-    val: number;
+    shinyId: number;     // tracker stat ID
+    rerollCount: number; // number of shiny rerolls
+    val: number;         // tracker count
 }
 
 export interface EndDataBlock {
@@ -252,9 +253,30 @@ export function decodeBlocks(bytes: number[]): Block[] {
             }
 
             case DataBlockId.ShinyData: {
-                const statId = next();
-                const val = decodeVarint(next);
-                blocks.push({ id, name: 'ShinyData', statId, val });
+                const shinyId = next(); // always exists
+
+                // Try to parse as new format
+                let rerollCount = 0;
+                let val: number;
+
+                const savedIndex = i;  // save current position
+                try {
+                    rerollCount = next();         // try consuming rerollCount
+                    val = decodeVarint(next);     // decode val
+                } catch {
+                    // rollback -> old format
+                    i = savedIndex;
+                    rerollCount = 0;
+                    val = decodeVarint(next);
+                }
+
+                blocks.push({
+                    id,
+                    name: "ShinyData",
+                    shinyId,
+                    rerollCount,
+                    val,
+                });
                 break;
             }
 

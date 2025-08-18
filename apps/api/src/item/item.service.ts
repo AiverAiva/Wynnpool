@@ -79,7 +79,7 @@ export class ItemService implements OnModuleInit {
             powderSlots?: number;
             powders?: any[];
             identifications?: Record<string, number>;
-            shinyStat?: { key: string; displayName: string; value: number };
+            shinyStat?: { key: string; displayName: string; rerollCount: number; value: number };
             rerollCount?: number;
         } = { itemName: '' };
 
@@ -104,11 +104,12 @@ export class ItemService implements OnModuleInit {
             }
 
             if (block.name === 'ShinyData') {
-                const shiny = this.shinyStatsMap.get(block.statId);
+                const shiny = this.shinyStatsMap.get(block.shinyId);
                 if (shiny && typeof block.val === 'number') {
                     summary.shinyStat = {
                         key: shiny.key,
                         displayName: shiny.displayName,
+                        rerollCount: block.rerollCount,
                         value: block.val,
                     };
                 }
