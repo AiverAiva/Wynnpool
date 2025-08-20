@@ -19,10 +19,12 @@ interface VerifiedItem {
   timestamp: number;
   originalString: string;
   identifications: Record<string, number>;
+  rerollCount: number;
   shinyStat?: {                   // ← new optional field
     key: string;
     displayName: string;
     value: number;
+    rerollCount: number;
   };
   ironman?: boolean;
 }
