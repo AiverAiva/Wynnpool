@@ -18,6 +18,7 @@ interface ShinyStatType {
     key: string;
     displayName: string;
     value: number;
+    rerollCount: number;
 }
 
 interface Input {
@@ -28,6 +29,7 @@ interface Input {
     powderSlots?: number;
     powders?: Powder[];
     shinyStat?: ShinyStatType;
+    rerollCount?: number;
 }
 
 interface Weight {
@@ -73,17 +75,11 @@ const RolledItemDisplay: React.FC<ItemDisplayPropsWithWrapper> = ({ data, withCa
     const { original, input, weights } = data;
     const processedIdentifications = processIdentification(data)
 
-    // Determine if the item has a "shiny" stat
-    const shinyStat = input.shinyStat ? {
-        displayName: input.shinyStat.displayName,
-        value: input.shinyStat.value,
-    } : undefined;
-
     const content = (
         <>
             <ItemHeader
                 item={original}
-                shinyStat={shinyStat}
+                shinyStat={input.shinyStat}
                 overall={calculateOverallPercentage(processedIdentifications)}
             />
             <span className="text-red-500 text-orange-500 text-amber-400 text-yellow-300 text-green-500 text-cyan-500" />
@@ -91,12 +87,18 @@ const RolledItemDisplay: React.FC<ItemDisplayPropsWithWrapper> = ({ data, withCa
             <div className="flex justify-center">
                 <div className="flex flex-col items-start text-center space-y-4">
                     <RolledIdentifications stats={processedIdentifications} />
-                    {input.powderSlots && (
-                        <PowderSlots
-                            powderSlots={input.powderSlots}
-                            powders={input.powders || []}
-                        />
-                    )}
+                    <div className="flex flex-col items-start justify-start">
+                        {input.powderSlots && (
+                            <PowderSlots
+                                powderSlots={input.powderSlots}
+                                powders={input.powders || []}
+                            />
+                        )}
+                        <div className={`flex text-${original.rarity} text-sm font-thin space-x-2`}>
+                            <p>{original.rarity.charAt(0).toUpperCase() + original.rarity.slice(1)} Item</p>
+                            {input.rerollCount && <span>[{input.rerollCount}]</span>}
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
@@ -118,10 +120,7 @@ const RolledItemDisplay: React.FC<ItemDisplayPropsWithWrapper> = ({ data, withCa
 
 interface ItemHeaderProps {
     item: CombatItem
-    shinyStat?: {
-        displayName: string;
-        value: number;
-    };
+    shinyStat?: ShinyStatType;
     overall?: number;
     icon?: ItemIconObject;
 }
@@ -157,7 +156,7 @@ export const ItemHeader: React.FC<ItemHeaderProps> = ({ item, shinyStat, overall
             {shinyStat && (
                 <div className="flex justify-center items-center">
                     <div className="text-yellow-300 text-sm mt-1">
-                        ✦ {shinyStat.displayName}: {shinyStat.value.toLocaleString()}
+                        ✦ {shinyStat.displayName}: {shinyStat.value.toLocaleString()} {shinyStat.rerollCount && <span className="text-gray-400/80">[{shinyStat.rerollCount}]</span>}
                     </div>
                 </div>
             )}
