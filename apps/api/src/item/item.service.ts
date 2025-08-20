@@ -79,7 +79,7 @@ export class ItemService implements OnModuleInit {
             powderSlots?: number;
             powders?: any[];
             identifications?: Record<string, number>;
-            shinyStat?: { key: string; displayName: string; rerollCount: number; value: number };
+            shinyStat?: { key: string; displayName: string; rerollCount?: number; value: number };
             rerollCount?: number;
         } = { itemName: '' };
 
@@ -109,9 +109,11 @@ export class ItemService implements OnModuleInit {
                     summary.shinyStat = {
                         key: shiny.key,
                         displayName: shiny.displayName,
-                        rerollCount: block.rerollCount,
                         value: block.val,
                     };
+                    if (block.rerollCount) {
+                        summary.shinyStat.rerollCount = block.rerollCount;
+                    }
                 }
             }
 

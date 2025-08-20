@@ -124,7 +124,7 @@ export interface ShinyDataBlock {
     id: DataBlockId.ShinyData;
     name: 'ShinyData';
     shinyId: number;     // tracker stat ID
-    rerollCount: number; // number of shiny rerolls
+    rerollCount?: number; // number of shiny rerolls
     val: number;         // tracker count
 }
 
@@ -253,30 +253,83 @@ export function decodeBlocks(bytes: number[]): Block[] {
             }
 
             case DataBlockId.ShinyData: {
-                const shinyId = next(); // always exists
+                const shinyId = next();               // always present
+                const afterStat = i;                 // save cursor to try both parses
 
-                // Try to parse as new format
-                let rerollCount = 0;
-                let val: number;
+                // Try parsing NEW format: [statId, rerollCount, varint(val)]
+                const tryNew = () => {
+                    const start = i;
+                    try {
+                        const rr = next();               // rerollCount candidate
+                        const v = decodeVarint(next);    // varint(val)
+                        const end = i;
+                        i = start;                       // rewind after probe
+                        return { ok: true, rr, v, end };
+                    } catch {
+                        i = start;                       // rewind on failure
+                        return { ok: false } as const;
+                    }
+                };
 
-                const savedIndex = i;  // save current position
-                try {
-                    rerollCount = next();         // try consuming rerollCount
-                    val = decodeVarint(next);     // decode val
-                } catch {
-                    // rollback -> old format
-                    i = savedIndex;
-                    rerollCount = 0;
-                    val = decodeVarint(next);
+                // Try parsing OLD format: [statId, varint(val)]
+                const tryOld = () => {
+                    const start = i;
+                    try {
+                        const v = decodeVarint(next);    // varint(val)
+                        const end = i;
+                        i = start;                       // rewind after probe
+                        return { ok: true, v, end };
+                    } catch {
+                        i = start;                       // rewind on failure
+                        return { ok: false } as const;
+                    }
+                };
+
+                const newRes = tryNew();
+                const oldRes = tryOld();
+
+                // Decide:
+                // - Prefer the parse that yields a non-negative val (counts can't be negative).
+                // - If both OK & non-negative, prefer NEW (since rerollCount may legitimately exist).
+                // - If only one works, use it.
+                if (newRes.ok && newRes.v >= 0 && (!oldRes.ok || oldRes.v < 0)) {
+                    i = newRes.end;
+                    blocks.push({
+                        id,
+                        name: 'ShinyData',
+                        shinyId,
+                        val: newRes.v,
+                        rerollCount: newRes.rr,
+                    });
+                } else if (oldRes.ok && oldRes.v >= 0) {
+                    i = oldRes.end;
+                    blocks.push({
+                        id,
+                        name: 'ShinyData',
+                        shinyId,
+                        val: oldRes.v,
+                    });
+                } else if (newRes.ok) {
+                    // Fallback (shouldn't happen for valid inputs, but avoids hard crash)
+                    i = newRes.end;
+                    blocks.push({
+                        id,
+                        name: 'ShinyData',
+                        shinyId,
+                        val: newRes.v,
+                        rerollCount: newRes.rr,
+                    });
+                } else if (oldRes.ok) {
+                    i = oldRes.end;
+                    blocks.push({
+                        id,
+                        name: 'ShinyData',
+                        shinyId,
+                        val: oldRes.v,
+                    });
+                } else {
+                    throw new Error('Could not parse ShinyData');
                 }
-
-                blocks.push({
-                    id,
-                    name: "ShinyData",
-                    shinyId,
-                    rerollCount,
-                    val,
-                });
                 break;
             }
 
