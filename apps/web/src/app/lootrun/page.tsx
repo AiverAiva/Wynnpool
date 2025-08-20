@@ -229,6 +229,20 @@ export default function LootRunPool() {
 
     const filteredAndSortedItems = getFilteredAndSortedItems()
 
+    const getItemIcon = (itemName: string) => {
+        if (!lootData || !lootData.Icon) return '/icons/items/barrier.webp'
+        if (lootData.Icon[itemName]) {
+            if (lootData.Icon[itemName].startsWith('http')) {
+                if (lootData.Icon[itemName].includes('helmet')) return '/icons/items/helmet.png'
+                if (lootData.Icon[itemName].includes('chestplate')) return '/icons/items/chestplate.png'
+                if (lootData.Icon[itemName].includes('leggings')) return '/icons/items/leggings.png'
+                if (lootData.Icon[itemName].includes('boots')) return '/icons/items/boots.png'
+                return lootData.Icon[itemName]
+            }
+            return `/icons/items/${lootData.Icon[itemName]}`
+        }
+        return '/icons/items/barrier.webp'
+    }
     // Toggle sort direction
     const toggleSortDirection = () => {
         setSortDirection(sortDirection === "asc" ? "desc" : "asc")
@@ -247,7 +261,7 @@ export default function LootRunPool() {
                 <CardContent className="flex justify-center items-center">
                     <Countdown targetTimestamp={countdown} endText="Data outdated, waiting for update..." />
                 </CardContent>
-                <Link href="/lootrun/history" legacyBehavior passHref>
+                <Link href="/lootrun/history" legacyBehavior passHref prefetch={false}>
                     <Button className="absolute top-4 right-4 rounded-full">
                         History
                     </Button>
@@ -274,26 +288,22 @@ export default function LootRunPool() {
                                                 {Array.isArray(items) ? items.map((item) => (
                                                     <div className="flex items-center space-x-2" key={item}>
                                                         <Image
-                                                            unoptimized
-                                                            src={lootData.Icon[item] && lootData.Icon[item].startsWith('http')
-                                                                ? lootData.Icon[item]
-                                                                : (lootData.Icon[item] ? `/icons/items/${lootData.Icon[item]}` : '/icons/items/barrier.webp')}
+                                                            src={getItemIcon(item)}
                                                             alt={item}
                                                             width={32}
                                                             height={32}
+                                                            className='pixelated'
                                                         />
                                                         <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{item}</Badge>
                                                     </div>
                                                 )) : (
                                                     <div className="flex items-center space-x-2">
                                                         <Image
-                                                            unoptimized
-                                                            src={lootData.Icon[items.Item].startsWith('http')
-                                                                ? lootData.Icon[items.Item]
-                                                                : `/icons/items/${lootData.Icon[items.Item]}`}
+                                                            src={getItemIcon(items.Item)}
                                                             alt={items.Item}
                                                             width={32}
                                                             height={32}
+                                                            className='pixelated'
                                                         />
                                                         <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{items.Item}<span className='font-mono text-xs font-thin'>&ensp;{items.Tracker}</span></Badge>
                                                     </div>
@@ -385,6 +395,7 @@ export default function LootRunPool() {
                                                         {item.icon ? (
                                                             <div className="relative w-8 h-8 flex-shrink-0">
                                                                 <Image
+                                                                    unoptimized
                                                                     src={item.icon.startsWith("http") ? item.icon : `/icons/items/${item.icon}`}
                                                                     alt={name}
                                                                     width={32}
@@ -392,7 +403,7 @@ export default function LootRunPool() {
                                                                     className="object-contain"
                                                                     onError={(e) => {
                                                                         // Fallback for missing icons
-                                                                        ; (e.target as HTMLImageElement).src = "/placeholder.svg?height=32&width=32"
+                                                                        ; (e.target as HTMLImageElement).src = '/icons/items/barrier.webp'
                                                                     }}
                                                                 />
                                                             </div>
@@ -510,6 +521,7 @@ export default function LootRunPool() {
                                                             {item.icon ? (
                                                                 <div className="relative w-6 h-6 flex-shrink-0">
                                                                     <Image
+                                                                        unoptimized
                                                                         src={item.icon.startsWith("http") ? item.icon : `/icons/items/${item.icon}`}
                                                                         alt={name}
                                                                         width={24}
@@ -517,7 +529,7 @@ export default function LootRunPool() {
                                                                         className="object-contain"
                                                                         onError={(e) => {
                                                                             // Fallback for missing icons
-                                                                            ; (e.target as HTMLImageElement).src = "/placeholder.svg?height=24&width=24"
+                                                                            ; (e.target as HTMLImageElement).src = '/icons/items/barrier.webp'
                                                                         }}
                                                                     />
                                                                 </div>
