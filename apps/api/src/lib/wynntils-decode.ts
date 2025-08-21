@@ -253,82 +253,17 @@ export function decodeBlocks(bytes: number[]): Block[] {
             }
 
             case DataBlockId.ShinyData: {
-                const shinyId = next();               // always present
-                const afterStat = i;                 // save cursor to try both parses
+                const shinyId = next();
 
-                // Try parsing NEW format: [statId, rerollCount, varint(val)]
-                const tryNew = () => {
-                    const start = i;
-                    try {
-                        const rr = next();               // rerollCount candidate
-                        const v = decodeVarint(next);    // varint(val)
-                        const end = i;
-                        i = start;                       // rewind after probe
-                        return { ok: true, rr, v, end };
-                    } catch {
-                        i = start;                       // rewind on failure
-                        return { ok: false } as const;
-                    }
-                };
-
-                // Try parsing OLD format: [statId, varint(val)]
-                const tryOld = () => {
-                    const start = i;
-                    try {
-                        const v = decodeVarint(next);    // varint(val)
-                        const end = i;
-                        i = start;                       // rewind after probe
-                        return { ok: true, v, end };
-                    } catch {
-                        i = start;                       // rewind on failure
-                        return { ok: false } as const;
-                    }
-                };
-
-                const newRes = tryNew();
-                const oldRes = tryOld();
-
-                // Decide:
-                // - Prefer the parse that yields a non-negative val (counts can't be negative).
-                // - If both OK & non-negative, prefer NEW (since rerollCount may legitimately exist).
-                // - If only one works, use it.
-                if (newRes.ok && newRes.v >= 0 && (!oldRes.ok || oldRes.v < 0)) {
-                    i = newRes.end;
-                    blocks.push({
-                        id,
-                        name: 'ShinyData',
-                        shinyId,
-                        val: newRes.v,
-                        rerollCount: newRes.rr,
-                    });
-                } else if (oldRes.ok && oldRes.v >= 0) {
-                    i = oldRes.end;
-                    blocks.push({
-                        id,
-                        name: 'ShinyData',
-                        shinyId,
-                        val: oldRes.v,
-                    });
-                } else if (newRes.ok) {
-                    // Fallback (shouldn't happen for valid inputs, but avoids hard crash)
-                    i = newRes.end;
-                    blocks.push({
-                        id,
-                        name: 'ShinyData',
-                        shinyId,
-                        val: newRes.v,
-                        rerollCount: newRes.rr,
-                    });
-                } else if (oldRes.ok) {
-                    i = oldRes.end;
-                    blocks.push({
-                        id,
-                        name: 'ShinyData',
-                        shinyId,
-                        val: oldRes.v,
-                    });
+                if (version === 0) {
+                    // Legacy: [statId, varint(val)]
+                    const val = decodeVarint(next);
+                    blocks.push({ id, name: 'ShinyData', shinyId, val });
                 } else {
-                    throw new Error('Could not parse ShinyData');
+                    // v1+: [statId, rerollCount, varint(val)]
+                    const rerollCount = next();
+                    const val = decodeVarint(next);
+                    blocks.push({ id, name: 'ShinyData', shinyId, val, rerollCount });
                 }
                 break;
             }
@@ -347,3 +282,8 @@ export function parseIdString(idstr: string): Block[] {
     const bytes = decodeString(idstr);
     return decodeBlocks(bytes);
 }
+
+const idstr = '󰀁󰄀󰉗󶅲󷀀󰌉󰁅󵨑󵼢󴤘󶴙󷔗󷀄󵩑󸀦󴼄󰌀󰘁󰌀􏿮'
+const bytes = decodeString(idstr);
+console.log(bytes)
+console.log(decodeBlocks(bytes))
