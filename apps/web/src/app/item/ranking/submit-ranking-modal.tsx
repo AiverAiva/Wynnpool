@@ -57,7 +57,8 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
       setError("Item string is required");
       return;
     }
-    if (!ownerName.trim()) {
+    const trimmedOwnerName = ownerName.trim();
+    if (!trimmedOwnerName) {
       setError("Owner name is required");
       return;
     }
@@ -88,7 +89,7 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
           ...summary,
           originalString: trimmedItemString,
           timestamp: Date.now(),
-          owner: ownerName || "Unknown",
+          owner: trimmedOwnerName || "Unknown",
         }),
         credentials: "include",
       });
