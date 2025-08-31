@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
 import { PlayerController } from './player.controller';
-import { Guild, GuildSchema } from './guild.schema';
+import { Guild, GuildSchema } from '../shared/schemas/guild.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PlayerService } from './player.service';
 

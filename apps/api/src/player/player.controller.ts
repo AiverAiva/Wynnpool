@@ -3,7 +3,7 @@ import { HttpService } from '@nestjs/axios';
 import { InjectModel } from '@nestjs/mongoose';
 import { firstValueFrom } from 'rxjs';
 import { Model } from 'mongoose';
-import { Guild } from './guild.schema';
+import { Guild } from '../shared/schemas/guild.schema';
 
 @Controller('player')
 export class PlayerController {
