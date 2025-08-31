@@ -1,10 +1,27 @@
 import { Controller, Get, Param, HttpException, HttpStatus } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
+import { GuildService } from './guild.service';
 
 @Controller('guild')
 export class GuildController {
-    constructor(private readonly httpService: HttpService) {}
+    constructor(
+        private readonly httpService: HttpService,
+        private readonly guildService: GuildService,
+    ) {}
+
+    @Get('current-season')
+    async getMaxSeason() {
+        try {
+            const max = await this.guildService.getCurrentSeason();
+            if (max === null) throw new HttpException('No seasons found', HttpStatus.NOT_FOUND);
+            return { currentSeason: max };
+        } catch (error) {
+            console.error('Error fetching currentSeason season:', error);
+            if (error instanceof HttpException) throw error;
+            throw new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @Get(':guildName')
     async getGuild(@Param('guildName') guildName: string) {
@@ -25,4 +42,6 @@ export class GuildController {
             throw new HttpException('Unable to fetch data', HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    
 }
