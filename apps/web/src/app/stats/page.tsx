@@ -9,6 +9,8 @@ import api from '@/lib/api'
 import { Button } from '@/components/ui/button'
 import { ExternalLink } from 'lucide-react'
 import Link from 'next/link'
+import { SeasonRatingCard } from '@/components/custom/season-rating-card'
+import { SeasonRatingLeaderboardModal } from '@/components/custom/season-rating-leaderboard-modal'
 
 interface Guild {
   rank: number;
@@ -51,6 +53,7 @@ export default function StatsPage() {
   const [filteredGuilds, setFilteredGuilds] = useState<Guild[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [leaderboardModalOpen, setLeaderboardModalOpen] = useState(false)
   const guildsPerPage = 20;
 
   useEffect(() => {
@@ -84,6 +87,12 @@ export default function StatsPage() {
     <div className="container mx-auto p-4 max-w-screen-lg">
       <div className="mt-[80px]" />
       <span className='text-3xl font-mono'>this page is incomplete af :3 <br />if u want to see any stats join discord and suggest it :D</span>
+
+      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 auto-rows-[120px] md:auto-rows-[140px]">
+
+        <SeasonRatingCard onClick={() => setLeaderboardModalOpen(true)} />
+      </div>
+      <SeasonRatingLeaderboardModal open={leaderboardModalOpen} onOpenChange={setLeaderboardModalOpen} />
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Guild Leaderboard</CardTitle>
