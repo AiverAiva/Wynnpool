@@ -282,8 +282,3 @@ export function parseIdString(idstr: string): Block[] {
     const bytes = decodeString(idstr);
     return decodeBlocks(bytes);
 }
-
-const idstr = '󰀁󰄀󰉗󶅲󷀀󰌉󰁅󵨑󵼢󴤘󶴙󷔗󷀄󵩑󸀦󴼄󰌀󰘁󰌀􏿮'
-const bytes = decodeString(idstr);
-console.log(bytes)
-console.log(decodeBlocks(bytes))
