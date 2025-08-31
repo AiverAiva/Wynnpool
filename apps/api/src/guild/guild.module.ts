@@ -20,5 +20,6 @@ import { GuildSchema } from '@shared/schemas/guild.schema';
     ],
     controllers: [GuildController],
     providers: [GuildService],
+    exports: [GuildService],
 })
 export class GuildModule { }
