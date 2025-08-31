@@ -3,9 +3,17 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { LeaderboardController } from './leaderboard.controller';
 import { LeaderboardService } from './leaderboard.service';
 import { GuildOnlineCountSchema } from '@shared/schemas/online-count.schema';
+import { GuildModule } from '../guild/guild.module';
+import { GuildSchema } from '@shared/schemas/guild.schema';
 
 @Module({
-    imports: [MongooseModule.forFeature([{ name: 'guild_online_count', schema: GuildOnlineCountSchema }])], // ✅ No schema needed, using aggregation
+    imports: [
+        MongooseModule.forFeature([
+            { name: 'guild_online_count', schema: GuildOnlineCountSchema },
+            { name: 'guild_data', schema: GuildSchema },
+        ]),
+        GuildModule,
+    ], // register guild_data model for leaderboard queries
     controllers: [LeaderboardController],
     providers: [LeaderboardService],
 })
