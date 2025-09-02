@@ -138,9 +138,10 @@ export default function ItemSearch({
         fetch('/api/item/metadata')
             .then((response) => response.json())
             .then((data) => {
+                // console.log(data)
                 const identificationsLabeled: any = {};
-                setMajorIds(data.majorIds || []);
-                data.identifications.forEach((identification: string) => {
+                setMajorIds(data.filters.majorIds || []);
+                data.filters.identifications.forEach((identification: string) => {
                     const identificationInfo = getIdentificationInfo(identification);
                     let name = identificationInfo?.detailedName || identificationInfo?.displayName || identification;
                     identificationsLabeled[identification] = name;
@@ -349,6 +350,7 @@ export default function ItemSearch({
                 <div className='lg:w-3/5 space-y-6'>
                     <div className='grid gap-2'>
                         <Label htmlFor="query">Major id</Label>
+                        <Label className='text-xs text-muted-foreground'>currently not working due to breaking change of api, will be fixed</Label>
                         <div className='flex items-center gap-2'>
                             <ResponsiveComboBox
                                 availableOptions={majorIds.reduce((acc: any, id: string) => {

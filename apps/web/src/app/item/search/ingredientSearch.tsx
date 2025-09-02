@@ -130,7 +130,7 @@ export default function IngredientSearch({
         fetch('/api/item/metadata')
             .then((response) => response.json())
             .then((data) => {
-                setIdentifications(data.identifications)
+                setIdentifications(data.filters.identifications)
             })
     }, [])
 
