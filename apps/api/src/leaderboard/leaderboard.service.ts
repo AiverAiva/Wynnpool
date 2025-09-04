@@ -13,24 +13,63 @@ export class LeaderboardService {
     ) { }
 
     async getGuildAverageOnlineLeaderboard() {
-        const leaderboard = await this.onlineCountModel.aggregate([
+        // Single aggregation pipeline: group -> sort -> limit -> lookup guild_data -> project
+        const pipeline: any[] = [
             {
                 $group: {
-                    _id: '$guild_uuid', // ✅ Group by guild UUID
-                    guild_name: { $first: '$guild_name' }, // ✅ Keep the first guild name
-                    avg_online: { $avg: '$count' } // ✅ Calculate the average online count
+                    _id: '$guild_uuid',
+                    guild_name: { $first: '$guild_name' },
+                    avg_online: { $avg: '$count' }
                 }
             },
-            { $sort: { avg_online: -1 } }, // ✅ Sort in descending order (highest avg first)
-            { $limit: 100 } // ✅ Optional: Limit to top 100 for efficiency
-        ]).exec();
+            { $sort: { avg_online: -1 } },
+            { $limit: 50 },
+            {
+                $lookup: {
+                    from: 'guild_data',
+                    localField: '_id',
+                    foreignField: 'uuid',
+                    as: 'guild'
+                }
+            },
+            { $unwind: { path: '$guild', preserveNullAndEmptyArrays: true } },
+            {
+                $project: {
+                    uuid: '$_id',
+                    guild_name: 1,
+                    averageOnline: '$avg_online',
+                    'guild.uuid': 1,
+                    'guild.name': 1,
+                    'guild.prefix': 1,
+                    // 'guild.level': 1,
+                    // 'guild.xp': 1,
+                    'guild.created': 1,
+                    'guild.banner': 1,
+                }
+            }
+        ];
 
-        return leaderboard.map((entry, index) => ({
-            rank: index + 1, // ✅ Add rank number
-            guild_uuid: entry._id,
-            guild_name: entry.guild_name,
-            avg_online: entry.avg_online
-        }));
+        const aggResults = await this.onlineCountModel.aggregate(pipeline as any).exec();
+
+        if (!aggResults || aggResults.length === 0) return {};
+
+        const result: Record<string, any> = {};
+        aggResults.forEach((entry: any, idx: number) => {
+            const rank = idx + 1;
+            const guild = entry.guild || {};
+            result[String(rank)] = {
+                uuid: entry.uuid || entry._id,
+                name: guild.name || entry.guild_name || null,
+                prefix: guild.prefix || null,
+                // level: guild.level || null,
+                // xp: guild.xp || null,
+                averageOnline: Math.round((entry.averageOnline ?? entry.avg_online) * 100) / 100,
+                created: guild.created || null,
+                banner: guild.banner || null,
+            };
+        });
+
+        return result;
     }
 
     /**
