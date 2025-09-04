@@ -1,3 +1,36 @@
+interface GuildBase {
+    uuid: string
+    name: string
+    prefix: string
+    level?: number
+    xp?: number
+    members?: number
+    territories?: number
+    wars?: number
+    created?: string
+    metaScore?: number
+    score?: number
+    metadata?: {
+        completions?: number
+        gambits?: number
+    }
+    banner?: {
+        base: string
+        tier: number
+        layers?: Array<{
+            colour: string
+            pattern: string
+        }>
+        structure?: string
+    }
+    rank?: string
+    restricted?: boolean
+}
+
+interface ModifiedGuild extends GuildBase {
+    averageOnline?: number; // Average number of online members
+}
+
 type GuildEventBase = {
     _id: string;
     timestamp: number; // Unix timestamp for the event
@@ -23,4 +56,5 @@ type GuildEventRankChange = GuildEventBase & {
     new_rank: string; // New rank after the change
 }
 
+export type Guild = ModifiedGuild;
 export type GuildEvent = GuildEventJoin | GuildEventLeave | GuildEventRankChange;
