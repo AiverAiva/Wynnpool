@@ -35,7 +35,7 @@ export function SeasonRatingCard({ onClick }: SeasonRatingCardProps) {
     <Card
       onClick={onClick}
       className="
-        col-span-2 row-span-2 md:col-span-3 md:row-span-2
+        col-span-2 row-span-2 
         border-primary/20 hover:border-primary/40 hover:shadow-primary/10
         p-4 md:p-6 
         bg-gradient-to-br from-primary/10 via-card/50 to-secondary/10
