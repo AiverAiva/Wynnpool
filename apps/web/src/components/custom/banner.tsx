@@ -9,9 +9,9 @@ interface Layer {
 
 interface BannerProps {
   base: string; // Base color
-  tier: number; // Tier number
-  structure: string; // Tier structure (e.g., "tier6")
-  layers: Layer[]; // Layers array
+  tier?: number; // Tier number
+  structure?: string; // Tier structure (e.g., "tier6")
+  layers?: Layer[]; // Layers array
   className?: string; // Optional className for custom styling
   size?: number;
 }
