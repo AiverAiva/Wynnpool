@@ -14,7 +14,7 @@ import Link from 'next/link'
 import Banner from '@/components/custom/banner'
 import { ChevronDown, ChevronUp, ExternalLink, Info, Shield, Trophy, Users, Map } from 'lucide-react'
 import api from '@/lib/api'
-import { getMaxGuildMembers } from '@/lib/guildUtils'
+import { calculateGuildXPRequired, getMaxGuildMembers } from '@/lib/guildUtils'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
@@ -38,17 +38,6 @@ function formatTimeAgo(timestamp: number | string | undefined): string {
     if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
     if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
     return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
-}
-
-function calculateGuildXPRequired(level: number, base = 20000): number {
-    let totalXP = 0;
-    if (level > 130) level = 130; // Cap level at 130
-
-    for (let n = 1; n <= level; n++) {
-        totalXP += Math.pow(1.15, n - 1);
-    }
-
-    return Math.round(totalXP * base); // Round to nearest whole number
 }
 
 const formatNumber = (num: number): string => {

@@ -24,4 +24,15 @@ function getMaxGuildMembers(level: number): number {
     return 0;
 }
 
-export { getMaxGuildMembers }
+function calculateGuildXPRequired(level: number, base = 20000): number {
+    let totalXP = 0;
+    if (level > 130) level = 130; // Cap level at 130
+
+    for (let n = 1; n <= level; n++) {
+        totalXP += Math.pow(1.15, n - 1);
+    }
+
+    return Math.round(totalXP * base); // Round to nearest whole number
+}
+
+export { getMaxGuildMembers, calculateGuildXPRequired }
