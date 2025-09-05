@@ -3,6 +3,7 @@ interface GuildBase {
     name: string
     prefix: string
     level?: number
+    xpPercent?: number
     xp?: number
     members?: number
     territories?: number
@@ -29,6 +30,7 @@ interface GuildBase {
 
 interface ModifiedGuild extends GuildBase {
     averageOnline?: number; // Average number of online members
+    // leaveCount?: number; // Number of members who left in a given period
 }
 
 type GuildEventBase = {
