@@ -255,7 +255,7 @@ export default function GameStatsMenu() {
                 <CardContent className="p-8 text-center text-muted-foreground">No results found for "{query}"</CardContent>
               </Card>
             ) : (
-              <Leaderboard data={data} />
+              <Leaderboard data={data} title={formatStatName(selectedStat)} />
             )
           )
         ) : (
