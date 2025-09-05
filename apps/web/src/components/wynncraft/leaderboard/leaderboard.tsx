@@ -14,8 +14,9 @@ interface PlayerData {
   score: number
   previousRanking: number
   metadata: {
-    completions: number
-    gambits: number
+    completions?: number
+    gambits?: number
+    playtime?: number
   }
   rank: string
   rankBadge: string
@@ -58,34 +59,36 @@ const getPlayerAvatar = (uuid: string) => {
 }
 
 const formatNumber = (num: number) => {
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + "M"
-  } else if (num >= 1000) {
-    return (num / 1000).toFixed(1) + "K"
-  }
+  if (!num) return null
+  // if (num >= 1000000) {
+  //   return (num / 1000000).toFixed(1) + "M"
+  // } else if (num >= 1000) {
+  //   return (num / 1000).toFixed(1) + "K"
+  // }
   return num.toLocaleString()
 }
 
 interface Props {
-  data?: any
+  data: Record<string, PlayerData>
+  title?: string
 }
 
-export default function Component({ data }: Props) {
+export default function Component({ data, title }: Props) {
   const [currentPage, setCurrentPage] = useState(1)
   const [playersPerPage, setPlayersPerPage] = useState(10)
-
+  
   // If `data` prop is provided, prefer it; otherwise use local mock `gameData`.
-  const playersSource = data
+  if (!data) return null
+  if (!title) title = "Player Leaderbord"
 
-  const players = playersSource.map((p: any, index: number) => {
-    // Normalize data shape if it came from the API (which may be an array of objects)
-    if (p.position) return p
-    // If API returned array entries without explicit position, compute it
-    return { position: index + 1, ...p }
-  })
+  const players = Object.entries(data).map(([position, data]) => ({
+    position: Number.parseInt(position),
+    ...data,
+  }))
 
-  const topThree = players.slice(0, 3)
-  const remainingPlayers = players.slice(3)
+  // const topThree = players.slice(0, 3)
+  const remainingPlayers = players
+  // .slice(3)
 
   // Pagination logic
   const totalPages = Math.ceil(remainingPlayers.length / playersPerPage)
@@ -98,44 +101,41 @@ export default function Component({ data }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-background text-foreground max-w-screen-lg">
+      <div className="mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        {/* <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
               <Crown className="w-6 h-6 text-primary-foreground" />
             </div>
             <h1 className="text-5xl font-black text-foreground">ELITE LEADERBOARD</h1>
           </div>
-          <p className="text-muted-foreground text-lg">Top performers in the arena</p>
+          <p className="text-muted-foreground text-lg">Top performers in the game</p>
           <div className="w-24 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-        </div>
+        </div> */}
 
         {/* Top 3 Podium */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        {/* <div className="grid md:grid-cols-3 gap-8 mb-16">
           {topThree.map((player) => (
             <Card
               key={player.uuid}
-              className={`relative overflow-hidden border-0 shadow-lg transition-all duration-300 hover:scale-[1.02] group ${
-                player.position === 1
-                  ? "bg-yellow-50/50 dark:bg-yellow-950/20"
-                  : player.position === 2
-                    ? "bg-gray-50/50 dark:bg-gray-950/20"
-                    : "bg-amber-50/50 dark:bg-amber-950/20"
-              }`}
+              className={`relative overflow-hidden border-0 shadow-lg transition-all duration-300 hover:scale-[1.02] group ${player.position === 1
+                ? "bg-yellow-50/50 dark:bg-yellow-950/20"
+                : player.position === 2
+                  ? "bg-gray-50/50 dark:bg-gray-950/20"
+                  : "bg-amber-50/50 dark:bg-amber-950/20"
+                }`}
             >
               <CardContent className="p-8 text-center relative z-10">
-                {/* Rank badge */}
                 <div className="absolute top-4 right-4 z-10">{getRankIcon(player.position)}</div>
 
-                {/* Avatar */}
                 <div className="relative mb-6">
                   <div
                     className="w-24 h-24 mx-auto rounded-2xl overflow-hidden border-4 border-border shadow-md transition-all duration-300 hover:shadow-xl"
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = player.legacyRankColour.main
-                      e.currentTarget.style.boxShadow = `0 0 20px ${player.legacyRankColour.main}40`
+                      e.currentTarget.style.borderColor = `${player.legacyRankColour.main && player.legacyRankColour.main}`
+                      e.currentTarget.style.boxShadow = `0 0 20px ${`${player.legacyRankColour.main && player.legacyRankColour.main}40`}`
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.borderColor = "var(--border)"
@@ -149,20 +149,18 @@ export default function Component({ data }: Props) {
                       height={96}
                       className="w-full h-full object-cover pixelated"
                     />
+
                   </div>
                 </div>
 
-                {/* Player name */}
                 <h3 className="text-2xl font-bold text-foreground mb-2">{player.name}</h3>
                 <p className="text-muted-foreground text-sm mb-4 capitalize">{player.supportRank}</p>
 
-                {/* Score */}
                 <div className="mb-6">
                   <div className="text-3xl font-black text-primary mb-1">{formatNumber(player.metaScore)}</div>
                   <div className="text-muted-foreground text-sm">SCORE</div>
                 </div>
 
-                {/* Stats */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-muted/50 rounded-lg p-3">
                     <div className="text-muted-foreground text-xs font-semibold mb-1">COMPLETIONS</div>
@@ -176,14 +174,14 @@ export default function Component({ data }: Props) {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </div> */}
 
         {/* Remaining Players */}
         <Card className="bg-card border border-border shadow-lg">
           <CardContent className="p-0">
             <div className="bg-muted/30 p-6 border-b border-border">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-foreground">Elite Rankings</h2>
+                <h2 className="text-2xl font-bold text-foreground">{title}</h2>
                 <div className="flex items-center gap-4">
                   <select
                     value={playersPerPage}
@@ -211,7 +209,7 @@ export default function Component({ data }: Props) {
                   <div className="flex items-center gap-6">
                     {/* Rank */}
                     <div className="flex items-center min-w-0">
-                      <div className="flex items-center">
+                      <div className="flex items-center flex-col justify-center">
                         {getRankIcon(player.position)}
                         {getRankingChange(player.position, player.previousRanking)}
                       </div>
@@ -243,35 +241,49 @@ export default function Component({ data }: Props) {
                     {/* Player Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-1">
-                        <h4 className="text-xl font-bold text-foreground truncate">{player.name}</h4>
-                        <Badge
+                        {/* <Badge
                           className="text-xs px-2 py-1 capitalize border-0"
                           style={{
                             background: `linear-gradient(135deg, ${player.legacyRankColour.main}20, ${player.legacyRankColour.sub}20)`,
                             color: player.legacyRankColour.main,
-                          }}
-                        >
-                          {player.supportRank}
-                        </Badge>
+                            }}
+                            >
+                            {player.supportRank}
+                            </Badge> */}
+                        {player.rankBadge &&
+                          <img
+                            src={`https://cdn.wynncraft.com/${player.rankBadge}`}
+                            alt={`${player.rank} badge`}
+                            className="h-4 object-contain"
+                          />}
+                        <h4 className="text-xl font-bold text-foreground truncate">{player.name}</h4>
                       </div>
                     </div>
 
                     {/* Stats */}
                     <div className="hidden md:flex items-center gap-8">
-                      <div className="text-center">
+                      {player.metadata.completions && (<div className="text-center">
                         <div className="text-muted-foreground text-xs mb-1">COMPLETIONS</div>
                         <div className="text-foreground font-semibold">{formatNumber(player.metadata.completions)}</div>
-                      </div>
-                      <div className="text-center">
+                      </div>)}
+                      {player.metadata.gambits && (<div className="text-center">
                         <div className="text-muted-foreground text-xs mb-1">GAMBITS</div>
                         <div className="text-foreground font-semibold">{formatNumber(player.metadata.gambits)}</div>
-                      </div>
+                      </div>)}
+                      {player.metadata.playtime && (<div className="text-center">
+                        <div className="text-muted-foreground text-xs mb-1">PLAYTIME</div>
+                        <div className="text-foreground font-semibold">{formatNumber(player.metadata.playtime)} Hours</div>
+                      </div>)}
                     </div>
 
                     {/* Score */}
                     <div className="text-right">
-                      <div className="text-2xl font-black text-primary mb-1">{formatNumber(player.metaScore)}</div>
-                      <div className="text-muted-foreground text-xs">SCORE</div>
+                      <div className="text-2xl font-black text-primary mb-1">{formatNumber(player.score)}</div>
+                      {title.includes('Level') ? (
+                        <div className="text-muted-foreground text-xs">LEVEL</div>
+                      ) : (
+                        <div className="text-muted-foreground text-xs">SCORE</div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -346,7 +358,7 @@ export default function Component({ data }: Props) {
         </Card>
 
         {/* Footer Stats */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+        {/* <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { label: "Total Players", value: players.length, icon: "👥" },
             { label: "Highest Score", value: formatNumber(players[0]?.metaScore || 0), icon: "🏆" },
@@ -369,7 +381,7 @@ export default function Component({ data }: Props) {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   )
