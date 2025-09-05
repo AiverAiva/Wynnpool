@@ -50,43 +50,43 @@ interface Guild {
 // }
 
 export default function StatsPage() {
-  const [guilds, setGuilds] = useState<Guild[]>([]);
-  const [filteredGuilds, setFilteredGuilds] = useState<Guild[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [leaderboardModalOpen, setLeaderboardModalOpen] = useState(false)
+  // const [guilds, setGuilds] = useState<Guild[]>([]);
+  // const [filteredGuilds, setFilteredGuilds] = useState<Guild[]>([]);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [searchTerm, setSearchTerm] = useState('');
+  // const [leaderboardModalOpen, setLeaderboardModalOpen] = useState(false)
   const [seasonRatingModalOpen, setSeasonRatingModalOpen] = useState(false)
-  const guildsPerPage = 20;
+  // const guildsPerPage = 20;
 
-  useEffect(() => {
-    fetchGuilds();
-  }, []);
+  // useEffect(() => {
+  //   fetchGuilds();
+  // }, []);
 
-  useEffect(() => {
-    const filtered = guilds.filter(guild =>
-      guild.guild_name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredGuilds(filtered);
-    setCurrentPage(1);
-  }, [searchTerm, guilds]);
+  // useEffect(() => {
+  //   const filtered = guilds.filter(guild =>
+  //     guild.guild_name.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
+  //   setFilteredGuilds(filtered);
+  //   setCurrentPage(1);
+  // }, [searchTerm, guilds]);
 
-  const fetchGuilds = async () => {
-    try {
-      const response = await fetch(api('/leaderboard/guild-average-online'));
-      const data = await response.json();
-      setGuilds(data);
-      setFilteredGuilds(data);
-    } catch (error) {
-      console.error('Error fetching guild data:', error);
-    }
-  };
+  // const fetchGuilds = async () => {
+  //   try {
+  //     const response = await fetch(api('/leaderboard/guild-average-online'));
+  //     const data = await response.json();
+  //     setGuilds(data);
+  //     setFilteredGuilds(data);
+  //   } catch (error) {
+  //     console.error('Error fetching guild data:', error);
+  //   }
+  // };
 
-  const indexOfLastGuild = currentPage * guildsPerPage;
-  const indexOfFirstGuild = indexOfLastGuild - guildsPerPage;
-  const currentGuilds = filteredGuilds.slice(indexOfFirstGuild, indexOfLastGuild);
+  // const indexOfLastGuild = currentPage * guildsPerPage;
+  // const indexOfFirstGuild = indexOfLastGuild - guildsPerPage;
+  // const currentGuilds = filteredGuilds.slice(indexOfFirstGuild, indexOfLastGuild);
 
   return (
-    <div className="container mx-auto p-4 max-w-screen-lg">
+    <div className="container mx-auto p-4 max-w-screen-lg min-h-screen">
       <div className="mt-[80px]" />
       <span className='text-3xl font-mono'>this page is incomplete af :3 <br />if u want to see any stats join discord and suggest it :D</span>
       <div className="grid grid-cols-4 gap-4 auto-rows-[120px]">
@@ -98,7 +98,7 @@ export default function StatsPage() {
         {/* </div> */}
       </div>
       <SeasonRatingLeaderboardModal open={seasonRatingModalOpen} onOpenChange={setSeasonRatingModalOpen} />
-      <Card>
+      {/* <Card>
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Guild Leaderboard</CardTitle>
         </CardHeader>
@@ -140,7 +140,7 @@ export default function StatsPage() {
             onPageChange={setCurrentPage}
           />
         </CardContent>
-      </Card>
+      </Card> */}
     </div>
   )
   // const [selectedLeaderboard, setSelectedLeaderboard] = useState(leaderboards[0])
