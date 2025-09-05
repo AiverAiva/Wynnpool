@@ -142,6 +142,12 @@ export default function GuildLeaderboard({ data, title = "Guild Leaderboard" }: 
                                                 {formatNumber(guild.averageOnline)} Avg. Online
                                             </span>
                                         )}
+                                        {/* {guild.leaveCount && (
+                                            <span className="flex items-center gap-1">
+                                                <UserStar className="w-3 h-3" />
+                                                {formatNumber(guild.leaveCount)} Member Left
+                                            </span>
+                                        )} */}
                                     </div>
 
                                 </div>
@@ -164,9 +170,10 @@ export default function GuildLeaderboard({ data, title = "Guild Leaderboard" }: 
                                     )}
                                 </div>
                             </div>
-                            {guild.xp && guild.level &&
+                            {guild.xpPercent &&
                                 // <div className="text-sm text-muted-foreground">{guild.xp/calculateGuildXPRequired(guild.level)} XP</div>
-                                <Progress value={guild.xp / calculateGuildXPRequired(guild.level) * 100} className='h-1 rounded-none w-full' />
+                                <Progress value={guild.xpPercent} className='h-1 rounded-none w-full' />
+                                // guild.xp / calculateGuildXPRequired(guild.level) * 100
                             }
                         </div>
                     ))}
