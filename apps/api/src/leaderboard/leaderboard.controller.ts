@@ -63,18 +63,25 @@ export class LeaderboardController {
         @Req() req: Request,
         @Res() res: Response,
     ) {
-        // Add custom types here
-        switch (type) {
-            case 'guildAverageOnline':
-                try {
-                    const data = await this.leaderboardService.getGuildAverageOnlineLeaderboard();
-                    res.status(200).json(data);
-                    return;
-                } catch (error) {
-                    console.error('Error generating leaderboard:', error);
-                    throw new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR);
-                }
-            // Add more custom types here as needed
+        // Custom handlers map: map type -> async handler returning the response object
+        const customHandlers: Record<string, (limit?: number) => Promise<any>> = {
+            guildAverageOnline: async () => this.leaderboardService.getGuildAverageOnlineLeaderboard(),
+            guildLevel: async (limit = 100) => this.leaderboardService.getGuildLeaderboardByField('level', limit, { tiebreaker: 'xpPercent' }),
+            guildTerritories: async (limit = 100) => this.leaderboardService.getGuildLeaderboardByField('territories', limit),
+            guildWars: async (limit = 100) => this.leaderboardService.getGuildLeaderboardByField('wars', limit),
+            // guildMemberLeave: async (limit = 100) => this.leaderboardService.getGuildMemberLeaveLeaderboard(limit),
+        };
+
+        if (type in customHandlers) {
+            try {
+                const limitNum = resultLimit ? parseInt(String(resultLimit), 10) : undefined;
+                const data = await customHandlers[type](limitNum as any);
+                res.status(200).json(data);
+                return;
+            } catch (error) {
+                console.error(`Error generating leaderboard for type ${type}:`, error);
+                throw new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
 
         // Fallback to external API
