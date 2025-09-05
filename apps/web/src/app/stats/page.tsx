@@ -88,7 +88,7 @@ export default function StatsPage() {
   return (
     <div className="container mx-auto p-4 max-w-screen-lg min-h-screen">
       <div className="mt-[80px]" />
-      <span className='text-3xl font-mono'>this page is incomplete af :3 <br />if u want to see any stats join discord and suggest it :D</span>
+      {/* <span className='text-3xl font-mono'>this page is incomplete af :3 <br />if u want to see any stats join discord and suggest it :D</span> */}
       <div className="grid grid-cols-4 gap-4 auto-rows-[120px]">
         {/* auto-rows-[120px] md:auto-rows-[140px] */}
         {/* <div className="col-span-4 md:col-span-3 lg:col-span-4"> */}
