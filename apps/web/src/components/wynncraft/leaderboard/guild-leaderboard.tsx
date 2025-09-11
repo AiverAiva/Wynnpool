@@ -9,6 +9,8 @@ import { calculateGuildXPRequired } from "@/lib/guildUtils"
 import { Progress } from "@/components/ui/progress"
 import Banner from "@/components/custom/banner"
 import { Guild } from "@/types/guildType"
+import { ExternalLink } from "lucide-react"
+import Link from 'next/link'
 
 interface GuildLeaderboardProps {
     data: any
@@ -76,106 +78,110 @@ export default function GuildLeaderboard({ data, title = "Guild Leaderboard" }: 
                 </CardTitle>
             </CardHeader>
             <CardContent>
-                <div className="space-y-3">
+                <div className="flex flex-col space-y-3">
                     {entries.map(([rankKey, guild]) => (
-                        <div
-                            key={guild.uuid ?? rankKey}
-                            className="rounded-lg border bg-card hover:bg-accent/50 transition-colors overflow-hidden"
-                        >
-                            <div className="flex items-center gap-4 p-4">
-                                {/* Rank */}
-                                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-muted font-bold text-lg">
-                                    {getRankIcon(Number(rankKey)) || rankKey}
-                                </div>
+                        <Link href={`/stats/guild/${encodeURIComponent(guild.name)}`} key={guild.uuid ?? rankKey} prefetch={false}>
+                            <div className="rounded-lg border bg-card hover:bg-accent/50 overflow-hidden cursor-pointer group hover:scale-105 transition-all">
+                                <div className="flex items-center gap-4 p-4">
+                                    {/* Rank */}
+                                    <div className="group-hover:hidden flex items-center justify-center w-12 h-12 rounded-full bg-muted font-bold text-lg">
+                                        {getRankIcon(Number(rankKey)) || rankKey}
+                                    </div>
 
-                                {/* Guild Banner/Avatar */}
-                                {/* <Avatar className="w-12 h-12">
+                                    <div className="hidden group-hover:flex items-center justify-center w-12 h-12 rounded-full bg-muted font-bold text-lg">
+                                        <ExternalLink className='h-4 w-4 text-muted-foreground' />
+                                    </div>
+
+
+                                    {/* Guild Banner/Avatar */}
+                                    {/* <Avatar className="w-12 h-12">
                 <AvatarFallback className={`${getBannerColor(guild.banner?.base || "GRAY")} text-white font-bold`}>
                   {guild.prefix}
                 </AvatarFallback>
-              </Avatar> */} 
-              <div>
-                                {guild.banner && (<Banner className='rounded-sm' {...guild.banner} size={40}/>)}
-              </div>
-                                {/* Guild Info */}
-                                <div className="flex-1 min-w-0">
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <h3 className="font-semibold text-lg truncate">{guild.name}</h3>
-                                        <Badge variant="secondary" className="text-xs">
-                                            {guild.prefix}
-                                        </Badge>
-                                        {/* {guild.banner?.tier && (
+              </Avatar> */}
+                                    <div>
+                                        {guild.banner && (<Banner className='rounded-sm' {...guild.banner} size={40} />)}
+                                    </div>
+                                    {/* Guild Info */}
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <h3 className="font-semibold text-lg truncate">{guild.name}</h3>
+                                            <Badge variant="secondary" className="text-xs">
+                                                {guild.prefix}
+                                            </Badge>
+                                            {/* {guild.banner?.tier && (
                     <Badge variant="outline" className="text-xs">
                       Tier {guild.banner.tier}
                     </Badge>
                   )} */}
-                                    </div>
+                                        </div>
 
-                                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                        {guild.level && (
-                                            <span className="flex items-center gap-1">
-                                                <Crown className="w-3 h-3" />
-                                                Level {guild.level}
-                                            </span>
-                                        )}
-                                        {guild.members && (
-                                            <span className="flex items-center gap-1">
-                                                <Users className="w-3 h-3" />
-                                                {guild.members} members
-                                            </span>
-                                        )}
-                                        {guild.territories !== undefined && (
-                                            <span className="flex items-center gap-1">
-                                                <MapPin className="w-3 h-3" />
-                                                {guild.territories} territories
-                                            </span>
-                                        )}
-                                        {guild.wars && (
-                                            <span className="flex items-center gap-1">
-                                                <Swords className="w-3 h-3" />
-                                                {formatNumber(guild.wars)} wars
-                                            </span>
-                                        )}
-                                        {guild.averageOnline && (
-                                            <span className="flex items-center gap-1">
-                                                <UserStar className="w-3 h-3" />
-                                                {formatNumber(guild.averageOnline)} Avg. Online
-                                            </span>
-                                        )}
-                                        {/* {guild.leaveCount && (
+                                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                            {guild.level && (
+                                                <span className="flex items-center gap-1">
+                                                    <Crown className="w-3 h-3" />
+                                                    Level {guild.level}
+                                                </span>
+                                            )}
+                                            {guild.members && (
+                                                <span className="flex items-center gap-1">
+                                                    <Users className="w-3 h-3" />
+                                                    {guild.members} members
+                                                </span>
+                                            )}
+                                            {guild.territories !== undefined && (
+                                                <span className="flex items-center gap-1">
+                                                    <MapPin className="w-3 h-3" />
+                                                    {guild.territories} territories
+                                                </span>
+                                            )}
+                                            {guild.wars && (
+                                                <span className="flex items-center gap-1">
+                                                    <Swords className="w-3 h-3" />
+                                                    {formatNumber(guild.wars)} wars
+                                                </span>
+                                            )}
+                                            {guild.averageOnline && (
+                                                <span className="flex items-center gap-1">
+                                                    <UserStar className="w-3 h-3" />
+                                                    {formatNumber(guild.averageOnline)} Avg. Online
+                                                </span>
+                                            )}
+                                            {/* {guild.leaveCount && (
                                             <span className="flex items-center gap-1">
                                                 <UserStar className="w-3 h-3" />
                                                 {formatNumber(guild.leaveCount)} Member Left
                                             </span>
                                         )} */}
+                                        </div>
+
                                     </div>
 
+                                    {/* Score/Stats */}
+                                    <div className="text-right">
+                                        {guild.metaScore && (
+                                            <div className="font-bold text-lg text-primary">{formatNumber(guild.metaScore)} SR  </div>
+                                        )}
+                                        {guild.metadata?.completions && (
+                                            <div className="text-xs text-muted-foreground">
+                                                {formatNumber(guild.metadata.completions)} completions
+                                            </div>
+                                        )}
+                                        {guild.created && (
+                                            <div className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
+                                                <Calendar className="w-3 h-3" />
+                                                Est. {new Date(guild.created).getFullYear()}
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-
-                                {/* Score/Stats */}
-                                <div className="text-right">
-                                    {guild.metaScore && (
-                                        <div className="font-bold text-lg text-primary">{formatNumber(guild.metaScore)} SR  </div>
-                                    )}
-                                    {guild.metadata?.completions && (
-                                        <div className="text-xs text-muted-foreground">
-                                            {formatNumber(guild.metadata.completions)} completions
-                                        </div>
-                                    )}
-                                    {guild.created && (
-                                        <div className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
-                                            <Calendar className="w-3 h-3" />
-                                            Est. {new Date(guild.created).getFullYear()}
-                                        </div>
-                                    )}
-                                </div>
+                                {guild.xpPercent &&
+                                    // <div className="text-sm text-muted-foreground">{guild.xp/calculateGuildXPRequired(guild.level)} XP</div>
+                                    <Progress value={guild.xpPercent} className='h-1 rounded-none w-full' />
+                                    // guild.xp / calculateGuildXPRequired(guild.level) * 100
+                                }
                             </div>
-                            {guild.xpPercent &&
-                                // <div className="text-sm text-muted-foreground">{guild.xp/calculateGuildXPRequired(guild.level)} XP</div>
-                                <Progress value={guild.xpPercent} className='h-1 rounded-none w-full' />
-                                // guild.xp / calculateGuildXPRequired(guild.level) * 100
-                            }
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </CardContent>

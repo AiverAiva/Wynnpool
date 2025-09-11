@@ -34,11 +34,11 @@ interface LeaderboardData {
 const getRankIcon = (position: number) => {
   switch (position) {
     case 1:
-      return <Crown className="w-6 h-6 text-yellow-500" />
+      return <Crown className="w-5 h-5 text-yellow-500" />
     case 2:
-      return <Trophy className="w-6 h-6 text-gray-400" />
+      return <Crown className="w-5 h-5 text-gray-400" />
     case 3:
-      return <Medal className="w-6 h-6 text-amber-500" />
+      return <Crown className="w-5 h-5 text-amber-600" />
     default:
       return <span className="text-xl font-bold text-foreground">#{position}</span>
   }
@@ -76,7 +76,7 @@ interface Props {
 export default function Component({ data, title }: Props) {
   const [currentPage, setCurrentPage] = useState(1)
   const [playersPerPage, setPlayersPerPage] = useState(10)
-  
+
   // If `data` prop is provided, prefer it; otherwise use local mock `gameData`.
   if (!data) return null
   if (!title) title = "Player Leaderbord"
@@ -219,13 +219,11 @@ export default function Component({ data, title }: Props) {
                     <div className="relative">
                       <div
                         className="w-16 h-16 rounded-xl overflow-hidden border-2 border-border transition-all duration-300"
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = player.legacyRankColour.main
-                          e.currentTarget.style.boxShadow = `0 0 15px ${player.legacyRankColour.main}30`
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.borderColor = "var(--border)"
-                          e.currentTarget.style.boxShadow = "none"
+                        style={{
+                          borderColor: player.legacyRankColour?.main,
+                          boxShadow: player.legacyRankColour?.main
+                            ? `0 0 15px ${player.legacyRankColour.main}30`
+                            : "none",
                         }}
                       >
                         <Image
