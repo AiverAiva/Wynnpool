@@ -133,6 +133,7 @@ export default function ItemSearch({
     const [selectedMajorId, setselectedMajorId] = useState<string>('');
     const [selectedRestrictions, setSelectedRestrictions] = useState<string[]>([]);
     const [identificationSortOrders, setIdentificationSortOrders] = useState<Record<string, 'asc' | 'desc'>>({});
+    const [identificationExcludes, setIdentificationExcludes] = useState<Record<string, boolean>>({});
 
     useEffect(() => {
         fetch('/api/item/metadata')
@@ -196,14 +197,30 @@ export default function ItemSearch({
         }
 
         if (selectedIdentifications.length > 0) {
-            const identificationQueries = selectedIdentifications.map((id) => ({
-                $or: [
-                    { [`identifications.${id}`]: { $exists: true } }, // For numbers
-                    { [`identifications.${id}.raw`]: { $exists: true } } // For objects with "raw"
-                ]
-            }));
-
-            query.$and.push({ $or: identificationQueries });
+            const identificationQueries = selectedIdentifications.map((id) => {
+                if (identificationExcludes[id]) {
+                    // Exclude items that have this identification
+                    return {
+                        $and: [
+                            { $or: [
+                                { [`identifications.${id}`]: { $exists: false } },
+                                { [`identifications.${id}`]: null },
+                                { [`identifications.${id}.raw`]: { $exists: false } },
+                                { [`identifications.${id}.raw`]: null },
+                            ] }
+                        ]
+                    };
+                } else {
+                    // Include items that have this identification
+                    return {
+                        $or: [
+                            { [`identifications.${id}`]: { $exists: true } },
+                            { [`identifications.${id}.raw`]: { $exists: true } }
+                        ]
+                    };
+                }
+            });
+            query.$and.push({ $and: identificationQueries });
         }
 
         if (selectedRestrictions.includes('untradable')) {
@@ -333,7 +350,7 @@ export default function ItemSearch({
                             selectedOptions={selectedRestrictions}
                             onChange={setSelectedRestrictions}
                         />
-                    </div>
+                    </div> 
 
                     <div className='grid gap-2'>
                         <Label>Level Range</Label>
@@ -378,6 +395,8 @@ export default function ItemSearch({
                             setSelectedIdentifications={setSelectedIdentifications}
                             identificationSortOrders={identificationSortOrders}
                             setIdentificationSortOrders={setIdentificationSortOrders}
+                            identificationExcludes={identificationExcludes}
+                            setIdentificationExcludes={setIdentificationExcludes}
                         />
                     </div>
                 </div>
@@ -403,6 +422,8 @@ interface IdentificationBoxProps {
     setSelectedIdentifications: React.Dispatch<React.SetStateAction<string[]>>
     identificationSortOrders: Record<string, 'asc' | 'desc'>;
     setIdentificationSortOrders: React.Dispatch<React.SetStateAction<Record<string, 'asc' | 'desc'>>>;
+    identificationExcludes: Record<string, boolean>;
+    setIdentificationExcludes: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
 }
 
 const IdentificationBox: React.FC<IdentificationBoxProps> = ({
@@ -411,6 +432,8 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
     setSelectedIdentifications,
     identificationSortOrders,
     setIdentificationSortOrders,
+    identificationExcludes,
+    setIdentificationExcludes,
 }) => {
     const [identificationBoxes, setIdentificationBoxes] = useState<string[]>(['']);
 
@@ -480,6 +503,14 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
                                     [value]: prev[value] === 'asc' ? 'desc' : 'asc',
                                 }));
                             }}
+                            exclude={!!identificationExcludes[value]}
+                            toggleExclude={() => {
+                                if (!value) return;
+                                setIdentificationExcludes(prev => ({
+                                    ...prev,
+                                    [value]: !prev[value],
+                                }));
+                            }}
                         />
                     ))}
                 </SortableContext>
@@ -494,20 +525,17 @@ const IdentificationBox: React.FC<IdentificationBoxProps> = ({
     );
 };
 
-const IdentificationSortableItem = ({ id, value, index, availableIdentifications, selectedIdentifications, updateBox, removeBox, sortOrder, toggleSortOrder }: any) => {
+const IdentificationSortableItem = ({ id, value, index, availableIdentifications, selectedIdentifications, updateBox, removeBox, sortOrder, toggleSortOrder, exclude, toggleExclude }: any) => {
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
-
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
     };
-
     return (
         <div ref={setNodeRef} style={style} className="flex items-center gap-2">
             <Button variant='ghost' {...attributes} {...listeners} className="px-2 cursor-grab" disabled={value == ''}>
                 <GripVertical className="h-5 w-5 text-gray-500" />
             </Button>
-
             <ResponsiveComboBox
                 availableOptions={Object.entries(availableIdentifications)
                     .filter(([id, label]) => !selectedIdentifications.includes(id) || id === value)
@@ -516,13 +544,16 @@ const IdentificationSortableItem = ({ id, value, index, availableIdentifications
                 currentLabel="Select an Identification..."
                 onChange={(val) => updateBox(val, index)}
             />
-
             {value && (
                 <Button variant="outline" className="px-2" size="icon" onClick={toggleSortOrder}>
                     <Triangle className={cn("h-4 w-4", sortOrder === 'desc' ? 'rotate-180 text-primary' : 'text-primary')} />
                 </Button>
             )}
-
+            {value && (
+                <Button variant={exclude ? 'destructive' : 'secondary'} className="px-2" size="icon" onClick={toggleExclude} title={exclude ? 'Excluded from results' : 'Included in results'}>
+                    {exclude ? '🚫' : '✔️'}
+                </Button>
+            )}
             <Button variant="destructive" className="px-2" onClick={() => removeBox(index)}>
                 <X className="h-8 w-8" />
             </Button>
