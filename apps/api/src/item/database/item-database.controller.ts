@@ -6,7 +6,7 @@ import { RolesGuard } from 'src/auth/roles.guard';
 
 @Controller('item/database')
 export class DatabaseItemController {
-  constructor(private readonly databaseItemService: DatabaseItemService) {}
+  constructor(private readonly databaseItemService: DatabaseItemService) { }
 
   @Get(':itemName')
   async getDatabaseItems(@Param('itemName') itemName: string) {
@@ -19,5 +19,14 @@ export class DatabaseItemController {
   async addVerifyItem(@Body() body: { itemName: string; originalString: string; owner: string }, @Req() req) {
     // Optionally, you can use req.user to set owner automatically
     return this.databaseItemService.addVerifyItem(body);
+  }
+
+  @Post('search')
+  @UseGuards(AuthenticatedGuard, RolesGuard)
+  @Roles('ITEM_DATABASE')
+  async searchDatabaseItems(
+    @Body() body: { itemName?: string; owner?: string }
+  ) {
+    return this.databaseItemService.searchDatabaseItems(body);
   }
 }

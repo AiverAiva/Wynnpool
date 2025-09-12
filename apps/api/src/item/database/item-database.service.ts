@@ -7,7 +7,7 @@ import { DatabaseItem } from './item-database.schema';
 export class DatabaseItemService {
   constructor(
     @InjectModel(DatabaseItem.name) private readonly databaseItemModel: Model<DatabaseItem>,
-  ) {}
+  ) { }
 
   async getVerifyItems(itemName?: string) {
     const query = itemName ? { itemName } : {};
@@ -36,4 +36,33 @@ export class DatabaseItemService {
     await this.databaseItemModel.create(data);
     return { success: true };
   }
+
+  async searchDatabaseItems(query: { itemName?: string; owner?: string }) {
+    const filters: any[] = [];
+
+    if (query.itemName) {
+      filters.push({ itemName: { $regex: query.itemName, $options: 'i' } });
+    }
+
+    if (query.owner) {
+      filters.push({ owner: { $regex: query.owner, $options: 'i' } });
+    }
+
+    if (filters.length === 0) {
+      // No search filters → return last 100 entries
+      return this.databaseItemModel
+        .find({})
+        .sort({ timestamp: -1 })
+        .limit(100)
+        .lean();
+    }
+
+    // Apply search filters
+    return this.databaseItemModel
+      .find({ $or: filters })
+      .sort({ timestamp: -1 })
+      .lean();
+  }
+
+
 }
