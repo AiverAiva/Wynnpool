@@ -29,10 +29,12 @@ export default function RankingPage() {
         const query = {
             $and: [
                 { rarity: { $in: ["mythic"] } },
-                { $or: [
-                    { type: "weapon" },
-                    { type: "armour" }
-                ] }
+                {
+                    $or: [
+                        { type: "weapon" },
+                        { type: "armour" }
+                    ]
+                }
             ]
         };
 
@@ -87,17 +89,24 @@ export default function RankingPage() {
                         </h2>
                     </div>
                     {canSubmit && (
-                        <Button onClick={() => setModalOpen(true)}>
-                            + Submit Item
-                        </Button>
+                        <div className="flex gap-4">
+                            <Link href={"/item/ranking/manage"} prefetch={false}>
+                                <Button>
+                                    Manage Items
+                                </Button>
+                            </Link>
+                            <Button onClick={() => setModalOpen(true)}>
+                                + Submit Item
+                            </Button>
+                        </div>
                     )}
                 </div>
 
                 {/* Database warning */}
                 <div className="mb-6">
-                  <div className="text-yellow-800 dark:text-yellow-200 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-300 rounded p-3 text-sm">
-                    As our database is relatively new, the rankings may be missing a lot of better ranked mythics. Please do not rely on these rankings for now while we collect more data.
-                  </div>
+                    <div className="text-yellow-800 dark:text-yellow-200 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-300 rounded p-3 text-sm">
+                        As our database is relatively new, the rankings may be missing a lot of better ranked mythics. Please do not rely on these rankings for now while we collect more data.
+                    </div>
                 </div>
 
                 {Object.entries(groupedItems).map(([category, items]) => (
