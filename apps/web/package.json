@@ -37,6 +37,7 @@
     "cmdk": "^1.0.0",
     "diff": "^7.0.0",
     "framer-motion": "^11.14.4",
+    "input-otp": "^1.4.2",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.542.0",
     "mongoose": "^8.8.4",
