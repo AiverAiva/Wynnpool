@@ -6,16 +6,18 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight, Server, Key, Link2, AlertCircle, Check } from "lucide-react"
+import { ChevronLeft, ChevronRight, Server, Key, Link2, AlertCircle, Check, CheckCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { CopyText } from "@/components/custom/CopyText"
 import { useRouter } from "next/navigation"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
+import api from "@/lib/api"
+import { toast } from 'sonner'
 
 interface AccountLinkingModalProps {
   isOpen: boolean
-  onClose: () => void
-  onComplete: (code: string) => void
+  onClose?: () => void
+  onComplete?: (code: string) => void
 }
 
 export default function AccountLinkingModal({ isOpen, onClose, onComplete }: AccountLinkingModalProps) {
@@ -24,53 +26,61 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
   const [value, setValue] = useState("")
   const [isVerifying, setIsVerifying] = useState(false)
   const [error, setError] = useState("")
+  const [open, setOpen] = useState(true); 
   const otpRefs = useRef<(HTMLInputElement | null)[]>([])
   const router = useRouter();
-
+  
   const serverAddress = "verify.wynnpool.com"
   const totalSteps = 2
 
-  const handleOtpChange = (index: number, value: string) => {
-    if (value.length > 1) return // Prevent multiple characters
+  // const handleOtpChange = (index: number, value: string) => {
+  //   if (value.length > 1) return // Prevent multiple characters
 
-    const newOtp = [...otpCode]
-    newOtp[index] = value.toUpperCase()
-    setOtpCode(newOtp)
-    setError("")
+  //   const newOtp = [...otpCode]
+  //   newOtp[index] = value.toUpperCase()
+  //   setOtpCode(newOtp)
+  //   setError("")
 
-    // Auto-focus next input
-    if (value && index < 5) {
-      otpRefs.current[index + 1]?.focus()
-    }
-  }
+  //   // Auto-focus next input
+  //   if (value && index < 5) {
+  //     otpRefs.current[index + 1]?.focus()
+  //   }
+  // }
 
-  const handleOtpKeyDown = (index: number, e: React.KeyboardEvent) => {
-    if (e.key === "Backspace" && !otpCode[index] && index > 0) {
-      otpRefs.current[index - 1]?.focus()
-    }
-  }
+  // const handleOtpKeyDown = (index: number, e: React.KeyboardEvent) => {
+  //   if (e.key === "Backspace" && !otpCode[index] && index > 0) {
+  //     otpRefs.current[index - 1]?.focus()
+  //   }
+  // }
 
-  const handleOtpPaste = (e: React.ClipboardEvent) => {
-    e.preventDefault()
-    const pastedData = e.clipboardData.getData("text").toUpperCase().slice(0, 6)
-    const newOtp = [...otpCode]
+  // const handleOtpPaste = (e: React.ClipboardEvent) => {
+  //   e.preventDefault()
+  //   const pastedData = e.clipboardData.getData("text").toUpperCase().slice(0, 6)
+  //   const newOtp = [...otpCode]
 
-    for (let i = 0; i < pastedData.length && i < 6; i++) {
-      newOtp[i] = pastedData[i]
-    }
+  //   for (let i = 0; i < pastedData.length && i < 6; i++) {
+  //     newOtp[i] = pastedData[i]
+  //   }
 
-    setOtpCode(newOtp)
-    setError("")
+  //   setOtpCode(newOtp)
+  //   setError("")
 
-    // Focus the next empty input or the last one
-    const nextEmptyIndex = newOtp.findIndex((code) => !code)
-    const focusIndex = nextEmptyIndex === -1 ? 5 : nextEmptyIndex
-    otpRefs.current[focusIndex]?.focus()
-  }
+  //   // Focus the next empty input or the last one
+  //   const nextEmptyIndex = newOtp.findIndex((code) => !code)
+  //   const focusIndex = nextEmptyIndex === -1 ? 5 : nextEmptyIndex
+  //   otpRefs.current[focusIndex]?.focus()
+  //   // If paste completes the 6-digit code, trigger verification immediately
+  //   if (pastedData.length === 6 && /^[0-9]{6}$/.test(pastedData)) {
+  //     // also keep the string `value` in sync for the InputOTP component
+  //     setValue(pastedData)
+  //     void handleVerify(pastedData)
+  //   }
+  // }
 
-  const handleVerify = async () => {
-    // prefer value if typed via InputOTP component, otherwise fallback to otpCode
-    const code = (value || otpCode.join("")).toString()
+  // Accept an optional code parameter so callers can trigger verify immediately
+  const handleVerify = async (maybeCode?: string) => {
+    // prefer provided code, then value from InputOTP component, otherwise fallback to otpCode
+    const code = (maybeCode ?? value ?? otpCode.join("")).toString()
     if (code.length !== 6 || /\D/.test(code)) {
       setError("Please enter the complete 6-digit code")
       return
@@ -81,22 +91,42 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
 
     try {
       // Send POST to /api/link/minecraft with JSON payload { code }
-      const res = await fetch('/api/link/minecraft', {
+      const res = await fetch(api('/auth/link/minecraft'), {
         method: 'POST',
+        credentials: "include",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code }),
       })
+      const data = await res.json().catch(() => ({}))
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        setError(data?.message || 'Verification failed. Please try again.')
+        // try to display meaningful message from backend
+        setError(data?.message || data?.error || 'Verification failed. Please try again.')
         return
       }
 
-      const data = await res.json().catch(() => ({}))
-      // on success, call onComplete and close modal
-      onComplete(code)
-      onClose()
+      // backend returns { success: true, username, uuid }
+      if (data?.success) {
+        toast.custom(() => (
+          <div className="bg-green-500 text-white p-4 rounded-md flex items-center space-x-4">
+            <CheckCircle className="mr-2 text-xl" />
+            <span>Successfully linked to Minecraft account <span className="font-mono font-bold">{data.username}</span></span>
+          </div>
+        ));
+        // Emit a global event so the parent/profile page can react (re-fetch)
+        try {
+          window.dispatchEvent(new CustomEvent('minecraft:linked', { detail: { username: data.username, uuid: data.uuid } }));
+        } catch (e) {
+          // ignore in environments without window
+        }
+
+        // Close the parallel-route modal and refresh parent route
+        router.back()
+        router.refresh()
+        return
+      }
+
+      setError(data?.message || 'Verification failed. Please try again.')
     } catch (err) {
       console.error(err)
       setError('Verification failed. Please try again.')
@@ -126,11 +156,11 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
   const handleClose = () => {
     router.back()
     resetModal()
-    onClose()
+    onClose?.()
   }
 
   return (
-    <Dialog open onOpenChange={() => router.back()}>
+    <Dialog open={open} onOpenChange={() => router.back()}>
       {/* open={isOpen} onOpenChange={handleClose} */}
       <DialogContent className="sm:max-w-md bg-card/95 backdrop-blur-sm border-border/50">
         <DialogHeader>
@@ -201,7 +231,7 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
                       <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside">
                         <li>Copy the server address above</li>
                         <li>Open Minecraft and add this server</li>
-                        <li>Join the server with your Minecraft username</li>
+                        <li>Join the server</li>
                         <li>You'll receive a 6-digit verification code</li>
                       </ol>
                     </div>
@@ -231,34 +261,39 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
                 </div>
 
                 <div className="space-y-4">
+                  {/* success UI moved to global toast */}
                   <div className="flex justify-center gap-2">
                     {/* Use a fieldset to disable all inputs while verifying */}
-                    <fieldset disabled={isVerifying} className="border-0 p-0 m-0">
-                      <InputOTP
-                        maxLength={6}
-                        value={value}
-                        onChange={(val) => {
-                          // accept only digits and trim to maxLength
-                          const sanitized = val.replace(/\D/g, '').slice(0, 6)
-                          setValue(sanitized)
+                    <InputOTP
+                      maxLength={6}
+                      value={value}
+                      disabled={isVerifying}
+                      onChange={(val) => {
+                        // accept only digits and trim to maxLength
+                        const sanitized = val.replace(/\D/g, '').slice(0, 6)
+                        setValue(sanitized)
 
-                          // also keep otpCode array in sync for existing handlers
-                          const next = ['', '', '', '', '', '']
-                          for (let i = 0; i < sanitized.length; i++) next[i] = sanitized[i]
-                          setOtpCode(next)
-                          setError('')
-                        }}
-                      >
-                        <InputOTPGroup>
-                          <InputOTPSlot index={0} />
-                          <InputOTPSlot index={1} />
-                          <InputOTPSlot index={2} />
-                          <InputOTPSlot index={3} />
-                          <InputOTPSlot index={4} />
-                          <InputOTPSlot index={5} />
-                        </InputOTPGroup>
-                      </InputOTP>
-                    </fieldset>
+                        // also keep otpCode array in sync for existing handlers
+                        const next = ['', '', '', '', '', '']
+                        for (let i = 0; i < sanitized.length; i++) next[i] = sanitized[i]
+                        setOtpCode(next)
+                        setError('')
+
+                        // if user completed 6 digits, trigger verification
+                        if (sanitized.length === 6) {
+                          void handleVerify(sanitized)
+                        }
+                      }}
+                    >
+                      <InputOTPGroup>
+                        <InputOTPSlot index={0} />
+                        <InputOTPSlot index={1} />
+                        <InputOTPSlot index={2} />
+                        <InputOTPSlot index={3} />
+                        <InputOTPSlot index={4} />
+                        <InputOTPSlot index={5} />
+                      </InputOTPGroup>
+                    </InputOTP>
                   </div>
 
                   {error && (
@@ -268,7 +303,7 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
                     </div>
                   )}
 
-                  <div className="text-center">
+                  {/* <div className="text-center">
                     <Button
                       onClick={handleVerify}
                       disabled={otpCode.join("").length !== 6 || isVerifying}
@@ -286,7 +321,7 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
                         </>
                       )}
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
@@ -295,7 +330,7 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
                     <div className="space-y-1">
                       <p className="text-sm font-medium text-amber-500">Didn't receive a code?</p>
                       <p className="text-xs text-muted-foreground">
-                        Make sure you joined the server with your exact Minecraft username. You can go back to step 1 to
+                        Make sure you joined the right server with premium Minecraft username. You can go back to step 1 to
                         try again.
                       </p>
                     </div>
