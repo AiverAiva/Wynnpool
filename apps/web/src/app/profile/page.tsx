@@ -64,10 +64,10 @@ export default function ProfilePage() {
   // start with null while loading real user data
   const [user, setUser] = useState<UserProfile | null>(null)
   const [isUserLoading, setIsUserLoading] = useState<boolean>(true)
-  const [isLoading, setIsLoading] = useState(false)
-  const [showMinecraftMenu, setShowMinecraftMenu] = useState(false)
-  const [linkingAccount, setLinkingAccount] = useState(false)
-  const [wynnUsernameInput, setWynnUsernameInput] = useState("")
+  // const [isLoading, setIsLoading] = useState(false)
+  // const [showMinecraftMenu, setShowMinecraftMenu] = useState(false)
+  // const [linkingAccount, setLinkingAccount] = useState(false)
+  // const [wynnUsernameInput, setWynnUsernameInput] = useState("")
 
   async function fetchUser() {
     try {
@@ -83,60 +83,64 @@ export default function ProfilePage() {
   useEffect(() => {
     fetchUser().then((u) => {
       setUser(u && u.discordProfile ? u : null);
+      setIsUserLoading(false);
     });
 
     const handler = () => {
       // Re-fetch when another window/modal signals a successful link
-      fetchUser().then((u) => setUser(u && u.discordProfile ? u : null));
+      fetchUser().then((u) => {
+        setUser(u && u.discordProfile ? u : null);
+        setIsUserLoading(false); // Set loading to false after fetch completes
+      });
     }
     window.addEventListener('minecraft:linked', handler as EventListener)
     return () => window.removeEventListener('minecraft:linked', handler as EventListener)
   }, []);
 
-  const handleLinkAccount = async () => {
-    if (!wynnUsernameInput.trim()) return
+  // const handleLinkAccount = async () => {
+  //   if (!wynnUsernameInput.trim()) return
 
-    setLinkingAccount(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+  //   setLinkingAccount(true)
+  //   // Simulate API call
+  //   await new Promise((resolve) => setTimeout(resolve, 2000))
 
-    setUser((prev) => ({
-      ...prev,
-      wynnUsername: wynnUsernameInput,
-      isLinked: true,
-    }))
-    setLinkingAccount(false)
-  }
+  //   setUser((prev) => ({
+  //     ...prev,
+  //     wynnUsername: wynnUsernameInput,
+  //     isLinked: true,
+  //   }))
+  //   setLinkingAccount(false)
+  // }
 
-  const handleUnlinkAccount = () => {
-    setUser((prev) => ({
-      ...prev,
-      wynnUsername: "",
-      isLinked: false,
-    }))
-    setWynnUsernameInput("")
-  }
+  // const handleUnlinkAccount = () => {
+  //   setUser((prev) => ({
+  //     ...prev,
+  //     wynnUsername: "",
+  //     isLinked: false,
+  //   }))
+  //   setWynnUsernameInput("")
+  // }
 
-  const handleBannerUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onload = (e) => {
-        setUser((prev) => ({
-          ...prev,
-          profileBanner: e.target?.result as string,
-        }))
-      }
-      reader.readAsDataURL(file)
-    }
-  }
+  // const handleBannerUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = event.target.files?.[0]
+  //   if (file) {
+  //     const reader = new FileReader()
+  //     reader.onload = (e) => {
+  //       setUser((prev) => ({
+  //         ...prev,
+  //         profileBanner: e.target?.result as string,
+  //       }))
+  //     }
+  //     reader.readAsDataURL(file)
+  //   }
+  // }
 
-  const handleSaveProfile = async () => {
-    setIsLoading(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsLoading(false)
-  }
+  // const handleSaveProfile = async () => {
+  //   setIsLoading(true)
+  //   // Simulate API call
+  //   await new Promise((resolve) => setTimeout(resolve, 1000))
+  //   setIsLoading(false)
+  // }
 
   const handleDisconnect = async () => {
     try {
@@ -147,17 +151,31 @@ export default function ProfilePage() {
       toast.success('Minecraft account disconnected');
     } catch (e) {
       toast.error('Unable to disconnect Minecraft account');
-    } finally {
-      setShowMinecraftMenu(false);
-    }
+    } 
+    // finally {
+    //   setShowMinecraftMenu(false);
+    // }
   };
 
 
-  if (!user) return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <Spinner className="h-12 w-12" />
-    </div>
-  )
+  if (isUserLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Spinner className="h-12 w-12" />
+      </div>
+    )
+  }
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Card className="p-6">
+          <CardTitle className="mb-2">Not signed in</CardTitle>
+          <CardDescription>Please sign in with Discord to view your profile.</CardDescription>
+          <Button asChild className="mt-4"><Link href={api("/auth/discord")}>Sign in</Link></Button>
+        </Card>
+      </div>
+    )
+  }
   const userName = user.discordProfile?.global_name || user.discordProfile?.username || "User";
   const avatarUrl = user.discordProfile?.avatar
     ? `https://cdn.discordapp.com/avatars/${user.discordProfile.id}/${user.discordProfile.avatar}.png`
