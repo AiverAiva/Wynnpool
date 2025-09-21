@@ -5,6 +5,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { SponsoredWhale } from "@/components/custom/sponsor-tab";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -59,6 +60,7 @@ export default function RootLayout({
         >
           <Navbar />
           <SponsoredWhale />
+          <Toaster />
           {children}
           {modal}
         </ThemeProvider>
