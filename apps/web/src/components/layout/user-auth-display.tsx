@@ -15,6 +15,7 @@ import {
 import { LogOut, User } from "lucide-react";
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // Helper to fetch user info from the new API endpoint
 async function fetchUser() {
@@ -107,15 +108,17 @@ export default function UserAuthDisplay() {
     }
 
     return (
-        <Button
-            onClick={() => {
-                window.location.href = api("/auth/discord");
-            }}
-            variant="outline"
-            className="flex items-center gap-1 dark:bg-background bg-[#5865F2] rounded-xl text-white hover:bg-[#4752c4] hover:text-white"
-        >
-            <span className="hidden sm:inline">Login with Discord</span>
-            <span className="sm:hidden">Login</span>
-        </Button>
+        <Link href={api("/auth/discord")} prefetch={false}>
+            <Button
+                // onClick={() => {
+                //     window.location.href = api("/auth/discord");
+                // }}
+                variant="outline"
+                className="flex items-center gap-1 dark:bg-background bg-[#5865F2] rounded-xl text-white hover:bg-[#4752c4] hover:text-white"
+            >
+                <span className="hidden sm:inline">Login with Discord</span>
+                <span className="sm:hidden">Login</span>
+            </Button>
+        </Link>
     );
 }
