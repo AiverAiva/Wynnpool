@@ -20,7 +20,7 @@ interface AccountLinkingModalProps {
   onComplete?: (code: string) => void
 }
 
-export default function AccountLinkingModal({ isOpen, onClose, onComplete }: AccountLinkingModalProps) {
+const AccountLinkingModal: React.FC<AccountLinkingModalProps> = ({ isOpen, onClose, onComplete }) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [otpCode, setOtpCode] = useState(["", "", "", "", "", ""])
   const [value, setValue] = useState("")
@@ -364,3 +364,5 @@ export default function AccountLinkingModal({ isOpen, onClose, onComplete }: Acc
     </Dialog>
   )
 }
+
+export default AccountLinkingModal;
