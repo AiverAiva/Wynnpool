@@ -14,13 +14,15 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import api from "@/lib/api"
 import { toast } from 'sonner'
 
-interface AccountLinkingModalProps {
-  isOpen: boolean
-  onClose?: () => void
-  onComplete?: (code: string) => void
-}
+// interface AccountLinkingModalProps {
+//   isOpen: boolean
+//   onClose?: () => void
+//   onComplete?: (code: string) => void
+// }
 
-const AccountLinkingModal: React.FC<AccountLinkingModalProps> = ({ isOpen, onClose, onComplete }) => {
+// { isOpen, onClose, onComplete }
+// AccountLinkingModalProps
+const AccountLinkingModal: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [otpCode, setOtpCode] = useState(["", "", "", "", "", ""])
   const [value, setValue] = useState("")
@@ -156,7 +158,7 @@ const AccountLinkingModal: React.FC<AccountLinkingModalProps> = ({ isOpen, onClo
   const handleClose = () => {
     router.back()
     resetModal()
-    onClose?.()
+    // onClose?.()
   }
 
   return (
