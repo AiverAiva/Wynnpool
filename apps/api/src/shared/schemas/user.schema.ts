@@ -17,6 +17,9 @@ export class User extends Document {
 
     @Prop({ type: String })
     refreshToken: string; // Store the latest refresh token
+
+    @Prop({ type: Object })
+    minecraftProfile?: { uuid?: string; name?: string };
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
