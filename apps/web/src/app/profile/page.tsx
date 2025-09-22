@@ -178,10 +178,10 @@ export default function ProfilePage() {
   }
   const userName = user.discordProfile?.global_name || user.discordProfile?.username || "User";
   const avatarUrl = user.discordProfile?.avatar
-    ? `https://cdn.discordapp.com/avatars/${user.discordProfile.id}/${user.discordProfile.avatar}.png`
+    ? `https://cdn.discordapp.com/avatars/${user.discordProfile.id}/${user.discordProfile.avatar}`
     : undefined;
   const bannerUrl = user.discordProfile?.banner
-    ? `https://cdn.discordapp.com/banners/${user.discordProfile.id}/${user.discordProfile.banner}.png?size=2048`
+    ? `https://cdn.discordapp.com/banners/${user.discordProfile.id}/${user.discordProfile.banner}?size=2048`
     : undefined;
   // console.log(user)
   // console.log(avatarUrl)
