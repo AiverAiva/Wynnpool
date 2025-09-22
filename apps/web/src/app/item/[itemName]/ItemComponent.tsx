@@ -86,7 +86,7 @@ export default function ItemComponent({ itemName }: { itemName: string }) {
                             > */}
                         <TooltipProvider delayDuration={0}>
                             <Tooltip>
-                                <TooltipTrigger asChild>
+                                <TooltipTrigger asChild className='relative'> 
                                     <button
                                         className="flex items-center gap-1 px-2 py-1 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700 disabled:opacity-100"
                                         onClick={handleCopy}
