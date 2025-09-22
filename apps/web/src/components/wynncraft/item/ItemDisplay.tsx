@@ -21,10 +21,12 @@ interface ItemDisplayProps {
 }
 
 const SmallItemCard: React.FC<ItemDisplayProps> = ({ item }) => {
+  const itemName = item.itemName ?? item.id ?? item.internalName;
+
   return (
     <Card className='w-full flex h-12 items-center gap-4 hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2'>
       <ItemIcon item={item} />
-      <span key={item.internalName} className='text-md font-mono'>{item.internalName}</span>
+      <span key={itemName} className='text-md font-mono'>{itemName}</span>
     </Card>
   )
 }
@@ -69,7 +71,9 @@ const StarFormatter: React.FC<any> = ({ tier }) => {
 
 const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
   const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory' || item.type === 'tome' || item.type === 'charm'
-  const itemNameLength = isCombatItem ? item.internalName.length - 8 : item.internalName.length
+  const itemName = item.itemName ?? item.id ?? item.internalName;
+  // console.log(item)
+  const itemNameLength = isCombatItem ? itemName.length - 8 : itemName.length
   var itemNameSize = 'text-lg'
 
   if (itemNameLength >= 13) itemNameSize = 'text-md'
@@ -89,7 +93,7 @@ const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
                 ${isCombatItem && `text-${item.rarity}`}
                 ${item.type == 'ingredient' && 'text-[#AAAAAA]'}
               `}>
-          {item.internalName}
+          {itemName}
           {item.type == 'ingredient' && (
             <StarFormatter tier={item.tier} />
           )}
@@ -118,7 +122,8 @@ const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
 
 const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embeded = false }) => {
   const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory' || item.type === 'tome' || item.type === 'charm'
-
+  const itemName = item.itemName ?? item.id ?? item.internalName;
+  
   return (
     <div className="space-y-4 p-6 pt-0">
       {item.type == 'weapon' && <AttackSpeed attackSpeed={item.attackSpeed} />}
@@ -186,7 +191,7 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
                 <div key={key} className="flex items-center gap-2">
                   <Image
                     src={`/icons/profession/${value}.webp`}
-                    alt={item.internalName}
+                    alt={itemName}
                     width={32}
                     height={32}
                     className="h-4 w-4"
@@ -216,7 +221,7 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
 
       {embeded && (
         <div className="flex justify-end">
-          <Link href={`/item/search/${item.internalName}`} prefetch={false}>
+          <Link href={`/item/search/${itemName}`} prefetch={false}>
             <span className="font-mono text-sm italic hover:underline text-gray-500 cursor-pointer transition trasition-all">more details...</span>
           </Link>
         </div>
