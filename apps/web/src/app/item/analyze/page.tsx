@@ -89,7 +89,7 @@ export default function Home() {
     setDemoData(null); // Clear previous single item data
     setRankSuggestion(null);
 
-
+    item = item.trim()
     try {
       // const response = await fetch('https://api.wynnpool.com/item/full-decode', {
       const response = await fetch(api('/item/full-decode'), {
