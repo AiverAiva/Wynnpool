@@ -2,12 +2,8 @@ import mongoose from "mongoose";
 import fs from "fs";
 import path from "path";
 import { config } from "dotenv";
-import { fileURLToPath } from "url";
 
 config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const DB_NAME = "wynnpool";
 
@@ -44,7 +40,7 @@ async function generateStaticChangelogs() {
   const timestamps: number[] = await ChangelogModel.distinct("timestamp").exec() as number[];
   console.log(`📦 Found ${timestamps.length} timestamps`);
 
-  const outputDir = path.resolve(__dirname, "../apps/static/item-changelog-data");
+  const outputDir = path.join(process.cwd(), "apps/static/item-changelog-data");
   fs.mkdirSync(outputDir, { recursive: true });
 
   for (const timestamp of timestamps) {
