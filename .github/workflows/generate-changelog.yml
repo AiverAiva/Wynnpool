@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 20
       - run: yarn install --frozen-lockfile
-      - run: yarn ts-node scripts/generate_item_changelog.ts
+      - run: yarn ts-node-esm scripts/generate_item_changelog.ts
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
       - name: Commit and push generated changelogs
