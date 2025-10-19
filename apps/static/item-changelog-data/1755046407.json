@@ -1,0 +1,115 @@
+{
+  "modify": [
+    {
+      "_id": "689be207fa34f1b13782b89a",
+      "itemName": "Azure Blossom",
+      "status": "modify",
+      "timestamp": 1755046407,
+      "before": {
+        "internalName": "Azure Blossom",
+        "type": "ingredient",
+        "requirements": {
+          "level": 80,
+          "skills": [
+            "woodworking"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "246:0"
+        },
+        "identifications": {
+          "manaRegen": {
+            "min": 6,
+            "raw": 6,
+            "max": 6
+          },
+          "healingEfficiency": {
+            "min": 13,
+            "raw": 13,
+            "max": 13
+          }
+        },
+        "tier": 3,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "not_touching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -135000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 10,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Blue Antifloret",
+            "coords": [
+              -777,
+              89,
+              -6064,
+              0
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Azure Blossom",
+        "type": "ingredient",
+        "requirements": {
+          "level": 80,
+          "skills": [
+            "woodworking"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "246:0"
+        },
+        "identifications": {
+          "manaRegen": {
+            "min": 6,
+            "raw": 6,
+            "max": 6
+          },
+          "healingEfficiency": {
+            "min": 13,
+            "raw": 13,
+            "max": 13
+          }
+        },
+        "tier": 3,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "not_touching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -135000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 10,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        }
+      }
+    }
+  ]
+}

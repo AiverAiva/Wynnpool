@@ -1,0 +1,765 @@
+{
+  "modify": [
+    {
+      "_id": "689fd5e27eae261a6d94b194",
+      "itemName": "Subjoined Brain",
+      "status": "modify",
+      "timestamp": 1755305442,
+      "before": {
+        "internalName": "Subjoined Brain",
+        "type": "ingredient",
+        "requirements": {
+          "level": 105,
+          "skills": [
+            "jeweling",
+            "cooking"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "376:0"
+        },
+        "identifications": {
+          "fireDamage": {
+            "min": -6,
+            "raw": -6,
+            "max": -4
+          },
+          "earthDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 4
+          },
+          "waterDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 4
+          },
+          "thunderDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 5
+          }
+        },
+        "tier": 2,
+        "consumableOnlyIDs": {
+          "duration": -600,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "not_touching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -109000,
+          "strengthRequirement": 9,
+          "dexterityRequirement": 9,
+          "intelligenceRequirement": 9,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Lesionary Warlock",
+            "coords": null
+          },
+          {
+            "name": "Lesionary Sagittarii",
+            "coords": null
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Subjoined Brain",
+        "type": "ingredient",
+        "requirements": {
+          "level": 105,
+          "skills": [
+            "jeweling",
+            "cooking"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "376:0"
+        },
+        "identifications": {
+          "fireDamage": {
+            "min": -6,
+            "raw": -6,
+            "max": -4
+          },
+          "earthDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 4
+          },
+          "waterDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 4
+          },
+          "thunderDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 5
+          }
+        },
+        "tier": 2,
+        "consumableOnlyIDs": {
+          "duration": -600,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "not_touching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -109000,
+          "strengthRequirement": 9,
+          "dexterityRequirement": 9,
+          "intelligenceRequirement": 9,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Lichenous Alnamar",
+            "coords": [
+              1490,
+              55,
+              -1077,
+              15
+            ]
+          },
+          {
+            "name": "Lesionary Sagittarii",
+            "coords": null
+          }
+        ]
+      }
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b195",
+      "itemName": "Apocalypse",
+      "status": "modify",
+      "timestamp": 1755305442,
+      "before": {
+        "internalName": "Apocalypse",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "superSlow",
+        "averageDps": 574,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 81,
+          "classRequirement": "warrior",
+          "defence": 95
+        },
+        "majorIds": {
+          "Hellfire": "<span class='font-ascii' style='color:#55FFFF'>+Hellfire: <span class='font-ascii' style='color:#00AAAA'>Bash is replaced by a single hit, gaining +3 radius and dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>225%</span><darkAqua>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>40%</span><darkAqua>, and <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>60%</span><darkAqua>. Boiling Bloods cooldown is set to 2s, gains <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+40%</span><darkAqua>, <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+50%</span><darkAqua>, and burns twice as fast for 1s, but can't slow.</span></span></span></span></span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "To forge a weapon such as this from the cursed lava of the portal basin requires dozens, for each smith would lose themselves to the force of corruption before it is finished. The nightmarishly hooked blade serves no purpose but destruction, as intended.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          }
+        },
+        "identifications": {
+          "exploding": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "lifeSteal": {
+            "min": 300,
+            "raw": 1000,
+            "max": 1300
+          },
+          "rawDefence": 35,
+          "fireDefence": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          },
+          "healthRegen": {
+            "min": -162,
+            "raw": -125,
+            "max": -87
+          },
+          "waterDamage": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          },
+          "waterDefence": {
+            "min": -91,
+            "raw": -70,
+            "max": -49
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 375,
+            "raw": 375,
+            "max": 575
+          },
+          "baseFireDamage": {
+            "min": 500,
+            "raw": 500,
+            "max": 800
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Apocalypse",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "superSlow",
+        "averageDps": 574,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 81,
+          "classRequirement": "warrior",
+          "defence": 95
+        },
+        "majorIds": {
+          "Hellfire": "<span class='font-ascii' style='color:#55FFFF'>+Hellfire: <span class='font-ascii' style='color:#00AAAA'>Bash is replaced by a single hit, gaining +3 radius and dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>225%</span><darkAqua>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>40%</span><darkAqua>, and <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>60%</span><darkAqua>. Boiling Blood's cooldown is set to 2s, gains <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+40%</span><darkAqua>, <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+50%</span><darkAqua>, and burns twice as fast for 1s, but can't slow.</span></span></span></span></span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "To forge a weapon such as this from the cursed lava of the portal basin requires dozens, for each smith would lose themselves to the force of corruption before it is finished. The nightmarishly hooked blade serves no purpose but destruction, as intended.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          }
+        },
+        "identifications": {
+          "exploding": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "lifeSteal": {
+            "min": 300,
+            "raw": 1000,
+            "max": 1300
+          },
+          "rawDefence": 35,
+          "fireDefence": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          },
+          "healthRegen": {
+            "min": -162,
+            "raw": -125,
+            "max": -87
+          },
+          "waterDamage": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          },
+          "waterDefence": {
+            "min": -91,
+            "raw": -70,
+            "max": -49
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 375,
+            "raw": 375,
+            "max": 575
+          },
+          "baseFireDamage": {
+            "min": 500,
+            "raw": 500,
+            "max": 800
+          }
+        },
+        "rarity": "mythic"
+      }
+    }
+  ],
+  "add": [
+    {
+      "_id": "689fd5e27eae261a6d94b18a",
+      "itemName": "Hearthkeeper",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Hearthkeeper",
+      "type": "armour",
+      "armourType": "boots",
+      "armourMaterial": "diamond",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 99,
+        "strength": 50,
+        "dexterity": 40,
+        "intelligence": 50
+      },
+      "majorIds": {
+        "Altruism": "<span class='font-ascii' style='color:#55FFFF'>+Altruism: <span class='font-ascii' style='color:#00AAAA'>Nearby players gain 100% of the health you gain from Health Regen and Life Steal.</span></span>"
+      },
+      "powderSlots": 3,
+      "lore": "Childhood memories, days of late nights and snow fights and cocoa by the fireside. Loving smiles and friendly faces. The beating heart of the world: home. This is what you fight for, beating back those dark and wicked forces which work to break down all that is loved. There is no sacrifice too great for the hearth.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_boots",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          },
+          "name": "boots.diamond"
+        }
+      },
+      "identifications": {
+        "lifeSteal": 580,
+        "manaRegen": -8,
+        "rawStrength": 5,
+        "spellDamage": 25,
+        "rawIntelligence": 5,
+        "elementalDefence": -25,
+        "raw1stSpellCost": -3
+      },
+      "base": {
+        "baseHealth": 3400,
+        "baseEarthDefence": 140,
+        "baseWaterDefence": 140,
+        "baseThunderDefence": 110
+      },
+      "rarity": "fabled"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b18b",
+      "itemName": "Pulse Storm",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Pulse Storm",
+      "type": "armour",
+      "armourType": "helmet",
+      "armourMaterial": "diamond",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 95,
+        "agility": 50,
+        "dexterity": 60
+      },
+      "powderSlots": 3,
+      "lore": "In the shadow of the Sun, a storm of unmistakable hatred follows. One which, however ephemeral, may only yield to the great pyres like these in the minutes it has to spare.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          },
+          "name": "helmet.diamond"
+        }
+      },
+      "identifications": {
+        "knockback": 40,
+        "lifeSteal": -300,
+        "walkSpeed": 30,
+        "rawMaxMana": -40,
+        "rawDexterity": 10,
+        "rawThunderSpellDamage": 275
+      },
+      "base": {
+        "baseHealth": 2000,
+        "baseAirDefence": 100,
+        "baseEarthDefence": -120,
+        "baseThunderDefence": 140
+      },
+      "rarity": "legendary"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b18c",
+      "itemName": "Sailor's Charm",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Sailor's Charm",
+      "type": "accessory",
+      "accessoryType": "necklace",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 94,
+        "agility": 55
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1231
+            ]
+          },
+          "name": "necklace.water2"
+        }
+      },
+      "identifications": {
+        "jumpHeight": 2,
+        "earthDefence": -20,
+        "rawIntelligence": 6,
+        "rawWaterDamage": 75,
+        "raw2ndSpellCost": -4
+      },
+      "base": {
+        "baseWaterDefence": 85
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b18d",
+      "itemName": "Sunburnt",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Sunburnt",
+      "type": "armour",
+      "armourType": "chestplate",
+      "armourMaterial": "diamond",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 90,
+        "agility": 45,
+        "strength": 40,
+        "dexterity": 45
+      },
+      "powderSlots": 2,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_chestplate",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          },
+          "name": "chestplate.diamond"
+        }
+      },
+      "identifications": {
+        "damage": 35,
+        "walkSpeed": 20,
+        "rawIntelligence": -25,
+        "mainAttackRange": 30,
+        "raw1stSpellCost": 5,
+        "raw2ndSpellCost": 5,
+        "raw3rdSpellCost": 5,
+        "raw4thSpellCost": 5,
+        "rawMainAttackDamage": 400
+      },
+      "base": {
+        "baseHealth": 2500,
+        "baseAirDefence": 80,
+        "baseFireDefence": -150,
+        "baseEarthDefence": 80,
+        "baseThunderDefence": 80
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b18e",
+      "itemName": "Summer Rays",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Summer Rays",
+      "type": "armour",
+      "armourType": "leggings",
+      "armourMaterial": "diamond",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 85,
+        "agility": 35,
+        "defence": 35,
+        "dexterity": 15
+      },
+      "powderSlots": 2,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_leggings",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          },
+          "name": "leggings.diamond"
+        }
+      },
+      "identifications": {
+        "sprint": -15,
+        "xpBonus": 15,
+        "lifeSteal": 250,
+        "healthRegen": 35,
+        "spellDamage": 20,
+        "rawDexterity": 10,
+        "mainAttackRange": 20
+      },
+      "base": {
+        "baseHealth": 2900,
+        "baseAirDefence": 100,
+        "baseFireDefence": 100,
+        "baseThunderDefence": 80
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b18f",
+      "itemName": "Blissful Solace",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Blissful Solace",
+      "type": "accessory",
+      "accessoryType": "bracelet",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 84,
+        "strength": 45,
+        "intelligence": 30
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1208
+            ]
+          },
+          "name": "bracelet.earth2"
+        }
+      },
+      "identifications": {
+        "earthDamage": 12,
+        "rawMaxMana": 18,
+        "rawAttackSpeed": -1,
+        "rawIntelligence": 6,
+        "mainAttackDamage": 24
+      },
+      "base": {
+        "baseEarthDefence": 30,
+        "baseWaterDefence": 30
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b190",
+      "itemName": "Aestival Solstice",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Aestival Solstice",
+      "type": "accessory",
+      "accessoryType": "necklace",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 45,
+        "defence": 20,
+        "dexterity": 20
+      },
+      "lore": "Enjoy the sun that has graced you with its longest daylight, and cherish it so that you can carry forth its warmth. ",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1232
+            ]
+          },
+          "name": "necklace.multi1"
+        }
+      },
+      "identifications": {
+        "lifeSteal": 35,
+        "rawDefence": 1,
+        "rawDexterity": 1,
+        "healthRegenRaw": 25,
+        "mainAttackDamage": 40
+      },
+      "base": {
+        "baseHealth": 70,
+        "baseFireDefence": 10,
+        "baseThunderDefence": 10
+      },
+      "rarity": "legendary"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b191",
+      "itemName": "Scorched Feather",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Scorched Feather",
+      "type": "accessory",
+      "accessoryType": "bracelet",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 40,
+        "agility": 20,
+        "strength": 20
+      },
+      "lore": "The world is at your fingertips. Don’t reach too far.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1205
+            ]
+          },
+          "name": "bracelet.air1"
+        }
+      },
+      "identifications": {
+        "xpBonus": 8,
+        "manaSteal": 7,
+        "rawAgility": 4,
+        "mainAttackRange": 10,
+        "healingEfficiency": -8
+      },
+      "base": {
+        "baseAirDefence": 10,
+        "baseFireDefence": -20,
+        "baseEarthDefence": 10
+      },
+      "rarity": "legendary"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b192",
+      "itemName": "False Idol",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "False Idol",
+      "type": "armour",
+      "armourType": "helmet",
+      "armourMaterial": "gold",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 37,
+        "strength": 20,
+        "dexterity": 20
+      },
+      "powderSlots": 2,
+      "lore": "Without your god, whom else is there to turn to but me?",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "customModelData": {
+            "rangeDispatch": [
+              7
+            ]
+          },
+          "name": "helmet.gold"
+        }
+      },
+      "identifications": {
+        "lifeSteal": {
+          "min": -65,
+          "raw": -50,
+          "max": -35
+        },
+        "manaSteal": {
+          "min": 2,
+          "raw": 8,
+          "max": 10
+        },
+        "rawDamage": {
+          "min": 18,
+          "raw": 60,
+          "max": 78
+        },
+        "healthRegen": {
+          "min": -19,
+          "raw": -15,
+          "max": -10
+        }
+      },
+      "base": {
+        "baseHealth": 300,
+        "baseEarthDefence": 15,
+        "baseThunderDefence": 15
+      },
+      "rarity": "fabled"
+    },
+    {
+      "_id": "689fd5e27eae261a6d94b193",
+      "itemName": "Firework",
+      "status": "add",
+      "timestamp": 1755305442,
+      "internalName": "Firework",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 35,
+        "agility": 12,
+        "defence": 12
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1195
+            ]
+          },
+          "name": "ring.fire1"
+        }
+      },
+      "identifications": {
+        "exploding": 12,
+        "knockback": 15,
+        "walkSpeed": 7,
+        "rawAgility": 2,
+        "rawDefence": 2
+      },
+      "base": {
+        "baseAirDefence": 10,
+        "baseFireDefence": 10,
+        "baseWaterDefence": -15
+      },
+      "rarity": "rare"
+    }
+  ]
+}

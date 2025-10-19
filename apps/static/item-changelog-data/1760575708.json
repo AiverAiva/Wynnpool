@@ -1,0 +1,520 @@
+{
+  "modify": [
+    {
+      "_id": "68f040dc49412fb6eda80db0",
+      "itemName": "Labyrinth",
+      "status": "modify",
+      "timestamp": 1760575708,
+      "before": {
+        "internalName": "Labyrinth",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "verySlow",
+        "averageDps": 830,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 104,
+          "classRequirement": "archer",
+          "defence": 85,
+          "strength": 70
+        },
+        "majorIds": {
+          "Twisting Threads": "<span class='font-ascii' style='color:#55FFFF'>+Twisting Threads: <span class='font-ascii' style='color:#00AAAA'>Tangled Traps ropes gain +1 range, can overlap up to 3 times, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>26%</span><darkAqua>. Gain +12 traps with 66% duration that cannot be triggered by enemies.</span></span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "Left. Right. Left. Right. They are desperate for an escape, merely playthings in a maze of your design. Left. Left. Right.  Turn back. When mountains of stone can shift at your command, their world is reduced to a single path. Left. Right. Does it ever end?",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          }
+        },
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "fireDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDefence": 20,
+          "earthDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "3rdSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 470,
+            "raw": 470,
+            "max": 530
+          },
+          "baseEarthDamage": {
+            "min": 485,
+            "raw": 485,
+            "max": 515
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Labyrinth",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "verySlow",
+        "averageDps": 830,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 104,
+          "classRequirement": "archer",
+          "defence": 85,
+          "strength": 70
+        },
+        "majorIds": {
+          "Twisting Threads": "<span class='font-ascii' style='color:#55FFFF'>+Twisting Threads: <span class='font-ascii' style='color:#00AAAA'>Tangled Traps ropes gain +1 range, can overlap up to 3 times, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>30%</span><darkAqua>. Gain +12 traps with 66% duration that cannot be triggered by enemies.</span></span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "Left. Right. Left. Right. They are desperate for an escape, merely playthings in a maze of your design. Left. Left. Right.  Turn back. When mountains of stone can shift at your command, their world is reduced to a single path. Left. Right. Does it ever end?",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          }
+        },
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "fireDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDefence": 20,
+          "earthDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "3rdSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 470,
+            "raw": 470,
+            "max": 530
+          },
+          "baseEarthDamage": {
+            "min": 485,
+            "raw": 485,
+            "max": 515
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "68f040dc49412fb6eda80db1",
+      "itemName": "Divzer",
+      "status": "modify",
+      "timestamp": 1760575708,
+      "before": {
+        "internalName": "Divzer",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "superFast",
+        "averageDps": 1163,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "archer",
+          "dexterity": 115
+        },
+        "powderSlots": 3,
+        "lore": "Unruly magics of void and darkness are tamed within this bow's string. While those energies are never to be released, arrows fired from it fire at such blinding speeds so as to phase out of existence when they hit their target.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.thunder3"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 274,
+            "raw": 912,
+            "max": 1186
+          },
+          "manaSteal": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "fireDamage": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "rawAgility": -550,
+          "rawDefence": -73,
+          "waterDamage": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "rawDexterity": 37,
+          "rawAttackSpeed": 1,
+          "rawSpellDamage": {
+            "min": 76,
+            "raw": 253,
+            "max": 329
+          },
+          "rawMainAttackDamage": {
+            "min": 161,
+            "raw": 536,
+            "max": 697
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 36
+          },
+          "baseThunderDamage": {
+            "min": 235,
+            "raw": 235,
+            "max": 235
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Divzer",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "superFast",
+        "averageDps": 1026,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "archer",
+          "dexterity": 115
+        },
+        "powderSlots": 3,
+        "lore": "Unruly magics of void and darkness are tamed within this bow's string. While those energies are never to be released, arrows fired from it fire at such blinding speeds so as to phase out of existence when they hit their target.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.thunder3"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 274,
+            "raw": 912,
+            "max": 1186
+          },
+          "manaSteal": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "fireDamage": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "rawAgility": -550,
+          "rawDefence": -73,
+          "waterDamage": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "rawDexterity": 37,
+          "rawAttackSpeed": 1,
+          "rawSpellDamage": {
+            "min": 76,
+            "raw": 253,
+            "max": 329
+          },
+          "rawMainAttackDamage": {
+            "min": 161,
+            "raw": 536,
+            "max": 697
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 36
+          },
+          "baseThunderDamage": {
+            "min": 235,
+            "raw": 235,
+            "max": 235
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "68f040dc49412fb6eda80db2",
+      "itemName": "Nirvana",
+      "status": "modify",
+      "timestamp": 1760575708,
+      "before": {
+        "internalName": "Nirvana",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "normal",
+        "averageDps": 659,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "assassin",
+          "intelligence": 110
+        },
+        "majorIds": {
+          "Transcendence": "<span class='font-ascii' style='color:#55FFFF'>+Transcendence: <span class='font-ascii' style='color:#00AAAA'>30% chance for spells to cost no mana when casted.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "Spiritual enlightenment is a goal that many monks hope to one day grasp the barest glimpse of, often thought to be a goal that must be worked towards over a lifetime. Holding this polished, translucent blade will instantly induce that lofty state until it is let go.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.water3"
+          }
+        },
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "manaSteal": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawHealth": {
+            "min": -2600,
+            "raw": -2000,
+            "max": -1400
+          },
+          "reflection": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "spellDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawIntelligence": 40,
+          "mainAttackDamage": {
+            "min": -104,
+            "raw": -80,
+            "max": -56
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 300,
+            "raw": 300,
+            "max": 340
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Nirvana",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "normal",
+        "averageDps": 659,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "assassin",
+          "intelligence": 110
+        },
+        "majorIds": {
+          "Transcendence": "<span class='font-ascii' style='color:#55FFFF'>+Transcendence: <span class='font-ascii' style='color:#00AAAA'>25% chance for spells to cost no mana when casted.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "Spiritual enlightenment is a goal that many monks hope to one day grasp the barest glimpse of, often thought to be a goal that must be worked towards over a lifetime. Holding this polished, translucent blade will instantly induce that lofty state until it is let go.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.water3"
+          }
+        },
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "manaSteal": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawHealth": {
+            "min": -2600,
+            "raw": -2000,
+            "max": -1400
+          },
+          "reflection": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "spellDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawIntelligence": 40,
+          "mainAttackDamage": {
+            "min": -104,
+            "raw": -80,
+            "max": -56
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 300,
+            "raw": 300,
+            "max": 340
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "68f040dc49412fb6eda80db3",
+      "itemName": "Quilted Carapace",
+      "status": "modify",
+      "timestamp": 1760575708,
+      "before": {
+        "internalName": "Quilted Carapace",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "pale_diamond",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 90,
+          "defence": 85,
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Transcendence": "<span class='font-ascii' style='color:#55FFFF'>+Transcendence: <span class='font-ascii' style='color:#00AAAA'>30% chance for spells to cost no mana when casted.</span></span>"
+        },
+        "powderSlots": 5,
+        "lore": "This patchwork of shells from the Corkian Astrochelys makes for quite the statement sweater; it keeps your neck warm and besides, your foes' fashion fancies feel frivolous, anyway.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_diamond"
+          }
+        },
+        "identifications": {
+          "sprint": -25,
+          "thorns": 40,
+          "lifeSteal": -325,
+          "healthRegen": 40,
+          "elementalDefence": 40
+        },
+        "base": {
+          "baseHealth": 2750,
+          "baseAirDefence": 50,
+          "baseFireDefence": 125,
+          "baseEarthDefence": 75,
+          "baseWaterDefence": 100,
+          "baseThunderDefence": 50
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Quilted Carapace",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "pale_diamond",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 90,
+          "defence": 85,
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Transcendence": "<span class='font-ascii' style='color:#55FFFF'>+Transcendence: <span class='font-ascii' style='color:#00AAAA'>25% chance for spells to cost no mana when casted.</span></span>"
+        },
+        "powderSlots": 5,
+        "lore": "This patchwork of shells from the Corkian Astrochelys makes for quite the statement sweater; it keeps your neck warm and besides, your foes' fashion fancies feel frivolous, anyway.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_diamond"
+          }
+        },
+        "identifications": {
+          "sprint": -25,
+          "thorns": 40,
+          "lifeSteal": -325,
+          "healthRegen": 40,
+          "elementalDefence": 40
+        },
+        "base": {
+          "baseHealth": 2750,
+          "baseAirDefence": 50,
+          "baseFireDefence": 125,
+          "baseEarthDefence": 75,
+          "baseWaterDefence": 100,
+          "baseThunderDefence": 50
+        },
+        "rarity": "fabled"
+      }
+    }
+  ]
+}
