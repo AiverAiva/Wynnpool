@@ -1,0 +1,162 @@
+{
+  "modify": [
+    {
+      "_id": "68326aa9257b2784f329f390",
+      "itemName": "Trance",
+      "status": "modify",
+      "timestamp": 1748134569,
+      "before": {
+        "internalName": "Trance",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "super_fast",
+        "averageDps": 413,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 104,
+          "classRequirement": "mage",
+          "dexterity": 80,
+          "defence": 70
+        },
+        "majorIds": {
+          "Fixate": "<span class='font-ascii' style='color:#55FFFF'>+Fixate: <span class='font-ascii' style='color:#00AAAA'>Devitalize raises your Winded cap by 70, but loses 0.15% weaken per stack and lowers Winded damage effects by 55%. Timelock absorbs up to 180 Winded.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "Down. Your enemies will fall slack. Deeper. Do you know this compulsion you bring? Deeper still. This implement, reaching from within and without. Even deeper. Souls and wills to command at the flex of a finger. Almost gone. It is my compulsion, too great to ignore. It is my implement, too strong to resist. My puppets, too deep to escape. Drop.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "wand.fire3"
+          }
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "lifeSteal": {
+            "min": 225,
+            "raw": 750,
+            "max": 975
+          },
+          "manaSteal": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawAttackSpeed": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "walkSpeed": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "stealing": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 52
+          },
+          "baseThunderDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 50
+          },
+          "baseFireDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 35
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Trance",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "super_fast",
+        "averageDps": 413,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 104,
+          "classRequirement": "mage",
+          "dexterity": 80,
+          "defence": 70
+        },
+        "majorIds": {
+          "Fixate": "<span class='font-ascii' style='color:#55FFFF'>+Fixate: <span class='font-ascii' style='color:#00AAAA'>Devitalize doubles your Winded cap, but lowers Winded damage effects by 30%. Timelock absorbs up to 120 Winded.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "Down. Your enemies will fall slack. Deeper. Do you know this compulsion you bring? Deeper still. This implement, reaching from within and without. Even deeper. Souls and wills to command at the flex of a finger. Almost gone. It is my compulsion, too great to ignore. It is my implement, too strong to resist. My puppets, too deep to escape. Drop.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "wand.fire3"
+          }
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "lifeSteal": {
+            "min": 225,
+            "raw": 750,
+            "max": 975
+          },
+          "manaSteal": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawAttackSpeed": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "walkSpeed": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "stealing": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 52
+          },
+          "baseThunderDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 50
+          },
+          "baseFireDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 35
+          }
+        },
+        "rarity": "mythic"
+      }
+    }
+  ]
+}

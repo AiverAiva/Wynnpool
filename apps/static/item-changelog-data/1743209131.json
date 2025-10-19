@@ -1,0 +1,5512 @@
+{
+  "remove": [
+    {
+      "_id": "67e742ab6765f4346142d260",
+      "itemName": "Rectificator",
+      "status": "remove",
+      "timestamp": 1743209131,
+      "internalName": "Rectificator",
+      "type": "weapon",
+      "weaponType": "relik",
+      "attackSpeed": "normal",
+      "averageDps": 185,
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 45,
+        "classRequirement": "shaman"
+      },
+      "powderSlots": 3,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:iron_horse_armor",
+          "customModelData": "404",
+          "name": "relik.basicWood"
+        }
+      },
+      "identifications": {
+        "rawHealth": {
+          "min": 45,
+          "raw": 150,
+          "max": 195
+        },
+        "elementalDamage": {
+          "min": 5,
+          "raw": 16,
+          "max": 21
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 80,
+          "raw": 80,
+          "max": 100
+        }
+      },
+      "rarity": "unique"
+    },
+    {
+      "_id": "67e742ab6765f4346142d261",
+      "itemName": "Daybreak",
+      "status": "remove",
+      "timestamp": 1743209131,
+      "internalName": "Daybreak",
+      "type": "weapon",
+      "weaponType": "wand",
+      "attackSpeed": "very_slow",
+      "averageDps": 87,
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 40,
+        "classRequirement": "mage",
+        "dexterity": 10,
+        "defence": 20
+      },
+      "powderSlots": 2,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:iron_horse_armor",
+          "customModelData": "350",
+          "name": "wand.multi2"
+        }
+      },
+      "identifications": {
+        "spellDamage": {
+          "min": 5,
+          "raw": 15,
+          "max": 20
+        },
+        "healthRegenRaw": {
+          "min": 5,
+          "raw": 17,
+          "max": 22
+        },
+        "rawHealth": {
+          "min": 45,
+          "raw": 150,
+          "max": 195
+        },
+        "rawAttackSpeed": -1,
+        "walkSpeed": {
+          "min": -19,
+          "raw": -15,
+          "max": -10
+        },
+        "waterDamage": {
+          "min": -19,
+          "raw": -15,
+          "max": -10
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 20,
+          "raw": 20,
+          "max": 50
+        },
+        "baseThunderDamage": {
+          "min": 10,
+          "raw": 10,
+          "max": 60
+        },
+        "baseFireDamage": {
+          "min": 30,
+          "raw": 30,
+          "max": 40
+        }
+      },
+      "rarity": "unique"
+    }
+  ],
+  "add": [
+    {
+      "_id": "67e742ab6765f4346142d25c",
+      "itemName": "Minokawa's Grasp",
+      "status": "add",
+      "timestamp": 1743209131,
+      "internalName": "Minokawa's Grasp",
+      "type": "accessory",
+      "accessoryType": "bracelet",
+      "dropRestriction": "never",
+      "requirements": {
+        "level": 95,
+        "intelligence": 45,
+        "agility": 55
+      },
+      "majorIds": {
+        "Sun Eater": "<span class='font-ascii' style='color:#55FFFF'>+Sun Eater: <span class='font-ascii' style='color:#00AAAA'>Failing to backstab an enemy from behind blinds them for 2s and slows them by 20% for 5s.</span></span>"
+      },
+      "lore": "The sun fears its wings, and so shall your enemies.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:iron_horse_armor",
+          "customModelData": "161",
+          "name": "bracelet.air2"
+        }
+      },
+      "identifications": {
+        "rawAgility": 3,
+        "3rdSpellCost": {
+          "min": 10,
+          "raw": 8,
+          "max": 6
+        },
+        "jumpHeight": {
+          "min": 1,
+          "raw": 3,
+          "max": 4
+        },
+        "airDamage": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "elementalDefence": {
+          "min": -17,
+          "raw": -13,
+          "max": -9
+        }
+      },
+      "base": {
+        "baseHealth": -300,
+        "baseEarthDefence": -120,
+        "baseAirDefence": 90
+      },
+      "rarity": "fabled"
+    },
+    {
+      "_id": "67e742ab6765f4346142d25d",
+      "itemName": "Auxetic Capacitor",
+      "status": "add",
+      "timestamp": 1743209131,
+      "internalName": "Auxetic Capacitor",
+      "type": "accessory",
+      "accessoryType": "necklace",
+      "dropRestriction": "never",
+      "requirements": {
+        "level": 88,
+        "dexterity": 65
+      },
+      "majorIds": {
+        "Self-sufficient": "<span class='font-ascii' style='color:#55FFFF'>+Self-sufficient: <span class='font-ascii' style='color:#00AAAA'>Powder Specials can no longer be charged manually, but accumulate 7% charge every second.</span></span>"
+      },
+      "lore": "This pendant is not much more than a battery on a string, but a curious combination of Avos and electromagic seem to have left it with the ability to charge power from its surroundings on its own.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:iron_horse_armor",
+          "customModelData": "184",
+          "name": "necklace.thunder2"
+        }
+      },
+      "identifications": {
+        "rawDexterity": 5,
+        "spellDamage": {
+          "min": 2,
+          "raw": 6,
+          "max": 8
+        },
+        "healthRegenRaw": {
+          "min": -78,
+          "raw": -60,
+          "max": -42
+        },
+        "healingEfficiency": {
+          "min": -8,
+          "raw": -6,
+          "max": -4
+        },
+        "rawThunderDamage": {
+          "min": 18,
+          "raw": 60,
+          "max": 78
+        }
+      },
+      "base": {
+        "baseHealth": -250,
+        "baseThunderDefence": -40
+      },
+      "rarity": "fabled"
+    },
+    {
+      "_id": "67e742ab6765f4346142d25e",
+      "itemName": "Recompense",
+      "status": "add",
+      "timestamp": 1743209131,
+      "internalName": "Rectificator",
+      "type": "weapon",
+      "weaponType": "relik",
+      "attackSpeed": "normal",
+      "averageDps": 216,
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 45,
+        "classRequirement": "shaman"
+      },
+      "powderSlots": 3,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:iron_horse_armor",
+          "customModelData": "404",
+          "name": "relik.basicWood"
+        }
+      },
+      "identifications": {
+        "neutralDamage": {
+          "min": 8,
+          "raw": 27,
+          "max": 35
+        },
+        "rawNeutralDamage": {
+          "min": 17,
+          "raw": 58,
+          "max": 75
+        },
+        "rawHealth": {
+          "min": 52,
+          "raw": 173,
+          "max": 225
+        },
+        "elementalDamage": {
+          "min": -26,
+          "raw": -20,
+          "max": -14
+        },
+        "elementalDefence": {
+          "min": 8,
+          "raw": 27,
+          "max": 35
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 100,
+          "raw": 100,
+          "max": 110
+        }
+      },
+      "rarity": "unique"
+    },
+    {
+      "_id": "67e742ab6765f4346142d25f",
+      "itemName": "Sun Dance",
+      "status": "add",
+      "timestamp": 1743209131,
+      "internalName": "Daybreak",
+      "type": "weapon",
+      "weaponType": "wand",
+      "attackSpeed": "very_slow",
+      "averageDps": 87,
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 40,
+        "classRequirement": "mage",
+        "dexterity": 10,
+        "defence": 20
+      },
+      "powderSlots": 2,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:iron_horse_armor",
+          "customModelData": "350",
+          "name": "wand.multi2"
+        }
+      },
+      "identifications": {
+        "spellDamage": {
+          "min": 5,
+          "raw": 15,
+          "max": 20
+        },
+        "healthRegenRaw": {
+          "min": 5,
+          "raw": 17,
+          "max": 22
+        },
+        "rawHealth": {
+          "min": 45,
+          "raw": 150,
+          "max": 195
+        },
+        "rawAttackSpeed": -1,
+        "walkSpeed": {
+          "min": -19,
+          "raw": -15,
+          "max": -10
+        },
+        "waterDamage": {
+          "min": -19,
+          "raw": -15,
+          "max": -10
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 20,
+          "raw": 20,
+          "max": 50
+        },
+        "baseThunderDamage": {
+          "min": 10,
+          "raw": 10,
+          "max": 60
+        },
+        "baseFireDamage": {
+          "min": 30,
+          "raw": 30,
+          "max": 40
+        }
+      },
+      "rarity": "unique"
+    }
+  ],
+  "modify": [
+    {
+      "_id": "67e742ab6765f4346142d262",
+      "itemName": "Death Grasp",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Death Grasp",
+        "type": "accessory",
+        "accessoryType": "bracelet",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 103,
+          "strength": 75
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "bracelet.earth2"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          },
+          "earthMainAttackDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawAttackSpeed": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "walkSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "mainAttackRange": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseHealth": 500,
+          "baseEarthDefence": 80
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Death Grasp",
+        "type": "accessory",
+        "accessoryType": "bracelet",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 103,
+          "strength": 75
+        },
+        "lore": "Unspeakable things live within the shadows; waiting so patiently to take others into their ranks. Facsimiles of their existence, painted in inscrutable darkness. Nobody will see. Nobody will know. Nobody will remember.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "bracelet.earth2"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          },
+          "earthMainAttackDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawAttackSpeed": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "walkSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "mainAttackRange": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseHealth": 500,
+          "baseEarthDefence": 80
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d263",
+      "itemName": "Animosity",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Animosity",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "super_slow",
+        "averageDps": 753,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 103,
+          "classRequirement": "assassin",
+          "strength": 63,
+          "dexterity": 63
+        },
+        "majorIds": {
+          "Hurricane's Eye": "<span class='font-ascii' style='color:#55FFFF'>+Hurricane's Eye: <span class='font-ascii' style='color:#00AAAA'>Violent Vortex applies 2 marks to every enemy it hits.</span></span>"
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "dagger.basicWood"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 161,
+            "raw": 535,
+            "max": 696
+          },
+          "manaRegen": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawAttackSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "walkSpeed": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "knockback": {
+            "min": 10,
+            "raw": 33,
+            "max": 43
+          },
+          "elementalMainAttackDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 133,
+            "raw": 133,
+            "max": 166
+          },
+          "baseEarthDamage": {
+            "min": 666,
+            "raw": 666,
+            "max": 666
+          },
+          "baseThunderDamage": {
+            "min": 360,
+            "raw": 360,
+            "max": 960
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Animosity",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "super_slow",
+        "averageDps": 753,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 103,
+          "classRequirement": "assassin",
+          "strength": 63,
+          "dexterity": 63
+        },
+        "majorIds": {
+          "Hurricane's Eye": "<span class='font-ascii' style='color:#55FFFF'>+Hurricane's Eye: <span class='font-ascii' style='color:#00AAAA'>Violent Vortex applies 2 marks to every enemy it hits.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "Let its whispers guide your hand, and let nothing but a scar of resentment remain.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "dagger.basicWood"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 161,
+            "raw": 535,
+            "max": 696
+          },
+          "manaRegen": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawAttackSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "walkSpeed": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "knockback": {
+            "min": 10,
+            "raw": 33,
+            "max": 43
+          },
+          "elementalMainAttackDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 133,
+            "raw": 133,
+            "max": 166
+          },
+          "baseEarthDamage": {
+            "min": 666,
+            "raw": 666,
+            "max": 666
+          },
+          "baseThunderDamage": {
+            "min": 360,
+            "raw": 360,
+            "max": 960
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d264",
+      "itemName": "Gravitron",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Gravitron",
+        "type": "accessory",
+        "accessoryType": "bracelet",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 101,
+          "strength": 50,
+          "agility": 30
+        },
+        "dropMeta": {
+          "name": "Lootrun Rewards",
+          "type": "lootrun",
+          "coordinates": [
+            99999,
+            99999,
+            99999
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "bracelet.basicIron"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": -6,
+          "mainAttackDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "sprint": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "knockback": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "waterDefence": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseHealth": 525,
+          "baseEarthDefence": 30,
+          "baseAirDefence": 30
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Gravitron",
+        "type": "accessory",
+        "accessoryType": "bracelet",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 101,
+          "strength": 50,
+          "agility": 30
+        },
+        "dropMeta": {
+          "name": "Lootrun Rewards",
+          "type": "lootrun",
+          "coordinates": [
+            99999,
+            99999,
+            99999
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "bracelet.basicIron"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": -6,
+          "mainAttackDamage": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "sprint": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "knockback": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "waterDefence": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseHealth": 525,
+          "baseEarthDefence": 30,
+          "baseAirDefence": 30
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d265",
+      "itemName": "The Nothing",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "The Nothing",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "slow",
+        "averageDps": 2,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "mage",
+          "dexterity": 55,
+          "defence": 55
+        },
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "wand.fire3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": -25,
+          "lifeSteal": 700,
+          "manaSteal": 12,
+          "raw3rdSpellCost": -10,
+          "walkSpeed": 10,
+          "rawThunderSpellDamage": 425,
+          "rawFireSpellDamage": 425,
+          "rawAirSpellDamage": 425
+        },
+        "base": {
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1
+          },
+          "baseFireDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1
+          },
+          "baseAirDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "The Nothing",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "slow",
+        "averageDps": 2,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "mage",
+          "dexterity": 55,
+          "defence": 55
+        },
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "wand.fire3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": -25,
+          "lifeSteal": 700,
+          "manaSteal": 12,
+          "raw3rdSpellCost": -10,
+          "walkSpeed": 10,
+          "rawThunderDamage": 425,
+          "rawFireDamage": 425,
+          "rawAirDamage": 425
+        },
+        "base": {
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1
+          },
+          "baseFireDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1
+          },
+          "baseAirDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d266",
+      "itemName": "Dondasch",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Dondasch",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 100,
+          "strength": 50,
+          "agility": 50
+        },
+        "lore": "The sheer bond between Adamastor and Urdar has manifested itself into a physical form due to their duress. Such power is not to be abused...",
+        "dropMeta": {
+          "name": "Aerie of the Recluse",
+          "type": "altar",
+          "coordinates": [
+            -1746,
+            65,
+            -3069
+          ]
+        },
+        "identifications": {
+          "rawStrength": 20,
+          "rawMainAttackDamage": {
+            "min": 84,
+            "raw": 280,
+            "max": 364
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "earthDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "fireDamage": {
+            "min": -130,
+            "raw": -100,
+            "max": -70
+          },
+          "airDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseHealth": 3375,
+          "baseEarthDefence": 150,
+          "baseAirDefence": 150
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Dondasch",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 100,
+          "strength": 50,
+          "agility": 50
+        },
+        "lore": "The sheer bond between Adamastor and Urdar has manifested itself into a physical form due to their duress. Such power is not to be abused...",
+        "dropMeta": {
+          "name": "Aerie of the Recluse",
+          "type": "altar",
+          "coordinates": [
+            -1746,
+            65,
+            -3069
+          ]
+        },
+        "identifications": {
+          "rawStrength": 20,
+          "rawMainAttackDamage": {
+            "min": 84,
+            "raw": 280,
+            "max": 364
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "earthDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "fireDamage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "airDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseHealth": 3375,
+          "baseEarthDefence": 150,
+          "baseAirDefence": 150
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d267",
+      "itemName": "Gravity",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Gravity",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 100,
+          "strength": 55,
+          "dexterity": 55,
+          "intelligence": 55,
+          "defence": 55,
+          "agility": 55
+        },
+        "majorIds": {
+          "Magnet": "<span class='font-ascii' style='color:#55FFFF'>+Magnet: <span class='font-ascii' style='color:#00AAAA'>Pulls items dropped by mobs towards you.</span></span>"
+        },
+        "powderSlots": 5,
+        "lore": "No one knows how this extremely dense chestplate can even logically exist. It is almost paradoxical in nature, and affects its wearers in unfathomable ways.",
+        "identifications": {
+          "rawSpellDamage": {
+            "min": -214,
+            "raw": -165,
+            "max": -115
+          },
+          "healthRegenRaw": {
+            "min": 84,
+            "raw": 280,
+            "max": 364
+          },
+          "lifeSteal": {
+            "min": 120,
+            "raw": 400,
+            "max": 520
+          },
+          "manaSteal": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "thorns": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "reflection": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawAttackSpeed": -1,
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          }
+        },
+        "base": {
+          "baseHealth": 5850,
+          "baseEarthDefence": 350,
+          "baseThunderDefence": 350,
+          "baseWaterDefence": 350,
+          "baseFireDefence": 350,
+          "baseAirDefence": 350
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Gravity",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 100,
+          "strength": 50,
+          "dexterity": 50,
+          "intelligence": 50,
+          "defence": 50,
+          "agility": 50
+        },
+        "majorIds": {
+          "Magnet": "<span class='font-ascii' style='color:#55FFFF'>+Magnet: <span class='font-ascii' style='color:#00AAAA'>Pulls items dropped by mobs towards you.</span></span>"
+        },
+        "powderSlots": 5,
+        "lore": "No one knows how this extremely dense chestplate can even logically exist. It is almost paradoxical in nature, and affects its wearers in unfathomable ways.",
+        "identifications": {
+          "rawSpellDamage": {
+            "min": -214,
+            "raw": -165,
+            "max": -115
+          },
+          "healthRegenRaw": {
+            "min": 84,
+            "raw": 280,
+            "max": 364
+          },
+          "lifeSteal": {
+            "min": 120,
+            "raw": 400,
+            "max": 520
+          },
+          "manaSteal": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "thorns": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "reflection": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawAttackSpeed": -1,
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          }
+        },
+        "base": {
+          "baseHealth": 5850,
+          "baseEarthDefence": 350,
+          "baseThunderDefence": 350,
+          "baseWaterDefence": 350,
+          "baseFireDefence": 350,
+          "baseAirDefence": 350
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d268",
+      "itemName": "The End",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "The End",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 784,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 100,
+          "classRequirement": "shaman",
+          "strength": 55,
+          "agility": 55
+        },
+        "powderSlots": 1,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.earth3"
+          }
+        },
+        "identifications": {
+          "rawAgility": 10,
+          "mainAttackDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          },
+          "rawMainAttackDamage": {
+            "min": 110,
+            "raw": 365,
+            "max": 475
+          },
+          "rawSpellDamage": {
+            "min": -273,
+            "raw": -210,
+            "max": -147
+          },
+          "lifeSteal": {
+            "min": 135,
+            "raw": 450,
+            "max": 585
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "waterDefence": {
+            "min": -58,
+            "raw": -45,
+            "max": -31
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 260,
+            "raw": 260,
+            "max": 290
+          },
+          "baseAirDamage": {
+            "min": 235,
+            "raw": 235,
+            "max": 260
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "The End",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 780,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 100,
+          "classRequirement": "shaman",
+          "strength": 55,
+          "agility": 55
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.earth3"
+          }
+        },
+        "identifications": {
+          "rawAgility": 10,
+          "rawMainAttackDamage": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          },
+          "rawSpellDamage": {
+            "min": -273,
+            "raw": -210,
+            "max": -147
+          },
+          "lifeSteal": {
+            "min": 135,
+            "raw": 450,
+            "max": 585
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "mainAttackRange": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "waterDefence": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 290
+          },
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 360
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d269",
+      "itemName": "Medeis",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Medeis",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 100,
+          "dexterity": 40,
+          "intelligence": 40,
+          "defence": 40
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "rawDexterity": 10,
+          "rawIntelligence": 10,
+          "rawDefence": 10,
+          "spellDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "earthDamage": {
+            "min": -97,
+            "raw": -75,
+            "max": -52
+          },
+          "thunderDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "waterDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "fireDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "airDamage": {
+            "min": -97,
+            "raw": -75,
+            "max": -52
+          }
+        },
+        "base": {
+          "baseHealth": 2950,
+          "baseEarthDefence": -100,
+          "baseThunderDefence": 75,
+          "baseWaterDefence": 75,
+          "baseFireDefence": 75,
+          "baseAirDefence": -100
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Medeis",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 100,
+          "dexterity": 40,
+          "intelligence": 40,
+          "defence": 40
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "rawDexterity": 10,
+          "rawIntelligence": 10,
+          "rawDefence": 10,
+          "spellDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "earthDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "thunderDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "waterDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "fireDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "airDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseHealth": 2950,
+          "baseEarthDefence": -100,
+          "baseThunderDefence": 75,
+          "baseWaterDefence": 75,
+          "baseFireDefence": 75,
+          "baseAirDefence": -100
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d26a",
+      "itemName": "Everlasting Tome of Defensive Mastery II",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Everlasting Tome of Defensive Mastery II",
+        "type": "tome",
+        "tomeType": "armour_tome",
+        "raidReward": true,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 100
+        },
+        "dropMeta": {
+          "name": "The Canyon Colossus",
+          "type": "raid",
+          "coordinates": [
+            662,
+            49,
+            -4448
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "tome.armour"
+          }
+        },
+        "identifications": {
+          "rawHealth": {
+            "min": 90,
+            "raw": 300,
+            "max": 390
+          },
+          "healthRegenRaw": {
+            "min": 14,
+            "raw": 45,
+            "max": 59
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Everlasting Tome of Defensive Mastery II",
+        "type": "tome",
+        "tomeType": "armour_tome",
+        "raidReward": true,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 100
+        },
+        "dropMeta": {
+          "name": "The Canyon Colossus",
+          "type": "raid",
+          "coordinates": [
+            662,
+            49,
+            -4448
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "tome.armour"
+          }
+        },
+        "identifications": {
+          "rawHealth": {
+            "min": 90,
+            "raw": 300,
+            "max": 390
+          },
+          "healthRegenRaw": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d26b",
+      "itemName": "Lower",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Lower",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 585,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 99,
+          "classRequirement": "shaman"
+        },
+        "powderSlots": 3,
+        "lore": "The name has got to be misspelled... It doesn't even make any sense! ",
+        "dropMeta": {
+          "name": "??????????",
+          "type": "altar",
+          "coordinates": [
+            1296,
+            19,
+            -4670
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "rawStrength": 10,
+          "raw1stSpellCost": {
+            "min": 72,
+            "raw": 55,
+            "max": 39
+          },
+          "raw2ndSpellCost": {
+            "min": -4,
+            "raw": -15,
+            "max": -19
+          },
+          "raw3rdSpellCost": {
+            "min": -4,
+            "raw": -15,
+            "max": -19
+          },
+          "raw4thSpellCost": {
+            "min": -4,
+            "raw": -15,
+            "max": -19
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 350,
+            "raw": 350,
+            "max": 430
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Lower",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 690,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 99,
+          "classRequirement": "shaman"
+        },
+        "powderSlots": 3,
+        "lore": "The name has got to be misspelled... It doesn't even make any sense! ",
+        "dropMeta": {
+          "name": "??????????",
+          "type": "altar",
+          "coordinates": [
+            1296,
+            19,
+            -4670
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "rawStrength": 10,
+          "raw1stSpellCost": {
+            "min": 26,
+            "raw": 20,
+            "max": 14
+          },
+          "raw2ndSpellCost": {
+            "min": -4,
+            "raw": -15,
+            "max": -19
+          },
+          "raw3rdSpellCost": {
+            "min": -4,
+            "raw": -15,
+            "max": -19
+          },
+          "raw4thSpellCost": {
+            "min": -4,
+            "raw": -15,
+            "max": -19
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 380,
+            "raw": 380,
+            "max": 540
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d26c",
+      "itemName": "Propeller Hat",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Propeller Hat",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "diamond",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 98,
+          "agility": 70
+        },
+        "majorIds": {
+          "Windsurf": "<span class='font-ascii' style='color:#55FFFF'>+Windsurf: <span class='font-ascii' style='color:#00AAAA'>Righting Reflex lasts twice as long and is affected stronger by movement speed.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "A tag on the inside of the hat reads: \"Do not fly during thunderstorms! The wearer is liable for all injuries sustained while using this product.\"",
+        "dropMeta": {
+          "name": "Lootrun Rewards",
+          "type": "lootrun",
+          "coordinates": [
+            99999,
+            99999,
+            99999
+          ]
+        },
+        "identifications": {
+          "rawDexterity": -5,
+          "rawAgility": 15,
+          "spellDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "manaRegen": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "reflection": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 2,
+            "max": 3
+          },
+          "airSpellDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          }
+        },
+        "base": {
+          "baseHealth": 3700,
+          "baseThunderDefence": -125,
+          "baseAirDefence": 200
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Propeller Hat",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "diamond",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 98,
+          "agility": 70
+        },
+        "majorIds": {
+          "Windsurf": "<span class='font-ascii' style='color:#55FFFF'>+Windsurf: <span class='font-ascii' style='color:#00AAAA'>Righting Reflex has 75% reduced fall speed, lasts twice as long, and is affected stronger by movement speed.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "A tag on the inside of the hat reads: \"Do not fly during thunderstorms! The wearer is liable for all injuries sustained while using this product.\"",
+        "dropMeta": {
+          "name": "Lootrun Rewards",
+          "type": "lootrun",
+          "coordinates": [
+            99999,
+            99999,
+            99999
+          ]
+        },
+        "identifications": {
+          "rawDexterity": -5,
+          "rawAgility": 15,
+          "spellDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "manaRegen": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "reflection": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 2,
+            "max": 3
+          },
+          "airSpellDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          }
+        },
+        "base": {
+          "baseHealth": 3700,
+          "baseThunderDefence": -125,
+          "baseAirDefence": 200
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d26d",
+      "itemName": "Cryoseism",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Cryoseism",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "fast",
+        "averageDps": 645,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "shaman",
+          "intelligence": 70
+        },
+        "powderSlots": 3,
+        "lore": "One of the first dwarven theories of the increasing quakes in east Gavel was that the freezing of a Dogun town in the Heights also froze a massive underground spring, disrupting the earth and chain-reacting across the province.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.water3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": 15,
+          "mainAttackDamage": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "raw1stSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "raw4thSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "walkSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "waterDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 241,
+            "raw": 241,
+            "max": 275
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Cryoseism",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "fast",
+        "averageDps": 645,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "shaman",
+          "intelligence": 70
+        },
+        "powderSlots": 3,
+        "lore": "One of the first dwarven theories of the increasing quakes in east Gavel was that the freezing of a Dogun town in the Heights also froze a massive underground spring, disrupting the earth and chain-reacting across the province.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.water3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": 15,
+          "mainAttackDamage": {
+            "min": -78,
+            "raw": -60,
+            "max": -42
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "raw1stSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "walkSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "waterDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 241,
+            "raw": 241,
+            "max": 275
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d26e",
+      "itemName": "Lament",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Lament",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "slow",
+        "averageDps": 375,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 96,
+          "classRequirement": "mage",
+          "intelligence": 110
+        },
+        "powderSlots": 3,
+        "lore": "When the lost city of Sarnfic sunk beneath the depths, nothing but the bubbles of screams and this single wand surfaced. When used, you can still hear the towns lament.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "wand.water3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": 20,
+          "lifeSteal": {
+            "min": -650,
+            "raw": -500,
+            "max": -350
+          },
+          "manaSteal": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "healingEfficiency": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "1stSpellCost": {
+            "min": -10,
+            "raw": -35,
+            "max": -45
+          },
+          "waterDamage": {
+            "min": 24,
+            "raw": 80,
+            "max": 104
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 90
+          },
+          "baseWaterDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 190
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Lament",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "slow",
+        "averageDps": 375,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 96,
+          "classRequirement": "mage",
+          "intelligence": 110
+        },
+        "powderSlots": 3,
+        "lore": "When the lost city of Sarnfic sunk beneath the depths, nothing but the bubbles of screams and this single wand surfaced. When used, you can still hear the town's lament.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "wand.water3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": 20,
+          "lifeSteal": {
+            "min": -650,
+            "raw": -500,
+            "max": -350
+          },
+          "manaSteal": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "healingEfficiency": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "1stSpellCost": {
+            "min": -10,
+            "raw": -35,
+            "max": -45
+          },
+          "waterDamage": {
+            "min": 24,
+            "raw": 80,
+            "max": 104
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 90
+          },
+          "baseWaterDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 190
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d26f",
+      "itemName": "Aurora",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Aurora",
+        "type": "accessory",
+        "accessoryType": "ring",
+        "dropRestriction": "lootchest",
+        "requirements": {
+          "level": 94,
+          "strength": 8,
+          "dexterity": 8,
+          "intelligence": 8,
+          "defence": 8,
+          "agility": 8
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "ring.multi2"
+          }
+        },
+        "identifications": {
+          "elementalDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          }
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Aurora",
+        "type": "accessory",
+        "accessoryType": "ring",
+        "dropRestriction": "lootchest",
+        "requirements": {
+          "level": 94,
+          "strength": 8,
+          "dexterity": 8,
+          "intelligence": 8,
+          "defence": 8,
+          "agility": 8
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "ring.multi2"
+          }
+        },
+        "identifications": {
+          "rawStrength": 1,
+          "rawDexterity": 1,
+          "rawIntelligence": 1,
+          "rawDefence": 1,
+          "rawAgility": 1,
+          "elementalDamage": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          }
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d270",
+      "itemName": "Conference Call",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Conference Call",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "super_fast",
+        "averageDps": 761,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 94,
+          "classRequirement": "shaman",
+          "dexterity": 47,
+          "defence": 47
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.thunder3"
+          }
+        },
+        "identifications": {
+          "rawStrength": -15,
+          "rawDexterity": 15,
+          "poison": {
+            "min": 1620,
+            "raw": 5400,
+            "max": 7020
+          },
+          "lifeSteal": {
+            "min": 105,
+            "raw": 350,
+            "max": 455
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "exploding": {
+            "min": -130,
+            "raw": -100,
+            "max": -70
+          },
+          "thunderDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "fireDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "earthDefence": {
+            "min": -91,
+            "raw": -70,
+            "max": -49
+          },
+          "airDefence": {
+            "min": -91,
+            "raw": -70,
+            "max": -49
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 24,
+            "raw": 24,
+            "max": 30
+          },
+          "baseThunderDamage": {
+            "min": 72,
+            "raw": 72,
+            "max": 78
+          },
+          "baseFireDamage": {
+            "min": 72,
+            "raw": 72,
+            "max": 78
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Conference Call",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "very_slow",
+        "averageDps": 838,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 94,
+          "classRequirement": "shaman",
+          "dexterity": 47,
+          "defence": 47
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.thunder3"
+          }
+        },
+        "identifications": {
+          "rawStrength": -8,
+          "rawDexterity": 15,
+          "lifeSteal": {
+            "min": 105,
+            "raw": 350,
+            "max": 455
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "exploding": {
+            "min": -130,
+            "raw": -100,
+            "max": -70
+          },
+          "thunderDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "fireDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "earthDefence": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 170,
+            "raw": 170,
+            "max": 250
+          },
+          "baseThunderDamage": {
+            "min": 377,
+            "raw": 377,
+            "max": 423
+          },
+          "baseFireDamage": {
+            "min": 377,
+            "raw": 377,
+            "max": 423
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d271",
+      "itemName": "Inferna Flamewreath",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Inferna Flamewreath",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "normal",
+        "averageDps": 700,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 93,
+          "classRequirement": "shaman",
+          "defence": 80
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.fire3"
+          }
+        },
+        "identifications": {
+          "spellDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "healthRegenRaw": {
+            "min": -260,
+            "raw": -200,
+            "max": -140
+          },
+          "healingEfficiency": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "fireDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "waterDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 330,
+            "raw": 330,
+            "max": 350
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Inferna Flamewreath",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "normal",
+        "averageDps": 752,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 93,
+          "classRequirement": "shaman",
+          "defence": 80
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.fire3"
+          }
+        },
+        "identifications": {
+          "fireSpellDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "healthRegenRaw": {
+            "min": -260,
+            "raw": -200,
+            "max": -140
+          },
+          "healingEfficiency": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "waterDefence": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 350,
+            "raw": 350,
+            "max": 380
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d272",
+      "itemName": "Soul Signal",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Soul Signal",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 92,
+          "dexterity": 50,
+          "intelligence": 50
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "rawDexterity": 10,
+          "rawIntelligence": 10,
+          "mainAttackDamage": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "rawSpellDamage": {
+            "min": 67,
+            "raw": 222,
+            "max": 289
+          },
+          "reflection": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "earthDamage": {
+            "min": -104,
+            "raw": -80,
+            "max": -56
+          }
+        },
+        "base": {
+          "baseHealth": 2300,
+          "baseEarthDefence": -170,
+          "baseThunderDefence": 125,
+          "baseWaterDefence": 90
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Soul Signal",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 92,
+          "dexterity": 50,
+          "intelligence": 50
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "rawDexterity": 10,
+          "rawIntelligence": 10,
+          "mainAttackDamage": {
+            "min": -78,
+            "raw": -60,
+            "max": -42
+          },
+          "rawSpellDamage": {
+            "min": 67,
+            "raw": 222,
+            "max": 289
+          },
+          "reflection": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "earthDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseHealth": 2300,
+          "baseEarthDefence": -170,
+          "baseThunderDefence": 125,
+          "baseWaterDefence": 90
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d273",
+      "itemName": "Untimely Demise",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Untimely Demise",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourColor": "rgb(156,73,0)",
+        "armourMaterial": "leather",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 90,
+          "dexterity": 85
+        },
+        "powderSlots": 2,
+        "lore": "“Death claims your soul...”",
+        "identifications": {
+          "rawDexterity": 10,
+          "healthRegenRaw": -200,
+          "thunderMainAttackDamage": 50,
+          "raw2ndSpellCost": -5,
+          "3rdSpellCost": -20,
+          "walkSpeed": 15,
+          "waterDefence": -35
+        },
+        "base": {
+          "baseHealth": 2450,
+          "baseThunderDefence": 200,
+          "baseWaterDefence": -75
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Untimely Demise",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourColor": "rgb(156,73,0)",
+        "armourMaterial": "leather",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 90,
+          "dexterity": 85
+        },
+        "powderSlots": 2,
+        "lore": "“Death claims your soul...”",
+        "identifications": {
+          "rawDexterity": 10,
+          "healthRegenRaw": -200,
+          "rawThunderMainAttackDamage": 300,
+          "raw2ndSpellCost": -5,
+          "3rdSpellCost": -20,
+          "walkSpeed": 15,
+          "waterDefence": -35
+        },
+        "base": {
+          "baseHealth": 2450,
+          "baseThunderDefence": 200,
+          "baseWaterDefence": -75
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d274",
+      "itemName": "Loaded Question",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Loaded Question",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "very_fast",
+        "averageDps": 705,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 90,
+          "classRequirement": "shaman",
+          "dexterity": 70
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.thunder3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": -10,
+          "rawDefence": -15,
+          "rawMainAttackDamage": {
+            "min": 42,
+            "raw": 140,
+            "max": 182
+          },
+          "rawSpellDamage": {
+            "min": 72,
+            "raw": 240,
+            "max": 312
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "thunderDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "waterDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "fireDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 72,
+            "raw": 72,
+            "max": 78
+          },
+          "baseThunderDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 165
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Loaded Question",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "very_fast",
+        "averageDps": 705,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 90,
+          "classRequirement": "shaman",
+          "dexterity": 70
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.thunder3"
+          }
+        },
+        "identifications": {
+          "rawDefence": -15,
+          "rawThunderDamage": {
+            "min": 73,
+            "raw": 242,
+            "max": 315
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "knockback": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "thunderDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "fireDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 72,
+            "raw": 72,
+            "max": 78
+          },
+          "baseThunderDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 285
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d275",
+      "itemName": "Dizzy Spell",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Dizzy Spell",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 88,
+          "strength": 50,
+          "agility": 50
+        },
+        "identifications": {
+          "rawStrength": 9,
+          "rawAgility": 9,
+          "rawMainAttackDamage": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          },
+          "lifeSteal": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          },
+          "manaRegen": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 16,
+            "max": 21
+          }
+        },
+        "base": {
+          "baseHealth": 2750,
+          "baseEarthDefence": 120,
+          "baseThunderDefence": -120,
+          "baseFireDefence": -120,
+          "baseAirDefence": 120
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Dizzy Spell",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 88,
+          "strength": 50,
+          "agility": 50
+        },
+        "identifications": {
+          "rawStrength": 9,
+          "rawAgility": 9,
+          "rawMainAttackDamage": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          },
+          "lifeSteal": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          },
+          "manaRegen": {
+            "min": -12,
+            "raw": -9,
+            "max": -6
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 16,
+            "max": 21
+          },
+          "mainAttackRange": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          }
+        },
+        "base": {
+          "baseHealth": 2750,
+          "baseEarthDefence": 120,
+          "baseThunderDefence": -120,
+          "baseFireDefence": -120,
+          "baseAirDefence": 120
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d276",
+      "itemName": "Overdrive",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Overdrive",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "super_slow",
+        "averageDps": 110,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 88,
+          "classRequirement": "shaman",
+          "dexterity": 44,
+          "intelligence": 44
+        },
+        "powderSlots": 1,
+        "lore": "Holding this relik sends sparks through your veins, making your heart beat fast. And faster. And faster and faster and--",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.thunder3"
+          }
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "spellDamage": {
+            "min": 293,
+            "raw": 975,
+            "max": 1268
+          },
+          "rawSpellDamage": {
+            "min": 240,
+            "raw": 800,
+            "max": 1040
+          },
+          "healthRegenRaw": {
+            "min": -130,
+            "raw": -100,
+            "max": -70
+          },
+          "manaSteal": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          },
+          "rawAttackSpeed": {
+            "min": 2,
+            "raw": 7,
+            "max": 9
+          },
+          "rawMaxMana": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          }
+        },
+        "base": {
+          "baseThunderDamage": {
+            "min": 104,
+            "raw": 104,
+            "max": 112
+          },
+          "baseWaterDamage": {
+            "min": 104,
+            "raw": 104,
+            "max": 112
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Overdrive",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "super_slow",
+        "averageDps": 110,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 88,
+          "classRequirement": "shaman",
+          "dexterity": 44,
+          "intelligence": 44
+        },
+        "powderSlots": 1,
+        "lore": "Holding this relik sends sparks through your veins, making your heart beat fast. And faster. And faster and faster and--",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.thunder3"
+          }
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": -71,
+            "raw": -55,
+            "max": -38
+          },
+          "spellDamage": {
+            "min": 293,
+            "raw": 975,
+            "max": 1268
+          },
+          "rawSpellDamage": {
+            "min": 240,
+            "raw": 800,
+            "max": 1040
+          },
+          "healthRegenRaw": {
+            "min": -130,
+            "raw": -100,
+            "max": -70
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "rawAttackSpeed": {
+            "min": 2,
+            "raw": 7,
+            "max": 9
+          },
+          "rawMaxMana": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          }
+        },
+        "base": {
+          "baseThunderDamage": {
+            "min": 104,
+            "raw": 104,
+            "max": 112
+          },
+          "baseWaterDamage": {
+            "min": 104,
+            "raw": 104,
+            "max": 112
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d277",
+      "itemName": "Golden Scarab",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Golden Scarab",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 88,
+          "dexterity": 80
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Corrupted Sand-Swept Tomb",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            -861,
+            123,
+            -4896
+          ]
+        },
+        "identifications": {
+          "rawDexterity": 8,
+          "mainAttackDamage": 24,
+          "spellDamage": 24,
+          "manaSteal": 8,
+          "walkSpeed": 8,
+          "xpBonus": 16,
+          "lootBonus": 32,
+          "stealing": 8,
+          "earthDamage": -64,
+          "thunderDamage": 8
+        },
+        "base": {
+          "baseHealth": 2400,
+          "baseThunderDefence": 80
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Golden Scarab",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "diamond",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 88,
+          "dexterity": 80
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Corrupted Sand-Swept Tomb",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            -861,
+            123,
+            -4896
+          ]
+        },
+        "identifications": {
+          "rawDexterity": 8,
+          "damage": 24,
+          "manaSteal": 16,
+          "walkSpeed": 8,
+          "xpBonus": 16,
+          "lootBonus": 32,
+          "stealing": 8,
+          "earthDamage": -32
+        },
+        "base": {
+          "baseHealth": 2400,
+          "baseThunderDefence": 80
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d278",
+      "itemName": "Salpinx",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Salpinx",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "fast",
+        "averageDps": 700,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 88,
+          "classRequirement": "shaman",
+          "agility": 77
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Corrupted Sand-Swept Tomb",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            -861,
+            123,
+            -4896
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicGold"
+          }
+        },
+        "identifications": {
+          "rawAgility": 21,
+          "lifeSteal": -277,
+          "manaRegen": -42,
+          "manaSteal": 28,
+          "2ndSpellCost": -54,
+          "3rdSpellCost": -34,
+          "airDamage": 21
+        },
+        "base": {
+          "baseDamage": {
+            "min": 113,
+            "raw": 113,
+            "max": 167
+          },
+          "baseAirDamage": {
+            "min": 113,
+            "raw": 113,
+            "max": 167
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Salpinx",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "fast",
+        "averageDps": 700,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 88,
+          "classRequirement": "shaman",
+          "agility": 77
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Corrupted Sand-Swept Tomb",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            -861,
+            123,
+            -4896
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicGold"
+          }
+        },
+        "identifications": {
+          "rawAgility": 21,
+          "lifeSteal": -277,
+          "manaRegen": -24,
+          "manaSteal": 28,
+          "2ndSpellCost": -54,
+          "3rdSpellCost": -34,
+          "airDamage": 44
+        },
+        "base": {
+          "baseDamage": {
+            "min": 113,
+            "raw": 113,
+            "max": 167
+          },
+          "baseAirDamage": {
+            "min": 113,
+            "raw": 113,
+            "max": 167
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d279",
+      "itemName": "Arbalest",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Arbalest",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 690,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 87,
+          "classRequirement": "shaman",
+          "strength": 55
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.earth3"
+          }
+        },
+        "identifications": {
+          "rawDexterity": -12,
+          "mainAttackDamage": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawSpellDamage": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "healingEfficiency": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "4thSpellCost": {
+            "min": -13,
+            "raw": -45,
+            "max": -58
+          },
+          "exploding": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "earthDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 210,
+            "raw": 210,
+            "max": 230
+          },
+          "baseEarthDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 250
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Arbalest",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 690,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 87,
+          "classRequirement": "shaman",
+          "strength": 55
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.earth3"
+          }
+        },
+        "identifications": {
+          "rawDexterity": -8,
+          "mainAttackDamage": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawSpellDamage": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "healingEfficiency": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "4thSpellCost": {
+            "min": -15,
+            "raw": -50,
+            "max": -65
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "earthDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 210,
+            "raw": 210,
+            "max": 230
+          },
+          "baseEarthDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 250
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d27a",
+      "itemName": "Deja Vu",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Deja Vu",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "normal",
+        "averageDps": 573,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 86,
+          "classRequirement": "shaman",
+          "strength": 32,
+          "dexterity": 32
+        },
+        "powderSlots": 4,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "healthRegenRaw": {
+            "min": -130,
+            "raw": -100,
+            "max": -70
+          },
+          "lifeSteal": {
+            "min": 30,
+            "raw": 100,
+            "max": 130
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "lootBonus": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "earthDamage": {
+            "min": 15,
+            "raw": 51,
+            "max": 66
+          },
+          "thunderDamage": {
+            "min": 15,
+            "raw": 51,
+            "max": 66
+          },
+          "waterDamage": {
+            "min": -27,
+            "raw": -21,
+            "max": -15
+          },
+          "fireDamage": {
+            "min": -27,
+            "raw": -21,
+            "max": -15
+          },
+          "airDamage": {
+            "min": -27,
+            "raw": -21,
+            "max": -15
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 7,
+            "raw": 7,
+            "max": 7
+          },
+          "baseThunderDamage": {
+            "min": 7,
+            "raw": 7,
+            "max": 7
+          },
+          "baseWaterDamage": {
+            "min": 82,
+            "raw": 82,
+            "max": 94
+          },
+          "baseFireDamage": {
+            "min": 82,
+            "raw": 82,
+            "max": 94
+          },
+          "baseAirDamage": {
+            "min": 82,
+            "raw": 82,
+            "max": 94
+          }
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Deja Vu",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "normal",
+        "averageDps": 474,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 86,
+          "classRequirement": "shaman",
+          "strength": 17,
+          "dexterity": 17,
+          "intelligence": 17,
+          "defence": 17,
+          "agility": 17
+        },
+        "powderSlots": 4,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "spellDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "xpBonus": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "lootBonus": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "earthDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "thunderDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "waterDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "fireDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "airDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "earthDefence": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "thunderDefence": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "waterDefence": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "fireDefence": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "airDefence": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 33,
+            "raw": 33,
+            "max": 59
+          },
+          "baseThunderDamage": {
+            "min": 33,
+            "raw": 33,
+            "max": 59
+          },
+          "baseWaterDamage": {
+            "min": 33,
+            "raw": 33,
+            "max": 59
+          },
+          "baseFireDamage": {
+            "min": 33,
+            "raw": 33,
+            "max": 59
+          },
+          "baseAirDamage": {
+            "min": 33,
+            "raw": 33,
+            "max": 59
+          }
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d27b",
+      "itemName": "Procrastination",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Procrastination",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "super_slow",
+        "averageDps": 797,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 85,
+          "classRequirement": "shaman"
+        },
+        "majorIds": {
+          "Peaceful Effigy": "<span class='font-ascii' style='color:#55FFFF'>+Peaceful Effigy: <span class='font-ascii' style='color:#00AAAA'>Your Totem will last twice as long.</span></span>"
+        },
+        "lore": "...I'll finish writing this later.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "rawStrength": 17,
+          "rawDexterity": 17,
+          "rawIntelligence": 17,
+          "rawDefence": 17,
+          "rawAgility": 17,
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "spellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawAttackSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "walkSpeed": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "xpBonus": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "lootBonus": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 1250,
+            "raw": 1250,
+            "max": 1875
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Procrastination",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "super_slow",
+        "averageDps": 797,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 85,
+          "classRequirement": "shaman"
+        },
+        "majorIds": {
+          "Peaceful Effigy": "<span class='font-ascii' style='color:#55FFFF'>+Peaceful Effigy: <span class='font-ascii' style='color:#00AAAA'>Your Totem will last twice as long.</span></span>"
+        },
+        "lore": "...I'll finish writing this later.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "rawStrength": 17,
+          "rawDexterity": 17,
+          "rawIntelligence": 17,
+          "rawDefence": 17,
+          "rawAgility": 17,
+          "damage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawAttackSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "walkSpeed": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "xpBonus": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "lootBonus": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 1250,
+            "raw": 1250,
+            "max": 1875
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d27c",
+      "itemName": "Cinnamon",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Cinnamon",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "very_slow",
+        "averageDps": 598,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 84,
+          "classRequirement": "shaman",
+          "defence": 60
+        },
+        "powderSlots": 4,
+        "dropMeta": {
+          "name": "Lootrun Rewards",
+          "type": "lootrun",
+          "coordinates": [
+            99999,
+            99999,
+            99999
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.fire3"
+          }
+        },
+        "identifications": {
+          "rawStrength": 8,
+          "rawHealth": {
+            "min": 315,
+            "raw": 1050,
+            "max": 1365
+          },
+          "poison": {
+            "min": 1800,
+            "raw": 6000,
+            "max": 7800
+          },
+          "rawAttackSpeed": -1,
+          "rawFireMainAttackDamage": {
+            "min": 255,
+            "raw": 850,
+            "max": 1105
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 40
+          },
+          "baseFireDamage": {
+            "min": 600,
+            "raw": 600,
+            "max": 800
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Cinnamon",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "very_slow",
+        "averageDps": 641,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 84,
+          "classRequirement": "shaman",
+          "defence": 60
+        },
+        "powderSlots": 4,
+        "dropMeta": {
+          "name": "Lootrun Rewards",
+          "type": "lootrun",
+          "coordinates": [
+            99999,
+            99999,
+            99999
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.fire3"
+          }
+        },
+        "identifications": {
+          "rawStrength": 8,
+          "rawHealth": {
+            "min": 315,
+            "raw": 1050,
+            "max": 1365
+          },
+          "poison": {
+            "min": 1800,
+            "raw": 6000,
+            "max": 7800
+          },
+          "rawAttackSpeed": -1,
+          "rawFireMainAttackDamage": {
+            "min": 255,
+            "raw": 850,
+            "max": 1105
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 45
+          },
+          "baseFireDamage": {
+            "min": 650,
+            "raw": 650,
+            "max": 850
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d27d",
+      "itemName": "Aviform",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Aviform",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "fast",
+        "averageDps": 638,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 83,
+          "classRequirement": "assassin",
+          "strength": 25,
+          "dexterity": 35,
+          "agility": 50
+        },
+        "majorIds": {
+          "Windsurf": "<span class='font-ascii' style='color:#55FFFF'>+Windsurf: <span class='font-ascii' style='color:#00AAAA'>Righting Reflex lasts twice as long and is affected stronger by movement speed.</span></span>"
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "rawHealth": {
+            "min": -1560,
+            "raw": -1200,
+            "max": -840
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "earthDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "thunderDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "airDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 100
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 170
+          },
+          "baseAirDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 135
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Aviform",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "fast",
+        "averageDps": 638,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 83,
+          "classRequirement": "assassin",
+          "strength": 25,
+          "dexterity": 35,
+          "agility": 50
+        },
+        "majorIds": {
+          "Windsurf": "<span class='font-ascii' style='color:#55FFFF'>+Windsurf: <span class='font-ascii' style='color:#00AAAA'>Righting Reflex has 75% reduced fall speed, lasts twice as long, and is affected stronger by movement speed.</span></span>"
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "rawHealth": {
+            "min": -1560,
+            "raw": -1200,
+            "max": -840
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "earthDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "thunderDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "airDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 100
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 170
+          },
+          "baseAirDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 135
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d27e",
+      "itemName": "Island Chain",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Island Chain",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 632,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 83,
+          "classRequirement": "shaman",
+          "strength": 40,
+          "intelligence": 40
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.water3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": 10,
+          "mainAttackDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "healthRegenRaw": {
+            "min": 50,
+            "raw": 165,
+            "max": 215
+          },
+          "rawHealth": {
+            "min": 750,
+            "raw": 2500,
+            "max": 3250
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 132
+          },
+          "baseEarthDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 155
+          },
+          "baseWaterDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 155
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Island Chain",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 632,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 83,
+          "classRequirement": "shaman",
+          "strength": 40,
+          "intelligence": 40
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.water3"
+          }
+        },
+        "identifications": {
+          "rawIntelligence": 10,
+          "mainAttackDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "healthRegenRaw": {
+            "min": 50,
+            "raw": 165,
+            "max": 215
+          },
+          "rawHealth": {
+            "min": 750,
+            "raw": 2500,
+            "max": 3250
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawMaxMana": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 132
+          },
+          "baseEarthDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 155
+          },
+          "baseWaterDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 155
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d27f",
+      "itemName": "Thanos Stonesinger",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Thanos Stonesinger",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "fast",
+        "averageDps": 615,
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 82,
+          "classRequirement": "shaman",
+          "strength": 40,
+          "defence": 40
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Thanos",
+          "type": "merchant",
+          "coordinates": [
+            167,
+            10,
+            -5241
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.multi3"
+          }
+        },
+        "identifications": {
+          "rawDexterity": -8,
+          "rawMainAttackDamage": 160,
+          "exploding": 20,
+          "earthDamage": 15,
+          "fireDamage": 15,
+          "earthDefence": 20,
+          "waterDefence": -20,
+          "fireDefence": 20
+        },
+        "base": {
+          "baseDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 126
+          },
+          "baseEarthDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 63
+          },
+          "baseFireDamage": {
+            "min": 57,
+            "raw": 57,
+            "max": 66
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Thanos Stonesinger",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "fast",
+        "averageDps": 615,
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 82,
+          "classRequirement": "shaman",
+          "strength": 40,
+          "defence": 40
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Thanos",
+          "type": "merchant",
+          "coordinates": [
+            167,
+            10,
+            -5241
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.multi3"
+          }
+        },
+        "identifications": {
+          "rawDexterity": -8,
+          "rawMainAttackDamage": 250,
+          "exploding": 50,
+          "slowEnemy": 15,
+          "earthDefence": 40,
+          "waterDefence": -20,
+          "fireDefence": 40
+        },
+        "base": {
+          "baseDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 126
+          },
+          "baseEarthDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 63
+          },
+          "baseFireDamage": {
+            "min": 57,
+            "raw": 57,
+            "max": 66
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d280",
+      "itemName": "Desperate Facsimile",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Desperate Facsimile",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "very_fast",
+        "averageDps": 271,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 80,
+          "classRequirement": "warrior",
+          "dexterity": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#55FFFF'>+Last Resort: <span class='font-ascii' style='color:#00AAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:elements.neutral'><span class='font-common'></span>-100% <span class='font-ascii' style='color:elements.fire'><span class='font-common'></span>-60%</span><span class='font-ascii' style='color:#00AAAA'>.</span></span></span></span></span></span>"
+        },
+        "powderSlots": 7,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "spear.multi2"
+          }
+        },
+        "identifications": {
+          "rawDexterity": 13,
+          "rawDamage": {
+            "min": 52,
+            "raw": 173,
+            "max": 225
+          },
+          "healthRegenRaw": {
+            "min": -169,
+            "raw": -130,
+            "max": -91
+          },
+          "1stSpellCost": {
+            "min": 17,
+            "raw": 13,
+            "max": 9
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "sprintRegen": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 80
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 35
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Desperate Facsimile",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "very_fast",
+        "averageDps": 271,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 80,
+          "classRequirement": "warrior",
+          "dexterity": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#55FFFF'>+Last Resort: <span class='font-ascii' style='color:#00AAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#ffaa00'><span class='font-common'></span>-100% <span class='font-ascii' style='color:#ff5555'><span class='font-common'></span>-60%</span><span class='font-ascii' style='color:#00AAAA'>.</span></span></span></span></span></span>"
+        },
+        "powderSlots": 7,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "spear.multi2"
+          }
+        },
+        "identifications": {
+          "rawDexterity": 13,
+          "rawDamage": {
+            "min": 52,
+            "raw": 173,
+            "max": 225
+          },
+          "healthRegenRaw": {
+            "min": -169,
+            "raw": -130,
+            "max": -91
+          },
+          "1stSpellCost": {
+            "min": 17,
+            "raw": 13,
+            "max": 9
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "sprintRegen": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 80
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 35
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d281",
+      "itemName": "Rainbow",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Rainbow",
+        "type": "accessory",
+        "accessoryType": "ring",
+        "dropRestriction": "lootchest",
+        "requirements": {
+          "level": 80,
+          "strength": 5,
+          "dexterity": 5,
+          "intelligence": 5,
+          "defence": 5,
+          "agility": 5
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "ring.multi2"
+          }
+        },
+        "identifications": {
+          "elementalDamage": {
+            "min": -4,
+            "raw": -3,
+            "max": -2
+          }
+        },
+        "base": {
+          "baseEarthDefence": 30,
+          "baseThunderDefence": 30,
+          "baseWaterDefence": 30,
+          "baseFireDefence": 30,
+          "baseAirDefence": 30
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Rainbow",
+        "type": "accessory",
+        "accessoryType": "ring",
+        "dropRestriction": "lootchest",
+        "requirements": {
+          "level": 80,
+          "strength": 5,
+          "dexterity": 5,
+          "intelligence": 5,
+          "defence": 5,
+          "agility": 5
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "ring.multi2"
+          }
+        },
+        "identifications": {
+          "earthDefence": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          },
+          "thunderDefence": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          },
+          "waterDefence": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          },
+          "fireDefence": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          },
+          "airDefence": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          }
+        },
+        "base": {
+          "baseEarthDefence": 30,
+          "baseThunderDefence": 30,
+          "baseWaterDefence": 30,
+          "baseFireDefence": 30,
+          "baseAirDefence": 30
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d282",
+      "itemName": "Lumina",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Lumina",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "super_slow",
+        "averageDps": 660,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 80,
+          "classRequirement": "shaman",
+          "dexterity": 45,
+          "agility": 35
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.thunder3"
+          }
+        },
+        "identifications": {
+          "rawMainAttackDamage": {
+            "min": 263,
+            "raw": 875,
+            "max": 1138
+          },
+          "rawHealth": {
+            "min": -1625,
+            "raw": -1250,
+            "max": -875
+          },
+          "rawAttackSpeed": -1,
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "thunderDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "airDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "waterDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 285,
+            "raw": 285,
+            "max": 350
+          },
+          "baseThunderDamage": {
+            "min": 640,
+            "raw": 640,
+            "max": 680
+          },
+          "baseAirDamage": {
+            "min": 300,
+            "raw": 300,
+            "max": 335
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Lumina",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "super_slow",
+        "averageDps": 660,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 80,
+          "classRequirement": "shaman",
+          "dexterity": 45,
+          "agility": 35
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.thunder3"
+          }
+        },
+        "identifications": {
+          "rawMainAttackDamage": {
+            "min": 231,
+            "raw": 769,
+            "max": 1000
+          },
+          "rawHealth": {
+            "min": -1625,
+            "raw": -1250,
+            "max": -875
+          },
+          "rawAttackSpeed": -1,
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "thunderDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "airDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "waterDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 285,
+            "raw": 285,
+            "max": 350
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1320
+          },
+          "baseAirDamage": {
+            "min": 300,
+            "raw": 300,
+            "max": 335
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d283",
+      "itemName": "Cenote",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Cenote",
+        "type": "armour",
+        "armourType": "boots",
+        "armourMaterial": "iron",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 68,
+          "strength": 50,
+          "intelligence": 50
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "rawStrength": 4,
+          "rawIntelligence": 4,
+          "healthRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healthRegenRaw": {
+            "min": 17,
+            "raw": 55,
+            "max": 72
+          },
+          "rawMaxMana": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "earthDefence": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "waterDefence": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          }
+        },
+        "base": {
+          "baseHealth": 1000,
+          "baseEarthDefence": 40,
+          "baseWaterDefence": 40,
+          "baseAirDefence": -50
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Cenote",
+        "type": "armour",
+        "armourType": "boots",
+        "armourMaterial": "iron",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 68,
+          "strength": 35,
+          "intelligence": 35
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "rawStrength": 4,
+          "rawIntelligence": 4,
+          "healthRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healthRegenRaw": {
+            "min": 17,
+            "raw": 55,
+            "max": 72
+          },
+          "rawMaxMana": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "earthDefence": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "waterDefence": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          }
+        },
+        "base": {
+          "baseHealth": 1000,
+          "baseEarthDefence": 40,
+          "baseWaterDefence": 40,
+          "baseAirDefence": -50
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d284",
+      "itemName": "Rusted Root",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Rusted Root",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 592,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 65,
+          "classRequirement": "shaman",
+          "strength": 40,
+          "dexterity": 45
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.earth3"
+          }
+        },
+        "identifications": {
+          "rawSpellDamage": {
+            "min": 39,
+            "raw": 130,
+            "max": 169
+          },
+          "poison": {
+            "min": 555,
+            "raw": 1850,
+            "max": 2405
+          },
+          "raw2ndSpellCost": {
+            "min": -3,
+            "raw": -10,
+            "max": -13
+          },
+          "3rdSpellCost": {
+            "min": 64,
+            "raw": 49,
+            "max": 34
+          },
+          "4thSpellCost": {
+            "min": -13,
+            "raw": -42,
+            "max": -55
+          },
+          "jumpHeight": -1,
+          "thunderDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          },
+          "waterDefence": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 210
+          },
+          "baseEarthDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 200
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Rusted Root",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 592,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 65,
+          "classRequirement": "shaman",
+          "strength": 40,
+          "dexterity": 45
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.earth3"
+          }
+        },
+        "identifications": {
+          "rawSpellDamage": {
+            "min": 39,
+            "raw": 130,
+            "max": 169
+          },
+          "poison": {
+            "min": 662,
+            "raw": 2208,
+            "max": 2870
+          },
+          "raw2ndSpellCost": {
+            "min": -3,
+            "raw": -10,
+            "max": -13
+          },
+          "4thSpellCost": {
+            "min": -13,
+            "raw": -42,
+            "max": -55
+          },
+          "jumpHeight": -1,
+          "thunderDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          },
+          "waterDefence": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 210
+          },
+          "baseEarthDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 200
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d285",
+      "itemName": "Evaporator",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Evaporator",
+        "type": "armour",
+        "armourType": "boots",
+        "armourMaterial": "chain",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 60,
+          "intelligence": 20,
+          "defence": 35
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "walkSpeed": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "airDamage": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "airDefence": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          }
+        },
+        "base": {
+          "baseHealth": 1400,
+          "baseAirDefence": -70
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Evaporator",
+        "type": "armour",
+        "armourType": "boots",
+        "armourMaterial": "chain",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 60,
+          "intelligence": 20,
+          "defence": 30
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "rawDefence": 4,
+          "healthRegen": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "healthRegenRaw": {
+            "min": 15,
+            "raw": 51,
+            "max": 66
+          },
+          "walkSpeed": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "healingEfficiency": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "airDefence": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          }
+        },
+        "base": {
+          "baseHealth": 1250,
+          "baseWaterDefence": 20,
+          "baseFireDefence": 20,
+          "baseAirDefence": -30
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d286",
+      "itemName": "Black Skull",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Black Skull",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourColor": "rgb(160,101,64)",
+        "armourMaterial": "leather",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 55,
+          "dexterity": 65
+        },
+        "identifications": {
+          "rawDexterity": 5,
+          "manaSteal": -12,
+          "rawAttackSpeed": 1,
+          "sprintRegen": -20,
+          "thunderDamage": 8,
+          "thunderDefence": 12
+        },
+        "base": {
+          "baseHealth": 850,
+          "baseAirDefence": -80
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Black Skull",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourColor": "rgb(160,101,64)",
+        "armourMaterial": "leather",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 55,
+          "dexterity": 50
+        },
+        "identifications": {
+          "rawDexterity": 5,
+          "manaSteal": -8,
+          "rawAttackSpeed": 1,
+          "sprintRegen": -20,
+          "thunderDamage": 8,
+          "thunderDefence": 12
+        },
+        "base": {
+          "baseHealth": 850,
+          "baseAirDefence": -80
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d287",
+      "itemName": "Bibliotek",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Bibliotek",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 300,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 49,
+          "classRequirement": "shaman"
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "rawStrength": 5,
+          "rawDexterity": 5,
+          "rawIntelligence": 5,
+          "rawDefence": 5,
+          "rawAgility": 5,
+          "rawHealth": {
+            "min": -390,
+            "raw": -300,
+            "max": -210
+          },
+          "2ndSpellCost": {
+            "min": 33,
+            "raw": 25,
+            "max": 18
+          },
+          "4thSpellCost": {
+            "min": -7,
+            "raw": -24,
+            "max": -31
+          },
+          "xpBonus": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 200
+          }
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Bibliotek",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "slow",
+        "averageDps": 278,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 49,
+          "classRequirement": "shaman"
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "rawStrength": 3,
+          "rawDexterity": 3,
+          "rawIntelligence": 5,
+          "rawDefence": 3,
+          "rawAgility": 3,
+          "rawWaterSpellDamage": {
+            "min": 20,
+            "raw": 65,
+            "max": 85
+          },
+          "rawHealth": {
+            "min": -390,
+            "raw": -300,
+            "max": -210
+          },
+          "2ndSpellCost": {
+            "min": 26,
+            "raw": 20,
+            "max": 14
+          },
+          "4thSpellCost": {
+            "min": -8,
+            "raw": -27,
+            "max": -35
+          },
+          "xpBonus": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 185,
+            "raw": 185,
+            "max": 185
+          }
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d288",
+      "itemName": "Reciprocator",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Reciprocator",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "very_slow",
+        "averageDps": 224,
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 44,
+          "classRequirement": "shaman"
+        },
+        "powderSlots": 1,
+        "dropMeta": {
+          "name": "Nesaak",
+          "type": "merchant",
+          "coordinates": [
+            112,
+            78,
+            -773
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "rawDefence": -10,
+          "rawAgility": 10,
+          "raw1stSpellCost": -5,
+          "thorns": 40,
+          "reflection": 40,
+          "walkSpeed": -10,
+          "waterDamage": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 240,
+            "raw": 240,
+            "max": 300
+          }
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Reciprocator",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "very_slow",
+        "averageDps": 237,
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 44,
+          "classRequirement": "shaman",
+          "defence": 15,
+          "agility": 15
+        },
+        "powderSlots": 1,
+        "dropMeta": {
+          "name": "Nesaak",
+          "type": "merchant",
+          "coordinates": [
+            112,
+            78,
+            -773
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "relik.basicWood"
+          }
+        },
+        "identifications": {
+          "rawDefence": 6,
+          "rawAgility": 6,
+          "raw1stSpellCost": -5,
+          "thorns": 25,
+          "reflection": 25,
+          "walkSpeed": -8,
+          "sprintRegen": 20,
+          "healingEfficiency": 10
+        },
+        "base": {
+          "baseDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 85
+          },
+          "baseFireDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 120
+          },
+          "baseAirDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 120
+          }
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d289",
+      "itemName": "Flamiche",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Flamiche",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "very_fast",
+        "averageDps": 167,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 41,
+          "classRequirement": "archer",
+          "defence": 25
+        },
+        "powderSlots": 1,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "bow.fire2"
+          }
+        },
+        "identifications": {
+          "rawDefence": 7,
+          "healthRegenRaw": {
+            "min": 5,
+            "raw": 16,
+            "max": 21
+          },
+          "rawHealth": {
+            "min": 45,
+            "raw": 150,
+            "max": 195
+          },
+          "mainAttackFireDamage": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "waterDefence": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "fireDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 26,
+            "raw": 26,
+            "max": 30
+          },
+          "baseFireDamage": {
+            "min": 24,
+            "raw": 24,
+            "max": 28
+          }
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Flamiche",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "very_fast",
+        "averageDps": 167,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 41,
+          "classRequirement": "archer",
+          "defence": 25
+        },
+        "powderSlots": 1,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "bow.fire2"
+          }
+        },
+        "identifications": {
+          "rawDefence": 7,
+          "healthRegenRaw": {
+            "min": 5,
+            "raw": 16,
+            "max": 21
+          },
+          "rawHealth": {
+            "min": 45,
+            "raw": 150,
+            "max": 195
+          },
+          "rawFireMainAttackDamage": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "waterDefence": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "fireDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 26,
+            "raw": 26,
+            "max": 30
+          },
+          "baseFireDamage": {
+            "min": 24,
+            "raw": 24,
+            "max": 28
+          }
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d28a",
+      "itemName": "Mitten",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Mitten",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "normal",
+        "averageDps": 31,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 2,
+          "classRequirement": "assassin"
+        },
+        "powderSlots": 1,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "dagger.earth1"
+          }
+        },
+        "identifications": {
+          "healthRegenRaw": 1,
+          "rawHealth": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 10
+          },
+          "baseFireDamage": {
+            "min": 4,
+            "raw": 4,
+            "max": 6
+          }
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Mitten",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "normal",
+        "averageDps": 21,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 2,
+          "classRequirement": "assassin"
+        },
+        "powderSlots": 1,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "dagger.earth1"
+          }
+        },
+        "identifications": {
+          "healthRegenRaw": 1,
+          "rawHealth": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 7,
+            "raw": 7,
+            "max": 7
+          },
+          "baseFireDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 4
+          }
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e742ab6765f4346142d28b",
+      "itemName": "Ein",
+      "status": "modify",
+      "timestamp": 1743209131,
+      "before": {
+        "internalName": "Ein",
+        "type": "accessory",
+        "accessoryType": "ring",
+        "dropRestriction": "lootchest",
+        "requirements": {
+          "level": 1
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "ring.basicGold"
+          }
+        },
+        "identifications": {
+          "mainAttackDamage": 1,
+          "rawMainAttackDamage": 1,
+          "spellDamage": 1,
+          "rawSpellDamage": 1
+        },
+        "base": {
+          "baseHealth": 1
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Ein",
+        "type": "accessory",
+        "accessoryType": "ring",
+        "dropRestriction": "lootchest",
+        "requirements": {
+          "level": 1
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "name": "ring.basicGold"
+          }
+        },
+        "identifications": {
+          "damage": 1,
+          "rawDamage": 1
+        },
+        "base": {
+          "baseHealth": 1
+        },
+        "rarity": "unique"
+      }
+    }
+  ]
+}

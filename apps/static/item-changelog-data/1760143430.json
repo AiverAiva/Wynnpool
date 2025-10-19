@@ -1,0 +1,806 @@
+{
+  "remove": [
+    {
+      "_id": "68e9a846324d83f3b86ec46e",
+      "itemName": "Overly Ironed Pants",
+      "status": "remove",
+      "timestamp": 1760143430,
+      "internalName": "Overly Ironed Pants",
+      "type": "armour",
+      "armourType": "leggings",
+      "armourMaterial": "chainmail",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 51
+      },
+      "powderSlots": 3,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_leggings",
+          "name": "leggings.chainmail"
+        }
+      },
+      "identifications": {
+        "exploding": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "lootBonus": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        }
+      },
+      "base": {
+        "baseHealth": 610
+      },
+      "rarity": "unique"
+    }
+  ],
+  "modify": [
+    {
+      "_id": "68e9a846324d83f3b86ec46f",
+      "itemName": "Hanafubuki",
+      "status": "modify",
+      "timestamp": 1760143430,
+      "before": {
+        "internalName": "Hanafubuki",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "superFast",
+        "averageDps": 817,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 102,
+          "classRequirement": "assassin",
+          "agility": 85,
+          "intelligence": 65
+        },
+        "majorIds": {
+          "Efflorescence": "<span class='font-ascii' style='color:#55FFFF'>+Efflorescence: <span class='font-ascii' style='color:#00AAAA'>Jasmine Bloom deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>10%</span><darkAqua> and \n<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span><span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span><span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#FF5555'><span class='font-common'></span><span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>20%</span><darkAqua> at the cost of 6 blocks of vertical range. \nSwan Dive with a maximum size Jasmine Bloom deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>50%</span><darkAqua> and <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span><span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span><span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#FF5555'><span class='font-common'></span><span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>50%</span><darkAqua>.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>"
+        },
+        "lore": "The most dangerous enemy is one you cannot see. Hidden amidst a flurry of petals comes an avalanche of blows, in one moment dissolving mountains and forests into a growing amalgam, leaving a wake of vibrant bloom in the next.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": 15,
+          "earthDefence": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "3rdSpellCost": {
+            "min": 20,
+            "raw": 15,
+            "max": 11
+          },
+          "4thSpellCost": {
+            "min": 13,
+            "raw": 10,
+            "max": 7
+          },
+          "elementalDamage": {
+            "min": 77,
+            "raw": 256,
+            "max": 333
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 220
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Hanafubuki",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "superFast",
+        "averageDps": 817,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 102,
+          "classRequirement": "assassin",
+          "agility": 85,
+          "intelligence": 65
+        },
+        "majorIds": {
+          "Efflorescence": "<span class='font-ascii' style='color:#55FFFF'>+Efflorescence: <span class='font-ascii' style='color:#00AAAA'>Jasmine Bloom deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>25%</span><darkAqua> and \n<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span><span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span><span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#FF5555'><span class='font-common'></span><span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>25%</span><darkAqua> at the cost of 6 blocks of vertical range. \nSwan Dive with a maximum size Jasmine Bloom deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>50%</span><darkAqua> and <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span><span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span><span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#FF5555'><span class='font-common'></span><span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>50%</span><darkAqua>.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>"
+        },
+        "lore": "The most dangerous enemy is one you cannot see. Hidden amidst a flurry of petals comes an avalanche of blows, in one moment dissolving mountains and forests into a growing amalgam, leaving a wake of vibrant bloom in the next.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": 15,
+          "earthDefence": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "3rdSpellCost": {
+            "min": 20,
+            "raw": 15,
+            "max": 11
+          },
+          "4thSpellCost": {
+            "min": 13,
+            "raw": 10,
+            "max": 7
+          },
+          "elementalDamage": {
+            "min": 77,
+            "raw": 256,
+            "max": 333
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 220
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "68e9a846324d83f3b86ec470",
+      "itemName": "The Incomprehensible",
+      "status": "modify",
+      "timestamp": 1760143430,
+      "before": {
+        "internalName": "The Incomprehensible",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "fast",
+        "averageDps": 662,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "assassin",
+          "strength": 67,
+          "dexterity": 59
+        },
+        "majorIds": {
+          "Wormhole 2": "</br>",
+          "Wormhole": "<span class='font-ascii' style='color:#55FFFF'>+Wormhole: <span class='font-ascii' style='color:#00AAAA'>Last Laugh instead casts Meteor. Malicious Mockery causes Meteor to apply 13 Trick stacks.</span></span>"
+        },
+        "powderSlots": 1,
+        "lore": "After eons spent in parochial search for something familiar, perhaps this blade should have been a hint to think outside the box.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.thunder3"
+          }
+        },
+        "identifications": {
+          "poison": {
+            "min": 2564,
+            "raw": 8547,
+            "max": 11111
+          },
+          "rawHealth": {
+            "min": -1052,
+            "raw": -809,
+            "max": -566
+          },
+          "earthDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawStrength": 13,
+          "rawDexterity": 11,
+          "3rdSpellCost": {
+            "min": -4,
+            "raw": -13,
+            "max": -17
+          },
+          "thunderDamage": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 11
+          },
+          "baseEarthDamage": {
+            "min": 89,
+            "raw": 89,
+            "max": 127
+          },
+          "baseThunderDamage": {
+            "min": 137,
+            "raw": 137,
+            "max": 163
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "The Incomprehensible",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "fast",
+        "averageDps": 662,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "assassin",
+          "strength": 67,
+          "dexterity": 59
+        },
+        "majorIds": {
+          "Wormhole": "<span class='font-ascii' style='color:#55FFFF'>+Wormhole: <span class='font-ascii' style='color:#00AAAA'>Last Laugh instead casts Meteor. Malicious Mockery causes Meteor to apply 13 Trick stacks.</span></span>"
+        },
+        "powderSlots": 1,
+        "lore": "After eons spent in parochial search for something familiar, perhaps this blade should have been a hint to think outside the box.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.thunder3"
+          }
+        },
+        "identifications": {
+          "poison": {
+            "min": 2564,
+            "raw": 8547,
+            "max": 11111
+          },
+          "rawHealth": {
+            "min": -1052,
+            "raw": -809,
+            "max": -566
+          },
+          "earthDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawStrength": 13,
+          "rawDexterity": 11,
+          "3rdSpellCost": {
+            "min": -4,
+            "raw": -13,
+            "max": -17
+          },
+          "thunderDamage": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 11
+          },
+          "baseEarthDamage": {
+            "min": 89,
+            "raw": 89,
+            "max": 127
+          },
+          "baseThunderDamage": {
+            "min": 137,
+            "raw": 137,
+            "max": 163
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "68e9a846324d83f3b86ec471",
+      "itemName": "Nighthawk",
+      "status": "modify",
+      "timestamp": 1760143430,
+      "before": {
+        "internalName": "Nighthawk",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 94
+        },
+        "majorIds": {
+          "Hawkeye": "<span class='font-ascii' style='color:#55FFFF'>+Hawkeye: <span class='font-ascii' style='color:#00AAAA'>Arrow Hurricane becomes a condensed stream of 25 arrows, dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>25%</span><darkAqua>, <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>5%</span><darkAqua>, and <span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>5%</span><darkAqua> each.</span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          }
+        },
+        "identifications": {
+          "walkSpeed": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawAttackSpeed": -1,
+          "rawSpellDamage": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "raw3rdSpellCost": 1,
+          "mainAttackDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          }
+        },
+        "base": {
+          "baseHealth": 3000,
+          "baseThunderDefence": -125
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Nighthawk",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 94
+        },
+        "majorIds": {
+          "Hawkeye": "<span class='font-ascii' style='color:#55FFFF'>+Hawkeye: <span class='font-ascii' style='color:#00AAAA'>Arrow Hurricane becomes a condensed stream of 25 arrows, dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>33%</span><darkAqua>, <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>4%</span><darkAqua>, and <span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>4%</span><darkAqua> each.</span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          }
+        },
+        "identifications": {
+          "walkSpeed": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawAttackSpeed": -1,
+          "rawSpellDamage": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "raw3rdSpellCost": 1,
+          "mainAttackDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          }
+        },
+        "base": {
+          "baseHealth": 3000,
+          "baseThunderDefence": -125
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "68e9a846324d83f3b86ec472",
+      "itemName": "Hellstrand",
+      "status": "modify",
+      "timestamp": 1760143430,
+      "before": {
+        "internalName": "Hellstrand",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "slow",
+        "averageDps": 668,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 92,
+          "classRequirement": "archer",
+          "defence": 60
+        },
+        "powderSlots": 3,
+        "lore": "The Order of the Abyss crafted this bow in opposition to the House of Talor's holy relic. Holding it for too long will strain and warp the user's mind.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.fire3"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 197,
+            "raw": 655,
+            "max": 852
+          },
+          "manaSteal": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "airDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "healthRegen": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "waterDamage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "rawDexterity": 13,
+          "thunderDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 290
+          },
+          "baseFireDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 220
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Hellstrand",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "slow",
+        "averageDps": 668,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 92,
+          "classRequirement": "archer",
+          "defence": 60
+        },
+        "powderSlots": 3,
+        "lore": "This profane bow was crafted by a Kander cabal in opposition to the House of Talor's holy relic. Holding it for too long will strain and warp the user's mind.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.fire3"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 197,
+            "raw": 655,
+            "max": 852
+          },
+          "manaSteal": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "airDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "healthRegen": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "waterDamage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "rawDexterity": 13,
+          "thunderDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 290
+          },
+          "baseFireDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 220
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "68e9a846324d83f3b86ec473",
+      "itemName": "Viscera Burst",
+      "status": "modify",
+      "timestamp": 1760143430,
+      "before": {
+        "internalName": "Viscera Burst",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "verySlow",
+        "averageDps": 208,
+        "requirements": {
+          "level": 33,
+          "classRequirement": "archer",
+          "strength": 15,
+          "dexterity": 20
+        },
+        "majorIds": {
+          "Fallout": "<span class='font-ascii' style='color:#55FFFF'>+Fallout: <span class='font-ascii' style='color:#00AAAA'>Bomb Arrow gains +7.5 range, <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+50%</span><darkAqua>, severely increased recoil, and <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>25%</span><darkAqua> self-damage.</span></span></span></span></span></span>"
+        },
+        "powderSlots": 1,
+        "lore": "Innards, outwards.\nIt's pulling towards something.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth2"
+          }
+        },
+        "identifications": {
+          "xpBonus": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "exploding": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "earthDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "thunderDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 85
+          },
+          "baseEarthDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 75
+          },
+          "baseThunderDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 125
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Viscera Burst",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "verySlow",
+        "averageDps": 208,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 33,
+          "classRequirement": "archer",
+          "strength": 15,
+          "dexterity": 20
+        },
+        "majorIds": {
+          "Fallout": "<span class='font-ascii' style='color:#55FFFF'>+Fallout: <span class='font-ascii' style='color:#00AAAA'>Bomb Arrow gains +7.5 range, <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+50%</span><darkAqua>, severely increased recoil, and <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>25%</span><darkAqua> self-damage.</span></span></span></span></span></span>"
+        },
+        "powderSlots": 1,
+        "lore": "Innards, outwards.\nIt's pulling towards something.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth2"
+          }
+        },
+        "identifications": {
+          "xpBonus": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "exploding": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "earthDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "thunderDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 85
+          },
+          "baseEarthDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 75
+          },
+          "baseThunderDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 125
+          }
+        },
+        "rarity": "fabled"
+      }
+    }
+  ],
+  "add": [
+    {
+      "_id": "68e9a846324d83f3b86ec46c",
+      "itemName": "Barbarian's Tome of Allegiance",
+      "status": "add",
+      "timestamp": 1760143430,
+      "internalName": "Barbarian's Tome of Allegiance",
+      "type": "tome",
+      "tomeType": "guild_tome",
+      "raidReward": true,
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "requirements": {
+        "level": 100
+      },
+      "dropMeta": {
+        "name": "Guild Rewards",
+        "type": "guild",
+        "coordinates": [
+          99999,
+          99999,
+          99999
+        ]
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              84
+            ]
+          },
+          "name": "tome.guild"
+        }
+      },
+      "identifications": {
+        "rawAgility": 2,
+        "rawStrength": 2
+      },
+      "rarity": "legendary"
+    },
+    {
+      "_id": "68e9a846324d83f3b86ec46d",
+      "itemName": "Steelworks",
+      "status": "add",
+      "timestamp": 1760143430,
+      "internalName": "Overly Ironed Pants",
+      "type": "armour",
+      "armourType": "leggings",
+      "armourMaterial": "chainmail",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 51
+      },
+      "powderSlots": 3,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_leggings",
+          "customModelData": {
+            "rangeDispatch": [
+              4
+            ]
+          },
+          "name": "leggings.chainmail"
+        }
+      },
+      "identifications": {
+        "exploding": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "lootBonus": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        }
+      },
+      "base": {
+        "baseHealth": 610
+      },
+      "rarity": "unique"
+    }
+  ]
+}

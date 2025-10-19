@@ -1,0 +1,2860 @@
+{
+  "modify": [
+    {
+      "_id": "67e1fce7ff0577ed21013e64",
+      "itemName": "Vortexian Event Horizon",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Vortexian Event Horizon",
+        "type": "ingredient",
+        "requirements": {
+          "level": 105,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "icon": {
+          "format": "skin",
+          "value": "9ddebbb062f6a385a91ca05f18f5c0acbe33e2d06ee9e7416cef6ee43dfe2fb"
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": 12,
+            "raw": 12,
+            "max": 12
+          },
+          "lifeSteal": {
+            "min": -75,
+            "raw": -75,
+            "max": -60
+          },
+          "manaSteal": {
+            "min": -3,
+            "raw": -3,
+            "max": -3
+          }
+        },
+        "tier": 3,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -160000,
+          "strengthRequirement": 14,
+          "dexterityRequirement": 14,
+          "intelligenceRequirement": 14,
+          "defenceRequirement": 14,
+          "agilityRequirement": 14
+        },
+        "droppedBy": [
+          {
+            "name": "Vortexian Voidgap",
+            "coords": [
+              1198,
+              132,
+              -1115,
+              35
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Vortexian Event Horizon",
+        "type": "ingredient",
+        "requirements": {
+          "level": 105,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "icon": {
+          "format": "skin",
+          "value": "9ddebbb062f6a385a91ca05f18f5c0acbe33e2d06ee9e7416cef6ee43dfe2fb"
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": 12,
+            "raw": 12,
+            "max": 12
+          },
+          "lifeSteal": {
+            "min": -75,
+            "raw": -75,
+            "max": -60
+          },
+          "manaSteal": {
+            "min": -3,
+            "raw": -3,
+            "max": -3
+          }
+        },
+        "tier": 3,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -160000,
+          "strengthRequirement": 14,
+          "dexterityRequirement": 14,
+          "intelligenceRequirement": 14,
+          "defenceRequirement": 14,
+          "agilityRequirement": 14
+        },
+        "droppedBy": [
+          {
+            "name": "Vortexian Voidgap",
+            "coords": [
+              1382,
+              142,
+              -1008,
+              30
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed21013f83",
+      "itemName": "Lost Soul",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Lost Soul",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "fast",
+        "averageDps": 375,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 87,
+          "classRequirement": "warrior",
+          "quest": "The Lost",
+          "agility": 50
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "472",
+            "name": "spear.air3"
+          }
+        },
+        "identifications": {
+          "rawMainAttackDamage": {
+            "min": 38,
+            "raw": 127,
+            "max": 165
+          },
+          "lifeSteal": {
+            "min": 78,
+            "raw": 260,
+            "max": 338
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "airDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "airDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 90
+          },
+          "baseAirDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 120
+          }
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Lost Soul",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "fast",
+        "averageDps": 375,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 87,
+          "classRequirement": "warrior",
+          "agility": 50
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "480",
+            "name": "spear.air3"
+          }
+        },
+        "identifications": {
+          "rawMainAttackDamage": {
+            "min": 38,
+            "raw": 127,
+            "max": 165
+          },
+          "lifeSteal": {
+            "min": 78,
+            "raw": 260,
+            "max": 338
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "airDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "airDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 90
+          },
+          "baseAirDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 120
+          }
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed21013fa1",
+      "itemName": "Canyon Spirit",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Canyon Spirit",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "normal",
+        "averageDps": 273,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 85,
+          "classRequirement": "mage",
+          "quest": "The Lost",
+          "strength": 25,
+          "agility": 35
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "335",
+            "name": "wand.earth3"
+          }
+        },
+        "identifications": {
+          "rawAgility": 13,
+          "2ndSpellCost": {
+            "min": -7,
+            "raw": -23,
+            "max": -30
+          },
+          "jumpHeight": 1,
+          "xpBonus": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "lootBonus": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "airDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 65
+          },
+          "baseEarthDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 90
+          }
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Canyon Spirit",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "normal",
+        "averageDps": 273,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 85,
+          "classRequirement": "mage",
+          "strength": 25,
+          "agility": 35
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "339",
+            "name": "wand.earth3"
+          }
+        },
+        "identifications": {
+          "rawAgility": 13,
+          "2ndSpellCost": {
+            "min": -7,
+            "raw": -23,
+            "max": -30
+          },
+          "jumpHeight": 1,
+          "xpBonus": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "lootBonus": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "airDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 65
+          },
+          "baseEarthDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 90
+          }
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed21013fe1",
+      "itemName": "Spiritshock",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Spiritshock",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "normal",
+        "averageDps": 675,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 81,
+          "classRequirement": "archer",
+          "dexterity": 55
+        },
+        "powderSlots": 2,
+        "lore": "Recovered from the Lexdale Penitentiary, this grisly bow holds destructive capabilities. Used to carry out executions, a precise enough shot can shatter the soul of those it hits.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "202",
+            "name": "bow.thunder3"
+          }
+        },
+        "identifications": {
+          "rawDexterity": 13,
+          "rawSpellDamage": {
+            "min": 41,
+            "raw": 135,
+            "max": 176
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "weakenEnemy": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "earthDefence": {
+            "min": -36,
+            "raw": -28,
+            "max": -20
+          },
+          "thunderDefence": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 70
+          },
+          "baseThunderDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 500
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Spiritshock",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "normal",
+        "averageDps": 675,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 81,
+          "classRequirement": "archer",
+          "dexterity": 55
+        },
+        "lore": "Recovered from the Lexdale Penitentiary, this grisly bow holds destructive capabilities. Used to carry out executions, a precise enough shot can shatter the soul of those it hits.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "202",
+            "name": "bow.thunder3"
+          }
+        },
+        "identifications": {
+          "rawDexterity": 13,
+          "rawSpellDamage": {
+            "min": 41,
+            "raw": 135,
+            "max": 176
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "weakenEnemy": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "earthDefence": {
+            "min": -36,
+            "raw": -28,
+            "max": -20
+          },
+          "thunderDefence": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 70
+          },
+          "baseThunderDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 500
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed21013f8e",
+      "itemName": "Mountain Spirit",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Mountain Spirit",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "fast",
+        "averageDps": 500,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 86,
+          "classRequirement": "assassin",
+          "quest": "The Lost",
+          "dexterity": 35,
+          "agility": 35
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "261",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "rawDexterity": 5,
+          "rawAgility": 5,
+          "rawMainAttackDamage": {
+            "min": 44,
+            "raw": 145,
+            "max": 189
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "jumpHeight": 1,
+          "xpBonus": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "thunderDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "airDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 120
+          },
+          "baseThunderDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 70
+          },
+          "baseAirDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 70
+          }
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Mountain Spirit",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "fast",
+        "averageDps": 500,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 86,
+          "classRequirement": "assassin",
+          "dexterity": 35,
+          "agility": 35
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "263",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "rawDexterity": 5,
+          "rawAgility": 5,
+          "rawMainAttackDamage": {
+            "min": 44,
+            "raw": 145,
+            "max": 189
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "jumpHeight": 1,
+          "xpBonus": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "thunderDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "airDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 120
+          },
+          "baseThunderDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 70
+          },
+          "baseAirDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 70
+          }
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed210140a6",
+      "itemName": "Thunder Relic Daggers",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Thunder Relic Dagger",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "very_fast",
+        "averageDps": 350,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 65,
+          "classRequirement": "assassin",
+          "dexterity": 30
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "201",
+            "name": "bow.thunder2"
+          }
+        },
+        "identifications": {
+          "rawDexterity": 7,
+          "rawMainAttackDamage": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "xpBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "lootBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "thunderDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "thunderDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 93
+          },
+          "baseThunderDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 93
+          }
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Thunder Relic Daggers",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "very_fast",
+        "averageDps": 350,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 65,
+          "classRequirement": "assassin",
+          "dexterity": 25
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            -862,
+            22,
+            -310,
+            120
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "271",
+            "name": "dagger.thunder2"
+          }
+        },
+        "identifications": {
+          "rawDexterity": 7,
+          "rawMainAttackDamage": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "xpBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "lootBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "thunderDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "thunderDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 93
+          },
+          "baseThunderDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 93
+          }
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed2101423a",
+      "itemName": "Glittering Silt",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Glittering Silt",
+        "type": "ingredient",
+        "requirements": {
+          "level": 31,
+          "skills": [
+            "weaponsmithing",
+            "woodworking"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "348:0"
+        },
+        "identifications": {
+          "stealing": {
+            "min": 3,
+            "raw": 3,
+            "max": 5
+          },
+          "lootBonus": {
+            "min": 3,
+            "raw": 3,
+            "max": 5
+          }
+        },
+        "tier": 2,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -52000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hangry Seagull",
+            "coords": [
+              [
+                757,
+                39,
+                -2438,
+                15
+              ],
+              [
+                659,
+                41,
+                -2504,
+                15
+              ],
+              [
+                580,
+                42,
+                -2391,
+                15
+              ],
+              [
+                432,
+                40,
+                -2608,
+                10
+              ],
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                452,
+                35,
+                -3768,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ],
+              [
+                453,
+                36,
+                -3768,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Cursed Pirate",
+            "coords": [
+              919,
+              40,
+              -2398,
+              2
+            ]
+          },
+          {
+            "name": "Sturdy Crab",
+            "coords": [
+              [
+                -210,
+                41,
+                -2722,
+                2
+              ],
+              [
+                -216,
+                39,
+                -2741,
+                2
+              ],
+              [
+                -242,
+                37,
+                -2764,
+                2
+              ],
+              [
+                -231,
+                56,
+                -2751,
+                2
+              ],
+              [
+                -223,
+                58,
+                -2716,
+                2
+              ],
+              [
+                -282,
+                35,
+                -2676,
+                2
+              ]
+            ]
+          },
+          {
+            "name": "Island Crab",
+            "coords": [
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                452,
+                35,
+                -3768,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ],
+              [
+                453,
+                36,
+                -3768,
+                10
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Glittering Silt",
+        "type": "ingredient",
+        "requirements": {
+          "level": 31,
+          "skills": [
+            "weaponsmithing",
+            "woodworking"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "348:0"
+        },
+        "identifications": {
+          "stealing": {
+            "min": 3,
+            "raw": 3,
+            "max": 5
+          },
+          "lootBonus": {
+            "min": 3,
+            "raw": 3,
+            "max": 5
+          }
+        },
+        "tier": 2,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -52000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hangry Seagull",
+            "coords": [
+              [
+                757,
+                39,
+                -2438,
+                15
+              ],
+              [
+                659,
+                41,
+                -2504,
+                15
+              ],
+              [
+                580,
+                42,
+                -2391,
+                15
+              ],
+              [
+                432,
+                40,
+                -2608,
+                10
+              ],
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Cursed Pirate",
+            "coords": [
+              919,
+              40,
+              -2398,
+              2
+            ]
+          },
+          {
+            "name": "Sturdy Crab",
+            "coords": [
+              [
+                -210,
+                41,
+                -2722,
+                2
+              ],
+              [
+                -216,
+                39,
+                -2741,
+                2
+              ],
+              [
+                -242,
+                37,
+                -2764,
+                2
+              ],
+              [
+                -231,
+                56,
+                -2751,
+                2
+              ],
+              [
+                -223,
+                58,
+                -2716,
+                2
+              ],
+              [
+                -282,
+                35,
+                -2676,
+                2
+              ]
+            ]
+          },
+          {
+            "name": "Island Crab",
+            "coords": [
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                452,
+                35,
+                -3768,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ],
+              [
+                453,
+                36,
+                -3768,
+                10
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed2101407d",
+      "itemName": "Broken Amulet",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Broken Amulet",
+        "type": "ingredient",
+        "requirements": {
+          "level": 70,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "371:0"
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          }
+        },
+        "tier": 0,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -40000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Endurance Trainer",
+            "coords": [
+              -730,
+              72,
+              -1052,
+              10
+            ]
+          },
+          {
+            "name": "Power Trainer",
+            "coords": [
+              -730,
+              72,
+              -1052,
+              10
+            ]
+          },
+          {
+            "name": "Acrobatics Trainer",
+            "coords": [
+              -730,
+              72,
+              -1052,
+              10
+            ]
+          },
+          {
+            "name": "Magic Trainer",
+            "coords": [
+              -730,
+              72,
+              -1052,
+              10
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Broken Amulet",
+        "type": "ingredient",
+        "requirements": {
+          "level": 70,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "371:0"
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          }
+        },
+        "tier": 0,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -40000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Magic Trainer",
+            "coords": [
+              -730,
+              72,
+              -1052,
+              10
+            ]
+          },
+          {
+            "name": "Power Trainer",
+            "coords": [
+              -730,
+              72,
+              -1052,
+              10
+            ]
+          },
+          {
+            "name": "Acrobatics Trainer",
+            "coords": [
+              -730,
+              72,
+              -1052,
+              10
+            ]
+          },
+          {
+            "name": "Magic Trainer",
+            "coords": [
+              -730,
+              72,
+              -1052,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed2101426f",
+      "itemName": "Seabird Feather",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Seabird Feather",
+        "type": "ingredient",
+        "requirements": {
+          "level": 26,
+          "skills": [
+            "woodworking",
+            "weaponsmithing"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "288:0"
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 6
+          },
+          "mainAttackDamage": {
+            "min": -3,
+            "raw": -3,
+            "max": -1
+          }
+        },
+        "tier": 0,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -26000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hangry Seagull",
+            "coords": [
+              [
+                757,
+                39,
+                -2438,
+                15
+              ],
+              [
+                659,
+                41,
+                -2504,
+                15
+              ],
+              [
+                580,
+                42,
+                -2391,
+                15
+              ],
+              [
+                432,
+                40,
+                -2608,
+                10
+              ],
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                452,
+                35,
+                -3768,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ],
+              [
+                453,
+                36,
+                -3768,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Storm Shaker",
+            "coords": [
+              -251,
+              22,
+              -2767,
+              0
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Seabird Feather",
+        "type": "ingredient",
+        "requirements": {
+          "level": 26,
+          "skills": [
+            "woodworking",
+            "weaponsmithing"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "288:0"
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 6
+          },
+          "mainAttackDamage": {
+            "min": -3,
+            "raw": -3,
+            "max": -1
+          }
+        },
+        "tier": 0,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -26000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hangry Seagull",
+            "coords": [
+              [
+                757,
+                39,
+                -2438,
+                15
+              ],
+              [
+                659,
+                41,
+                -2504,
+                15
+              ],
+              [
+                580,
+                42,
+                -2391,
+                15
+              ],
+              [
+                432,
+                40,
+                -2608,
+                10
+              ],
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Storm Shaker",
+            "coords": [
+              -251,
+              22,
+              -2767,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed2101403e",
+      "itemName": "Ivory Bow",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Ivory Bow",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "normal",
+        "averageDps": 577,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 75,
+          "classRequirement": "archer",
+          "strength": 20,
+          "dexterity": 20,
+          "intelligence": 20,
+          "defence": 20,
+          "agility": 20
+        },
+        "powderSlots": 1,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "208",
+            "name": "bow.multi3"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 81,
+            "raw": 270,
+            "max": 351
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "lootBonus": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "elementalDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "elementalDefence": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 250,
+            "raw": 250,
+            "max": 310
+          }
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Ivory Bow",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "normal",
+        "averageDps": 577,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 75,
+          "classRequirement": "archer",
+          "strength": 20,
+          "dexterity": 20,
+          "intelligence": 20,
+          "defence": 20,
+          "agility": 20
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "208",
+            "name": "bow.multi3"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 81,
+            "raw": 270,
+            "max": 351
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "lootBonus": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "elementalDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "elementalDefence": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 250,
+            "raw": 250,
+            "max": 310
+          }
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed210142a2",
+      "itemName": "Bishop",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Bishop",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "golden",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 20,
+          "classRequirement": "mage",
+          "intelligence": 30
+        },
+        "identifications": {
+          "rawIntelligence": 5,
+          "mainAttackDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "spellDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "healingEfficiency": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseHealth": 120
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Bishop",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "golden",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 20,
+          "intelligence": 30
+        },
+        "identifications": {
+          "rawIntelligence": 5,
+          "mainAttackDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "spellDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "healingEfficiency": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseHealth": 120
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed21014211",
+      "itemName": "Philosopher",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Philosopher",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "golden",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 36,
+          "classRequirement": "shaman",
+          "intelligence": 20
+        },
+        "majorIds": {
+          "Peaceful Effigy": "<span class='font-ascii' style='color:#55FFFF'>+Peaceful Effigy: <span class='font-ascii' style='color:#00AAAA'>Your Totem will last twice as long.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "What better excuse is there to sit in the shade and think about life?",
+        "identifications": {
+          "rawDefence": 4,
+          "mainAttackDamage": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "spellDamage": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "healthRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "healingEfficiency": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "reflection": {
+            "min": 14,
+            "raw": 45,
+            "max": 59
+          },
+          "walkSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseHealth": 525,
+          "baseFireDefence": 15
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Philosopher",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "golden",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 36,
+          "intelligence": 20
+        },
+        "majorIds": {
+          "Peaceful Effigy": "<span class='font-ascii' style='color:#55FFFF'>+Peaceful Effigy: <span class='font-ascii' style='color:#00AAAA'>Your Totem will last twice as long.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "What better excuse is there to sit in the shade and think about life?",
+        "identifications": {
+          "rawDefence": 4,
+          "mainAttackDamage": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "spellDamage": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "healthRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "healingEfficiency": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "reflection": {
+            "min": 14,
+            "raw": 45,
+            "max": 59
+          },
+          "walkSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseHealth": 525,
+          "baseFireDefence": 15
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed21014264",
+      "itemName": "Seabird Egg",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Seabird Egg",
+        "type": "ingredient",
+        "requirements": {
+          "level": 27,
+          "skills": [
+            "cooking"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "370:0"
+        },
+        "identifications": {
+          "rawAgility": {
+            "min": 3,
+            "raw": 3,
+            "max": 4
+          },
+          "airDefence": {
+            "min": 6,
+            "raw": 6,
+            "max": 10
+          }
+        },
+        "tier": 2,
+        "consumableOnlyIDs": {
+          "duration": -310,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hangry Seagull",
+            "coords": [
+              [
+                757,
+                39,
+                -2438,
+                15
+              ],
+              [
+                659,
+                41,
+                -2504,
+                15
+              ],
+              [
+                580,
+                42,
+                -2391,
+                15
+              ],
+              [
+                432,
+                40,
+                -2608,
+                10
+              ],
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                452,
+                35,
+                -3768,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ],
+              [
+                453,
+                36,
+                -3768,
+                10
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Seabird Egg",
+        "type": "ingredient",
+        "requirements": {
+          "level": 27,
+          "skills": [
+            "cooking"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "370:0"
+        },
+        "identifications": {
+          "rawAgility": {
+            "min": 3,
+            "raw": 3,
+            "max": 4
+          },
+          "airDefence": {
+            "min": 6,
+            "raw": 6,
+            "max": 10
+          }
+        },
+        "tier": 2,
+        "consumableOnlyIDs": {
+          "duration": -310,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hangry Seagull",
+            "coords": [
+              [
+                757,
+                39,
+                -2438,
+                15
+              ],
+              [
+                659,
+                41,
+                -2504,
+                15
+              ],
+              [
+                580,
+                42,
+                -2391,
+                15
+              ],
+              [
+                432,
+                40,
+                -2608,
+                10
+              ],
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed210142a8",
+      "itemName": "Waterlogged Branch",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Waterlogged Branch",
+        "type": "ingredient",
+        "requirements": {
+          "level": 20,
+          "skills": [
+            "woodworking",
+            "weaponsmithing"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "32:0"
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 5
+          },
+          "spellDamage": {
+            "min": -5,
+            "raw": -5,
+            "max": -3
+          }
+        },
+        "tier": 0,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -24000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hangry Seagull",
+            "coords": [
+              [
+                757,
+                39,
+                -2438,
+                15
+              ],
+              [
+                659,
+                41,
+                -2504,
+                15
+              ],
+              [
+                580,
+                42,
+                -2391,
+                15
+              ],
+              [
+                432,
+                40,
+                -2608,
+                10
+              ],
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                452,
+                35,
+                -3768,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ],
+              [
+                453,
+                36,
+                -3768,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Cursed Pirate",
+            "coords": [
+              919,
+              40,
+              -2398,
+              2
+            ]
+          },
+          {
+            "name": "Captain Nomor Beard",
+            "coords": [
+              919,
+              40,
+              -2398,
+              2
+            ]
+          },
+          {
+            "name": "Watery Sludge",
+            "coords": [
+              [
+                -1748,
+                18,
+                -5552,
+                5
+              ],
+              [
+                -1712,
+                10,
+                -5471,
+                6
+              ],
+              [
+                -1724,
+                10,
+                -5450,
+                6
+              ],
+              [
+                -1763,
+                9,
+                -5478,
+                6
+              ],
+              [
+                -1748,
+                15,
+                -5459,
+                6
+              ]
+            ]
+          },
+          {
+            "name": "Watery Sludge",
+            "coords": [
+              [
+                -1779,
+                28,
+                -5571,
+                6
+              ],
+              [
+                -1780,
+                22,
+                -5548,
+                8
+              ],
+              [
+                -1717,
+                10,
+                -5459,
+                6
+              ],
+              [
+                -1714,
+                10,
+                -5482,
+                6
+              ],
+              [
+                -1757,
+                10,
+                -5490,
+                6
+              ]
+            ]
+          },
+          {
+            "name": "Watery Sludge",
+            "coords": [
+              -1743,
+              20,
+              -5468,
+              8
+            ]
+          },
+          {
+            "name": "Biohazard Amalgamate",
+            "coords": null
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Waterlogged Branch",
+        "type": "ingredient",
+        "requirements": {
+          "level": 20,
+          "skills": [
+            "woodworking",
+            "weaponsmithing"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "32:0"
+        },
+        "identifications": {
+          "mainAttackDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 5
+          },
+          "spellDamage": {
+            "min": -5,
+            "raw": -5,
+            "max": -3
+          }
+        },
+        "tier": 0,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -24000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hangry Seagull",
+            "coords": [
+              [
+                757,
+                39,
+                -2438,
+                15
+              ],
+              [
+                659,
+                41,
+                -2504,
+                15
+              ],
+              [
+                580,
+                42,
+                -2391,
+                15
+              ],
+              [
+                432,
+                40,
+                -2608,
+                10
+              ],
+              [
+                872,
+                38,
+                -3016,
+                10
+              ],
+              [
+                127,
+                40,
+                -3571,
+                10
+              ],
+              [
+                -293,
+                42,
+                -3275,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Cursed Pirate",
+            "coords": [
+              919,
+              40,
+              -2398,
+              2
+            ]
+          },
+          {
+            "name": "Captain Nomor Beard",
+            "coords": [
+              919,
+              40,
+              -2398,
+              2
+            ]
+          },
+          {
+            "name": "Watery Sludge",
+            "coords": [
+              [
+                -1748,
+                18,
+                -5552,
+                5
+              ],
+              [
+                -1712,
+                10,
+                -5471,
+                6
+              ],
+              [
+                -1724,
+                10,
+                -5450,
+                6
+              ],
+              [
+                -1763,
+                9,
+                -5478,
+                6
+              ],
+              [
+                -1748,
+                15,
+                -5459,
+                6
+              ]
+            ]
+          },
+          {
+            "name": "Watery Sludge",
+            "coords": [
+              [
+                -1779,
+                28,
+                -5571,
+                6
+              ],
+              [
+                -1780,
+                22,
+                -5548,
+                8
+              ],
+              [
+                -1717,
+                10,
+                -5459,
+                6
+              ],
+              [
+                -1714,
+                10,
+                -5482,
+                6
+              ],
+              [
+                -1757,
+                10,
+                -5490,
+                6
+              ]
+            ]
+          },
+          {
+            "name": "Watery Sludge",
+            "coords": [
+              -1743,
+              20,
+              -5468,
+              8
+            ]
+          },
+          {
+            "name": "Biohazard Amalgamate",
+            "coords": null
+          }
+        ]
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed210140b3",
+      "itemName": "Earth Relic Daggers",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Earth Relic Daggers",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "very_slow",
+        "averageDps": 403,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 65,
+          "classRequirement": "assassin",
+          "strength": 25
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            -862,
+            22,
+            -310,
+            120
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "263",
+            "name": "dagger.earth2"
+          }
+        },
+        "identifications": {
+          "rawStrength": 7,
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "exploding": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "xpBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "lootBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "earthDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "earthDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 286
+          },
+          "baseEarthDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 286
+          }
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Earth Relic Dagger",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "very_slow",
+        "averageDps": 403,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 65,
+          "classRequirement": "assassin",
+          "strength": 30
+        },
+        "powderSlots": 3,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "265",
+            "name": "dagger.earth2"
+          }
+        },
+        "identifications": {
+          "rawStrength": 7,
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "exploding": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "xpBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "lootBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "earthDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "earthDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 286
+          },
+          "baseEarthDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 286
+          }
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed21014325",
+      "itemName": "First Steps",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "First Steps",
+        "type": "accessory",
+        "accessoryType": "ring",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 5,
+          "quest": "Cook Assistant"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "145",
+            "name": "ring.basicWedding"
+          }
+        },
+        "identifications": {
+          "walkSpeed": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "xpBonus": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          }
+        },
+        "base": {
+          "baseHealth": 4
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "First Steps",
+        "type": "accessory",
+        "accessoryType": "ring",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 5,
+          "quest": "Cook Assistant֎"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "145",
+            "name": "ring.basicWedding"
+          }
+        },
+        "identifications": {
+          "walkSpeed": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "xpBonus": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          }
+        },
+        "base": {
+          "baseHealth": 4
+        },
+        "rarity": "unique"
+      }
+    },
+    {
+      "_id": "67e1fce7ff0577ed21014324",
+      "itemName": "Hostage",
+      "status": "modify",
+      "timestamp": 1742863591,
+      "before": {
+        "internalName": "Hostage",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "normal",
+        "averageDps": 27,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 5,
+          "classRequirement": "warrior",
+          "quest": "Prison Story"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "469",
+            "name": "spear.basicGold"
+          }
+        },
+        "identifications": {
+          "rawStrength": 3,
+          "rawHealth": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "walkSpeed": {
+            "min": -4,
+            "raw": -3,
+            "max": -2
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 16
+          }
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Hostage",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "normal",
+        "averageDps": 27,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 5,
+          "classRequirement": "warrior"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:iron_horse_armor",
+            "customModelData": "477",
+            "name": "spear.basicGold"
+          }
+        },
+        "identifications": {
+          "rawStrength": 3,
+          "rawHealth": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "walkSpeed": {
+            "min": -4,
+            "raw": -3,
+            "max": -2
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 16
+          }
+        },
+        "rarity": "unique"
+      }
+    }
+  ]
+}
