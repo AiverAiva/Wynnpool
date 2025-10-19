@@ -30,13 +30,6 @@ async function generateStaticChangelogs() {
   }
   console.log(`✅ Connected to MongoDB (database: ${db.databaseName})`);
 
-  const collections = await db.listCollections().toArray();
-  console.log("🧭 Collections in this DB:", collections.map(c => c.name));
-
-  // 🧪 Check how many documents are there
-  const total = await ChangelogModel.countDocuments({});
-  console.log(`📊 Total documents in item_changelog: ${total}`);
-
   const timestamps: number[] = await ChangelogModel.distinct("timestamp").exec() as number[];
   console.log(`📦 Found ${timestamps.length} timestamps`);
 
