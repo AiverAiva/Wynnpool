@@ -82,4 +82,7 @@ async function generateStaticChangelogs() {
   console.log("🏁 All changelogs generated!");
 }
 
-generateStaticChangelogs().catch(console.error);
+generateStaticChangelogs().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
