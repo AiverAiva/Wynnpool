@@ -9,6 +9,8 @@ export class WeightService {
         @InjectConnection() private readonly connection: Connection,
     ) { }
 
+    private weight_cache: any[] | null = null;
+
     async updateWeight(weightId: string, data: any, user: any) {
         const collection = this.connection.collection('weight_data');
         const { _id, userId, ...rest } = data;
@@ -112,7 +114,10 @@ export class WeightService {
     }
 
     async getAllWeights() {
+        if (this.weight_cache) return this.weight_cache;
         const collection = this.connection.collection('weight_data');
-        return collection.find({}).toArray();
+        const data = await collection.find({}).toArray();
+        this.weight_cache = data;
+        return data;
     }
 }
