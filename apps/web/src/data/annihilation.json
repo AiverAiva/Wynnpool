@@ -1,27 +1,26 @@
 {
     "current": {
-        "datetime_utc": 1761700711340,
-        "predicted": true
+        "datetime_utc": 1761704791000
     },
     "predicted": [
         {
-            "datetime_utc": 1761976295596,
+            "datetime_utc": 1761980498610,
             "predicted": true
         },
         {
-            "datetime_utc": 1762251880495,
+            "datetime_utc": 1762256117451,
             "predicted": true
         },
         {
-            "datetime_utc": 1762527465408,
+            "datetime_utc": 1762531734287,
             "predicted": true
         },
         {
-            "datetime_utc": 1762803050322,
+            "datetime_utc": 1762807351077,
             "predicted": true
         },
         {
-            "datetime_utc": 1763078635236,
+            "datetime_utc": 1763082967866,
             "predicted": true
         }
     ]
