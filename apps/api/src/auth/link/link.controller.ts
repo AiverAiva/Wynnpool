@@ -2,6 +2,7 @@ import { Controller, Post, Body, UseGuards, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { LinkService } from './link.service';
 import { AuthenticatedGuard } from '@shared/guards/authenticated.guard';
+import { Throttle } from '@nestjs/throttler';
 
 class LinkMinecraftDto {
   credential: string
@@ -22,6 +23,9 @@ export class LinkController {
     return this.linkService.verifyMinecraftLink(credential, code)
   }
 
+
+  /// TODO
+  //ADD throttle for per profile!!
   @UseGuards(AuthenticatedGuard)
   @Post('minecraft/disconnect')
   async disconnectMinecraft(@Req() req: Request) {
