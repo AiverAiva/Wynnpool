@@ -7,7 +7,7 @@ import { DiscordStrategy } from './discord.strategy';
 import { UsersModule } from '../users/users.module';
 import { SessionSerializer } from './session.serializer';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthenticatedGuard } from './authenticated.guard';
+import { AuthenticatedGuard } from '@shared/guards/authenticated.guard';
 
 @Module({
   imports: [

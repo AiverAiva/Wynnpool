@@ -1,7 +1,7 @@
 import { Controller, Get, Req, Res, UseGuards, Param } from '@nestjs/common';
 import { Request } from 'express';
 import { UsersService } from './users.service';
-import { AuthenticatedGuard } from '../auth/authenticated.guard';
+import { AuthenticatedGuard } from '@shared/guards/authenticated.guard';
 import axios from 'axios';
 import qs from 'qs';
 import { JwtService } from '@nestjs/jwt';
