@@ -1,7 +1,7 @@
 import { Controller, Post, Body, UseGuards, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { LinkService } from './link.service';
-import { AuthenticatedGuard } from '../authenticated.guard';
+import { AuthenticatedGuard } from '@shared/guards/authenticated.guard';
 
 class LinkMinecraftDto {
   credential: string
