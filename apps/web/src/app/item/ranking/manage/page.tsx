@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/popover"
 import { Search, User, Sword, Shield, Sparkles, Clock, RefreshCw, ChevronDown, Check, AlertCircle, Database } from 'lucide-react'
 import { cn } from "@/lib/utils"
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip'
 import api from '@/lib/api'
 import { ItemIcon } from '@/components/custom/WynnIcon'
 import { Item } from '@/types/itemType'
@@ -59,6 +60,9 @@ export default function ManagePage() {
     const [searchOwner, setSearchOwner] = useState('')
     const [selectedItem, setSelectedItem] = useState('')
     const [itemData, setItemData] = useState<ItemEntry[]>([])
+    const [page, setPage] = useState(1)
+    const [pageSize] = useState(10)
+    const displayedItems = itemData.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize)
     const [availableItems, setAvailableItems] = useState<Record<string, ItemList>>({})
     const [loading, setLoading] = useState(false)
     const [itemsLoading, setItemsLoading] = useState(true)
@@ -154,10 +158,41 @@ export default function ManagePage() {
 
             const data = await response.json()
             setItemData(Array.isArray(data) ? data : [])
+            setPage(1)
         } catch (err) {
             console.error("Error searching database:", err)
             setError("Failed to search database. Please try again.")
             setItemData([])
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const deleteDatabaseItem = async (id: string) => {
+        if (!confirm('Are you sure you want to delete this item from the database?')) return
+        setLoading(true)
+        setError(null)
+        try {
+            const response = await fetch(api(`/item/database/${id}`), {
+                method: 'DELETE',
+                credentials: 'include',
+            })
+
+            if (!response.ok) {
+                const text = await response.text().catch(() => '')
+                throw new Error(text || 'Failed to delete item')
+            }
+
+            const data = await response.json().catch(() => ({ success: true }))
+            if (data && data.success === false) {
+                throw new Error(data.message || 'Failed to delete item')
+            }
+
+            // remove locally without re-fetching
+            setItemData((prev) => prev.filter((it) => it._id !== id))
+        } catch (err) {
+            console.error('Delete error:', err)
+            setError((err as Error).message || 'Failed to delete item')
         } finally {
             setLoading(false)
         }
@@ -179,6 +214,7 @@ export default function ManagePage() {
     const clearFilters = () => {
         setSearchOwner('')
         setSelectedItem('')
+        setPage(1)
         searchDatabase()
     }
 
@@ -191,6 +227,12 @@ export default function ManagePage() {
             minute: '2-digit'
         })
     }
+
+    // Keep page in range when data or pageSize changes
+    // useEffect(() => {
+    //     const maxPage = Math.max(1, Math.ceil(itemData.length / pageSize))
+    //     if (page > maxPage) setPage(maxPage)
+    // }, [itemData.length, pageSize])
 
     return (
         <div className="min-h-screen bg-background container mx-auto p-6 max-w-screen-lg ">
@@ -317,11 +359,50 @@ export default function ManagePage() {
                 {/* Results */}
                 <Card>
                     <CardHeader>
-                        <CardTitle className="flex items-center justify-between">
-                            <span>Search Results</span>
-                            <Badge variant="secondary">
-                                {loading ? "Loading..." : `${itemData.length} items found`}
-                            </Badge>
+                        <CardTitle className="w-full p-0">
+                            <div className="w-full flex flex-row items-center justify-between gap-2">
+                                {/* Search Results (left/top) */}
+                                <div className="order-1">
+                                    <div className="flex items-center gap-3">
+                                        <span>Search Results</span>
+                                        <Badge variant="secondary">{loading ? "Loading..." : `${itemData.length} items found`}</Badge>
+                                    </div>
+                                </div>
+
+
+
+                                {/* Refresh (right/top) */}
+                                <div className="order-3 flex items-center justify-end">
+                                    <Button onClick={searchDatabase} disabled={loading} size="sm" variant="ghost">
+                                        {loading ? (
+                                            <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+                                        ) : (
+                                            <RefreshCw className="mr-2 h-4 w-4" />
+                                        )}
+                                        Refresh
+                                    </Button>
+                                </div>
+                            </div>
+                            {/* Paginator (center/top) */}
+                            <div className="order-2 flex items-center justify-center">
+                                <div className="flex items-center gap-2">
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => setPage((p) => Math.max(1, p - 1))}
+                                        disabled={page === 1}
+                                    >
+                                        Prev
+                                    </Button>
+                                    <div className="text-sm text-muted-foreground">Page {itemData.length === 0 ? 0 : page} of {Math.max(1, Math.ceil(itemData.length / pageSize))}</div>
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => setPage((p) => Math.min(Math.ceil(itemData.length / pageSize) || 1, p + 1))}
+                                        disabled={page >= Math.ceil(itemData.length / pageSize) || itemData.length === 0}
+                                    >
+                                        Next
+                                    </Button>
+                                </div>
+                            </div>
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -338,59 +419,78 @@ export default function ManagePage() {
                                 <p className="text-sm">Try adjusting your filters or clearing them to see all items.</p>
                             </div>
                         ) : (
-                            <div className="overflow-x-auto">
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow>
-                                            <TableHead>Item</TableHead>
-                                            <TableHead>Owner</TableHead>
-                                            <TableHead>Date Added</TableHead>
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {itemData.map((item) => (
-                                            <TableRow key={item._id}>
-                                                <TableCell>
-                                                    <div className="flex items-center gap-2">
-                                                        <div>
-                                                            <div className="font-medium flex items-center gap-1">
-                                                                {item.itemName}
+                            <div>
+                                <div className="overflow-x-auto">
+                                    <Table>
+                                        <TableHeader>
+                                            <TableRow>
+                                                <TableHead>Item</TableHead>
+                                                <TableHead>Owner</TableHead>
+                                                <TableHead>Date Added</TableHead>
+                                                <TableHead>Operation</TableHead>
+
+                                            </TableRow>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {displayedItems.map((item) => (
+                                                <TableRow key={item._id}>
+                                                    <TableCell>
+                                                        <div className="flex items-center gap-2">
+                                                            <div>
+                                                                <div className="font-medium flex items-center gap-1">
+                                                                    {item.itemName}
+                                                                    {item.shinyStat && (
+                                                                        <Sparkles className="h-4 w-4 text-yellow-500" />
+                                                                    )}
+                                                                </div>
                                                                 {item.shinyStat && (
-                                                                    <Sparkles className="h-4 w-4 text-yellow-500" />
+                                                                    <div className="text-xs text-muted-foreground">
+                                                                        {item.shinyStat.displayName}: {item.shinyStat.value}
+                                                                    </div>
                                                                 )}
                                                             </div>
-                                                            {item.shinyStat && (
-                                                                <div className="text-xs text-muted-foreground">
-                                                                    {item.shinyStat.displayName}: {item.shinyStat.value}
-                                                                </div>
-                                                            )}
                                                         </div>
-                                                    </div>
-                                                </TableCell>
-                                                <TableCell className='flex gap-2 items-center'>
-                                                    <img
-                                                        src={`https://www.mc-heads.net/avatar/${item.owner}`}
-                                                        alt={item.owner}
-                                                        className="w-6 h-6 rounded-sm"
-                                                    />
-                                                    {item.owner}
-                                                    {/* <Badge variant="outline"></Badge> */}
-                                                </TableCell>
-                                                <TableCell>
-                                                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                                        <Clock className="h-4 w-4" />
-                                                        {formatTimestamp(item.timestamp)}
-                                                    </div>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Button className='h-6' variant={"outline"} >
-                                                        Edit
-                                                    </Button>
-                                                </TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
+                                                    </TableCell>
+                                                    <TableCell className='flex gap-2 items-center'>
+                                                        <img
+                                                            src={`https://www.mc-heads.net/avatar/${item.owner}`}
+                                                            alt={item.owner}
+                                                            className="w-6 h-6 rounded-sm"
+                                                        />
+                                                        {item.owner}
+                                                        {/* <Badge variant="outline"></Badge> */}
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                                                            <Clock className="h-4 w-4" />
+                                                            {formatTimestamp(item.timestamp)}
+                                                        </div>
+                                                    </TableCell>
+                                                    <TableCell className='space-x-2'>
+                                                        <TooltipProvider delayDuration={0}>
+                                                            <Tooltip>
+                                                                <TooltipTrigger asChild>
+                                                                    <Button className='h-6' variant="secondary" disabled={loading}>
+                                                                        View
+                                                                    </Button>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent side="right" className="max-w-xl p-2">
+                                                                    <pre className="max-h-64 overflow-auto text-xs whitespace-pre-wrap">
+                                                                        {JSON.stringify(item, null, 2)}
+                                                                    </pre>
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+
+                                                        <Button className='h-6' variant="destructive" onClick={() => deleteDatabaseItem(item._id)} disabled={loading}>
+                                                            Delete
+                                                        </Button>
+                                                    </TableCell>
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </div>
                             </div>
                         )}
                     </CardContent>
