@@ -70,12 +70,10 @@ export function Navbar() {
           <NavigationMenu>
             <NavigationMenuList className="flex items-center text-sm font-medium">
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <p className={`transition-colors hover:text-foreground/80 ${pathname === '/' ? 'text-foreground' : 'text-foreground/60'
-                      } `}>Home</p>
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
+                  <p className={`transition-colors hover:text-foreground/80 ${pathname === '/' ? 'text-foreground' : 'text-foreground/60'
+                    } `}>Home</p>
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger
@@ -128,27 +126,21 @@ export function Navbar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/stats" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <p className={`transition-colors hover:text-foreground/80 ${pathname === '/stats' ? 'text-foreground' : 'text-foreground/60'
-                      } `}>Stats</p>
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href="/stats" className={navigationMenuTriggerStyle()}>
+                  <p className={`transition-colors hover:text-foreground/80 ${pathname === '/stats' ? 'text-foreground' : 'text-foreground/60'
+                    } `}>Stats</p>
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/annihilation" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <p className={`transition-colors hover:text-foreground/80 ${pathname === '/annihilation' ? 'text-foreground' : 'text-foreground/60'
-                      } `}>Annihilation</p>
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href="/annihilation" className={navigationMenuTriggerStyle()}>
+                  <p className={`transition-colors hover:text-foreground/80 ${pathname === '/annihilation' ? 'text-foreground' : 'text-foreground/60'
+                    } `}>Annihilation</p>
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="https://discord.gg/QVxPPqHFMk" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <p className={`transition-colors hover:text-foreground/80 text-foreground/60`}>Discord</p>
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href="https://discord.gg/QVxPPqHFMk" className={navigationMenuTriggerStyle()}>
+                  <p className={`transition-colors hover:text-foreground/80 text-foreground/60`}>Discord</p>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
