@@ -13,10 +13,12 @@ import { LeaderboardModule } from './leaderboard/leaderboard.module';
 import { AspectPoolModule } from './aspect-pool/aspect-pool.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    CacheModule.register({ isGlobal: true, }),
     MongooseModule.forRoot(process.env.MONGODB_URI as string, { dbName: 'wynnpool' }),
     ThrottlerModule.forRoot({
       throttlers: [

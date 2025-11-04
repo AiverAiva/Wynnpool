@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Param, Body, UseGuards, Req, Delete } from '@nestjs/common';
 import { DatabaseItemService } from './item-database.service';
-import { AuthenticatedGuard } from '../../auth/authenticated.guard';
-import { Roles } from '../../auth/roles.decorator';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { AuthenticatedGuard } from '@shared/guards/authenticated.guard';
+import { Roles } from '@shared/decorators/roles.decorator';
+import { RolesGuard } from '@shared/guards/roles.guard';
 import { Throttle } from '@nestjs/throttler';
 import { Request } from 'express';
 

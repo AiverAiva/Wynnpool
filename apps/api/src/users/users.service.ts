@@ -32,4 +32,20 @@ export class UsersService {
     async findById(id: string) {
         return this.userModel.findById(id);
     }
+
+    async updateMinecraftProfile(id: string, profile: { uuid: string, name: string }) {
+        return this.userModel.findByIdAndUpdate(
+            id,
+            { $set: { minecraftProfile: profile } },
+            { new: true }
+        )
+    }
+
+    async removeMinecraftProfile(id: string) {
+        return this.userModel.findByIdAndUpdate(
+            id,
+            { $unset: { minecraftProfile: "" } },
+            { new: true }
+        )
+    }
 }

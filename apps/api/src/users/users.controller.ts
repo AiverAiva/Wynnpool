@@ -1,7 +1,7 @@
 import { Controller, Get, Req, Res, UseGuards, Param } from '@nestjs/common';
 import { Request } from 'express';
 import { UsersService } from './users.service';
-import { AuthenticatedGuard } from '../auth/authenticated.guard';
+import { AuthenticatedGuard } from '@shared/guards/authenticated.guard';
 import axios from 'axios';
 import qs from 'qs';
 import { JwtService } from '@nestjs/jwt';
@@ -34,6 +34,8 @@ export class UsersController {
     async getMe(@Req() req: Request, @Res() res: any) {
         const user = req.user as any;
         if (!user || !user.discordId) return user;
+        // Ensure we have a plain object (Mongoose Document may hide some fields when spread)
+        const userObj = typeof user.toObject === 'function' ? user.toObject() : { ...user };
 
         let accessToken = user.accessToken;
         let refreshToken = user.refreshToken;
@@ -87,7 +89,7 @@ export class UsersController {
         }
         // Sliding expiration: re-set the cookie
         this.setAuthCookie(res, user.discordId);
-        return res.json({ ...user, discordProfile, accessToken, refreshToken });
+        return res.json({ ...userObj, discordProfile, accessToken, refreshToken });
     }
 
     @UseGuards(AuthenticatedGuard)

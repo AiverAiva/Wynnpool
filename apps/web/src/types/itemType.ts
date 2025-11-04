@@ -56,6 +56,7 @@ export interface ItemRequirement {
 export interface ItemBase {
     internalName: string //this is actually an id, not the ingame display name
     itemName?: string // this one is for some of my api endpoints that returns itemName instead of internalName 
+    id?: string  // this one is for some of my api endpoints that returns itemName instead of internalName
     type: string
     subType?: string
     icon: ItemIconObject
