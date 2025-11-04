@@ -34,6 +34,7 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/comp
 import api from '@/lib/api'
 import { ItemIcon } from '@/components/custom/WynnIcon'
 import { Item } from '@/types/itemType'
+import SubmitRankingModal from '../submit-ranking-modal'
 
 interface ItemEntry {
     _id: string
@@ -69,6 +70,7 @@ export default function ManagePage() {
     const [error, setError] = useState<string | null>(null)
     const [open, setOpen] = useState(false)
     const [permissionAlloewd, setPermissionAlloewd] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false);
 
     // Fetch available items on component mount
     useEffect(() => {
@@ -236,6 +238,7 @@ export default function ManagePage() {
 
     return (
         <div className="min-h-screen bg-background container mx-auto p-6 max-w-screen-lg ">
+            <SubmitRankingModal open={modalOpen} onClose={() => setModalOpen(false)} />
             <div className="mt-[80px]" />
             <div className="container mx-auto p-4 max-w-screen-xl">
                 <div className="mb-6">
@@ -327,6 +330,9 @@ export default function ManagePage() {
 
                             {/* Action Buttons */}
                             <div className="flex gap-2 sm:flex-col sm:justify-end">
+                                <Button onClick={() => setModalOpen(true)}>
+                                    + Submit Item
+                                </Button>
                                 <Button onClick={searchDatabase} disabled={loading} className="flex-1 sm:flex-none">
                                     {loading ? (
                                         <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
