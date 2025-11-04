@@ -207,7 +207,7 @@ export default function ItemWeightedLB({ item, open, onClose, isEmbedded = false
                             </div>
                             <div className="flex items-center space-x-2">
                               {entry.shinyStat && <span className="text-yellow-300 mr-2">✦</span>}
-                              {entry.ironman && <img src={`/ironman.svg`} alt='ironman icon' className={'h-4'} />}
+                              {entry.ironman && <img src={`/icons/gamemode/ironman.svg`} alt='ironman icon' className={'h-4'} />}
                               <span className="font-mono">{(entry.score * 100).toFixed(2)}%</span>
                             </div>
                           </div>

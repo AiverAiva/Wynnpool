@@ -49,59 +49,11 @@ const getTrendIcon = (diff: number, key: string) => {
 
 const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem }) => {
   const { before, after } = modifiedItem
-  const isCombatItem =
-    before.type && after.type === "weapon" ||
-    before.type && after.type === "armour" ||
-    before.type && after.type === "accessory" ||
-    before.type && after.type === "tome" ||
-    before.type && after.type === "charm"
-  const itemNameLength = isCombatItem ? before.internalName.length - 8 : before.internalName.length
-  let itemNameSize = "text-lg"
-
-  if (itemNameLength >= 13) itemNameSize = "text-md"
-  if (itemNameLength >= 16) itemNameSize = "text-sm"
-  if (itemNameLength >= 19) itemNameSize = "text-xs flex-col"
-
-  // Function to compare values and highlight differences
-  const compareValues = (beforeVal: any, afterVal: any) => {
-    if (JSON.stringify(beforeVal) === JSON.stringify(afterVal)) {
-      return { changed: false, value: beforeVal }
-    }
-    return { changed: true, before: beforeVal, after: afterVal }
-  }
-
+  
+  after.itemName = modifiedItem.itemName
   return (
     <Card className="w-full max-w-2xl mx-auto h-fit font-ascii text-[#AAAAAA]">
-      <CardHeader>
-        <div className="flex justify-center items-center">
-          <div className="relative">
-            <ItemIcon item={after} size={64} className="w-16 h-16" />
-            {/* <Badge className="absolute -top-2 -right-2 bg-amber-500 text-black text-xs px-1.5 py-0.5">Modified</Badge> */}
-          </div>
-        </div>
-
-        <div className="flex justify-center items-center">
-          <CardTitle
-            className={`flex justify-center items-center font-thin 
-                ${itemNameSize} 
-                ${isCombatItem && `text-${after.rarity}`}
-                ${after.type === "ingredient" && "text-[#AAAAAA]"}
-              `}
-          >
-            {after.internalName}
-          </CardTitle>
-        </div>
-
-        {isCombatItem && (
-          <div className="flex justify-center items-center">
-            <Badge className={`bg-${after.rarity}`}>
-              <p className={`text-${after.rarity} brightness-[.3] font-thin`}>
-                {after.rarity.charAt(0).toUpperCase() + after.rarity.slice(1)} Item
-              </p>
-            </Badge>
-          </div>
-        )}
-      </CardHeader>
+      <ItemHeader item={after} />
 
       <CardContent>
         <Tabs defaultValue="changes">

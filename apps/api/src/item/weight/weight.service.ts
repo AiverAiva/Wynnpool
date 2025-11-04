@@ -1,12 +1,16 @@
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
+import { Injectable, NotFoundException, ForbiddenException, Inject } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
 import { sendToWebhook } from '../../lib/send-to-webhook';
+import { Cacheable } from '@shared/decorators/cacheable.decorator';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class WeightService {
     constructor(
         @InjectConnection() private readonly connection: Connection,
+        @Inject(CACHE_MANAGER) public cache: Cache,
     ) { }
 
     async updateWeight(weightId: string, data: any, user: any) {
@@ -111,8 +115,10 @@ export class WeightService {
         return result;
     }
 
+    @Cacheable('getAllWeights', 24 * 60 * 60 * 1000)
     async getAllWeights() {
         const collection = this.connection.collection('weight_data');
-        return collection.find({}).toArray();
+        const data = await collection.find({}).toArray();
+        return data;
     }
 }

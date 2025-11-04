@@ -1,11 +1,13 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './auth.controller';
+import { LinkController } from './link/link.controller';
+import { LinkService } from './link/link.service';
 import { DiscordStrategy } from './discord.strategy';
 import { UsersModule } from '../users/users.module';
 import { SessionSerializer } from './session.serializer';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthenticatedGuard } from './authenticated.guard';
+import { AuthenticatedGuard } from '@shared/guards/authenticated.guard';
 
 @Module({
   imports: [
@@ -16,8 +18,8 @@ import { AuthenticatedGuard } from './authenticated.guard';
       signOptions: { expiresIn: '30d' },
     }),
   ],
-  controllers: [AuthController],
-  providers: [DiscordStrategy, SessionSerializer, AuthenticatedGuard],
+  controllers: [AuthController, LinkController],
+  providers: [DiscordStrategy, SessionSerializer, AuthenticatedGuard, LinkService],
   exports: [JwtModule, AuthenticatedGuard, UsersModule],
 })
 export class AuthModule {}
