@@ -146,7 +146,7 @@ export const ItemHeader: React.FC<ItemHeaderProps> = ({ item, shinyStat, overall
                         <span className="text-yellow-300 mr-2">✦</span>
                     )}
                     {item.internalName}
-                    {overall && (
+                    {overall !== undefined && overall !== null && (
                         <h2 className={`ml-2 tracking-wide ${getRollPercentageColor(overall)}`}>
                             [{getRollPercentageString(overall)}]
                         </h2>
