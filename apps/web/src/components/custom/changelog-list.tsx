@@ -123,7 +123,7 @@ export function ChangelogList({ limit = 5 }: ChangelogListProps) {
       {!loading && !error && timestamps.length > limit && (
         <CardFooter className="flex justify-center pt-2 pb-4">
           <Button variant="outline" asChild>
-            <Link href="/changelog" className="flex items-center gap-2" prefetch={false}>
+            <Link href="/item/changelog" className="flex items-center gap-2" prefetch={false}>
               Show more changelogs
               <ArrowRight className="h-4 w-4" />
             </Link>
