@@ -9,13 +9,16 @@
     "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
     "paths": {
-      "@shared/*": ["src/shared/*"]
+      // A new catch-all that replaces the baseUrl:
+      "*": ["./src/*"],
+
+      "@shared/*": ["./src/shared/*"],
+      "@lib/*": ["./src/lib/*"]
     },
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": true,
+    "strictNullChecks": true, 
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,

@@ -2,8 +2,8 @@ import { Injectable, HttpException, HttpStatus, Logger, OnModuleInit } from '@ne
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Connection, FilterQuery, Model } from 'mongoose';
 import { Item } from './item.schema';
-import { parseIdString } from 'src/lib/wynntils-decode';
-import { calculateIdentificationRoll } from 'src/lib/itemUtils';
+import { parseIdString } from '@lib/wynntils-decode';
+import { calculateIdentificationRoll } from '@lib/itemUtils';
 
 @Injectable()
 export class ItemService implements OnModuleInit {
