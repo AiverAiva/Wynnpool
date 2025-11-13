@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "turbo run dev",
-    "dev:web": "yarn workspace web dev",
-    "dev:api": "yarn workspace api start:dev",
+    "dev:web": "yarn workspace @wynnpool/web dev",
+    "dev:api": "yarn workspace @wynnpool/api start:dev",
     "build": "turbo run build"
   },
   "keywords": [],
