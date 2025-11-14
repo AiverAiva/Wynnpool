@@ -23,7 +23,7 @@ export default function CountdownPage() {
     }, [])
 
     function calculateTimeLeft(): TimeLeft {
-        const difference = +new Date('2025-10-12') - +new Date()
+        const difference = +new Date('2026-10-12') - +new Date()
         let timeLeft: TimeLeft = {}
 
         if (difference > 0) {
