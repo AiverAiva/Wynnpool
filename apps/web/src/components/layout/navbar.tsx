@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import React from 'react'
 import UserAuthDisplay from './user-auth-display'
+import { GlobalSearch } from '../custom/global-search'
 
 const navCategories = [
   {
@@ -176,6 +177,7 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
           <div className='space-x-2 flex-grow flex justify-end items-center'>
+            <GlobalSearch />
             <ModeToggle />
             <UserAuthDisplay />
           </div>

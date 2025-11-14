@@ -1,5 +1,3 @@
-'use client'
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -10,145 +8,94 @@ import ServerStatusDisplay from '@/components/custom/server-status'
 import { SparklesText } from '@/components/ui/sparkles-text'
 import { GlobalSearch } from "@/components/custom/global-search"
 import { ChangelogList } from "@/components/custom/changelog-list"
+import { MeshGradientSVG } from "@/components/custom/mesh-gradient-svg"
+import { ScrollDownIndicator } from "@/components/custom/ScrollDownIndicator"
+import PixelBlast from "@/components/custom/PixelBlast"
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mt-[80px]" />
-      <main className="container mx-auto px-4 py-8 max-w-screen-lg">
-        <section className="text-center mb-12">
-          <div className='sm:flex mb-4 justify-center items-center'>
-            <h1 className="text-4xl">Welcome to</h1><SparklesText className='text-4xl sm:ml-2' text="Wynnpool" />
-          </div>
-          <p className="text-xl text-muted-foreground mb-8">Your ultimate utility for up-to-date Wynncraft information</p>
-          <GlobalSearch />
-        </section>
+    <main>
+      <section
+        className="
+      w-full min-h-screen 
+      flex flex-col justify-center items-center 
+      bg-background
+      "
+      >
+        <PixelBlast
+          variant="circle"
+          pixelSize={6}
+          color="#bfb0f0"
+          patternScale={8}
+          patternDensity={0.4}
+          pixelSizeJitter={2}
+          speed={0.5}
+          edgeFade={0.3}
+          transparent
+        />
+        <div
+          className="
+        mx-auto max-w-6xl px-24
+        absolute flex flex-col-reverse md:flex-row 
+        items-center justify-between 
+        gap-12 w-full
+        "
+        >
+          <ScrollDownIndicator />
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Quick Access</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Item Database</CardTitle>
-                <CardDescription>Browse and search for Wynncraft items</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link href="/item/search">
-                  <Button variant="outline" className="w-full">
-                    <Database className="h-4 w-4 mr-2" />
-                    Explore Items
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Support us!</CardTitle>
-                <CardDescription>Help keeping Wynnpool no ads by donating</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link href="https://buymeacoffee.com/aiveraiva">
-                  <Button
-                    variant="outline"
-                    className="w-full flex items-center justify-center"
-                  >
-                    <Heart className="h-4 w-4 mr-2" />
-                    Buy me a coffee
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Item Analyze</CardTitle>
-                <CardDescription>Analyze how good your item is!</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link href="/item/analyze">
-                  <Button
-                    variant="outline"
-                    className="w-full flex items-center justify-center"
-                  >
-                    <Search />
-                    Analyze Item
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-            {/* <Card>
-              <CardHeader>
-                <CardTitle>Quest Guide (WIP)</CardTitle>
-                <CardDescription>Find detailed quest walkthroughs</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button variant="outline" className="w-full">
-                  <BookOpen className="h-4 w-4 mr-2" />
-                  View Quests
-                </Button>
-              </CardContent>
-            </Card> */}
-            {/* <Card>
-              <CardHeader>
-                <CardTitle>Player Stats (WIP)</CardTitle>
-                <CardDescription>Look up player statistics and rankings</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button variant="outline" className="w-full">
-                  <Users className="h-4 w-4 mr-2" />
-                  Check Stats
-                </Button>
-              </CardContent>
-            </Card> */}
+          {/* LEFT — TEXT */}
+          <div className="flex-1 text-center md:text-left">
+            {/* <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
+            Wynnpool
+            </h1> */}
+            <SparklesText className='text-5xl md:text-6xl tracking-tight text-foreground' text="Wynnpool" />
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground">
+              Your all-in-one tool for everything Wynncraft
+            </p>
           </div>
-        </section>
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Latest Updates</h2>
-          <Tabs defaultValue="game">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="game">Latest News</TabsTrigger>
-              <TabsTrigger value="items">Item Changelog</TabsTrigger>
-              <TabsTrigger value="events">Events</TabsTrigger>
-            </TabsList>
-            <TabsContent value="game">
-              <WynncraftNews />
-            </TabsContent>
-            <TabsContent value="items">
-              <ChangelogList />
-              {/* <Card>
-                <CardHeader>
-                  <CardTitle>Item changelogs (WIP)</CardTitle>
-                  <CardDescription>Check out the latest changes to the items</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    <li>BBB(Mythic)</li>
-                    <li>AAA(Legendary)</li>
-                    <li>CCC(Unique)</li>
-                  </ul>
-                </CardContent>
-              </Card> */}
-            </TabsContent>
-            <TabsContent value="events">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Upcoming Events (WIP)</CardTitle>
-                  <CardDescription>Don't miss out on these limited-time events</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    <li>AAA (Starts June 1st)</li>
-                    <li>BBB (May 15th - 17th)</li>
-                    <li>CCC (Every Saturday)</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </section>
-        <section>
-          <ServerStatusDisplay />
-        </section>
-      </main>
-    </div>
+
+          {/* RIGHT — BLOB */}
+          <div className="flex-1 flex justify-center md:justify-end">
+            <div className="w-[240px] sm:w-[260px] md:w-[310px]">
+              <MeshGradientSVG />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="container mx-auto px-4 py-8 max-w-screen-lg">
+        <h2 className="text-2xl font-semibold mb-4">Latest Updates</h2>
+        <Tabs defaultValue="game">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="game">Latest News</TabsTrigger>
+            <TabsTrigger value="items">Item Changelog</TabsTrigger>
+            <TabsTrigger value="events">Events</TabsTrigger>
+          </TabsList>
+          <TabsContent value="game">
+            <WynncraftNews />
+          </TabsContent>
+          <TabsContent value="items">
+            <ChangelogList />
+          </TabsContent>
+          <TabsContent value="events">
+            <Card>
+              <CardHeader>
+                <CardTitle>Upcoming Events (WIP)</CardTitle>
+                <CardDescription>Don't miss out on these limited-time events</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  <li>AAA (Starts June 1st)</li>
+                  <li>BBB (May 15th - 17th)</li>
+                  <li>CCC (Every Saturday)</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </section>
+      <section>
+        <ServerStatusDisplay />
+      </section>
+    </main>
   )
 }
