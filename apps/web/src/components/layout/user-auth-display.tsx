@@ -58,8 +58,8 @@ export default function UserAuthDisplay() {
         return (
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                        <Avatar className="h-8 w-8">
+                    <Button variant="ghost" className="relative size-9 rounded-full">
+                        <Avatar className="size-8">
                             <AvatarImage src={avatarUrl} alt={userName} />
                             <AvatarFallback>{userName.charAt(0)}</AvatarFallback>
                         </Avatar>
