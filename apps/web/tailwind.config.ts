@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme"
 
 export default {
 	darkMode: ["class"],
@@ -9,6 +10,9 @@ export default {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+			},
 			colors: {
 				//wynncraft colors
 				common: '#e2e8f0',
