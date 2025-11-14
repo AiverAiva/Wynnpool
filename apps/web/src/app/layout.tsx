@@ -6,17 +6,12 @@ import { Navbar } from "@/components/layout/navbar";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { SponsoredWhale } from "@/components/custom/sponsor-tab";
 import { Toaster } from "@/components/ui/sonner";
+import { Inter } from "next/font/google"
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
 
 export const metadata: Metadata = {
   title: "Wynnpool",
@@ -35,7 +30,7 @@ export default function RootLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={inter.variable}  suppressHydrationWarning>
       <head>
         {/* Google Analytics Script */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCQ4YPPLEP"></script>
