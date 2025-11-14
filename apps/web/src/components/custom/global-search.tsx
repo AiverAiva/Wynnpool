@@ -1,5 +1,6 @@
 "use client"
 
+import '@/assets/css/wynncraft.css'
 import type React from "react"
 import type { Item } from "@/types/itemType"
 import { AlertCircle, Clock, Search, X } from "lucide-react"
@@ -16,7 +17,7 @@ import Cookies from "js-cookie"
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog"
 import { SmallItemCard } from "../wynncraft/item/ItemDisplay"
 import { Button } from "../ui/button"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Badge } from "../ui/badge"
 
 // Change searchHistory to store objects: { query: string, type: "item" | "player" | "guild" }
@@ -81,6 +82,7 @@ const GlobalSearch: React.FC<any> = () => {
   const debounceTimeout = useRef<number | null>(null)
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   // Load search history from cookies on component mount
   useEffect(() => {
@@ -110,6 +112,15 @@ const GlobalSearch: React.FC<any> = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [])
+
+  useEffect(() => {
+    if (isDialogOpen) {
+      setIsDialogOpen(false);
+      setQuery("");
+      setResults(null);
+      setShowHistory(false);
+    }
+  }, [pathname])
 
   // Save search to history if it returned valid results
   const saveToSearchHistory = (searchQuery: string, type: "item" | "player" | "guild") => {
@@ -290,27 +301,19 @@ const GlobalSearch: React.FC<any> = () => {
   }, [])
 
   return (
-    <div className="max-w-md mx-auto">
-      <form className="flex" onSubmit={(e) => e.preventDefault()}>
-        <div className="relative w-full inline-flex group">
-          <div className="absolute z-0 transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-          <Search className="absolute z-20 top-1/2 left-3 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-          <Input
-            type="text"
-            placeholder="Search for items, guilds, or players..."
-            value={query}
-            onChange={handleInputChange}
-            onFocus={handleInputFocus}
-            onKeyDown={handleInputKeyDown}
-            className="pl-10 z-10"
-          />
-        </div>
-      </form>
+    <>
+      <Button
+        variant='ghost'
+        className='size-9 p-0'
+        onClick={handleInputFocus}
+      >
+        <Search className="size-4" />
+      </Button>
 
       {/* blur */}
       <div
         className={`absolute w-screen h-screen top-0 left-0 z-5 backdrop-blur-sm pointer-events-none ${!isDialogOpen && "hidden"}`}
-      ></div>
+      />
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="z-50">
@@ -373,9 +376,9 @@ const GlobalSearch: React.FC<any> = () => {
                                   <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
                                     <CardContent className="flex flex-col justify-between p-2 h-full">
                                       <div className="flex items-center gap-3">
-                                        <img src={`https://vzge.me/face/128/${uuid}.png`} alt={name} className="w-8 h-8" loading="lazy"/>
+                                        <img src={`https://vzge.me/face/128/${uuid}.png`} alt={name} className="w-8 h-8" loading="lazy" />
                                         <div>
-                                          <span className="font-mono">{getPlayerDisplayName(name)}</span>
+                                          <span className="text-md font-mono">{getPlayerDisplayName(name)}</span>
                                         </div>
                                       </div>
                                     </CardContent>
@@ -523,7 +526,7 @@ const GlobalSearch: React.FC<any> = () => {
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   )
 }
 

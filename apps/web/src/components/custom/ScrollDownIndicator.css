@@ -1,0 +1,19 @@
+@keyframes wheel {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+}
+
+.animate-wheel {
+    animation: wheel 1.2s ease-in-out infinite;
+}
