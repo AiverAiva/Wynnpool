@@ -1,12 +1,8 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Database, Heart, Search } from "lucide-react"
-import Link from "next/link"
 import WynncraftNews from '@/components/custom/lastest-news'
 import ServerStatusDisplay from '@/components/custom/server-status'
 import { SparklesText } from '@/components/ui/sparkles-text'
-import { GlobalSearch } from "@/components/custom/global-search"
 import { ChangelogList } from "@/components/custom/changelog-list"
 import { MeshGradientSVG } from "@/components/custom/mesh-gradient-svg"
 import { ScrollDownIndicator } from "@/components/custom/ScrollDownIndicator"

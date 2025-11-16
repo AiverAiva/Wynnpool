@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import React from 'react'
 import UserAuthDisplay from './user-auth-display'
-import { GlobalSearch } from '../custom/global-search'
+import { GlobalSearch } from './global-search'
 
 const navCategories = [
   {
