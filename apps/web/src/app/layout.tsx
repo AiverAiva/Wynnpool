@@ -59,9 +59,8 @@ export default function RootLayout({
           <Toaster />
           {children}
           {modal}
+          <Footer />
         </ThemeProvider>
-        <div className="h-24"/>  {/* Spacer for footer, this should be temporary and remove later on*/}
-        <Footer />
       </body>
     </html>
   );
