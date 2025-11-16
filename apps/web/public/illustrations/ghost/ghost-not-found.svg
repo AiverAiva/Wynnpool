@@ -4,11 +4,11 @@
             d="M230.809 115.385V249.411C230.809 269.923 214.985 287.282 194.495 288.411C184.544 288.949 175.364 285.718 168.26 280C159.746 273.154 147.769 273.461 139.178 280.23C132.638 285.384 124.381 288.462 115.379 288.462C106.377 288.462 98.1451 285.384 91.6055 280.23C82.912 273.385 70.9353 273.385 62.2415 280.23C55.7532 285.334 47.598 288.411 38.7246 288.462C17.4132 288.615 0 270.667 0 249.359V115.385C0 51.6667 51.6756 0 115.404 0C179.134 0 230.809 51.6667 230.809 115.385Z" />
     </defs>
     <use href="#ghostShape" fill="white" opacity="0.4" />
-    <use href="#ghostShape" fill="none" stroke="#9ca3af" stroke-width="5" stroke-dasharray="8 10"
+    <use href="#ghostShape" fill="none" stroke="#9ca3af" stroke-width="10" stroke-dasharray="16 20"
         stroke-linecap="round" opacity="0.9" />
     <ellipse cx="80" cy="120" rx="20" ry="30" fill="#4b5563" opacity="0.9" />
     <ellipse cx="150" cy="120" rx="20" ry="30" fill="#4b5563" opacity="0.9" />
-    <line x1="90" y1="180" x2="140" y2="180" stroke="#4b5563" stroke-width="6"
+    <line x1="90" y1="180" x2="140" y2="180" stroke="#4b5563" stroke-width="12"
         stroke-linecap="round" opacity="0.9" />
     <ellipse cx="115" cy="280" rx="60" ry="10" fill="#000" opacity="0.1" />
 </svg>

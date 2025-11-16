@@ -345,8 +345,8 @@ const GlobalSearch: React.FC<any> = () => {
                 results ? (
                   "error" in results ? (
                     results.error === "No results found for the given query." ? (
-                      <div className="w-full h-full flex flex-col items-center justify-center">
-                        <img src={`/turtles/not_found.png`} alt="NOT FOUND" className="h-32 mt-8" />
+                      <div className="w-full h-full flex flex-col items-center justify-center mt-24">
+                        <img src={`/illustrations/ghost/ghost-not-found.svg`} alt="NOT FOUND" className="h-32 mt-8" />
                         <span className="font-mono text-lg">
                           No results found for <span className="font-bold">{query}</span>.
                         </span>
