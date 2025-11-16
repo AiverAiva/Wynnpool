@@ -403,14 +403,13 @@ export default function PlayerStatsPage() {
                 <div className="w-full h-[50vh] flex flex-col items-center justify-center border rounded-lg">
                     <span className="font-mono text-lg italic">Private Charater Data</span>
                     <img
-                        src={`/turtles/not_found.png`}
+                        src={`/illustrations/ghost/ghost-not-found.svg`}
                         alt='NOT FOUND'
                         className="h-32"
                     />
                 </div>
             )}
-
-        </div >
+        </div>
     )
 }
 
