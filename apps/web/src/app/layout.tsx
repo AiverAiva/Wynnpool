@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider"
-import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { SponsoredWhale } from "@/components/custom/sponsor-tab";
 import { Toaster } from "@/components/ui/sonner";
 import { Inter } from "next/font/google"
 import { Footer } from "@/components/layout/footer";
+import { Providers } from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,18 +47,14 @@ export default function RootLayout({
       <body
         className={`font-sans antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-        >
+        <Providers>
           <Navbar />
           <SponsoredWhale />
           <Toaster />
           {children}
           {modal}
           <Footer />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
