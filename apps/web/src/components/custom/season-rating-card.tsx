@@ -1,6 +1,7 @@
 "use client"
 
 import { Card } from "@/components/ui/card"
+import api from "@/lib/api"
 import { Crown } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -9,20 +10,20 @@ interface SeasonRatingCardProps {
 }
 
 export function SeasonRatingCard({ onClick }: SeasonRatingCardProps) {
-  const [currentSeason, setCurrentSeason] = useState<number>(26)
+  const [currentSeason, setCurrentSeason] = useState<number>(28)
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const fetchCurrentSeason = async () => {
       try {
-        const response = await fetch("http://localhost:8000/guild/current-season")
+        const response = await fetch(api("/guild/current-season"))
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
         setCurrentSeason(data.currentSeason)
       } catch (error) {
-        console.log("[v0] API not available, using fallback season 26. Error:", error)
+        console.log("API not available, using fallback season 28. Error:", error)
       } finally {
         setIsLoading(false)
       }
