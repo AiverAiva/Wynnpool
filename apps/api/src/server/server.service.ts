@@ -37,6 +37,7 @@ export class ServerService {
 
             let totalPlayer = 0;
 
+            result['servers'] = {};
             rawValues.forEach((raw, idx) => {
                 if (!raw) return;
 
@@ -73,11 +74,11 @@ export class ServerService {
 
                 const uptime = Math.max(0, nowTs - firstSeen);
 
-                result[serverName] = {
-                    firstSeen,      // unix timestamp
-                    uptime,        // seconds since launchAt
+                result['servers'][serverName] = {
                     online,
+                    firstSeen,      // unix timestamp
                     lastSeen,      // unix timestamp
+                    uptime,        // seconds since launchAt
                     playerCount,
                     players,
                 };
