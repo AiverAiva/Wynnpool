@@ -14,6 +14,7 @@ import { AspectPoolModule } from './aspect-pool/aspect-pool.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { CacheModule } from '@nestjs/cache-manager';
+import { ServerModule } from 'server/server.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { CacheModule } from '@nestjs/cache-manager';
     LootrunPoolModule,
     AspectPoolModule,
     ItemModule,
+    ServerModule,
     LeaderboardModule,
     AuthModule,
   ],
