@@ -18,7 +18,7 @@ const SERVER_DATA_TTL_SECS: i64 = 60 * 60 * 12;
 // Delete a server only if it's been offline for more than 5 minutes
 const OFFLINE_DELETE_SECS: i64 = 60 * 5;
 
-#[fetch(interval = 30)]
+#[fetch(interval = 60)]
 fn update_server_status() {
     tokio::spawn(async {
         if let Err(e) = run_update_server_status().await {
