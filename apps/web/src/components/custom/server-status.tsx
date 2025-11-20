@@ -6,9 +6,12 @@ import { Button } from "@/components/ui/button"
 import { ArrowUpDown } from 'lucide-react'
 import { Loader2 } from 'lucide-react'
 import { Card } from '../ui/card'
+import api from '@/lib/api'
 
 interface ServerData {
-    initial: number
+    firstSeen: number
+    lastSeen: number
+    uptime: number
     players: string[]
 }
 
@@ -32,7 +35,7 @@ export default function ServerStatusDisplay() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('https://nori.fish/api/uptime')
+                const response = await fetch(api('/server/status'))
                 if (!response.ok) {
                     throw new Error('Failed to fetch server status')
                 }
@@ -116,7 +119,7 @@ export default function ServerStatusDisplay() {
                             <TableRow key={server}>
                                 <TableCell>{server}</TableCell>
                                 <TableCell>{serverData.players.length}</TableCell>
-                                <TableCell>{formatUptime(data.Latest - serverData.initial)}</TableCell>
+                                <TableCell>{formatUptime(serverData.uptime)}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -133,7 +136,7 @@ function getSortValue(server: string, data: ServerData, key: SortKey, latestTime
         case 'players':
             return data.players.length
         case 'uptime':
-            return latestTimestamp - data.initial
+            return data.uptime
         default:
             return 0
     }
