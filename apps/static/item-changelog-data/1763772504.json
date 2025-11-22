@@ -1,0 +1,3449 @@
+{
+  "add": [
+    {
+      "_id": "692108583f2dec5227b0e294",
+      "itemName": "Platonic Ideal",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Platonic Ideal",
+      "type": "armour",
+      "armourType": "boots",
+      "armourMaterial": "diamond",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 104,
+        "agility": 30,
+        "defence": 30,
+        "strength": 30,
+        "dexterity": 30,
+        "intelligence": 30
+      },
+      "powderSlots": 4,
+      "lore": "The intersection of what can be and what is. The apotheosis of being. Shear away the unclean, the impure, the rotten; leave only the raw, blinding truth of the self.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_boots",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          },
+          "name": "boots.diamond"
+        }
+      },
+      "identifications": {
+        "poison": {
+          "min": -13000,
+          "raw": -10000,
+          "max": -7000
+        },
+        "rawMaxMana": {
+          "min": 21,
+          "raw": 69,
+          "max": 90
+        },
+        "elementalDamage": {
+          "min": -52,
+          "raw": -40,
+          "max": -28
+        },
+        "healthRegenRaw": {
+          "min": 92,
+          "raw": 308,
+          "max": 400
+        },
+        "healingEfficiency": {
+          "min": 6,
+          "raw": 19,
+          "max": 25
+        },
+        "rawNeutralDamage": {
+          "min": 81,
+          "raw": 269,
+          "max": 350
+        }
+      },
+      "base": {
+        "baseHealth": 5040,
+        "baseAirDefence": 140,
+        "baseFireDefence": 140,
+        "baseEarthDefence": 140,
+        "baseWaterDefence": 140,
+        "baseThunderDefence": 140
+      },
+      "rarity": "fabled"
+    },
+    {
+      "_id": "692108583f2dec5227b0e295",
+      "itemName": "Xenolith",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Xenolith",
+      "type": "armour",
+      "armourType": "leggings",
+      "armourMaterial": "diamond",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 104,
+        "agility": 50,
+        "defence": 50,
+        "strength": 50
+      },
+      "powderSlots": 3,
+      "lore": "Hidden amongst the foundations of the Expanse are anomalous fragments wrapped in an otherworldly power. While unsettling to the touch, the strength they impart is too tempting to ignore.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_leggings",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          },
+          "name": "leggings.diamond"
+        }
+      },
+      "identifications": {
+        "sprint": {
+          "min": -26,
+          "raw": -20,
+          "max": -14
+        },
+        "airDamage": {
+          "min": 7,
+          "raw": 24,
+          "max": 31
+        },
+        "fireDamage": {
+          "min": 8,
+          "raw": 25,
+          "max": 33
+        },
+        "earthDamage": {
+          "min": 7,
+          "raw": 22,
+          "max": 29
+        },
+        "healthRegen": {
+          "min": -26,
+          "raw": -20,
+          "max": -14
+        },
+        "rawStrength": 20,
+        "rawDexterity": -100,
+        "rawMainAttackDamage": {
+          "min": 200,
+          "raw": 666,
+          "max": 866
+        }
+      },
+      "base": {
+        "baseHealth": 4000,
+        "baseAirDefence": -100,
+        "baseFireDefence": -100,
+        "baseEarthDefence": -100
+      },
+      "rarity": "legendary"
+    },
+    {
+      "_id": "692108583f2dec5227b0e296",
+      "itemName": "Possession",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Possession",
+      "type": "accessory",
+      "accessoryType": "necklace",
+      "dropRestriction": "never",
+      "requirements": {
+        "level": 103,
+        "agility": 50,
+        "strength": 50
+      },
+      "majorIds": {
+        "Spectral Memory": "<span class='font-ascii' style='color:#55FFFF'>+Spectral Memory: <span class='font-ascii' style='color:#00AAAA'>\nGhostly Trigger lasts until landing, but no longer increases attack speed. Its cooldown is reduced by 33%.</span></span>"
+      },
+      "lore": "Your mind is falling apart, the pieces scattering, your grasp on reality weakening, your soul an empty space. I shall fill it.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1352
+            ]
+          },
+          "name": "necklace.air2"
+        }
+      },
+      "identifications": {
+        "lifeSteal": {
+          "min": 60,
+          "raw": 200,
+          "max": 260
+        },
+        "manaRegen": {
+          "min": -10,
+          "raw": -8,
+          "max": -6
+        },
+        "walkSpeed": {
+          "min": -18,
+          "raw": -14,
+          "max": -10
+        },
+        "rawStrength": 5,
+        "rawSpellDamage": {
+          "min": 15,
+          "raw": 50,
+          "max": 65
+        },
+        "rawMainAttackDamage": {
+          "min": 21,
+          "raw": 70,
+          "max": 91
+        }
+      },
+      "base": {
+        "baseAirDefence": 70,
+        "baseEarthDefence": -70
+      },
+      "rarity": "fabled"
+    },
+    {
+      "_id": "692108583f2dec5227b0e297",
+      "itemName": "Clockwork Manifold",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Clockwork Manifold",
+      "type": "armour",
+      "armourType": "helmet",
+      "armourMaterial": "diamond",
+      "dropRestriction": "never",
+      "requirements": {
+        "level": 90,
+        "agility": 30,
+        "defence": 30,
+        "strength": 30,
+        "dexterity": 30
+      },
+      "powderSlots": 4,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          },
+          "name": "helmet.diamond"
+        }
+      },
+      "identifications": {
+        "thorns": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        },
+        "lifeSteal": {
+          "min": 75,
+          "raw": 250,
+          "max": 325
+        },
+        "manaSteal": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "rawDamage": {
+          "min": 57,
+          "raw": 190,
+          "max": 247
+        },
+        "healthRegen": {
+          "min": -52,
+          "raw": -40,
+          "max": -28
+        },
+        "rawIntelligence": -20,
+        "mainAttackRange": {
+          "min": 7,
+          "raw": 23,
+          "max": 30
+        }
+      },
+      "base": {
+        "baseHealth": 3000,
+        "baseWaterDefence": -100
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "692108583f2dec5227b0e298",
+      "itemName": "Dramele's Flair",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Volmor's Flair",
+      "type": "accessory",
+      "accessoryType": "bracelet",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 85
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1298
+            ]
+          },
+          "name": "bracelet.multi2"
+        }
+      },
+      "identifications": {
+        "xpBonus": {
+          "min": 2,
+          "raw": 5,
+          "max": 7
+        },
+        "lootBonus": {
+          "min": 4,
+          "raw": 13,
+          "max": 17
+        },
+        "rawHealth": {
+          "min": -975,
+          "raw": -750,
+          "max": -525
+        }
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "692108583f2dec5227b0e299",
+      "itemName": "Welder Cannon",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Welder Cannon",
+      "type": "weapon",
+      "weaponType": "bow",
+      "attackSpeed": "superSlow",
+      "averageDps": 676,
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 80,
+        "classRequirement": "archer",
+        "defence": 75
+      },
+      "majorIds": {
+        "Evershot": "<span class='font-ascii' style='color:#55FFFF'>+Evershot: <span class='font-ascii' style='color:#00AAAA'>Arrow Hurricane becomes a consistent, straight stream of arrows with a slower fire rate, dealing greater knockback and triple damage per arrow.</span></span>"
+      },
+      "powderSlots": 3,
+      "lore": "Warning - device in state of extreme disrepair. Operators may experience unstable output, resulting in severe heat production upsurges. Any damage to material will not be reimbursed, and users will not be compensated for any injuries, burns, or deaths caused by improper use.",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1373
+            ]
+          },
+          "name": "bow.fire3"
+        }
+      },
+      "identifications": {
+        "manaSteal": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "rawDefence": 15,
+        "waterDefence": {
+          "min": -39,
+          "raw": -30,
+          "max": -21
+        },
+        "rawAttackSpeed": 1,
+        "rawIntelligence": -10,
+        "fireSpellDamage": {
+          "min": 7,
+          "raw": 23,
+          "max": 30
+        },
+        "raw1stSpellCost": {
+          "min": 7,
+          "raw": 5,
+          "max": 4
+        },
+        "raw3rdSpellCost": {
+          "min": 7,
+          "raw": 5,
+          "max": 4
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 540,
+          "raw": 540,
+          "max": 785
+        },
+        "baseFireDamage": {
+          "min": 655,
+          "raw": 655,
+          "max": 670
+        }
+      },
+      "rarity": "fabled"
+    },
+    {
+      "_id": "692108583f2dec5227b0e29a",
+      "itemName": "Malice",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Malice",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 47,
+        "strength": 20,
+        "dexterity": 20
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1276
+            ]
+          },
+          "name": "ring.earth2"
+        }
+      },
+      "identifications": {
+        "manaSteal": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "rawAgility": -2,
+        "rawDefence": -2,
+        "earthDamage": {
+          "min": 2,
+          "raw": 5,
+          "max": 7
+        },
+        "thunderDamage": {
+          "min": 2,
+          "raw": 5,
+          "max": 7
+        }
+      },
+      "base": {
+        "baseEarthDefence": 6,
+        "baseThunderDefence": 6
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "692108583f2dec5227b0e29b",
+      "itemName": "Electrode",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Electrode",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 40,
+        "dexterity": 15
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1279
+            ]
+          },
+          "name": "ring.thunder1"
+        }
+      },
+      "identifications": {
+        "lifeSteal": {
+          "min": 4,
+          "raw": 14,
+          "max": 18
+        },
+        "manaSteal": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "rawDexterity": 2
+      },
+      "base": {
+        "baseHealth": -40,
+        "baseThunderDefence": 8
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "692108583f2dec5227b0e29c",
+      "itemName": "Reservoir",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Reservoir",
+      "type": "accessory",
+      "accessoryType": "bracelet",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 35,
+        "intelligence": 15
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1295
+            ]
+          },
+          "name": "bracelet.water1"
+        }
+      },
+      "identifications": {
+        "damage": {
+          "min": -5,
+          "raw": -4,
+          "max": -3
+        },
+        "manaRegen": {
+          "min": 2,
+          "raw": 6,
+          "max": 8
+        },
+        "rawMaxMana": {
+          "min": 4,
+          "raw": 12,
+          "max": 16
+        }
+      },
+      "base": {
+        "baseWaterDefence": 6
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "692108583f2dec5227b0e29d",
+      "itemName": "Solvent",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Solvent",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 33,
+        "intelligence": 15
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1328
+            ]
+          },
+          "name": "ring.water1"
+        }
+      },
+      "identifications": {
+        "damage": {
+          "min": -3,
+          "raw": -2,
+          "max": -1
+        },
+        "manaSteal": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "rawMaxMana": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        }
+      },
+      "base": {
+        "baseWaterDefence": 6
+      },
+      "rarity": "unique"
+    },
+    {
+      "_id": "692108583f2dec5227b0e29e",
+      "itemName": "Ionic",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Ionic",
+      "type": "accessory",
+      "accessoryType": "bracelet",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 32,
+        "dexterity": 15
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1340
+            ]
+          },
+          "name": "bracelet.thunder1"
+        }
+      },
+      "identifications": {
+        "manaSteal": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "thunderDamage": {
+          "min": 2,
+          "raw": 6,
+          "max": 8
+        }
+      },
+      "base": {
+        "baseHealth": -30,
+        "baseThunderDefence": 4
+      },
+      "rarity": "unique"
+    },
+    {
+      "_id": "692108583f2dec5227b0e29f",
+      "itemName": "Zap",
+      "status": "add",
+      "timestamp": 1763772504,
+      "internalName": "Zap",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 20
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1279
+            ]
+          },
+          "name": "ring.thunder1"
+        }
+      },
+      "identifications": {
+        "manaSteal": {
+          "min": 1,
+          "raw": 3,
+          "max": 4
+        },
+        "spellDamage": {
+          "min": 1,
+          "raw": 3,
+          "max": 4
+        }
+      },
+      "base": {
+        "baseWaterDefence": -4,
+        "baseThunderDefence": 4
+      },
+      "rarity": "unique"
+    }
+  ],
+  "remove": [
+    {
+      "_id": "692108583f2dec5227b0e2a0",
+      "itemName": "Volmor's Flair",
+      "status": "remove",
+      "timestamp": 1763772504,
+      "internalName": "Volmor's Flair",
+      "type": "accessory",
+      "accessoryType": "bracelet",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 85
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "name": "bracelet.multi2"
+        }
+      },
+      "identifications": {
+        "xpBonus": {
+          "min": 2,
+          "raw": 5,
+          "max": 7
+        },
+        "lootBonus": {
+          "min": 4,
+          "raw": 13,
+          "max": 17
+        },
+        "rawHealth": {
+          "min": -975,
+          "raw": -750,
+          "max": -525
+        }
+      },
+      "rarity": "rare"
+    }
+  ],
+  "modify": [
+    {
+      "_id": "692108583f2dec5227b0e2a1",
+      "itemName": "Labyrinth",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Labyrinth",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "verySlow",
+        "averageDps": 830,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 104,
+          "classRequirement": "archer",
+          "defence": 85,
+          "strength": 70
+        },
+        "majorIds": {
+          "Twisting Threads": "<span class='font-ascii' style='color:#55FFFF'>+Twisting Threads: <span class='font-ascii' style='color:#00AAAA'>Tangled Traps ropes gain +1 range, can overlap up to 3 times, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>30%</span><darkAqua>. Gain +12 traps with 66% duration that cannot be triggered by enemies.</span></span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "Left. Right. Left. Right. They are desperate for an escape, merely playthings in a maze of your design. Left. Left. Right.  Turn back. When mountains of stone can shift at your command, their world is reduced to a single path. Left. Right. Does it ever end?",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          }
+        },
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "fireDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDefence": 20,
+          "earthDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "3rdSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 470,
+            "raw": 470,
+            "max": 530
+          },
+          "baseEarthDamage": {
+            "min": 485,
+            "raw": 485,
+            "max": 515
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Labyrinth",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "verySlow",
+        "averageDps": 830,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 104,
+          "classRequirement": "archer",
+          "defence": 85,
+          "strength": 70
+        },
+        "majorIds": {
+          "Twisting Threads": "<span class='font-ascii' style='color:#55FFFF'>+Twisting Threads: <span class='font-ascii' style='color:#00AAAA'>Tangled Traps ropes gain +1 range, can overlap up to 3 times, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>50%</span><darkAqua>. Gain +12 traps with 66% duration that cannot be triggered by enemies.</span></span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "Left. Right. Left. Right. They are desperate for an escape, merely playthings in a maze of your design. Left. Left. Right.  Turn back. When mountains of stone can shift at your command, their world is reduced to a single path. Left. Right. Does it ever end?",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          }
+        },
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "fireDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDefence": 20,
+          "earthDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "3rdSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 470,
+            "raw": 470,
+            "max": 530
+          },
+          "baseEarthDamage": {
+            "min": 485,
+            "raw": 485,
+            "max": 515
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2a2",
+      "itemName": "Resonance",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Resonance",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "normal",
+        "averageDps": 876,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 104,
+          "classRequirement": "shaman",
+          "strength": 75,
+          "intelligence": 75
+        },
+        "majorIds": {
+          "Lifestream": "<span class='font-ascii' style='color:#55FFFF'>+Lifestream: <span class='font-ascii' style='color:#00AAAA'>Blood Sorrow deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>400%</span><darkAqua> and grants 4 times the overhealth, but shortens its duration by 75%.</span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "The power to join oneself with the lifeblood of the earth has long eluded sects of fanatical druids and shamans. One such cult found a way, and subsequently wiped itself out in the process, their flesh turning to stone and veins forming new rivers.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.basicGold"
+          }
+        },
+        "identifications": {
+          "sprint": {
+            "min": -36,
+            "raw": -28,
+            "max": -20
+          },
+          "manaRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "airDefence": {
+            "min": -58,
+            "raw": -45,
+            "max": -31
+          },
+          "rawDefence": 25,
+          "healthRegen": {
+            "min": 18,
+            "raw": 60,
+            "max": 78
+          },
+          "4thSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          },
+          "elementalSpellDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 40
+          },
+          "baseEarthDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 200
+          },
+          "baseWaterDamage": {
+            "min": 170,
+            "raw": 170,
+            "max": 220
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Resonance",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "normal",
+        "averageDps": 649,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 104,
+          "classRequirement": "shaman",
+          "strength": 75,
+          "intelligence": 75
+        },
+        "majorIds": {
+          "Lifestream": "<span class='font-ascii' style='color:#55FFFF'>+Lifestream: <span class='font-ascii' style='color:#00AAAA'>Blood Sorrow deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>450%</span><darkAqua> and grants 4 times the overhealth, but shortens its duration by 75%.</span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "The power to join oneself with the lifeblood of the earth has long eluded sects of fanatical druids and shamans. One such cult found a way, and subsequently wiped itself out in the process, their flesh turning to stone and veins forming new rivers.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.basicGold"
+          }
+        },
+        "identifications": {
+          "sprint": {
+            "min": -36,
+            "raw": -28,
+            "max": -20
+          },
+          "manaRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "airDefence": {
+            "min": -58,
+            "raw": -45,
+            "max": -31
+          },
+          "rawDefence": 25,
+          "healthRegen": {
+            "min": 18,
+            "raw": 60,
+            "max": 78
+          },
+          "4thSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          },
+          "elementalSpellDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 40
+          },
+          "baseEarthDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 200
+          },
+          "baseWaterDamage": {
+            "min": 170,
+            "raw": 170,
+            "max": 220
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2a3",
+      "itemName": "Hanafubuki",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Hanafubuki",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "superFast",
+        "averageDps": 817,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 102,
+          "classRequirement": "assassin",
+          "agility": 85,
+          "intelligence": 65
+        },
+        "majorIds": {
+          "Efflorescence": "<span class='font-ascii' style='color:#55FFFF'>+Efflorescence: <span class='font-ascii' style='color:#00AAAA'>Jasmine Bloom deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>25%</span><darkAqua> and \n<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span><span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span><span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#FF5555'><span class='font-common'></span><span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>25%</span><darkAqua> at the cost of 6 blocks of vertical range. \nSwan Dive with a maximum size Jasmine Bloom deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>50%</span><darkAqua> and <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span><span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span><span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#FF5555'><span class='font-common'></span><span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>50%</span><darkAqua>.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>"
+        },
+        "lore": "The most dangerous enemy is one you cannot see. Hidden amidst a flurry of petals comes an avalanche of blows, in one moment dissolving mountains and forests into a growing amalgam, leaving a wake of vibrant bloom in the next.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": 15,
+          "earthDefence": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "3rdSpellCost": {
+            "min": 20,
+            "raw": 15,
+            "max": 11
+          },
+          "4thSpellCost": {
+            "min": 13,
+            "raw": 10,
+            "max": 7
+          },
+          "elementalDamage": {
+            "min": 77,
+            "raw": 256,
+            "max": 333
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 220
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Hanafubuki",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "superFast",
+        "averageDps": 817,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 102,
+          "classRequirement": "assassin",
+          "agility": 85,
+          "intelligence": 65
+        },
+        "majorIds": {
+          "Efflorescence": "<span class='font-ascii' style='color:#55FFFF'>+Efflorescence: <span class='font-ascii' style='color:#00AAAA'>Jasmine Bloom deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>25%</span><darkAqua> and \n<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span><span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span><span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#FF5555'><span class='font-common'></span><span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>25%</span><darkAqua> at the cost of 6 blocks of vertical range. \nSwan Dive deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>16%</span><darkAqua> and <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span><span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span><span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#FF5555'><span class='font-common'></span><span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>16%</span><darkAqua>.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>"
+        },
+        "lore": "The most dangerous enemy is one you cannot see. Hidden amidst a flurry of petals comes an avalanche of blows, in one moment dissolving mountains and forests into a growing amalgam, leaving a wake of vibrant bloom in the next.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": 15,
+          "earthDefence": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "3rdSpellCost": {
+            "min": 20,
+            "raw": 15,
+            "max": 11
+          },
+          "4thSpellCost": {
+            "min": 13,
+            "raw": 10,
+            "max": 7
+          },
+          "elementalDamage": {
+            "min": 77,
+            "raw": 256,
+            "max": 333
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 220
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2a4",
+      "itemName": "Ambivalence",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Ambivalence",
+        "type": "accessory",
+        "accessoryType": "necklace",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "agility": 50,
+          "defence": 50,
+          "intelligence": 50
+        },
+        "lore": "\"It's all doomed anyway. If you don't care, nothing can hurt you.\" - Zamugnia, Lost Lutho Citizen",
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.earth2"
+          }
+        },
+        "identifications": {
+          "damage": 60,
+          "manaRegen": -15,
+          "rawHealth": 1000,
+          "rawStrength": -100,
+          "healthRegenRaw": -250
+        },
+        "base": {
+          "baseHealth": -3500,
+          "baseAirDefence": 70,
+          "baseFireDefence": 70,
+          "baseWaterDefence": 70
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Ambivalence",
+        "type": "accessory",
+        "accessoryType": "necklace",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "agility": 50,
+          "defence": 50,
+          "intelligence": 50
+        },
+        "lore": "\"It's all doomed anyway. If you don't care, nothing can hurt you.\"",
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.earth2"
+          }
+        },
+        "identifications": {
+          "damage": 60,
+          "manaRegen": -15,
+          "rawHealth": 1000,
+          "rawStrength": -100,
+          "healthRegenRaw": -250
+        },
+        "base": {
+          "baseHealth": -3500,
+          "baseAirDefence": 70,
+          "baseFireDefence": 70,
+          "baseWaterDefence": 70
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2a5",
+      "itemName": "The Evolved",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "The Evolved",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "veryFast",
+        "averageDps": 140,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "archer",
+          "strength": 75
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          }
+        },
+        "identifications": {
+          "poison": 35000,
+          "rawHealth": 2250,
+          "healthRegen": -80,
+          "rawStrength": 25,
+          "raw1stSpellCost": -20,
+          "rawMainAttackDamage": 550
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 50
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "The Evolved",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "veryFast",
+        "averageDps": 140,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "archer",
+          "strength": 75
+        },
+        "powderSlots": 2,
+        "lore": "\"How perfect can a form be? The creatures here are warped. Distorted. their flesh bubbles and oozes with the most toxic of acids. But it makes them powerful. Resilient. Perhaps it would be better to become one of them. Perhaps it would make your form . . . perfect.\" ",
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          }
+        },
+        "identifications": {
+          "poison": 35000,
+          "rawHealth": 2250,
+          "healthRegen": -80,
+          "rawStrength": 25,
+          "raw1stSpellCost": -20,
+          "rawMainAttackDamage": 550
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 50
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2a6",
+      "itemName": "The Exploited",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "The Exploited",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "superFast",
+        "averageDps": 559,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "assassin",
+          "agility": 45,
+          "defence": 60
+        },
+        "majorIds": {
+          "Greed": "<span class='font-ascii' style='color:#55FFFF'>+Greed: <span class='font-ascii' style='color:#00AAAA'>Picking up emeralds heals you and nearby players for 8% max health.</span></span>"
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "stealing": 10,
+          "walkSpeed": 15,
+          "spellDamage": -25,
+          "raw4thSpellCost": -15,
+          "rawFireMainAttackDamage": 250
+        },
+        "base": {
+          "baseDamage": {
+            "min": 15,
+            "raw": 15,
+            "max": 25
+          },
+          "baseAirDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 85
+          },
+          "baseFireDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 65
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "The Exploited",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "superFast",
+        "averageDps": 559,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "assassin",
+          "agility": 45,
+          "defence": 60
+        },
+        "majorIds": {
+          "Greed": "<span class='font-ascii' style='color:#55FFFF'>+Greed: <span class='font-ascii' style='color:#00AAAA'>Picking up emeralds heals you and nearby players for 8% max health.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "\"They tear the earth open day after day after day, ripping out her most precious and vital stones, and dumping them into the abyss of their hungry, bottomless coffers. They would sell out the world for a bit of cash; after all, these stones bleed green.\"",
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          }
+        },
+        "identifications": {
+          "stealing": 10,
+          "walkSpeed": 15,
+          "spellDamage": -25,
+          "raw4thSpellCost": -15,
+          "rawFireMainAttackDamage": 250
+        },
+        "base": {
+          "baseDamage": {
+            "min": 15,
+            "raw": 15,
+            "max": 25
+          },
+          "baseAirDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 85
+          },
+          "baseFireDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 65
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2a7",
+      "itemName": "The Forsaken",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "The Forsaken",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "veryFast",
+        "averageDps": 529,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "warrior",
+          "agility": 60,
+          "intelligence": 60
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.water3"
+          }
+        },
+        "identifications": {
+          "manaRegen": -24,
+          "manaSteal": 16,
+          "walkSpeed": 20,
+          "3rdSpellCost": -25,
+          "rawIntelligence": 10,
+          "elementalDefence": -30,
+          "rawWaterSpellDamage": 210
+        },
+        "base": {
+          "baseDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 70
+          },
+          "baseAirDamage": {
+            "min": 38,
+            "raw": 38,
+            "max": 75
+          },
+          "baseWaterDamage": {
+            "min": 38,
+            "raw": 38,
+            "max": 75
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "The Forsaken",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "veryFast",
+        "averageDps": 529,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "warrior",
+          "agility": 60,
+          "intelligence": 60
+        },
+        "powderSlots": 3,
+        "lore": "\"In the days before they ripped out its heart, there was a pulse to these streets: the sanguine flow of life through the sturdy buildings and cobbled roads and hidden alleys. What remains is a bloodless husk, dusty walls populated solely by those hideous things which can only see and never know.\"",
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.water3"
+          }
+        },
+        "identifications": {
+          "manaRegen": -24,
+          "manaSteal": 16,
+          "walkSpeed": 20,
+          "3rdSpellCost": -25,
+          "rawIntelligence": 10,
+          "elementalDefence": -30,
+          "rawWaterSpellDamage": 210
+        },
+        "base": {
+          "baseDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 70
+          },
+          "baseAirDamage": {
+            "min": 38,
+            "raw": 38,
+            "max": 75
+          },
+          "baseWaterDamage": {
+            "min": 38,
+            "raw": 38,
+            "max": 75
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2a8",
+      "itemName": "The Watched",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "The Watched",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "fast",
+        "averageDps": 719,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "shaman",
+          "agility": 30,
+          "defence": 30,
+          "strength": 30,
+          "dexterity": 30,
+          "intelligence": 30
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.multi3"
+          }
+        },
+        "identifications": {
+          "rawHealth": 5000,
+          "spellDamage": -25,
+          "elementalDefence": 25,
+          "raw1stSpellCost": -5,
+          "healingEfficiency": 15
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          },
+          "baseFireDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          },
+          "baseEarthDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          },
+          "baseWaterDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          },
+          "baseThunderDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "The Watched",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "fast",
+        "averageDps": 719,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 100,
+          "classRequirement": "shaman",
+          "agility": 30,
+          "defence": 30,
+          "strength": 30,
+          "dexterity": 30,
+          "intelligence": 30
+        },
+        "powderSlots": 3,
+        "lore": "\"The feeling begins as a prickle on the neck. Is that tree staring? What does it see? How much does it know? This place is not right. It sees too much. It knows too much. The forest is staring at you. It burns the secrets out of you through its awful, unnatural retinas. There is nowhere to hide.\"",
+        "dropMeta": {
+          "name": "Eldritch Outlook",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1290,
+            55,
+            -738
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.multi3"
+          }
+        },
+        "identifications": {
+          "rawHealth": 5000,
+          "spellDamage": -25,
+          "elementalDefence": 25,
+          "raw1stSpellCost": -5,
+          "healingEfficiency": 15
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          },
+          "baseFireDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          },
+          "baseEarthDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          },
+          "baseWaterDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          },
+          "baseThunderDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 60
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2a9",
+      "itemName": "Divzer",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Divzer",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "superFast",
+        "averageDps": 1026,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "archer",
+          "dexterity": 115
+        },
+        "powderSlots": 3,
+        "lore": "Unruly magics of void and darkness are tamed within this bow's string. While those energies are never to be released, arrows fired from it fire at such blinding speeds so as to phase out of existence when they hit their target.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.thunder3"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 274,
+            "raw": 912,
+            "max": 1186
+          },
+          "manaSteal": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "fireDamage": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "rawAgility": -550,
+          "rawDefence": -73,
+          "waterDamage": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "rawDexterity": 37,
+          "rawAttackSpeed": 1,
+          "rawSpellDamage": {
+            "min": 76,
+            "raw": 253,
+            "max": 329
+          },
+          "rawMainAttackDamage": {
+            "min": 161,
+            "raw": 536,
+            "max": 697
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 36
+          },
+          "baseThunderDamage": {
+            "min": 235,
+            "raw": 235,
+            "max": 235
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Divzer",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "superFast",
+        "averageDps": 957,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 97,
+          "classRequirement": "archer",
+          "dexterity": 115
+        },
+        "powderSlots": 3,
+        "lore": "Unruly magics of void and darkness are tamed within this bow's string. While those energies are never to be released, arrows fired from it fire at such blinding speeds so as to phase out of existence when they hit their target.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.thunder3"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 274,
+            "raw": 912,
+            "max": 1186
+          },
+          "manaSteal": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "fireDamage": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "rawAgility": -550,
+          "rawDefence": -73,
+          "waterDamage": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "rawDexterity": 37,
+          "rawAttackSpeed": 1,
+          "rawSpellDamage": {
+            "min": 76,
+            "raw": 253,
+            "max": 329
+          },
+          "rawMainAttackDamage": {
+            "min": 161,
+            "raw": 536,
+            "max": 697
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 36
+          },
+          "baseThunderDamage": {
+            "min": 235,
+            "raw": 235,
+            "max": 235
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2aa",
+      "itemName": "Firebird",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Firebird",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "pale_diamond",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 95,
+          "agility": 60,
+          "defence": 60
+        },
+        "majorIds": {
+          "Phoenix-Born": "<span class='font-ascii' style='color:#AAAAAA'><aqua>+Phoenix-Born:</span> <darkAqua>Health Regeneration is increased by 1% for every 1% Health missing.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "From the ashes, let a hero rise anew.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_diamond"
+          }
+        },
+        "identifications": {
+          "lifeSteal": -300,
+          "manaRegen": 10,
+          "manaSteal": -15,
+          "walkSpeed": 25,
+          "spellDamage": 30
+        },
+        "base": {
+          "baseHealth": 4000,
+          "baseAirDefence": 125,
+          "baseFireDefence": 125,
+          "baseEarthDefence": 75,
+          "baseWaterDefence": 125,
+          "baseThunderDefence": 75
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Firebird",
+        "type": "armour",
+        "armourType": "chestplate",
+        "armourMaterial": "pale_diamond",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 95,
+          "agility": 60,
+          "defence": 60
+        },
+        "majorIds": {
+          "Phoenix-Born": "<span class='font-ascii' style='color:#AAAAAA'><aqua>+Phoenix-Born:</span> <darkAqua>Health Regeneration is increased by 0.75% for every 1% Health missing.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "From the ashes, let a hero rise anew.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_diamond"
+          }
+        },
+        "identifications": {
+          "lifeSteal": -300,
+          "manaRegen": 10,
+          "manaSteal": -15,
+          "walkSpeed": 25,
+          "spellDamage": 30
+        },
+        "base": {
+          "baseHealth": 4000,
+          "baseAirDefence": 125,
+          "baseFireDefence": 125,
+          "baseEarthDefence": 75,
+          "baseWaterDefence": 125,
+          "baseThunderDefence": 75
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2ab",
+      "itemName": "Auxetic Capacitor",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Auxetic Capacitor",
+        "type": "accessory",
+        "accessoryType": "necklace",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 88,
+          "dexterity": 65
+        },
+        "majorIds": {
+          "Self-sufficient": "<span class='font-ascii' style='color:#55FFFF'>+Self-sufficient: <span class='font-ascii' style='color:#00AAAA'>Powder Specials can no longer be charged manually, but accumulate 7% charge every second.</span></span>"
+        },
+        "lore": "This pendant is not much more than a battery on a string, but a curious combination of Avos and electromagic seem to have left it with the ability to charge power from its surroundings on its own.",
+        "dropMeta": {
+          "name": "The Corkus Traversal",
+          "type": "lootrun",
+          "coordinates": [
+            -1553,
+            98,
+            -2674
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          }
+        },
+        "identifications": {
+          "spellDamage": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "rawDexterity": 5,
+          "healthRegenRaw": {
+            "min": -91,
+            "raw": -70,
+            "max": -49
+          },
+          "healingEfficiency": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "rawThunderDamage": {
+            "min": 18,
+            "raw": 60,
+            "max": 78
+          }
+        },
+        "base": {
+          "baseHealth": -250,
+          "baseThunderDefence": -40
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Auxetic Capacitor",
+        "type": "accessory",
+        "accessoryType": "necklace",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 88,
+          "dexterity": 65
+        },
+        "majorIds": {
+          "Self-sufficient": "<span class='font-ascii' style='color:#55FFFF'>+Self-sufficient: <span class='font-ascii' style='color:#00AAAA'>Powder Specials can no longer be charged manually, but accumulate 8% charge every second.</span></span>"
+        },
+        "lore": "This pendant is not much more than a battery on a string, but a curious combination of Avos and electromagic seem to have left it with the ability to charge power from its surroundings on its own.",
+        "dropMeta": {
+          "name": "The Corkus Traversal",
+          "type": "lootrun",
+          "coordinates": [
+            -1553,
+            98,
+            -2674
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          }
+        },
+        "identifications": {
+          "spellDamage": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "rawDexterity": 5,
+          "healthRegenRaw": {
+            "min": -91,
+            "raw": -70,
+            "max": -49
+          },
+          "healingEfficiency": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "rawThunderDamage": {
+            "min": 18,
+            "raw": 60,
+            "max": 78
+          }
+        },
+        "base": {
+          "baseHealth": -250,
+          "baseThunderDefence": -40
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2ac",
+      "itemName": "Tachyon",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Tachyon",
+        "type": "armour",
+        "armourType": "boots",
+        "armourMaterial": "diamond",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 88,
+          "agility": 30,
+          "dexterity": 55
+        },
+        "majorIds": {
+          "Escape Route": "<span class='font-ascii' style='color:#55FFFF'>+Escape Route: <span class='font-ascii' style='color:#00AAAA'>Frenzy and Time Dilation charge twice as fast, but to a halved maximum.</span></span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "The Corkus Traversal",
+          "type": "lootrun",
+          "coordinates": [
+            -1553,
+            98,
+            -2674
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.diamond"
+          }
+        },
+        "identifications": {
+          "sprint": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "manaSteal": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "rawAgility": 12,
+          "spellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "sprintRegen": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "rawMainAttackDamage": {
+            "min": 69,
+            "raw": 231,
+            "max": 300
+          }
+        },
+        "base": {
+          "baseHealth": 3000
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Tachyon",
+        "type": "armour",
+        "armourType": "boots",
+        "armourMaterial": "diamond",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 88,
+          "agility": 30,
+          "dexterity": 55
+        },
+        "majorIds": {
+          "Escape Route": "<span class='font-ascii' style='color:#55FFFF'>+Escape Route: <span class='font-ascii' style='color:#00AAAA'>Frenzy and Time Dilation charge twice as fast but also decay twice as fast.</span></span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "The Corkus Traversal",
+          "type": "lootrun",
+          "coordinates": [
+            -1553,
+            98,
+            -2674
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.diamond"
+          }
+        },
+        "identifications": {
+          "sprint": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "manaSteal": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "rawAgility": 12,
+          "spellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "sprintRegen": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "rawMainAttackDamage": {
+            "min": 69,
+            "raw": 231,
+            "max": 300
+          }
+        },
+        "base": {
+          "baseHealth": 3000
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2ad",
+      "itemName": "Deliverance",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Deliverance",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "normal",
+        "averageDps": 453,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 84,
+          "classRequirement": "mage",
+          "defence": 80
+        },
+        "majorIds": {
+          "Lustrate": "<span class='font-ascii' style='color:#55FFFF'>+Lustrate: <span class='font-ascii' style='color:#00AAAA'>Heal restores health at a slower rate, but Searing Light deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+80%</span><darkAqua>, <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>+40%</span><darkAqua>, and <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+10%</span><darkAqua>.</span></span></span></span></span></span></span></span>"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.fire3"
+          }
+        },
+        "identifications": {
+          "1stSpellCost": {
+            "min": -10,
+            "raw": -35,
+            "max": -45
+          },
+          "3rdSpellCost": {
+            "min": 26,
+            "raw": 20,
+            "max": 14
+          },
+          "healthRegenRaw": {
+            "min": 54,
+            "raw": 180,
+            "max": 234
+          },
+          "rawIntelligence": 12,
+          "healingEfficiency": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "waterSpellDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 120
+          },
+          "baseFireDamage": {
+            "min": 90,
+            "raw": 90,
+            "max": 150
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Deliverance",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "normal",
+        "averageDps": 453,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 84,
+          "classRequirement": "mage",
+          "defence": 80
+        },
+        "majorIds": {
+          "Lustrate": "<span class='font-ascii' style='color:#55FFFF'>+Lustrate: <span class='font-ascii' style='color:#00AAAA'>Heal restores health at a slower rate, but Searing Light deals <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>+150%</span><darkAqua>.</span></span></span></span>"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.fire3"
+          }
+        },
+        "identifications": {
+          "1stSpellCost": {
+            "min": -10,
+            "raw": -35,
+            "max": -45
+          },
+          "3rdSpellCost": {
+            "min": 26,
+            "raw": 20,
+            "max": 14
+          },
+          "healthRegenRaw": {
+            "min": 54,
+            "raw": 180,
+            "max": 234
+          },
+          "rawIntelligence": 12,
+          "healingEfficiency": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "waterSpellDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 120
+          },
+          "baseFireDamage": {
+            "min": 90,
+            "raw": 90,
+            "max": 150
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2ae",
+      "itemName": "Apocalypse",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Apocalypse",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "superSlow",
+        "averageDps": 574,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 81,
+          "classRequirement": "warrior",
+          "defence": 95
+        },
+        "majorIds": {
+          "Hellfire": "<span class='font-ascii' style='color:#55FFFF'>+Hellfire: <span class='font-ascii' style='color:#00AAAA'>Bash is replaced by a single hit, gaining +3 radius and dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>225%</span><darkAqua>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>40%</span><darkAqua>, and <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>60%</span><darkAqua>. Boiling Blood's cooldown is set to 2s, gains <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+40%</span><darkAqua>, <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+50%</span><darkAqua>, and burns twice as fast for 1s, but can't slow.</span></span></span></span></span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "To forge a weapon such as this from the cursed lava of the portal basin requires dozens, for each smith would lose themselves to the force of corruption before it is finished. The nightmarishly hooked blade serves no purpose but destruction, as intended.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          }
+        },
+        "identifications": {
+          "exploding": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "lifeSteal": {
+            "min": 300,
+            "raw": 1000,
+            "max": 1300
+          },
+          "rawDefence": 35,
+          "fireDefence": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          },
+          "healthRegen": {
+            "min": -162,
+            "raw": -125,
+            "max": -87
+          },
+          "waterDamage": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          },
+          "waterDefence": {
+            "min": -91,
+            "raw": -70,
+            "max": -49
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 375,
+            "raw": 375,
+            "max": 575
+          },
+          "baseFireDamage": {
+            "min": 500,
+            "raw": 500,
+            "max": 800
+          }
+        },
+        "rarity": "mythic"
+      },
+      "after": {
+        "internalName": "Apocalypse",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "superSlow",
+        "averageDps": 574,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 81,
+          "classRequirement": "warrior",
+          "defence": 95
+        },
+        "majorIds": {
+          "Hellfire": "<span class='font-ascii' style='color:#55FFFF'>+Hellfire: <span class='font-ascii' style='color:#00AAAA'>Bash is replaced by a single hit, gaining +3 radius and dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+85%</span><darkAqua>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>+10%</span><darkAqua>, and <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+60%</span><darkAqua>. Boiling Blood's cooldown is set to 2s, gains <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+40%</span><darkAqua>, <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+50%</span><darkAqua>, and burns twice as fast for 1s, but can't slow.</span></span></span></span></span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "To forge a weapon such as this from the cursed lava of the portal basin requires dozens, for each smith would lose themselves to the force of corruption before it is finished. The nightmarishly hooked blade serves no purpose but destruction, as intended.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          }
+        },
+        "identifications": {
+          "exploding": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "lifeSteal": {
+            "min": 300,
+            "raw": 1000,
+            "max": 1300
+          },
+          "rawDefence": 35,
+          "fireDefence": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          },
+          "healthRegen": {
+            "min": -162,
+            "raw": -125,
+            "max": -87
+          },
+          "waterDamage": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          },
+          "waterDefence": {
+            "min": -91,
+            "raw": -70,
+            "max": -49
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 375,
+            "raw": 375,
+            "max": 575
+          },
+          "baseFireDamage": {
+            "min": 500,
+            "raw": 500,
+            "max": 800
+          }
+        },
+        "rarity": "mythic"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2af",
+      "itemName": "Heracul",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Heracul",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "verySlow",
+        "averageDps": 732,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 77,
+          "classRequirement": "archer",
+          "strength": 70
+        },
+        "powderSlots": 3,
+        "lore": "Reconstructed from mere wooden scraps of its former self, this extremely heavy crossbow still contains immense power. It was intended for use with a lost suit of armor, of which only one piece remains.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth2"
+          }
+        },
+        "identifications": {
+          "exploding": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "slowEnemy": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawDefence": -10,
+          "rawStrength": 20,
+          "elementalDefence": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "mainAttackDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 580,
+            "raw": 580,
+            "max": 840
+          },
+          "baseEarthDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 225
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Heracul",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "verySlow",
+        "averageDps": 708,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 77,
+          "classRequirement": "archer",
+          "strength": 70
+        },
+        "powderSlots": 3,
+        "lore": "Reconstructed from mere wooden scraps of its former self, this extremely heavy crossbow still contains immense power. It was intended for use with a lost suit of armor, of which only one piece remains.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth2"
+          }
+        },
+        "identifications": {
+          "exploding": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "slowEnemy": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawDefence": -10,
+          "rawStrength": 20,
+          "elementalDefence": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "mainAttackDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 580,
+            "raw": 580,
+            "max": 840
+          },
+          "baseEarthDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 225
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2b0",
+      "itemName": "Jungle Rogue",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Jungle Rogue",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "iron",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 66,
+          "agility": 25,
+          "strength": 50
+        },
+        "majorIds": {
+          "Brachiate": "<span class='font-ascii' style='color:#55FFFF'>+Brachiate: <span class='font-ascii' style='color:#00AAAA'>Grappling Hook has 25% increased range and increased velocity, but no longer pulls enemies.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "King of the Jungle—it's a title reserved for the apex of the apex, and yet from where you swing across the canopy, this beast of supposed royalty is but another victim of your thievish pursuits.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          }
+        },
+        "identifications": {
+          "damage": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "airDefence": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "jumpHeight": 1,
+          "rawDefence": -3,
+          "rawStrength": 7,
+          "raw2ndSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          }
+        },
+        "base": {
+          "baseHealth": 1800,
+          "baseFireDefence": -60,
+          "baseEarthDefence": 60
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Jungle Rogue",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "iron",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 66,
+          "agility": 25,
+          "strength": 50
+        },
+        "majorIds": {
+          "Brachiate": "<span class='font-ascii' style='color:#55FFFF'>+Brachiate: <span class='font-ascii' style='color:#00AAAA'>Grappling Hook has 25% increased range and increased velocity.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "King of the Jungle—it's a title reserved for the apex of the apex, and yet from where you swing across the canopy, this beast of supposed royalty is but another victim of your thievish pursuits.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          }
+        },
+        "identifications": {
+          "damage": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "airDefence": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "jumpHeight": 1,
+          "rawDefence": -3,
+          "rawStrength": 7,
+          "raw2ndSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          }
+        },
+        "base": {
+          "baseHealth": 1800,
+          "baseFireDefence": -60,
+          "baseEarthDefence": 60
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2b1",
+      "itemName": "Never-Ending Nightmare",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Never-Ending Nightmare",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "pale_leather",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 55
+        },
+        "majorIds": {
+          "Fright or Flight": "<span class='font-ascii' style='color:#55FFFF'>+Fright or Flight: <span class='font-ascii' style='color:#00AAAA'>Plays spooky tunes.</span></span>"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.pale_leather"
+          }
+        },
+        "identifications": {
+          "sprint": 35,
+          "xpBonus": 15,
+          "lifeSteal": 90,
+          "lootBonus": 15,
+          "walkSpeed": 35
+        },
+        "base": {
+          "baseHealth": 850
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Never-Ending Nightmare",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "jackolantern",
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 55
+        },
+        "majorIds": {
+          "Fright or Flight": "<span class='font-ascii' style='color:#55FFFF'>+Fright or Flight: <span class='font-ascii' style='color:#00AAAA'>Plays spooky tunes.</span></span>"
+        },
+        "identifications": {
+          "sprint": 35,
+          "xpBonus": 15,
+          "lifeSteal": 90,
+          "lootBonus": 15,
+          "walkSpeed": 35
+        },
+        "base": {
+          "baseHealth": 850
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2b2",
+      "itemName": "Sealight Prism",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Sealight Prism",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "fast",
+        "averageDps": 200,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 50,
+          "classRequirement": "mage",
+          "agility": 21,
+          "defence": 21,
+          "strength": 21,
+          "dexterity": 21,
+          "intelligence": 27
+        },
+        "majorIds": {
+          "Lustrate": "<span class='font-ascii' style='color:#55FFFF'>+Lustrate: <span class='font-ascii' style='color:#00AAAA'>Heal restores health at a slower rate, but Searing Light deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+80%</span><darkAqua>, <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>+40%</span><darkAqua>, and <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+10%</span><darkAqua>.</span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "The light refracted through this sceptre shows you visions. You see the endless waves reflected in its rainbows, cracking hulls and drowning towns. This prism allows you to channel a fraction of the sea's potential.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi2"
+          }
+        },
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "manaSteal": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "reflection": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "walkSpeed": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "1stSpellCost": {
+            "min": -5,
+            "raw": -17,
+            "max": -22
+          },
+          "elementalDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 9,
+            "raw": 9,
+            "max": 21
+          },
+          "baseFireDamage": {
+            "min": 12,
+            "raw": 12,
+            "max": 18
+          },
+          "baseEarthDamage": {
+            "min": 13,
+            "raw": 13,
+            "max": 17
+          },
+          "baseWaterDamage": {
+            "min": 15,
+            "raw": 15,
+            "max": 25
+          },
+          "baseThunderDamage": {
+            "min": 4,
+            "raw": 4,
+            "max": 26
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Sealight Prism",
+        "type": "weapon",
+        "weaponType": "wand",
+        "attackSpeed": "fast",
+        "averageDps": 200,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 50,
+          "classRequirement": "mage",
+          "agility": 21,
+          "defence": 21,
+          "strength": 21,
+          "dexterity": 21,
+          "intelligence": 27
+        },
+        "majorIds": {
+          "Lustrate": "<span class='font-ascii' style='color:#55FFFF'>+Lustrate: <span class='font-ascii' style='color:#00AAAA'>Heal restores health at a slower rate, but Searing Light deals <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>+150%</span><darkAqua>.</span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "The light refracted through this sceptre shows you visions. You see the endless waves reflected in its rainbows, cracking hulls and drowning towns. This prism allows you to channel a fraction of the sea's potential.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi2"
+          }
+        },
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "manaSteal": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "reflection": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "walkSpeed": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "1stSpellCost": {
+            "min": -5,
+            "raw": -17,
+            "max": -22
+          },
+          "elementalDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 9,
+            "raw": 9,
+            "max": 21
+          },
+          "baseFireDamage": {
+            "min": 12,
+            "raw": 12,
+            "max": 18
+          },
+          "baseEarthDamage": {
+            "min": 13,
+            "raw": 13,
+            "max": 17
+          },
+          "baseWaterDamage": {
+            "min": 15,
+            "raw": 15,
+            "max": 25
+          },
+          "baseThunderDamage": {
+            "min": 4,
+            "raw": 4,
+            "max": 26
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2b3",
+      "itemName": "The Scavenged",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "The Scavenged",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "chainmail",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 41,
+          "agility": 15,
+          "defence": 10,
+          "dexterity": 10
+        },
+        "majorIds": {
+          "Escape Route": "<span class='font-ascii' style='color:#55FFFF'>+Escape Route: <span class='font-ascii' style='color:#00AAAA'>Frenzy and Time Dilation charge twice as fast, but to a halved maximum.</span></span>"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.chainmail"
+          }
+        },
+        "identifications": {
+          "sprint": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "walkSpeed": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawAgility": 3,
+          "spellDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 3,
+          "rawAttackSpeed": 1,
+          "mainAttackDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseHealth": -275,
+          "baseAirDefence": -15,
+          "baseFireDefence": -15,
+          "baseThunderDefence": -15
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "The Scavenged",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "chainmail",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 41,
+          "agility": 15,
+          "defence": 10,
+          "dexterity": 10
+        },
+        "majorIds": {
+          "Escape Route": "<span class='font-ascii' style='color:#55FFFF'>+Escape Route: <span class='font-ascii' style='color:#00AAAA'>Frenzy and Time Dilation charge twice as fast but also decay twice as fast.</span></span>"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.chainmail"
+          }
+        },
+        "identifications": {
+          "sprint": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "walkSpeed": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawAgility": 3,
+          "spellDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 3,
+          "rawAttackSpeed": 1,
+          "mainAttackDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseHealth": -275,
+          "baseAirDefence": -15,
+          "baseFireDefence": -15,
+          "baseThunderDefence": -15
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2b4",
+      "itemName": "Jaw Breaker",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Jaw Breaker",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "verySlow",
+        "averageDps": 158,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 38,
+          "classRequirement": "assassin",
+          "strength": 25
+        },
+        "powderSlots": 1,
+        "lore": "\"Bandit attacks losing you sleep? Free fighting classes here! Only 10  emeralds- they won't know what hit 'em!\" -Almuj Self-Defense Class Advertisement",
+        "dropMeta": {
+          "name": "Sand-Swept Tomb",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1390,
+            90,
+            -1835
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth2"
+          }
+        },
+        "identifications": {
+          "xpBonus": 10,
+          "exploding": 20,
+          "knockback": 25,
+          "walkSpeed": -10,
+          "rawStrength": 8,
+          "mainAttackDamage": 20
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 80
+          },
+          "baseEarthDamage": {
+            "min": 105,
+            "raw": 105,
+            "max": 135
+          }
+        },
+        "rarity": "rare"
+      },
+      "after": {
+        "internalName": "Jaw Breaker",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "verySlow",
+        "averageDps": 158,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 38,
+          "classRequirement": "assassin",
+          "strength": 25
+        },
+        "powderSlots": 1,
+        "lore": "\"Bandit attacks losing you sleep? Free fighting classes here! Only 10 emeralds- they won't know what hit 'em!\" -Almuj Self-Defense Class Advertisement",
+        "dropMeta": {
+          "name": "Sand-Swept Tomb",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            1390,
+            90,
+            -1835
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth2"
+          }
+        },
+        "identifications": {
+          "xpBonus": 10,
+          "exploding": 20,
+          "knockback": 25,
+          "walkSpeed": -10,
+          "rawStrength": 8,
+          "mainAttackDamage": 20
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 80
+          },
+          "baseEarthDamage": {
+            "min": 105,
+            "raw": 105,
+            "max": 135
+          }
+        },
+        "rarity": "rare"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2b5",
+      "itemName": "Cloudburst",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Cloudburst",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "pale_leather",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 19,
+          "agility": 10
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.pale_leather"
+          }
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawMainAttackDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          }
+        },
+        "base": {
+          "baseHealth": 80,
+          "baseAirDefence": 10
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Cloudburst",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "pale_leather",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 19,
+          "agility": 10
+        },
+        "lore": "Nothing stands out about these thin greaves at a glance. But sometimes, when the time is right, a tempestuous power rushes through them: your legs moving as by themselves, and taking leaps that they should never be able to.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.pale_leather"
+          }
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawMainAttackDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          }
+        },
+        "base": {
+          "baseHealth": 80,
+          "baseAirDefence": 10
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "692108583f2dec5227b0e2b6",
+      "itemName": "Sting",
+      "status": "modify",
+      "timestamp": 1763772504,
+      "before": {
+        "internalName": "Sting",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "slow",
+        "averageDps": 48,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 18,
+          "classRequirement": "warrior",
+          "defence": 5
+        },
+        "powderSlots": 1,
+        "lore": "\"I swear on my life those spiders were covered in spikes! Go out there, see if I'm wrong!\" -Suri, Elemental Researcher",
+        "dropMeta": {
+          "name": "Infested Pit",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            -157,
+            54,
+            -1819
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire1"
+          }
+        },
+        "identifications": {
+          "thorns": 5,
+          "lifeSteal": 12
+        },
+        "base": {
+          "baseDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 18
+          },
+          "baseFireDamage": {
+            "min": 14,
+            "raw": 14,
+            "max": 22
+          }
+        },
+        "rarity": "unique"
+      },
+      "after": {
+        "internalName": "Sting",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "slow",
+        "averageDps": 54,
+        "restrictions": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 18,
+          "classRequirement": "warrior",
+          "defence": 5
+        },
+        "powderSlots": 1,
+        "lore": "\"I swear on my life those spiders were covered in spikes! Go out there, see if I'm wrong!\" -Suri, Elemental Researcher",
+        "dropMeta": {
+          "name": "Infested Pit",
+          "type": "dungeonMerchant",
+          "coordinates": [
+            -157,
+            54,
+            -1819
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire1"
+          }
+        },
+        "identifications": {
+          "thorns": 5,
+          "lifeSteal": 12
+        },
+        "base": {
+          "baseDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 18
+          },
+          "baseFireDamage": {
+            "min": 14,
+            "raw": 14,
+            "max": 22
+          }
+        },
+        "rarity": "unique"
+      }
+    }
+  ]
+}
