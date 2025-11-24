@@ -2,9 +2,10 @@
 
 export default function ExamplePage() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-background">
-            <div className="mt-[80px]" />
-            {/* <main className="container mx-auto px-4 py-8 max-w-screen-lg"></main> */}
-        </div>
+        <main className="min-h-screen max-w-screen-md mx-auto px-6 py-36">
+            <h1 className="text-xl">This is a example page</h1>
+            {/* document max-w-screen-md */}
+            {/* infomation max-w-screen-lg */}
+        </main>
     )
 }
