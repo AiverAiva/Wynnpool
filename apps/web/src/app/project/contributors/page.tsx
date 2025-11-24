@@ -3,7 +3,7 @@ import { CommunitySection } from "./_components/community-section"
 
 export default function TeamPage() {
     return (
-        <main className="min-h-screen max-w-screen-md mx-auto px-6 py-36">
+        <main className="min-h-screen max-w-screen-lg mx-auto px-6 py-36">
             {/* Header */}
             <div className="mb-20 text-center">
                 <h1 className="text-4xl tracking-tight font-semibold text-foreground md:text-5xl">About the Team</h1>
