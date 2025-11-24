@@ -43,18 +43,19 @@ export function Footer() {
                             <FooterText>Realtime analytics coming soon</FooterText>
                         </FooterSection> */}
 
-                        {/* Community */}
-                        <FooterSection title="Community">
-                            {/* <FooterLink href="/sponsor">Sponsor Us</FooterLink> */}
-                            {/* <FooterLink href="https://ko-fi.com/yourlink">Ko-fi</FooterLink> */}
-                            <FooterLink href="https://github.com/AiverAiva/Wynnpool">Github</FooterLink>
-                            <FooterLink href="https://discord.gg/QZn4Qk3mSP">Discord</FooterLink>
-                        </FooterSection>
                         {/* Support */}
-                        <FooterSection title="Support">
-                            {/* <FooterLink href="/sponsor">Sponsor Us</FooterLink> */}
+                        <FooterSection title="Support Us">
                             {/* <FooterLink href="https://ko-fi.com/yourlink">Ko-fi</FooterLink> */}
                             <FooterLink href="https://buymeacoffee.com/aiveraiva">Buy me a coffee</FooterLink>
+                        </FooterSection>
+                        <FooterSection title="Project">
+                            <FooterLink href="/project/contributors">Contributors</FooterLink>
+                            {/* <FooterLink href="/sponsor">Sponsors</FooterLink> */}
+                        </FooterSection>
+                        {/* Community */}
+                        <FooterSection title="Community">
+                            <FooterLink href="https://github.com/AiverAiva/Wynnpool">Github</FooterLink>
+                            <FooterLink href="https://discord.gg/QZn4Qk3mSP">Discord</FooterLink>
                         </FooterSection>
                     </div>
                 </div>
