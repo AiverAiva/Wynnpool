@@ -34,25 +34,19 @@ export function Footer() {
                         <FooterLink href="https://discord.gg/yourinvite">Discord</FooterLink>
                     </FooterSection> */}
 
-                    {/* Service */}
                     <div className="flex flex-col md:flex-row gap-12">
-
-                        {/* <FooterSection title="Service">
-                            <FooterLink href="/status">API Status</FooterLink>
-                            <FooterLink href="/uptime">Uptime</FooterLink>
-                            <FooterText>Realtime analytics coming soon</FooterText>
-                        </FooterSection> */}
-
-                        {/* Support */}
                         <FooterSection title="Support Us">
                             {/* <FooterLink href="https://ko-fi.com/yourlink">Ko-fi</FooterLink> */}
                             <FooterLink href="https://buymeacoffee.com/aiveraiva">Buy me a coffee</FooterLink>
                         </FooterSection>
+
                         <FooterSection title="Project">
                             <FooterLink href="/project/contributors">Contributors</FooterLink>
+                            <FooterLink href="https://status.wynnpool.com">Service Status</FooterLink>
+
                             {/* <FooterLink href="/sponsor">Sponsors</FooterLink> */}
                         </FooterSection>
-                        {/* Community */}
+
                         <FooterSection title="Community">
                             <FooterLink href="https://github.com/AiverAiva/Wynnpool">Github</FooterLink>
                             <FooterLink href="https://discord.gg/QZn4Qk3mSP">Discord</FooterLink>
