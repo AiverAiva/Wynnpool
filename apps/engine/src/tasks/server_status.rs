@@ -15,10 +15,10 @@ static CLIENT: Lazy<Client> = Lazy::new(Client::new);
 
 // 12 hours TTL for server data
 const SERVER_DATA_TTL_SECS: i64 = 60 * 60 * 12;
-// Delete a server only if it's been offline for more than 2.5 minutes
-const OFFLINE_DELETE_SECS: i64 = 60 * 2 + 30;
+// Delete a server only if it's been offline for more than 1 minutes
+const OFFLINE_DELETE_SECS: i64 = 60 * 1;
 
-#[fetch(interval = 40)]
+#[fetch(interval = 35)]
 fn update_server_status() {
     tokio::spawn(async {
         if let Err(e) = run_update_server_status().await {
@@ -129,7 +129,7 @@ async fn run_update_server_status() -> Result<()> {
             let offline_duration = now_ts - offline_since;
 
             if offline_duration > OFFLINE_DELETE_SECS {
-                // Hard delete after being offline for > 5 minutes
+                // Hard delete after being offline for > 1 minutes
                 cleanup_pipe
                     .del(&data_key)
                     .srem("wynnpool:servers", existing);
