@@ -1,0 +1,552 @@
+{
+  "add": [
+    {
+      "_id": "6923ace36643c6568a509a9c",
+      "itemName": "Deeper Abyss",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Deeper Abyss",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 103,
+        "intelligence": 50
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1282
+            ]
+          },
+          "name": "ring.water2"
+        }
+      },
+      "identifications": {
+        "reflection": {
+          "min": 3,
+          "raw": 9,
+          "max": 12
+        },
+        "rawAttackSpeed": {
+          "min": -5,
+          "raw": -4,
+          "max": -3
+        },
+        "rawIntelligence": 3,
+        "mainAttackRange": {
+          "min": -23,
+          "raw": -18,
+          "max": -13
+        },
+        "rawWaterSpellDamage": {
+          "min": 19,
+          "raw": 62,
+          "max": 81
+        }
+      },
+      "base": {
+        "baseWaterDefence": 50
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "6923ace36643c6568a509a9d",
+      "itemName": "Lifelike",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Lifelike",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 86
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1280
+            ]
+          },
+          "name": "ring.thunder2"
+        }
+      },
+      "identifications": {
+        "xpBonus": {
+          "min": 2,
+          "raw": 6,
+          "max": 8
+        },
+        "manaRegen": {
+          "min": 2,
+          "raw": 6,
+          "max": 8
+        },
+        "walkSpeed": {
+          "min": 2,
+          "raw": 6,
+          "max": 8
+        },
+        "rawIntelligence": 5
+      },
+      "base": {
+        "baseHealth": -250,
+        "baseAirDefence": 8,
+        "baseFireDefence": 8,
+        "baseEarthDefence": 8,
+        "baseWaterDefence": 8,
+        "baseThunderDefence": 8
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "6923ace36643c6568a509a9e",
+      "itemName": "Cold Front",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Cold Front",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 42,
+        "agility": 15,
+        "intelligence": 20
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1328
+            ]
+          },
+          "name": "ring.water1"
+        }
+      },
+      "identifications": {
+        "manaRegen": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "rawMaxMana": {
+          "min": -14,
+          "raw": -11,
+          "max": -8
+        },
+        "sprintRegen": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        }
+      },
+      "base": {
+        "baseAirDefence": 10,
+        "baseWaterDefence": 10
+      },
+      "rarity": "unique"
+    },
+    {
+      "_id": "6923ace36643c6568a509a9f",
+      "itemName": "Soap",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Soap",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 31,
+        "intelligence": 20
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1271
+            ]
+          },
+          "name": "ring.basicPearl"
+        }
+      },
+      "identifications": {
+        "manaRegen": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "rawMaxMana": {
+          "min": 2,
+          "raw": 8,
+          "max": 10
+        },
+        "mainAttackRange": {
+          "min": -16,
+          "raw": -12,
+          "max": -8
+        }
+      },
+      "base": {
+        "baseWaterDefence": 8
+      },
+      "rarity": "unique"
+    },
+    {
+      "_id": "6923ace36643c6568a509aa0",
+      "itemName": "Flickering Light",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Flickering Light",
+      "type": "accessory",
+      "accessoryType": "necklace",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 29,
+        "defence": 12,
+        "intelligence": 12
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1355
+            ]
+          },
+          "name": "necklace.fire1"
+        }
+      },
+      "identifications": {
+        "manaRegen": {
+          "min": 2,
+          "raw": 6,
+          "max": 8
+        },
+        "elementalDefence": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "healingEfficiency": {
+          "min": 2,
+          "raw": 6,
+          "max": 8
+        }
+      },
+      "base": {
+        "baseFireDefence": 8,
+        "baseWaterDefence": 8
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "6923ace36643c6568a509aa1",
+      "itemName": "Warm Embrace",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Warm Embrace",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 25,
+        "defence": 10,
+        "intelligence": 10
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1271
+            ]
+          },
+          "name": "ring.basicPearl"
+        }
+      },
+      "identifications": {
+        "manaRegen": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "healingEfficiency": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "mainAttackDamage": {
+          "min": -10,
+          "raw": -8,
+          "max": -6
+        }
+      },
+      "base": {
+        "baseHealth": 20,
+        "baseFireDefence": 3,
+        "baseWaterDefence": 3
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "6923ace36643c6568a509aa2",
+      "itemName": "Unwavering",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Unwavering",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 21,
+        "strength": 6,
+        "intelligence": 9
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1322
+            ]
+          },
+          "name": "ring.earth1"
+        }
+      },
+      "identifications": {
+        "knockback": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "manaRegen": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "earthDamage": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        }
+      },
+      "base": {
+        "baseHealth": 10,
+        "baseEarthDefence": 4,
+        "baseWaterDefence": 4
+      },
+      "rarity": "unique"
+    },
+    {
+      "_id": "6923ace36643c6568a509aa3",
+      "itemName": "Sparkle",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Sparkle",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 16,
+        "defence": 4
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1324
+            ]
+          },
+          "name": "ring.fire1"
+        }
+      },
+      "identifications": {
+        "manaRegen": {
+          "min": 1,
+          "raw": 3,
+          "max": 4
+        },
+        "healthRegen": {
+          "min": 2,
+          "raw": 8,
+          "max": 10
+        }
+      },
+      "base": {
+        "baseHealth": 10,
+        "baseFireDefence": 3
+      },
+      "rarity": "unique"
+    },
+    {
+      "_id": "6923ace36643c6568a509aa4",
+      "itemName": "Revelation",
+      "status": "add",
+      "timestamp": 1763945699,
+      "internalName": "Revelation",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 11
+      },
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1316
+            ]
+          },
+          "name": "ring.basicGold"
+        }
+      },
+      "identifications": {
+        "manaSteal": {
+          "min": 1,
+          "raw": 3,
+          "max": 4
+        }
+      },
+      "base": {
+        "baseHealth": -5,
+        "baseThunderDefence": 1
+      },
+      "rarity": "rare"
+    }
+  ],
+  "modify": [
+    {
+      "_id": "6923ace36643c6568a509aa5",
+      "itemName": "Possession",
+      "status": "modify",
+      "timestamp": 1763945699,
+      "before": {
+        "internalName": "Possession",
+        "type": "accessory",
+        "accessoryType": "necklace",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 103,
+          "agility": 50,
+          "strength": 50
+        },
+        "majorIds": {
+          "Spectral Memory": "<span class='font-ascii' style='color:#55FFFF'>+Spectral Memory: <span class='font-ascii' style='color:#00AAAA'>\nGhostly Trigger lasts until landing, but no longer increases attack speed. Its cooldown is reduced by 33%.</span></span>"
+        },
+        "lore": "Your mind is falling apart, the pieces scattering, your grasp on reality weakening, your soul an empty space. I shall fill it.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.air2"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "manaRegen": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "walkSpeed": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawStrength": 5,
+          "rawSpellDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawMainAttackDamage": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          }
+        },
+        "base": {
+          "baseAirDefence": 70,
+          "baseEarthDefence": -70
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Possession",
+        "type": "accessory",
+        "accessoryType": "necklace",
+        "dropRestriction": "lootchest",
+        "requirements": {
+          "level": 103,
+          "agility": 50,
+          "strength": 50
+        },
+        "majorIds": {
+          "Spectral Memory": "<span class='font-ascii' style='color:#55FFFF'>+Spectral Memory: <span class='font-ascii' style='color:#00AAAA'>\nGhostly Trigger lasts until landing, but no longer increases attack speed. Its cooldown is reduced by 33%.</span></span>"
+        },
+        "lore": "Your mind is falling apart, the pieces scattering, your grasp on reality weakening, your soul an empty space. I shall fill it.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.air2"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "manaRegen": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "walkSpeed": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawStrength": 5,
+          "rawSpellDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawMainAttackDamage": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          }
+        },
+        "base": {
+          "baseAirDefence": 70,
+          "baseEarthDefence": -70
+        },
+        "rarity": "fabled"
+      }
+    }
+  ]
+}
