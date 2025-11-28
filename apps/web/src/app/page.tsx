@@ -1,3 +1,5 @@
+'use client';
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import WynncraftNews from '@/components/custom/lastest-news'
@@ -7,8 +9,11 @@ import { ChangelogList } from "@/components/custom/changelog-list"
 import { MeshGradientSVG } from "@/components/custom/mesh-gradient-svg"
 import { ScrollDownIndicator } from "@/components/custom/ScrollDownIndicator"
 import PixelBlast from "@/components/custom/PixelBlast"
+import { useMotionSettings } from "@/components/provider/MotionSettingsProvider"
 
-export default async function HomePage() {
+export default function HomePage() {
+  const { isReducedMotion } = useMotionSettings();
+
   return (
     <main>
       <section
@@ -18,7 +23,7 @@ export default async function HomePage() {
       bg-background
       "
       >
-        <PixelBlast
+        {!isReducedMotion && <PixelBlast
           variant="circle"
           pixelSize={6}
           color="#bfb0f0"
@@ -28,7 +33,7 @@ export default async function HomePage() {
           speed={0.5}
           edgeFade={0.3}
           transparent
-        />
+        />}
         <div
           className="
         mx-auto max-w-6xl px-24
@@ -53,7 +58,7 @@ export default async function HomePage() {
           {/* RIGHT — BLOB */}
           <div className="flex-1 flex justify-center md:justify-end">
             <div className="w-[240px] sm:w-[260px] md:w-[310px]">
-              <MeshGradientSVG />
+              {!isReducedMotion && <MeshGradientSVG />}
             </div>
           </div>
         </div>

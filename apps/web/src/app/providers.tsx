@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionSettingsProvider } from "@/components/provider/MotionSettingsProvider";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 
 type Provider = ({ children }: { children: React.ReactNode }) => JSX.Element;
@@ -13,6 +14,7 @@ const providers: Provider[] = [
             {...props}
         />
     ),
+    MotionSettingsProvider,
 ];
 
 export function Providers({ children }: { children: React.ReactNode }) {
