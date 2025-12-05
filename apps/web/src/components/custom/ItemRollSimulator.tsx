@@ -30,6 +30,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     const [isAutoRolling, setIsAutoRolling] = useState(false);
     const [autoRollStatus, setAutoRollStatus] = useState<string | null>(null);
     const autoRollCancelRef = useRef(false);
+    const [rollSpeed, setRollSpeed] = useState<number>(500); // Rolls per second
 
 
     // Initialize rolled identifications and requirements structure
@@ -145,10 +146,10 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     }, [item.identifications, ampTier, selectedAugment, lockedIdentification, RolledIdentifications, setRerollCount, setRolledIdentifications, setItemOverall]);
 
     // Effect to perform the first roll when the component mounts or item changes
-     useEffect(() => {
+    useEffect(() => {
         stableSimulateRoll();
         setRerollCount(0);
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [item]); // stableSimulateRoll is memoized, item is the trigger
 
 
@@ -237,7 +238,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                 return;
             }
             currentAttempt++;
-            if (currentAttempt % 500 === 0) {
+            if (currentAttempt % rollSpeed === 0) {
                 setAutoRollStatus(`Rolling... Attempt ${currentAttempt + 1}`);
                 await new Promise(resolve => setTimeout(resolve, 0));
             }
@@ -245,7 +246,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
         setAutoRollStatus("Auto-roll stopped by user.");
         setIsAutoRolling(false);
         setIsRolling(false);
-    }, [isAutoRolling, stableSimulateRoll, checkRequirements, RolledIdentifications, itemOverall, selectedAugment, requirements, overallRequirement]);
+    }, [isAutoRolling, stableSimulateRoll, checkRequirements, RolledIdentifications, itemOverall, selectedAugment, requirements, overallRequirement, rollSpeed]);
 
 
     return (
@@ -461,6 +462,58 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                     }
                                     return null;
                                 })}
+                            </div>
+                        </div>
+
+                        <div className="mt-6 border-t pt-4 font-sans">
+                            <h3 className="text-lg font-semibold mb-2 text-red-600 flex items-center gap-2">
+                                <AlertTriangle className="h-5 w-5" /> Danger Zone
+                            </h3>
+                            <div className="space-y-3 p-3 bg-red-50 dark:bg-red-950 rounded-md border border-red-200 dark:border-red-800">
+                                <div className="flex items-center gap-2">
+                                    <Label htmlFor="roll-speed" className="text-sm">Roll Speed:</Label>
+                                    <input
+                                        type="number"
+                                        id="roll-speed"
+                                        value={rollSpeed}
+                                        onChange={(e) => setRollSpeed(Math.max(1, Number(e.target.value)))}
+                                        className="w-24 h-8 text-sm border rounded px-2 bg-red-100/10 border-red-300"
+                                        min="1"
+                                    />
+                                </div>
+                                {rollSpeed >= 10000 && (
+                                    <div className="p-2 bg-red-200 dark:bg-red-800 rounded-md border border-red-400 dark:border-red-600 flex items-start gap-2">
+                                        <span className="text-sm text-red-700 dark:text-red-300">
+                                            <strong>⚠️ DANGER:</strong> You are exceeding the safe limit! This may cause your browser or device to freeze or crash. Proceed at your own risk.
+                                        </span>
+                                    </div>
+                                )}
+                                <div className="text-xs text-muted-foreground">
+                                    <p className="font-medium mb-1">Reference (smooth & safe limits):</p>
+                                    <div className="flex flex-row gap-6">
+                                        <div>
+                                            <p className="text-xs italic mb-1">Desktop:</p>
+                                            <ul className="list-disc list-inside space-y-0.5 mb-2">
+                                                <li>AMD Ryzen 7 7700: ~10k</li>
+                                                <li>Intel Core i7-12700: ~10k</li>
+                                                <li>Apple M1/M2: ~8k</li>
+                                                <li>Intel Core i5-10400: ~5k</li>
+                                                <li>AMD Ryzen 5 3600: ~5k</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p className="text-xs italic mb-1">Mobile:</p>
+                                            <ul className="list-disc list-inside space-y-0.5">
+                                                <li>iPhone 15 Pro (A17 Pro): ~3k</li>
+                                                <li>iPhone 13/14 (A15/A16): ~2k</li>
+                                                <li>Samsung Galaxy S24 (Snapdragon 8 Gen 3): ~2.5k</li>
+                                                <li>Samsung Galaxy S21 (Snapdragon 888): ~1.5k</li>
+                                                <li>Google Pixel 8 (Tensor G3): ~2k</li>
+                                                <li>Mid-range Android: ~500-1k</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
