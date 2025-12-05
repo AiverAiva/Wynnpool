@@ -30,7 +30,13 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     const [isAutoRolling, setIsAutoRolling] = useState(false);
     const [autoRollStatus, setAutoRollStatus] = useState<string | null>(null);
     const autoRollCancelRef = useRef(false);
-    const [rollSpeed, setRollSpeed] = useState<number>(500); // Rolls per second
+    const [rollSpeed, setRollSpeed] = useState<number>(1000); // Speed multiplier for normal mode
+    const workersRef = useRef<Worker[]>([]);
+    const workerUrlRef = useRef<string | null>(null);
+    const [rollsPerSecond, setRollsPerSecond] = useState<number>(0);
+    const rollStartTimeRef = useRef<number>(0);
+    const [useCpuAcceleration, setUseCpuAcceleration] = useState<boolean>(false);
+    const totalAttemptsRef = useRef<number[]>([]);
 
 
     // Initialize rolled identifications and requirements structure
@@ -218,12 +224,31 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     };
 
 
-    const autoRoll = useCallback(async () => {
+    const stopAutoRoll = useCallback(() => {
+        // Terminate all workers
+        workersRef.current.forEach(worker => {
+            worker.postMessage('stop');
+            worker.terminate();
+        });
+        workersRef.current = [];
+        if (workerUrlRef.current) {
+            URL.revokeObjectURL(workerUrlRef.current);
+            workerUrlRef.current = null;
+        }
+        autoRollCancelRef.current = true;
+        setIsAutoRolling(false);
+        setIsRolling(false);
+    }, []);
+
+    // Original non-worker autoRoll function
+    const autoRollNormal = useCallback(async () => {
         if (isAutoRolling) return;
         setIsAutoRolling(true);
         setIsRolling(true);
         setAutoRollStatus("Rolling...");
+        setRollsPerSecond(0);
         autoRollCancelRef.current = false;
+        rollStartTimeRef.current = performance.now();
 
         let currentAttempt = 0;
         let simResult = { newRolledIDs: RolledIdentifications, overall: itemOverall, idCount: Object.keys(RolledIdentifications).length };
@@ -231,22 +256,276 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
         while (!autoRollCancelRef.current) {
             simResult = stableSimulateRoll();
             if (checkRequirements(simResult.newRolledIDs, simResult.overall)) {
+                const elapsed = (performance.now() - rollStartTimeRef.current) / 1000;
+                const rps = Math.round((currentAttempt + 1) / elapsed);
+                setRollsPerSecond(rps);
                 const rollsTaken = selectedAugment === "Corkian Simulator" ? "N/A (Simulator Active)" : currentAttempt + 1;
-                setAutoRollStatus(`Requirements met after ${rollsTaken} auto-roll${currentAttempt === 0 && selectedAugment !== "Corkian Simulator" ? "" : "s"}.`);
+                setAutoRollStatus(`Requirements met after ${rollsTaken.toLocaleString()} rolls! (${rps.toLocaleString()} rolls/sec)`);
                 setIsAutoRolling(false);
                 setIsRolling(false);
                 return;
             }
             currentAttempt++;
             if (currentAttempt % rollSpeed === 0) {
-                setAutoRollStatus(`Rolling... Attempt ${currentAttempt + 1}`);
+                const elapsed = (performance.now() - rollStartTimeRef.current) / 1000;
+                const rps = Math.round(currentAttempt / elapsed);
+                setRollsPerSecond(rps);
+                setAutoRollStatus(`Rolling... ${currentAttempt.toLocaleString()} attempts (${rps.toLocaleString()} rolls/sec)`);
                 await new Promise(resolve => setTimeout(resolve, 0));
             }
         }
-        setAutoRollStatus("Auto-roll stopped by user.");
+        const elapsed = (performance.now() - rollStartTimeRef.current) / 1000;
+        const rps = elapsed > 0 ? Math.round(currentAttempt / elapsed) : 0;
+        setRollsPerSecond(rps);
+        setAutoRollStatus(`Stopped after ${currentAttempt.toLocaleString()} rolls.`);
         setIsAutoRolling(false);
         setIsRolling(false);
-    }, [isAutoRolling, stableSimulateRoll, checkRequirements, RolledIdentifications, itemOverall, selectedAugment, requirements, overallRequirement, rollSpeed]);
+    }, [isAutoRolling, stableSimulateRoll, checkRequirements, RolledIdentifications, itemOverall, selectedAugment, rollSpeed]);
+
+    // Worker-based autoRoll for CPU acceleration (multi-core)
+    const autoRollWorker = useCallback(() => {
+        if (isAutoRolling) return;
+        if (!item.identifications) return;
+
+        const numWorkers = navigator.hardwareConcurrency || 4;
+        
+        setIsAutoRolling(true);
+        setIsRolling(true);
+        setAutoRollStatus(`Starting ${numWorkers} workers...`);
+        setRollsPerSecond(0);
+        autoRollCancelRef.current = false;
+        rollStartTimeRef.current = performance.now();
+        totalAttemptsRef.current = new Array(numWorkers).fill(0);
+
+        // Create Web Worker with inline blob for Next.js compatibility
+        const workerCode = `
+            function simulateRoll(identifications, ampTier, selectedAugment, lockedIdentification, lockedRolledIDs) {
+                const newRolledIDs = {};
+                const ampMultiplier = 0.05 * ampTier;
+                let identificationCount = 0;
+                let currentOverallSum = 0;
+
+                for (const [idName, idValue] of Object.entries(identifications)) {
+                    if (typeof idValue === 'object' && idValue !== null && 'raw' in idValue) {
+                        if (selectedAugment === "Corkian Insulator" && lockedIdentification === idName && lockedRolledIDs[idName]) {
+                            const lockedID = lockedRolledIDs[idName];
+                            if (lockedID && typeof lockedID.percentage === 'number') {
+                                newRolledIDs[idName] = lockedRolledIDs[idName];
+                                currentOverallSum += lockedID.percentage;
+                                identificationCount++;
+                                continue;
+                            }
+                        }
+                        if (selectedAugment === "Corkian Isolator" && lockedIdentification && lockedIdentification !== idName && lockedRolledIDs[idName]) {
+                            const lockedID = lockedRolledIDs[idName];
+                            if (lockedID && typeof lockedID.percentage === 'number') {
+                                newRolledIDs[idName] = lockedRolledIDs[idName];
+                                currentOverallSum += lockedID.percentage;
+                                identificationCount++;
+                                continue;
+                            }
+                        }
+
+                        const rollPos = (Math.ceil((Math.random() * 101) - 1) / 100) + 0.3;
+                        const rollNeg = (Math.ceil((Math.random() * 61) - 1) / 100) + 0.7;
+                        const ampSim = parseFloat((rollPos + (1.3 - rollPos) * ampMultiplier).toFixed(2));
+
+                        let rolledValue, maxRoll, minRoll, percent;
+                        let starLevel = 0;
+
+                        if (idValue.raw > 0) {
+                            maxRoll = Math.round(idValue.raw * 1.3);
+                            if (!idName.toLowerCase().includes('spellcost')) {
+                                if (ampSim >= 1.0 && ampSim < 1.25) starLevel = 1;
+                                else if (ampSim >= 1.25 && ampSim < 1.3) starLevel = 2;
+                                else if (ampSim === 1.3) starLevel = 3;
+                            }
+                            if (idName.toLowerCase().includes('spellcost')) {
+                                rolledValue = Math.round(idValue.raw * rollNeg);
+                                minRoll = Math.round(idValue.raw * 0.7);
+                                percent = minRoll !== maxRoll ? ((maxRoll - rolledValue) / (maxRoll - minRoll)) * 100 : 100;
+                            } else {
+                                rolledValue = Math.round(idValue.raw * ampSim);
+                                minRoll = Math.round(idValue.raw * 0.3);
+                                percent = minRoll !== maxRoll ? ((rolledValue - minRoll) / (maxRoll - minRoll)) * 100 : 100;
+                            }
+                            currentOverallSum += percent;
+                            identificationCount++;
+                            newRolledIDs[idName] = { raw: rolledValue, percentage: Number(percent.toFixed(1)), star: starLevel };
+                        } else {
+                            maxRoll = Math.round(idValue.raw * 1.3);
+                            if (idName.toLowerCase().includes('spellcost')) {
+                                rolledValue = Math.round(idValue.raw * ampSim);
+                                minRoll = Math.round(idValue.raw * 0.3);
+                                percent = minRoll !== maxRoll ? ((rolledValue - minRoll) / (maxRoll - minRoll)) * 100 : 100;
+                            } else {
+                                rolledValue = Math.round(idValue.raw * rollNeg);
+                                minRoll = Math.round(idValue.raw * 0.7);
+                                percent = minRoll !== maxRoll ? ((maxRoll - rolledValue) / (maxRoll - minRoll)) * 100 : 100;
+                            }
+                            currentOverallSum += percent;
+                            identificationCount++;
+                            newRolledIDs[idName] = { raw: rolledValue, percentage: Number(percent.toFixed(1)), star: starLevel };
+                        }
+                    } else {
+                        newRolledIDs[idName] = idValue;
+                    }
+                }
+                const overall = identificationCount > 0 ? Number((currentOverallSum / identificationCount).toFixed(2)) : 0;
+                return { rolledIDs: newRolledIDs, overall };
+            }
+
+            function checkRequirements(rolledIDs, overall, requirements, overallRequirement) {
+                if (overallRequirement.enabled && typeof overallRequirement.value === 'number') {
+                    const direction = overallRequirement.direction || 'gte';
+                    if (direction === 'gte') {
+                        if (overall < overallRequirement.value) return false;
+                    } else {
+                        if (overall > overallRequirement.value) return false;
+                    }
+                }
+                for (const statKey in requirements) {
+                    if (requirements[statKey].enabled && typeof requirements[statKey].value === 'number') {
+                        const rolledValue = rolledIDs[statKey];
+                        const direction = requirements[statKey].direction || 'gte';
+                        if (!rolledValue || typeof rolledValue.percentage !== 'number') return false;
+                        if (direction === 'gte') {
+                            if (rolledValue.percentage < requirements[statKey].value) return false;
+                        } else {
+                            if (rolledValue.percentage > requirements[statKey].value) return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            let shouldStop = false;
+            self.onmessage = function(e) {
+                if (e.data === 'stop') {
+                    shouldStop = true;
+                    return;
+                }
+                shouldStop = false;
+                const { identifications, ampTier, selectedAugment, lockedIdentification, lockedRolledIDs, requirements, overallRequirement, batchSize, workerId } = e.data;
+                let attempts = 0;
+                const progressInterval = Math.max(10000, batchSize);
+                let lastResult = null;
+
+                while (!shouldStop) {
+                    const result = simulateRoll(identifications, ampTier, selectedAugment, lockedIdentification, lockedRolledIDs);
+                    lastResult = result;
+                    attempts++;
+                    if (checkRequirements(result.rolledIDs, result.overall, requirements, overallRequirement)) {
+                        self.postMessage({ type: 'success', attempts, rolledIDs: result.rolledIDs, overall: result.overall, workerId });
+                        return;
+                    }
+                    if (attempts % progressInterval === 0) {
+                        self.postMessage({ type: 'progress', attempts, rolledIDs: result.rolledIDs, overall: result.overall, workerId });
+                    }
+                }
+                self.postMessage({ type: 'stopped', attempts, rolledIDs: lastResult?.rolledIDs, overall: lastResult?.overall, workerId });
+            };
+        `;
+
+        const blob = new Blob([workerCode], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(blob);
+        workerUrlRef.current = workerUrl;
+        
+        let foundResult = false;
+        const workers: Worker[] = [];
+
+        const cleanupWorkers = () => {
+            workers.forEach(w => {
+                w.postMessage('stop');
+                w.terminate();
+            });
+            workersRef.current = [];
+            if (workerUrlRef.current) {
+                URL.revokeObjectURL(workerUrlRef.current);
+                workerUrlRef.current = null;
+            }
+        };
+
+        for (let i = 0; i < numWorkers; i++) {
+            const worker = new Worker(workerUrl);
+            workers.push(worker);
+
+            worker.onmessage = (e) => {
+                if (foundResult) return; // Another worker already found the result
+                
+                const { type, attempts, rolledIDs, overall, workerId } = e.data;
+                totalAttemptsRef.current[workerId] = attempts;
+                const totalAttempts = totalAttemptsRef.current.reduce((a, b) => a + b, 0);
+                const elapsed = (performance.now() - rollStartTimeRef.current) / 1000;
+                const rps = Math.round(totalAttempts / elapsed);
+                setRollsPerSecond(rps);
+
+                if (type === 'success') {
+                    foundResult = true;
+                    setRolledIdentifications(rolledIDs);
+                    setItemOverall(overall);
+                    setRerollCount(prev => prev + totalAttempts);
+                    const rollsTaken = selectedAugment === "Corkian Simulator" ? "N/A (Simulator Active)" : totalAttempts;
+                    setAutoRollStatus(`Requirements met after ${rollsTaken.toLocaleString()} rolls! (${rps.toLocaleString()} rolls/sec, ${numWorkers} cores)`);
+                    setIsAutoRolling(false);
+                    setIsRolling(false);
+                    cleanupWorkers();
+                } else if (type === 'progress') {
+                    setRolledIdentifications(rolledIDs);
+                    setItemOverall(overall);
+                    setAutoRollStatus(`Rolling... ${totalAttempts.toLocaleString()} attempts (${rps.toLocaleString()} rolls/sec, ${numWorkers} cores)`);
+                } else if (type === 'stopped') {
+                    // Check if all workers are stopped
+                    const allStopped = workers.every(w => w.onmessage === null || foundResult);
+                    if (!foundResult && allStopped) {
+                        if (rolledIDs) {
+                            setRolledIdentifications(rolledIDs);
+                            setItemOverall(overall);
+                        }
+                        setRerollCount(prev => prev + totalAttempts);
+                        setAutoRollStatus(`Stopped after ${totalAttempts.toLocaleString()} rolls.`);
+                        setIsAutoRolling(false);
+                        setIsRolling(false);
+                        cleanupWorkers();
+                    }
+                }
+            };
+
+            worker.onerror = (error) => {
+                console.error('Worker error:', error);
+                if (!foundResult) {
+                    setAutoRollStatus(`Error: ${error.message}`);
+                    setIsAutoRolling(false);
+                    setIsRolling(false);
+                    cleanupWorkers();
+                }
+            };
+
+            // Start the worker
+            worker.postMessage({
+                identifications: item.identifications,
+                ampTier,
+                selectedAugment,
+                lockedIdentification,
+                lockedRolledIDs: RolledIdentifications,
+                requirements,
+                overallRequirement,
+                batchSize: rollSpeed,
+                workerId: i
+            });
+        }
+
+        workersRef.current = workers;
+    }, [isAutoRolling, item.identifications, ampTier, selectedAugment, lockedIdentification, RolledIdentifications, requirements, overallRequirement, rollSpeed]);
+
+    // Wrapper function that decides which autoRoll to use
+    const autoRoll = useCallback(() => {
+        if (useCpuAcceleration) {
+            autoRollWorker();
+        } else {
+            autoRollNormal();
+        }
+    }, [useCpuAcceleration, autoRollWorker, autoRollNormal]);
 
 
     return (
@@ -283,7 +562,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                 size="sm"
                                 className="gap-1"
                                 onClick={isAutoRolling
-                                    ? () => { autoRollCancelRef.current = true; setIsAutoRolling(false); }
+                                    ? stopAutoRoll
                                     : () => { stableSimulateRoll(); setAutoRollStatus(null); }
                                 }
                                 disabled={isAutoRolling ? false : isRolling}
@@ -465,55 +744,38 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                             </div>
                         </div>
 
-                        <div className="mt-6 border-t pt-4 font-sans">
+                        <div className="mt-6 border-t pt-4 font-sans border-red-500">
                             <h3 className="text-lg font-semibold mb-2 text-red-600 flex items-center gap-2">
                                 <AlertTriangle className="h-5 w-5" /> Danger Zone
                             </h3>
                             <div className="space-y-3 p-3 bg-red-50 dark:bg-red-950 rounded-md border border-red-200 dark:border-red-800">
-                                <div className="flex items-center gap-2">
-                                    <Label htmlFor="roll-speed" className="text-sm">Roll Speed:</Label>
+                                <div className="flex items-center gap-3">
                                     <input
-                                        type="number"
-                                        id="roll-speed"
-                                        value={rollSpeed}
-                                        onChange={(e) => setRollSpeed(Math.max(1, Number(e.target.value)))}
-                                        className="w-24 h-8 text-sm border rounded px-2 bg-red-100/10 border-red-300"
-                                        min="1"
+                                        type="checkbox"
+                                        id="cpu-acceleration"
+                                        checked={useCpuAcceleration}
+                                        onChange={(e) => setUseCpuAcceleration(e.target.checked)}
+                                        className="h-4 w-4"
+                                        disabled={isAutoRolling}
                                     />
+                                    <Label htmlFor="cpu-acceleration" className="text-sm font-medium">
+                                        🚀 CPU Acceleration (Multi-Core)
+                                    </Label>
                                 </div>
-                                {rollSpeed >= 10000 && (
-                                    <div className="p-2 bg-red-200 dark:bg-red-800 rounded-md border border-red-400 dark:border-red-600 flex items-start gap-2">
-                                        <span className="text-sm text-red-700 dark:text-red-300">
-                                            <strong>⚠️ DANGER:</strong> You are exceeding the safe limit! This may cause your browser or device to freeze or crash. Proceed at your own risk.
-                                        </span>
+                                {useCpuAcceleration && (
+                                    <div className="p-3 bg-green-100 dark:bg-green-900 rounded-md border border-green-300 dark:border-green-700">
+                                        <p className="text-sm text-green-700 dark:text-green-300">
+                                            <strong>Enabled:</strong> Using {typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4} CPU cores in parallel for maximum speed!
+                                        </p>
                                     </div>
                                 )}
-                                <div className="text-xs text-muted-foreground">
-                                    <p className="font-medium mb-1">Reference (smooth & safe limits):</p>
-                                    <div className="flex flex-row gap-6">
-                                        <div>
-                                            <p className="text-xs italic mb-1">Desktop:</p>
-                                            <ul className="list-disc list-inside space-y-0.5 mb-2">
-                                                <li>AMD Ryzen 7 7700: ~10k</li>
-                                                <li>Intel Core i7-12700: ~10k</li>
-                                                <li>Apple M1/M2: ~8k</li>
-                                                <li>Intel Core i5-10400: ~5k</li>
-                                                <li>AMD Ryzen 5 3600: ~5k</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <p className="text-xs italic mb-1">Mobile:</p>
-                                            <ul className="list-disc list-inside space-y-0.5">
-                                                <li>iPhone 15 Pro (A17 Pro): ~3k</li>
-                                                <li>iPhone 13/14 (A15/A16): ~2k</li>
-                                                <li>Samsung Galaxy S24 (Snapdragon 8 Gen 3): ~2.5k</li>
-                                                <li>Samsung Galaxy S21 (Snapdragon 888): ~1.5k</li>
-                                                <li>Google Pixel 8 (Tensor G3): ~2k</li>
-                                                <li>Mid-range Android: ~500-1k</li>
-                                            </ul>
-                                        </div>
+                                {rollsPerSecond > 0 && (
+                                    <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-md border border-blue-300 dark:border-blue-700">
+                                        <p className="text-sm text-blue-700 dark:text-blue-300">
+                                            Current speed: <strong>{rollsPerSecond.toLocaleString()}</strong> rolls/sec
+                                        </p>
                                     </div>
-                                </div>
+                                )}
                             </div>
                         </div>
 
