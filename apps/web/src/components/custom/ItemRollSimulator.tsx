@@ -282,7 +282,6 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
         setIsRolling(false);
     }, [isAutoRolling, stableSimulateRoll, checkRequirements, RolledIdentifications, itemOverall, selectedAugment, rollSpeed]);
 
-    // Worker-based autoRoll for CPU acceleration (multi-core)
     const autoRollWorker = useCallback(() => {
         if (isAutoRolling) return;
         if (!item.identifications) return;
@@ -466,14 +465,14 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                     setItemOverall(overall);
                     setRerollCount(prev => prev + totalAttempts);
                     const rollsTaken = selectedAugment === "Corkian Simulator" ? "N/A (Simulator Active)" : totalAttempts;
-                    setAutoRollStatus(`Requirements met after ${rollsTaken.toLocaleString()} rolls! (${rps.toLocaleString()} rolls/sec, ${numWorkers} cores)`);
+                    setAutoRollStatus(`Requirements met after ${rollsTaken.toLocaleString()} rolls! (${rps.toLocaleString()} rolls/sec, ${numWorkers} threads)`);
                     setIsAutoRolling(false);
                     setIsRolling(false);
                     cleanupWorkers();
                 } else if (type === 'progress') {
                     setRolledIdentifications(rolledIDs);
                     setItemOverall(overall);
-                    setAutoRollStatus(`Rolling... ${totalAttempts.toLocaleString()} attempts (${rps.toLocaleString()} rolls/sec, ${numWorkers} cores)`);
+                    setAutoRollStatus(`Rolling... ${totalAttempts.toLocaleString()} attempts (${rps.toLocaleString()} rolls/sec, ${numWorkers} threads)`);
                 } else if (type === 'stopped') {
                     // Check if all workers are stopped
                     const allStopped = workers.every(w => w.onmessage === null || foundResult);
@@ -744,7 +743,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                             </div>
                         </div>
 
-                        <div className="mt-6 border-t pt-4 font-sans border-red-500">
+                        <div className="mt-6 border-t pt-4 font-sans">
                             <h3 className="text-lg font-semibold mb-2 text-red-600 flex items-center gap-2">
                                 <AlertTriangle className="h-5 w-5" /> Danger Zone
                             </h3>
@@ -759,13 +758,13 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                         disabled={isAutoRolling}
                                     />
                                     <Label htmlFor="cpu-acceleration" className="text-sm font-medium">
-                                        🚀 CPU Acceleration (Multi-Core)
+                                        🚀 CPU Acceleration (Multi-Thread)
                                     </Label>
                                 </div>
                                 {useCpuAcceleration && (
                                     <div className="p-3 bg-green-100 dark:bg-green-900 rounded-md border border-green-300 dark:border-green-700">
                                         <p className="text-sm text-green-700 dark:text-green-300">
-                                            <strong>Enabled:</strong> Using {typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4} CPU cores in parallel for maximum speed!
+                                            <strong>Enabled:</strong> Using {typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4} CPU threads in parallel for maximum speed!
                                         </p>
                                     </div>
                                 )}
