@@ -12,6 +12,7 @@ import ItemWeightedLB from '@/app/item/ranking/item-weighted-lb'; // Assuming th
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CopyText } from '@/components/custom/CopyText';
 
 function calculateWeightedScore(
   ids: { name: string; percentage: number }[],
@@ -828,6 +829,11 @@ export default function Home() {
               <span className="font-semibold">Q: How do I copy a string of an item?</span>
               <br />
               <span className="">A: Get <Link href="https://wynntils.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600 transition-colors duration-150">Wynntils</Link>, press <span className="font-mono bg-muted px-1 rounded">F3</span> when hovering on your item in inventory.</span>
+            </div>
+            <div className="mb-2">
+              <span className="font-semibold">Q: How do I show weights on items?</span>
+              <br />
+              <span className="">A: Get <Link href="https://wynntils.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600 transition-colors duration-150">Wynntils</Link>, paste this into your chat <CopyText text='/wynntils config set ItemStatInfo itemWeights wynnpool'/> and enjoy.</span>
             </div>
           </div>
         )}
