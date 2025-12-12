@@ -164,8 +164,6 @@ export default function AspectBrowser() {
                                     onOpenChange={(open) => setOpenTooltip(open ? aspect.aspectId : null)}
                                 >
                                     <button
-                                        onMouseEnter={() => setOpenTooltip(aspect.aspectId)}
-                                        onMouseLeave={() => setOpenTooltip(null)}
                                         className={`w-full aspect-square rounded-lg border-2 bg-card hover:bg-accent transition-all hover:scale-110 hover:shadow-lg flex items-center justify-center p-1 border-${aspect.rarity}`}
                                     >
                                         <Image

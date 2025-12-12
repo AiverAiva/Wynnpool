@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, ReactNode, cloneElement, isValidElement, MouseEvent } from 'react'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { useState, ReactNode, MouseEvent } from 'react'
 
 interface AspectTier {
     threshold: number
@@ -46,27 +45,35 @@ export function AspectTooltip({
 
     const cycleTier = (e: MouseEvent) => {
         e.stopPropagation()
+        e.preventDefault()
         if (tierKeys.length <= 1) return
         setInternalTierIndex((prev) => (prev + 1) % tierKeys.length)
     }
 
-    // Clone children to inject onClick for tier cycling
-    const trigger = isValidElement(children)
-        ? cloneElement(children as React.ReactElement<{ onClick?: (e: MouseEvent) => void }>, {
-            onClick: (e: MouseEvent) => {
-                cycleTier(e)
-                // Call original onClick if present
-                const original = (children as React.ReactElement<{ onClick?: (e: MouseEvent) => void }>).props.onClick
-                if (typeof original === 'function') original(e)
-            },
-        })
-        : children
+    const handleMouseEnter = () => onOpenChange?.(true)
+    const handleMouseLeave = () => onOpenChange?.(false)
+    const handleClick = (e: MouseEvent) => {
+        e.stopPropagation()
+        e.preventDefault()
+        // Only cycle tier if tooltip is already open, otherwise just open it
+        if (open) {
+            if (tierKeys.length > 1) {
+                setInternalTierIndex((prev) => (prev + 1) % tierKeys.length)
+            }
+        }
+        onOpenChange?.(true)
+    }
 
     return (
-        <TooltipProvider>
-            <Tooltip open={open} onOpenChange={onOpenChange}>
-                <TooltipTrigger asChild>{trigger}</TooltipTrigger>
-                <TooltipContent side="top" align="center" sideOffset={10} className="p-0">
+        <div
+            className="relative group"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleClick}
+        >
+            {children}
+            {open && (
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-20 pointer-events-none">
                     <div className="bg-popover border border-border rounded-lg shadow-xl p-4 min-w-[300px] max-w-[500px]">
                         <p className="font-bold text-base mb-2">{aspect.name}</p>
                         {currentTier && (
@@ -92,8 +99,8 @@ export function AspectTooltip({
                             </div>
                         )}
                     </div>
-                </TooltipContent>
-            </Tooltip>
-        </TooltipProvider>
+                </div>
+            )}
+        </div>
     )
 }
