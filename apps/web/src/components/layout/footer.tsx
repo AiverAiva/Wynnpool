@@ -42,6 +42,7 @@ export function Footer() {
 
                         <FooterSection title="Project">
                             <FooterLink href="/project/contributors">Contributors</FooterLink>
+                            <FooterLink href="/project/credit">Credits</FooterLink>
                             <FooterLink href="https://status.wynnpool.com">Service Status</FooterLink>
 
                             {/* <FooterLink href="/sponsor">Sponsors</FooterLink> */}
