@@ -34,38 +34,6 @@ interface Aspect {
     }
 }
 
-// Helper function to get rarity color
-function getRarityColor(rarity: string): string {
-    switch (rarity.toLowerCase()) {
-        case "legendary":
-            return "bg-amber-500/20 text-amber-400 border-amber-500/50"
-        case "fabled":
-            return "bg-purple-500/20 text-purple-400 border-purple-500/50"
-        case "mythic":
-            return "bg-pink-500/20 text-pink-400 border-pink-500/50"
-        default:
-            return "bg-muted text-muted-foreground"
-    }
-}
-
-// Helper function to get class color
-function getClassColor(classType: string): string {
-    switch (classType.toLowerCase()) {
-        case "mage":
-            return "bg-blue-500/20 text-blue-400 border-blue-500/50"
-        case "archer":
-            return "bg-green-500/20 text-green-400 border-green-500/50"
-        case "shaman":
-            return "bg-emerald-500/20 text-emerald-400 border-emerald-500/50"
-        case "warrior":
-            return "bg-red-500/20 text-red-400 border-red-500/50"
-        case "assassin":
-            return "bg-violet-500/20 text-violet-400 border-violet-500/50"
-        default:
-            return "bg-muted text-muted-foreground"
-    }
-}
-
 export default function AspectBrowser() {
     const [aspects, setAspects] = useState<Aspect[]>([])
     const [loading, setLoading] = useState(true)
