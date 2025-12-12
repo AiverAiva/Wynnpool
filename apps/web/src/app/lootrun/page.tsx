@@ -261,7 +261,7 @@ export default function LootRunPool() {
                 <CardContent className="flex justify-center items-center">
                     <Countdown targetTimestamp={countdown} endText="Data outdated, waiting for update..." />
                 </CardContent>
-                <Link href="/lootrun/history" legacyBehavior passHref prefetch={false}>
+                <Link href="/lootrun/history" passHref prefetch={false}>
                     <Button className="absolute top-4 right-4 rounded-full">
                         History
                     </Button>
@@ -280,38 +280,36 @@ export default function LootRunPool() {
                                 <CardTitle>{area} Loot</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <TooltipProvider>
-                                    {Object.entries(categories).map(([rarity, items]) => (
-                                        <div key={rarity} className="mb-4">
-                                            <h3 className="text-xl font-semibold mb-2">{rarity}</h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                                {Array.isArray(items) ? items.map((item) => (
-                                                    <div className="flex items-center space-x-2" key={item}>
-                                                        <Image
-                                                            src={getItemIcon(item)}
-                                                            alt={item}
-                                                            width={32}
-                                                            height={32}
-                                                            className='pixelated'
-                                                        />
-                                                        <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{item}</Badge>
-                                                    </div>
-                                                )) : (
-                                                    <div className="flex items-center space-x-2">
-                                                        <Image
-                                                            src={getItemIcon(items.Item)}
-                                                            alt={items.Item}
-                                                            width={32}
-                                                            height={32}
-                                                            className='pixelated'
-                                                        />
-                                                        <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{items.Item}<span className='font-mono text-xs font-thin'>&ensp;{items.Tracker}</span></Badge>
-                                                    </div>
-                                                )}
-                                            </div>
+                                {Object.entries(categories).map(([rarity, items]) => (
+                                    <div key={rarity} className="mb-4">
+                                        <h3 className="text-xl font-semibold mb-2">{rarity}</h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                            {Array.isArray(items) ? items.map((item) => (
+                                                <div className="flex items-center space-x-2" key={item}>
+                                                    <Image
+                                                        src={getItemIcon(item)}
+                                                        alt={item}
+                                                        width={32}
+                                                        height={32}
+                                                        className='pixelated'
+                                                    />
+                                                    <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{item}</Badge>
+                                                </div>
+                                            )) : (
+                                                <div className="flex items-center space-x-2">
+                                                    <Image
+                                                        src={getItemIcon(items.Item)}
+                                                        alt={items.Item}
+                                                        width={32}
+                                                        height={32}
+                                                        className='pixelated'
+                                                    />
+                                                    <Badge className={rarityColors[rarity as keyof typeof rarityColors]}>{items.Item}<span className='font-mono text-xs font-thin'>&ensp;{items.Tracker}</span></Badge>
+                                                </div>
+                                            )}
                                         </div>
-                                    ))}
-                                </TooltipProvider>
+                                    </div>
+                                ))}
                             </CardContent>
                         </Card>
                     </TabsContent>
