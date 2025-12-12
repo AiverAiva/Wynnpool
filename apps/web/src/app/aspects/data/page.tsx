@@ -5,34 +5,9 @@ import { Search, Loader2, X } from "lucide-react"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { AspectTooltip, type Aspect } from "@/components/wynncraft/aspect/AspectTooltip"
 import api from "@/lib/api"
-
-interface AspectTier {
-    threshold: number
-    description: string[]
-}
-
-interface Aspect {
-    aspectId: string
-    icon?: {
-        value: {
-            id: string
-            name: string
-            customModelData?: {
-                rangeDispatch?: number[]
-            }
-        }
-        format?: string
-    }
-    name: string
-    rarity: string
-    requiredClass: string
-    tiers: {
-        [key: string]: AspectTier
-    }
-}
 
 export default function AspectBrowser() {
     const [aspects, setAspects] = useState<Aspect[]>([])
@@ -40,23 +15,7 @@ export default function AspectBrowser() {
     const [searchQuery, setSearchQuery] = useState("")
     const [selectedClass, setSelectedClass] = useState<string>("all")
     const [selectedRarity, setSelectedRarity] = useState<string>("all")
-    const [aspectTiers, setAspectTiers] = useState<{ [key: string]: number }>({})
-    const [hoveredAspect, setHoveredAspect] = useState<string | null>(null)
-
-    // Get current tier for an aspect (default to 1)
-    const getCurrentTier = (aspectId: string, tiers: { [key: string]: AspectTier }) => {
-        const tierKeys = Object.keys(tiers).sort((a, b) => Number(a) - Number(b))
-        const currentIndex = aspectTiers[aspectId] ?? 0
-        return tierKeys[currentIndex] || tierKeys[0]
-    }
-
-    // Cycle to next tier on click
-    const cycleTier = (aspectId: string, tiers: { [key: string]: AspectTier }) => {
-        const tierKeys = Object.keys(tiers)
-        const currentIndex = aspectTiers[aspectId] ?? 0
-        const nextIndex = (currentIndex + 1) % tierKeys.length
-        setAspectTiers((prev) => ({ ...prev, [aspectId]: nextIndex }))
-    }
+    const [openTooltip, setOpenTooltip] = useState<string | null>(null)
 
     // Fetch aspects
     useEffect(() => {
@@ -115,6 +74,7 @@ export default function AspectBrowser() {
     const hasActiveFilters = selectedClass !== "all" || selectedRarity !== "all" || searchQuery
 
     return (
+
         <div className="min-h-screen max-w-screen-md mx-auto px-6 py-36">
             {/* min-h-screen bg-background */}
             {/* Header */}
@@ -196,73 +156,29 @@ export default function AspectBrowser() {
                         </div>
 
                         <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 xl:grid-cols-16 gap-3">
-                            {aspects.map((aspect) => {
-                                const tierKeys = Object.keys(aspect.tiers || {}).sort((a, b) => Number(a) - Number(b))
-                                const currentTierKey = getCurrentTier(aspect.aspectId, aspect.tiers || {})
-                                const currentTier = aspect.tiers?.[currentTierKey]
-                                const currentTierIndex = tierKeys.indexOf(currentTierKey)
-
-                                return (
-                                    <div key={aspect.aspectId} className="relative group">
-                                        <button
-                                            onClick={() => aspect.tiers && cycleTier(aspect.aspectId, aspect.tiers)}
-                                            onMouseEnter={() => setHoveredAspect(aspect.aspectId)}
-                                            onMouseLeave={() => setHoveredAspect(null)}
-                                            className={`w-full aspect-square rounded-lg border-2 bg-card hover:bg-accent transition-all hover:scale-110 hover:shadow-lg flex items-center justify-center p-1 border-${aspect.rarity}`}
-                                        >
-                                            <Image
-                                                src={`/icons/aspects/${aspect.requiredClass.toLowerCase()}.png`}
-                                                alt={aspect.requiredClass}
-                                                width={16}
-                                                height={16}
-                                                unoptimized
-                                                className="w-full h-full object-contain [image-rendering:pixelated]"
-                                            />
-                                        </button>
-
-                                        {hoveredAspect === aspect.aspectId && (
-                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-20 pointer-events-none">
-                                                <div className="bg-popover border border-border rounded-lg shadow-xl p-4 min-w-[300px] max-w-[500px]">
-                                                    <p className="font-bold text-base mb-2">{aspect.name}</p>
-                                                    {/* <div className="flex gap-1 mb-3">
-                                                        <Badge variant="outline" className={`${getRarityColor(aspect.rarity)} capitalize text-xs`}>
-                                                            {aspect.rarity}
-                                                        </Badge>
-                                                        <Badge
-                                                            variant="outline"
-                                                            className={`${getClassColor(aspect.requiredClass)} capitalize text-xs`}
-                                                        >
-                                                            {aspect.requiredClass}
-                                                        </Badge>
-                                                    </div> */}
-
-                                                    {/* Display current tier only */}
-                                                    {currentTier && (
-                                                        <div className="bg-muted/40 border border-border rounded-xl p-3 space-y-2 text-xs">
-                                                            <div className="flex items-center justify-between text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
-                                                                <span>Tier {currentTierKey} of {tierKeys.length}</span>
-                                                                <span className="text-[10px]">Threshold: {currentTier.threshold}</span>
-                                                            </div>
-                                                            <div className="space-y-1">
-                                                                {currentTier.description.map((desc, idx) => (
-                                                                    <div
-                                                                        key={idx}
-                                                                        className="leading-snug text-[12px]"
-                                                                        dangerouslySetInnerHTML={{ __html: desc }}
-                                                                    />
-                                                                ))}
-                                                            </div>
-                                                            {tierKeys.length > 1 && (
-                                                                <p className="text-[11px] text-muted-foreground mt-2 italic">Click to switch tier</p>
-                                                            )}
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                )
-                            })}
+                            {aspects.map((aspect) => (
+                                <AspectTooltip
+                                    key={aspect.aspectId}
+                                    aspect={aspect}
+                                    open={openTooltip === aspect.aspectId}
+                                    onOpenChange={(open) => setOpenTooltip(open ? aspect.aspectId : null)}
+                                >
+                                    <button
+                                        onMouseEnter={() => setOpenTooltip(aspect.aspectId)}
+                                        onMouseLeave={() => setOpenTooltip(null)}
+                                        className={`w-full aspect-square rounded-lg border-2 bg-card hover:bg-accent transition-all hover:scale-110 hover:shadow-lg flex items-center justify-center p-1 border-${aspect.rarity}`}
+                                    >
+                                        <Image
+                                            src={`/icons/aspects/${aspect.requiredClass.toLowerCase()}.png`}
+                                            alt={aspect.requiredClass}
+                                            width={16}
+                                            height={16}
+                                            unoptimized
+                                            className="w-full h-full object-contain [image-rendering:pixelated]"
+                                        />
+                                    </button>
+                                </AspectTooltip>
+                            ))}
                         </div>
                     </>
                 )}
