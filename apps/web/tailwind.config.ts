@@ -108,6 +108,13 @@ export default {
 		'bg-legendary',
 		'bg-fabled',
 		'bg-mythic',
+		'border-common',
+		'border-set',
+		'border-unique',
+		'border-rare',
+		'border-legendary',
+		'border-fabled',
+		'border-mythic',
 	],
 	plugins: [
 		require("tailwindcss-animate"),
