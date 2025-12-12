@@ -7,7 +7,8 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { AspectData } from '@/types/aspectType'
+import { Aspect } from '@/types/aspectType'
+import api from '@/lib/api'
 
 interface HistoryFile {
     Loot: any
@@ -19,21 +20,33 @@ interface AspectPoolHistoryProps {
     historyFiles: HistoryFile[]
 }
 
+interface AspectWithClass extends Aspect {
+    requiredClass?: string
+}
+
 export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
     const [selectedFile, setSelectedFile] = useState<HistoryFile | null>(null)
     // const [fileContent, setFileContent] = useState<any>(null)
-    const [aspectData, setAspectData] = useState<AspectData | null>({})
+    const [aspectData, setAspectData] = useState<Record<string, AspectWithClass[]>>({ })
 
     useEffect(() => {
-        Promise.all([
-            fetch('/api/aspects-data').then(response => response.json())
-        ])
-            .then(([aspectData]) => {
-                setAspectData(aspectData)
-            })
-            .catch(error => {
+        const fetchAspects = async () => {
+            try {
+                const response = await fetch(api('/aspect/list'))
+                const data: AspectWithClass[] = await response.json()
+                const grouped = data.reduce<Record<string, AspectWithClass[]>>((acc, aspect) => {
+                    const className = aspect.requiredClass || 'Unknown'
+                    if (!acc[className]) acc[className] = []
+                    acc[className].push(aspect)
+                    return acc
+                }, {})
+                setAspectData(grouped)
+            } catch (error) {
                 console.error('Error fetching data:', error)
-            })
+            }
+        }
+
+        fetchAspects()
     }, [])
 
     const formatDate = (timestamp: number) => {
@@ -59,7 +72,7 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
         }
     };
 
-    const aspectToClassName = Object.entries(aspectData!).reduce((acc, [className, aspects]) => {
+    const aspectToClassName = Object.entries(aspectData).reduce((acc, [className, aspects]) => {
         aspects.forEach((aspect) => {
             acc[aspect.name] = className;
         });
@@ -118,24 +131,30 @@ export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
                                                                 <h3 className="text-xl font-semibold mb-2">{category}</h3>
                                                                 <div className="grid grid-cols-1 gap-4">
                                                                     {items.map((item: string) => {
-                                                                        const aspectInfo = Object.values(aspectData!).flat().find(aspect => aspect.name === item);
+                                                                        const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item);
                                                                         const className = aspectToClassName[item];
 
                                                                         return (
                                                                             <div key={item} className="flex items-center space-x-2">
-                                                                                {className ? <Image
-                                                                                    unoptimized
-                                                                                    src={`/icons/aspects/aspect_${className.toLowerCase()}.${aspectInfo?.rarity === 'Mythic' ? 'gif' : 'png'}`}
-                                                                                    alt={item}
-                                                                                    width={32}
-                                                                                    height={32}
-                                                                                /> : <Image
-                                                                                    unoptimized
-                                                                                    src="/icons/items/barrier.webp"
-                                                                                    alt={item}
-                                                                                    width={32}
-                                                                                    height={32}
-                                                                                />}
+                                                                                {className ? (
+                                                                                    <Image
+                                                                                        unoptimized
+                                                                                        src={`/icons/aspects/${className.toLowerCase()}.png`}
+                                                                                        alt={item}
+                                                                                        width={32}
+                                                                                        height={32}
+                                                                                        className="w-8 h-8 [image-rendering:pixelated]"
+                                                                                    />
+                                                                                ) : (
+                                                                                    <Image
+                                                                                        unoptimized
+                                                                                        src="/icons/items/barrier.webp"
+                                                                                        alt={item}
+                                                                                        width={32}
+                                                                                        height={32}
+                                                                                        className="w-8 h-8 [image-rendering:pixelated]"
+                                                                                    />
+                                                                                )}
                                                                                 <span>{item}</span>
                                                                             </div>
                                                                         )

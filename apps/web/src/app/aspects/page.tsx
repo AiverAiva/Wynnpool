@@ -8,10 +8,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Spinner } from "@/components/ui/spinner"
 import Image from 'next/image'
 import Countdown from '@/components/custom/countdown'
-import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { AspectData } from '@/types/aspectType'
 import api from '@/lib/api'
 
 type LootCategory = 'Mythic' | 'Fabled' | 'Legendary'
@@ -23,24 +21,94 @@ interface LootData {
   Timestamp: number
 }
 
+interface AspectTier {
+  threshold: number
+  description: string[]
+}
+
+interface Aspect {
+  aspectId: string
+  name: string
+  rarity: string
+  requiredClass: string
+  tiers: Record<string, AspectTier>
+  description?: string
+}
+
+function renderTierHighlight(aspect: Aspect, currentTierKey?: string, showHint = true) {
+  const tierKeys = Object.keys(aspect.tiers || {}).sort((a, b) => Number(a) - Number(b))
+
+  if (!tierKeys.length) {
+    return null
+  }
+
+  const effectiveTierKey = currentTierKey && tierKeys.includes(currentTierKey)
+    ? currentTierKey
+    : tierKeys[0]
+  const currentTier = aspect.tiers[effectiveTierKey]
+
+  if (!currentTier) {
+    return null
+  }
+
+  return (
+    <div className="bg-muted/40 border border-border rounded-xl p-3 space-y-2 text-xs">
+      <div className="flex items-center justify-between text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+        <span>Tier {effectiveTierKey} of {tierKeys.length}</span>
+        <span className="text-[10px]">Threshold: {currentTier.threshold}</span>
+      </div>
+      <div className="space-y-1">
+        {currentTier.description.map((desc, idx) => (
+          <div
+            key={idx}
+            className="leading-snug text-[12px]"
+            dangerouslySetInnerHTML={{ __html: desc }}
+          />
+        ))}
+      </div>
+      {showHint && tierKeys.length > 1 && (
+        <p className="text-[11px] text-muted-foreground mt-2 italic">Click to switch tier</p>
+      )}
+    </div>
+  )
+}
+
+
 export default function AspectPool() {
   const [lootData, setLootData] = useState<LootData | null>(null)
-  const [aspectData, setAspectData] = useState<AspectData | null>({})
+  const [aspectData, setAspectData] = useState<Record<string, Aspect[]>>({})
+  const [aspectLookup, setAspectLookup] = useState<Record<string, Aspect>>({})
   const [countdown, setCountdown] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true)
   const [selectedClass, setSelectedClass] = useState<string>('Archer')
   const [sortBy, setSortBy] = useState<'rarity' | 'raid'>('rarity')
   const [openTooltips, setOpenTooltips] = useState<{ [key: string]: boolean }>({});
+  const [filterTooltips, setFilterTooltips] = useState<{ [key: string]: boolean }>({});
+  const [hoveredRowAspect, setHoveredRowAspect] = useState<Aspect | null>(null);
+  const [aspectTierSelection, setAspectTierSelection] = useState<Record<string, number>>({})
+  const formatClassLabel = (value: string) => value ? `${value.charAt(0).toUpperCase()}${value.slice(1).toLowerCase()}` : value
 
   useEffect(() => {
     setIsLoading(true)
     Promise.all([
       fetch(api('/aspect-pool')).then(response => response.json()),
-      fetch('/api/aspects-data').then(response => response.json())
+      fetch(api('/aspect/list')).then(response => response.json())
     ])
-      .then(([lootData, aspectData]) => {
+      .then(([lootData, aspects]: [LootData, Aspect[]]) => {
+        const grouped = aspects.reduce<Record<string, Aspect[]>>((acc, aspect) => {
+          const className = aspect.requiredClass || 'Unknown'
+          if (!acc[className]) acc[className] = []
+          acc[className].push(aspect)
+          return acc
+        }, {})
+        const lookup = aspects.reduce<Record<string, Aspect>>((acc, aspect) => {
+          acc[aspect.name] = aspect
+          return acc
+        }, {})
+
         setLootData(lootData)
-        setAspectData(aspectData)
+        setAspectData(grouped)
+        setAspectLookup(lookup)
         setIsLoading(false)
       })
       .catch(error => {
@@ -48,6 +116,61 @@ export default function AspectPool() {
         setIsLoading(false)
       })
   }, [])
+
+  const getSortedTierKeys = (aspect: Aspect) => Object.keys(aspect.tiers || {}).sort((a, b) => Number(a) - Number(b))
+
+  const getAspectTierKey = (aspect: Aspect) => {
+    const tierKeys = getSortedTierKeys(aspect)
+    if (!tierKeys.length) return undefined
+    const storedIndex = aspectTierSelection[aspect.name] ?? 0
+    const normalizedIndex = storedIndex % tierKeys.length
+    return tierKeys[normalizedIndex]
+  }
+
+  const cycleTier = (aspect: Aspect) => {
+    const tierKeys = getSortedTierKeys(aspect)
+    if (!tierKeys.length) return
+    setAspectTierSelection((prev) => {
+      const currentIndex = prev[aspect.name] ?? 0
+      const nextIndex = (currentIndex + 1) % tierKeys.length
+      return {
+        ...prev,
+        [aspect.name]: nextIndex,
+      }
+    })
+  }
+
+  const handleAspectClick = (aspect: Aspect, source: 'grid' | 'filter' = 'grid') => {
+    const tierKeys = getSortedTierKeys(aspect)
+    if (!tierKeys.length) return
+    cycleTier(aspect)
+    if (source === 'filter') {
+      setOpenTooltips((prevState) => ({
+        ...prevState,
+        [aspect.name]: false,
+      }))
+      setFilterTooltips((prevState) => ({
+        ...prevState,
+        [aspect.name]: true,
+      }))
+    } else {
+      setOpenTooltips((prevState) => ({
+        ...prevState,
+        [aspect.name]: true,
+      }))
+      setFilterTooltips((prevState) => ({
+        ...prevState,
+        [aspect.name]: false,
+      }))
+    }
+  }
+
+  useEffect(() => {
+    const classes = Object.keys(aspectData)
+    if (classes.length && !classes.includes(selectedClass)) {
+      setSelectedClass(classes[0])
+    }
+  }, [aspectData, selectedClass])
 
   useEffect(() => {
     if (lootData) {
@@ -66,7 +189,7 @@ export default function AspectPool() {
     }
   }, [lootData]);
 
-  const aspectToClassName = Object.entries(aspectData!).reduce((acc, [className, aspects]) => {
+  const aspectToClassName = Object.entries(aspectData).reduce((acc, [className, aspects]) => {
     aspects.forEach((aspect) => {
       acc[aspect.name] = className;
     });
@@ -74,7 +197,7 @@ export default function AspectPool() {
   }, {} as { [aspectName: string]: string });
 
   if (isLoading) return <div className="items-center justify-center h-screen flex"><Spinner size="large" /></div>
-  if (!lootData || !aspectData) return <div>Error loading data. Please try again later.</div>
+  if (!lootData || Object.keys(aspectData).length === 0) return <div>Error loading data. Please try again later.</div>
 
   const rarityOrder: LootCategory[] = ['Mythic', 'Fabled', 'Legendary']
   const raidOrder: LootSection[] = ['TNA', 'TCC', 'NOL', 'NOTG']
@@ -84,16 +207,15 @@ export default function AspectPool() {
 
     Object.entries(categories).forEach(([rarity, aspects]) => {
       aspects.forEach((aspect) => {
-        const className = aspectToClassName[aspect];
-        const matchedAspect = aspectData[selectedClass]?.find((a) => a.name === aspect);
-        if (matchedAspect && !aspectNamesSet.has(aspect)) { // Check if the aspect is already added
-          aspectNamesSet.add(aspect); // Mark the aspect as added
+        const matchedAspect = aspectLookup[aspect];
+        if (matchedAspect?.requiredClass === selectedClass && !aspectNamesSet.has(aspect)) {
+          aspectNamesSet.add(aspect);
           acc.push({
             name: aspect,
             section: section as LootSection,
             rarity: rarity as LootCategory,
             description: matchedAspect.description,
-            className: className,
+            className: matchedAspect.requiredClass,
           });
         }
       });
@@ -110,6 +232,8 @@ export default function AspectPool() {
       return raidOrder.indexOf(a.section) - raidOrder.indexOf(b.section)
     }
   })
+
+  const hoveredTierKey = hoveredRowAspect ? getAspectTierKey(hoveredRowAspect) : undefined
 
   return (
     <div className="min-h-screen bg-background">
@@ -150,44 +274,47 @@ export default function AspectPool() {
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <TooltipProvider delayDuration={50}>
                               {items.map((item) => {
-                                const aspectInfo = Object.values(aspectData!).flat().find(aspect => aspect.name === item);
-                                const className = aspectToClassName[item];
+                                const aspectInfo = Object.values(aspectData).flat().find(aspect => aspect.name === item);
+                                const className = aspectToClassName[item] || aspectInfo?.requiredClass;
+                                const currentTierKey = aspectInfo ? getAspectTierKey(aspectInfo) : undefined;
 
                                 return (
-                                  <Tooltip key={item} open={openTooltips[item]} onOpenChange={(isOpen) => setOpenTooltips({ ...openTooltips, [item]: isOpen })}>
+                                  <Tooltip key={item} open={openTooltips[item]} onOpenChange={(isOpen) => setOpenTooltips((prev) => ({ ...prev, [item]: isOpen }))}>
                                     <TooltipTrigger asChild>
-                                      <div className="flex items-center space-x-2 cursor-pointer" onClick={() => {
-                                        setOpenTooltips((prevState) => ({
-                                          ...prevState,
-                                          [item]: !prevState[item]
-                                        }));
-                                      }}>
-                                        {className ? <Image
-                                          unoptimized
-                                          src={`/icons/aspects/aspect_${className.toLowerCase()}.${aspectInfo?.rarity === 'Mythic' ? 'gif' : 'png'}`}
-                                          alt={item}
-                                          width={32}
-                                          height={32}
-                                        /> : <Image
-                                          unoptimized
-                                          src="/icons/items/barrier.webp"
-                                          alt={item}
-                                          width={32}
-                                          height={32}
-                                        />}
+                                      <button
+                                        type="button"
+                                        onClick={() => aspectInfo && handleAspectClick(aspectInfo, 'grid')}
+                                        className="flex items-center justify-start space-x-2 rounded-lg bg-card/50 text-sm font-medium hover:bg-card/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                      >
+                                        {className ? (
+                                          <Image
+                                            unoptimized
+                                            src={`/icons/aspects/${className.toLowerCase()}.png`}
+                                            alt={`${className} aspect icon`}
+                                            width={16}
+                                            height={16}
+                                            className="w-8 h-8 [image-rendering:pixelated]"
+                                          />
+                                        ) : (
+                                          <Image
+                                            unoptimized
+                                            src="/icons/items/barrier.webp"
+                                            alt={item}
+                                            width={16}
+                                            height={16}
+                                            className="w-8 h-8 [image-rendering:pixelated]"
+                                          />
+                                        )}
 
                                         <span>{item}</span>
-                                      </div>
+                                      </button>
                                     </TooltipTrigger>
                                     {aspectInfo && (
-                                      <TooltipContent className="w-fit p-4">
-                                        <h4 className="font-bold">{aspectInfo.name}</h4>
-                                        <p className="text-sm">{aspectInfo.description}</p>
-                                        <ul className="text-sm">
-                                          {Object.entries(aspectInfo.tiers).map(([tier, effect]) => (
-                                            <li key={tier} className='mt-1'><Badge>{tier}</Badge> {effect}</li>
-                                          ))}
-                                        </ul>
+                                      <TooltipContent side="top" align="center" sideOffset={10} className="p-0">
+                                        <div className="bg-popover rounded-lg shadow-xl p-4 min-w-[300px] max-w-[500px]">
+                                          <p className="font-bold text-base mb-2">{aspectInfo.name}</p>
+                                          {renderTierHighlight(aspectInfo, currentTierKey)}
+                                        </div>
                                       </TooltipContent>
                                     )}
                                   </Tooltip>
@@ -205,63 +332,93 @@ export default function AspectPool() {
           </>
         )}
         <Card className="mt-4">
-          <table className="min-w-full divide-y">
-            <thead>
-              <tr>
-                <th className='hidden md:block'></th>
-                <th className="py-2">
-                  <div className='flex gap-4 flex-wrap items-center justify-center'>
-                    <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')}>
-                      <TabsList>
-                        <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
-                        <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
-                      </TabsList>
-                    </Tabs>
-                    <Tabs value={selectedClass} onValueChange={setSelectedClass}>
-                      <TabsList>
-                        {Object.keys(aspectData!).map((className) => (
-                          <TabsTrigger key={className} value={className}>
-                            {className}
-                          </TabsTrigger>
-                        ))}
-                      </TabsList>
-                    </Tabs>
-                  </div>
-                </th>
-                <th className="px-4 py-2">Raid</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {availableAspects.map(({ name, section, rarity, description, className }) => (
-                <tr key={`${name}-${section}`}>
-                  <td className="px-4 py-2 hidden md:block">
-                    <Image
-                      unoptimized
-                      src={`/icons/aspects/aspect_${className.toLowerCase()}.${rarity === 'Mythic' ? 'gif' : 'png'}`}
-                      alt={name}
-                      width={50}
-                      height={50}
-                    />
-                  </td>
-                  <td className="px-4 py-1">
-                    <Badge
-                      className={`ml-2  mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
-                        rarity === 'Legendary' ? 'bg-cyan-400' :
-                          'bg-fuchsia-700'
-                        } text-white text-sm font-thin`}
-                    >
-                      {name}
-                    </Badge>
-                    <br />
-                    <p className="px-4 py-1 text-sm">{description}</p>
-                  </td>
-                  <td className="px-4 py-2 text-center">
-                    {section}
-                  </td>
+          <TooltipProvider delayDuration={50}>
+            <table className="min-w-full divide-y">
+              <thead>
+                <tr>
+                  <th className='hidden md:block'></th>
+                  <th className="py-2">
+                    <div className='flex gap-4 flex-wrap items-center justify-center'>
+                      <Tabs value={sortBy} onValueChange={(value) => setSortBy(value as 'rarity' | 'raid')}>
+                        <TabsList>
+                          <TabsTrigger value="rarity">Sort by Rarity</TabsTrigger>
+                          <TabsTrigger value="raid">Sort by Raid</TabsTrigger>
+                        </TabsList>
+                      </Tabs>
+                      <Tabs value={selectedClass} onValueChange={setSelectedClass}>
+                        <TabsList>
+                          {Object.keys(aspectData).map((className) => (
+                            <TabsTrigger key={className} value={className}>
+                              {formatClassLabel(className)}
+                            </TabsTrigger>
+                          ))}
+                        </TabsList>
+                      </Tabs>
+                    </div>
+                  </th>
+                  <th className="px-4 py-2">Raid</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y">
+                {availableAspects.map(({ name, section, rarity, description, className }) => {
+                  const tableAspect = aspectLookup[name] ?? null
+                  const tableTierKey = tableAspect ? getAspectTierKey(tableAspect) : undefined
+
+                  return (
+                    <tr key={`${name}-${section}`}>
+                      <td className="px-4 py-2 hidden md:block">
+                        <Image
+                          unoptimized
+                          src={`/icons/aspects/${className.toLowerCase()}.png`}
+                          alt={`${className} aspect icon`}
+                          width={16}
+                          height={16}
+                          className="w-12 h-12 [image-rendering:pixelated]"
+                        />
+                      </td>
+                      <td className="px-4 py-1">
+                        <Tooltip
+                          key={`${name}-tooltip`}
+                          open={filterTooltips[name]}
+                          onOpenChange={(isOpen) => setFilterTooltips((prev) => ({ ...prev, [name]: isOpen }))}
+                        >
+                          <TooltipTrigger asChild>
+                            <Badge
+                              onClick={() => tableAspect && handleAspectClick(tableAspect, 'filter')}
+                              onMouseEnter={() => tableAspect && setHoveredRowAspect(tableAspect)}
+                              onMouseLeave={() => setHoveredRowAspect(null)}
+                              onTouchStart={() => tableAspect && setHoveredRowAspect(tableAspect)}
+                              onTouchEnd={() => setHoveredRowAspect(null)}
+                              onTouchCancel={() => setHoveredRowAspect(null)}
+                              className={`ml-2 mt-2 ${rarity === 'Fabled' ? 'bg-rose-500' :
+                                rarity === 'Legendary' ? 'bg-cyan-400' :
+                                  'bg-fuchsia-700'
+                                } text-white text-sm font-thin cursor-pointer`}
+                            >
+                              {name}
+                            </Badge>
+                          </TooltipTrigger>
+                          {tableAspect && (
+                            <TooltipContent side="top" align="center" sideOffset={10} className="p-0">
+                              <div className="bg-popover rounded-lg shadow-xl p-4 min-w-[300px] max-w-[500px]">
+                                <p className="font-bold text-base mb-2">{tableAspect.name}</p>
+                                {renderTierHighlight(tableAspect, tableTierKey)}
+                              </div>
+                            </TooltipContent>
+                          )}
+                        </Tooltip>
+                        <br />
+                        <p className="px-4 py-1 text-sm">{description}</p>
+                      </td>
+                      <td className="px-4 py-2 text-center">
+                        {section}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </TooltipProvider>
         </Card>
       </main>
     </div>
