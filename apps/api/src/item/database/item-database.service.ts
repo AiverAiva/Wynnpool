@@ -59,7 +59,7 @@ export class DatabaseItemService {
 
     // Apply search filters
     return this.databaseItemModel
-      .find({ $or: filters })
+      .find({ $and: filters })
       .sort({ timestamp: -1 })
       .lean();
   }
