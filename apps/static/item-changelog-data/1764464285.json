@@ -1,0 +1,7836 @@
+{
+  "modify": [
+    {
+      "_id": "692b969d1236d5bba920f971",
+      "itemName": "Dernic Gem 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Dernic Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1263
+              ]
+            },
+            "name": "profession.gemDernic"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f972",
+      "itemName": "Dernic Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Dernic Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1263
+              ]
+            },
+            "name": "profession.gemDernic"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f973",
+      "itemName": "Dernic Ingot 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Dernic Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1251
+              ]
+            },
+            "name": "profession.ingotDernic"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f974",
+      "itemName": "Dernic Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Dernic Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1251
+              ]
+            },
+            "name": "profession.ingotDernic"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f975",
+      "itemName": "Dernic Meat 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Dernic Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1285
+              ]
+            },
+            "name": "profession.meatDernic"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f976",
+      "itemName": "Dernic Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Dernic Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1285
+              ]
+            },
+            "name": "profession.meatDernic"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f977",
+      "itemName": "Dernic Oil 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Dernic Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1276
+              ]
+            },
+            "name": "profession.oilDernic"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f978",
+      "itemName": "Dernic Oil 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Dernic Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1276
+              ]
+            },
+            "name": "profession.oilDernic"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f979",
+      "itemName": "Dernic Oil 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Dernic Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1276
+              ]
+            },
+            "name": "profession.oilDernic"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f97a",
+      "itemName": "Dernic String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Dernic String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1233
+              ]
+            },
+            "name": "profession.stringDernic"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f97b",
+      "itemName": "Dernic String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Dernic String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1233
+              ]
+            },
+            "name": "profession.stringDernic"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f97c",
+      "itemName": "Dernic Wood 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dernic Wood 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Dernic Wood 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 110
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1297
+              ]
+            },
+            "name": "profession.plankDernic"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f97d",
+      "itemName": "Hemp Grains 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Hemp Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Hemp Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1236
+              ]
+            },
+            "name": "profession.grainHemp"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f97e",
+      "itemName": "Hemp String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Hemp String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Hemp String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1232
+              ]
+            },
+            "name": "profession.stringHemp"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f97f",
+      "itemName": "Hemp String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Hemp String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Hemp String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1232
+              ]
+            },
+            "name": "profession.stringHemp"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f980",
+      "itemName": "Sky Paper 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sky Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Sky Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1308
+              ]
+            },
+            "name": "profession.paperSky"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f981",
+      "itemName": "Sky Wood 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sky Wood 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Sky Wood 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1296
+              ]
+            },
+            "name": "profession.plankSky"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f982",
+      "itemName": "Sky Wood 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sky Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Sky Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1296
+              ]
+            },
+            "name": "profession.plankSky"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f983",
+      "itemName": "Starfish Meat 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Starfish Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Starfish Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1284
+              ]
+            },
+            "name": "profession.meatStar"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f984",
+      "itemName": "Starfish Meat 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Starfish Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Starfish Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1284
+              ]
+            },
+            "name": "profession.meatStar"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f985",
+      "itemName": "Starfish Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Starfish Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Starfish Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1284
+              ]
+            },
+            "name": "profession.meatStar"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f986",
+      "itemName": "Voidstone Gem 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Voidstone Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Voidstone Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1262
+              ]
+            },
+            "name": "profession.gemVoidstone"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f987",
+      "itemName": "Voidstone Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Voidstone Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Voidstone Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 100
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1250
+              ]
+            },
+            "name": "profession.ingotVoidstone"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f988",
+      "itemName": "Avo Paper 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Avo Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Avo Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1307
+              ]
+            },
+            "name": "profession.paperAvo"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f989",
+      "itemName": "Avo Paper 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Avo Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Avo Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1307
+              ]
+            },
+            "name": "profession.paperAvo"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f98a",
+      "itemName": "Avo Paper 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Avo Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Avo Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1307
+              ]
+            },
+            "name": "profession.paperAvo"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f98b",
+      "itemName": "Avo Wood 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Avo Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Avo Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1295
+              ]
+            },
+            "name": "profession.plankAvo"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f98c",
+      "itemName": "Molten Gem 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Molten Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Molten Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1261
+              ]
+            },
+            "name": "profession.gemMolten"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f98d",
+      "itemName": "Molten Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Molten Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Molten Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1261
+              ]
+            },
+            "name": "profession.gemMolten"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f98e",
+      "itemName": "Molten Meat 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Molten Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Molten Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1283
+              ]
+            },
+            "name": "profession.meatMolten"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f98f",
+      "itemName": "Molten Oil 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Molten Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Molten Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1280
+              ]
+            },
+            "name": "profession.oilMolten"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f990",
+      "itemName": "Molten Oil 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Molten Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Molten Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1280
+              ]
+            },
+            "name": "profession.oilMolten"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f991",
+      "itemName": "Sorghum Grains 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sorghum Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Sorghum Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1238
+              ]
+            },
+            "name": "profession.grainSorghum"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f992",
+      "itemName": "Sorghum Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sorghum Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Sorghum Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1238
+              ]
+            },
+            "name": "profession.grainSorghum"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f993",
+      "itemName": "Sorghum String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sorghum String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Sorghum String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 90
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1234
+              ]
+            },
+            "name": "profession.stringSorghum"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f994",
+      "itemName": "Bass Meat 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Bass Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Bass Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1285
+              ]
+            },
+            "name": "profession.meatBass"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f995",
+      "itemName": "Bass Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Bass Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Bass Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1285
+              ]
+            },
+            "name": "profession.meatBass"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f996",
+      "itemName": "Bass Oil 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Bass Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Bass Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1277
+              ]
+            },
+            "name": "profession.oilBass"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f997",
+      "itemName": "Bass Oil 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Bass Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Bass Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1277
+              ]
+            },
+            "name": "profession.oilBass"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f998",
+      "itemName": "Diamond Gem 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Diamond Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Diamond Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1260
+              ]
+            },
+            "name": "profession.gemDiamond"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f999",
+      "itemName": "Diamond Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Diamond Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Diamond Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1260
+              ]
+            },
+            "name": "profession.gemDiamond"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f99a",
+      "itemName": "Diamond Ingot 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Diamond Ingot 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Diamond Ingot 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1248
+              ]
+            },
+            "name": "profession.ingotDiamond"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f99b",
+      "itemName": "Diamond Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Diamond Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Diamond Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1248
+              ]
+            },
+            "name": "profession.ingotDiamond"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f99c",
+      "itemName": "Pine Paper 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Pine Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Pine Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1306
+              ]
+            },
+            "name": "profession.paperPine"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f99d",
+      "itemName": "Pine Paper 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Pine Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Pine Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1306
+              ]
+            },
+            "name": "profession.paperPine"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f99e",
+      "itemName": "Pine Paper 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Pine Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Pine Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1306
+              ]
+            },
+            "name": "profession.paperPine"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f99f",
+      "itemName": "Pine Wood 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Pine Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Pine Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1294
+              ]
+            },
+            "name": "profession.plankPine"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a0",
+      "itemName": "Rice Grains 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rice Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Rice Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainRice"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a1",
+      "itemName": "Rice Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rice Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Rice Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainRice"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a2",
+      "itemName": "Rice String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rice String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Rice String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringRice"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a3",
+      "itemName": "Rice String 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rice String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Rice String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 80
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringRice"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a4",
+      "itemName": "Decay Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Decay Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Decay Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1237
+              ]
+            },
+            "name": "profession.grainDecay"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a5",
+      "itemName": "Decay String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Decay String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Decay String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1233
+              ]
+            },
+            "name": "profession.stringDecay"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a6",
+      "itemName": "Decay String 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Decay String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Decay String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1233
+              ]
+            },
+            "name": "profession.stringDecay"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a7",
+      "itemName": "Gylia Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gylia Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Gylia Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1281
+              ]
+            },
+            "name": "profession.meatGylia"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a8",
+      "itemName": "Gylia Oil 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gylia Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Gylia Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1278
+              ]
+            },
+            "name": "profession.oilGylia"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9a9",
+      "itemName": "Gylia Oil 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gylia Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Gylia Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1278
+              ]
+            },
+            "name": "profession.oilGylia"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9aa",
+      "itemName": "Kanderstone Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Kanderstone Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Kanderstone Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1259
+              ]
+            },
+            "name": "profession.gemKanderstone"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ab",
+      "itemName": "Kanderstone Ingot 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Kanderstone Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Kanderstone Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1247
+              ]
+            },
+            "name": "profession.ingotKanderstone"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ac",
+      "itemName": "Kanderstone Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Kanderstone Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Kanderstone Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1247
+              ]
+            },
+            "name": "profession.ingotKanderstone"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ad",
+      "itemName": "Light Paper 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Light Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Light Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1305
+              ]
+            },
+            "name": "profession.paperLight"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ae",
+      "itemName": "Light Paper 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Light Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Light Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1305
+              ]
+            },
+            "name": "profession.paperLight"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9af",
+      "itemName": "Light Wood 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Light Wood 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Light Wood 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 70
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1293
+              ]
+            },
+            "name": "profession.plankLight"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b0",
+      "itemName": "Cobalt Gem 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Cobalt Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Cobalt Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1258
+              ]
+            },
+            "name": "profession.gemCobalt"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b1",
+      "itemName": "Cobalt Gem 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Cobalt Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Cobalt Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1258
+              ]
+            },
+            "name": "profession.gemCobalt"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b2",
+      "itemName": "Cobalt Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Cobalt Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Cobalt Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1258
+              ]
+            },
+            "name": "profession.gemCobalt"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b3",
+      "itemName": "Cobalt Ingot 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Cobalt Ingot 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Cobalt Ingot 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1246
+              ]
+            },
+            "name": "profession.ingotCobalt"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b4",
+      "itemName": "Cobalt Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Cobalt Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Cobalt Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1246
+              ]
+            },
+            "name": "profession.ingotCobalt"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b5",
+      "itemName": "Dark Paper 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dark Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Dark Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1304
+              ]
+            },
+            "name": "profession.paperDark"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b6",
+      "itemName": "Dark Paper 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dark Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Dark Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1304
+              ]
+            },
+            "name": "profession.paperDark"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b7",
+      "itemName": "Dark Paper 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Dark Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Dark Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1304
+              ]
+            },
+            "name": "profession.paperDark"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b8",
+      "itemName": "Koi Oil 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Koi Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Koi Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1278
+              ]
+            },
+            "name": "profession.oilKoi"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9b9",
+      "itemName": "Millet Grains 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Millet Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Millet Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainMillet"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ba",
+      "itemName": "Millet Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Millet Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Millet Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainMillet"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9bb",
+      "itemName": "Millet String 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Millet String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Millet String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringMillet"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9bc",
+      "itemName": "Millet String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Millet String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Millet String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 60
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringMillet"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9bd",
+      "itemName": "Jungle Paper 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Jungle Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Jungle Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1303
+              ]
+            },
+            "name": "profession.paperJungle"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9be",
+      "itemName": "Jungle Wood 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Jungle Wood 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Jungle Wood 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1291
+              ]
+            },
+            "name": "profession.plankJungle"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9bf",
+      "itemName": "Jungle Wood 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Jungle Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Jungle Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1291
+              ]
+            },
+            "name": "profession.plankJungle"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c0",
+      "itemName": "Piranha Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Piranha Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Piranha Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1282
+              ]
+            },
+            "name": "profession.meatPiranha"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c1",
+      "itemName": "Piranha Oil 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Piranha Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Piranha Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1279
+              ]
+            },
+            "name": "profession.oilPiranha"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c2",
+      "itemName": "Piranha Oil 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Piranha Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Piranha Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1279
+              ]
+            },
+            "name": "profession.oilPiranha"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c3",
+      "itemName": "Rye Grains 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rye Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Rye Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainRye"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c4",
+      "itemName": "Rye Grains 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rye Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Rye Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainRye"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c5",
+      "itemName": "Rye Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rye Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Rye Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainRye"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c6",
+      "itemName": "Rye String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rye String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Rye String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringRye"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c7",
+      "itemName": "Rye String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Rye String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Rye String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringRye"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c8",
+      "itemName": "Silver Gem 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Silver Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Silver Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1257
+              ]
+            },
+            "name": "profession.gemSilver"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9c9",
+      "itemName": "Silver Ingot 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Silver Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Silver Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1245
+              ]
+            },
+            "name": "profession.ingotSilver"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ca",
+      "itemName": "Silver Ingot 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Silver Ingot 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Silver Ingot 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1245
+              ]
+            },
+            "name": "profession.ingotSilver"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9cb",
+      "itemName": "Silver Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Silver Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Silver Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 50
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1245
+              ]
+            },
+            "name": "profession.ingotSilver"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9cc",
+      "itemName": "Hops Grains 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Hops Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Hops Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1236
+              ]
+            },
+            "name": "profession.grainHops"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9cd",
+      "itemName": "Hops Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Hops Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Hops Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1236
+              ]
+            },
+            "name": "profession.grainHops"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ce",
+      "itemName": "Hops String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Hops String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Hops String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1232
+              ]
+            },
+            "name": "profession.stringHops"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9cf",
+      "itemName": "Hops String 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Hops String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Hops String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1232
+              ]
+            },
+            "name": "profession.stringHops"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d0",
+      "itemName": "Hops String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Hops String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Hops String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1232
+              ]
+            },
+            "name": "profession.stringHops"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d1",
+      "itemName": "Icefish Meat 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Icefish Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Icefish Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1282
+              ]
+            },
+            "name": "profession.meatIce"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d2",
+      "itemName": "Icefish Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Icefish Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Icefish Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1282
+              ]
+            },
+            "name": "profession.meatIce"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d3",
+      "itemName": "Icefish Oil 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Icefish Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Icefish Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1277
+              ]
+            },
+            "name": "profession.oilIce"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d4",
+      "itemName": "Icefish Oil 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Icefish Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Icefish Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1277
+              ]
+            },
+            "name": "profession.oilIce"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d5",
+      "itemName": "Iron Gem 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Iron Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Iron Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1256
+              ]
+            },
+            "name": "profession.gemIron"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d6",
+      "itemName": "Iron Gem 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Iron Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Iron Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1256
+              ]
+            },
+            "name": "profession.gemIron"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d7",
+      "itemName": "Iron Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Iron Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Iron Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1244
+              ]
+            },
+            "name": "profession.ingotIron"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d8",
+      "itemName": "Spruce Wood 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Spruce Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Spruce Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 40
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1290
+              ]
+            },
+            "name": "profession.plankSpruce"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9d9",
+      "itemName": "Acacia Paper 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Acacia Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Acacia Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1301
+              ]
+            },
+            "name": "profession.paperAcacia"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9da",
+      "itemName": "Acacia Paper 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Acacia Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Acacia Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1301
+              ]
+            },
+            "name": "profession.paperAcacia"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9db",
+      "itemName": "Acacia Wood 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Acacia Wood 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Acacia Wood 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1289
+              ]
+            },
+            "name": "profession.plankAcacia"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9dc",
+      "itemName": "Acacia Wood 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Acacia Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Acacia Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1289
+              ]
+            },
+            "name": "profession.plankAcacia"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9dd",
+      "itemName": "Carp Meat 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Carp Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Carp Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1284
+              ]
+            },
+            "name": "profession.meatCarp"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9de",
+      "itemName": "Carp Meat 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Carp Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Carp Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1284
+              ]
+            },
+            "name": "profession.meatCarp"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9df",
+      "itemName": "Carp Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Carp Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Carp Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1284
+              ]
+            },
+            "name": "profession.meatCarp"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e0",
+      "itemName": "Carp Oil 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Carp Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Carp Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1279
+              ]
+            },
+            "name": "profession.oilCarp"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e1",
+      "itemName": "Carp Oil 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Carp Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Carp Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1279
+              ]
+            },
+            "name": "profession.oilCarp"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e2",
+      "itemName": "Carp Oil 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Carp Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Carp Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1279
+              ]
+            },
+            "name": "profession.oilCarp"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e3",
+      "itemName": "Malt Grains 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Malt Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Malt Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainMalt"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e4",
+      "itemName": "Malt Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Malt Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Malt Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainMalt"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e5",
+      "itemName": "Malt String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Malt String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Malt String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringMalt"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e6",
+      "itemName": "Malt String 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Malt String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Malt String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringMalt"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e7",
+      "itemName": "Malt String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Malt String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Malt String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringMalt"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e8",
+      "itemName": "Sandstone Gem 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sandstone Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Sandstone Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1255
+              ]
+            },
+            "name": "profession.gemSandstone"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9e9",
+      "itemName": "Sandstone Gem 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sandstone Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Sandstone Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1255
+              ]
+            },
+            "name": "profession.gemSandstone"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ea",
+      "itemName": "Sandstone Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sandstone Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Sandstone Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1255
+              ]
+            },
+            "name": "profession.gemSandstone"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9eb",
+      "itemName": "Sandstone Ingot 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sandstone Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Sandstone Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1243
+              ]
+            },
+            "name": "profession.ingotSandstone"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ec",
+      "itemName": "Sandstone Ingot 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sandstone Ingot 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Sandstone Ingot 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1243
+              ]
+            },
+            "name": "profession.ingotSandstone"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ed",
+      "itemName": "Sandstone Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Sandstone Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Sandstone Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 30
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1243
+              ]
+            },
+            "name": "profession.ingotSandstone"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ee",
+      "itemName": "Gold Gem 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gold Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Gold Gem 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1254
+              ]
+            },
+            "name": "profession.gemGold"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ef",
+      "itemName": "Gold Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gold Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Gold Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1254
+              ]
+            },
+            "name": "profession.gemGold"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f0",
+      "itemName": "Gold Ingot 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gold Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Gold Ingot 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1242
+              ]
+            },
+            "name": "profession.ingotGold"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f1",
+      "itemName": "Oat Grains 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oat Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Oat Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1236
+              ]
+            },
+            "name": "profession.grainOat"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f2",
+      "itemName": "Oat Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oat Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Oat Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1236
+              ]
+            },
+            "name": "profession.grainOat"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f3",
+      "itemName": "Oat String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oat String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Oat String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1232
+              ]
+            },
+            "name": "profession.stringOat"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f4",
+      "itemName": "Oat String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oat String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Oat String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1232
+              ]
+            },
+            "name": "profession.stringOat"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f5",
+      "itemName": "Salmon Meat 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Salmon Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Salmon Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1283
+              ]
+            },
+            "name": "profession.meatSalmon"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f6",
+      "itemName": "Salmon Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Salmon Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Salmon Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1283
+              ]
+            },
+            "name": "profession.meatSalmon"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f7",
+      "itemName": "Salmon Oil 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Salmon Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Salmon Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1278
+              ]
+            },
+            "name": "profession.oilSalmon"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f8",
+      "itemName": "Willow Paper 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Willow Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Willow Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1300
+              ]
+            },
+            "name": "profession.paperWillow"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9f9",
+      "itemName": "Willow Paper 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Willow Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Willow Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1300
+              ]
+            },
+            "name": "profession.paperWillow"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9fa",
+      "itemName": "Willow Wood 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Willow Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Willow Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 20
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1288
+              ]
+            },
+            "name": "profession.plankWillow"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9fb",
+      "itemName": "Barley Grains 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Barley Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Barley Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainBarley"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9fc",
+      "itemName": "Barley String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Barley String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Barley String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringBarley"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9fd",
+      "itemName": "Barley String 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Barley String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Barley String 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringBarley"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9fe",
+      "itemName": "Birch Paper 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Birch Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Birch Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1299
+              ]
+            },
+            "name": "profession.paperBirch"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920f9ff",
+      "itemName": "Birch Paper 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Birch Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Birch Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1299
+              ]
+            },
+            "name": "profession.paperBirch"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa00",
+      "itemName": "Birch Wood 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Birch Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Birch Wood 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1287
+              ]
+            },
+            "name": "profession.plankBirch"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa01",
+      "itemName": "Granite Gem 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Granite Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Granite Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1253
+              ]
+            },
+            "name": "profession.gemGranite"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa02",
+      "itemName": "Granite Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Granite Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Granite Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1253
+              ]
+            },
+            "name": "profession.gemGranite"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa03",
+      "itemName": "Trout Meat 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Trout Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Trout Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1282
+              ]
+            },
+            "name": "profession.meatTrout"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa04",
+      "itemName": "Trout Meat 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Trout Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Trout Meat 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1282
+              ]
+            },
+            "name": "profession.meatTrout"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa05",
+      "itemName": "Trout Meat 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Trout Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Trout Meat 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1282
+              ]
+            },
+            "name": "profession.meatTrout"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa06",
+      "itemName": "Trout Oil 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Trout Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Trout Oil 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1277
+              ]
+            },
+            "name": "profession.oilTrout"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa07",
+      "itemName": "Trout Oil 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Trout Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Trout Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 10
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1277
+              ]
+            },
+            "name": "profession.oilTrout"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa08",
+      "itemName": "Copper Gem 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Copper Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Copper Gem 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1252
+              ]
+            },
+            "name": "profession.gemCopper"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa09",
+      "itemName": "Copper Gem 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Copper Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Copper Gem 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "rings",
+          "bracelets",
+          "necklaces"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1252
+              ]
+            },
+            "name": "profession.gemCopper"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa0a",
+      "itemName": "Copper Ingot 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Copper Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Copper Ingot 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "boots",
+          "leggings",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1240
+              ]
+            },
+            "name": "profession.ingotCopper"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa0b",
+      "itemName": "Gudgeon Meat 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gudgeon Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Gudgeon Meat 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1281
+              ]
+            },
+            "name": "profession.meatGudgeon"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa0c",
+      "itemName": "Gudgeon Oil 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gudgeon Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Gudgeon Oil 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1276
+              ]
+            },
+            "name": "profession.oilGudgeon"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa0d",
+      "itemName": "Gudgeon Oil 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Gudgeon Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Gudgeon Oil 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "rings",
+          "bracelets",
+          "necklaces",
+          "potions"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1276
+              ]
+            },
+            "name": "profession.oilGudgeon"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa0e",
+      "itemName": "Oak Paper 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oak Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Oak Paper 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1298
+              ]
+            },
+            "name": "profession.paperOak"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa0f",
+      "itemName": "Oak Paper 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oak Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Oak Paper 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1298
+              ]
+            },
+            "name": "profession.paperOak"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa10",
+      "itemName": "Oak Paper 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oak Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Oak Paper 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "scrolls",
+          "helmets",
+          "chestplates"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1298
+              ]
+            },
+            "name": "profession.paperOak"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa11",
+      "itemName": "Oak Wood 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oak Wood 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Oak Wood 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1286
+              ]
+            },
+            "name": "profession.plankOak"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa12",
+      "itemName": "Oak Wood 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Oak Wood 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Oak Wood 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "spears",
+          "daggers",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1286
+              ]
+            },
+            "name": "profession.plankOak"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa13",
+      "itemName": "Wheat Grains 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Wheat Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Wheat Grains 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainWheat"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa14",
+      "itemName": "Wheat Grains 2",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Wheat Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 2
+      },
+      "after": {
+        "internalName": "Refined Wheat Grains 2",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainWheat"
+          }
+        },
+        "tier": 2
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa15",
+      "itemName": "Wheat Grains 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Wheat Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Wheat Grains 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "potions",
+          "food"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1235
+              ]
+            },
+            "name": "profession.grainWheat"
+          }
+        },
+        "tier": 3
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa16",
+      "itemName": "Wheat String 1",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Wheat String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 1
+      },
+      "after": {
+        "internalName": "Refined Wheat String 1",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringWheat"
+          }
+        },
+        "tier": 1
+      }
+    },
+    {
+      "_id": "692b969d1236d5bba920fa17",
+      "itemName": "Wheat String 3",
+      "status": "modify",
+      "timestamp": 1764464285,
+      "before": {
+        "internalName": "Refined Wheat String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "tier": 3
+      },
+      "after": {
+        "internalName": "Refined Wheat String 3",
+        "type": "material",
+        "identified": true,
+        "requirements": {
+          "level": 1
+        },
+        "craftable": [
+          "boots",
+          "leggings",
+          "bows",
+          "wands"
+        ],
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "customModelData": {
+              "rangeDispatch": [
+                1231
+              ]
+            },
+            "name": "profession.stringWheat"
+          }
+        },
+        "tier": 3
+      }
+    }
+  ]
+}
