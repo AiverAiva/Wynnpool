@@ -1,0 +1,1735 @@
+{
+  "modify": [
+    {
+      "_id": "693cb87ee61e2f540a32ff6b",
+      "itemName": "Platonic Ideal",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Platonic Ideal",
+        "type": "armour",
+        "armourType": "boots",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 104,
+          "agility": 30,
+          "defence": 30,
+          "strength": 30,
+          "dexterity": 30,
+          "intelligence": 30
+        },
+        "majorIds": {
+          "Heartbeat": "<span class='font-ascii' style='color:#55FFFF'>+Heartbeat: <span class='font-ascii' style='color:#00AAAA'>Arrow Shield is locked to 2 charges but deals doubled damage.\nArrow Wall triples Arrow Shield damage and doubles Guardian Angels ammo.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "The intersection of what can be and what is. The apotheosis of being. Shear away the unclean, the impure, the rotten; leave only the raw, blinding truth of the self.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.diamond"
+          }
+        },
+        "identifications": {
+          "poison": {
+            "min": -13000,
+            "raw": -10000,
+            "max": -7000
+          },
+          "rawMaxMana": {
+            "min": 21,
+            "raw": 69,
+            "max": 90
+          },
+          "elementalDamage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "healthRegenRaw": {
+            "min": 92,
+            "raw": 308,
+            "max": 400
+          },
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "rawNeutralDamage": {
+            "min": 81,
+            "raw": 269,
+            "max": 350
+          }
+        },
+        "base": {
+          "baseHealth": 5040,
+          "baseAirDefence": 140,
+          "baseFireDefence": 140,
+          "baseEarthDefence": 140,
+          "baseWaterDefence": 140,
+          "baseThunderDefence": 140
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Platonic Ideal",
+        "type": "armour",
+        "armourType": "boots",
+        "armourMaterial": "diamond",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 104,
+          "agility": 30,
+          "defence": 30,
+          "strength": 30,
+          "dexterity": 30,
+          "intelligence": 30
+        },
+        "majorIds": {
+          "Heartbeat": "<span class='font-ascii' style='color:#55FFFF'>+Heartbeat: <span class='font-ascii' style='color:#00AAAA'>Arrow Shield is locked to 2 charges but deals doubled damage.\nArrow Wall instead triples Arrow Shield damage and doubles Guardian Angels ammo.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "The intersection of what can be and what is. The apotheosis of being. Shear away the unclean, the impure, the rotten; leave only the raw, blinding truth of the self.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.diamond"
+          }
+        },
+        "identifications": {
+          "poison": {
+            "min": -13000,
+            "raw": -10000,
+            "max": -7000
+          },
+          "rawMaxMana": {
+            "min": 21,
+            "raw": 69,
+            "max": 90
+          },
+          "elementalDamage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "healthRegenRaw": {
+            "min": 92,
+            "raw": 308,
+            "max": 400
+          },
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "rawNeutralDamage": {
+            "min": 81,
+            "raw": 269,
+            "max": 350
+          }
+        },
+        "base": {
+          "baseHealth": 5040,
+          "baseAirDefence": 140,
+          "baseFireDefence": 140,
+          "baseEarthDefence": 140,
+          "baseWaterDefence": 140,
+          "baseThunderDefence": 140
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff6c",
+      "itemName": "Cnidarian Hellspawn",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Cnidarian Hellspawn",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "diamond",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 103,
+          "defence": 57,
+          "dexterity": 49
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 109,
+            "raw": 364,
+            "max": 473
+          },
+          "healthRegen": {
+            "min": -35,
+            "raw": -27,
+            "max": -19
+          },
+          "rawDexterity": 7,
+          "1stSpellCost": {
+            "min": -5,
+            "raw": -18,
+            "max": -23
+          },
+          "2ndSpellCost": {
+            "min": 25,
+            "raw": 19,
+            "max": 13
+          },
+          "3rdSpellCost": {
+            "min": -5,
+            "raw": -16,
+            "max": -21
+          },
+          "4thSpellCost": {
+            "min": -4,
+            "raw": -13,
+            "max": -17
+          },
+          "healthRegenRaw": {
+            "min": -234,
+            "raw": -180,
+            "max": -126
+          }
+        },
+        "base": {
+          "baseHealth": 4500,
+          "baseFireDefence": 130,
+          "baseWaterDefence": -115,
+          "baseThunderDefence": 130
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Cnidarian Hellspawn",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "diamond",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 103,
+          "defence": 57,
+          "dexterity": 49
+        },
+        "lore": "A million stinging needles, tangled around your head;\nA crown of thorns;\nA wreath of nematocysts;\nA chaplet of venom and pain.\nFrom that poison cup, you drink and drink, until—\nLike a jellyfish\n—Only the currents decide your way.\nUntil only an addictive Hate compels you.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          }
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 109,
+            "raw": 364,
+            "max": 473
+          },
+          "healthRegen": {
+            "min": -35,
+            "raw": -27,
+            "max": -19
+          },
+          "rawDexterity": 7,
+          "1stSpellCost": {
+            "min": -5,
+            "raw": -18,
+            "max": -23
+          },
+          "2ndSpellCost": {
+            "min": 25,
+            "raw": 19,
+            "max": 13
+          },
+          "3rdSpellCost": {
+            "min": -5,
+            "raw": -16,
+            "max": -21
+          },
+          "4thSpellCost": {
+            "min": -4,
+            "raw": -13,
+            "max": -17
+          },
+          "healthRegenRaw": {
+            "min": -234,
+            "raw": -180,
+            "max": -126
+          }
+        },
+        "base": {
+          "baseHealth": 4500,
+          "baseFireDefence": 130,
+          "baseWaterDefence": -115,
+          "baseThunderDefence": 130
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff6d",
+      "itemName": "Marionette",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Marionette",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "veryFast",
+        "averageDps": 806,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 100,
+          "classRequirement": "shaman",
+          "defence": 30,
+          "strength": 40,
+          "intelligence": 45
+        },
+        "majorIds": {
+          "Strings of Fate": "<span class='font-ascii' style='color:#55FFFF'>+Strings of Fate: <span class='font-ascii' style='color:#00AAAA'>Your puppets have a lifetime of 3 seconds and deal double damage with attacks and explosions.</span></span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          }
+        },
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawHealth": {
+            "min": -1560,
+            "raw": -1200,
+            "max": -840
+          },
+          "walkSpeed": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "spellDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "fireSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 25
+          },
+          "baseEarthDamage": {
+            "min": 105,
+            "raw": 105,
+            "max": 145
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 120
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Marionette",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "veryFast",
+        "averageDps": 806,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 100,
+          "classRequirement": "shaman",
+          "defence": 30,
+          "strength": 40,
+          "intelligence": 45
+        },
+        "majorIds": {
+          "Strings of Fate": "<span class='font-ascii' style='color:#55FFFF'>+Strings of Fate: <span class='font-ascii' style='color:#00AAAA'>Your puppets have a lifetime of 3 seconds and deal double damage with attacks and explosions.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "Aloft among the rafters of the crowded theatre a grin crept from ear to ear. Dim the lights. Tick. Raise the curtains. Tick. This shall be their final act. Tick.",
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          }
+        },
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawHealth": {
+            "min": -1560,
+            "raw": -1200,
+            "max": -840
+          },
+          "walkSpeed": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "spellDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "fireSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 25
+          },
+          "baseEarthDamage": {
+            "min": 105,
+            "raw": 105,
+            "max": 145
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 120
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff6e",
+      "itemName": "Briars' Embrace",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Briars' Embrace",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "fast",
+        "averageDps": 712,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 99,
+          "classRequirement": "archer",
+          "strength": 85
+        },
+        "majorIds": {
+          "Forest's Blessing": "<span class='font-ascii' style='color:#55FFFF'>+Forest's Blessing: <span class='font-ascii' style='color:#00AAAA'>Your hound gains increased movement speed, attack speed, and vision. Arrow Bomb's damage is reduced by <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> -30%</span><span class='font-ascii' style='color:#00AAAA'>. </span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          }
+        },
+        "identifications": {
+          "poison": {
+            "min": 3231,
+            "raw": 10769,
+            "max": 14000
+          },
+          "thorns": {
+            "min": 18,
+            "raw": 60,
+            "max": 78
+          },
+          "manaRegen": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "rawHealth": {
+            "min": 525,
+            "raw": 1750,
+            "max": 2275
+          },
+          "slowEnemy": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 50
+          },
+          "baseEarthDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 270
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Briars' Embrace",
+        "type": "weapon",
+        "weaponType": "bow",
+        "attackSpeed": "fast",
+        "averageDps": 712,
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 99,
+          "classRequirement": "archer",
+          "strength": 85
+        },
+        "majorIds": {
+          "Forest's Blessing": "<span class='font-ascii' style='color:#55FFFF'>+Forest's Blessing: <span class='font-ascii' style='color:#00AAAA'>Your hound gains increased movement speed, attack speed, vision, and <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+60%</span><darkAqua>. Arrow Bomb's damage is reduced by <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> -30%</span><span class='font-ascii' style='color:#00AAAA'>.</span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          }
+        },
+        "identifications": {
+          "poison": {
+            "min": 3231,
+            "raw": 10769,
+            "max": 14000
+          },
+          "thorns": {
+            "min": 18,
+            "raw": 60,
+            "max": 78
+          },
+          "manaRegen": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "rawHealth": {
+            "min": 525,
+            "raw": 1750,
+            "max": 2275
+          },
+          "slowEnemy": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 50
+          },
+          "baseEarthDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 270
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff6f",
+      "itemName": "Blossom Haze",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Blossom Haze",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "fast",
+        "averageDps": 638,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 87,
+          "classRequirement": "assassin",
+          "strength": 65
+        },
+        "majorIds": {
+          "Cherry Bombs": "<span class='font-ascii' style='color:#55FFFF'>+Cherry Bombs: \n<span class='font-ascii' style='color:#00AAAA'>Turns Smoke Bomb into firecrackers that fly farther, tighter, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>85%</span><darkAqua>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>25%</span><darkAqua>, and <span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>25%</span><darkAqua> instantly.</span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "And as the spring bursts, the blossom petals flutter in the wind amongst the ashes of your enemies.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth3"
+          }
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "earthDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "waterDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawAttackSpeed": -1,
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseEarthDamage": {
+            "min": 145,
+            "raw": 145,
+            "max": 185
+          }
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Blossom Haze",
+        "type": "weapon",
+        "weaponType": "dagger",
+        "attackSpeed": "fast",
+        "averageDps": 638,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 87,
+          "classRequirement": "assassin",
+          "strength": 65
+        },
+        "majorIds": {
+          "Cherry Bombs": "<span class='font-ascii' style='color:#55FFFF'>+Cherry Bombs: \n<span class='font-ascii' style='color:#00AAAA'>Turns Smoke Bomb into firecrackers that fly farther, tighter, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>100%</span><darkAqua>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>30%</span><darkAqua>, <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>30%</span><darkAqua>, and <span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>30%</span><darkAqua> instantly.</span></span></span></span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "And as the spring bursts, the blossom petals flutter in the wind amongst the ashes of your enemies.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth3"
+          }
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "earthDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "waterDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawAttackSpeed": -1,
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseEarthDamage": {
+            "min": 145,
+            "raw": 145,
+            "max": 185
+          }
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff70",
+      "itemName": "Conspirator's Trickpockets",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Conspirator's Trickpockets",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "iron",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 78,
+          "agility": 65
+        },
+        "majorIds": {
+          "Cherry Bombs": "<span class='font-ascii' style='color:#55FFFF'>+Cherry Bombs: \n<span class='font-ascii' style='color:#00AAAA'>Turns Smoke Bomb into firecrackers that fly farther, tighter, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>85%</span><darkAqua>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>25%</span><darkAqua>, and <span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>25%</span><darkAqua> instantly.</span></span></span></span></span></span></span></span>"
+        },
+        "lore": "No reign lasts forever. Not while your schemes remain unnoticed.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          }
+        },
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "lifeSteal": {
+            "min": 63,
+            "raw": 210,
+            "max": 273
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "sprintRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawSpellDamage": {
+            "min": 51,
+            "raw": 170,
+            "max": 221
+          },
+          "elementalDefence": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          }
+        },
+        "base": {
+          "baseHealth": 2550,
+          "baseFireDefence": -90,
+          "baseEarthDefence": -90
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "Conspirator's Trickpockets",
+        "type": "armour",
+        "armourType": "leggings",
+        "armourMaterial": "iron",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 78,
+          "agility": 65
+        },
+        "majorIds": {
+          "Cherry Bombs": "<span class='font-ascii' style='color:#55FFFF'>+Cherry Bombs: \n<span class='font-ascii' style='color:#00AAAA'>Turns Smoke Bomb into firecrackers that fly farther, tighter, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>100%</span><darkAqua>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>30%</span><darkAqua>, <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>30%</span><darkAqua>, and <span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span>30%</span><darkAqua> instantly.</span></span></span></span></span></span></span></span></span></span>"
+        },
+        "lore": "No reign lasts forever. Not while your schemes remain unnoticed.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          }
+        },
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "lifeSteal": {
+            "min": 63,
+            "raw": 210,
+            "max": 273
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "sprintRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawSpellDamage": {
+            "min": 51,
+            "raw": 170,
+            "max": 221
+          },
+          "elementalDefence": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          }
+        },
+        "base": {
+          "baseHealth": 2550,
+          "baseFireDefence": -90,
+          "baseEarthDefence": -90
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff71",
+      "itemName": "Heaven's Gate",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Heaven's Gate",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "fast",
+        "averageDps": 328,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 65,
+          "classRequirement": "warrior",
+          "agility": 30,
+          "intelligence": 30
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.water2"
+          }
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "manaRegen": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "waterDamage": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "mainAttackDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 60
+          },
+          "baseAirDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 66
+          },
+          "baseWaterDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 66
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Heaven's Gate",
+        "type": "weapon",
+        "weaponType": "spear",
+        "attackSpeed": "fast",
+        "averageDps": 328,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 65,
+          "classRequirement": "warrior",
+          "agility": 30,
+          "intelligence": 30
+        },
+        "powderSlots": 2,
+        "lore": "Among the outcasts of Efilim, some preach that death is not to be feared. They say while the road to his door is hellish, and his messenger most cruel, the beyond forgives. In this gilded spear, you see not only a weapon, but a key, a ticket. You know what to do. Be the messenger.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.water2"
+          }
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "manaRegen": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "waterDamage": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "mainAttackDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 60
+          },
+          "baseAirDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 66
+          },
+          "baseWaterDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 66
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff72",
+      "itemName": "The Scavenged",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "The Scavenged",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "chainmail",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 41,
+          "agility": 15,
+          "defence": 10,
+          "dexterity": 10
+        },
+        "majorIds": {
+          "Escape Route": "<span class='font-ascii' style='color:#55FFFF'>+Escape Route: <span class='font-ascii' style='color:#00AAAA'>Frenzy and Time Dilation charge twice as fast but also decay twice as fast.</span></span>"
+        },
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.chainmail"
+          }
+        },
+        "identifications": {
+          "sprint": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "walkSpeed": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawAgility": 3,
+          "spellDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 3,
+          "rawAttackSpeed": 1,
+          "mainAttackDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseHealth": -275,
+          "baseAirDefence": -15,
+          "baseFireDefence": -15,
+          "baseThunderDefence": -15
+        },
+        "rarity": "fabled"
+      },
+      "after": {
+        "internalName": "The Scavenged",
+        "type": "armour",
+        "armourType": "helmet",
+        "armourMaterial": "chainmail",
+        "dropRestriction": "never",
+        "requirements": {
+          "level": 41,
+          "agility": 15,
+          "defence": 10,
+          "dexterity": 10
+        },
+        "majorIds": {
+          "Escape Route": "<span class='font-ascii' style='color:#55FFFF'>+Escape Route: <span class='font-ascii' style='color:#00AAAA'>Frenzy and Time Dilation charge twice as fast but also decay twice as fast.</span></span>"
+        },
+        "lore": "To the victor go the spoils. To the swift, go the spoils of the victor.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.chainmail"
+          }
+        },
+        "identifications": {
+          "sprint": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "walkSpeed": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawAgility": 3,
+          "spellDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 3,
+          "rawAttackSpeed": 1,
+          "mainAttackDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseHealth": -275,
+          "baseAirDefence": -15,
+          "baseFireDefence": -15,
+          "baseThunderDefence": -15
+        },
+        "rarity": "fabled"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff73",
+      "itemName": "Cruel Sun",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Cruel Sun",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "verySlow",
+        "averageDps": 133,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 24,
+          "classRequirement": "shaman",
+          "defence": 15
+        },
+        "powderSlots": 2,
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.fire2"
+          }
+        },
+        "identifications": {
+          "exploding": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "lifeSteal": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "fireDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDefence": 10,
+          "healthRegenRaw": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "raw1stSpellCost": {
+            "min": 13,
+            "raw": 10,
+            "max": 7
+          },
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 85
+          },
+          "baseFireDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 85
+          }
+        },
+        "rarity": "legendary"
+      },
+      "after": {
+        "internalName": "Cruel Sun",
+        "type": "weapon",
+        "weaponType": "relik",
+        "attackSpeed": "verySlow",
+        "averageDps": 133,
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 24,
+          "classRequirement": "shaman",
+          "defence": 15
+        },
+        "powderSlots": 2,
+        "lore": "The ember manifests kindness. The blaze manifests cruelty. Both share an origin within the sun's flame. But what separates warmth from ruin is not the fire, but the hand that calls upon it. Mercy and wrath are merely reflections cast by the same unblinking star.",
+        "icon": {
+          "format": "attribute",
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.fire2"
+          }
+        },
+        "identifications": {
+          "exploding": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "lifeSteal": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "fireDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDefence": 10,
+          "healthRegenRaw": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "raw1stSpellCost": {
+            "min": 13,
+            "raw": 10,
+            "max": 7
+          },
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 85
+          },
+          "baseFireDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 85
+          }
+        },
+        "rarity": "legendary"
+      }
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff74",
+      "itemName": "Jolting Geode",
+      "status": "modify",
+      "timestamp": 1765587070,
+      "before": {
+        "internalName": "Jolting Geode",
+        "type": "ingredient",
+        "requirements": {
+          "level": 13,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "433:0"
+        },
+        "identifications": {
+          "thunderDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 4
+          },
+          "rawMainAttackDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 3
+          }
+        },
+        "tier": 1,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "not_touching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -30000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 6,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Eternal Paragon",
+            "coords": null
+          },
+          {
+            "name": "Warped Husk",
+            "coords": null
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Jolting Geode",
+        "type": "ingredient",
+        "requirements": {
+          "level": 13,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "icon": {
+          "format": "legacy",
+          "value": "433:0"
+        },
+        "identifications": {
+          "thunderDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 4
+          },
+          "rawMainAttackDamage": {
+            "min": 2,
+            "raw": 2,
+            "max": 3
+          }
+        },
+        "tier": 1,
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "not_touching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -30000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 6,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Luciola",
+            "coords": [
+              [
+                -728,
+                100,
+                -1135,
+                18
+              ],
+              [
+                -765,
+                103,
+                -1172,
+                15
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Warped Husk",
+            "coords": null
+          }
+        ]
+      }
+    }
+  ],
+  "remove": [
+    {
+      "_id": "693cb87ee61e2f540a32ff69",
+      "itemName": "Air Relic Dagger",
+      "status": "remove",
+      "timestamp": 1765587070,
+      "internalName": "Air Relic Dagger",
+      "type": "weapon",
+      "weaponType": "dagger",
+      "attackSpeed": "fast",
+      "averageDps": 340,
+      "dropRestriction": "never",
+      "requirements": {
+        "level": 65,
+        "classRequirement": "assassin",
+        "agility": 30
+      },
+      "powderSlots": 3,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "name": "dagger.air2"
+        }
+      },
+      "identifications": {
+        "xpBonus": {
+          "min": 5,
+          "raw": 15,
+          "max": 20
+        },
+        "airDamage": {
+          "min": 5,
+          "raw": 15,
+          "max": 20
+        },
+        "lootBonus": {
+          "min": 5,
+          "raw": 15,
+          "max": 20
+        },
+        "walkSpeed": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        },
+        "airDefence": {
+          "min": 5,
+          "raw": 15,
+          "max": 20
+        },
+        "rawAgility": 7,
+        "rawSpellDamage": {
+          "min": 26,
+          "raw": 85,
+          "max": 111
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 46,
+          "raw": 46,
+          "max": 90
+        },
+        "baseAirDamage": {
+          "min": 46,
+          "raw": 46,
+          "max": 90
+        }
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff6a",
+      "itemName": "Fire Relic Dagger",
+      "status": "remove",
+      "timestamp": 1765587070,
+      "internalName": "Fire Relic Dagger",
+      "type": "weapon",
+      "weaponType": "dagger",
+      "attackSpeed": "slow",
+      "averageDps": 357,
+      "dropRestriction": "never",
+      "requirements": {
+        "level": 65,
+        "classRequirement": "assassin",
+        "defence": 30
+      },
+      "powderSlots": 3,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "name": "dagger.fire2"
+        }
+      },
+      "identifications": {
+        "xpBonus": {
+          "min": 5,
+          "raw": 15,
+          "max": 20
+        },
+        "lootBonus": {
+          "min": 5,
+          "raw": 15,
+          "max": 20
+        },
+        "rawHealth": {
+          "min": 276,
+          "raw": 920,
+          "max": 1196
+        },
+        "fireDamage": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "rawDefence": 7,
+        "fireDefence": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        },
+        "healthRegenRaw": {
+          "min": 29,
+          "raw": 95,
+          "max": 124
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 90,
+          "raw": 90,
+          "max": 148
+        },
+        "baseFireDamage": {
+          "min": 90,
+          "raw": 90,
+          "max": 148
+        }
+      },
+      "rarity": "rare"
+    }
+  ],
+  "add": [
+    {
+      "_id": "693cb87ee61e2f540a32ff65",
+      "itemName": "Verglas Spirit",
+      "status": "add",
+      "timestamp": 1765587070,
+      "internalName": "Verglas Spirit",
+      "type": "armour",
+      "armourType": "boots",
+      "armourMaterial": "pale_diamond",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 104,
+        "agility": 70
+      },
+      "powderSlots": 2,
+      "lore": "\"A little belief, and just a little spirit, can go a long way.\"",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_boots",
+          "customModelData": {
+            "rangeDispatch": [
+              15
+            ]
+          },
+          "name": "boots.pale_diamond"
+        }
+      },
+      "identifications": {
+        "lootBonus": 25,
+        "manaRegen": 35,
+        "walkSpeed": 20,
+        "rawMaxMana": -50,
+        "airSpellDamage": 20,
+        "rawAttackSpeed": -10,
+        "rawIntelligence": -70,
+        "rawAirSpellDamage": 200
+      },
+      "base": {
+        "baseHealth": 3400,
+        "baseAirDefence": 175,
+        "baseWaterDefence": -100
+      },
+      "rarity": "legendary"
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff66",
+      "itemName": "Frozen Devotion",
+      "status": "add",
+      "timestamp": 1765587070,
+      "internalName": "Frozen Devotion",
+      "type": "armour",
+      "armourType": "chestplate",
+      "armourMaterial": "pale_diamond",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 99,
+        "agility": 60,
+        "intelligence": 60
+      },
+      "lore": "\"Crystalline towers and stark white horizons. The sharpest frost shards and the softest snowfall. Before the permafrost monarch of winter, lay your heart down: become the right hand of the cold.\"",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_chestplate",
+          "customModelData": {
+            "rangeDispatch": [
+              15
+            ]
+          },
+          "name": "chestplate.pale_diamond"
+        }
+      },
+      "identifications": {
+        "fireDamage": -80,
+        "earthDamage": -80,
+        "rawMaxMana": 60,
+        "rawStrength": -10,
+        "rawDexterity": -10,
+        "thunderDamage": -80,
+        "raw4thSpellCost": -4,
+        "rawAirSpellDamage": 230,
+        "rawWaterSpellDamage": 230
+      },
+      "base": {
+        "baseHealth": 3500,
+        "baseAirDefence": 160,
+        "baseFireDefence": -400,
+        "baseWaterDefence": 160
+      },
+      "rarity": "legendary"
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff67",
+      "itemName": "Nocturne",
+      "status": "add",
+      "timestamp": 1765587070,
+      "internalName": "Nocturne",
+      "type": "armour",
+      "armourType": "leggings",
+      "armourMaterial": "pale_diamond",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 96,
+        "agility": 45,
+        "strength": 30,
+        "intelligence": 45
+      },
+      "powderSlots": 3,
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:leather_leggings",
+          "customModelData": {
+            "rangeDispatch": [
+              15
+            ]
+          },
+          "name": "leggings.pale_diamond"
+        }
+      },
+      "identifications": {
+        "walkSpeed": -15,
+        "airDefence": 30,
+        "waterDefence": 30,
+        "raw2ndSpellCost": -9,
+        "raw3rdSpellCost": -2,
+        "rawElementalSpellDamage": 200
+      },
+      "base": {
+        "baseHealth": 3000,
+        "baseEarthDefence": 120,
+        "baseThunderDefence": -100
+      },
+      "rarity": "rare"
+    },
+    {
+      "_id": "693cb87ee61e2f540a32ff68",
+      "itemName": "Stargazing Lens",
+      "status": "add",
+      "timestamp": 1765587070,
+      "internalName": "Stargazing Lens",
+      "type": "accessory",
+      "accessoryType": "ring",
+      "restrictions": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 95,
+        "dexterity": 60
+      },
+      "lore": "A single vibrant star sits at the focus of the mirror. Though, faintly, many more sit in the perimeter of the view... perhaps they mean something?",
+      "icon": {
+        "format": "attribute",
+        "value": {
+          "id": "minecraft:potion",
+          "customModelData": {
+            "rangeDispatch": [
+              1327
+            ]
+          },
+          "name": "ring.thunder2"
+        }
+      },
+      "identifications": {
+        "reflection": 12,
+        "thunderDefence": 10,
+        "mainAttackRange": 10
+      },
+      "base": {
+        "baseHealth": -500,
+        "baseThunderDefence": 40
+      },
+      "rarity": "set"
+    }
+  ]
+}
