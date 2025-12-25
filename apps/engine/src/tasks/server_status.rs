@@ -3,12 +3,16 @@ use std::time::{Instant, SystemTime, UNIX_EPOCH};
 
 use anyhow::Result;
 use once_cell::sync::Lazy;
-use redis::AsyncCommands;
 use reqwest::Client;
-use serde_json::{json, Value};
+use serde_json::Value;
+
+use mongodb::{bson::{doc, Bson, DateTime as BsonDateTime, Document}, options::FindOptions, options::ClientOptions, Client as MongoClient, IndexModel};
+use mongodb::options::IndexOptions;
+use futures_util::stream::TryStreamExt;
+use std::time::Duration;
 
 use crate::logger::log_event;
-use crate::redis_client::redis_conn;
+use crate::config::MONGODB_URI;
 use wynnpool_engine_macros::fetch;
 
 static CLIENT: Lazy<Client> = Lazy::new(Client::new);
@@ -19,15 +23,15 @@ const SERVER_DATA_TTL_SECS: i64 = 60 * 60 * 12;
 const OFFLINE_DELETE_SECS: i64 = 60 * 1;
 
 #[fetch(interval = 35)]
-fn update_server_status() {
+fn update_server_status_new() {
     tokio::spawn(async {
-        if let Err(e) = run_update_server_status().await {
-            log_event("ERROR", &format!("update_server_status failed: {e}"), None);
+        if let Err(e) = run_update_server_status_new().await {
+            log_event("ERROR", &format!("update_server_status_new failed: {e}"), None);
         }
     });
 }
 
-async fn run_update_server_status() -> Result<()> {
+async fn run_update_server_status_new() -> Result<()> {
     let whole_start = Instant::now();
     log_event("TASK", "fetching server list", None);
 
@@ -58,39 +62,36 @@ async fn run_update_server_status() -> Result<()> {
 
     let current_servers: HashSet<String> = servers.keys().cloned().collect();
 
-    // --- 2. REDIS PART ---
-    let redis_start = Instant::now();
-    let mut conn = redis_conn().await?;
+    // --- 2. MONGODB PART ---
+    let mongo_start = Instant::now();
 
-    // Existing server names from Redis
-    let existing_servers: Vec<String> =
-        conn.smembers("wynnpool:servers").await.unwrap_or_default();
-    let existing_set: HashSet<String> = existing_servers.iter().cloned().collect();
+    let mut client_options = ClientOptions::parse(MONGODB_URI.as_str()).await?;
+    client_options.app_name = Some("wynnpool-engine".to_string());
+    let client = MongoClient::with_options(client_options)?;
+    let db = client.database("wynnpool");
+    let coll = db.collection::<Document>("wynncraft_servers");
 
-    // Fetch existing JSONs in one MGET for all existing servers
-    let existing_data_keys: Vec<String> = existing_servers
-        .iter()
-        .map(|name| format!("wynnpool:server:{}:data", name))
-        .collect();
+    // Ensure TTL index on `expireAt` so documents are removed by MongoDB after expiry
+    let idx = IndexModel::builder()
+        .keys(doc! { "expireAt": 1 })
+        .options(IndexOptions::builder().expire_after(Some(Duration::from_secs(0))).build())
+        .build();
+    let _ = coll.create_index(idx, None).await?;
 
-    let existing_raw_values: Vec<Option<String>> = if !existing_data_keys.is_empty() {
-        redis::cmd("MGET")
-            .arg(&existing_data_keys)
-            .query_async(&mut conn)
-            .await?
-    } else {
-        Vec::new()
-    };
+    // Fetch existing server docs
+    let mut existing_servers: Vec<String> = Vec::new();
+    let mut existing_info: HashMap<String, Document> = HashMap::new();
 
-    // Map: server_name -> existing JSON (if any)
-    let mut existing_info: HashMap<String, Value> = HashMap::new();
-    for (idx, name) in existing_servers.iter().enumerate() {
-        if let Some(Some(raw)) = existing_raw_values.get(idx) {
-            if let Ok(val) = serde_json::from_str::<Value>(raw) {
-                existing_info.insert(name.clone(), val);
-            }
+    let find_opts = FindOptions::builder().build();
+    let mut cursor = coll.find(None, find_opts).await?;
+    while let Some(doc) = cursor.try_next().await? {
+        if let Some(Bson::String(name)) = doc.get("server") {
+            existing_servers.push(name.clone());
+            existing_info.insert(name.clone(), doc);
         }
     }
+
+    let existing_set: HashSet<String> = existing_servers.iter().cloned().collect();
 
     // Counters + lists for summary
     let mut removed_count = 0usize;
@@ -104,57 +105,44 @@ async fn run_update_server_status() -> Result<()> {
         .unwrap_or_default()
         .as_secs() as i64;
 
-    let mut cleanup_pipe = redis::pipe();
-    let mut has_cleanup = false;
-
-    let mut write_pipe = redis::pipe();
-    let mut has_writes = false;
-
     // 2a. Existing servers that are *missing* from current API → offline or delete
     for existing in &existing_servers {
         if !current_servers.contains(existing) {
-            let data_key = format!("wynnpool:server:{}:data", existing);
-
             let prev = existing_info.get(existing);
             let first_seen = prev
-                .and_then(|v| v.get("firstSeen"))
-                .and_then(|v| v.as_i64())
+                .and_then(|v| v.get_i64("firstSeen").ok())
                 .unwrap_or(now_ts);
 
             let offline_since = prev
-                .and_then(|v| v.get("offlineSince"))
-                .and_then(|v| v.as_i64())
+                .and_then(|v| v.get_i64("offlineSince").ok())
                 .unwrap_or(now_ts);
 
             let offline_duration = now_ts - offline_since;
 
             if offline_duration > OFFLINE_DELETE_SECS {
                 // Hard delete after being offline for > 1 minutes
-                cleanup_pipe
-                    .del(&data_key)
-                    .srem("wynnpool:servers", existing);
-                has_cleanup = true;
+                coll.delete_one(doc! { "server": existing.clone() }, None).await?;
 
                 removed_count += 1;
                 removed_servers_list.push(existing.clone());
             } else {
                 // Keep it in DB but mark as offline
-                let server_data = json!({
-                    "server": existing,
-                    "online": false,
-                    "playerCount": 0,
-                    "players": [],
-                    "firstSeen": first_seen,
-                    "offlineSince": offline_since
-                })
-                .to_string();
+                let expire_at = BsonDateTime::from_millis((now_ts + SERVER_DATA_TTL_SECS) * 1000);
 
-                write_pipe
-                    .set(&data_key, server_data)
-                    .expire(&data_key, SERVER_DATA_TTL_SECS)
-                    .sadd("wynnpool:servers", existing);
+                let update = doc! {
+                    "$set": {
+                        "server": existing.clone(),
+                        "online": false,
+                        "playerCount": 0i64,
+                        "players": Bson::Array(vec![]),
+                        "firstSeen": first_seen,
+                        "offlineSince": offline_since,
+                        "expireAt": expire_at,
+                    }
+                };
 
-                has_writes = true;
+                coll.update_one(doc! { "server": existing.clone() }, update, mongodb::options::UpdateOptions::builder().upsert(true).build()).await?;
+
                 unchanged_count += 1;
             }
         }
@@ -169,34 +157,53 @@ async fn run_update_server_status() -> Result<()> {
             .cloned()
             .unwrap_or_else(|| Vec::new());
 
-        let data_key = format!("wynnpool:server:{}:data", server_name);
         let is_new = !existing_set.contains(server_name);
 
         let prev = existing_info.get(server_name);
         let first_seen = prev
-            .and_then(|v| v.get("firstSeen"))
-            .and_then(|v| v.as_i64())
+            .and_then(|v| v.get_i64("firstSeen").ok())
             .unwrap_or(now_ts);
 
         let online = !player_names.is_empty();
-        let player_count = player_names.len();
+        let player_count = player_names.len() as i64;
 
-        let server_data = json!({
-            "server": server_name,
-            "online": online,
-            "playerCount": player_count,
-            "players": player_names,
-            "firstSeen": first_seen
-            // NOTE: no offlineSince when online; we implicitly clear it
-        })
-        .to_string();
+        let expire_at = BsonDateTime::from_millis((now_ts + SERVER_DATA_TTL_SECS) * 1000);
 
-        write_pipe
-            .set(&data_key, server_data)
-            .expire(&data_key, SERVER_DATA_TTL_SECS)
-            .sadd("wynnpool:servers", server_name);
+        let mut players_bson = Vec::with_capacity(player_names.len());
+        for p in &player_names {
+            players_bson.push(Bson::String(p.clone()));
+        }
 
-        has_writes = true;
+        let mut update_doc = doc! {
+            "$set": {
+                "server": server_name.clone(),
+                "online": online,
+                "playerCount": player_count,
+                "players": Bson::Array(players_bson),
+                "firstSeen": first_seen,
+                "expireAt": expire_at,
+            }
+        };
+
+        // If online, remove offlineSince field
+        if online {
+            update_doc.get_document_mut("$set").ok();
+        } else {
+            // if offline but present in API with zero players? treat as offline with offlineSince = now
+            update_doc = doc! {
+                "$set": {
+                    "server": server_name.clone(),
+                    "online": false,
+                    "playerCount": player_count,
+                    "players": Bson::Array(vec![]),
+                    "firstSeen": first_seen,
+                    "offlineSince": now_ts,
+                    "expireAt": expire_at,
+                }
+            };
+        }
+
+        coll.update_one(doc! { "server": server_name.clone() }, update_doc, mongodb::options::UpdateOptions::builder().upsert(true).build()).await?;
 
         if is_new {
             added_count += 1;
@@ -206,15 +213,7 @@ async fn run_update_server_status() -> Result<()> {
         }
     }
 
-    // Execute cleanup + writes in as few round-trips as possible
-    if has_cleanup {
-        cleanup_pipe.query_async::<_, ()>(&mut conn).await?;
-    }
-    if has_writes {
-        write_pipe.query_async::<_, ()>(&mut conn).await?;
-    }
-
-    let redis_elapsed = redis_start.elapsed();
+    let mongo_elapsed = mongo_start.elapsed();
     let whole_elapsed = whole_start.elapsed();
 
     // Build debug lists for summary
@@ -265,7 +264,7 @@ async fn run_update_server_status() -> Result<()> {
     log_event(
         "SUMMARY",
         &format!(
-            "servers: added={} [{}], removed={} [{}], unchanged={} | online=[{}] offline=[{}] (http={}ms, redis={}ms)",
+            "servers: added={} [{}], removed={} [{}], unchanged={} | online=[{}] offline=[{}] (http={}ms, mongo={}ms)",
             added_count,
             added_str,
             removed_count,
@@ -274,7 +273,7 @@ async fn run_update_server_status() -> Result<()> {
             online_now_str,
             offline_now_str,
             http_elapsed.as_millis(),
-            redis_elapsed.as_millis()
+            mongo_elapsed.as_millis()
         ),
         Some(whole_elapsed),
     );
