@@ -1,85 +1,80 @@
-import { Inject, Injectable, InternalServerErrorException } from '@nestjs/common';
-import type Redis from 'ioredis';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { InjectConnection } from '@nestjs/mongoose';
+import { Connection } from 'mongoose';
 
 interface WynnServerSnapshot {
     server?: string;
     online?: boolean;
-    playerCount?: number;
+    playerCount?: number | string;
     players?: string[];
-    firstSeen?: number;
-    offlineSince?: number;
+    firstSeen?: number | string;
+    offlineSince?: number | string;
 }
 
 @Injectable()
 export class ServerService {
     constructor(
-        @Inject('REDIS_CLIENT') private readonly redis: Redis,
+        @InjectConnection() private readonly connection: Connection,
     ) { }
 
     async getStatus() {
         try {
-            const serverNames: string[] = await this.redis.smembers('wynnpool:servers');
+            const collection = this.connection.collection('wynncraft_servers');
+            const docs = await collection.find({}).toArray() as Array<WynnServerSnapshot & Record<string, any>>;
 
             const nowTs = Math.floor(Date.now() / 1000);
             const result: Record<string, any> = {
                 totalPlayer: 0,
             };
 
-            if (serverNames.length === 0) {
+            if (!docs || docs.length === 0) {
                 return result;
             }
 
-            const keys = serverNames.map(
-                (name) => `wynnpool:server:${name}:data`,
-            );
-
-            const rawValues = await this.redis.mget(...keys);
-
             let totalPlayer = 0;
-
             result['servers'] = {};
-            rawValues.forEach((raw, idx) => {
-                if (!raw) return;
 
-                let data: WynnServerSnapshot;
-                try {
-                    data = JSON.parse(raw);
-                } catch {
-                    // bad JSON, ignore this entry
-                    return;
+            const toNumber = (v: any) => {
+                if (typeof v === 'number') return v;
+                if (typeof v === 'string') {
+                    const n = parseInt(v, 10);
+                    return Number.isNaN(n) ? undefined : n;
                 }
+                if (v && typeof v === 'object' && ('$numberLong' in v || '$date' in v)) {
+                    if ('$numberLong' in v) return parseInt(v['$numberLong'] as string, 10);
+                    if ('$date' in v) return Math.floor(new Date(v['$date']).getTime() / 1000);
+                }
+                return undefined;
+            };
 
-                const serverName = serverNames[idx];
+            docs.forEach((doc) => {
+                if (!doc || !doc.server) return;
 
-                const online = !!data.online;
-                const players = Array.isArray(data.players) ? data.players : [];
-                const playerCount =
-                    typeof data.playerCount === 'number'
-                        ? data.playerCount
-                        : players.length;
+                const serverName = String(doc.server);
+                const online = !!doc.online;
+                const players = Array.isArray(doc.players) ? doc.players : [];
 
-                totalPlayer += playerCount;
+                const rawPlayerCount = doc.playerCount ?? players.length;
+                const playerCountNum = typeof rawPlayerCount === 'number'
+                    ? rawPlayerCount
+                    : toNumber(rawPlayerCount) ?? players.length;
 
-                const firstSeen =
-                    typeof data.firstSeen === 'number' ? data.firstSeen : nowTs;
+                totalPlayer += playerCountNum;
 
-                const offlineSince =
-                    typeof data.offlineSince === 'number'
-                        ? data.offlineSince
-                        : undefined;
+                const firstSeenNum = toNumber(doc.firstSeen) ?? nowTs;
 
-                const lastSeen = online
-                    ? nowTs
-                    : offlineSince ?? firstSeen;
+                const offlineSinceNum = toNumber((doc as any).offlineSince);
 
-                const uptime = Math.max(0, nowTs - firstSeen);
+                const lastSeen = online ? nowTs : (offlineSinceNum ?? firstSeenNum);
+
+                const uptime = Math.max(0, nowTs - firstSeenNum);
 
                 result['servers'][serverName] = {
                     online,
-                    firstSeen,      // unix timestamp
+                    firstSeen: firstSeenNum,      // unix timestamp
                     lastSeen,      // unix timestamp
                     uptime,        // seconds since launchAt
-                    playerCount,
+                    playerCount: playerCountNum,
                     players,
                 };
             });
