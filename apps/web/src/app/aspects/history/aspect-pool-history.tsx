@@ -20,21 +20,16 @@ interface AspectPoolHistoryProps {
     historyFiles: HistoryFile[]
 }
 
-interface AspectWithClass extends Aspect {
-    requiredClass?: string
-}
-
 export function AspectPoolHistory({ historyFiles }: AspectPoolHistoryProps) {
     const [selectedFile, setSelectedFile] = useState<HistoryFile | null>(null)
-    // const [fileContent, setFileContent] = useState<any>(null)
-    const [aspectData, setAspectData] = useState<Record<string, AspectWithClass[]>>({ })
+    const [aspectData, setAspectData] = useState<Record<string, Aspect[]>>({ })
 
     useEffect(() => {
         const fetchAspects = async () => {
             try {
                 const response = await fetch(api('/aspect/list'))
-                const data: AspectWithClass[] = await response.json()
-                const grouped = data.reduce<Record<string, AspectWithClass[]>>((acc, aspect) => {
+                const data: Aspect[] = await response.json()
+                const grouped = data.reduce<Record<string, Aspect[]>>((acc, aspect) => {
                     const className = aspect.requiredClass || 'Unknown'
                     if (!acc[className]) acc[className] = []
                     acc[className].push(aspect)

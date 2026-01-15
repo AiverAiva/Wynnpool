@@ -1,13 +1,15 @@
-export interface AspectTier {
-  [key: string]: string
+export interface Aspect {
+  aspectId: string
+  name: string
+  rarity: string
+  requiredClass: string
+  tiers: Record<string, AspectTier>
+  description?: string
 }
 
-export interface Aspect {
-  name: string
-  id: string
-  rarity: string
-  description: string
-  tiers: AspectTier
+interface AspectTier {
+  threshold: number
+  description: string[]
 }
 
 export interface AspectData {
