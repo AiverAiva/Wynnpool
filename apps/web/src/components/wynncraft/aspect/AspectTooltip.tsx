@@ -1,20 +1,7 @@
 'use client'
 
+import { Aspect } from '@/types/aspectType'
 import { useState, ReactNode, MouseEvent } from 'react'
-
-interface AspectTier {
-    threshold: number
-    description: string[]
-}
-
-export interface Aspect {
-    aspectId: string
-    name: string
-    rarity: string
-    requiredClass: string
-    tiers: Record<string, AspectTier>
-    description: string
-}
 
 interface AspectTooltipProps {
     aspect: Aspect
@@ -74,7 +61,7 @@ export function AspectTooltip({
             {children}
             {open && (
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-20 pointer-events-none">
-                    <div className="bg-popover border border-border rounded-lg shadow-xl p-4 min-w-[300px] max-w-[500px]">
+                    <div className="bg-popover border border-border rounded-lg shadow-xl p-4 min-w-[400px] max-w-[600px]">
                         <p className="font-bold text-base mb-2">{aspect.name}</p>
                         {currentTier && (
                             <div className="bg-muted/40 border border-border rounded-xl p-3 space-y-2 text-xs">
