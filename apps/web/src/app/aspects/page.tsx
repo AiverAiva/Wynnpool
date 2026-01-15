@@ -11,6 +11,7 @@ import Countdown from '@/components/custom/countdown'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import api from '@/lib/api'
+import { Aspect } from '@/types/aspectType'
 
 type LootCategory = 'Mythic' | 'Fabled' | 'Legendary'
 type LootSection = 'TNA' | 'TCC' | 'NOL' | 'NOTG'
@@ -19,20 +20,6 @@ interface LootData {
   Loot: Record<LootSection, Record<LootCategory, string[]>>
   Icon: Record<string, string>
   Timestamp: number
-}
-
-interface AspectTier {
-  threshold: number
-  description: string[]
-}
-
-interface Aspect {
-  aspectId: string
-  name: string
-  rarity: string
-  requiredClass: string
-  tiers: Record<string, AspectTier>
-  description?: string
 }
 
 function renderTierHighlight(aspect: Aspect, currentTierKey?: string, showHint = true) {
