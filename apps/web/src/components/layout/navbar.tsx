@@ -78,7 +78,7 @@ export function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger
-                  className={`transition-colors hover:text-foreground/80 ${isActive(['/aspects', '/lootrun']) ? 'text-foreground' : 'text-foreground/60'
+                  className={`transition-colors hover:text-foreground/80 ${isActive(['/raidpool', '/lootrun']) ? 'text-foreground' : 'text-foreground/60'
                     } `}
                 >
                   Lootpool
