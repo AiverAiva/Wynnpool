@@ -35,6 +35,17 @@ const creditCategories: CreditCategory[] = [
                 description: "Official API providing player, guild, and game data.",
                 url: "https://docs.wynncraft.com",
             },
+            {
+                name: "nori.fish",
+                description: "Feature inspiration. Early stage data support, APIs.",
+                url: "https://nori.fish",
+                author: "Rawfish",
+            },
+            {
+                name: "Wynnventory API",
+                description: "Unofficial API used for fetching lootpools, price data, and some other information for analysis.",
+                url: "https://www.wynnventory.com/",
+            },
         ],
     },
     {
@@ -66,12 +77,6 @@ const creditCategories: CreditCategory[] = [
             {
                 name: "Wynndata",
                 description: "UI inspiration and a tribute to a beloved community resource.",
-            },
-            {
-                name: "nori.fish",
-                description: "Feature inspiration.",
-                url: "https://nori.fish",
-                author: "Rawfish",
             },
         ],
     },
