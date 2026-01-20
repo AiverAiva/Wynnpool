@@ -239,7 +239,9 @@ export function ClassAspectFinder() {
                               </div>
                               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                                 {rarityItems.map((item, idx) => (
-                                  <LootItem key={`${item.name}-${idx}`} item={item} />
+                                  <AspectTooltipWrapper key={`${item.name}-${idx}`} name={item.name}>
+                                    <LootItem item={item} />
+                                  </AspectTooltipWrapper>
                                 ))}
                               </div>
                             </div>
