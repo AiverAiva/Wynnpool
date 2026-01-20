@@ -6,8 +6,9 @@ import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { AspectTooltip, type Aspect } from "@/components/wynncraft/aspect/AspectTooltip"
+import { AspectTooltip } from "@/components/wynncraft/aspect/AspectTooltip"
 import api from "@/lib/api"
+import { Aspect } from "@/types/aspectType"
 
 export default function AspectBrowser() {
     const [aspects, setAspects] = useState<Aspect[]>([])

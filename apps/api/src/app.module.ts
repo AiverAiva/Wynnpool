@@ -16,6 +16,7 @@ import { UsersModule } from './users/users.module';
 import { CacheModule } from '@nestjs/cache-manager';
 import { ServerModule } from 'server/server.module';
 import { AspectModule } from 'aspect/aspect.module';
+import { RaidpoolModule } from './raidpool/raidpool.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { AspectModule } from 'aspect/aspect.module';
     ServerModule,
     LeaderboardModule,
     AuthModule,
+    RaidpoolModule,
   ],
   controllers: [AppController],
   providers: [AppService,
