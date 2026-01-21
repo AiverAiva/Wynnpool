@@ -5,7 +5,7 @@ import ItemWeightedLB from "./item-weighted-lb";
 import Link from "next/link";
 import SubmitRankingModal from "./submit-ranking-modal";
 import { Button } from "@/components/ui/button";
-import { Item } from "@/types/itemType";
+import type { Item } from "@wynnpool/shared";
 import { ItemIcon } from "@/components/custom/WynnIcon";
 import api from "@/lib/api";
 

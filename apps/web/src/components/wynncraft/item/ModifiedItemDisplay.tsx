@@ -5,7 +5,7 @@ import type React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Item } from "@/types/itemType"
+import type { Item } from "@wynnpool/shared"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getClassInfo } from "@/types/classType"
 import { ItemIcon } from "../../custom/WynnIcon"
@@ -49,7 +49,7 @@ const getTrendIcon = (diff: number, key: string) => {
 
 const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem }) => {
   const { before, after } = modifiedItem
-  
+
   after.itemName = modifiedItem.itemName
   return (
     <Card className="w-full max-w-2xl mx-auto h-fit font-ascii text-[#AAAAAA]">

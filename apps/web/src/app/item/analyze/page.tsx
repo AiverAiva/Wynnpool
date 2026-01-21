@@ -423,7 +423,13 @@ export default function Home() {
       if (potentialRankOverall !== -1 && potentialRankOverall <= 10) {
         // Count only identifications that are objects for overall threshold, and scaled >= 0.04 (4%)
         const overallValidIdCount = Object.entries(itemData.original?.identifications || {})
-          .filter(([_, v]) => typeof v === 'object' && v !== null && typeof v.raw === 'number' && Math.abs(v.raw) >= 0.04)
+          .filter(([_, v]) =>
+            typeof v === 'object' &&
+            v !== null && 
+            "raw" in v &&
+            typeof (v as any).raw === "number" &&
+            Math.abs((v as any).raw) >= 0.04
+          )
           .length;
         const overallThreshold = getStatThreshold(overallValidIdCount);
         if (userItemOverallScore >= overallThreshold) {

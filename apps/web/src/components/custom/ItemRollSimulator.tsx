@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { CombatItem } from "@/types/itemType"
+import type { CombatItem } from "@wynnpool/shared"
 import { Dice1Icon as Dice, AlertTriangle, ChevronUpIcon, ChevronDownIcon } from "lucide-react"
 import type React from "react"
 import { useEffect, useState, useCallback, useRef } from "react"
