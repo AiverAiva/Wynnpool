@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import api from "@/lib/api"
-import { LootData } from "@/app/raidpool/_component/loot-display"
+import { LootData } from "@/app/raid/_component/loot-display"
 import { RaidpoolContext } from "../context/RaidpoolContext"
 
 type Selection = {
