@@ -1,6 +1,6 @@
 'use client'
 
-import { LootData } from "@/app/raidpool/_component/loot-display"
+import { LootData } from "@/app/raid/_component/loot-display"
 import { createContext, useContext } from "react"
 
 interface RaidpoolState {

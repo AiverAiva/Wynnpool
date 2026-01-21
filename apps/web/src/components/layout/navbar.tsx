@@ -35,8 +35,8 @@ const navCategories = [
   {
     category: 'Lootpool',
     items: [
+      { name: 'Raid', href: '/raid' },
       { name: 'Lootrun', href: '/lootrun' },
-      { name: 'Raidpool', href: '/raidpool' },
     ],
   },
   {
@@ -78,15 +78,15 @@ export function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger
-                  className={`transition-colors hover:text-foreground/80 ${isActive(['/raidpool', '/lootrun']) ? 'text-foreground' : 'text-foreground/60'
+                  className={`transition-colors hover:text-foreground/80 ${isActive(['/raid', '/lootrun']) ? 'text-foreground' : 'text-foreground/60'
                     } `}
                 >
                   Lootpool
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
-                    <ListItem href="/raidpool" title="Raidpool" className={pathname === "/raidpool" ? 'bg-accent/50' : ''}>
-                      A page where you can find information about the raidpool and planner.
+                    <ListItem href="/raid" title="Raid" className={pathname === "/raid  " ? 'bg-accent/50' : ''}>
+                      A page where you can find information about the raid pool and planner.
                     </ListItem>
                     <ListItem href="/lootrun" title="Lootrun" className={pathname === "/lootrun" ? 'bg-accent/50' : ''}>
                       Lootrun pool from every area in game, with detailed infomation.
