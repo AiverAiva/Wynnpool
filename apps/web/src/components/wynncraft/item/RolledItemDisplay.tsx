@@ -2,13 +2,14 @@
 
 import { Card, CardTitle } from "@/components/ui/card";
 import { getRollPercentageColor, getRollPercentageString, processIdentification } from '@/lib/itemUtils';
-import { CombatItem, type ItemIconObject, Powder } from "@/types/itemType";
+import type { CombatItem, ItemIconObject } from "@wynnpool/shared"
 import React from 'react';
 import { ItemIcon } from "@/components/custom/WynnIcon";
 import { Badge } from "@/components/ui/badge";
 import '@/assets/css/wynncraft.css'
 import { RolledIdentifications } from "./Identifications";
 import PowderSlots from "./PowderSlots";
+import { Powder } from "@/types/itemType";
 
 interface ItemDisplayProps {
     data: ItemAnalyzeData;
@@ -95,7 +96,7 @@ const RolledItemDisplay: React.FC<ItemDisplayPropsWithWrapper> = ({ data, withCa
                             />
                         )}
                         <div className={`flex text-${original.rarity} text-sm font-thin space-x-2`}>
-                            <p>{original.rarity.charAt(0).toUpperCase() + original.rarity.slice(1)} Item</p>
+                            <p>{original.rarity!.charAt(0).toUpperCase() + original.rarity!.slice(1)} Item</p>
                             {input.rerollCount && <span>[{input.rerollCount}]</span>}
                         </div>
                     </div>
@@ -162,7 +163,7 @@ export const ItemHeader: React.FC<ItemHeaderProps> = ({ item, shinyStat, overall
             )}
             <div className="flex justify-center items-center">
                 <Badge className={`bg-${item.rarity}`}>
-                    <p className={`text-${item.rarity} brightness-[.3] font-thin`}>{item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)} Item</p>
+                    <p className={`text-${item.rarity} brightness-[.3] font-thin`}>{item.rarity!.charAt(0).toUpperCase() + item.rarity!.slice(1)} Item</p>
                 </Badge>
             </div>
         </div>

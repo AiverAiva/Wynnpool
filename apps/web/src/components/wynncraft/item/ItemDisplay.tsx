@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { getFormattedIdNumber, getIdentificationColor, getIdentificationInfo } from "@/lib/itemUtils"
-import { Item } from "@/types/itemType"
+import type { Item } from "@wynnpool/shared"
 import Image from 'next/image'
 import Link from "next/link"
 import { ItemIcon } from "../../custom/WynnIcon"
@@ -107,7 +107,7 @@ const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
       {isCombatItem && (
         <div className="flex justify-center items-center">
           <Badge className={`bg-${item.rarity}`}>
-            <p className={`text-${item.rarity} brightness-[.3] font-thin`}>{item.rarity.charAt(0).toUpperCase() + item.rarity.slice(1)} Item</p>
+            <p className={`text-${item.rarity} brightness-[.3] font-thin`}>{item.rarity!.charAt(0).toUpperCase() + item.rarity!.slice(1)} Item</p>
           </Badge>
         </div>
       )}
@@ -123,7 +123,7 @@ const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
 const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embeded = false }) => {
   const isCombatItem = item.type == 'weapon' || item.type === 'armour' || item.type === 'accessory' || item.type === 'tome' || item.type === 'charm'
   const itemName = item.itemName ?? item.id ?? item.internalName;
-  
+
   return (
     <div className="space-y-4 p-6 pt-0">
       {item.type == 'weapon' && <AttackSpeed attackSpeed={item.attackSpeed} />}

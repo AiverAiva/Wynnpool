@@ -4,7 +4,7 @@ import React from 'react';
 import { StarRating } from './StarRating';
 import { getFormattedIdNumber, getIdentificationColor, getIdentificationInfo, getRollPercentageColor, getRollPercentageString } from '@/lib/itemUtils';
 import { cn } from '@/lib/utils';
-import { IdentificationsObject, IdentificationValue } from '@/types/itemType';
+import type { IdentificationsObject, IdentificationValue } from '@wynnpool/shared';
 
 
 interface RolledIdentification {

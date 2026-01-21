@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { useEffect, useState } from "react";
-import { CombatItem } from "@/types/itemType";
+import type { CombatItem } from "@wynnpool/shared";
 import { calculateIdentificationRoll, getRollPercentageString } from "@/lib/itemUtils";
 import { ArrowDownWideNarrow, ArrowUpNarrowWide } from "lucide-react";
 import api from "@/lib/api";

@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator"
 import { ChevronDown, ChevronUp, Clock, Plus, Minus, RefreshCw } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { Item, ItemChangelog } from "@/types/itemType"
+import type { Item, ItemChangelog } from "@wynnpool/shared"
 import { ItemDisplay } from "./ItemDisplay"
 import ModifiedItemDisplay from "./ModifiedItemDisplay"
 

@@ -2,7 +2,7 @@
 
 import '@/assets/css/wynncraft.css'
 import type React from "react"
-import type { Item } from "@/types/itemType"
+import type { Item } from "@wynnpool/shared"
 import { AlertCircle, Clock, Search, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { Input } from "../ui/input"

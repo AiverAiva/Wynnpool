@@ -16,7 +16,7 @@ import { ItemIcon } from "@/components/custom/WynnIcon";
 import api from "@/lib/api";
 
 // Use the Item type from the shared types to match ItemIcon's expectations
-import type { Item } from "@/types/itemType";
+import type { Item } from "@wynnpool/shared";
 
 interface Weight {
   _id?: string;

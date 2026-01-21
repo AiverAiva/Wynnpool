@@ -12,7 +12,7 @@ import {
 import ItemModal from "./item-modal";
 import Link from "next/link";
 import { ItemIcon } from "@/components/custom/WynnIcon";
-import { Item } from "@/types/itemType";
+import type { Item } from "@wynnpool/shared";
 import api from "@/lib/api";
 
 type ItemEntry = [string, any];
