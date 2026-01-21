@@ -1,5 +1,5 @@
 
-import { Item } from '@/types/itemType';
+import type { Item } from '@wynnpool/shared';
 import React, { FC } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';

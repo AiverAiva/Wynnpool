@@ -12,7 +12,7 @@ import ItemHistory from '@/components/wynncraft/item/ItemHistory';
 import api from '@/lib/api';
 import { getIdentificationCost } from '@/lib/itemUtils';
 import { cn } from '@/lib/utils';
-import { Item } from '@/types/itemType';
+import type { Item } from '@wynnpool/shared';
 import { Check, Copy, Dices } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -307,7 +307,7 @@ export default function ItemComponent({ itemName }: { itemName: string }) {
                                 <TableBody>
                                     {(() => {
                                         const rerolls = [];
-                                        let currentCost = getIdentificationCost(itemData.rarity, itemData.requirements?.level || 0);
+                                        let currentCost = getIdentificationCost(itemData.rarity!, itemData.requirements?.level || 0);
                                         let rerollCount = 1;
                                         const maxSTX = 29 * 64 * 4096; //29stx
 

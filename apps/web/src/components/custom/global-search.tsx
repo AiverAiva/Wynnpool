@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import type { Item } from "@/types/itemType"
+import type { Item } from "@wynnpool/shared"
 import { AlertCircle, Clock, Search, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { Input } from "../ui/input"
@@ -373,7 +373,7 @@ const GlobalSearch: React.FC<any> = () => {
                                   <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
                                     <CardContent className="flex flex-col justify-between p-2 h-full">
                                       <div className="flex items-center gap-3">
-                                        <img src={`https://vzge.me/face/128/${uuid}.png`} alt={name} className="w-8 h-8" loading="lazy"/>
+                                        <img src={`https://vzge.me/face/128/${uuid}.png`} alt={name} className="w-8 h-8" loading="lazy" />
                                         <div>
                                           <span className="font-mono">{getPlayerDisplayName(name)}</span>
                                         </div>

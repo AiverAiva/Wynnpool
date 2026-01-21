@@ -1,5 +1,5 @@
 import { getImageSrc } from "@/components/custom/WynnIcon";
-import { Item } from "@/types/itemType";
+import type { Item } from "@wynnpool/shared";
 import api from "@/lib/api";
 
 export default function PlayerLayout({

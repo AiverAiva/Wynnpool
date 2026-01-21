@@ -2,7 +2,7 @@
 
 import { getIdentificationInfo } from '@/lib/itemUtils';
 import { getClassInfo } from '@/types/classType';
-import { ItemRequirement } from '@/types/itemType';
+import type { ItemRequirement } from "@wynnpool/shared"
 import React from 'react';
 
 const Requirements: React.FC<ItemRequirement> = (requirements) => {

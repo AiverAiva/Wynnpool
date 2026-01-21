@@ -3,14 +3,11 @@
 import { getFormattedIdNumber, getIdentificationInfo } from '@/lib/itemUtils';
 import { cn } from '@/lib/utils';
 import { colorMap, textMap } from '@/map/itemMap';
-import { IdentificationValue } from '@/types/itemType';
+import type { IdentificationsObject, IdentificationValue } from '@wynnpool/shared';
 import '@/assets/css/wynncraft.css'
-import React from 'react';
-
-interface BaseStatsProps {
-  [key: string]: IdentificationValue
-}
-const BaseStats: React.FC<BaseStatsProps> = (base) => {
+import React from 'react'; 
+ 
+const BaseStats: React.FC<IdentificationsObject> = (base) => {
   return (
     <ul className="list-disc list-inside text-sm">
       {Object.entries(base).map(([name, value]) => (

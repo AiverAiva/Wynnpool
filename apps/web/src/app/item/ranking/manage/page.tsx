@@ -33,7 +33,7 @@ import { cn } from "@/lib/utils"
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip'
 import api from '@/lib/api'
 import { ItemIcon } from '@/components/custom/WynnIcon'
-import { Item } from '@/types/itemType'
+import type { Item } from '@wynnpool/shared';
 import SubmitRankingModal from '../submit-ranking-modal'
 
 interface ItemEntry {

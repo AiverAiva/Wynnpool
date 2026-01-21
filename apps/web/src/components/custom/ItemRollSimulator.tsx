@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { CombatItem } from "@/types/itemType"
+import type { CombatItem } from "@wynnpool/shared"
 import { Dice1Icon as Dice, AlertTriangle, ChevronUpIcon, ChevronDownIcon } from "lucide-react"
 import type React from "react"
 import { useEffect, useState, useCallback, useRef } from "react"
@@ -145,10 +145,10 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
     }, [item.identifications, ampTier, selectedAugment, lockedIdentification, RolledIdentifications, setRerollCount, setRolledIdentifications, setItemOverall]);
 
     // Effect to perform the first roll when the component mounts or item changes
-     useEffect(() => {
+    useEffect(() => {
         stableSimulateRoll();
         setRerollCount(0);
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [item]); // stableSimulateRoll is memoized, item is the trigger
 
 
