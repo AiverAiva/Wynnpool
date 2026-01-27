@@ -31,13 +31,19 @@ const RARITY_RANK = Object.fromEntries(
     RARITY_ORDER.map((r, i) => [r.toLowerCase(), i])
 )
 
+const REGION_ORDER = ["COTL", "Corkus", "Molten Heights", "Sky Islands", "Silent Expanse"] as const
+
 const REGION_NAMES: Record<string, string> = {
-    // Corkus: "Corkus",
-    // Sky: "Sky Islands",
-    // Molten: "Molten Depths",
-    // SE: "Silent Expanse",
     COTL: "Canyon of the Lost",
+    "Corkus": "Corkus",
+    "Molten Heights": "Molten Heights",
+    "Sky Islands": "Sky Islands",
+    "Silent Expanse": "Silent Expanse",
 }
+
+const REGION_RANK = Object.fromEntries(
+    REGION_ORDER.map((id, i) => [id, i])
+)
 
 function getCategoryType(item: Item): Category {
     switch (item.itemType) {
@@ -100,12 +106,23 @@ export function LootRunDisplay() {
     const { data, loading, error } = useLootrun()
     const [activeRegion, setActiveRegion] = useState<string>("")
 
+    // Calculate and sort regions
+    const sortedRegions = useMemo(() => {
+        if (!data?.regions) return []
+        return [...data.regions].sort((a, b) => {
+            const rankA = REGION_RANK[a.region] ?? Infinity
+            const rankB = REGION_RANK[b.region] ?? Infinity
+            return rankA - rankB
+        })
+    }, [data?.regions])
+
     // Set first region as default when data loads
     useEffect(() => {
-        if (data?.regions && data.regions.length > 0 && !activeRegion) {
-            setActiveRegion(data.regions[0].region)
+        if (sortedRegions.length > 0 && !activeRegion) {
+            setActiveRegion(sortedRegions[0].region)
         }
-    }, [data, activeRegion])
+    }, [sortedRegions, activeRegion])
+
     const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
         Gear: true,
         Tome: false,
@@ -114,16 +131,14 @@ export function LootRunDisplay() {
         Misc: false
     })
 
-    // Calculate totals
-    const allItems = useMemo(() => data?.regions.flatMap((r) => r.items) ?? [], [data?.regions])
+    const allItems = useMemo(() => sortedRegions.flatMap((r) => r.items) ?? [], [sortedRegions])
     const totalItems = allItems.length
     const shinyCount = allItems.filter((item) => item.shiny).length
     const mythicCount = allItems.filter((item) => item.rarity === "Mythic").length
 
     const currentRegions = useMemo(() => {
-        if (!data?.regions) return []
-        return data.regions.filter(r => r.region === activeRegion)
-    }, [data?.regions, activeRegion])
+        return sortedRegions.filter(r => r.region === activeRegion)
+    }, [sortedRegions, activeRegion])
 
     const toggleCategory = (category: string) => {
         setExpandedCategories(prev => ({
@@ -166,7 +181,7 @@ export function LootRunDisplay() {
 
             <Tabs value={activeRegion} onValueChange={setActiveRegion} className="w-full">
                 <TabsList className="bg-transparent border-b border-border rounded-none h-auto p-0 w-full flex overflow-x-auto scrollbar-hide mb-6">
-                    {data.regions.map((region) => (
+                    {sortedRegions.map((region) => (
                         <TabsTrigger
                             key={region.region}
                             value={region.region}
