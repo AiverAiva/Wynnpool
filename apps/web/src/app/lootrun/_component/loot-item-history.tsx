@@ -32,7 +32,7 @@ export function LootrunItemHistory() {
                         /lootrun/legacy/
                         <ExternalLink className="h-3 w-3" />
                     </Link>
-                    , but its no longer being maintained.
+                    , but it's no longer being maintained.
                 </p>
             </div>
         </div>
