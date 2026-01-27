@@ -74,7 +74,7 @@ export function LootItem({ item }: { item: Item }) {
         styles.bg,
         "hover:shadow-xl hover:shadow-black/20",
       )}
-    > 
+    >
       {/* Icon with hover effect */}
       <div
         className={cn(
