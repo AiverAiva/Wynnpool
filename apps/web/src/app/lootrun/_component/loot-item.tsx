@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils"
 import { Sword, Gem, BookOpen, Zap, Sparkles, CircleDot, Package, Star, Key } from "lucide-react"
 import { getRarityStyles } from "@/lib/colorUtils"
+import { ItemIcon, ItemTypeIcon } from "@/components/custom/WynnIcon"
+import Image from "next/image"
 
 export interface ShinyStat {
   shinyRerolls: number
@@ -24,16 +26,51 @@ export interface Item {
   shinyStat?: ShinyStat | null
 }
 
-function getItemIcon(itemType: string) {
-  switch (itemType) {
+
+function getItemIcon(item: Item) {
+  // If we have a specific icon from the API, use it
+  if (item.icon) {
+    const compatibleItem = {
+      type: item.itemType === "GearItem" ? (["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"].includes(item.subtype) ? "armour" : "weapon") : item.itemType.replace("Item", "").toLowerCase(),
+      armourType: item.subtype.toLowerCase(),
+      armourMaterial: "leather", // Default to leather for texture lookup if material is missing
+      icon: item.icon,
+      internalName: item.name
+    }
+    return <ItemIcon item={compatibleItem as any} size={32} />
+  }
+
+  // Fallback to ItemTypeIcon based on subtype
+  const subtypeKey = item.subtype?.toLowerCase()
+  if (subtypeKey) {
+    const validIcons = ["bow", "spear", "wand", "dagger", "relik", "helmet", "chestplate", "leggings", "boots", "ring", "bracelet", "necklace", "tome", "charm"]
+    if (validIcons.includes(subtypeKey)) {
+      return <ItemTypeIcon type={subtypeKey} size={32} />
+    }
+  }
+
+  // Special case for types not in validIcons but in WynnIcon logic
+  if (item.itemType === "TomeItem") return <ItemTypeIcon type="tome" size={32} />
+
+  // Specific fallbacks for common types
+  switch (item.itemType) {
     case "GearItem":
       return <Sword className="h-5 w-5" />
     case "AspectItem":
+      const aspectClass = item.subtype?.split("Aspect")[0].toLowerCase()
+      if (aspectClass) {
+        return (
+          <Image
+            unoptimized
+            src={`/icons/aspects/${aspectClass}.png`}
+            alt={`${aspectClass} aspect icon`}
+            width={32}
+            height={32}
+            className="w-8 h-8 [image-rendering:pixelated]"
+          />
+        )
+      }
       return <Sparkles className="h-5 w-5" />
-    case "TomeItem":
-      return <BookOpen className="h-5 w-5" />
-    case "AmplifierItem":
-      return <Zap className="h-5 w-5" />
     case "EmeraldItem":
       return <Gem className="h-5 w-5" />
     case "PowderItem":
@@ -43,7 +80,28 @@ function getItemIcon(itemType: string) {
     case "RuneItem":
       return <Star className="h-5 w-5" />
     case "InsulatorItem":
-      return <Zap className="h-5 w-5" />
+      return (
+        <Image
+          unoptimized
+          src="/icons/items/insulator.png"
+          alt="Insulator icon"
+          width={32}
+          height={32}
+          className="w-8 h-8 [image-rendering:pixelated]"
+        />
+      )
+    case "AmplifierItem":
+    case "SimulatorItem":
+      return (
+        <Image
+          unoptimized
+          src="/icons/items/simulator.png"
+          alt="Simulator icon"
+          width={32}
+          height={32}
+          className="w-8 h-8 [image-rendering:pixelated]"
+        />
+      )
     default:
       return <Package className="h-5 w-5" />
   }
@@ -59,6 +117,8 @@ function getItemTypeLabel(itemType: string, subtype?: string) {
       return "Tome"
     case "AmplifierItem":
       return "Amplifier"
+    case "SimulatorItem":
+      return "Simulator"
     case "EmeraldItem":
       return "Currency"
     case "PowderItem":
@@ -105,7 +165,7 @@ export function LootItem({ item, showShinyDetails = false }: { item: Item; showS
           styles.icon,
         )}
       >
-        {getItemIcon(item.itemType)}
+        {getItemIcon(item)}
       </div>
 
       {/* Content */}
