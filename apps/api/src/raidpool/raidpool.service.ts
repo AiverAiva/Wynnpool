@@ -34,7 +34,7 @@ export class RaidpoolService {
     const now = Date.now();
     //1 hit cache
     const cached = this.raidpoolCache.get(id);
-    if (cached && cached.expiresAt > now) {
+    if (cached && cached.expiresAt > now && cached.value.regions.length === 4) {
       return cached.value;
     }
 
@@ -118,7 +118,7 @@ export class RaidpoolService {
 
     //1 hit cache
     const cached = this.gambitsCache.get(key);
-    if (cached && cached.expiresAt > now) {
+    if (cached && cached.expiresAt > now && cached.value.gambits?.length === 4) {
       return cached.value;
     }
 

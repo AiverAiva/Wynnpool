@@ -28,7 +28,7 @@ export class LootrunService {
 
     // 1. hit cache
     const cached = this.lootpoolCache.get(id);
-    if (cached && cached.expiresAt > now) {
+    if (cached && cached.expiresAt > now && cached.value.regions.length === 5) {
       return cached.value;
     }
 
