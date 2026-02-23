@@ -105,6 +105,7 @@ function FooterLink({
         <Link
             href={href}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            prefetch={false}
         >
             {children}
         </Link>
