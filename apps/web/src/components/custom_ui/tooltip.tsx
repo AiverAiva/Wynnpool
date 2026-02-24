@@ -7,9 +7,52 @@ import { cn } from "@/lib/utils"
 
 const TooltipProvider = TooltipPrimitive.Provider
 
-const Tooltip = TooltipPrimitive.Root
+const TooltipContext = React.createContext<{
+  open: boolean
+  setOpen: (open: boolean) => void
+} | null>(null)
 
-const TooltipTrigger = TooltipPrimitive.Trigger
+const Tooltip = ({
+  ...props
+}: React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>) => {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <TooltipContext.Provider value={{ open, setOpen }}>
+      <TooltipPrimitive.Root
+        open={props.open !== undefined ? props.open : open}
+        onOpenChange={(val) => {
+          setOpen(val)
+          props.onOpenChange?.(val)
+        }}
+        {...props}
+      />
+    </TooltipContext.Provider>
+  )
+}
+
+const TooltipTrigger = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger> & {
+    asChild?: boolean
+  }
+>(({ className, asChild = false, ...props }, ref) => {
+  const context = React.useContext(TooltipContext)
+
+  return (
+    <TooltipPrimitive.Trigger
+      ref={ref}
+      asChild={asChild}
+      className={className}
+      {...props}
+      onClick={(e) => {
+        context?.setOpen(!context?.open)
+        props.onClick?.(e)
+      }}
+    />
+  )
+})
+TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
