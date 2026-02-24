@@ -16,7 +16,7 @@ import { ChevronDown, ChevronUp, ExternalLink, Info, Shield, Trophy, Users, Map 
 import api from '@/lib/api'
 import { calculateGuildXPRequired, getMaxGuildMembers } from '@/lib/guildUtils'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/custom_ui/tooltip'
 
 function formatTimeAgo(timestamp: number | string | undefined): string {
     if (!timestamp) return 'Never';

@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/popover"
 import { Search, User, Sword, Shield, Sparkles, Clock, RefreshCw, ChevronDown, Check, AlertCircle, Database } from 'lucide-react'
 import { cn } from "@/lib/utils"
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip'
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/custom_ui/tooltip'
 import api from '@/lib/api'
 import { ItemIcon } from '@/components/custom/WynnIcon'
 import type { Item } from '@wynnpool/shared';
