@@ -146,13 +146,36 @@ export function ClassAspectFinder() {
 
       {/* Class Selection */}
       <Tabs value={selectedClass} onValueChange={(v) => setSelectedClass(v as ClassId)} className="w-full">
-        <TabsList className="bg-muted/30 h-auto p-1.5 gap-1 w-full flex-1 justify-between">
+        <TabsList
+          className="
+            bg-muted/30
+            p-1.5
+            gap-1
+            w-full
+            grid
+            grid-cols-1
+            sm:grid-cols-5
+            h-auto
+            overflow-visible
+          "
+        >
           {CLASSES.map((cls) => {
             return (
               <TabsTrigger
                 key={cls.id}
                 value={cls.id}
-                className="data-[state=active]:bg-background data-[state=active]:shadow-sm flex-grow text-sm font-medium gap-3"
+                className="
+                  w-full
+                  min-w-0
+                  data-[state=active]:bg-background
+                  data-[state=active]:shadow-sm
+                  text-sm
+                  font-medium
+                  gap-3
+                  flex
+                  items-center
+                  justify-center
+                "
               >
                 {cls.icon}
                 {cls.label}
