@@ -9,7 +9,7 @@ import { getPlayerDisplayName, Player, PlayerBase, QuestList } from '@/types/pla
 import { Spinner } from '@/components/ui/spinner';
 import GuildEventDisplay from '@/components/custom/guild-event-display';
 import Link from 'next/link';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/custom_ui/tooltip"
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
