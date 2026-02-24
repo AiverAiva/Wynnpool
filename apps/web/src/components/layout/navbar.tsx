@@ -6,21 +6,23 @@ import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ModeToggle } from '@/components/layout/mode-toggle'
-import { ExternalLink, Menu } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import React from 'react'
 import UserAuthDisplay from './user-auth-display'
 import { GlobalSearch } from './global-search'
+
+interface NavbarProps {
+  user: any | null
+}
 
 const navCategories = [
   {
@@ -52,7 +54,7 @@ const navCategories = [
   },
 ];
 
-export function Navbar() {
+export function Navbar({ user }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   function isActive(triggerPaths: string[]) {
@@ -85,7 +87,7 @@ export function Navbar() {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
-                    <ListItem href="/raid" title="Raid" className={pathname === "/raid  " ? 'bg-accent/50' : ''}>
+                    <ListItem href="/raid" title="Raid" className={pathname === "/raid" ? 'bg-accent/50' : ''}>
                       A page where you can find information about the raid pool and planner.
                     </ListItem>
                     <ListItem href="/lootrun" title="Lootrun" className={pathname === "/lootrun" ? 'bg-accent/50' : ''}>
@@ -179,7 +181,7 @@ export function Navbar() {
           <div className='space-x-2 flex-grow flex justify-end items-center'>
             <GlobalSearch />
             <ModeToggle />
-            <UserAuthDisplay />
+            <UserAuthDisplay user={user} />
           </div>
         </div>
       </div>

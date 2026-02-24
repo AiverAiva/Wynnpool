@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Inter } from "next/font/google"
 import { Footer } from "@/components/layout/footer";
 import { Providers } from "./providers";
+import { getCurrentUser } from "@/lib/server-auth";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,13 +22,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   modal,
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
 }>) {
+  const user = await getCurrentUser();
+
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
@@ -48,7 +51,7 @@ export default function RootLayout({
         className={`font-sans antialiased`}
       >
         <Providers>
-          <Navbar />
+          <Navbar user={user} />
           <SponsoredWhale />
           <Toaster />
           {children}

@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,44 +10,18 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, User, Settings, Shield, Sparkles } from "lucide-react";
+import { LogOut, User, Settings, Sparkles } from "lucide-react";
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-// Helper to fetch user info from the new API endpoint
-async function fetchUser() {
-    try {
-        const res = await fetch(api("/user/me/quick"), { credentials: "include" });
-        if (!res.ok) return null;
-        return await res.json();
-    } catch {
-        return null;
-    }
+interface UserAuthDisplayProps {
+    user: any | null;
 }
 
-export default function UserAuthDisplay() {
-    const [user, setUser] = useState<any | null>(null);
-    const [loading, setLoading] = useState(true);
-
-    // add router hook for client-side navigation
+export default function UserAuthDisplay({ user }: UserAuthDisplayProps) {
     const router = useRouter();
-
-    useEffect(() => {
-        fetchUser().then((u) => {
-            setUser(u && u.discordId ? u : null);
-            setLoading(false);
-        });
-    }, []);
-
-    if (loading) {
-        return (
-            <div className="flex items-center gap-2">
-                <div className="h-9 w-9 rounded-full bg-muted/50 animate-pulse border border-border/50" />
-            </div>
-        );
-    }
 
     if (user) {
         const userName = user.discordProfile?.global_name || user.discordProfile?.username || "User";
@@ -79,7 +52,6 @@ export default function UserAuthDisplay() {
 
                 <DropdownMenuContent
                     className="p-1.5 z-50 min-w-[240px] bg-background/60 shadow-[0_8px_32px_0_rgba(31,38,31,0.37)] backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl overflow-hidden"
-                    // shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] 
                     align="end"
                     sideOffset={8}
                 >
@@ -99,12 +71,6 @@ export default function UserAuthDisplay() {
                             <div className="flex flex-col min-w-0">
                                 <span className="text-sm font-bold truncate tracking-tight">{userName}</span>
                                 <span className="text-[10px] text-muted-foreground truncate opacity-80">@{discordTag}</span>
-                                {/* <div className="mt-1 flex items-center">
-                                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">
-                                        <Shield className="size-2 mr-1" />
-                                        MEMBER
-                                    </span>
-                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -131,8 +97,7 @@ export default function UserAuthDisplay() {
                     <DropdownMenuItem
                         onClick={async () => {
                             await fetch(api('/auth/logout'), { credentials: 'include' });
-                            setUser(null);
-                            window.location.reload();
+                            router.refresh();
                         }}
                         className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-lg transition-colors hover:bg-red-500/10 focus:bg-red-500/20 focus:text-red-500 group text-red-500/80"
                     >
