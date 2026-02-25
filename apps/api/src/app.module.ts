@@ -18,6 +18,7 @@ import { ServerModule } from 'server/server.module';
 import { AspectModule } from 'aspect/aspect.module';
 import { RaidpoolModule } from './raidpool/raidpool.module';
 import { LootrunModule } from './lootrun/lootrun.module';
+import { WynncraftModule } from './wynncraft/wynncraft.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { LootrunModule } from './lootrun/lootrun.module';
     AuthModule,
     RaidpoolModule,
     LootrunModule,
+    WynncraftModule,
   ],
   controllers: [AppController],
   providers: [AppService,
