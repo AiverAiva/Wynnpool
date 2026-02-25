@@ -1,11 +1,7 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import WynncraftNews from '@/components/custom/lastest-news'
 import ServerStatusDisplay from '@/components/custom/server-status'
 import { SparklesText } from '@/components/ui/sparkles-text'
-import { ChangelogList } from "@/components/custom/changelog-list"
 import { MeshGradientSVG } from "@/components/custom/mesh-gradient-svg"
 import { ScrollDownIndicator } from "@/components/custom/ScrollDownIndicator"
 import PixelBlast from "@/components/custom/PixelBlast"
