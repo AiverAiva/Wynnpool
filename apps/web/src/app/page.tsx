@@ -10,6 +10,7 @@ import { MeshGradientSVG } from "@/components/custom/mesh-gradient-svg"
 import { ScrollDownIndicator } from "@/components/custom/ScrollDownIndicator"
 import PixelBlast from "@/components/custom/PixelBlast"
 import { useMotionSettings } from "@/components/provider/MotionSettingsProvider"
+import WynnPublisher from "@/components/custom/WynnPublisher";
 
 export default function HomePage() {
   const { isReducedMotion } = useMotionSettings();
@@ -64,35 +65,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className="container mx-auto px-4 py-8 max-w-screen-lg">
-        <h2 className="text-2xl font-semibold mb-4">Latest Updates</h2>
-        <Tabs defaultValue="game">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="game">Latest News</TabsTrigger>
-            <TabsTrigger value="items">Item Changelog</TabsTrigger>
-            <TabsTrigger value="events">Events</TabsTrigger>
-          </TabsList>
-          <TabsContent value="game">
-            <WynncraftNews />
-          </TabsContent>
-          <TabsContent value="items">
-            <ChangelogList />
-          </TabsContent>
-          <TabsContent value="events">
-            <Card>
-              <CardHeader>
-                <CardTitle>Upcoming Events (WIP)</CardTitle>
-                <CardDescription>Don't miss out on these limited-time events</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  <li>AAA (Starts June 1st)</li>
-                  <li>BBB (May 15th - 17th)</li>
-                  <li>CCC (Every Saturday)</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+        <WynnPublisher />
       </section>
       <section>
         <ServerStatusDisplay />
