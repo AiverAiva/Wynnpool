@@ -10,7 +10,8 @@ import {
     X,
     Heart,
     Clock,
-    Loader2
+    Loader2,
+    Pin
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { remarkWynnMuted } from "@/lib/markdown/wynn-remark";
@@ -22,6 +23,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 interface ArticleSummary {
     pk: number; title: string; type: "blog" | "event" | "giveaway";
     banner: string; recap: string; published_at: string;
+    pinned?: boolean;
 }
 interface ArticleDetail {
     id: number; created_by: string; title: string; banner: string;
@@ -60,13 +62,66 @@ export default function WynnPublisher() {
         }
     }, [selectedId]);
 
+    // Handle ESC key and browser back button
+    useEffect(() => {
+        if (!selectedId) return;
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                handleCloseModal();
+            }
+        };
+
+        const handlePopState = () => {
+            handleCloseModal();
+        };
+
+        // Add keyboard event listener for ESC key
+        document.addEventListener('keydown', handleKeyDown);
+        
+        // Add popstate listener for browser back button
+        window.addEventListener('popstate', handlePopState);
+
+        // Push a dummy state to enable back button handling
+        // We use replaceState to not add extra history entry
+        const dummyState = { ...history.state };
+        history.replaceState({ ...dummyState, modalOpen: true }, '');
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, [selectedId]);
+
+    // Cleanup modal state when unmounting
+    useEffect(() => {
+        return () => {
+            // Remove modal state from history when component unmounts
+            const state = { ...history.state };
+            if (state.modalOpen) {
+                history.replaceState({ ...state, modalOpen: false }, '');
+            }
+        };
+    }, []);
+
     // Fetch List
     useEffect(() => {
         const fetchArticles = async () => {
             try {
                 const res = await fetch(api("/wynncraft/articles/list/article"));
                 const data = await res.json();
-                if (data?.results) setArticles(Object.values(data.results) as ArticleSummary[]);
+                if (data?.results) {
+                    const allArticles = Object.values(data.results) as ArticleSummary[];
+                    // Sort: pinned articles first, then by published_at descending
+                    const sortedArticles = allArticles.sort((a, b) => {
+                        // Pinned articles come first
+                        if (a.pinned && !b.pinned) return -1;
+                        if (!a.pinned && b.pinned) return 1;
+                        // Then sort by published_at descending
+                        return new Date(b.published_at).getTime() - new Date(a.published_at).getTime();
+                    });
+                    setArticles(sortedArticles);
+                }
             } catch (err) { console.error(err); } finally { setIsLoading(false); }
         };
         fetchArticles();
@@ -122,7 +177,20 @@ export default function WynnPublisher() {
                                         <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-muted-foreground mb-2">
                                             <style.icon className={`w-3 h-3 ${style.text}`} />
                                             <span className={style.text}>{article.type}</span>
-                                            <span>•</span> <span>{formatDate(article.published_at)}</span>
+                                            {article.pinned && (
+                                                <>
+                                                    <span>•</span>
+                                                    <div className="flex items-center gap-1 text-amber-400">
+                                                        <Pin className="w-3 h-3 fill-amber-400" />
+                                                        <span>Featured</span>
+                                                    </div>
+                                                </>
+                                            )}
+                                            {!article.pinned && (
+                                                <>
+                                                    <span>•</span> <span>{formatDate(article.published_at)}</span>
+                                                </>
+                                            )}
                                         </div>
                                         <motion.h3 layoutId={`title-${article.pk}`} className="text-lg font-bold line-clamp-2">{article.title}</motion.h3>
                                         <p className="text-sm text-muted-foreground line-clamp-3 opacity-80">{article.recap}</p>
@@ -134,7 +202,6 @@ export default function WynnPublisher() {
                 )}
             </div>
 
-            {/* Modal - 深度優化手機版與防漏光 */}
             <AnimatePresence>
                 {selectedId && (
                     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center">
@@ -182,7 +249,7 @@ export default function WynnPublisher() {
                                         {/* Prevent Light Leak 2: Inner shadow at edges to prevent anti-aliasing color bleed from bright images */}
                                         <div className="absolute inset-0 shadow-[inset_0_0_2px_rgba(255,255,255,0.1),inset_0_-2px_10px_0px_hsl(var(--background))] z-15" />
 
-                                        <div className="absolute bottom-0 left-0 w-full p-6 sm:p-12 z-20">
+                                        <div className="absolute bottom-0 left-0 w-full p-6 space-y-6 sm:p-12 z-20">
                                             <div className="flex flex-wrap items-center gap-4 text-sm text-foreground/70">
                                                 <div className="flex items-center gap-2 bg-muted/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
                                                     <span className="font-medium text-foreground">{detail.created_by}</span>
@@ -254,7 +321,7 @@ export default function WynnPublisher() {
                                                         // Handle text type
                                                         if (section.type === "text") {
                                                             return (
-                                                                <ReactMarkdown 
+                                                                <ReactMarkdown
                                                                     key={section.id}
                                                                     remarkPlugins={[remarkWynnMuted]}
                                                                     components={{
