@@ -6841,7 +6841,7 @@ mongodb@~6.20.0:
     bson "^6.10.4"
     mongodb-connection-string-url "^3.0.2"
 
-mongoose@^8.15.0, mongoose@^8.8.4:
+mongoose@^8.15.0:
   version "8.20.3"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-8.20.3.tgz#a6f94ac07d03e2404e48883177edabe7a424e0f2"
   integrity sha512-AQk63Ry4YM/lWJRt/D5P7UiRjKT+z+vD0NkNKgeQ35TioBC7kuI6wBzhu6/kyrNXg+WotFidW1icEWLNC1rUfg==
