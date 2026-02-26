@@ -6,6 +6,7 @@ import { Item, ItemSchema } from './item.schema';
 import { ChangelogModule } from './changelog/changelog.module';
 import { DatabaseItemModule } from './database/item-database.module';
 import { WeightModule } from './weight/weight.module';
+import { FeedbackModule } from './weight/feedback/feedback.module';
 
 @Module({
     imports: [
@@ -14,7 +15,8 @@ import { WeightModule } from './weight/weight.module';
         ]),
         ChangelogModule,
         DatabaseItemModule,
-        WeightModule
+        WeightModule,
+        FeedbackModule
     ],
     controllers: [ItemController],
     providers: [ItemService],
