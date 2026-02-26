@@ -14,6 +14,7 @@ import { useEffect, useState, useRef } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ItemIcon } from "@/components/custom/WynnIcon";
 import { WeightVoteButtons } from "@/components/item/weight-vote-buttons";
+import { SuggestionModal } from "@/components/item/suggestion-modal";
 import api from "@/lib/api";
 
 // Use the Item type from the shared types to match ItemIcon's expectations
@@ -53,6 +54,8 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
   const [editableWeight, setEditableWeight] = useState<Weight | null>(null);
   const [isLoadingWeight, setIsLoadingWeight] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [suggestionModalOpen, setSuggestionModalOpen] = useState(false);
+  const [selectedWeightId, setSelectedWeightId] = useState<string | null>(null);
   const lastFetched = useRef<string | null>(null);
 
   useEffect(() => {
@@ -169,7 +172,14 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
                                 <p className="text-sm text-muted-foreground italic mt-1">{weight.description}</p>
                               )}
                             </div>
-                            <WeightVoteButtons weightId={weight.weight_id} user={user} />
+                            <WeightVoteButtons 
+                              weightId={weight.weight_id} 
+                              user={user} 
+                              onOpenSuggestions={() => {
+                                setSelectedWeightId(weight.weight_id);
+                                setSuggestionModalOpen(true);
+                              }} 
+                            />
                           </div>
 
                           {/* Percent breakdown */}
@@ -219,6 +229,7 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
                               </Button>
                             </div>
                           )}
+
                         </div>
 
                       );
@@ -370,6 +381,15 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
             )}
           </div>
         </ScrollArea>
+
+        {selectedWeightId && (
+          <SuggestionModal
+            weightId={selectedWeightId}
+            user={user}
+            open={suggestionModalOpen}
+            onOpenChange={setSuggestionModalOpen}
+          />
+        )}
       </DialogContent>
     </Dialog>
   );

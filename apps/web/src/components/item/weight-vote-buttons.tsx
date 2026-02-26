@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronUp, ChevronDown, Loader2, Check } from "lucide-react";
+import { ChevronUp, ChevronDown, Loader2, MessageCircle } from "lucide-react";
 import api from "@/lib/api";
 import Link from "next/link";
 
@@ -17,10 +17,12 @@ interface WeightFeedback {
 interface Props {
   weightId: string;
   user: any;
+  onOpenSuggestions: () => void;
 }
 
-export function WeightVoteButtons({ weightId, user }: Props) {
+export function WeightVoteButtons({ weightId, user, onOpenSuggestions }: Props) {
   const [feedback, setFeedback] = useState<WeightFeedback | null>(null);
+  const [suggestionCount, setSuggestionCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [voting, setVoting] = useState(false);
   const isAuthenticated = !!user?.discordId;
@@ -41,9 +43,24 @@ export function WeightVoteButtons({ weightId, user }: Props) {
     }
   }, [weightId]);
 
+  const fetchSuggestionCount = useCallback(async () => {
+    try {
+      const res = await fetch(api(`/item/weight/suggestions/${weightId}`), {
+        credentials: "include",
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setSuggestionCount(data.suggestions?.length || 0);
+      }
+    } catch (e) {
+      console.error("Failed to fetch suggestion count:", e);
+    }
+  }, [weightId]);
+
   useEffect(() => {
     fetchFeedback();
-  }, [weightId, user?.discordId, fetchFeedback]);
+    fetchSuggestionCount();
+  }, [weightId, user?.discordId, fetchFeedback, fetchSuggestionCount]);
 
   const handleVote = useCallback(
     async (vote: "upvote" | "downvote") => {
@@ -59,7 +76,6 @@ export function WeightVoteButtons({ weightId, user }: Props) {
         });
 
         if (res.ok) {
-          // Add a small delay to ensure backend has written the vote
           await new Promise((resolve) => setTimeout(resolve, 100));
           await fetchFeedback();
         }
@@ -84,55 +100,71 @@ export function WeightVoteButtons({ weightId, user }: Props) {
   const score = feedback?.score || 0;
 
   return (
-    <div className="flex flex-col items-end gap-1">
-      <div className="flex items-center gap-1">
-        <Button
-          variant="ghost"
-          size="sm"
-          className={`h-8 px-2 gap-1 ${
-            currentVote === "upvote"
-              ? "bg-green-500/10 text-green-500 border border-green-500/30"
-              : "text-muted-foreground hover:text-green-500 hover:bg-green-500/5"
-          } ${!isAuthenticated ? "cursor-not-allowed opacity-60" : ""}`}
-          onClick={() => handleVote("upvote")}
-          // disabled={voting || !isAuthenticated}
-        >
-          <ChevronUp className="h-4 w-4" />
-          <span className="text-xs">{feedback?.upvotes || 0}</span>
-        </Button>
+    <div className="flex items-start gap-3">
+      <div className="flex flex-col items-end gap-0.5">
+        <div className="flex items-center gap-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            className={`h-8 px-2 gap-1 ${currentVote === "upvote"
+                ? "bg-green-500/10 text-green-500 border border-green-500/30"
+                : "text-muted-foreground hover:text-green-500 hover:bg-green-500/5"
+              } ${!isAuthenticated ? "cursor-not-allowed opacity-60" : ""}`}
+            onClick={() => handleVote("upvote")}
+          >
+            <ChevronUp className="h-4 w-4" />
+            <span className="text-xs">{feedback?.upvotes || 0}</span>
+          </Button>
 
-        <span className={`text-sm font-semibold min-w-[28px] text-center ${
-          score > 0 ? "text-green-500" : score < 0 ? "text-red-500" : "text-muted-foreground"
-        }`}>
-          {score}
-        </span>
+          <span
+            className={`text-sm font-semibold min-w-[28px] text-center ${score > 0
+                ? "text-green-500"
+                : score < 0
+                  ? "text-red-500"
+                  : "text-muted-foreground"
+              }`}
+          >
+            {score}
+          </span>
 
-        <Button
-          variant="ghost"
-          size="sm"
-          className={`h-8 px-2 gap-1 ${
-            currentVote === "downvote"
-              ? "bg-red-500/10 text-red-500 border border-red-500/30"
-              : "text-muted-foreground hover:text-red-500 hover:bg-red-500/5"
-          } ${!isAuthenticated ? "cursor-not-allowed opacity-60" : ""}`}
-          onClick={() => handleVote("downvote")}
-          // disabled={voting || !isAuthenticated}
-        >
-          <span className="text-xs">{feedback?.downvotes || 0}</span>
-          <ChevronDown className="h-4 w-4" />
-        </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            className={`h-8 px-2 gap-1 ${currentVote === "downvote"
+                ? "bg-red-500/10 text-red-500 border border-red-500/30"
+                : "text-muted-foreground hover:text-red-500 hover:bg-red-500/5"
+              } ${!isAuthenticated ? "cursor-not-allowed opacity-60" : ""}`}
+            onClick={() => handleVote("downvote")}
+          >
+            <span className="text-xs">{feedback?.downvotes || 0}</span>
+            <ChevronDown className="h-4 w-4" />
+          </Button>
+          <div className="relative">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-8 px-2 text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              onClick={onOpenSuggestions}
+            >
+              <MessageCircle className="h-4 w-4" />
+            </Button>
+            {suggestionCount > 0 && (
+              <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-destructive text-[10px] font-medium text-white flex items-center justify-center">
+                {suggestionCount > 9 ? "9+" : suggestionCount}
+              </span>
+            )}
+          </div>
+        </div>
+        {!isAuthenticated && (
+          <Link
+            href={api("/auth/discord")}
+            className="text-xs text-blue-500 hover:underline cursor-pointer"
+          >
+            Login to vote
+          </Link>
+        )}
       </div>
-      {!isAuthenticated && (
-        <Link 
-          href={api("/auth/discord")} 
-          className="text-xs text-blue-500 hover:underline cursor-pointer"
-        >
-          Login with Discord to vote
-        </Link>
-      )}
-      {/* {isAuthenticated && currentVote && (
-        <span className={`text-xs font-medium ${feedback?.downvotes ? "text-red-500" : "text-green-500"}`}>Voted</span>
-      )} */}
+
     </div>
   );
 }
