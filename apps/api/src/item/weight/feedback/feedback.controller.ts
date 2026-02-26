@@ -1,10 +1,12 @@
 import { Controller, Get, Post, Delete, Param, Body, Req, UseGuards, HttpException, HttpStatus } from '@nestjs/common';
+import { SkipThrottle } from '@nestjs/throttler';
 import { Request } from 'express';
 import { FeedbackService } from './feedback.service';
 import { AuthenticatedGuard } from '@shared/guards/authenticated.guard';
 import { OptionalAuthenticatedGuard } from '@shared/guards/optional-authenticated.guard';
 
 @Controller('item/weight/feedback')
+@SkipThrottle()
 export class FeedbackController {
     constructor(private readonly feedbackService: FeedbackService) { }
 
