@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { useEffect, useState, useRef } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ItemIcon } from "@/components/custom/WynnIcon";
+import { WeightVoteButtons } from "@/components/item/weight-vote-buttons";
 import api from "@/lib/api";
 
 // Use the Item type from the shared types to match ItemIcon's expectations
@@ -144,14 +145,14 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
               ) : (
                 <>
                   {weights.length === 0 && <p className="text-sm text-muted-foreground">No weights yet.</p>}
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="flex flex-col gap-2">
                     {weights.map((weight) => {
                       const total = Object.values(weight.identifications).reduce((sum, val) => sum + val, 0);
 
                       return (
-                        <div key={weight.weight_id} className="border p-3 rounded-md space-y-1 flex flex-col h-full">
-                          <div className="flex justify-between items-center">
-                            <div>
+                        <div key={weight.weight_id} className="border p-3 rounded-md space-y-2">
+                          <div className="flex justify-between items-start">
+                            <div className="flex-1">
                               <p className="font-medium flex items-center gap-2">
                                 <span className="inline-block px-2 py-0.5 rounded text-xs bg-muted text-muted-foreground">
                                   {weight.type}
@@ -168,7 +169,7 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
                                 <p className="text-sm text-muted-foreground italic mt-1">{weight.description}</p>
                               )}
                             </div>
-
+                            <WeightVoteButtons weightId={weight.weight_id} user={user} />
                           </div>
 
                           {/* Percent breakdown */}
