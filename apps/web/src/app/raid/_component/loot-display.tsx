@@ -20,17 +20,45 @@ export interface LootData {
 }
 
 type Category = "aspect" | "tome" | "gear" | "misc"
+type RegionAbbrev = "NOTG" | "NOL" | "TCC" | "TNA"
+type RegionName = "Nest of the Grootslangs" | "Orphion's Nexus of Light" | "The Canyon Colossus" | "The Nameless Anomaly"
 
 // Constants
 const CATEGORIES: readonly Category[] = ["aspect", "tome", "gear", "misc"] as const
+
 const RARITY_ORDER = ["Mythic", "Fabled", "Legendary", "Rare", "Set", "Unique", "Normal", "Common"] as const
-const REGION_ORDER = ["NOTG", "NOL", "TCC", "TNA"] as const
 
 const RARITY_RANK = Object.fromEntries(
     RARITY_ORDER.map((r, i) => [r.toLowerCase(), i])
 )
 
+const REGION_ABBREV_ORDER: readonly RegionAbbrev[] = ["NOTG", "NOL", "TCC", "TNA"] as const
+
+const REGION_LABELS: Record<RegionAbbrev, RegionName> = {
+    NOTG: "Nest of the Grootslangs",
+    NOL: "Orphion's Nexus of Light",
+    TCC: "The Canyon Colossus",
+    TNA: "The Nameless Anomaly",
+} as const
+
+// Type Guards & Helpers
+function isRegionAbbrev(value: string): value is RegionAbbrev {
+    return REGION_ABBREV_ORDER.includes(value as RegionAbbrev)
+}
+
+function getRegionAbbrev(region: string): RegionAbbrev {
+    if (isRegionAbbrev(region)) return region
+    return (Object.keys(REGION_LABELS) as RegionAbbrev[]).find(
+        (abbrev) => REGION_LABELS[abbrev] === region
+    ) ?? (region as RegionAbbrev)
+}
+
+function getRegionLabel(abbrev: RegionAbbrev): RegionName {
+    return REGION_LABELS[abbrev]
+}
+
 // Helper functions
+
 function getCategoryType(item: Item): Category {
     switch (item.itemType) {
         case "AspectItem":
@@ -68,13 +96,15 @@ export const LootDisplay: React.FC = () => {
     const sortedRegions = useMemo(() => {
         if (!data?.regions) return []
         return [...data.regions].sort((a, b) => {
-            const indexA = REGION_ORDER.indexOf(a.region as any)
-            const indexB = REGION_ORDER.indexOf(b.region as any)
+            const abbrevA = getRegionAbbrev(a.region)
+            const abbrevB = getRegionAbbrev(b.region)
+            const indexA = REGION_ABBREV_ORDER.indexOf(abbrevA)
+            const indexB = REGION_ABBREV_ORDER.indexOf(abbrevB)
             return indexA - indexB
         })
     }, [data?.regions])
 
-    const [activeRegion, setActiveRegion] = useState<string>("")
+    const [activeRegion, setActiveRegion] = useState<RegionAbbrev>("NOTG")
     const [expandedCategories, setExpandedCategories] = useState<Record<Category, boolean>>({
         aspect: true,
         tome: false,
@@ -83,25 +113,19 @@ export const LootDisplay: React.FC = () => {
     })
 
     useEffect(() => {
-        if (!activeRegion && sortedRegions.length > 0) {
-            // pick first available by REGION_ORDER (top)
-            setActiveRegion(sortedRegions[0].region)
+        if (sortedRegions.length > 0) {
+            const firstRegionAbbrev = getRegionAbbrev(sortedRegions[0].region)
+            setActiveRegion(firstRegionAbbrev)
         }
-    }, [sortedRegions, activeRegion])
-
-    const availableRegions = useMemo(() =>
-        new Set(sortedRegions.map(r => r.region)),
-        [sortedRegions]
-    )
+    }, [sortedRegions])
 
     const currentRegion = useMemo(() =>
-        sortedRegions.find(r => r.region === activeRegion),
+        sortedRegions.find(r => getRegionAbbrev(r.region) === activeRegion),
         [sortedRegions, activeRegion]
     )
 
     const categorizedItems = useMemo(() => {
         if (!currentRegion) return null
-
         return currentRegion.items.reduce(
             (acc, item) => {
                 acc[getCategoryType(item)].push(item)
@@ -117,6 +141,11 @@ export const LootDisplay: React.FC = () => {
             [category]: !prev[category]
         }))
     }
+
+    const availableRegionLabels = useMemo(() =>
+        new Set(sortedRegions.map(r => getRegionLabel(getRegionAbbrev(r.region)))),
+        [sortedRegions]
+    )
 
     // Early returns for loading/error states
     if (loading) {
@@ -141,30 +170,30 @@ export const LootDisplay: React.FC = () => {
     if (!data || sortedRegions.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center py-16 text-muted-foreground">
-                {/* <Loader2 className="h-8 w-8 animate-spin mb-4" /> */}
                 <p className="text-3xl">No data yet</p>
-                <p className="text-sm">Data being collecting...</p>
+                <p className="text-sm">Data being collected...</p>
             </div>
         )
     }
 
     return (
         <>
-            <Tabs value={activeRegion} onValueChange={setActiveRegion} className="w-full">
+            <Tabs value={activeRegion} onValueChange={(value) => setActiveRegion(value as RegionAbbrev)} className="w-full">
                 <TabsList className="bg-transparent border-b border-border rounded-none h-auto p-0 w-full justify-between overflow-x-auto scrollbar-hide mb-6">
-                    {REGION_ORDER.map((region) => {
-                        const isAvailable = availableRegions.has(region)
+                    {REGION_ABBREV_ORDER.map((abbrev) => {
+                        const label = getRegionLabel(abbrev)
+                        const isAvailable = availableRegionLabels.has(label)
 
                         return (
                             <TabsTrigger
-                                key={region}
-                                value={region}
+                                key={abbrev}
+                                value={abbrev}
                                 disabled={!isAvailable}
                                 className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent bg-transparent px-0 py-3 text-sm font-medium transition-all flex-1 text-center disabled:opacity-40 disabled:cursor-not-allowed relative"
                             >
                                 <div className="flex items-center gap-2">
                                     <MapPin className="h-3.5 w-3.5" />
-                                    {region}
+                                    {abbrev}
                                     {!isAvailable && (
                                         <Badge variant="outline" className="ml-1 text-[8px] py-0 px-1 h-3.5 border-muted-foreground/30">
                                             Pending
@@ -239,7 +268,7 @@ export const LootDisplay: React.FC = () => {
 
             {currentRegion && (
                 <p className="text-[10px] text-muted-foreground/50 uppercase tracking-wider mt-6 text-center">
-                    Data from {new Date(currentRegion.timestamp).toLocaleDateString()}
+                    Data from {new Date(currentRegion.timestamp).toLocaleDateString()} - {getRegionLabel(activeRegion)}
                 </p>
             )}
         </>

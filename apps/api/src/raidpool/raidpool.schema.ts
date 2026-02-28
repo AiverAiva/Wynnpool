@@ -16,9 +16,6 @@ export class RaidpoolItem {
   rarity: string;
 
   @Prop({ required: true })
-  shiny: boolean;
-
-  @Prop({ required: true })
   subtype: string;
 }
 
