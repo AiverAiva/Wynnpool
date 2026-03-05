@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { SeasonRatingCard } from '@/components/custom/season-rating-card'
 import { SeasonRatingLeaderboardModal } from '@/components/custom/season-rating-leaderboard-modal'
 import { LeaderboardCard } from '@/components/custom/leaderboard-card'
+import { FestivalOfTheBlizzardCard } from '@/components/custom/festival-of-the-blizzard-card'
 
 interface Guild {
   rank: number;
@@ -95,6 +96,7 @@ export default function StatsPage() {
 
         <LeaderboardCard />
         <SeasonRatingCard onClick={() => setSeasonRatingModalOpen(true)} />
+        <FestivalOfTheBlizzardCard />
         {/* </div> */}
       </div>
       <SeasonRatingLeaderboardModal open={seasonRatingModalOpen} onOpenChange={setSeasonRatingModalOpen} />
