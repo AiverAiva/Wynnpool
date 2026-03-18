@@ -1,10 +1,10 @@
 "use client"
 
 import { Card } from "@/components/ui/card"
-import { Snowflake } from "lucide-react"
+import { Ghost } from "lucide-react"
 import { useState, useEffect } from "react"
 
-export function FestivalOfTheBlizzardCard() {
+export function FestivalOfTheSpiritCard() {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export function FestivalOfTheBlizzardCard() {
       <span className="text-3xl md:text-5xl font-extralight tracking-tighter text-white tabular-nums drop-shadow-sm">
         {String(val).padStart(2, '0')}
       </span>
-      <span className="text-[9px] uppercase tracking-[0.25em] text-cyan-300/60 font-bold">
+      <span className="text-[9px] uppercase tracking-[0.25em] text-purple-300/60 font-bold">
         {unit}
       </span>
     </div>
@@ -44,7 +44,7 @@ export function FestivalOfTheBlizzardCard() {
       {/* 1. Full Background Image with a subtle zoom */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-        style={{ backgroundImage: 'url(/images/background/fotblizzard.webp)' }}
+        style={{ backgroundImage: 'url(/images/background/fotspirit.png)' }}
       />
 
       {/* 2. Gradual Glassmorphism Overlay */}
@@ -54,9 +54,9 @@ export function FestivalOfTheBlizzardCard() {
 
       {/* 3. The Actual Glass Layer (Right Side Focus) */}
       <div className="absolute inset-y-0 right-0 w-full md:w-[65%] z-30 
-                      bg-white/[0.03] backdrop-blur-md
+                      bg-purple-950/40 backdrop-blur-md
                       flex items-center justify-center
-                      border-l border-white/10
+                      border-l border-purple-500/20
                       [mask-image:linear-gradient(to_right,transparent,black_40%)]">
       </div>
 
@@ -66,11 +66,10 @@ export function FestivalOfTheBlizzardCard() {
         {/* Left Side: Title */}
         <div className="flex flex-col justify-center w-full md:w-1/2 pt-6 md:pt-0">
           <div className="flex items-center gap-3 mb-1">
-            <div className="relative">
-              <div className="absolute inset-0 bg-cyan-500 blur-lg opacity-40 animate-pulse" />
-              <Snowflake className="relative w-5 h-5 text-cyan-200" />
+          <div className="relative">
+              <Ghost className="relative w-5 h-5 text-purple-200" />
             </div>
-            <span className="text-[11px] font-black tracking-[0.4em] text-cyan-400 uppercase">
+            <span className="text-[11px] font-black tracking-[0.4em] text-purple-400 uppercase">
               Annual Event
             </span>
           </div>
@@ -81,8 +80,8 @@ export function FestivalOfTheBlizzardCard() {
                           transition-all duration-300 
                           group-hover:scale-105 
                           group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.6)] 
-                          group-hover:text-cyan-50">
-              Blizzard
+                          group-hover:text-purple-50">
+              Spirit
             </span>
           </h2>
         </div>
