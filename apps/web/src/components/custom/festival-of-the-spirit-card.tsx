@@ -50,18 +50,18 @@ export function FestivalOfTheSpiritCard() {
       {/* 2. Gradual Glassmorphism Overlay */}
       {/* This creates the "fade-in" frost effect from right to left */}
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/20 to-transparent z-10" />
-      <div className="absolute inset-0 backdrop-blur-[2px] [mask-image:linear-gradient(to_right,transparent_10%,black_100%)] z-20" />
+      <div className="absolute inset-0 backdrop-blur-[1px] md:backdrop-blur-[2px] [mask-image:linear-gradient(to_right,transparent_10%,black_100%)] z-20" />
 
       {/* 3. The Actual Glass Layer (Right Side Focus) */}
       <div className="absolute inset-y-0 right-0 w-full md:w-[65%] z-30 
-                      bg-purple-950/40 backdrop-blur-md
+                      bg-purple-950/30 md:bg-purple-950/40 backdrop-blur-sm md:backdrop-blur-md
                       flex items-center justify-center
                       border-l border-purple-500/20
                       [mask-image:linear-gradient(to_right,transparent,black_40%)]">
       </div>
 
       {/* 4. Balanced Content Layer */}
-      <div className="relative z-40 h-full w-full flex flex-col md:flex-row items-center px-8 gap-6 md:gap-0">
+      <div className="relative z-40 h-full w-full flex flex-col md:flex-row items-center px-8 md:gap-0">
 
         {/* Left Side: Title */}
         <div className="flex flex-col justify-center w-full md:w-1/2 pt-6 md:pt-0">
@@ -75,7 +75,7 @@ export function FestivalOfTheSpiritCard() {
           </div>
 
           <h2 className="text-2xl md:text-3xl font-extralight text-white leading-tight tracking-tight">
-            Festival of the<br />
+            Festival of the{' '}
             <span className="font-black text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] 
                           transition-all duration-300 
                           group-hover:scale-105 
