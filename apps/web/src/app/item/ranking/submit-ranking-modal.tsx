@@ -11,10 +11,15 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import api from "@/lib/api";
 import { RolledItemDisplay } from "@/components/wynncraft/item/RolledItemDisplay";
+import {Checkbox} from "@/components/ui/checkbox";
+import {Label} from "@/components/ui/label";
 
 export default function SubmitRankingModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [itemString, setItemString] = useState("");
   const [ownerName, setOwnerName] = useState("");
+  const [ironman, setIronman] = useState(false);
+  const [verified, setVerified] = useState(false);
+
   const [loading, setLoading] = useState(false);
   type SubmissionError = 'DECODE_FAILED' | 'STORE_FAILED' | 'NETWORK_ERROR';
   const [error, setError] = useState<SubmissionError | null | string>(null);
@@ -90,6 +95,8 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
           originalString: trimmedItemString,
           timestamp: Date.now(),
           owner: trimmedOwnerName || "Unknown",
+          ironman,
+          verified,
         }),
         credentials: "include",
       });
@@ -99,6 +106,8 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
       onClose();
       setItemString("");
       setOwnerName("");
+      setIronman(false);
+      setVerified(false);
       setDecodedData(null);
     } catch (err: any) {
       setError(err.message);
@@ -141,6 +150,23 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
                 onChange={(e) => setOwnerName(e.target.value)}
                 disabled={loading}
               />
+              <div>
+                <div>
+                  <Checkbox
+                    checked={ironman}
+                    onCheckedChange={(checked) => setIronman(!!checked)}
+                    disabled={loading}/>
+                  <Label className="pl-1">Is Ironman</Label>
+                </div>
+                <div>
+                  <Checkbox
+                    checked={verified}
+                    onCheckedChange={(checked) => setVerified(!!checked)}
+                    disabled={loading}/>
+                  <Label className="pl-1">Verified in-game</Label>
+                </div>
+              </div>
+
               {error && <p className="text-sm text-red-500">{error}</p>}
             </div>
             <div className="flex justify-end mt-4">
