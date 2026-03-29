@@ -14,6 +14,12 @@ export class DatabaseItem extends Document {
 
   @Prop({ type: Number, default: Date.now })
   timestamp: number;
+
+  @Prop()
+  ironman: boolean;
+
+  @Prop()
+  verified: boolean;
 }
 
 export const DatabaseItemSchema = SchemaFactory.createForClass(DatabaseItem);
