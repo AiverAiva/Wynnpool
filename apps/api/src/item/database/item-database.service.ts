@@ -14,7 +14,13 @@ export class DatabaseItemService {
     return this.databaseItemModel.find(query).sort({ timestamp: -1 }).lean();
   }
 
-  async addVerifyItem(data: { itemName: string; originalString: string; owner: string }) {
+  async addVerifyItem(data: {
+    itemName: string;
+    originalString: string;
+    owner: string;
+    ironman?: boolean;
+    verified?: boolean;
+  }) {
     if (!data.itemName || !data.originalString || !data.owner) {
       throw new Error('Missing required fields.');
     }
