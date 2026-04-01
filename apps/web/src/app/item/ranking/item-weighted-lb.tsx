@@ -6,7 +6,7 @@ import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover
 import { useEffect, useState } from "react";
 import type { CombatItem } from "@wynnpool/shared";
 import { calculateIdentificationRoll, getRollPercentageString } from "@/lib/itemUtils";
-import { ArrowDownWideNarrow, ArrowUpNarrowWide } from "lucide-react";
+import { ArrowDownWideNarrow, ArrowUpNarrowWide, BadgeCheck } from "lucide-react";
 import api from "@/lib/api";
 import { RolledItemDisplay } from "@/components/wynncraft/item/RolledItemDisplay";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"; // Added for embeddable version
@@ -27,6 +27,7 @@ interface VerifiedItem {
     rerollCount: number;
   };
   ironman?: boolean;
+  verified?: boolean;
 }
 
 interface Weight {
@@ -207,7 +208,8 @@ export default function ItemWeightedLB({ item, open, onClose, isEmbedded = false
                             </div>
                             <div className="flex items-center space-x-2">
                               {entry.shinyStat && <span className="text-yellow-300 mr-2">✦</span>}
-                              {entry.ironman && <img src={`/icons/gamemode/ironman.svg`} alt='ironman icon' className={'h-4'} />}
+                              {entry.ironman && <img src={`/icons/gamemode/ironman.svg`} alt='ironman' className={'h-4'} />}
+                              {entry.verified && <BadgeCheck className="h-4 w-4 text-blue-500" />}
                               <span className="font-mono">{(entry.score * 100).toFixed(2)}%</span>
                             </div>
                           </div>
