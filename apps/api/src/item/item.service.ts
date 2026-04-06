@@ -46,8 +46,12 @@ export class ItemService implements OnModuleInit {
         }
     }
 
-    async searchItems(query: FilterQuery<any>) {
-        return await this.itemModel.find(query).lean();
+    async searchItems(query: FilterQuery<any>, includeChangelog = false) {
+        const projection = includeChangelog
+            ? '-_id' // include all fields
+            : { _id: 0, changelog: 0 }; // exclude changelog by default
+
+        return await this.itemModel.find(query).select(projection).lean();
     }
 
     async streamSearch(query: any) {
