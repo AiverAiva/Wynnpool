@@ -174,7 +174,8 @@ export default function ItemSearch({
         const typeFilters = selectedTypes.map((selectedType) => {
             for (const [mainType, subTypes] of Object.entries(itemTypes)) {
                 if (subTypes.includes(selectedType)) {
-                    return { type: mainType, [`${mainType}Type`]: selectedType };
+                    // Updated: weaponType/armourType etc unified to subType in new API
+                    return { type: mainType, subType: selectedType };
                 }
             }
             return null;
@@ -185,7 +186,8 @@ export default function ItemSearch({
         }
 
         if (selectedTiers.length > 0) {
-            query.$and.push({ rarity: { $in: selectedTiers } });
+            // Updated: item rarity unified under tier field in new API
+            query.$and.push({ tier: { $in: selectedTiers } });
         }
 
         if (levelRange) {

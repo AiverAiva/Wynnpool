@@ -10,7 +10,7 @@ const AttackSpeed: React.FC<AttackSpeedProps> = ({ attackSpeed }) => {
   if (!attackSpeed) return null;
   return (
     <div className="flex justify-center items-center text-xs">
-      {`${attackSpeed.replace('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
+      {`${attackSpeed.replace('_', ' ').split(/(?=[A-Z])/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Attack Speed`}
     </div>
   );
 };

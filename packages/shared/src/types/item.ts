@@ -1,5 +1,8 @@
 
 
+// Define tier enum for items (replaces numeric tiers for ingredients/materials)
+export type TierEnum = 'TIER_0' | 'TIER_1' | 'TIER_2' | 'TIER_3';
+
 // Define the possible rarity levels for items
 export type Rarity = 'common' | 'set' | 'unique' | 'rare' | 'legendary' | 'fabled' | 'mythic';
 
@@ -29,10 +32,7 @@ export interface ItemIconObject {
 
 export interface ItemRequirement {
     level?: number
-    levelRange?: {
-        min: number
-        max: number
-    }
+    // removed: levelRange - was removed from API
     strength?: number
     dexterity?: number
     intelligence?: number
@@ -47,17 +47,18 @@ export interface ItemBase<TType extends string = string> {
     internalName: string //this is actually an id, not the ingame display name
     itemName?: string // this one is for some of my api endpoints that returns itemName instead of internalName 
     id?: string  // this one is for some of my api endpoints that returns itemName instead of internalName
-    rarity?: Rarity;
+    tier: Rarity;  // Changed from rarity - unified for item rarity (was rarity on combat items, tier on ingredients/materials)
     type: TType;
-    subType?: string
+    subType?: string  // unified from weaponType/armourType/accessoryType etc
     icon: ItemIconObject
     identified?: boolean
     allow_craftsman?: boolean
     powderSlots?: number
     lore?: string
     dropRestriction?: string
+    restriction?: string  // New field from API
     restrictions?: string //its plural somehow so
-    raidReward?: boolean
+    // removed: raid_reward - use subType for item classification instead
     dropMeta?: {
         coordinates: [number, number, number]
         name: string
@@ -69,26 +70,29 @@ export interface ItemBase<TType extends string = string> {
     }
     requirements?: ItemRequirement
     identifications?: IdentificationsObject
-    majorIds: {
+    majorIds?: {  // Made optional as it may not exist in new API format
         [key: string]: string
     }
     droppedBy?: DroppedByInfo[]
     changelog?: ItemChangelog[] // Added for tracking changes to the item over time
+    // New fields from API
+    emblem?: string  // Changed to string - Equal to the emblem type used in game (e.g. "diamond_6")
+    elements?: string[]  // Array of the elements the item affects
 }
 
 export interface WeaponItem extends ItemBase<'weapon'> {
-    weaponType: string;
+    // subType is now used from ItemBase (was weaponType)
     attackSpeed: string;
     averageDps: number;
 }
 
 export interface AccessoryItem extends ItemBase<'accessory'> {
-    accessoryType: string;
+    // subType is now used from ItemBase (was accessoryType)
 }
 
 export interface ArmourItem extends ItemBase<'armour'> {
     armourMaterial: string;
-    armourType: string;
+    // subType is now used from ItemBase (was armourType)
 }
 
 export interface ToolItem extends ItemBase<'tool'> {
@@ -96,8 +100,8 @@ export interface ToolItem extends ItemBase<'tool'> {
     gatheringSpeed: number;
 }
 
-export interface IngredientItem extends ItemBase<'ingredient'> {
-    tier: number;
+export interface IngredientItem extends Omit<ItemBase<'ingredient'>, 'tier'> {
+    tier: TierEnum;  // Ingredient tier (TIER_0, TIER_1, TIER_2, TIER_3) - different from combat item tier
     requirements: { level: number; skills: string[] };
     consumableOnlyIDs: { duration: number; charges: number };
     ingredientPositionModifiers: Record<
@@ -116,10 +120,16 @@ export interface IngredientItem extends ItemBase<'ingredient'> {
     droppedBy: DroppedByInfo[];
 }
 
-export interface MaterialItem extends ItemBase<'material'> {
+export interface MaterialItem extends Omit<ItemBase<'material'>, 'tier'> {
     identified: true;
-    tier: number;
-    craftable: string[];
+    tier: TierEnum;  // Material tier (TIER_0, TIER_1, TIER_2, TIER_3) - different from combat item tier
+    // removed: craftable - use chances field instead
+    chances: {  // Added: dict containing each material tier and the % of drop chance
+        TIER_0?: number;
+        TIER_1?: number;
+        TIER_2?: number;
+        TIER_3?: number;
+    };
 }
 
 export interface Tome extends ItemBase<'tome'> { }

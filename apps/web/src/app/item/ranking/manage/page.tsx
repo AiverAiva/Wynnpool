@@ -110,7 +110,8 @@ export default function ManagePage() {
 
                 for (const [key, item] of Object.entries(data) as [string, Item][]) {
                     if (item.type === "weapon") {
-                        const weaponCategory = item.weaponType || "other"
+                        // Updated: weaponType unified to subType
+                        const weaponCategory = item.subType || "other"
                         if (!categorized[weaponCategory]) categorized[weaponCategory] = []
                         categorized[weaponCategory].push([key, item])
                     } else if (item.type === "armour") {

@@ -676,7 +676,7 @@ export default function Home() {
         {/* This content appears when demoData is populated from the "Analyze Single Item" tab */}
         {activeTab === 'analyze' && demoData && !loading && !error && (
           <>
-            {demoData.original?.rarity === "mythic" ? (
+            {demoData.original?.tier === "mythic" ? (
               <>
                 {rankSuggestion && (
                   <div className="my-2 w-full max-w-xl">{rankSuggestion}</div>
