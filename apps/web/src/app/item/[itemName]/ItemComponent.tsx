@@ -307,7 +307,7 @@ export default function ItemComponent({ itemName }: { itemName: string }) {
                                 <TableBody>
                                     {(() => {
                                         const rerolls = [];
-                                        let currentCost = getIdentificationCost(itemData.rarity!, itemData.requirements?.level || 0);
+                                        let currentCost = getIdentificationCost(itemData.tier!, itemData.requirements?.level || 0);
                                         let rerollCount = 1;
                                         const maxSTX = 29 * 64 * 4096; //29stx
 

@@ -40,8 +40,11 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item, embeded = false }) => {
   )
 }
 
-const StarFormatter: React.FC<any> = ({ tier }) => {
-  switch (tier) {
+const StarFormatter: React.FC<{ tier: string }> = ({ tier }) => {
+  // Extract numeric tier from enum string (TIER_0 -> 0, TIER_1 -> 1, etc)
+  const numericTier = parseInt(tier.split('_')[1], 10) || 0;
+
+  switch (numericTier) {
     case 0:
       return (
         <span className="text-[#555555] ml-2">
@@ -66,6 +69,8 @@ const StarFormatter: React.FC<any> = ({ tier }) => {
           [<span className="text-[#55FFFF]">✫✫✫</span>]
         </span>
       )
+    default:
+      return null
   }
 }
 
@@ -90,7 +95,7 @@ const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
         <CardTitle className=
           {`flex justify-center items-center font-thin 
                 ${itemNameSize} 
-                ${isCombatItem && `text-${item.rarity}`}
+                ${isCombatItem && `text-${item.tier}`}
                 ${item.type == 'ingredient' && 'text-[#AAAAAA]'}
               `}>
           {itemName}
@@ -99,15 +104,15 @@ const ItemHeader: React.FC<{ item: Item }> = ({ item }) => {
           )}
           {item.type == 'material' && (
             <span className="text-[#FFAA00] ml-2">
-              [<span className="text-[#FFFF55]">{Array.from({ length: item.tier }, () => '✫').join('')}</span><span className="text-[#555555]">{Array.from({ length: 3 - item.tier }, () => '✫').join('')}</span>]
+              [<span className="text-[#FFFF55]">{Array.from({ length: parseInt(item.tier.split('_')[1], 10) || 0 }, () => '✫').join('')}</span><span className="text-[#555555]">{Array.from({ length: 3 - (parseInt(item.tier.split('_')[1], 10) || 0) }, () => '✫').join('')}</span>]
             </span>
           )}
         </CardTitle>
       </div>
       {isCombatItem && (
         <div className="flex justify-center items-center">
-          <Badge className={`bg-${item.rarity}`}>
-            <p className={`text-${item.rarity} brightness-[.3] font-thin`}>{item.rarity!.charAt(0).toUpperCase() + item.rarity!.slice(1)} Item</p>
+          <Badge className={`bg-${item.tier}`}>
+            <p className={`text-${item.tier} brightness-[.3] font-thin`}>{item.tier?.charAt(0).toUpperCase() ?? ''}{item.tier?.slice(1) ?? ''} Item</p>
           </Badge>
         </div>
       )}
@@ -204,15 +209,20 @@ const ItemContent: React.FC<{ item: Item, embeded?: boolean }> = ({ item, embede
         </>
       )}
       {item.type == 'material' && (
-        <span className="text-sm text-gray-400">Use this material to craft: <span className="capitalize text-white">{item.craftable.join(', ')}</span></span>
+        <div className="text-sm text-gray-400">
+          <span>Drop chances: </span>
+          {item.chances && Object.entries(item.chances).map(([tier, chance]) => (
+            <span key={tier} className="capitalize text-white mr-2">{tier.toLowerCase().replace('tier_', 'Tier ')}: {chance}%</span>
+          ))}
+        </div>
       )}
 
-      <MajorIds majorIds={item.majorIds} />
+      <MajorIds majorIds={item.majorIds ?? {}} />
       <PowderSlots powderSlots={item.powderSlots} />
       {item.lore && (
         <>
           <Separator />
-          <p className="text-sm italic text-muted-foreground">{item.lore}</p>
+          <div className="text-xs italic text-muted-foreground" dangerouslySetInnerHTML={{ __html: item.lore }} />
         </>
       )}
       {item.restrictions && (

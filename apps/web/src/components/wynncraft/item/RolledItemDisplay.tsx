@@ -95,8 +95,8 @@ const RolledItemDisplay: React.FC<ItemDisplayPropsWithWrapper> = ({ data, withCa
                                 powders={input.powders || []}
                             />
                         )}
-                        <div className={`flex text-${original.rarity} text-sm font-thin space-x-2`}>
-                            <p>{original.rarity!.charAt(0).toUpperCase() + original.rarity!.slice(1)} Item</p>
+                        <div className={`flex text-${original.tier} text-sm font-thin space-x-2`}>
+                            <p>{original.tier?.charAt(0).toUpperCase() ?? ''}{original.tier?.slice(1) ?? ''} Item</p>
                             {input.rerollCount && <span>[{input.rerollCount}]</span>}
                         </div>
                     </div>
@@ -142,7 +142,7 @@ export const ItemHeader: React.FC<ItemHeaderProps> = ({ item, shinyStat, overall
             </div>
 
             <div className="flex justify-center items-center">
-                <CardTitle className={`flex justify-center items-center font-thin ${itemNameSize} text-${item.rarity}`}>
+                <CardTitle className={`flex justify-center items-center font-thin ${itemNameSize} text-${item.tier}`}>
                     {shinyStat && (
                         <span className="text-yellow-300 mr-2">✦</span>
                     )}
@@ -162,8 +162,8 @@ export const ItemHeader: React.FC<ItemHeaderProps> = ({ item, shinyStat, overall
                 </div>
             )}
             <div className="flex justify-center items-center">
-                <Badge className={`bg-${item.rarity}`}>
-                    <p className={`text-${item.rarity} brightness-[.3] font-thin`}>{item.rarity!.charAt(0).toUpperCase() + item.rarity!.slice(1)} Item</p>
+                <Badge className={`bg-${item.tier}`}>
+                    <p className={`text-${item.tier} brightness-[.3] font-thin`}>{item.tier?.charAt(0).toUpperCase() ?? ''}{item.tier?.slice(1) ?? ''} Item</p>
                 </Badge>
             </div>
         </div>

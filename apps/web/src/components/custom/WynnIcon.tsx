@@ -1,5 +1,5 @@
 
-import type { Item } from '@wynnpool/shared';
+import type { Item, ArmourItem } from '@wynnpool/shared';
 import React, { FC } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -63,7 +63,10 @@ const ItemTypeIcon: React.FC<ItemTypeIconProps> = ({ type, size = 32 }) => {
 
 const getImageSrc = (item: Item): string => {
   if (item.type === 'armour') {
-    return `/textures/wynn/armor/${item.armourType}/${item.armourMaterial}_${item.armourType}.png`;
+    // Updated: armourType unified to subType, but armourMaterial stays on ArmourItem
+    const armorItem = item as ArmourItem;
+    const armorSubtype = armorItem.subType ?? "unknown";
+    return `/textures/wynn/armor/${armorSubtype}/${armorItem.armourMaterial}_${armorSubtype}.png`;
   } else if (item.icon) {
     if (item.icon.format === 'attribute' || item.icon.format === 'legacy') {
       const iconValue =

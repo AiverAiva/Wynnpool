@@ -41,9 +41,10 @@ export default function MythicItemsPage() {
     }, []);
 
     useEffect(() => {
+        // Updated: item rarity and profRarity unified under tier in new API
         const query = {
             $and: [
-                { rarity: { $in: ["mythic"] } },
+                { tier: { $in: ["mythic"] } },
                 {
                     $or: [
                         { type: "weapon" },
@@ -65,7 +66,8 @@ export default function MythicItemsPage() {
                 const categorized: Record<string, ItemEntry[]> = {};
                 for (const [key, item] of Object.entries(data) as [string, Item][]) {
                     if (item.type === "weapon") {
-                        const weaponCategory = item.weaponType || "other";
+                        // Updated: weaponType unified to subType
+                        const weaponCategory = item.subType || "other";
                         if (!categorized[weaponCategory]) categorized[weaponCategory] = [];
                         categorized[weaponCategory].push([key, item]);
                     } else if (item.type === "armour") {
