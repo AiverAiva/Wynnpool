@@ -7,8 +7,12 @@ export class ItemController {
     constructor(private readonly itemService: ItemService) { }
 
     @Post("search")
-    async searchItems(@Body() query: SearchItemDto) {
-        return this.itemService.searchItems(query);
+    async searchItems(
+        @Body() query: SearchItemDto,
+        @Query('changelog') changelog?: string
+    ) {
+        const containChangelog = changelog === 'true';
+        return this.itemService.searchItems(query, containChangelog);
     }
 
 
