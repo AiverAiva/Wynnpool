@@ -1,6 +1,6 @@
 "use client"
 
-import type React from "react"
+import React, { useMemo } from "react"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -51,6 +51,28 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
   const { before, after } = modifiedItem
 
   after.itemName = modifiedItem.itemName
+
+  // Memoize expensive diff computations
+  const baseStatsChanged = useMemo(() => {
+    return before.base && after.base && JSON.stringify(before.base) !== JSON.stringify(after.base)
+  }, [before.base, after.base])
+
+  const requirementsChanged = useMemo(() => {
+    return before.requirements && after.requirements && JSON.stringify(before.requirements) !== JSON.stringify(after.requirements)
+  }, [before.requirements, after.requirements])
+
+  const identificationsChanged = useMemo(() => {
+    return (before.identifications || after.identifications) && JSON.stringify(before.identifications) !== JSON.stringify(after.identifications)
+  }, [before.identifications, after.identifications])
+
+  const majorIdsChanged = useMemo(() => {
+    return JSON.stringify(before.majorIds) !== JSON.stringify(after.majorIds)
+  }, [before.majorIds, after.majorIds])
+
+  const loreChanged = useMemo(() => {
+    return before.lore !== after.lore
+  }, [before.lore, after.lore])
+
   return (
     <Card className="w-full max-w-2xl mx-auto h-fit font-ascii text-[#AAAAAA]">
       <ItemHeader item={after} />
@@ -81,7 +103,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
             )}
 
 
-            {before.base && after.base && JSON.stringify(before.base) !== JSON.stringify(after.base) && (
+            {baseStatsChanged && (
               <div className="space-y-2">
                 <h4 className="font-medium">Base Stats</h4>
 
@@ -167,7 +189,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
             )}
 
             {/* // bg-green-500/30 px-1 rounded */}
-            {before.requirements && after.requirements && JSON.stringify(before.requirements) !== JSON.stringify(after.requirements) && (
+            {requirementsChanged && (
               <div className="space-y-2">
                 <h4 className="font-medium">Requirements</h4>
                 <div className="list-disc list-inside text-sm space-y-1">
@@ -219,7 +241,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
             )}
 
             {/* Identifications Changes */}
-            {(before.identifications || after.identifications) && JSON.stringify(before.identifications) !== JSON.stringify(after.identifications) && (
+            {identificationsChanged && (
               <div className="space-y-2">
                 <h4 className="font-medium">Identifications</h4>
                 <ul className="list-disc list-inside">
@@ -373,7 +395,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
               </div>
             )}
             {/* Lore  */}
-            {before.lore !== after.lore && (
+            {loreChanged && (
               <div className="space-y-2">
                 <h4 className="font-medium">Lore</h4>
                 <div className="text-sm">
@@ -382,7 +404,7 @@ const ModifiedItemDisplay: React.FC<ModifiedItemDisplayProps> = ({ modifiedItem 
               </div>
             )}
 
-            {JSON.stringify(before.majorIds) !== JSON.stringify(after.majorIds) && (
+            {majorIdsChanged && (
               <div className="space-y-2">
                 <h4 className="font-medium">Major ID</h4>
                 <div className="text-sm space-y-2">

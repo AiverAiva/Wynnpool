@@ -281,7 +281,7 @@ export default function ChangelogPage() {
                       <div className="space-y-2">
                         <h3 className="text-sm font-medium">Tier</h3>
                         <div className="flex flex-wrap gap-2">
-                          {tiers.map((tier) => (
+                          {itemTypeFilter === "combat" && tiers.map((tier) => (
                             <Button
                               key={tier}
                               variant={rarityFilters.includes(tier) ? "default" : "outline"}
@@ -301,7 +301,7 @@ export default function ChangelogPage() {
                               {tier}
                             </Button>
                           ))}
-                          {ingredientTiers.map((tier) => (
+                          {itemTypeFilter === "ingredient" && ingredientTiers.map((tier) => (
                             <Button
                               key={`tier-${tier}`}
                               variant={rarityFilters.includes(String(tier)) ? "default" : "outline"}
@@ -340,16 +340,16 @@ export default function ChangelogPage() {
 
                     if (!items || items.length === 0) return null
 
-                    const colors = {
-                      add: "green",
-                      modify: "blue",
-                      remove: "red",
+                    const sectionStyles = {
+                      add: { iconColor: "#22c55e", borderClass: "border-green-500" },
+                      modify: { iconColor: "#3b82f6", borderClass: "border-blue-500" },
+                      remove: { iconColor: "#ef4444", borderClass: "border-red-500" },
                     }
 
                     const icons = {
-                      add: <PlusCircle className={`mr-2 h-5 w-5 text-${colors[section]}-500`} />,
-                      modify: <RefreshCw className={`mr-2 h-5 w-5 text-${colors[section]}-500`} />,
-                      remove: <MinusCircle className={`mr-2 h-5 w-5 text-${colors[section]}-500`} />,
+                      add: <PlusCircle className="mr-2 h-5 w-5" style={{ color: sectionStyles.add.iconColor }} />,
+                      modify: <RefreshCw className="mr-2 h-5 w-5" style={{ color: sectionStyles.modify.iconColor }} />,
+                      remove: <MinusCircle className="mr-2 h-5 w-5" style={{ color: sectionStyles.remove.iconColor }} />,
                     }
 
                     // Get total count (before filtering)
@@ -383,7 +383,7 @@ export default function ChangelogPage() {
                           <MasonryGrid
                             items={items}
                             section={section}
-                            colors={colors}
+                            sectionStyle={sectionStyles[section]}
                           />
                         )}
                       </div>
@@ -405,29 +405,32 @@ export default function ChangelogPage() {
   )
 }
 
-// Masonry grid using CSS columns with content-visibility for performance
+// Masonry grid using CSS columns with pagination for performance
 function MasonryGrid({
   items,
   section,
-  colors,
+  sectionStyle,
 }: {
   items: any[]
   section: "add" | "modify" | "remove"
-  colors: Record<string, string>
+  sectionStyle: { iconColor: string; borderClass: string }
 }) {
   const colCount = section === "modify" ? 2 : 4
-  const colorClass = `border-${colors[section]}-500`
+  const [visibleCount, setVisibleCount] = useState(section === "modify" ? 20 : 50)
+
+  const visibleItems = useMemo(() => items.slice(0, visibleCount), [items, visibleCount])
+  const hasMore = items.length > visibleCount
 
   return (
-    <div className="p-4 bg-background overflow-auto" style={{ maxHeight: "600px" }}>
+    <div className="p-4 bg-background">
       <div style={{ columnCount: colCount, columnGap: "1rem" }}>
-        {items.map((item, index) => (
+        {visibleItems.map((item, index) => (
           <div
             key={index}
             className="mb-4"
-            style={{ breakInside: "avoid", contentVisibility: "auto" }}
+            style={{ breakInside: "avoid" }}
           >
-            <div className={`border-l-4 ${colorClass} bg-card rounded-lg overflow-hidden`}>
+            <div className={`border-l-4 ${sectionStyle.borderClass} bg-card rounded-lg overflow-hidden`}>
               {section === "modify" ? (
                 <ModifiedItemDisplay modifiedItem={item} />
               ) : (
@@ -437,6 +440,16 @@ function MasonryGrid({
           </div>
         ))}
       </div>
+      {hasMore && (
+        <div className="flex justify-center mt-4">
+          <Button
+            variant="outline"
+            onClick={() => setVisibleCount((prev) => prev + (section === "modify" ? 20 : 50))}
+          >
+            Load More ({items.length - visibleCount} remaining)
+          </Button>
+        </div>
+      )}
     </div>
   )
 }
