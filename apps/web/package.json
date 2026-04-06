@@ -38,7 +38,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "diff": "^7.0.0",
+    "diff": "^8.0.4",
     "framer-motion": "^12.23.24",
     "input-otp": "^1.4.2",
     "js-cookie": "^3.0.5",
@@ -72,6 +72,7 @@
     "@types/node": "^20",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18",
+    "baseline-browser-mapping": "^2.10.16",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
