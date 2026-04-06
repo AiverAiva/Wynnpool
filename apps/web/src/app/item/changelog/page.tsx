@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo, useDeferredValue } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PlusCircle, MinusCircle, RefreshCw, ChevronDown, ChevronRight, Search, X, Clock } from "lucide-react"
@@ -9,7 +9,6 @@ import api from "@/lib/api"
 import { ItemDisplay } from "@/components/wynncraft/item/ItemDisplay"
 import { Spinner } from "@/components/ui/spinner"
 import ModifiedItemDisplay from "@/components/wynncraft/item/ModifiedItemDisplay"
-import { motion } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -52,6 +51,7 @@ export default function ChangelogPage() {
     remove: false,
   })
   const [searchTerm, setSearchTerm] = useState("")
+  const deferredSearchTerm = useDeferredValue(searchTerm)
   const [itemTypeFilter, setItemTypeFilter] = useState<"combat" | "ingredient">("combat")
   const [rarityFilters, setRarityFilters] = useState<string[]>([])
 
@@ -135,7 +135,7 @@ export default function ChangelogPage() {
       const itemData = item.after || item
 
       // Search filter
-      const matchesSearch = searchTerm === "" || itemData.internalName.toLowerCase().includes(searchTerm.toLowerCase())
+      const matchesSearch = deferredSearchTerm === "" || itemData.internalName.toLowerCase().includes(deferredSearchTerm.toLowerCase())
 
       // Item type filter
       let matchesType = true
@@ -149,13 +149,7 @@ export default function ChangelogPage() {
       let matchesRarity = rarityFilters.length === 0
 
       if (!matchesRarity) {
-        if (itemTypeFilter === "ingredient" || itemData.type === "ingredient") {
-          // For ingredients, filter by tier
-          matchesRarity = rarityFilters.includes(String(itemData.tier))
-        } else {
-          // For combat items, filter by rarity
-          matchesRarity = rarityFilters.includes(itemData.rarity)
-        }
+        matchesRarity = rarityFilters.includes(itemData.tier)
       }
 
       return matchesSearch && matchesType && matchesRarity
@@ -163,9 +157,9 @@ export default function ChangelogPage() {
   }
 
   // Get filtered items for each section
-  const filteredAdd = filterItems(changelogData?.add)
-  const filteredModify = filterItems(changelogData?.modify)
-  const filteredRemove = filterItems(changelogData?.remove)
+  const filteredAdd = useMemo(() => filterItems(changelogData?.add), [changelogData?.add, deferredSearchTerm, itemTypeFilter, rarityFilters])
+  const filteredModify = useMemo(() => filterItems(changelogData?.modify), [changelogData?.modify, deferredSearchTerm, itemTypeFilter, rarityFilters])
+  const filteredRemove = useMemo(() => filterItems(changelogData?.remove), [changelogData?.remove, deferredSearchTerm, itemTypeFilter, rarityFilters])
 
   // Split timestamps into recent and older
   const recentTimestamps = changelogTimestamps.slice(0, RECENT_TABS_COUNT)
@@ -285,39 +279,38 @@ export default function ChangelogPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <h3 className="text-sm font-medium">Rarity</h3>
+                        <h3 className="text-sm font-medium">Tier</h3>
                         <div className="flex flex-wrap gap-2">
-                          {itemTypeFilter === "combat"
-                            ? tiers.map((tier) => (
-                              <Button
-                                key={tier}
-                                variant={rarityFilters.includes(tier) ? "default" : "outline"}
-                                onClick={() => toggleRarityFilter(tier)}
-                                size="sm"
-                                className="capitalize"
-                                style={{
-                                  color: rarityFilters.includes(tier)
-                                    ? "white"
-                                    : tiersColors[tier as keyof typeof tiersColors],
-                                  borderColor: tiersColors[tier as keyof typeof tiersColors],
-                                  backgroundColor: rarityFilters.includes(tier)
-                                    ? tiersColors[tier as keyof typeof tiersColors]
-                                    : "transparent",
-                                }}
-                              >
-                                {tier}
-                              </Button>
-                            ))
-                            : ingredientTiers.map((tier) => (
-                              <Button
-                                key={`tier-${tier}`}
-                                variant={rarityFilters.includes(String(tier)) ? "default" : "outline"}
-                                onClick={() => toggleRarityFilter(String(tier))}
-                                size="sm"
-                              >
-                                Tier {tier}
-                              </Button>
-                            ))}
+                          {tiers.map((tier) => (
+                            <Button
+                              key={tier}
+                              variant={rarityFilters.includes(tier) ? "default" : "outline"}
+                              onClick={() => toggleRarityFilter(tier)}
+                              size="sm"
+                              className="capitalize"
+                              style={{
+                                color: rarityFilters.includes(tier)
+                                  ? "white"
+                                  : tiersColors[tier as keyof typeof tiersColors],
+                                borderColor: tiersColors[tier as keyof typeof tiersColors],
+                                backgroundColor: rarityFilters.includes(tier)
+                                  ? tiersColors[tier as keyof typeof tiersColors]
+                                  : "transparent",
+                              }}
+                            >
+                              {tier}
+                            </Button>
+                          ))}
+                          {ingredientTiers.map((tier) => (
+                            <Button
+                              key={`tier-${tier}`}
+                              variant={rarityFilters.includes(String(tier)) ? "default" : "outline"}
+                              onClick={() => toggleRarityFilter(String(tier))}
+                              size="sm"
+                            >
+                              Tier {tier}
+                            </Button>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -332,7 +325,7 @@ export default function ChangelogPage() {
                             className="gap-1 cursor-pointer"
                             onClick={() => toggleRarityFilter(filter)}
                           >
-                            {itemTypeFilter === "ingredient" ? `Tier ${filter}` : filter}
+                            {filter}
                             <X className="h-3 w-3" />
                           </Badge>
                         ))}
@@ -358,12 +351,6 @@ export default function ChangelogPage() {
                       modify: <RefreshCw className={`mr-2 h-5 w-5 text-${colors[section]}-500`} />,
                       remove: <MinusCircle className={`mr-2 h-5 w-5 text-${colors[section]}-500`} />,
                     }
-
-                    // Set column layout dynamically
-                    const gridClass =
-                      section === "modify"
-                        ? "grid grid-cols-1 sm:grid-cols-2 gap-4"
-                        : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
 
                     // Get total count (before filtering)
                     const totalCount = changelogData?.[section]?.length || 0
@@ -391,25 +378,14 @@ export default function ChangelogPage() {
                           </div>
                         </div>
 
-                        {/* Content (Animated) */}
-                        <motion.div
-                          initial={false}
-                          animate={{ height: expandedSections[section] ? "auto" : 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                        >
-                          <div className={`${gridClass} p-4 bg-background`}>
-                            {items.map((item, index) => (
-                              <Card key={index} className={`border-l-4 border-${colors[section]}-500`}>
-                                {section === "modify" ? (
-                                  <ModifiedItemDisplay modifiedItem={item} />
-                                ) : (
-                                  <ItemDisplay item={item} />
-                                )}
-                              </Card>
-                            ))}
-                          </div>
-                        </motion.div>
+                        {/* Content - hidden when collapsed, virtualized when expanded */}
+                        {expandedSections[section] && (
+                          <MasonryGrid
+                            items={items}
+                            section={section}
+                            colors={colors}
+                          />
+                        )}
                       </div>
                     )
                   })}
@@ -425,6 +401,42 @@ export default function ChangelogPage() {
           </Tabs>
         </CardContent>
       </Card>
+    </div>
+  )
+}
+
+// Masonry grid using CSS columns with content-visibility for performance
+function MasonryGrid({
+  items,
+  section,
+  colors,
+}: {
+  items: any[]
+  section: "add" | "modify" | "remove"
+  colors: Record<string, string>
+}) {
+  const colCount = section === "modify" ? 2 : 4
+  const colorClass = `border-${colors[section]}-500`
+
+  return (
+    <div className="p-4 bg-background overflow-auto" style={{ maxHeight: "600px" }}>
+      <div style={{ columnCount: colCount, columnGap: "1rem" }}>
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className="mb-4"
+            style={{ breakInside: "avoid", contentVisibility: "auto" }}
+          >
+            <div className={`border-l-4 ${colorClass} bg-card rounded-lg overflow-hidden`}>
+              {section === "modify" ? (
+                <ModifiedItemDisplay modifiedItem={item} />
+              ) : (
+                <ItemDisplay item={item} />
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
