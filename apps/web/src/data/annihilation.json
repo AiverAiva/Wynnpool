@@ -1,13 +1,9 @@
 {
     "current": {
-        "datetime_utc": 1775514998817,
+        "datetime_utc": 1775803038602,
         "predicted": true
     },
     "predicted": [
-        {
-            "datetime_utc": 1775803038602,
-            "predicted": true
-        },
         {
             "datetime_utc": 1776090365020,
             "predicted": true
@@ -22,6 +18,10 @@
         },
         {
             "datetime_utc": 1776951990510,
+            "predicted": true
+        },
+        {
+            "datetime_utc": 1777239191766,
             "predicted": true
         }
     ]
