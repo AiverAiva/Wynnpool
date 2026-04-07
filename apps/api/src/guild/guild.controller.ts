@@ -32,7 +32,11 @@ export class GuildController {
         const EXTERNAL_API_URL = `https://api.wynncraft.com/v3/guild/${guildName}?identifier=uuid`;
 
         try {
-            const response = await firstValueFrom(this.httpService.get(EXTERNAL_API_URL));
+            const response = await firstValueFrom(
+                this.httpService.get(EXTERNAL_API_URL, {
+                    headers: { Authorization: `Bearer ${process.env.WYNNCRAFT_API_KEY}` },
+                }),
+            );
             return response.data;
         } catch (error) {
             if (error.response && error.response.status === 404) {
