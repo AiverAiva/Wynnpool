@@ -22,7 +22,11 @@ export class PlayerController {
         const EXTERNAL_API_URL = `https://api.wynncraft.com/v3/player/${playerName}?fullResult`;
 
         try {
-            const response = await firstValueFrom(this.httpService.get(EXTERNAL_API_URL));
+            const response = await firstValueFrom(
+                this.httpService.get(EXTERNAL_API_URL, {
+                    headers: { Authorization: `Bearer ${process.env.WYNNCRAFT_API_KEY}` },
+                }),
+            );
             // Fetch the guild data from the database using the player's UUID
             const guild = await this.guildModel.findOne({
                 $or: [
