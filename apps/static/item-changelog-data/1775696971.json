@@ -1,0 +1,736 @@
+{
+  "modify": [
+    {
+      "_id": "69d6fc4b1bd6a17e5c87b324",
+      "itemName": "Restitution",
+      "status": "modify",
+      "timestamp": 1775696971,
+      "before": {
+        "internalName": "Restitution",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 554,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "classRequirement": "warrior",
+          "defence": 60,
+          "dexterity": 45,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Old Spark": "<span class='font-ascii' style='color:#AAAAAA'>Whirlwind transforms into a travelling projectile, exploding on contact and knocking enemies into the air. Hold shift to rise with them.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'><span class='font-old_fruman' style='font-weight:normal'>recnal il <span class='font-common'></span>il. alac toc, pasad il, atlruc il, kaclahpokc il cefos. lahes il nikcrolad kec pahsohal uc ifrah tofnikcsif. etlefrofmad ah, etlaces ah tofnikcsoftahal. <span class='font-common'></span>rofmel <span class='font-common'></span>lahrakctriltod uc tofpahnuc. <span class='font-common'></span>lahic cof efrofmad il pahsadiled uc tofifrah. etlalnes ah rofmedes uc tofpestal. pasad uc tofmahatskritsec. etlrakc kec. etlrakc kec.</span></span></span></span></span></span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": 635,
+            "raw": 2115,
+            "max": 2750
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "earthDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawDexterity": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "thunderSpellDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseWaterDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 115
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 180
+          }
+        }
+      },
+      "after": {
+        "internalName": "Restitution",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 554,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "classRequirement": "warrior",
+          "defence": 60,
+          "dexterity": 45,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Old Spark": "<span class='font-ascii' style='color:#AAAAAA'>Whirlwind transforms into a travelling projectile, exploding on contact and knocking enemies into the air. Hold shift to rise with them.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'><span class='font-old_fruman' style='font-weight:normal'>recnal il <span class='font-common'></span>il. alac toc, pasad il, atlruc il, kaclahpokc il cefos. lahes il nikcrolad kec pahsofmal uc ifrah tofnikcsif. etlefrofmad uc, etlaces uc tofnikcsoftahal. <span class='font-common'></span>rofmel <span class='font-common'></span>lahrakctriltod uc tofpahnuc. <span class='font-common'></span>lahic cof efrofmad il pahsadiled uc tofifrah. etlalnes ah rofmedes uc tofpestal. pasad uc tofmahatskritsec. etlrakc kec. etlrakc kec.</span></span></span></span></span></span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": 635,
+            "raw": 2115,
+            "max": 2750
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "earthDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawDexterity": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "thunderSpellDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseWaterDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 115
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 180
+          }
+        }
+      }
+    },
+    {
+      "_id": "69d6fc4b1bd6a17e5c87b325",
+      "itemName": "Panopticon",
+      "status": "modify",
+      "timestamp": 1775696971,
+      "before": {
+        "internalName": "Panopticon",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 119,
+          "dexterity": 85
+        },
+        "majorIds": {
+          "Superconductor": "<span class='font-ascii' style='color:#AAAAAA'>Chain Lightning channels three massive lightning bolts through you, arcing to enemies within 8 blocks for <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>225%</span> and stunning them for 1s. You take 10% more damage for 4s.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is nothing in these walls that will remain hidden forever. Nothing unaccounted for by the gleaming light of The Citadel.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -520,
+            "raw": -400,
+            "max": -280
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "reflection": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDexterity": 5,
+          "rawAttackSpeed": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "mainAttackRange": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawThunderMainAttackDamage": {
+            "min": 624,
+            "raw": 2080,
+            "max": 2704
+          }
+        },
+        "base": {
+          "baseHealth": 4600,
+          "baseEarthDefence": -250,
+          "baseThunderDefence": 250
+        }
+      },
+      "after": {
+        "internalName": "Panopticon",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 119,
+          "dexterity": 85
+        },
+        "majorIds": {
+          "Superconductor": "<span class='font-ascii' style='color:#AAAAAA'>Chain Lightning channels three massive lightning bolts through you, arcing to enemies within 8 blocks for <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>270%</span> and stunning them for 1s. You take 10% more damage for 4s.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is nothing in these walls that will remain hidden forever. Nothing unaccounted for by the gleaming light of The Citadel.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -520,
+            "raw": -400,
+            "max": -280
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "reflection": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDexterity": 5,
+          "rawAttackSpeed": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "mainAttackRange": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawThunderMainAttackDamage": {
+            "min": 624,
+            "raw": 2080,
+            "max": 2704
+          }
+        },
+        "base": {
+          "baseHealth": 4600,
+          "baseEarthDefence": -250,
+          "baseThunderDefence": 250
+        }
+      }
+    },
+    {
+      "_id": "69d6fc4b1bd6a17e5c87b326",
+      "itemName": "Insignia",
+      "status": "modify",
+      "timestamp": 1775696971,
+      "before": {
+        "internalName": "Insignia",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 100,
+          "defence": 65,
+          "dexterity": 75
+        },
+        "majorIds": {
+          "Superconductor": "<span class='font-ascii' style='color:#AAAAAA'>Chain Lightning channels three massive lightning bolts through you, arcing to enemies within 8 blocks for <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>225%</span> and stunning them for 1s. You take 10% more damage for 4s.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>To wear the mark is more than a show of allegiance. It is a willingness to channel the might of the gods at whatever cost, as the fate of the battle is worth more than surviving to see its end.</span>",
+        "identifications": {
+          "damage": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "sprint": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "raw3rdSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "rawThunderDamage": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          }
+        },
+        "base": {
+          "baseHealth": 3750,
+          "baseFireDefence": 125,
+          "baseWaterDefence": -150,
+          "baseThunderDefence": 175
+        }
+      },
+      "after": {
+        "internalName": "Insignia",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 100,
+          "defence": 65,
+          "dexterity": 75
+        },
+        "majorIds": {
+          "Superconductor": "<span class='font-ascii' style='color:#AAAAAA'>Chain Lightning channels three massive lightning bolts through you, arcing to enemies within 8 blocks for <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>270%</span> and stunning them for 1s. You take 10% more damage for 4s.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>To wear the mark is more than a show of allegiance. It is a willingness to channel the might of the gods at whatever cost, as the fate of the battle is worth more than surviving to see its end.</span>",
+        "identifications": {
+          "damage": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "sprint": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "raw3rdSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "rawThunderDamage": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          }
+        },
+        "base": {
+          "baseHealth": 3750,
+          "baseFireDefence": 125,
+          "baseWaterDefence": -150,
+          "baseThunderDefence": 175
+        }
+      }
+    },
+    {
+      "_id": "69d6fc4b1bd6a17e5c87b327",
+      "itemName": "Titanomachia",
+      "status": "modify",
+      "timestamp": 1775696971,
+      "before": {
+        "internalName": "Titanomachia",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 100,
+          "defence": 70,
+          "strength": 65
+        },
+        "majorIds": {
+          "Dauntless Inferno": "<span class='font-ascii' style='color:#AAAAAA'>Courage casts a series of 5 infernos that expand after the last, dealing <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>125%</span> each, and grants 20% resistance instead of a damage boost.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>This is futile, a fight against odds so great you may as well challenge the force of fate itself. Yet there is pride to be found in delaying the inevitable, so stand your ground and fight to the end.</span>",
+        "identifications": {
+          "fireDamage": {
+            "min": 10,
+            "raw": 33,
+            "max": 43
+          },
+          "rawDefence": 12,
+          "rawStrength": 12,
+          "rawFireDamage": {
+            "min": 69,
+            "raw": 231,
+            "max": 300
+          },
+          "healthRegenRaw": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          },
+          "rawAttackSpeed": -60,
+          "criticalDamageBonus": {
+            "min": -200,
+            "raw": -154,
+            "max": -108
+          },
+          "rawFireMainAttackDamage": {
+            "min": 450,
+            "raw": 1500,
+            "max": 1950
+          }
+        },
+        "base": {
+          "baseHealth": 5250,
+          "baseFireDefence": 150,
+          "baseEarthDefence": 150,
+          "baseThunderDefence": -250
+        }
+      },
+      "after": {
+        "internalName": "Titanomachia",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 100,
+          "defence": 70,
+          "strength": 65
+        },
+        "majorIds": {
+          "Dauntless Inferno": "<span class='font-ascii' style='color:#AAAAAA'>Courage casts a series of 5 infernos that expand after the last, dealing <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>150%</span> each, and grants 20% resistance instead of a damage boost.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>This is futile, a fight against odds so great you may as well challenge the force of fate itself. Yet there is pride to be found in delaying the inevitable, so stand your ground and fight to the end.</span>",
+        "identifications": {
+          "fireDamage": {
+            "min": 10,
+            "raw": 33,
+            "max": 43
+          },
+          "rawDefence": 12,
+          "rawStrength": 12,
+          "rawFireDamage": {
+            "min": 69,
+            "raw": 231,
+            "max": 300
+          },
+          "healthRegenRaw": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          },
+          "rawAttackSpeed": -60,
+          "criticalDamageBonus": {
+            "min": -200,
+            "raw": -154,
+            "max": -108
+          },
+          "rawFireMainAttackDamage": {
+            "min": 450,
+            "raw": 1500,
+            "max": 1950
+          }
+        },
+        "base": {
+          "baseHealth": 5250,
+          "baseFireDefence": 150,
+          "baseEarthDefence": 150,
+          "baseThunderDefence": -250
+        }
+      }
+    },
+    {
+      "_id": "69d6fc4b1bd6a17e5c87b328",
+      "itemName": "Hellbound",
+      "status": "modify",
+      "timestamp": 1775696971,
+      "before": {
+        "internalName": "Hellbound",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 416,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 119,
+          "classRequirement": "mage",
+          "defence": 85
+        },
+        "majorIds": {
+          "Dauntless Inferno": "<span class='font-ascii' style='color:#AAAAAA'>Courage casts a series of 5 infernos that expand after the last, dealing <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>125%</span> each, and grants 20% resistance instead of a damage boost.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Face the flames with resolution in your eyes. Once you're down in the brimstone, you're not going back.</span>",
+        "identifications": {
+          "damage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "lifeSteal": {
+            "min": 120,
+            "raw": 400,
+            "max": 520
+          },
+          "rawHealth": {
+            "min": 600,
+            "raw": 2000,
+            "max": 2600
+          },
+          "rawDefence": 15,
+          "2ndSpellCost": {
+            "min": 35,
+            "raw": 27,
+            "max": 19
+          },
+          "rawFireMainAttackDamage": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 230
+          },
+          "baseFireDamage": {
+            "min": 600,
+            "raw": 600,
+            "max": 600
+          }
+        }
+      },
+      "after": {
+        "internalName": "Hellbound",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 416,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 119,
+          "classRequirement": "mage",
+          "defence": 85
+        },
+        "majorIds": {
+          "Dauntless Inferno": "<span class='font-ascii' style='color:#AAAAAA'>Courage casts a series of 5 infernos that expand after the last, dealing <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>150%</span> each, and grants 20% resistance instead of a damage boost.</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Face the flames with resolution in your eyes. Once you're down in the brimstone, you're not going back.</span>",
+        "identifications": {
+          "damage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "lifeSteal": {
+            "min": 120,
+            "raw": 400,
+            "max": 520
+          },
+          "rawHealth": {
+            "min": 600,
+            "raw": 2000,
+            "max": 2600
+          },
+          "rawDefence": 15,
+          "2ndSpellCost": {
+            "min": 35,
+            "raw": 27,
+            "max": 19
+          },
+          "rawFireMainAttackDamage": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 230
+          },
+          "baseFireDamage": {
+            "min": 600,
+            "raw": 600,
+            "max": 600
+          }
+        }
+      }
+    }
+  ]
+}
