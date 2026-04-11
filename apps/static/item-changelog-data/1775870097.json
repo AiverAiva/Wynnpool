@@ -1,0 +1,1627 @@
+{
+  "modify": [
+    {
+      "_id": "69d9a091f973b60ed0856284",
+      "itemName": "Riptide",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Riptide",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "superSlow",
+        "averageDps": 492,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 110,
+          "classRequirement": "mage",
+          "strength": 60,
+          "dexterity": 40,
+          "intelligence": 70
+        },
+        "majorIds": {
+          "Wavebreak": "<span class='font-ascii' style='color:#AAAAAA'>Meteor's <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span></span> damage is replaced by <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span> damage.\nPsychokinesis can bounce up to 5 times, dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>100%</span> and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>50%</span> area damage, as well\nas <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>200%</span> and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>100%</span> direct hit damage, increasing by 10% after each bounce. Mana Bank gains -3 less mana from Meteor.</span></span></span></span></span></span></span>",
+          "֎": "<span class='font-ascii' style='color:#AAAAAA'>֎</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The waves are not like men; they do not brazenly assault and catastrophically fail. They do not burn fast and wink out. They bide their time, they wait, and they encroach upon the world with an insidious, unstoppable force, dragging you away to the dark side of the sea.</span>",
+        "identifications": {
+          "knockback": {
+            "min": -195,
+            "raw": -150,
+            "max": -105
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawDefence": -25,
+          "rawMaxMana": {
+            "min": 24,
+            "raw": 80,
+            "max": 104
+          },
+          "rawIntelligence": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          },
+          "rawWaterSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 190
+          },
+          "baseEarthDamage": {
+            "min": 270,
+            "raw": 270,
+            "max": 350
+          },
+          "baseWaterDamage": {
+            "min": 245,
+            "raw": 245,
+            "max": 375
+          },
+          "baseThunderDamage": {
+            "min": 115,
+            "raw": 115,
+            "max": 235
+          }
+        }
+      },
+      "after": {
+        "internalName": "Riptide",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "superSlow",
+        "averageDps": 492,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 110,
+          "classRequirement": "mage",
+          "strength": 60,
+          "dexterity": 40,
+          "intelligence": 70
+        },
+        "majorIds": {
+          "Wavebreak": "<span class='font-ascii' style='color:#AAAAAA'>Meteor's <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span></span> damage is replaced by <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span> damage.\nPsychokinesis can bounce up to 5 times, dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>100%</span> and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>50%</span> area damage, as well\nas <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>200%</span> and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>100%</span> direct hit damage, increasing by 10% after each bounce. Mana Bank gains -3 less mana from Meteor.</span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The waves are not like men; they do not brazenly assault and catastrophically fail. They do not burn fast and wink out. They bide their time, they wait, and they encroach upon the world with an insidious, unstoppable force, dragging you away to the dark side of the sea.</span>",
+        "identifications": {
+          "knockback": {
+            "min": -195,
+            "raw": -150,
+            "max": -105
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawDefence": -25,
+          "rawMaxMana": {
+            "min": 24,
+            "raw": 80,
+            "max": 104
+          },
+          "rawIntelligence": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          },
+          "rawWaterSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 190
+          },
+          "baseEarthDamage": {
+            "min": 270,
+            "raw": 270,
+            "max": 350
+          },
+          "baseWaterDamage": {
+            "min": 245,
+            "raw": 245,
+            "max": 375
+          },
+          "baseThunderDamage": {
+            "min": 115,
+            "raw": 115,
+            "max": 235
+          }
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed0856285",
+      "itemName": "Toxoplasmosis",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Toxoplasmosis",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "veryFast",
+        "averageDps": 9,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "shaman",
+          "strength": 110
+        },
+        "majorIds": {
+          "Outbreak": "<span class='font-ascii' style='color:#AAAAAA'>When you are within Totem range, the Totem becomes Primed, adding 4% of your Poison ID every 0.25s. Hitting a Primed totem with Uproot will create a 4 block wide poison cloud instantly dealing the stored Poison.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Can you feel the burning inside? Something has made itself at home. Time to tuck away the parts of you it has no need for, to shuffle your little brain around so you may Carry. Carry and Spread. Give it a new home-melting you down is how it says thank you. Be grateful, won't you?</span>",
+        "identifications": {
+          "poison": {
+            "min": 15000,
+            "raw": 50000,
+            "max": 65000
+          },
+          "lifeSteal": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 3
+          }
+        }
+      },
+      "after": {
+        "internalName": "Toxoplasmosis",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "veryFast",
+        "averageDps": 9,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "shaman",
+          "strength": 110
+        },
+        "majorIds": {
+          "Outbreak": "<span class='font-ascii' style='color:#AAAAAA'>When you are within Totem range, the Totem becomes Primed, adding 4% of your Poison ID every 0.25s. Hitting a Primed totem with Uproot will create a 6 block wide poison cloud instantly dealing the stored Poison.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Can you feel the burning inside? Something has made itself at home. Time to tuck away the parts of you it has no need for, to shuffle your little brain around so you may Carry. Carry and Spread. Give it a new home-melting you down is how it says thank you. Be grateful, won't you?</span>",
+        "identifications": {
+          "poison": {
+            "min": 15000,
+            "raw": 50000,
+            "max": 65000
+          },
+          "lifeSteal": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 3
+          }
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed0856286",
+      "itemName": "Tribal Tunic",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Tribal Tunic",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_leather"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "identified": true,
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 18
+        },
+        "sets": [
+          "Tribal"
+        ],
+        "powderSlots": 1,
+        "identifications": {
+          "knockback": 15,
+          "lootBonus": 8,
+          "rawStrength": 3,
+          "rawMainAttackDamage": 30
+        },
+        "base": {
+          "baseHealth": 90,
+          "baseEarthDefence": 5
+        }
+      },
+      "after": {
+        "internalName": "Tribal Tunic",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_leather"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 18
+        },
+        "sets": [
+          "Tribal"
+        ],
+        "powderSlots": 1,
+        "identifications": {
+          "knockback": 15,
+          "lootBonus": 8,
+          "rawStrength": 3,
+          "rawMainAttackDamage": 30
+        },
+        "base": {
+          "baseHealth": 90,
+          "baseEarthDefence": 5
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed0856287",
+      "itemName": "Veil of Hatred",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Veil of Hatred",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.veilOfHatred"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 119,
+          "skills": [
+            "tailoring"
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 100,
+            "raw": 100,
+            "max": 120
+          },
+          "rawDefence": {
+            "min": 4,
+            "raw": 4,
+            "max": 5
+          },
+          "rawStrength": {
+            "min": 4,
+            "raw": 4,
+            "max": 5
+          },
+          "healthRegenRaw": {
+            "min": 90,
+            "raw": 90,
+            "max": 105
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -184000,
+          "strengthRequirement": 24,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 24,
+          "agilityRequirement": 0
+        }
+      },
+      "after": {
+        "internalName": "Veil of Hatred",
+        "type": "ingredient",
+        "icon": {
+          "value": "211356b836fa35bda472c2a3925cc7c270ee03a1a358ee8200b643a9f9d583eb",
+          "format": "skin"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 119,
+          "skills": [
+            "tailoring"
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 100,
+            "raw": 100,
+            "max": 120
+          },
+          "rawDefence": {
+            "min": 4,
+            "raw": 4,
+            "max": 5
+          },
+          "rawStrength": {
+            "min": 4,
+            "raw": 4,
+            "max": 5
+          },
+          "healthRegenRaw": {
+            "min": 90,
+            "raw": 90,
+            "max": 105
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -184000,
+          "strengthRequirement": 24,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 24,
+          "agilityRequirement": 0
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed0856288",
+      "itemName": "Lustrum",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Lustrum",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "legendary",
+        "attackSpeed": "verySlow",
+        "averageDps": 728,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 108,
+          "classRequirement": "archer",
+          "defence": 40,
+          "strength": 40,
+          "dexterity": 35,
+          "intelligence": 35
+        },
+        "powderSlots": 5,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Your soul is stained. Covered in the dirt of deceit and the muck of murder, the sins haunt your every step. Burn it all away, purify your existence in a flash of brilliant light.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -455,
+            "raw": -350,
+            "max": -245
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "manaSteal": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawDefence": 5,
+          "healthRegen": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          },
+          "rawStrength": 5,
+          "rawDexterity": 5,
+          "rawAttackSpeed": -3,
+          "rawIntelligence": 5,
+          "elementalSpellDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 220,
+            "raw": 220,
+            "max": 220
+          },
+          "baseEarthDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 300
+          },
+          "baseWaterDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 300
+          },
+          "baseThunderDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 375
+          }
+        }
+      },
+      "after": {
+        "internalName": "Lustrum",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "legendary",
+        "attackSpeed": "verySlow",
+        "averageDps": 797,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 108,
+          "classRequirement": "archer",
+          "defence": 40,
+          "strength": 40,
+          "dexterity": 35,
+          "intelligence": 35
+        },
+        "powderSlots": 5,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Your soul is stained. Covered in the dirt of deceit and the muck of murder, the sins haunt your every step. Burn it all away, purify your existence in a flash of brilliant light.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -455,
+            "raw": -350,
+            "max": -245
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "manaSteal": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawDefence": 5,
+          "healthRegen": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          },
+          "rawStrength": 5,
+          "rawDexterity": 5,
+          "rawAttackSpeed": -3,
+          "rawIntelligence": 5,
+          "elementalSpellDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 220,
+            "raw": 220,
+            "max": 220
+          },
+          "baseEarthDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 300
+          },
+          "baseWaterDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 300
+          },
+          "baseThunderDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 375
+          }
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed0856289",
+      "itemName": "Rayscorched Plating",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Rayscorched Plating",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.rayscorchedPlating"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 119,
+          "skills": [
+            "armouring"
+          ]
+        },
+        "identifications": {
+          "rawHealth": {
+            "min": 1200,
+            "raw": 1200,
+            "max": 1275
+          },
+          "rawDefence": {
+            "min": 6,
+            "raw": 6,
+            "max": 8
+          },
+          "2ndSpellCost": {
+            "min": 3,
+            "raw": 3,
+            "max": 4
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -185000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": -15,
+          "defenceRequirement": 35,
+          "agilityRequirement": 0
+        }
+      },
+      "after": {
+        "internalName": "Rayscorched Plating",
+        "type": "ingredient",
+        "icon": {
+          "value": "a918f1832f2e3541e2d71342ea0f9a7165dcf3ddce00c7dd7d7dec0c2ad831ae",
+          "format": "skin"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 119,
+          "skills": [
+            "armouring"
+          ]
+        },
+        "identifications": {
+          "rawHealth": {
+            "min": 1200,
+            "raw": 1200,
+            "max": 1275
+          },
+          "rawDefence": {
+            "min": 6,
+            "raw": 6,
+            "max": 8
+          },
+          "2ndSpellCost": {
+            "min": 3,
+            "raw": 3,
+            "max": 4
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -185000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": -15,
+          "defenceRequirement": 35,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Hyhethe Apostate",
+            "coords": null
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed085628a",
+      "itemName": "Tribal Cap",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Tribal Cap",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.pale_leather"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "identified": true,
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 18
+        },
+        "sets": [
+          "Tribal"
+        ],
+        "powderSlots": 1,
+        "identifications": {
+          "sprint": 8,
+          "lootBonus": 8,
+          "rawAgility": 3,
+          "mainAttackRange": 8
+        },
+        "base": {
+          "baseHealth": 85,
+          "baseAirDefence": 5
+        }
+      },
+      "after": {
+        "internalName": "Tribal Cap",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.pale_leather"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 18
+        },
+        "sets": [
+          "Tribal"
+        ],
+        "powderSlots": 1,
+        "identifications": {
+          "sprint": 8,
+          "lootBonus": 8,
+          "rawAgility": 3,
+          "mainAttackRange": 8
+        },
+        "base": {
+          "baseHealth": 85,
+          "baseAirDefence": 5
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed085628b",
+      "itemName": "Tribal Pants",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Tribal Pants",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.pale_leather"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "identified": true,
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 18
+        },
+        "sets": [
+          "Tribal"
+        ],
+        "powderSlots": 1,
+        "identifications": {
+          "sprint": 8,
+          "lootBonus": 8,
+          "rawStrength": 3,
+          "rawMainAttackDamage": 30
+        },
+        "base": {
+          "baseHealth": 90,
+          "baseEarthDefence": 5
+        }
+      },
+      "after": {
+        "internalName": "Tribal Pants",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.pale_leather"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 18
+        },
+        "sets": [
+          "Tribal"
+        ],
+        "powderSlots": 1,
+        "identifications": {
+          "sprint": 8,
+          "lootBonus": 8,
+          "rawStrength": 3,
+          "rawMainAttackDamage": 30
+        },
+        "base": {
+          "baseHealth": 90,
+          "baseEarthDefence": 5
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed085628c",
+      "itemName": "Manifestation of Agony",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Manifestation of Agony",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.manifestationOfAgony"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 119,
+          "skills": [
+            "alchemism"
+          ]
+        },
+        "identifications": {
+          "lootBonus": {
+            "min": 20,
+            "raw": 20,
+            "max": 24
+          },
+          "combatExperience": {
+            "min": -24,
+            "raw": -24,
+            "max": -20
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": -320,
+          "charges": -1
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        }
+      },
+      "after": {
+        "internalName": "Manifestation of Agony",
+        "type": "ingredient",
+        "icon": {
+          "value": "ecfe408f9e14d9afa90982312ae8793a0e347c70dc52420449e054a1c255698d",
+          "format": "skin"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 119,
+          "skills": [
+            "alchemism"
+          ]
+        },
+        "identifications": {
+          "lootBonus": {
+            "min": 20,
+            "raw": 20,
+            "max": 24
+          },
+          "combatExperience": {
+            "min": -24,
+            "raw": -24,
+            "max": -20
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": -320,
+          "charges": -1
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed085628d",
+      "itemName": "Resonance",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Resonance",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.basicGold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 646,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 104,
+          "classRequirement": "shaman",
+          "strength": 75,
+          "intelligence": 75
+        },
+        "majorIds": {
+          "Lifestream": "<span class='font-ascii' style='color:#AAAAAA'>Blood Sorrow has 4 times the damage and overhealth, but its duration is shortened by 75%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The power to join oneself with the lifeblood of the earth has long eluded sects of fanatical druids and shamans. One such cult found a way, and subsequently wiped itself out in the process, their flesh turning to stone and veins forming new rivers.</span>",
+        "identifications": {
+          "sprint": {
+            "min": -36,
+            "raw": -28,
+            "max": -20
+          },
+          "manaRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "airDefence": {
+            "min": -58,
+            "raw": -45,
+            "max": -31
+          },
+          "rawDefence": 25,
+          "healthRegen": {
+            "min": 18,
+            "raw": 60,
+            "max": 78
+          },
+          "4thSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          },
+          "elementalSpellDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 30
+          },
+          "baseEarthDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 150
+          },
+          "baseWaterDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 170
+          }
+        }
+      },
+      "after": {
+        "internalName": "Resonance",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.basicGold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 738,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 104,
+          "classRequirement": "shaman",
+          "strength": 75,
+          "intelligence": 75
+        },
+        "majorIds": {
+          "Lifestream": "<span class='font-ascii' style='color:#AAAAAA'>Blood Sorrow has 4 times the damage and overhealth, but its duration is shortened by 75%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The power to join oneself with the lifeblood of the earth has long eluded sects of fanatical druids and shamans. One such cult found a way, and subsequently wiped itself out in the process, their flesh turning to stone and veins forming new rivers.</span>",
+        "identifications": {
+          "sprint": {
+            "min": -36,
+            "raw": -28,
+            "max": -20
+          },
+          "manaRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "airDefence": {
+            "min": -58,
+            "raw": -45,
+            "max": -31
+          },
+          "rawDefence": 25,
+          "healthRegen": {
+            "min": 18,
+            "raw": 60,
+            "max": 78
+          },
+          "4thSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          },
+          "elementalSpellDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 30
+          },
+          "baseEarthDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 150
+          },
+          "baseWaterDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 170
+          }
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed085628e",
+      "itemName": "Tribal Boots",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Tribal Boots",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.pale_leather"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "identified": true,
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 18
+        },
+        "sets": [
+          "Tribal"
+        ],
+        "powderSlots": 1,
+        "identifications": {
+          "knockback": 15,
+          "lootBonus": 8,
+          "walkSpeed": 8,
+          "rawAgility": 3
+        },
+        "base": {
+          "baseHealth": 85,
+          "baseAirDefence": 5
+        }
+      },
+      "after": {
+        "internalName": "Tribal Boots",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.pale_leather"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 18
+        },
+        "sets": [
+          "Tribal"
+        ],
+        "powderSlots": 1,
+        "identifications": {
+          "knockback": 15,
+          "lootBonus": 8,
+          "walkSpeed": 8,
+          "rawAgility": 3
+        },
+        "base": {
+          "baseHealth": 85,
+          "baseAirDefence": 5
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed085628f",
+      "itemName": "Baleful Blizzard",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Baleful Blizzard",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 110,
+          "agility": 50,
+          "intelligence": 50
+        },
+        "majorIds": {
+          "֎": "<span class='font-ascii' style='color:#AAAAAA'>֎</span>",
+          "Ice Storm": "<span class='font-ascii' style='color:#AAAAAA'>Arrow Shield and Snowstorm's radius' increase by 6 blocks. Arrow Shield's charges are doubled, but no longer give defense.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Whipping, chilling winds, and circling hailstones the size of boulders-the eye of your storm is the only safe place to be.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "reflection": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "rawMaxMana": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "sprintRegen": {
+            "min": 11,
+            "raw": 36,
+            "max": 47
+          },
+          "waterDefence": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "rawIntelligence": 7,
+          "rawAirSpellDamage": {
+            "min": 67,
+            "raw": 223,
+            "max": 290
+          }
+        },
+        "base": {
+          "baseHealth": 3900,
+          "baseAirDefence": 175,
+          "baseWaterDefence": 175,
+          "baseThunderDefence": -100
+        }
+      },
+      "after": {
+        "internalName": "Baleful Blizzard",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 110,
+          "agility": 50,
+          "intelligence": 50
+        },
+        "majorIds": {
+          "Ice Storm": "<span class='font-ascii' style='color:#AAAAAA'>Arrow Shield and Snowstorm's radius' increase by 6 blocks. Arrow Shield's charges are doubled, but no longer give defense.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Whipping, chilling winds, and circling hailstones the size of boulders-the eye of your storm is the only safe place to be.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "reflection": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "rawMaxMana": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "sprintRegen": {
+            "min": 11,
+            "raw": 36,
+            "max": 47
+          },
+          "waterDefence": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "rawIntelligence": 7,
+          "rawAirSpellDamage": {
+            "min": 67,
+            "raw": 223,
+            "max": 290
+          }
+        },
+        "base": {
+          "baseHealth": 3900,
+          "baseAirDefence": 175,
+          "baseWaterDefence": 175,
+          "baseThunderDefence": -100
+        }
+      }
+    },
+    {
+      "_id": "69d9a091f973b60ed0856290",
+      "itemName": "Fatal",
+      "status": "modify",
+      "timestamp": 1775870097,
+      "before": {
+        "internalName": "Fatal",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "veryFast",
+        "averageDps": 482,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 99,
+          "classRequirement": "mage",
+          "dexterity": 110
+        },
+        "majorIds": {
+          "Unstable Reaction": "<span class='font-ascii' style='color:#AAAAAA'>Judrajim no longer ramps in damage after each hit. When it expires, it releases 115% of its potential in an explosion.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A mage by the name of Lero claims to have harnessed the sheer power of lightning using a magical staff, however, the weapon is very unreliable in a pinch.</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "spellDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawDexterity": 25,
+          "1stSpellCost": {
+            "min": 36,
+            "raw": 28,
+            "max": 20
+          },
+          "2ndSpellCost": {
+            "min": -15,
+            "raw": -49,
+            "max": -64
+          }
+        },
+        "base": {
+          "baseThunderDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 310
+          }
+        }
+      },
+      "after": {
+        "internalName": "Fatal",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "veryFast",
+        "averageDps": 482,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 99,
+          "classRequirement": "mage",
+          "dexterity": 110
+        },
+        "majorIds": {
+          "Unstable Reaction": "<span class='font-ascii' style='color:#AAAAAA'>Judrajim no longer ramps in damage after each hit. When it expires, it releases 115% of its potential in an explosion of 20 blocks.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A mage by the name of Lero claims to have harnessed the sheer power of lightning using a magical staff, however, the weapon is very unreliable in a pinch.</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "spellDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawDexterity": 25,
+          "1stSpellCost": {
+            "min": 36,
+            "raw": 28,
+            "max": 20
+          },
+          "2ndSpellCost": {
+            "min": -15,
+            "raw": -49,
+            "max": -64
+          }
+        },
+        "base": {
+          "baseThunderDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 310
+          }
+        }
+      }
+    }
+  ]
+}
