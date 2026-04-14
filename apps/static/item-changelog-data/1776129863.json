@@ -1,0 +1,1668 @@
+{
+  "modify": [
+    {
+      "_id": "69dd97475aa2021919e61950",
+      "itemName": "Refined Silver Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Silver Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotSilver"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 50
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Silver Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotSilver"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 50
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61951",
+      "itemName": "Refined Molten Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Molten Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotMolten"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 90
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Molten Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotMolten"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 90
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61952",
+      "itemName": "Refined Dernic Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Dernic Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotDernic"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 105
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Dernic Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotDernic"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 105
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61953",
+      "itemName": "Ego",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Ego",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.multi3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 241,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 108,
+          "classRequirement": "warrior",
+          "agility": 40,
+          "defence": 40,
+          "strength": 30,
+          "dexterity": 30,
+          "intelligence": 70
+        },
+        "majorIds": {
+          "Oneself Unto All": "<span class='font-ascii' style='color:#AAAAAA'>Radiance's radius extends 4 blocks beyond Bash and buffs allies with your stats instead of theirs</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Sever every last impurity of the self, and bring to fruition a brilliant culmination of 'you'.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawMaxMana": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          },
+          "elementalDamage": {
+            "min": 45,
+            "raw": 150,
+            "max": 195
+          },
+          "elementalDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 27
+          },
+          "baseFireDamage": {
+            "min": 14,
+            "raw": 14,
+            "max": 23
+          },
+          "baseEarthDamage": {
+            "min": 19,
+            "raw": 19,
+            "max": 20
+          },
+          "baseWaterDamage": {
+            "min": 18,
+            "raw": 18,
+            "max": 23
+          },
+          "baseThunderDamage": {
+            "min": 4,
+            "raw": 4,
+            "max": 35
+          }
+        }
+      },
+      "after": {
+        "internalName": "Ego",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.multi3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 241,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 108,
+          "classRequirement": "warrior",
+          "agility": 40,
+          "defence": 40,
+          "strength": 30,
+          "dexterity": 30,
+          "intelligence": 70
+        },
+        "majorIds": {
+          "Oneself Unto All": "<span class='font-ascii' style='color:#AAAAAA'>Radiance's radius extends 4 blocks beyond Bash and buffs allies with your stats instead of theirs.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Sever every last impurity of the self, and bring to fruition a brilliant culmination of 'you'.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawMaxMana": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          },
+          "elementalDamage": {
+            "min": 45,
+            "raw": 150,
+            "max": 195
+          },
+          "elementalDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 27
+          },
+          "baseFireDamage": {
+            "min": 14,
+            "raw": 14,
+            "max": 23
+          },
+          "baseEarthDamage": {
+            "min": 19,
+            "raw": 19,
+            "max": 20
+          },
+          "baseWaterDamage": {
+            "min": 18,
+            "raw": 18,
+            "max": 23
+          },
+          "baseThunderDamage": {
+            "min": 4,
+            "raw": 4,
+            "max": 35
+          }
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61954",
+      "itemName": "Refined Iron Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Iron Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotIron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 40
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Iron Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotIron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 40
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61955",
+      "itemName": "Refined Copper Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Copper Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotCopper"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 1
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 80,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Copper Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotCopper"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 1
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 80,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61956",
+      "itemName": "Refined Kanderstone Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Kanderstone Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotKanderstone"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 70
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Kanderstone Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotKanderstone"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 70
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61957",
+      "itemName": "Revolution",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Revolution",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 759,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 111,
+          "classRequirement": "archer",
+          "agility": 65,
+          "strength": 60,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Regicide": "<span class='font-ascii' style='color:#AAAAAA'>Your projectiles and abilities deal more damage the further away you are from your target, by 2% per block, up to a cap of 120%</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A boiling rage has been gathering, the pain of an entire empire yearning to be freed. With all the power of the downtrodden and the overlooked and the starved, you echo out a shout with ten thousand voices, each too quiet to hear by itself, but together a catastrophic force to make the heavens cower.</span>",
+        "identifications": {
+          "knockback": {
+            "min": 39,
+            "raw": 131,
+            "max": 170
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": -3150,
+            "raw": -2423,
+            "max": -1696
+          },
+          "rawIntelligence": 25,
+          "mainAttackRange": {
+            "min": -47,
+            "raw": -36,
+            "max": -25
+          },
+          "raw2ndSpellCost": {
+            "min": -3,
+            "raw": -9,
+            "max": -12
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 260
+          },
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 300
+          },
+          "baseEarthDamage": {
+            "min": 210,
+            "raw": 210,
+            "max": 250
+          },
+          "baseWaterDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 280
+          }
+        }
+      },
+      "after": {
+        "internalName": "Revolution",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 759,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 111,
+          "classRequirement": "archer",
+          "agility": 65,
+          "strength": 60,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Regicide": "<span class='font-ascii' style='color:#AAAAAA'>Your projectiles and abilities deal more damage the further away you are from your target, by 2% per block, up to a cap of 120%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A boiling rage has been gathering, the pain of an entire empire yearning to be freed. With all the power of the downtrodden and the overlooked and the starved, you echo out a shout with ten thousand voices, each too quiet to hear by itself, but together a catastrophic force to make the heavens cower.</span>",
+        "identifications": {
+          "knockback": {
+            "min": 39,
+            "raw": 131,
+            "max": 170
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": -3150,
+            "raw": -2423,
+            "max": -1696
+          },
+          "rawIntelligence": 25,
+          "mainAttackRange": {
+            "min": -47,
+            "raw": -36,
+            "max": -25
+          },
+          "raw2ndSpellCost": {
+            "min": -3,
+            "raw": -9,
+            "max": -12
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 260
+          },
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 300
+          },
+          "baseEarthDamage": {
+            "min": 210,
+            "raw": 210,
+            "max": 250
+          },
+          "baseWaterDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 280
+          }
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61958",
+      "itemName": "Latent Disorder",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Latent Disorder",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 918,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 114,
+          "classRequirement": "shaman",
+          "dexterity": 60,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Chaos Reach": "<span class='font-ascii' style='color:#AAAAAA'>Blood Sorrow spends 20 less points of Blood Pool and inflicts enemies with 0.3 seconds of Bleeding per hit, but no longer grants overhealth.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A rage unseen, yet so beautiful, that when you laid your eyes upon it, you knew it had to be unleashed. No matter the cost.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 195,
+            "raw": 650,
+            "max": 845
+          },
+          "rawHealth": {
+            "min": -2925,
+            "raw": -2250,
+            "max": -1575
+          },
+          "waterDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawDexterity": 12,
+          "raw3rdSpellCost": {
+            "min": -2,
+            "raw": -6,
+            "max": -8
+          },
+          "healingEfficiency": {
+            "min": -21,
+            "raw": -16,
+            "max": -11
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 850,
+            "raw": 850,
+            "max": 950
+          },
+          "baseThunderDamage": {
+            "min": 750,
+            "raw": 750,
+            "max": 1050
+          }
+        }
+      },
+      "after": {
+        "internalName": "Latent Disorder",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 918,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 114,
+          "classRequirement": "shaman",
+          "dexterity": 60,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Chaos Reach": "<span class='font-ascii' style='color:#AAAAAA'>Blood Sorrow spends 20 less points of Blood Pool and inflicts enemies with 0.3 seconds of Bleeding per hit, but no longer grants overhealth.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A rage unseen, yet so beautiful, that when you laid your eyes upon it, you knew it had to be unleashed. No matter the cost.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 195,
+            "raw": 650,
+            "max": 845
+          },
+          "rawHealth": {
+            "min": -2925,
+            "raw": -2250,
+            "max": -1575
+          },
+          "waterDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawDexterity": 12,
+          "raw3rdSpellCost": {
+            "min": -2,
+            "raw": -6,
+            "max": -8
+          },
+          "healingEfficiency": {
+            "min": -21,
+            "raw": -16,
+            "max": -11
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 850,
+            "raw": 850,
+            "max": 950
+          },
+          "baseThunderDamage": {
+            "min": 750,
+            "raw": 750,
+            "max": 1050
+          }
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61959",
+      "itemName": "Refined Cinnabar Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Cinnabar Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotCinnabar"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 115
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Cinnabar Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotCinnabar"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 115
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e6195a",
+      "itemName": "Refined Gold Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Gold Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotGold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 20
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Gold Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotGold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 20
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e6195b",
+      "itemName": "Refined Titanium Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Titanium Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotTitanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 110
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Titanium Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotTitanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 110
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e6195c",
+      "itemName": "Refined Cobalt Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Cobalt Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotCobalt"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 60
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Cobalt Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotCobalt"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 60
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e6195d",
+      "itemName": "Refined Voidstone Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Voidstone Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotVoidstone"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 100
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Voidstone Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotVoidstone"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 100
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e6195e",
+      "itemName": "Refined Granite Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Granite Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotGranite"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 10
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Granite Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotGranite"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 10
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e6195f",
+      "itemName": "Refined Sandstone Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Sandstone Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotSandstone"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 30
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Sandstone Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotSandstone"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 30
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61960",
+      "itemName": "Refined Diamond Ingot",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Refined Diamond Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotDiamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 80
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "internalName": "Refined Diamond Ingot",
+        "type": "material",
+        "subType": "mining",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.ingotDiamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 80
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Energy</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Boots</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Leggings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Helmets</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Chestplates</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61961",
+      "itemName": "Sitis",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Sitis",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "legendary",
+        "attackSpeed": "superSlow",
+        "averageDps": 604,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 99,
+          "classRequirement": "assassin",
+          "intelligence": 65
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Wielding it for too long will leave one a dessicated husk, as this dull blade slowly absorbs all liquids around it.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 143,
+            "raw": 475,
+            "max": 618
+          },
+          "manaRegen": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "walkSpeed": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "spellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "healthRegenRaw": {
+            "min": -286,
+            "raw": -220,
+            "max": -154
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 475,
+            "raw": 475,
+            "max": 520
+          },
+          "baseWaterDamage": {
+            "min": 475,
+            "raw": 475,
+            "max": 900
+          }
+        }
+      },
+      "after": {
+        "internalName": "Sitis",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "legendary",
+        "attackSpeed": "superSlow",
+        "averageDps": 604,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 99,
+          "classRequirement": "assassin",
+          "intelligence": 65
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Wielding it for too long will leave one a desiccated husk, as this dull blade slowly absorbs all liquids around it.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 143,
+            "raw": 475,
+            "max": 618
+          },
+          "manaRegen": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "walkSpeed": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "spellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "healthRegenRaw": {
+            "min": -286,
+            "raw": -220,
+            "max": -154
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 475,
+            "raw": 475,
+            "max": 520
+          },
+          "baseWaterDamage": {
+            "min": 475,
+            "raw": 475,
+            "max": 900
+          }
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61962",
+      "itemName": "Final Spark",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Final Spark",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 116,
+          "dexterity": 75
+        },
+        "majorIds": {
+          "Desperate Measures": "<span class='font-ascii' style='color:#AAAAAA'>Walk Speed increases by 1% and Jump Height increases by 2% for every 1% hp missing</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>You have gotten tired of the abyss staring back. Embrace it in a finale that leaves no survivors.  </span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -4000,
+            "raw": -3077,
+            "max": -2154
+          },
+          "manaRegen": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawDexterity": 5,
+          "rawAttackSpeed": -14,
+          "thunderSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawThunderMainAttackDamage": {
+            "min": 1085,
+            "raw": 3615,
+            "max": 4700
+          }
+        },
+        "base": {
+          "baseHealth": 4400,
+          "baseThunderDefence": 210
+        }
+      },
+      "after": {
+        "internalName": "Final Spark",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 116,
+          "dexterity": 75
+        },
+        "majorIds": {
+          "Desperate Measures": "<span class='font-ascii' style='color:#AAAAAA'>Walk Speed increases by 1% and Jump Height increases by 2% for every 1% hp missing.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>You have gotten tired of the abyss staring back. Embrace it in a finale that leaves no survivors.  </span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -4000,
+            "raw": -3077,
+            "max": -2154
+          },
+          "manaRegen": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawDexterity": 5,
+          "rawAttackSpeed": -14,
+          "thunderSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawThunderMainAttackDamage": {
+            "min": 1085,
+            "raw": 3615,
+            "max": 4700
+          }
+        },
+        "base": {
+          "baseHealth": 4400,
+          "baseThunderDefence": 210
+        }
+      }
+    },
+    {
+      "_id": "69dd97475aa2021919e61963",
+      "itemName": "Firebomb",
+      "status": "modify",
+      "timestamp": 1776129863,
+      "before": {
+        "internalName": "Firebomb",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 851,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 111,
+          "classRequirement": "archer",
+          "defence": 70
+        },
+        "majorIds": {
+          "Napalm": "<span class='font-ascii' style='color:#AAAAAA'>Fire Creep increases Arrow Bomb damage by <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+15%</span>, but deals 15 times the self-damage and lowers velocity. Scorched Earth radius is increased and deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+65%</span>.</span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Gunpowder is your favourite scent. It signals peace: the enemies have been blown to high hell. And who doesn't love peace?</span>",
+        "identifications": {
+          "exploding": {
+            "min": 23,
+            "raw": 77,
+            "max": 100
+          },
+          "manaRegen": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "walkSpeed": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "waterDamage": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "fireSpellDamage": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 190
+          },
+          "baseFireDamage": {
+            "min": 350,
+            "raw": 350,
+            "max": 475
+          }
+        }
+      },
+      "after": {
+        "internalName": "Firebomb",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 851,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 111,
+          "classRequirement": "archer",
+          "defence": 70
+        },
+        "majorIds": {
+          "Napalm": "<span class='font-ascii' style='color:#AAAAAA'>Fire Creep increases Arrow Bomb damage by <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+15%</span>, but deals 15 times the self-damage and lowers velocity. Scorched Earth radius is increased and deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+65%</span>.</span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Gunpowder is your favourite scent. It signals peace: the enemies have been blown to high hell. And who doesn't love peace?</span>",
+        "identifications": {
+          "exploding": {
+            "min": 23,
+            "raw": 77,
+            "max": 100
+          },
+          "manaRegen": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "walkSpeed": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "waterDamage": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "fireSpellDamage": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 120,
+            "raw": 120,
+            "max": 190
+          },
+          "baseFireDamage": {
+            "min": 350,
+            "raw": 350,
+            "max": 475
+          }
+        }
+      }
+    }
+  ]
+}
