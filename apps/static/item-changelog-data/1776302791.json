@@ -1,0 +1,1138 @@
+{
+  "modify": [
+    {
+      "_id": "69e03ac7f258497736872dc5",
+      "itemName": "Relic Chestplate",
+      "status": "modify",
+      "timestamp": 1776302791,
+      "before": {
+        "internalName": "Relic Chestplate",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_2",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 35,
+          "agility": 8,
+          "defence": 8,
+          "strength": 8,
+          "dexterity": 8,
+          "intelligence": 8
+        },
+        "sets": [
+          "Relic"
+        ],
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            1091,
+            116,
+            -1476,
+            100
+          ]
+        },
+        "identifications": {
+          "elementalDefence": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          }
+        },
+        "base": {
+          "baseHealth": 285,
+          "baseAirDefence": 12,
+          "baseFireDefence": 12,
+          "baseEarthDefence": 12,
+          "baseWaterDefence": 12,
+          "baseThunderDefence": 12
+        }
+      },
+      "after": {
+        "internalName": "Relic Chestplate",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_2",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 35,
+          "agility": 8,
+          "defence": 8,
+          "strength": 8,
+          "dexterity": 8,
+          "intelligence": 8
+        },
+        "sets": [
+          "Relic"
+        ],
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            1091,
+            116,
+            -1476,
+            100
+          ]
+        },
+        "identifications": {
+          "elementalDefence": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          }
+        },
+        "base": {
+          "baseHealth": 285,
+          "baseAirDefence": 12,
+          "baseFireDefence": 12,
+          "baseEarthDefence": 12,
+          "baseWaterDefence": 12,
+          "baseThunderDefence": 12
+        }
+      }
+    },
+    {
+      "_id": "69e03ac7f258497736872dc6",
+      "itemName": "Giant Ivory Tusk",
+      "status": "modify",
+      "timestamp": 1776302791,
+      "before": {
+        "internalName": "Giant Ivory Tusk",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.giantIvoryTusk"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 115,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 5,
+            "raw": 5,
+            "max": 6
+          },
+          "healthRegenRaw": {
+            "min": 30,
+            "raw": 30,
+            "max": 35
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -125000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 14,
+          "agilityRequirement": 0
+        }
+      },
+      "after": {
+        "internalName": "Giant Ivory Tusk",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.giantIvoryTusk"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 115,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 5,
+            "raw": 5,
+            "max": 6
+          },
+          "healthRegenRaw": {
+            "min": 30,
+            "raw": 30,
+            "max": 35
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -125000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 14,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Woolly Rhino",
+            "coords": [
+              [
+                -1073,
+                89,
+                -1197,
+                30
+              ],
+              [
+                -1360,
+                109,
+                -1393,
+                8
+              ],
+              [
+                -1031,
+                97,
+                -1037,
+                8
+              ],
+              [
+                -995,
+                114,
+                -1292,
+                10
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e03ac7f258497736872dc7",
+      "itemName": "Biohazard",
+      "status": "modify",
+      "timestamp": 1776302791,
+      "before": {
+        "internalName": "Biohazard",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 855,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "archer",
+          "strength": 60,
+          "intelligence": 50
+        },
+        "majorIds": {
+          "Gunk Shot": "<span class='font-ascii' style='color:#AAAAAA'>Shocking Bomb's velocity is doubled but loses -66% radius. Arrow Bomb and Grape Bomb suffer a -20% damage penalty.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Archers have often experimented with tipped arrows. Launching the substance itself, however, is an innovation. A viscous ooze corrosive to anything it touches, it remains to be seen if their remains will be seen.</span>",
+        "identifications": {
+          "poison": {
+            "min": 7731,
+            "raw": 25769,
+            "max": 33500
+          },
+          "slowEnemy": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawDefence": -15,
+          "rawStrength": 10,
+          "spellDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "healthRegenRaw": {
+            "min": -260,
+            "raw": -200,
+            "max": -140
+          },
+          "raw3rdSpellCost": {
+            "min": -2,
+            "raw": -8,
+            "max": -10
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 240
+          },
+          "baseEarthDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 240
+          },
+          "baseWaterDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 260
+          }
+        }
+      },
+      "after": {
+        "internalName": "Biohazard",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 855,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "archer",
+          "strength": 60,
+          "intelligence": 50
+        },
+        "majorIds": {
+          "Gunk Shot": "<span class='font-ascii' style='color:#AAAAAA'>Arrow Bomb's velocity is doubled but loses -66% radius and -20% damage.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Archers have often experimented with tipped arrows. Launching the substance itself, however, is an innovation. A viscous ooze corrosive to anything it touches, it remains to be seen if their remains will be seen.</span>",
+        "identifications": {
+          "poison": {
+            "min": 7731,
+            "raw": 25769,
+            "max": 33500
+          },
+          "slowEnemy": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawDefence": -15,
+          "rawStrength": 10,
+          "spellDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "healthRegenRaw": {
+            "min": -260,
+            "raw": -200,
+            "max": -140
+          },
+          "raw3rdSpellCost": {
+            "min": -2,
+            "raw": -8,
+            "max": -10
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 240
+          },
+          "baseEarthDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 240
+          },
+          "baseWaterDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 260
+          }
+        }
+      }
+    },
+    {
+      "_id": "69e03ac7f258497736872dc8",
+      "itemName": "Butterfly Buckler",
+      "status": "modify",
+      "timestamp": 1776302791,
+      "before": {
+        "internalName": "Butterfly Buckler",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.butterflyBuckler"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_2",
+        "requirements": {
+          "level": 118,
+          "skills": [
+            "weaponsmithing"
+          ]
+        },
+        "identifications": {
+          "rawHealth": {
+            "min": 900,
+            "raw": 900,
+            "max": 945
+          },
+          "healthRegenRaw": {
+            "min": 60,
+            "raw": 60,
+            "max": 65
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -142000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 34,
+          "agilityRequirement": 0
+        }
+      },
+      "after": {
+        "internalName": "Butterfly Buckler",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.butterflyBuckler"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_2",
+        "requirements": {
+          "level": 118,
+          "skills": [
+            "weaponsmithing"
+          ]
+        },
+        "identifications": {
+          "rawHealth": {
+            "min": 900,
+            "raw": 900,
+            "max": 945
+          },
+          "healthRegenRaw": {
+            "min": 60,
+            "raw": 60,
+            "max": 65
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -142000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 34,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Wings Knight",
+            "coords": [
+              [
+                -1072,
+                90,
+                -1150,
+                0
+              ],
+              [
+                -1402,
+                103,
+                -1037,
+                0
+              ],
+              [
+                -1385,
+                103,
+                -1037,
+                0
+              ],
+              [
+                -1430,
+                106,
+                -996,
+                0
+              ],
+              [
+                -1430,
+                106,
+                -1013,
+                0
+              ],
+              [
+                -2230,
+                42,
+                -453,
+                0
+              ]
+            ]
+          },
+          {
+            "name": "Gendarme Knight",
+            "coords": [
+              [
+                -1694,
+                129,
+                -816,
+                10
+              ],
+              [
+                -1630,
+                131,
+                -955,
+                10
+              ],
+              [
+                -1564,
+                129,
+                -866,
+                8
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e03ac7f258497736872dc9",
+      "itemName": "Relic Leggings",
+      "status": "modify",
+      "timestamp": 1776302791,
+      "before": {
+        "internalName": "Relic Leggings",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.pale_gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_3",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 40,
+          "agility": 12,
+          "defence": 12,
+          "strength": 12,
+          "dexterity": 12,
+          "intelligence": 12
+        },
+        "sets": [
+          "Relic"
+        ],
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            -103,
+            80,
+            -869,
+            100
+          ]
+        },
+        "identifications": {
+          "elementalDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseHealth": 375,
+          "baseAirDefence": 14,
+          "baseFireDefence": 14,
+          "baseEarthDefence": 14,
+          "baseWaterDefence": 14,
+          "baseThunderDefence": 14
+        }
+      },
+      "after": {
+        "internalName": "Relic Leggings",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.pale_gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_3",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 40,
+          "agility": 12,
+          "defence": 12,
+          "strength": 12,
+          "dexterity": 12,
+          "intelligence": 12
+        },
+        "sets": [
+          "Relic"
+        ],
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            -103,
+            80,
+            -869,
+            100
+          ]
+        },
+        "identifications": {
+          "elementalDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseHealth": 375,
+          "baseAirDefence": 14,
+          "baseFireDefence": 14,
+          "baseEarthDefence": 14,
+          "baseWaterDefence": 14,
+          "baseThunderDefence": 14
+        }
+      }
+    },
+    {
+      "_id": "69e03ac7f258497736872dca",
+      "itemName": "Relic Helmet",
+      "status": "modify",
+      "timestamp": 1776302791,
+      "before": {
+        "internalName": "Relic Helmet",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.pale_gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_2",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 30,
+          "agility": 7,
+          "defence": 7,
+          "strength": 7,
+          "dexterity": 7,
+          "intelligence": 7
+        },
+        "sets": [
+          "Relic"
+        ],
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            1328,
+            80,
+            -2084,
+            120
+          ]
+        },
+        "identifications": {
+          "elementalDefence": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          }
+        },
+        "base": {
+          "baseHealth": 215,
+          "baseAirDefence": 8,
+          "baseFireDefence": 8,
+          "baseEarthDefence": 8,
+          "baseWaterDefence": 8,
+          "baseThunderDefence": 8
+        }
+      },
+      "after": {
+        "internalName": "Relic Helmet",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.pale_gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_2",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 30,
+          "agility": 7,
+          "defence": 7,
+          "strength": 7,
+          "dexterity": 7,
+          "intelligence": 7
+        },
+        "sets": [
+          "Relic"
+        ],
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            1328,
+            80,
+            -2084,
+            120
+          ]
+        },
+        "identifications": {
+          "elementalDefence": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          }
+        },
+        "base": {
+          "baseHealth": 215,
+          "baseAirDefence": 8,
+          "baseFireDefence": 8,
+          "baseEarthDefence": 8,
+          "baseWaterDefence": 8,
+          "baseThunderDefence": 8
+        }
+      }
+    },
+    {
+      "_id": "69e03ac7f258497736872dcb",
+      "itemName": "Relic Boots",
+      "status": "modify",
+      "timestamp": 1776302791,
+      "before": {
+        "internalName": "Relic Boots",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.pale_gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_2",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 25,
+          "agility": 5,
+          "defence": 5,
+          "strength": 5,
+          "dexterity": 5,
+          "intelligence": 5
+        },
+        "sets": [
+          "Relic"
+        ],
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            707,
+            75,
+            -1819,
+            80
+          ]
+        },
+        "identifications": {
+          "elementalDefence": {
+            "min": 2,
+            "raw": 7,
+            "max": 9
+          }
+        },
+        "base": {
+          "baseHealth": 150,
+          "baseAirDefence": 4,
+          "baseFireDefence": 4,
+          "baseEarthDefence": 4,
+          "baseWaterDefence": 4,
+          "baseThunderDefence": 4
+        }
+      },
+      "after": {
+        "internalName": "Relic Boots",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.pale_gold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_2",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 25,
+          "agility": 5,
+          "defence": 5,
+          "strength": 5,
+          "dexterity": 5,
+          "intelligence": 5
+        },
+        "sets": [
+          "Relic"
+        ],
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Relic Guardian",
+          "type": "miniboss",
+          "coordinates": [
+            707,
+            75,
+            -1819,
+            80
+          ]
+        },
+        "identifications": {
+          "elementalDefence": {
+            "min": 2,
+            "raw": 7,
+            "max": 9
+          }
+        },
+        "base": {
+          "baseHealth": 150,
+          "baseAirDefence": 4,
+          "baseFireDefence": 4,
+          "baseEarthDefence": 4,
+          "baseWaterDefence": 4,
+          "baseThunderDefence": 4
+        }
+      }
+    },
+    {
+      "_id": "69e03ac7f258497736872dcc",
+      "itemName": "Trikaya",
+      "status": "modify",
+      "timestamp": 1776302791,
+      "before": {
+        "internalName": "Trikaya",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "normal",
+        "averageDps": 482,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 95,
+          "classRequirement": "warrior",
+          "intelligence": 100
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Truth, bliss, emanation, guiding the path forward unto enlightenment.</span>",
+        "identifications": {
+          "healthRegen": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "raw1stSpellCost": {
+            "min": 9,
+            "raw": 7,
+            "max": 5
+          },
+          "raw3rdSpellCost": {
+            "min": 9,
+            "raw": 7,
+            "max": 5
+          },
+          "waterSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawMainAttackDamage": {
+            "min": -1300,
+            "raw": -1000,
+            "max": -700
+          },
+          "rawWaterSpellDamage": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 100
+          },
+          "baseWaterDamage": {
+            "min": 130,
+            "raw": 130,
+            "max": 140
+          }
+        }
+      },
+      "after": {
+        "internalName": "Trikaya",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "normal",
+        "averageDps": 482,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 95,
+          "classRequirement": "warrior",
+          "intelligence": 100
+        },
+        "majorIds": {
+          "Three Bodies": "<span class='font-ascii' style='color:#AAAAAA'>Pressure grants additional effects: Bash gains +4 radius, Uppercut gains <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>+75%</span>, and War Scream's buff gains +12s duration</span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Truth, bliss, emanation, guiding the path forward unto enlightenment.</span>",
+        "identifications": {
+          "healthRegen": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "raw1stSpellCost": {
+            "min": 9,
+            "raw": 7,
+            "max": 5
+          },
+          "raw3rdSpellCost": {
+            "min": 9,
+            "raw": 7,
+            "max": 5
+          },
+          "waterSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawMainAttackDamage": {
+            "min": -1300,
+            "raw": -1000,
+            "max": -700
+          },
+          "rawWaterSpellDamage": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 100
+          },
+          "baseWaterDamage": {
+            "min": 130,
+            "raw": 130,
+            "max": 140
+          }
+        }
+      }
+    }
+  ]
+}
