@@ -1,0 +1,716 @@
+{
+  "modify": [
+    {
+      "_id": "69e2dbc112f9edde84d40687",
+      "itemName": "Umbral Anchor",
+      "status": "modify",
+      "timestamp": 1776475073,
+      "before": {
+        "internalName": "Umbral Anchor",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "legendary",
+        "attackSpeed": "superSlow",
+        "averageDps": 658,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 116,
+          "classRequirement": "assassin",
+          "strength": 55,
+          "intelligence": 60
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>To drag into shadow. To stifle in darkness. Anything is possible with total, suffocating eclipse at your beck and call.</span>",
+        "identifications": {
+          "jumpHeight": -1,
+          "rawAgility": -15,
+          "mainAttackRange": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "raw1stSpellCost": {
+            "min": -2,
+            "raw": -6,
+            "max": -8
+          },
+          "mainAttackDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "waterSpellDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawThunderSpellDamage": {
+            "min": 52,
+            "raw": 173,
+            "max": 225
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 850,
+            "raw": 850,
+            "max": 1050
+          },
+          "baseEarthDamage": {
+            "min": 170,
+            "raw": 170,
+            "max": 170
+          },
+          "baseWaterDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 190
+          }
+        }
+      },
+      "after": {
+        "internalName": "Umbral Anchor",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "legendary",
+        "attackSpeed": "superSlow",
+        "averageDps": 658,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 116,
+          "classRequirement": "assassin",
+          "strength": 55,
+          "intelligence": 60
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>To drag into shadow. To stifle in darkness. Anything is possible with total, suffocating eclipse at your beck and call.</span>",
+        "identifications": {
+          "jumpHeight": -1,
+          "rawAgility": -15,
+          "mainAttackRange": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "raw1stSpellCost": {
+            "min": -2,
+            "raw": -6,
+            "max": -8
+          },
+          "mainAttackDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "waterSpellDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawThunderSpellDamage": {
+            "min": 52,
+            "raw": 173,
+            "max": 225
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 850,
+            "raw": 850,
+            "max": 1050
+          },
+          "baseEarthDamage": {
+            "min": 170,
+            "raw": 170,
+            "max": 170
+          },
+          "baseWaterDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 190
+          }
+        }
+      }
+    },
+    {
+      "_id": "69e2dbc112f9edde84d40688",
+      "itemName": "Beatdown",
+      "status": "modify",
+      "timestamp": 1776475073,
+      "before": {
+        "internalName": "Beatdown",
+        "type": "accessory",
+        "subType": "ring",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ring.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 110,
+          "defence": 55,
+          "strength": 55
+        },
+        "majorIds": {
+          "Brutal Blow": "<span class='font-ascii' style='color:#AAAAAA'>Armour Breaker now gives an extra +10% damage and has its cooldown reduced by 5s, but lasts half as long.</span>"
+        },
+        "identifications": {
+          "exploding": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "knockback": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "rawDefence": 3,
+          "rawStrength": 3,
+          "3rdSpellCost": {
+            "min": 18,
+            "raw": 14,
+            "max": 10
+          },
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          }
+        },
+        "base": {
+          "baseHealth": 750,
+          "baseFireDefence": 95,
+          "baseEarthDefence": 95
+        }
+      },
+      "after": {
+        "internalName": "Beatdown",
+        "type": "accessory",
+        "subType": "ring",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ring.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 110,
+          "defence": 55,
+          "strength": 55
+        },
+        "identifications": {
+          "exploding": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "knockback": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "rawDefence": 3,
+          "rawStrength": 3,
+          "3rdSpellCost": {
+            "min": 18,
+            "raw": 14,
+            "max": 10
+          },
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          }
+        },
+        "base": {
+          "baseHealth": 750,
+          "baseFireDefence": 95,
+          "baseEarthDefence": 95
+        }
+      }
+    },
+    {
+      "_id": "69e2dbc112f9edde84d40689",
+      "itemName": "Riptide",
+      "status": "modify",
+      "timestamp": 1776475073,
+      "before": {
+        "internalName": "Riptide",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "superSlow",
+        "averageDps": 492,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 110,
+          "classRequirement": "mage",
+          "strength": 60,
+          "dexterity": 40,
+          "intelligence": 70
+        },
+        "majorIds": {
+          "Wavebreak": "<span class='font-ascii' style='color:#AAAAAA'>Meteor's <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span></span> damage is replaced by <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span> damage.\nPsychokinesis can bounce up to 5 times, dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>100%</span> and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>50%</span> area damage, as well\nas <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>200%</span> and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>100%</span> direct hit damage, increasing by 10% after each bounce. Mana Bank gains -3 less mana from Meteor.</span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The waves are not like men; they do not brazenly assault and catastrophically fail. They do not burn fast and wink out. They bide their time, they wait, and they encroach upon the world with an insidious, unstoppable force, dragging you away to the dark side of the sea.</span>",
+        "identifications": {
+          "knockback": {
+            "min": -195,
+            "raw": -150,
+            "max": -105
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawDefence": -25,
+          "rawMaxMana": {
+            "min": 24,
+            "raw": 80,
+            "max": 104
+          },
+          "rawIntelligence": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          },
+          "rawWaterSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 190
+          },
+          "baseEarthDamage": {
+            "min": 270,
+            "raw": 270,
+            "max": 350
+          },
+          "baseWaterDamage": {
+            "min": 245,
+            "raw": 245,
+            "max": 375
+          },
+          "baseThunderDamage": {
+            "min": 115,
+            "raw": 115,
+            "max": 235
+          }
+        }
+      },
+      "after": {
+        "internalName": "Riptide",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "superSlow",
+        "averageDps": 492,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 110,
+          "classRequirement": "mage",
+          "strength": 60,
+          "dexterity": 40,
+          "intelligence": 70
+        },
+        "majorIds": {
+          "Wavebreak": "<span class='font-ascii' style='color:#AAAAAA'>Meteor's <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span></span> damage is replaced by <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span> damage.\nPsychokinesis can bounce up to 5 times, dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>100%</span> and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>50%</span> area damage, as well\nas <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>200%</span> and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>100%</span> direct hit damage, increasing by 10% after each bounce. Mana Bank gains 3 less mana from Meteor.</span></span></span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The waves are not like men; they do not brazenly assault and catastrophically fail. They do not burn fast and wink out. They bide their time, they wait, and they encroach upon the world with an insidious, unstoppable force, dragging you away to the dark side of the sea.</span>",
+        "identifications": {
+          "knockback": {
+            "min": -195,
+            "raw": -150,
+            "max": -105
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawDefence": -25,
+          "rawMaxMana": {
+            "min": 24,
+            "raw": 80,
+            "max": 104
+          },
+          "rawIntelligence": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          },
+          "rawWaterSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 190
+          },
+          "baseEarthDamage": {
+            "min": 270,
+            "raw": 270,
+            "max": 350
+          },
+          "baseWaterDamage": {
+            "min": 245,
+            "raw": 245,
+            "max": 375
+          },
+          "baseThunderDamage": {
+            "min": 115,
+            "raw": 115,
+            "max": 235
+          }
+        }
+      }
+    },
+    {
+      "_id": "69e2dbc112f9edde84d4068a",
+      "itemName": "Grimtrap",
+      "status": "modify",
+      "timestamp": 1776475073,
+      "before": {
+        "internalName": "Grimtrap",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "slow",
+        "averageDps": 802,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "assassin",
+          "strength": 100
+        },
+        "majorIds": {
+          "Torment Liturgy": "<span class='font-ascii' style='color:#AAAAAA'>Shadow Siphon now immediately refreshes Vanish when triggered.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Found at the site of the Caritat Mansion, a curse falls upon on all who don this glove; a decay of the body, to fester in their wounds, and a decay of the mind, to muddle all thought. With it, a notion takes hold: to suffer together is to suffer no more.</span>",
+        "identifications": {
+          "poison": {
+            "min": 3750,
+            "raw": 12500,
+            "max": 16250
+          },
+          "thorns": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          },
+          "lifeSteal": {
+            "min": 260,
+            "raw": 865,
+            "max": 1125
+          },
+          "healthRegen": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawStrength": 15,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 220
+          },
+          "baseEarthDamage": {
+            "min": 285,
+            "raw": 285,
+            "max": 405
+          }
+        }
+      },
+      "after": {
+        "internalName": "Grimtrap",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "slow",
+        "averageDps": 802,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "assassin",
+          "strength": 100
+        },
+        "majorIds": {
+          "Torment Liturgy": "<span class='font-ascii' style='color:#AAAAAA'>Shadow Siphon now immediately refreshes Vanish when triggered, but reduces Surprise Strike's multiplier by -30%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Found at the site of the Caritat Mansion, a curse falls upon on all who don this glove; a decay of the body, to fester in their wounds, and a decay of the mind, to muddle all thought. With it, a notion takes hold: to suffer together is to suffer no more.</span>",
+        "identifications": {
+          "poison": {
+            "min": 3750,
+            "raw": 12500,
+            "max": 16250
+          },
+          "thorns": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          },
+          "lifeSteal": {
+            "min": 260,
+            "raw": 865,
+            "max": 1125
+          },
+          "healthRegen": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawStrength": 15,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 220
+          },
+          "baseEarthDamage": {
+            "min": 285,
+            "raw": 285,
+            "max": 405
+          }
+        }
+      }
+    },
+    {
+      "_id": "69e2dbc112f9edde84d4068b",
+      "itemName": "Departure",
+      "status": "modify",
+      "timestamp": 1776475073,
+      "before": {
+        "internalName": "Departure",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "superSlow",
+        "averageDps": 701,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 106,
+          "classRequirement": "archer",
+          "dexterity": 70
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": 40,
+          "manaSteal": 15,
+          "walkSpeed": -30,
+          "rawDexterity": 10,
+          "mainAttackRange": 60,
+          "mainAttackDamage": 40
+        },
+        "base": {
+          "baseDamage": {
+            "min": 600,
+            "raw": 600,
+            "max": 1000
+          },
+          "baseThunderDamage": {
+            "min": 250,
+            "raw": 250,
+            "max": 900
+          }
+        }
+      },
+      "after": {
+        "internalName": "Departure",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "superSlow",
+        "averageDps": 663,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 106,
+          "classRequirement": "archer",
+          "dexterity": 70
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": 40,
+          "manaSteal": 15,
+          "walkSpeed": -30,
+          "rawDexterity": 10,
+          "mainAttackRange": 60,
+          "mainAttackDamage": 40
+        },
+        "base": {
+          "baseDamage": {
+            "min": 600,
+            "raw": 600,
+            "max": 1000
+          },
+          "baseThunderDamage": {
+            "min": 250,
+            "raw": 250,
+            "max": 900
+          }
+        }
+      }
+    }
+  ]
+}
