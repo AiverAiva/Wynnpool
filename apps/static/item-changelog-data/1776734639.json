@@ -1,0 +1,3500 @@
+{
+  "modify": [
+    {
+      "_id": "69e6d1af0534f1842d2ae0fb",
+      "itemName": "Erratic Aspect",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Erratic Aspect",
+        "type": "ingredient",
+        "icon": {
+          "value": "26283e7a88d32719304a37ede0c6a8c5dc9d9cf9b00a179cf904e8ce821312",
+          "format": "skin"
+        },
+        "emblem": "square",
+        "tier": "TIER_2",
+        "requirements": {
+          "level": 76,
+          "skills": [
+            "armouring"
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 80,
+            "raw": 80,
+            "max": 80
+          },
+          "fireDamage": {
+            "min": 8,
+            "raw": 8,
+            "max": 8
+          },
+          "healthRegen": {
+            "min": -15,
+            "raw": -15,
+            "max": -15
+          },
+          "thunderDamage": {
+            "min": 8,
+            "raw": 8,
+            "max": 8
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -87000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 10,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 10,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Explosive Weird",
+            "coords": [
+              -502,
+              47,
+              -5293,
+              30
+            ]
+          },
+          {
+            "name": "Redline Weird",
+            "coords": [
+              [
+                -186,
+                48,
+                -5124,
+                20
+              ],
+              [
+                -73,
+                43,
+                -5049,
+                15
+              ],
+              [
+                -16,
+                44,
+                -5083,
+                25
+              ],
+              [
+                -7,
+                43,
+                -5140,
+                38
+              ],
+              [
+                -7,
+                43,
+                -5140,
+                38
+              ],
+              [
+                -32,
+                37,
+                -5196,
+                15
+              ],
+              [
+                12,
+                36,
+                -5229,
+                15
+              ],
+              [
+                8,
+                43,
+                -5310,
+                15
+              ],
+              [
+                -255,
+                41,
+                -5313,
+                20
+              ]
+            ]
+          },
+          {
+            "name": "Anima Weird",
+            "coords": [
+              -886,
+              57,
+              -4195,
+              0
+            ]
+          },
+          {
+            "name": "Breathless Weird",
+            "coords": [
+              [
+                -186,
+                48,
+                -5124,
+                20
+              ],
+              [
+                -73,
+                43,
+                -5049,
+                15
+              ],
+              [
+                -16,
+                44,
+                -5083,
+                25
+              ],
+              [
+                -7,
+                43,
+                -5140,
+                38
+              ],
+              [
+                -7,
+                43,
+                -5140,
+                38
+              ],
+              [
+                -32,
+                37,
+                -5196,
+                15
+              ],
+              [
+                12,
+                36,
+                -5229,
+                15
+              ],
+              [
+                8,
+                43,
+                -5310,
+                15
+              ],
+              [
+                -255,
+                41,
+                -5313,
+                20
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Erratic Aspect",
+        "type": "ingredient",
+        "icon": {
+          "value": "26283e7a88d32719304a37ede0c6a8c5dc9d9cf9b00a179cf904e8ce821312",
+          "format": "skin"
+        },
+        "emblem": "square",
+        "tier": "TIER_2",
+        "requirements": {
+          "level": 76,
+          "skills": [
+            "armouring"
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 80,
+            "raw": 80,
+            "max": 80
+          },
+          "fireDamage": {
+            "min": 8,
+            "raw": 8,
+            "max": 8
+          },
+          "healthRegen": {
+            "min": -15,
+            "raw": -15,
+            "max": -15
+          },
+          "thunderDamage": {
+            "min": 8,
+            "raw": 8,
+            "max": 8
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -87000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 10,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 10,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Explosive Weird",
+            "coords": [
+              -502,
+              47,
+              -5293,
+              30
+            ]
+          },
+          {
+            "name": "Redline Weird",
+            "coords": [
+              [
+                -115,
+                38,
+                -5395,
+                8
+              ],
+              [
+                -86,
+                42,
+                -5375,
+                15
+              ],
+              [
+                -33,
+                33,
+                -5346,
+                15
+              ]
+            ]
+          },
+          {
+            "name": "Anima Weird",
+            "coords": [
+              -886,
+              57,
+              -4195,
+              0
+            ]
+          },
+          {
+            "name": "Breathless Weird",
+            "coords": [
+              [
+                -115,
+                38,
+                -5395,
+                8
+              ],
+              [
+                -86,
+                42,
+                -5375,
+                15
+              ],
+              [
+                -33,
+                33,
+                -5346,
+                15
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae0fc",
+      "itemName": "Mashed Insect",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Mashed Insect",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.mashedInsect"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_0",
+        "requirements": {
+          "level": 30,
+          "skills": [
+            "cooking"
+          ]
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 1,
+            "raw": 1,
+            "max": 2
+          },
+          "healthRegenRaw": {
+            "min": 6,
+            "raw": 6,
+            "max": 7
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": -160,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Scarab",
+            "coords": [
+              [
+                1001,
+                67,
+                -1725,
+                40
+              ],
+              [
+                1303,
+                76,
+                -1772,
+                50
+              ]
+            ]
+          },
+          {
+            "name": "River Locust Swarm",
+            "coords": [
+              [
+                1221,
+                77,
+                -2013,
+                6
+              ],
+              [
+                1228,
+                77,
+                -1948,
+                6
+              ],
+              [
+                1215,
+                77,
+                -1779,
+                6
+              ],
+              [
+                1229,
+                77,
+                -1801,
+                6
+              ],
+              [
+                1267,
+                77,
+                -1719,
+                6
+              ],
+              [
+                1259,
+                77,
+                -1821,
+                6
+              ],
+              [
+                1273,
+                77,
+                -1806,
+                6
+              ],
+              [
+                1266,
+                77,
+                -1788,
+                6
+              ],
+              [
+                1256,
+                77,
+                -1903,
+                6
+              ],
+              [
+                1263,
+                77,
+                -2030,
+                6
+              ],
+              [
+                1249,
+                77,
+                -2113,
+                6
+              ]
+            ]
+          },
+          {
+            "name": "Speedy Scarab",
+            "coords": null
+          },
+          {
+            "name": "Sandy Scarab",
+            "coords": [
+              [
+                1001,
+                67,
+                -1725,
+                40
+              ],
+              [
+                1303,
+                76,
+                -1772,
+                50
+              ]
+            ]
+          },
+          {
+            "name": "Giant Ant Larva",
+            "coords": null
+          },
+          {
+            "name": "Giant Spearer Mantis",
+            "coords": null
+          },
+          {
+            "name": "Pyreant Larva",
+            "coords": null
+          },
+          {
+            "name": "Giant Ant Worker",
+            "coords": null
+          },
+          {
+            "name": "Cave Crawler",
+            "coords": null
+          },
+          {
+            "name": "Beach Hopper",
+            "coords": [
+              716,
+              39,
+              -2472,
+              4
+            ]
+          },
+          {
+            "name": "Stirge",
+            "coords": [
+              [
+                -2182,
+                55,
+                -5243,
+                4
+              ],
+              [
+                -2158,
+                56,
+                -5241,
+                4
+              ],
+              [
+                -2045,
+                56,
+                -5221,
+                6
+              ],
+              [
+                -2042,
+                55,
+                -5268,
+                4
+              ],
+              [
+                -1992,
+                56,
+                -5264,
+                4
+              ],
+              [
+                -1946,
+                57,
+                -5295,
+                4
+              ],
+              [
+                -1976,
+                57,
+                -5318,
+                6
+              ],
+              [
+                -2005,
+                58,
+                -5369,
+                6
+              ],
+              [
+                -2025,
+                58,
+                -5183,
+                6
+              ],
+              [
+                -2060,
+                58,
+                -5145,
+                6
+              ],
+              [
+                -2103,
+                56,
+                -5134,
+                6
+              ],
+              [
+                -1952,
+                55,
+                -5091,
+                12
+              ],
+              [
+                -1953,
+                55,
+                -5091,
+                12
+              ],
+              [
+                -2071,
+                56,
+                -5361,
+                6
+              ],
+              [
+                -1878,
+                59,
+                -5151,
+                8
+              ],
+              [
+                -1619,
+                53,
+                -5201,
+                6
+              ],
+              [
+                -1641,
+                53,
+                -5217,
+                6
+              ],
+              [
+                -1650,
+                53,
+                -5202,
+                6
+              ],
+              [
+                -1893,
+                54,
+                -5512,
+                8
+              ],
+              [
+                -1577,
+                53,
+                -5370,
+                8
+              ],
+              [
+                -1950,
+                58,
+                -5093,
+                12
+              ],
+              [
+                -1951,
+                58,
+                -5087,
+                12
+              ],
+              [
+                -1955,
+                58,
+                -5087,
+                12
+              ],
+              [
+                -1956,
+                58,
+                -5093,
+                12
+              ],
+              [
+                -1953,
+                58,
+                -5093,
+                6
+              ],
+              [
+                -1954,
+                58,
+                -5090,
+                8
+              ]
+            ]
+          },
+          {
+            "name": "Tree Cicada",
+            "coords": null
+          },
+          {
+            "name": "Pyreant Soldier",
+            "coords": [
+              [
+                1225,
+                10,
+                -5300,
+                5
+              ],
+              [
+                1209,
+                11,
+                -5313,
+                5
+              ],
+              [
+                1207,
+                13,
+                -5296,
+                5
+              ],
+              [
+                1207,
+                14,
+                -5323,
+                5
+              ],
+              [
+                1212,
+                18,
+                -5334,
+                5
+              ],
+              [
+                1244,
+                10,
+                -5300,
+                5
+              ],
+              [
+                1254,
+                11,
+                -5299,
+                5
+              ],
+              [
+                1276,
+                10,
+                -5290,
+                5
+              ],
+              [
+                1211,
+                27,
+                -5288,
+                5
+              ]
+            ]
+          },
+          {
+            "name": "Mushroom Mite",
+            "coords": [
+              [
+                -1136,
+                11,
+                -5084,
+                20
+              ],
+              [
+                -1136,
+                11,
+                -5084,
+                20
+              ],
+              [
+                -1136,
+                11,
+                -5084,
+                20
+              ],
+              [
+                -1136,
+                11,
+                -5084,
+                20
+              ]
+            ]
+          },
+          {
+            "name": "Pyreant Worker",
+            "coords": [
+              [
+                1225,
+                10,
+                -5300,
+                5
+              ],
+              [
+                1209,
+                11,
+                -5313,
+                5
+              ],
+              [
+                1207,
+                13,
+                -5296,
+                5
+              ],
+              [
+                1207,
+                14,
+                -5323,
+                5
+              ],
+              [
+                1212,
+                18,
+                -5334,
+                5
+              ],
+              [
+                1244,
+                10,
+                -5300,
+                5
+              ],
+              [
+                1254,
+                11,
+                -5299,
+                5
+              ],
+              [
+                1276,
+                10,
+                -5290,
+                5
+              ],
+              [
+                1211,
+                27,
+                -5288,
+                5
+              ]
+            ]
+          },
+          {
+            "name": "Giant Ant Soldier",
+            "coords": null
+          },
+          {
+            "name": "Ledant Queen",
+            "coords": [
+              -1219,
+              9,
+              -4862,
+              0
+            ]
+          },
+          {
+            "name": "Giant Prayer Mantis",
+            "coords": null
+          },
+          {
+            "name": "Aquifer Silkworm",
+            "coords": [
+              [
+                -1736,
+                43,
+                -5591,
+                6
+              ],
+              [
+                -1748,
+                19,
+                -5552,
+                8
+              ]
+            ]
+          },
+          {
+            "name": "Coast Lobster",
+            "coords": [
+              615,
+              34,
+              -2190,
+              4
+            ]
+          },
+          {
+            "name": "Desert Crawler",
+            "coords": [
+              [
+                1187,
+                54,
+                -2140,
+                5
+              ],
+              [
+                1110,
+                37,
+                -2104,
+                8
+              ],
+              [
+                968,
+                53,
+                -1705,
+                8
+              ],
+              [
+                968,
+                53,
+                -1705,
+                8
+              ],
+              [
+                967,
+                57,
+                -1678,
+                5
+              ],
+              [
+                976,
+                55,
+                -1734,
+                8
+              ],
+              [
+                985,
+                54,
+                -1777,
+                16
+              ],
+              [
+                985,
+                54,
+                -1777,
+                16
+              ],
+              [
+                985,
+                54,
+                -1777,
+                16
+              ],
+              [
+                985,
+                54,
+                -1777,
+                16
+              ]
+            ]
+          },
+          {
+            "name": "Crystallized Scarab",
+            "coords": [
+              1016,
+              16,
+              -2047,
+              2
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Mashed Insect",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.mashedInsect"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_0",
+        "requirements": {
+          "level": 30,
+          "skills": [
+            "cooking"
+          ]
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 1,
+            "raw": 1,
+            "max": 2
+          },
+          "healthRegenRaw": {
+            "min": 6,
+            "raw": 6,
+            "max": 7
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": -160,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Scarab",
+            "coords": [
+              [
+                967,
+                72,
+                -2242,
+                5
+              ],
+              [
+                967,
+                72,
+                -2242,
+                5
+              ],
+              [
+                1090,
+                75,
+                -2185,
+                5
+              ],
+              [
+                1122,
+                75,
+                -2130,
+                5
+              ],
+              [
+                1190,
+                77,
+                -2087,
+                5
+              ],
+              [
+                1200,
+                77,
+                -1787,
+                5
+              ],
+              [
+                1047,
+                71,
+                -1733,
+                5
+              ],
+              [
+                919,
+                67,
+                -1773,
+                5
+              ]
+            ]
+          },
+          {
+            "name": "River Locust Swarm",
+            "coords": [
+              [
+                1221,
+                77,
+                -2013,
+                6
+              ],
+              [
+                1228,
+                77,
+                -1948,
+                6
+              ],
+              [
+                1215,
+                77,
+                -1779,
+                6
+              ],
+              [
+                1229,
+                77,
+                -1801,
+                6
+              ],
+              [
+                1267,
+                77,
+                -1719,
+                6
+              ],
+              [
+                1259,
+                77,
+                -1821,
+                6
+              ],
+              [
+                1273,
+                77,
+                -1806,
+                6
+              ],
+              [
+                1266,
+                77,
+                -1788,
+                6
+              ],
+              [
+                1256,
+                77,
+                -1903,
+                6
+              ],
+              [
+                1263,
+                77,
+                -2030,
+                6
+              ],
+              [
+                1249,
+                77,
+                -2113,
+                6
+              ]
+            ]
+          },
+          {
+            "name": "Speedy Scarab",
+            "coords": null
+          },
+          {
+            "name": "Sandy Scarab",
+            "coords": [
+              [
+                1001,
+                67,
+                -1725,
+                40
+              ],
+              [
+                1303,
+                76,
+                -1772,
+                50
+              ]
+            ]
+          },
+          {
+            "name": "Giant Ant Larva",
+            "coords": null
+          },
+          {
+            "name": "Giant Spearer Mantis",
+            "coords": null
+          },
+          {
+            "name": "Pyreant Larva",
+            "coords": null
+          },
+          {
+            "name": "Giant Ant Worker",
+            "coords": null
+          },
+          {
+            "name": "Cave Crawler",
+            "coords": null
+          },
+          {
+            "name": "Beach Hopper",
+            "coords": [
+              716,
+              39,
+              -2472,
+              4
+            ]
+          },
+          {
+            "name": "Stirge",
+            "coords": [
+              [
+                -1927,
+                57,
+                -5294,
+                5
+              ],
+              [
+                -2150,
+                62,
+                -5330,
+                5
+              ],
+              [
+                -1744,
+                55,
+                -5138,
+                5
+              ],
+              [
+                -1521,
+                49,
+                -5183,
+                5
+              ],
+              [
+                -1456,
+                46,
+                -5333,
+                5
+              ]
+            ]
+          },
+          {
+            "name": "Tree Cicada",
+            "coords": null
+          },
+          {
+            "name": "Pyreant Soldier",
+            "coords": [
+              [
+                1225,
+                10,
+                -5300,
+                5
+              ],
+              [
+                1209,
+                11,
+                -5313,
+                5
+              ],
+              [
+                1207,
+                13,
+                -5296,
+                5
+              ],
+              [
+                1207,
+                14,
+                -5323,
+                5
+              ],
+              [
+                1212,
+                18,
+                -5334,
+                5
+              ],
+              [
+                1244,
+                10,
+                -5300,
+                5
+              ],
+              [
+                1254,
+                11,
+                -5299,
+                5
+              ],
+              [
+                1276,
+                10,
+                -5290,
+                5
+              ],
+              [
+                1211,
+                27,
+                -5288,
+                5
+              ]
+            ]
+          },
+          {
+            "name": "Mushroom Mite",
+            "coords": [
+              [
+                -1136,
+                11,
+                -5084,
+                20
+              ],
+              [
+                -1136,
+                11,
+                -5084,
+                20
+              ],
+              [
+                -1136,
+                11,
+                -5084,
+                20
+              ],
+              [
+                -1136,
+                11,
+                -5084,
+                20
+              ]
+            ]
+          },
+          {
+            "name": "Pyreant Worker",
+            "coords": [
+              [
+                1225,
+                10,
+                -5300,
+                5
+              ],
+              [
+                1209,
+                11,
+                -5313,
+                5
+              ],
+              [
+                1207,
+                13,
+                -5296,
+                5
+              ],
+              [
+                1207,
+                14,
+                -5323,
+                5
+              ],
+              [
+                1212,
+                18,
+                -5334,
+                5
+              ],
+              [
+                1244,
+                10,
+                -5300,
+                5
+              ],
+              [
+                1254,
+                11,
+                -5299,
+                5
+              ],
+              [
+                1276,
+                10,
+                -5290,
+                5
+              ],
+              [
+                1211,
+                27,
+                -5288,
+                5
+              ]
+            ]
+          },
+          {
+            "name": "Giant Ant Soldier",
+            "coords": null
+          },
+          {
+            "name": "Ledant Queen",
+            "coords": [
+              -1219,
+              9,
+              -4862,
+              0
+            ]
+          },
+          {
+            "name": "Giant Prayer Mantis",
+            "coords": null
+          },
+          {
+            "name": "Aquifer Silkworm",
+            "coords": [
+              -1743,
+              20,
+              -5468,
+              8
+            ]
+          },
+          {
+            "name": "Coast Lobster",
+            "coords": [
+              615,
+              34,
+              -2190,
+              4
+            ]
+          },
+          {
+            "name": "Desert Crawler",
+            "coords": [
+              [
+                1187,
+                54,
+                -2140,
+                5
+              ],
+              [
+                1110,
+                37,
+                -2104,
+                8
+              ],
+              [
+                968,
+                53,
+                -1705,
+                8
+              ],
+              [
+                968,
+                53,
+                -1705,
+                8
+              ],
+              [
+                967,
+                57,
+                -1678,
+                5
+              ],
+              [
+                976,
+                55,
+                -1734,
+                8
+              ],
+              [
+                985,
+                54,
+                -1777,
+                16
+              ],
+              [
+                985,
+                54,
+                -1777,
+                16
+              ],
+              [
+                985,
+                54,
+                -1777,
+                16
+              ],
+              [
+                985,
+                54,
+                -1777,
+                16
+              ]
+            ]
+          },
+          {
+            "name": "Crystallized Scarab",
+            "coords": [
+              1016,
+              16,
+              -2047,
+              2
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae0fd",
+      "itemName": "Luciolum",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Luciolum",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.luciolum"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 14,
+          "skills": [
+            "alchemism",
+            "scribing"
+          ]
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 4,
+            "raw": 4,
+            "max": 5
+          },
+          "healingEfficiency": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": -85,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 8,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Luciola Larvae",
+            "coords": [
+              [
+                -728,
+                100,
+                -1135,
+                18
+              ],
+              [
+                -765,
+                103,
+                -1172,
+                15
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Luciola Larvae",
+            "coords": [
+              [
+                -728,
+                100,
+                -1135,
+                18
+              ],
+              [
+                -765,
+                103,
+                -1172,
+                15
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Luciolum",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.luciolum"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 14,
+          "skills": [
+            "alchemism",
+            "scribing"
+          ]
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 4,
+            "raw": 4,
+            "max": 5
+          },
+          "healingEfficiency": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": -85,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 8,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Luciola",
+            "coords": [
+              [
+                -728,
+                100,
+                -1135,
+                18
+              ],
+              [
+                -765,
+                103,
+                -1172,
+                15
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Luciola Larvae",
+            "coords": [
+              [
+                -728,
+                100,
+                -1135,
+                18
+              ],
+              [
+                -765,
+                103,
+                -1172,
+                15
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ],
+              [
+                -783,
+                89,
+                -1088,
+                10
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae0fe",
+      "itemName": "Impatience",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Impatience",
+        "type": "accessory",
+        "subType": "bracelet",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bracelet.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 108,
+          "agility": 40,
+          "dexterity": 55
+        },
+        "majorIds": {
+          "Split Second": "<span class='font-ascii' style='color:#AAAAAA'>Commander charges three times faster, but only boosts puppet attack speed by 10%, and Main Attack damage by 2%.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>\"Doing it right\" is a waste of time.</span>",
+        "identifications": {
+          "rawDamage": {
+            "min": -97,
+            "raw": -75,
+            "max": -52
+          },
+          "walkSpeed": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawAgility": 2,
+          "rawDexterity": 2,
+          "rawIntelligence": -10,
+          "raw2ndSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          }
+        },
+        "base": {
+          "baseHealth": -850,
+          "baseAirDefence": 75,
+          "baseThunderDefence": 75
+        }
+      },
+      "after": {
+        "internalName": "Impatience",
+        "type": "accessory",
+        "subType": "bracelet",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bracelet.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 108,
+          "agility": 40,
+          "dexterity": 55
+        },
+        "majorIds": {
+          "Split Second": "<span class='font-ascii' style='color:#AAAAAA'>Aura now travels faster with Invigorating Wave unlocked, but no longer gives mana.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>\"Doing it right\" is a waste of time.</span>",
+        "identifications": {
+          "rawDamage": {
+            "min": -97,
+            "raw": -75,
+            "max": -52
+          },
+          "walkSpeed": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawAgility": 2,
+          "rawDexterity": 2,
+          "rawIntelligence": -10,
+          "raw2ndSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          }
+        },
+        "base": {
+          "baseHealth": -850,
+          "baseAirDefence": 75,
+          "baseThunderDefence": 75
+        }
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae0ff",
+      "itemName": "Revolution",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Revolution",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 759,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 111,
+          "classRequirement": "archer",
+          "agility": 65,
+          "strength": 60,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Regicide": "<span class='font-ascii' style='color:#AAAAAA'>Your projectiles and abilities deal more damage the further away you are from your target, by 2% per block, up to a cap of 120%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A boiling rage has been gathering, the pain of an entire empire yearning to be freed. With all the power of the downtrodden and the overlooked and the starved, you echo out a shout with ten thousand voices, each too quiet to hear by itself, but together a catastrophic force to make the heavens cower.</span>",
+        "identifications": {
+          "knockback": {
+            "min": 39,
+            "raw": 131,
+            "max": 170
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": -3150,
+            "raw": -2423,
+            "max": -1696
+          },
+          "rawIntelligence": 25,
+          "mainAttackRange": {
+            "min": -47,
+            "raw": -36,
+            "max": -25
+          },
+          "raw2ndSpellCost": {
+            "min": -3,
+            "raw": -9,
+            "max": -12
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 260
+          },
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 300
+          },
+          "baseEarthDamage": {
+            "min": 210,
+            "raw": 210,
+            "max": 250
+          },
+          "baseWaterDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 280
+          }
+        }
+      },
+      "after": {
+        "internalName": "Revolution",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 759,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 111,
+          "classRequirement": "archer",
+          "agility": 65,
+          "strength": 60,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Regicide": "<span class='font-ascii' style='color:#AAAAAA'>Your deal 2% more damage for every block you are away from your target (Max 120%).</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A boiling rage has been gathering, the pain of an entire empire yearning to be freed. With all the power of the downtrodden and the overlooked and the starved, you echo out a shout with ten thousand voices, each too quiet to hear by itself, but together a catastrophic force to make the heavens cower.</span>",
+        "identifications": {
+          "knockback": {
+            "min": 39,
+            "raw": 131,
+            "max": 170
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": -3150,
+            "raw": -2423,
+            "max": -1696
+          },
+          "rawIntelligence": 25,
+          "mainAttackRange": {
+            "min": -47,
+            "raw": -36,
+            "max": -25
+          },
+          "raw2ndSpellCost": {
+            "min": -3,
+            "raw": -9,
+            "max": -12
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 260
+          },
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 300
+          },
+          "baseEarthDamage": {
+            "min": 210,
+            "raw": 210,
+            "max": 250
+          },
+          "baseWaterDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 280
+          }
+        }
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae100",
+      "itemName": "Evaporated Aspect",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Evaporated Aspect",
+        "type": "ingredient",
+        "icon": {
+          "value": "2b351c9dad2cae633e828c547c482fe67a8579fc4a38e1d6c86c4c0eaf01f",
+          "format": "skin"
+        },
+        "emblem": "square",
+        "tier": "TIER_2",
+        "requirements": {
+          "level": 77,
+          "skills": [
+            "tailoring",
+            "weaponsmithing"
+          ]
+        },
+        "identifications": {
+          "manaSteal": {
+            "min": -4,
+            "raw": -4,
+            "max": -4
+          },
+          "fireDamage": {
+            "min": 8,
+            "raw": 8,
+            "max": 8
+          },
+          "healthRegen": {
+            "min": 20,
+            "raw": 20,
+            "max": 20
+          },
+          "waterDamage": {
+            "min": 8,
+            "raw": 8,
+            "max": 8
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -90000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 10,
+          "defenceRequirement": 10,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Anima Weird",
+            "coords": [
+              -886,
+              57,
+              -4195,
+              0
+            ]
+          },
+          {
+            "name": "Wasteful Weird",
+            "coords": [
+              [
+                -510,
+                64,
+                -5441,
+                32
+              ],
+              [
+                -546,
+                56,
+                -5344,
+                50
+              ]
+            ]
+          },
+          {
+            "name": "Breathless Weird",
+            "coords": [
+              [
+                -186,
+                48,
+                -5124,
+                20
+              ],
+              [
+                -73,
+                43,
+                -5049,
+                15
+              ],
+              [
+                -16,
+                44,
+                -5083,
+                25
+              ],
+              [
+                -7,
+                43,
+                -5140,
+                38
+              ],
+              [
+                -7,
+                43,
+                -5140,
+                38
+              ],
+              [
+                -32,
+                37,
+                -5196,
+                15
+              ],
+              [
+                12,
+                36,
+                -5229,
+                15
+              ],
+              [
+                8,
+                43,
+                -5310,
+                15
+              ],
+              [
+                -255,
+                41,
+                -5313,
+                20
+              ]
+            ]
+          },
+          {
+            "name": "Prismatic Weird",
+            "coords": [
+              [
+                -1080,
+                44,
+                -4415,
+                30
+              ],
+              [
+                -988,
+                72,
+                -4392,
+                30
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Evaporated Aspect",
+        "type": "ingredient",
+        "icon": {
+          "value": "2b351c9dad2cae633e828c547c482fe67a8579fc4a38e1d6c86c4c0eaf01f",
+          "format": "skin"
+        },
+        "emblem": "square",
+        "tier": "TIER_2",
+        "requirements": {
+          "level": 77,
+          "skills": [
+            "tailoring",
+            "weaponsmithing"
+          ]
+        },
+        "identifications": {
+          "manaSteal": {
+            "min": -4,
+            "raw": -4,
+            "max": -4
+          },
+          "fireDamage": {
+            "min": 8,
+            "raw": 8,
+            "max": 8
+          },
+          "healthRegen": {
+            "min": 20,
+            "raw": 20,
+            "max": 20
+          },
+          "waterDamage": {
+            "min": 8,
+            "raw": 8,
+            "max": 8
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -90000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 10,
+          "defenceRequirement": 10,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Anima Weird",
+            "coords": [
+              -886,
+              57,
+              -4195,
+              0
+            ]
+          },
+          {
+            "name": "Wasteful Weird",
+            "coords": [
+              [
+                -510,
+                64,
+                -5441,
+                32
+              ],
+              [
+                -546,
+                56,
+                -5344,
+                50
+              ]
+            ]
+          },
+          {
+            "name": "Breathless Weird",
+            "coords": [
+              [
+                -115,
+                38,
+                -5395,
+                8
+              ],
+              [
+                -86,
+                42,
+                -5375,
+                15
+              ],
+              [
+                -33,
+                33,
+                -5346,
+                15
+              ]
+            ]
+          },
+          {
+            "name": "Prismatic Weird",
+            "coords": [
+              [
+                -851,
+                46,
+                -4256,
+                7
+              ],
+              [
+                -887,
+                56,
+                -4202,
+                7
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae101",
+      "itemName": "Sky Snail Shell",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Sky Snail Shell",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.skySnailShell"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 95,
+          "skills": [
+            "armouring",
+            "tailoring"
+          ]
+        },
+        "identifications": {
+          "thorns": {
+            "min": 9,
+            "raw": 9,
+            "max": 14
+          },
+          "reflection": {
+            "min": 10,
+            "raw": 10,
+            "max": 13
+          },
+          "healthRegen": {
+            "min": 7,
+            "raw": 7,
+            "max": 9
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -70000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 10,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Sky Snail",
+            "coords": [
+              [
+                1051,
+                138,
+                -4908,
+                25
+              ],
+              [
+                1077,
+                133,
+                -4905,
+                25
+              ],
+              [
+                946,
+                101,
+                -4989,
+                25
+              ],
+              [
+                920,
+                119,
+                -4889,
+                45
+              ],
+              [
+                920,
+                119,
+                -4889,
+                45
+              ],
+              [
+                929,
+                169,
+                -4793,
+                45
+              ],
+              [
+                929,
+                169,
+                -4793,
+                45
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Sky Snail Shell",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.skySnailShell"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 95,
+          "skills": [
+            "armouring",
+            "tailoring"
+          ]
+        },
+        "identifications": {
+          "thorns": {
+            "min": 9,
+            "raw": 9,
+            "max": 14
+          },
+          "reflection": {
+            "min": 10,
+            "raw": 10,
+            "max": 13
+          },
+          "healthRegen": {
+            "min": 7,
+            "raw": 7,
+            "max": 9
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -70000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 10,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Sky Snail",
+            "coords": [
+              996,
+              160,
+              -4844,
+              35
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae102",
+      "itemName": "Archaic Medallion",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Archaic Medallion",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.archaicMedallion"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 45,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 7,
+            "raw": 7,
+            "max": 9
+          },
+          "spellDamage": {
+            "min": -5,
+            "raw": -5,
+            "max": -4
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -79000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Ancient Resurrected Orc",
+            "coords": [
+              [
+                -1943,
+                51,
+                -4948,
+                60
+              ],
+              [
+                -1831,
+                47,
+                -4784,
+                60
+              ],
+              [
+                -1700,
+                50,
+                -4813,
+                60
+              ],
+              [
+                -1510,
+                44,
+                -4834,
+                60
+              ],
+              [
+                -1695,
+                54,
+                -4602,
+                60
+              ],
+              [
+                -1528,
+                45,
+                -4657,
+                30
+              ],
+              [
+                -1677,
+                54,
+                -5008,
+                30
+              ],
+              [
+                -2088,
+                50,
+                -4899,
+                30
+              ],
+              [
+                -2063,
+                43,
+                -4763,
+                30
+              ],
+              [
+                -2018,
+                38,
+                -4716,
+                22
+              ]
+            ]
+          },
+          {
+            "name": "Mudspring Orc Chemist",
+            "coords": [
+              -1994,
+              54,
+              -5019,
+              7
+            ]
+          },
+          {
+            "name": "Mudspring Orc Pulper",
+            "coords": [
+              -1994,
+              54,
+              -5019,
+              7
+            ]
+          },
+          {
+            "name": "Mudspring Orc Waterbearer",
+            "coords": [
+              -1994,
+              54,
+              -5019,
+              7
+            ]
+          },
+          {
+            "name": "Secretcove Orc Sneak",
+            "coords": [
+              -1840,
+              27,
+              -4890,
+              3
+            ]
+          },
+          {
+            "name": "Secretcove Orc Ruinseeker",
+            "coords": [
+              -1840,
+              27,
+              -4890,
+              3
+            ]
+          },
+          {
+            "name": "Shineridge Orc Appraiser",
+            "coords": [
+              -1617,
+              49,
+              -4611,
+              24
+            ]
+          },
+          {
+            "name": "Shineridge Orc Barterer",
+            "coords": [
+              -1617,
+              49,
+              -4611,
+              24
+            ]
+          },
+          {
+            "name": "Shineridge Orc Jewelsetter",
+            "coords": [
+              -1617,
+              49,
+              -4611,
+              24
+            ]
+          },
+          {
+            "name": "Sunspark Orc Altarkris",
+            "coords": [
+              -1907,
+              34,
+              -4974,
+              7
+            ]
+          },
+          {
+            "name": "Sunspark Orc Tomewriter",
+            "coords": [
+              -1910,
+              52,
+              -4997,
+              9
+            ]
+          },
+          {
+            "name": "Sunspark Orc Skyrollicker",
+            "coords": [
+              -1910,
+              52,
+              -4997,
+              9
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Archaic Medallion",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.archaicMedallion"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 45,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": 7,
+            "raw": 7,
+            "max": 9
+          },
+          "spellDamage": {
+            "min": -5,
+            "raw": -5,
+            "max": -4
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -79000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Ancient Resurrected Orc",
+            "coords": [
+              [
+                -1943,
+                51,
+                -4948,
+                60
+              ],
+              [
+                -1831,
+                47,
+                -4784,
+                60
+              ],
+              [
+                -1700,
+                50,
+                -4813,
+                60
+              ],
+              [
+                -1510,
+                44,
+                -4834,
+                60
+              ],
+              [
+                -1695,
+                54,
+                -4602,
+                60
+              ],
+              [
+                -1528,
+                45,
+                -4657,
+                30
+              ],
+              [
+                -1677,
+                54,
+                -5008,
+                30
+              ],
+              [
+                -2088,
+                50,
+                -4899,
+                30
+              ],
+              [
+                -2063,
+                43,
+                -4763,
+                30
+              ],
+              [
+                -2018,
+                38,
+                -4716,
+                22
+              ]
+            ]
+          },
+          {
+            "name": "Mudspring Orc Chemist",
+            "coords": [
+              -1994,
+              54,
+              -5019,
+              7
+            ]
+          },
+          {
+            "name": "Mudspring Orc Pulper",
+            "coords": [
+              -1994,
+              54,
+              -5019,
+              7
+            ]
+          },
+          {
+            "name": "Mudspring Orc Waterbearer",
+            "coords": [
+              -1994,
+              54,
+              -5019,
+              7
+            ]
+          },
+          {
+            "name": "Secretcove Orc Sneak",
+            "coords": [
+              -1840,
+              27,
+              -4890,
+              3
+            ]
+          },
+          {
+            "name": "Secretcove Orc Ruinseeker",
+            "coords": false
+          },
+          {
+            "name": "Shineridge Orc Appraiser",
+            "coords": [
+              -1619,
+              46,
+              -4635,
+              12
+            ]
+          },
+          {
+            "name": "Shineridge Orc Barterer",
+            "coords": [
+              -1619,
+              46,
+              -4635,
+              12
+            ]
+          },
+          {
+            "name": "Shineridge Orc Jewelsetter",
+            "coords": [
+              -1619,
+              46,
+              -4635,
+              12
+            ]
+          },
+          {
+            "name": "Sunspark Orc Altarkris",
+            "coords": [
+              -1907,
+              34,
+              -4974,
+              7
+            ]
+          },
+          {
+            "name": "Sunspark Orc Tomewriter",
+            "coords": [
+              -1910,
+              52,
+              -4997,
+              9
+            ]
+          },
+          {
+            "name": "Sunspark Orc Skyrollicker",
+            "coords": [
+              -1910,
+              52,
+              -4997,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae103",
+      "itemName": "Shattered Ammunition",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Shattered Ammunition",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.shatteredAmmunition"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 105,
+          "skills": [
+            "scribing"
+          ]
+        },
+        "identifications": {
+          "exploding": {
+            "min": 11,
+            "raw": 11,
+            "max": 14
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 5
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": -110,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        }
+      },
+      "after": {
+        "internalName": "Shattered Ammunition",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.shatteredAmmunition"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 105,
+          "skills": [
+            "scribing"
+          ]
+        },
+        "identifications": {
+          "exploding": {
+            "min": 11,
+            "raw": 11,
+            "max": 14
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 5
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": -110,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": 0,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Trapper ",
+            "coords": null
+          },
+          {
+            "name": "Poacher ",
+            "coords": null
+          }
+        ]
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae104",
+      "itemName": "Totalitarian",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Totalitarian",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 114,
+          "defence": 35,
+          "strength": 35,
+          "dexterity": 30,
+          "intelligence": 25
+        },
+        "identifications": {
+          "damage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "lifeSteal": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          },
+          "walkSpeed": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawAgility": -8,
+          "rawDefence": 10,
+          "fireDefence": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "mainAttackRange": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          }
+        },
+        "base": {
+          "baseHealth": 780,
+          "baseFireDefence": 80,
+          "baseEarthDefence": 80,
+          "baseWaterDefence": 60,
+          "baseThunderDefence": 70
+        }
+      },
+      "after": {
+        "internalName": "Totalitarian",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 114,
+          "defence": 35,
+          "strength": 35,
+          "dexterity": 30,
+          "intelligence": 25
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Her trial was rigged from the start. She deserved no justice for the things they claimed she did. The prison is her world now, the burden on her soul matched now only by the weight of the iron chain around her neck.</span>",
+        "identifications": {
+          "damage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "lifeSteal": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          },
+          "walkSpeed": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawAgility": -8,
+          "rawDefence": 10,
+          "fireDefence": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "mainAttackRange": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          }
+        },
+        "base": {
+          "baseHealth": 780,
+          "baseFireDefence": 80,
+          "baseEarthDefence": 80,
+          "baseWaterDefence": 60,
+          "baseThunderDefence": 70
+        }
+      }
+    },
+    {
+      "_id": "69e6d1af0534f1842d2ae105",
+      "itemName": "Enhanced Post-Processing Microchip",
+      "status": "modify",
+      "timestamp": 1776734639,
+      "before": {
+        "internalName": "Enhanced Post-Processing Microchip",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.enhancedPostProcessingMicrochip"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_2",
+        "requirements": {
+          "level": 90,
+          "skills": [
+            "armouring",
+            "woodworking",
+            "weaponsmithing"
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 90,
+            "raw": 90,
+            "max": 100
+          },
+          "healthRegen": {
+            "min": 9,
+            "raw": 9,
+            "max": 16
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -98000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 30,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "L-2unition Drone",
+            "coords": [
+              [
+                -1638,
+                80,
+                -2248,
+                20
+              ],
+              [
+                -1706,
+                70,
+                -2516,
+                20
+              ],
+              [
+                -1721,
+                77,
+                -2560,
+                20
+              ],
+              [
+                -1759,
+                73,
+                -2563,
+                20
+              ],
+              [
+                -1767,
+                73,
+                -2620,
+                40
+              ]
+            ]
+          },
+          {
+            "name": "L-2nforcer Drone",
+            "coords": [
+              [
+                -1638,
+                80,
+                -2248,
+                20
+              ],
+              [
+                -1706,
+                70,
+                -2516,
+                20
+              ],
+              [
+                -1721,
+                77,
+                -2560,
+                20
+              ],
+              [
+                -1759,
+                73,
+                -2563,
+                20
+              ],
+              [
+                -1767,
+                73,
+                -2620,
+                40
+              ]
+            ]
+          },
+          {
+            "name": "U-4epaired Bot",
+            "coords": [
+              [
+                -1638,
+                80,
+                -2248,
+                20
+              ],
+              [
+                -1706,
+                70,
+                -2516,
+                20
+              ],
+              [
+                -1721,
+                77,
+                -2560,
+                20
+              ],
+              [
+                -1759,
+                73,
+                -2563,
+                20
+              ],
+              [
+                -1767,
+                73,
+                -2620,
+                40
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "internalName": "Enhanced Post-Processing Microchip",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.enhancedPostProcessingMicrochip"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_2",
+        "requirements": {
+          "level": 90,
+          "skills": [
+            "armouring",
+            "woodworking",
+            "weaponsmithing"
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 90,
+            "raw": 90,
+            "max": 100
+          },
+          "healthRegen": {
+            "min": 9,
+            "raw": 9,
+            "max": 16
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -98000,
+          "strengthRequirement": 0,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 30,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "L-2unition Drone",
+            "coords": [
+              [
+                -1638,
+                80,
+                -2248,
+                20
+              ],
+              [
+                -1706,
+                70,
+                -2516,
+                20
+              ],
+              [
+                -1721,
+                77,
+                -2560,
+                20
+              ],
+              [
+                -1759,
+                73,
+                -2563,
+                20
+              ],
+              [
+                -1767,
+                73,
+                -2620,
+                40
+              ]
+            ]
+          },
+          {
+            "name": "L-2nforcer Drone",
+            "coords": [
+              [
+                -1638,
+                80,
+                -2248,
+                20
+              ],
+              [
+                -1706,
+                70,
+                -2516,
+                20
+              ],
+              [
+                -1721,
+                77,
+                -2560,
+                20
+              ],
+              [
+                -1759,
+                73,
+                -2563,
+                20
+              ],
+              [
+                -1767,
+                73,
+                -2620,
+                40
+              ]
+            ]
+          },
+          {
+            "name": "U-4epaired Bot",
+            "coords": [
+              [
+                -1450,
+                54,
+                -2845,
+                10
+              ],
+              [
+                -1425,
+                92,
+                -2845,
+                19
+              ],
+              [
+                -1370,
+                92,
+                -2733,
+                45
+              ],
+              [
+                -1370,
+                92,
+                -2733,
+                45
+              ],
+              [
+                -1518,
+                38,
+                -2856,
+                10
+              ],
+              [
+                -1775,
+                61,
+                -2887,
+                10
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
