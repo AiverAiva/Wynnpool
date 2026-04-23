@@ -13,10 +13,10 @@ export class RaidpoolService {
     private readonly httpService: HttpService,
   ) { }
 
-  private raidpoolCache = new Map<
-    string,
-    { value: { regions: any[]; year: number; week: number }; expiresAt: number }
-  >();
+  // private raidpoolCache = new Map<
+  //   string,
+  //   { value: { regions: any[]; year: number; week: number }; expiresAt: number }
+  // >();
 
   private gambitsCache = new Map<
     string,
@@ -31,24 +31,24 @@ export class RaidpoolService {
 
     const { year, week } = this.getRaidpoolYearWeek(new Date());
     const id = `${year}-${week}`;
-    const now = Date.now();
-    //1 hit cache
-    const cached = this.raidpoolCache.get(id);
-    if (cached && cached.expiresAt > now && cached.value.regions.length === 4) {
-      return cached.value;
-    }
+    // const now = Date.now();
+    // //1 hit cache
+    // const cached = this.raidpoolCache.get(id);
+    // if (cached && cached.expiresAt > now && cached.value.regions.length === 4) {
+    //   return cached.value;
+    // }
 
     //2 db query
-    const existing = await this.raidpoolModel.findOne({ _id: id }).exec();
-    if (existing?.regions?.length === 4) {
-      const value = { regions: existing.regions, year, week };
+    // const existing = await this.raidpoolModel.findOne({ _id: id }).exec();
+    // if (existing?.regions?.length === 4) {
+    //   const value = { regions: existing.regions, year, week };
 
-      this.raidpoolCache.set(id, {
-        value,
-        expiresAt: this.getRaidpoolExpireAt(year, week),
-      });
-      return value;
-    }
+    //   this.raidpoolCache.set(id, {
+    //     value,
+    //     expiresAt: this.getRaidpoolExpireAt(year, week),
+    //   });
+    //   return value;
+    // }
 
     //3 remote fetch
     const response = await this.httpService.axiosRef.get(
@@ -79,10 +79,10 @@ export class RaidpoolService {
 
     const id = `${year}-${week}`;
 
-    const existing = await this.raidpoolModel.findOne({ _id: id }).exec();
-    if (existing?.regions?.length === 4) {
-      return { regions: existing.regions, year, week };
-    }
+    // const existing = await this.raidpoolModel.findOne({ _id: id }).exec();
+    // if (existing?.regions?.length === 4) {
+    //   return { regions: existing.regions, year, week };
+    // }
 
     const response = await this.httpService.axiosRef.get(
       `https://www.wynnventory.com/api/raidpool/${year}/${week}`,
@@ -116,7 +116,7 @@ export class RaidpoolService {
     const now = Date.now();
     const { year, month, day, key } = this.getGambitsDateKey(new Date());
 
-    //1 hit cache
+    // //1 hit cache
     const cached = this.gambitsCache.get(key);
     if (cached && cached.expiresAt > now && cached.value.gambits?.length === 4) {
       return cached.value;

@@ -19,18 +19,19 @@ interface Region {
 }
 
 type Category = "aspect" | "tome" | "gear" | "misc"
-type RegionAbbrev = "NOTG" | "NOL" | "TCC" | "TNA"
-type RegionName = "Nest of the Grootslangs" | "Orphion's Nexus of Light" | "The Canyon Colossus" | "The Nameless Anomaly"
+type RegionAbbrev = "NOTG" | "NOL" | "TCC" | "TNA" | "TWP"
+type RegionName = "Nest of the Grootslangs" | "Orphion's Nexus of Light" | "The Canyon Colossus" | "The Nameless Anomaly" | "The Wartorn Palace"
 type ClassId = "Archer" | "Mage" | "Warrior" | "Assassin" | "Shaman"
 type GroupBy = "rarity" | "region"
 
-const REGION_ABBREV_ORDER: readonly RegionAbbrev[] = ["NOTG", "NOL", "TCC", "TNA"] as const
+const REGION_ABBREV_ORDER: readonly RegionAbbrev[] = ["NOTG", "NOL", "TCC", "TNA", "TWP"] as const
 
 const REGION_LABELS: Record<RegionAbbrev, RegionName> = {
     NOTG: "Nest of the Grootslangs",
     NOL: "Orphion's Nexus of Light",
     TCC: "The Canyon Colossus",
     TNA: "The Nameless Anomaly",
+    TWP: "The Wartorn Palace"
 } as const
 
 const CLASSES = [
