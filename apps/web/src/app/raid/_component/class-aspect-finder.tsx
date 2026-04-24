@@ -86,6 +86,7 @@ export function ClassAspectFinder() {
             NOL: [],
             TCC: [],
             TNA: [],
+            TWP: [],
         }
 
         data.regions.forEach((region) => {
