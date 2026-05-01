@@ -1,0 +1,852 @@
+{
+  "modify": [
+    {
+      "_id": "69f4080857071a5897783c8f",
+      "itemName": "Tectonics֎",
+      "status": "modify",
+      "timestamp": 1777600520,
+      "before": {
+        "displayName": "Tectonics",
+        "internalName": "Tectonics֎",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "verySlow",
+        "averageDps": 322,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "mage",
+          "strength": 70
+        },
+        "majorIds": {
+          "Fissure": "<span class='font-ascii' style='color:#AAAAAA'>Ice Snake moves much more slowly, but deals massive knockback, <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>275%</span>, and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>155%</span>.</span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The stones have a language. You can learn to direct their shiftings and discover their names; all you must do in return is forget your own.</span>",
+        "identifications": {
+          "knockback": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawMaxMana": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "rawEarthDamage": {
+            "min": 62,
+            "raw": 208,
+            "max": 270
+          },
+          "rawIntelligence": -85,
+          "raw4thSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 130
+          },
+          "baseEarthDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 305
+          }
+        }
+      },
+      "after": {
+        "displayName": "Tectonics",
+        "internalName": "Tectonics֎",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "verySlow",
+        "averageDps": 322,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "mage",
+          "strength": 70
+        },
+        "majorIds": {
+          "Fissure": "<span class='font-ascii' style='color:#AAAAAA'>Ice Snake moves much more slowly, but deals massive knockback, <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+275%</span>, and <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span>+155%</span>.</span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The stones have a language. You can learn to direct their shiftings and discover their names; all you must do in return is forget your own.</span>",
+        "identifications": {
+          "knockback": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawMaxMana": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "rawEarthDamage": {
+            "min": 62,
+            "raw": 208,
+            "max": 270
+          },
+          "rawIntelligence": -85,
+          "raw4thSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 130
+          },
+          "baseEarthDamage": {
+            "min": 230,
+            "raw": 230,
+            "max": 305
+          }
+        }
+      }
+    },
+    {
+      "_id": "69f4080857071a5897783c90",
+      "itemName": "Cypress Amber",
+      "status": "modify",
+      "timestamp": 1777600520,
+      "before": {
+        "displayName": "Cypress Amber",
+        "internalName": "Cypress Amber",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 96,
+          "dexterity": 80
+        },
+        "majorIds": {
+          "Perilous Flare": "<span class='font-ascii' style='color:#AAAAAA'>Pyrokinesis moves much slower, but has an increased Area of Effect and <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> +50%</span>.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>\"Discernable by it's one-second glow, the cypress firefly makes it home amidst the ash of the upper heights, blending in with the fiery landscape.\" -Delinaed's Guide to Local Species, 2nd Edition.</span>",
+        "identifications": {
+          "exploding": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "knockback": {
+            "min": -96,
+            "raw": -74,
+            "max": -52
+          },
+          "lifeSteal": {
+            "min": 66,
+            "raw": 220,
+            "max": 286
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "fireDefence": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          },
+          "rawDexterity": 5,
+          "rawThunderMainAttackDamage": {
+            "min": 128,
+            "raw": 427,
+            "max": 555
+          }
+        },
+        "base": {
+          "baseHealth": 3075,
+          "baseEarthDefence": -150,
+          "baseThunderDefence": 100
+        }
+      },
+      "after": {
+        "displayName": "Cypress Amber",
+        "internalName": "Cypress Amber",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 96,
+          "dexterity": 80
+        },
+        "majorIds": {
+          "Perilous Flare": "<span class='font-ascii' style='color:#AAAAAA'>Pyrokinesis moves much slower, but has an increased Area of Effect and <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> +50%</span>.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>\"Discernable by its one-second glow, the cypress firefly makes it home amidst the ash of the upper heights, blending in with the fiery landscape.\" -Delinaed's Guide to Local Species, 2nd Edition.</span>",
+        "identifications": {
+          "exploding": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "knockback": {
+            "min": -96,
+            "raw": -74,
+            "max": -52
+          },
+          "lifeSteal": {
+            "min": 66,
+            "raw": 220,
+            "max": 286
+          },
+          "walkSpeed": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "fireDefence": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          },
+          "rawDexterity": 5,
+          "rawThunderMainAttackDamage": {
+            "min": 128,
+            "raw": 427,
+            "max": 555
+          }
+        },
+        "base": {
+          "baseHealth": 3075,
+          "baseEarthDefence": -150,
+          "baseThunderDefence": 100
+        }
+      }
+    },
+    {
+      "_id": "69f4080857071a5897783c91",
+      "itemName": "Halcyon",
+      "status": "modify",
+      "timestamp": 1777600520,
+      "before": {
+        "displayName": "Halcyon",
+        "internalName": "Halcyon",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 492,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 118,
+          "classRequirement": "mage",
+          "agility": 50,
+          "dexterity": 50,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Blinding Lights": "<span class='font-ascii' style='color:#AAAAAA'>All Ophanim orbs become closer-range Lightweaver orbs. Using Main Attack causes all orbs to spin faster. Crystallize stacks are reduced by -2 per hit.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>As a flashing star shot through the night sky, a sole observer witnessed its brilliance. It was then, wreathed in prismatic light, he decided. Someday, he would shine as bright as that star, and overtake those beneath him. No matter the cost.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": -4290,
+            "raw": -3300,
+            "max": -2310
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawStrength": -50,
+          "elementalDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "healingEfficiency": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawElementalSpellDamage": {
+            "min": 90,
+            "raw": 300,
+            "max": 390
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 80
+          },
+          "baseFireDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "baseEarthDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "baseWaterDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 70
+          },
+          "baseThunderDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 90
+          }
+        }
+      },
+      "after": {
+        "displayName": "Halcyon",
+        "internalName": "Halcyon",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 492,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 118,
+          "classRequirement": "mage",
+          "agility": 50,
+          "dexterity": 50,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Blinding Lights": "<span class='font-ascii' style='color:#AAAAAA'>All Ophanim orbs deal 250% increased damage, gain +5 Crystallize per hit, and instead orbit around you. Using Main Attack causes all orbs to travel faster.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>As a flashing star shot through the night sky, a sole observer witnessed its brilliance. It was then, wreathed in prismatic light, he decided. Someday, he would shine as bright as that star, and overtake those beneath him. No matter the cost.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": -4290,
+            "raw": -3300,
+            "max": -2310
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawStrength": -50,
+          "elementalDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "healingEfficiency": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawElementalSpellDamage": {
+            "min": 90,
+            "raw": 300,
+            "max": 390
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 80
+          },
+          "baseFireDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "baseEarthDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "baseWaterDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 70
+          },
+          "baseThunderDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 90
+          }
+        }
+      }
+    },
+    {
+      "_id": "69f4080857071a5897783c92",
+      "itemName": "Siege Vent",
+      "status": "modify",
+      "timestamp": 1777600520,
+      "before": {
+        "displayName": "Siege Vent",
+        "internalName": "Siege Vent",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "verySlow",
+        "averageDps": 886,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 110,
+          "classRequirement": "archer",
+          "defence": 65,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Combo Stomp": "<span class='font-ascii' style='color:#AAAAAA'>Landing directly on an enemy with Fierce Stomp sends you back into the air and resets Escape.</span>"
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "rawHealth": {
+            "min": 692,
+            "raw": 2308,
+            "max": 3000
+          },
+          "walkSpeed": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "spellDamage": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "2ndSpellCost": {
+            "min": -8,
+            "raw": -28,
+            "max": -36
+          },
+          "raw3rdSpellCost": {
+            "min": -2,
+            "raw": -6,
+            "max": -8
+          },
+          "rawFireSpellDamage": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 125
+          },
+          "baseFireDamage": {
+            "min": 475,
+            "raw": 475,
+            "max": 475
+          },
+          "baseWaterDamage": {
+            "min": 325,
+            "raw": 325,
+            "max": 650
+          }
+        }
+      },
+      "after": {
+        "displayName": "Siege Vent",
+        "internalName": "Siege Vent",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "verySlow",
+        "averageDps": 830,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 110,
+          "classRequirement": "archer",
+          "defence": 65,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Combo Stomp": "<span class='font-ascii' style='color:#AAAAAA'>Landing directly on an enemy with Fierce Stomp sends you back into the air and resets Escape.</span>"
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "rawHealth": {
+            "min": 692,
+            "raw": 2308,
+            "max": 3000
+          },
+          "walkSpeed": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "spellDamage": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "2ndSpellCost": {
+            "min": -8,
+            "raw": -28,
+            "max": -36
+          },
+          "raw3rdSpellCost": {
+            "min": -2,
+            "raw": -6,
+            "max": -8
+          },
+          "rawFireSpellDamage": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 125
+          },
+          "baseFireDamage": {
+            "min": 475,
+            "raw": 475,
+            "max": 475
+          },
+          "baseWaterDamage": {
+            "min": 325,
+            "raw": 325,
+            "max": 650
+          }
+        }
+      }
+    },
+    {
+      "_id": "69f4080857071a5897783c93",
+      "itemName": "Ascendancy",
+      "status": "modify",
+      "timestamp": 1777600520,
+      "before": {
+        "displayName": "Ascendancy",
+        "internalName": "Ascendancy",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 544,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "warrior",
+          "agility": 60,
+          "defence": 60,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Divine Right": "<span class='font-ascii' style='color:#AAAAAA'>Your Maximum Health is reduced by 50%. for every 100 HP lost, Sacred Surge's damage is increased by 1%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is very little outside the purview of those with power. No matter the circumstance, those in a higher position can, will, and have justified their actions in different ways. Some reasons are fine, some are weak. But what sort of justification is there, for those in the highest position? You have the floor.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 808,
+            "raw": 2692,
+            "max": 3500
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "fireDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": -100,
+          "rawDexterity": -100,
+          "rawSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 30
+          },
+          "baseAirDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 100
+          },
+          "baseFireDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          },
+          "baseWaterDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          }
+        }
+      },
+      "after": {
+        "displayName": "Ascendancy",
+        "internalName": "Ascendancy",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 544,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "warrior",
+          "agility": 60,
+          "defence": 60,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Divine Right": "<span class='font-ascii' style='color:#AAAAAA'>Your Maximum Health is reduced by 60%. For every 100 HP lost, Sacred Surge's damage is increased by 5%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is very little outside the purview of those with power. No matter the circumstance, those in a higher position can, will, and have justified their actions in different ways. Some reasons are fine, some are weak. But what sort of justification is there, for those in the highest position? You have the floor.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 808,
+            "raw": 2692,
+            "max": 3500
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "fireDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": -100,
+          "rawDexterity": -100,
+          "rawSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 30
+          },
+          "baseAirDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 100
+          },
+          "baseFireDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          },
+          "baseWaterDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          }
+        }
+      }
+    }
+  ]
+}
