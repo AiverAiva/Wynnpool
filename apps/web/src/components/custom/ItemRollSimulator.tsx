@@ -548,7 +548,7 @@ const ItemRollSimulator: React.FC<ItemRollSimulatorProps> = ({ item, trigger }) 
                                         <SelectValue placeholder="0" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        {[0, 1, 2, 3].map((tier) => (
+                                        {[0, 1, 2, 3, 4].map((tier) => (
                                             <SelectItem key={tier} value={tier.toString()}>
                                                 {tier}
                                             </SelectItem>
