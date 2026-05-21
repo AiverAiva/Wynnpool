@@ -1,0 +1,4078 @@
+{
+  "modify": [
+    {
+      "_id": "6a0e689733b87c2a6fc560df",
+      "itemName": "Stormleader",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Stormleader",
+        "internalName": "Stormleader",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_5",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 105,
+          "dexterity": 45
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawDexterity": 8,
+          "1stSpellCost": {
+            "min": -3,
+            "raw": -9,
+            "max": -12
+          },
+          "thunderDamage": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "combatExperience": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          }
+        },
+        "base": {
+          "baseEarthDefence": -25,
+          "baseThunderDefence": 50
+        }
+      },
+      "after": {
+        "displayName": "Stormleader",
+        "internalName": "Stormleader",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_5",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 105,
+          "dexterity": 45
+        },
+        "identifications": {
+          "healthRegen": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "rawDexterity": 8,
+          "1stSpellCost": {
+            "min": -3,
+            "raw": -9,
+            "max": -12
+          },
+          "thunderDamage": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "combatExperience": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          }
+        },
+        "base": {
+          "baseEarthDefence": -25,
+          "baseThunderDefence": 50
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e0",
+      "itemName": "Song of the Sea",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Song of the Sea",
+        "internalName": "Song of the Sea",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 115,
+          "intelligence": 85
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A sweet tune permeates the air. A whistle on the waves; a melody from the depths. It calls forth destruction in seafoam and sand, and those who hear its call do not breathe for long. </span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -377,
+            "raw": -290,
+            "max": -203
+          },
+          "rawMaxMana": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "waterDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawAttackSpeed": -8,
+          "rawIntelligence": 15,
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          }
+        },
+        "base": {
+          "baseHealth": 4100,
+          "baseWaterDefence": 220
+        }
+      },
+      "after": {
+        "displayName": "Song of the Sea",
+        "internalName": "Song of the Sea",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 115,
+          "intelligence": 85
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A sweet tune permeates the air. A whistle on the waves; a melody from the depths. It calls forth destruction in seafoam and sand, and those who hear its call do not breathe for long. </span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -377,
+            "raw": -290,
+            "max": -203
+          },
+          "rawMaxMana": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "waterDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawAttackSpeed": -8,
+          "rawIntelligence": 15,
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "healingEfficiency": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          }
+        },
+        "base": {
+          "baseHealth": 4100,
+          "baseWaterDefence": 220
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e1",
+      "itemName": "Lucky Strike",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Lucky Strike",
+        "internalName": "Lucky Strike",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "superFast",
+        "averageDps": 611,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 107,
+          "classRequirement": "assassin",
+          "defence": 77
+        },
+        "majorIds": {
+          "Juggle": "<span class='font-ascii' style='color:#AAAAAA'>Mutilate adds an additional 12 hits. All hits are reduced by <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-10%</span>.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Roll the dice, hit a match. You never miss.</span>",
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "lifeSteal": {
+            "min": 179,
+            "raw": 598,
+            "max": 777
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "healthRegen": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawMaxMana": {
+            "min": -27,
+            "raw": -21,
+            "max": -15
+          },
+          "rawStrength": 7,
+          "rawDexterity": 7,
+          "rawAttackSpeed": 4,
+          "rawIntelligence": -77,
+          "rawFireMainAttackDamage": {
+            "min": 41,
+            "raw": 136,
+            "max": 177
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 180
+          }
+        }
+      },
+      "after": {
+        "displayName": "Lucky Strike",
+        "internalName": "Lucky Strike",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "superFast",
+        "averageDps": 611,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 107,
+          "classRequirement": "assassin",
+          "defence": 77
+        },
+        "majorIds": {
+          "Juggle": "<span class='font-ascii' style='color:#AAAAAA'>Mutilate adds an additional 12 hits. All hits are reduced by <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-10%</span>.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Roll the dice, hit a match. You never miss.</span>",
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "lifeSteal": {
+            "min": 179,
+            "raw": 598,
+            "max": 777
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "healthRegen": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawMaxMana": {
+            "min": -27,
+            "raw": -21,
+            "max": -15
+          },
+          "rawStrength": 7,
+          "rawDexterity": 7,
+          "rawAttackSpeed": 7,
+          "rawIntelligence": -77,
+          "rawFireMainAttackDamage": {
+            "min": 18,
+            "raw": 59,
+            "max": 77
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 107,
+            "raw": 107,
+            "max": 177
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e2",
+      "itemName": "Time Capsule",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Time Capsule",
+        "internalName": "Time Capsule",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 60,
+          "intelligence": 60
+        },
+        "powderSlots": 4,
+        "identifications": {
+          "damage": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "reflection": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawDefence": 15,
+          "rawStrength": -15,
+          "waterDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawDexterity": -15,
+          "rawIntelligence": 15,
+          "healingEfficiency": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          }
+        },
+        "base": {
+          "baseHealth": 4900,
+          "baseFireDefence": 250,
+          "baseEarthDefence": -130,
+          "baseWaterDefence": 250,
+          "baseThunderDefence": -130
+        }
+      },
+      "after": {
+        "displayName": "Time Capsule",
+        "internalName": "Time Capsule",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 60,
+          "intelligence": 60
+        },
+        "powderSlots": 4,
+        "identifications": {
+          "damage": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "reflection": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "fireDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDefence": 15,
+          "rawStrength": -15,
+          "waterDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": -15,
+          "rawIntelligence": 15,
+          "healingEfficiency": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          }
+        },
+        "base": {
+          "baseHealth": 4900,
+          "baseFireDefence": 250,
+          "baseEarthDefence": -130,
+          "baseWaterDefence": 250,
+          "baseThunderDefence": -130
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e3",
+      "itemName": "Nightlock",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Nightlock",
+        "internalName": "Nightlock",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 115,
+          "strength": 45
+        },
+        "identifications": {
+          "poison": {
+            "min": 1892,
+            "raw": 6308,
+            "max": 8200
+          },
+          "thorns": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "lootBonus": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "healthRegen": {
+            "min": -29,
+            "raw": -22,
+            "max": -15
+          },
+          "rawStrength": 5
+        },
+        "base": {
+          "baseEarthDefence": 80,
+          "baseThunderDefence": -70
+        }
+      },
+      "after": {
+        "displayName": "Nightlock",
+        "internalName": "Nightlock",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 115,
+          "strength": 45
+        },
+        "identifications": {
+          "poison": {
+            "min": 1892,
+            "raw": 6308,
+            "max": 8200
+          },
+          "thorns": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "lootBonus": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "healthRegen": {
+            "min": -9,
+            "raw": -7,
+            "max": -5
+          },
+          "rawStrength": 8
+        },
+        "base": {
+          "baseEarthDefence": 80,
+          "baseThunderDefence": -70
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e4",
+      "itemName": "Cryoseism",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Cryoseism",
+        "internalName": "Cryoseism",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 645,
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 97,
+          "classRequirement": "shaman",
+          "intelligence": 70
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>One of the first dwarven theories of the increasing quakes in east Gavel was that the freezing of a Dogun town in the Heights also froze a massive underground spring, disrupting the earth and chain-reacting across the province.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "walkSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "waterDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawIntelligence": 15,
+          "raw1stSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "mainAttackDamage": {
+            "min": -78,
+            "raw": -60,
+            "max": -42
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 241,
+            "raw": 241,
+            "max": 275
+          }
+        }
+      },
+      "after": {
+        "displayName": "Cryoseism",
+        "internalName": "Cryoseism",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 645,
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 97,
+          "classRequirement": "shaman",
+          "intelligence": 70
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>One of the first dwarven theories of the increasing quakes in east Gavel was that the freezing of a Dogun town in the Heights also froze a massive underground spring, disrupting the earth and chain-reacting across the province.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "walkSpeed": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "waterDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawIntelligence": 15,
+          "raw1stSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "healingEfficiency": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "mainAttackDamage": {
+            "min": -78,
+            "raw": -60,
+            "max": -42
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 241,
+            "raw": 241,
+            "max": 275
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e5",
+      "itemName": "Cold Integrity",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Cold Integrity",
+        "internalName": "Cold Integrity",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_4",
+        "tier": "legendary",
+        "attackSpeed": "veryFast",
+        "averageDps": 232,
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 74,
+          "classRequirement": "shaman",
+          "agility": 40,
+          "intelligence": 55
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "manaRegen": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "rawHealth": {
+            "min": -1950,
+            "raw": -1500,
+            "max": -1050
+          },
+          "airDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "waterDamage": {
+            "min": 22,
+            "raw": 72,
+            "max": 94
+          },
+          "rawIntelligence": 15,
+          "rawSpellDamage": {
+            "min": 240,
+            "raw": 800,
+            "max": 1040
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 48,
+            "raw": 48,
+            "max": 51
+          },
+          "baseAirDamage": {
+            "min": 24,
+            "raw": 24,
+            "max": 27
+          }
+        }
+      },
+      "after": {
+        "displayName": "Cold Integrity",
+        "internalName": "Cold Integrity",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_4",
+        "tier": "legendary",
+        "attackSpeed": "veryFast",
+        "averageDps": 232,
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 74,
+          "classRequirement": "shaman",
+          "agility": 40,
+          "intelligence": 55
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "manaRegen": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "rawHealth": {
+            "min": -1950,
+            "raw": -1500,
+            "max": -1050
+          },
+          "airDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "waterDamage": {
+            "min": 22,
+            "raw": 72,
+            "max": 94
+          },
+          "rawIntelligence": 15,
+          "rawSpellDamage": {
+            "min": 240,
+            "raw": 800,
+            "max": 1040
+          },
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 48,
+            "raw": 48,
+            "max": 51
+          },
+          "baseAirDamage": {
+            "min": 24,
+            "raw": 24,
+            "max": 27
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e6",
+      "itemName": "Heart of Shadow",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Heart of Shadow",
+        "internalName": "Heart of Shadow",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 115,
+          "defence": 40,
+          "dexterity": 40
+        },
+        "majorIds": {
+          "Bound by Blood": "<span class='font-ascii' style='color:#AAAAAA'>Shadow Projection's teleport range, duration, and launch strength is doubled.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Two sides of the same coin.</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "healthRegen": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "rawDexterity": 7,
+          "elementalDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          }
+        },
+        "base": {
+          "baseHealth": -550,
+          "baseFireDefence": 60,
+          "baseThunderDefence": 60
+        }
+      },
+      "after": {
+        "displayName": "Heart of Shadow",
+        "internalName": "Heart of Shadow",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 115,
+          "defence": 40,
+          "dexterity": 40
+        },
+        "majorIds": {
+          "Bound by Blood": "<span class='font-ascii' style='color:#AAAAAA'>Shadow Projection's teleport range, duration, and launch strength is doubled.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Two sides of the same coin.</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "healthRegen": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawDexterity": 7,
+          "elementalDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "mainAttackDamage": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          }
+        },
+        "base": {
+          "baseHealth": -550,
+          "baseFireDefence": 60,
+          "baseThunderDefence": 60
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e7",
+      "itemName": "Reserved",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Reserved",
+        "internalName": "Reserved",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 113,
+          "intelligence": 80
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "reflection": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawMaxMana": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          },
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawIntelligence": 20,
+          "elementalDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "mainAttackRange": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          },
+          "raw3rdSpellCost": {
+            "min": 8,
+            "raw": 6,
+            "max": 4
+          }
+        },
+        "base": {
+          "baseHealth": 3700,
+          "baseWaterDefence": 175
+        }
+      },
+      "after": {
+        "displayName": "Reserved",
+        "internalName": "Reserved",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 113,
+          "intelligence": 80
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "reflection": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawMaxMana": {
+            "min": 21,
+            "raw": 70,
+            "max": 91
+          },
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawIntelligence": 20,
+          "elementalDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "mainAttackRange": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          },
+          "raw3rdSpellCost": {
+            "min": 8,
+            "raw": 6,
+            "max": 4
+          },
+          "healingEfficiency": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseHealth": 3700,
+          "baseWaterDefence": 175
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e8",
+      "itemName": "Brook",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Brook",
+        "internalName": "Brook",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 73,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "reflection": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "fireDamage": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "waterDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "thunderDefence": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          }
+        },
+        "base": {
+          "baseHealth": 1300,
+          "baseWaterDefence": 130,
+          "baseThunderDefence": -150
+        }
+      },
+      "after": {
+        "displayName": "Brook",
+        "internalName": "Brook",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 73,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "reflection": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "fireDamage": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "waterDefence": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "thunderDefence": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "healingEfficiency": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          }
+        },
+        "base": {
+          "baseHealth": 1300,
+          "baseWaterDefence": 130,
+          "baseThunderDefence": -150
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560e9",
+      "itemName": "Stillwater Blue",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Stillwater Blue",
+        "internalName": "Stillwater Blue",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "rare",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 95,
+          "intelligence": 60
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "The Qira Hive",
+          "type": "quest",
+          "coordinates": [
+            373,
+            64,
+            -5497
+          ]
+        },
+        "identifications": {
+          "manaRegen": 24,
+          "reflection": 30,
+          "waterDamage": 25,
+          "waterDefence": 20,
+          "thunderDamage": -20,
+          "rawIntelligence": 10
+        },
+        "base": {
+          "baseHealth": 2500,
+          "baseWaterDefence": 180,
+          "baseThunderDefence": -100
+        }
+      },
+      "after": {
+        "displayName": "Stillwater Blue",
+        "internalName": "Stillwater Blue",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "rare",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 95,
+          "intelligence": 60
+        },
+        "powderSlots": 3,
+        "dropMeta": {
+          "name": "The Qira Hive",
+          "type": "quest",
+          "coordinates": [
+            373,
+            64,
+            -5497
+          ]
+        },
+        "identifications": {
+          "manaRegen": 24,
+          "reflection": 30,
+          "waterDamage": 25,
+          "waterDefence": 20,
+          "thunderDamage": -20,
+          "rawIntelligence": 10,
+          "healingEfficiency": 15
+        },
+        "base": {
+          "baseHealth": 2500,
+          "baseWaterDefence": 180,
+          "baseThunderDefence": -100
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560ea",
+      "itemName": "Lament",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Lament",
+        "internalName": "Lament",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "slow",
+        "averageDps": 375,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "mage",
+          "intelligence": 110
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>When the lost city of Sarnfic sunk beneath the depths, nothing but the bubbles of screams and this single wand surfaced. When used, you can still hear the town's lament.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -780,
+            "raw": -600,
+            "max": -420
+          },
+          "manaSteal": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "waterDamage": {
+            "min": 23,
+            "raw": 77,
+            "max": 100
+          },
+          "1stSpellCost": {
+            "min": -8,
+            "raw": -27,
+            "max": -35
+          },
+          "rawIntelligence": 20,
+          "healingEfficiency": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 90
+          },
+          "baseWaterDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 190
+          }
+        }
+      },
+      "after": {
+        "displayName": "Lament",
+        "internalName": "Lament",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "slow",
+        "averageDps": 375,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "mage",
+          "intelligence": 110
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>When the lost city of Sarnfic sunk beneath the depths, nothing but the bubbles of screams and this single wand surfaced. When used, you can still hear the town's lament.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -780,
+            "raw": -600,
+            "max": -420
+          },
+          "manaSteal": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "waterDamage": {
+            "min": 23,
+            "raw": 77,
+            "max": 100
+          },
+          "1stSpellCost": {
+            "min": -8,
+            "raw": -27,
+            "max": -35
+          },
+          "rawIntelligence": 20,
+          "healingEfficiency": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 90
+          },
+          "baseWaterDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 190
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560eb",
+      "itemName": "Gale Flurry",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Gale Flurry",
+        "internalName": "Gale Flurry",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.air2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_4",
+        "tier": "unique",
+        "attackSpeed": "veryFast",
+        "averageDps": 140,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 67,
+          "classRequirement": "mage",
+          "agility": 40
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "rawHealth": {
+            "min": -650,
+            "raw": -500,
+            "max": -350
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawAttackSpeed": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "mainAttackDamage": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 20
+          },
+          "baseAirDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 40
+          }
+        }
+      },
+      "after": {
+        "displayName": "Gale Flurry",
+        "internalName": "Gale Flurry",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.air2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_4",
+        "tier": "unique",
+        "attackSpeed": "veryFast",
+        "averageDps": 140,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 67,
+          "classRequirement": "mage",
+          "agility": 40
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "rawHealth": {
+            "min": -650,
+            "raw": -500,
+            "max": -350
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawAttackSpeed": 4,
+          "mainAttackDamage": {
+            "min": -65,
+            "raw": -50,
+            "max": -35
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 20
+          },
+          "baseAirDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 40
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560ec",
+      "itemName": "Abyssal Demand",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Abyssal Demand",
+        "internalName": "Abyssal Demand",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "dexterity": 45,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawDexterity": 6,
+          "rawAttackSpeed": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "rawIntelligence": 8,
+          "elementalDefence": {
+            "min": -35,
+            "raw": -27,
+            "max": -19
+          },
+          "mainAttackRange": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "waterSpellDamage": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "thunderSpellDamage": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          }
+        },
+        "base": {
+          "baseHealth": 3100,
+          "baseEarthDefence": -225,
+          "baseWaterDefence": 150,
+          "baseThunderDefence": 150
+        }
+      },
+      "after": {
+        "displayName": "Abyssal Demand",
+        "internalName": "Abyssal Demand",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "dexterity": 45,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawDexterity": 6,
+          "rawAttackSpeed": -8,
+          "rawIntelligence": 8,
+          "elementalDefence": {
+            "min": -35,
+            "raw": -27,
+            "max": -19
+          },
+          "mainAttackRange": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "waterSpellDamage": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "thunderSpellDamage": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          }
+        },
+        "base": {
+          "baseHealth": 3100,
+          "baseEarthDefence": -225,
+          "baseWaterDefence": 150,
+          "baseThunderDefence": 150
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560ed",
+      "itemName": "Pyrrhic Respite",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Pyrrhic Respite",
+        "internalName": "Pyrrhic Respite",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 101,
+          "defence": 55,
+          "dexterity": 40,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -455,
+            "raw": -350,
+            "max": -245
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawStrength": -12,
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawIntelligence": 6,
+          "rawSpellDamage": {
+            "min": -234,
+            "raw": -180,
+            "max": -126
+          }
+        },
+        "base": {
+          "baseHealth": 4650,
+          "baseAirDefence": 100,
+          "baseEarthDefence": 100
+        }
+      },
+      "after": {
+        "displayName": "Pyrrhic Respite",
+        "internalName": "Pyrrhic Respite",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 101,
+          "defence": 55,
+          "dexterity": 40,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -455,
+            "raw": -350,
+            "max": -245
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawStrength": -12,
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawIntelligence": 6,
+          "rawSpellDamage": {
+            "min": -234,
+            "raw": -180,
+            "max": -126
+          },
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseHealth": 4650,
+          "baseAirDefence": 100,
+          "baseEarthDefence": 100
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560ee",
+      "itemName": "Detlas' Legacy",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Detlas' Legacy",
+        "internalName": "Detlas' Legacy",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_2",
+        "tier": "legendary",
+        "attackSpeed": "slow",
+        "averageDps": 68,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 25,
+          "classRequirement": "mage",
+          "dexterity": 10,
+          "intelligence": 5
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>One of Detlas' buildings was struck by lightning 60 years ago and burnt to the ground, apart from one wooden beam that began to glow. It was fashioned into an exclusive wand for resident mages.</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "spellDamage": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "waterDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 4,
+          "rawIntelligence": 4,
+          "combatExperience": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "mainAttackDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 15,
+            "raw": 15,
+            "max": 25
+          },
+          "baseWaterDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 15
+          },
+          "baseThunderDamage": {
+            "min": 5,
+            "raw": 5,
+            "max": 20
+          }
+        }
+      },
+      "after": {
+        "displayName": "Detlas' Legacy",
+        "internalName": "Detlas' Legacy",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_2",
+        "tier": "legendary",
+        "attackSpeed": "slow",
+        "averageDps": 68,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 25,
+          "classRequirement": "mage",
+          "dexterity": 10,
+          "intelligence": 5
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>One of Detlas' buildings was struck by lightning 60 years ago and burnt to the ground, apart from one wooden beam that began to glow. It was fashioned into an exclusive wand for resident mages.</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "spellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawDexterity": 4,
+          "rawIntelligence": 4,
+          "combatExperience": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "healingEfficiency": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "mainAttackDamage": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 15,
+            "raw": 15,
+            "max": 25
+          },
+          "baseWaterDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 15
+          },
+          "baseThunderDamage": {
+            "min": 5,
+            "raw": 5,
+            "max": 20
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560ef",
+      "itemName": "Accursed Eye",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Accursed Eye",
+        "internalName": "Accursed Eye",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 116,
+          "dexterity": 45,
+          "intelligence": 40
+        },
+        "identifications": {
+          "manaRegen": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "healthRegen": {
+            "min": -16,
+            "raw": -12,
+            "max": -8
+          },
+          "rawDexterity": 5,
+          "rawIntelligence": 4,
+          "rawSpellDamage": {
+            "min": 30,
+            "raw": 100,
+            "max": 130
+          }
+        },
+        "base": {
+          "baseHealth": -600,
+          "baseWaterDefence": 40,
+          "baseThunderDefence": 45
+        }
+      },
+      "after": {
+        "displayName": "Accursed Eye",
+        "internalName": "Accursed Eye",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 116,
+          "dexterity": 45,
+          "intelligence": 40
+        },
+        "identifications": {
+          "manaRegen": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "healthRegen": {
+            "min": -12,
+            "raw": -9,
+            "max": -6
+          },
+          "rawDexterity": 5,
+          "rawIntelligence": 4,
+          "rawSpellDamage": {
+            "min": 30,
+            "raw": 100,
+            "max": 130
+          }
+        },
+        "base": {
+          "baseHealth": -600,
+          "baseWaterDefence": 40,
+          "baseThunderDefence": 45
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f0",
+      "itemName": "Hiraeth",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Hiraeth",
+        "internalName": "Hiraeth",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "slow",
+        "averageDps": 645,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 107,
+          "classRequirement": "shaman",
+          "intelligence": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaRegen": 16,
+          "waterDamage": 30,
+          "rawIntelligence": 12,
+          "elementalDefence": -18,
+          "healingEfficiency": 10
+        },
+        "base": {
+          "baseDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 300
+          },
+          "baseWaterDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 300
+          }
+        }
+      },
+      "after": {
+        "displayName": "Hiraeth",
+        "internalName": "Hiraeth",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "slow",
+        "averageDps": 645,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 107,
+          "classRequirement": "shaman",
+          "intelligence": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaRegen": 16,
+          "waterDamage": 30,
+          "rawIntelligence": 12,
+          "elementalDefence": -18,
+          "healingEfficiency": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 300
+          },
+          "baseWaterDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 300
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f1",
+      "itemName": "Saving Grace",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Saving Grace",
+        "internalName": "Saving Grace",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_3",
+        "tier": "rare",
+        "attackSpeed": "normal",
+        "averageDps": 256,
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 51,
+          "classRequirement": "shaman",
+          "defence": 20,
+          "intelligence": 20
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "fireDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "spellDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "waterDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healingEfficiency": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "mainAttackDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 80
+          },
+          "baseWaterDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 55
+          }
+        }
+      },
+      "after": {
+        "displayName": "Saving Grace",
+        "internalName": "Saving Grace",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.water2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_3",
+        "tier": "rare",
+        "attackSpeed": "normal",
+        "averageDps": 256,
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 51,
+          "classRequirement": "shaman",
+          "defence": 20,
+          "intelligence": 20
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "fireDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "spellDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "waterDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healingEfficiency": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "mainAttackDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 80
+          },
+          "baseWaterDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 55
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f2",
+      "itemName": "Adherence",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Adherence",
+        "internalName": "Adherence",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 105,
+          "agility": 65,
+          "defence": 65,
+          "intelligence": 65
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Adherence to the laws of good is important- it's why one fights the spread of corruption, after all. Though whether to follow the spirit or the letter... perhaps they too can be bent to your will.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "healthRegen": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "rawSpellDamage": {
+            "min": 92,
+            "raw": 308,
+            "max": 400
+          },
+          "healingEfficiency": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseAirDefence": 150,
+          "baseFireDefence": 150,
+          "baseEarthDefence": 150,
+          "baseWaterDefence": 150,
+          "baseThunderDefence": 150
+        }
+      },
+      "after": {
+        "displayName": "Adherence",
+        "internalName": "Adherence",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 105,
+          "agility": 65,
+          "defence": 65,
+          "intelligence": 65
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Adherence to the laws of good is important- it's why one fights the spread of corruption, after all. Though whether to follow the spirit or the letter... perhaps they too can be bent to your will.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "walkSpeed": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "healthRegen": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawSpellDamage": {
+            "min": 92,
+            "raw": 308,
+            "max": 400
+          },
+          "healingEfficiency": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          }
+        },
+        "base": {
+          "baseAirDefence": 150,
+          "baseFireDefence": 150,
+          "baseEarthDefence": 150,
+          "baseWaterDefence": 150,
+          "baseThunderDefence": 150
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f3",
+      "itemName": "Aldorei's Tear",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Aldorei's Tear",
+        "internalName": "Aldorei's Tear",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 77,
+          "strength": 30,
+          "intelligence": 30
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "poison": {
+            "min": 750,
+            "raw": 2500,
+            "max": 3250
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "walkSpeed": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "earthDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawStrength": 8,
+          "waterDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseHealth": 1550,
+          "baseAirDefence": -50,
+          "baseEarthDefence": 50,
+          "baseWaterDefence": 50,
+          "baseThunderDefence": -50
+        }
+      },
+      "after": {
+        "displayName": "Aldorei's Tear",
+        "internalName": "Aldorei's Tear",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 77,
+          "strength": 30,
+          "intelligence": 30
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "poison": {
+            "min": 750,
+            "raw": 2500,
+            "max": 3250
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "walkSpeed": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          },
+          "earthDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawStrength": 8,
+          "waterDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healingEfficiency": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseHealth": 1550,
+          "baseAirDefence": -50,
+          "baseEarthDefence": 50,
+          "baseWaterDefence": 50,
+          "baseThunderDefence": -50
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f4",
+      "itemName": "Cracked Crucible",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Cracked Crucible",
+        "internalName": "Cracked Crucible",
+        "type": "accessory",
+        "subType": "bracelet",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bracelet.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 115,
+          "defence": 55,
+          "dexterity": 45
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 38,
+            "raw": 125,
+            "max": 163
+          },
+          "rawDefence": 4,
+          "healthRegen": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "rawDexterity": 4,
+          "healthRegenRaw": {
+            "min": -146,
+            "raw": -112,
+            "max": -78
+          }
+        },
+        "base": {
+          "baseFireDefence": 40,
+          "baseWaterDefence": -60,
+          "baseThunderDefence": 30
+        }
+      },
+      "after": {
+        "displayName": "Cracked Crucible",
+        "internalName": "Cracked Crucible",
+        "type": "accessory",
+        "subType": "bracelet",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bracelet.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 115,
+          "defence": 55,
+          "dexterity": 45
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 81,
+            "raw": 269,
+            "max": 350
+          },
+          "rawDefence": 4,
+          "healthRegen": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "rawDexterity": 4,
+          "healthRegenRaw": {
+            "min": -146,
+            "raw": -112,
+            "max": -78
+          }
+        },
+        "base": {
+          "baseFireDefence": 40,
+          "baseWaterDefence": -60,
+          "baseThunderDefence": 30
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f5",
+      "itemName": "Ascendancy",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Ascendancy",
+        "internalName": "Ascendancy",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 544,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "warrior",
+          "agility": 60,
+          "defence": 60,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Divine Right": "<span class='font-ascii' style='color:#AAAAAA'>Your Maximum Health is reduced by 60%. For every 100 HP lost, Sacred Surge's damage is increased by 5%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is very little outside the purview of those with power. No matter the circumstance, those in a higher position can, will, and have justified their actions in different ways. Some reasons are fine, some are weak. But what sort of justification is there, for those in the highest position? You have the floor.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 808,
+            "raw": 2692,
+            "max": 3500
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "fireDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": -100,
+          "rawDexterity": -100,
+          "rawSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 30
+          },
+          "baseAirDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 100
+          },
+          "baseFireDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          },
+          "baseWaterDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          }
+        }
+      },
+      "after": {
+        "displayName": "Ascendancy",
+        "internalName": "Ascendancy",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 544,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "warrior",
+          "agility": 60,
+          "defence": 60,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Divine Right": "<span class='font-ascii' style='color:#AAAAAA'>Your Maximum Health is reduced by 60%. For every 100 HP lost, Sacred Surge's damage is increased by 5%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is very little outside the purview of those with power. No matter the circumstance, those in a higher position can, will, and have justified their actions in different ways. Some reasons are fine, some are weak. But what sort of justification is there, for those in the highest position? You have the floor.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 808,
+            "raw": 2692,
+            "max": 3500
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "fireDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": -250,
+          "rawDexterity": -250,
+          "rawSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 30
+          },
+          "baseAirDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 100
+          },
+          "baseFireDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          },
+          "baseWaterDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f6",
+      "itemName": "Apsara",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Apsara",
+        "internalName": "Apsara",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 390,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "mage",
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Under the waters, between the waves, there lies something-something beautiful.</span>",
+        "identifications": {
+          "damage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "1stSpellCost": {
+            "min": 14,
+            "raw": 11,
+            "max": 8
+          },
+          "rawIntelligence": 20
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 275
+          }
+        }
+      },
+      "after": {
+        "displayName": "Apsara",
+        "internalName": "Apsara",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 390,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "mage",
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Under the waters, between the waves, there lies something-something beautiful.</span>",
+        "identifications": {
+          "damage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "1stSpellCost": {
+            "min": 29,
+            "raw": 22,
+            "max": 15
+          },
+          "rawIntelligence": 20,
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 275
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f7",
+      "itemName": "Regiment",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Regiment",
+        "internalName": "Regiment",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 75
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "lifeSteal": {
+            "min": 135,
+            "raw": 450,
+            "max": 585
+          },
+          "rawDefence": 12,
+          "healthRegenRaw": {
+            "min": 140,
+            "raw": 465,
+            "max": 605
+          },
+          "rawAttackSpeed": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "mainAttackRange": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "mainAttackDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawFireMainAttackDamage": {
+            "min": 360,
+            "raw": 1200,
+            "max": 1560
+          }
+        },
+        "base": {
+          "baseHealth": 6000,
+          "baseFireDefence": 275,
+          "baseWaterDefence": -150
+        }
+      },
+      "after": {
+        "displayName": "Regiment",
+        "internalName": "Regiment",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 75
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "lifeSteal": {
+            "min": 135,
+            "raw": 450,
+            "max": 585
+          },
+          "rawDefence": 12,
+          "healthRegenRaw": {
+            "min": 140,
+            "raw": 465,
+            "max": 605
+          },
+          "rawAttackSpeed": -40,
+          "mainAttackRange": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "mainAttackDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawFireMainAttackDamage": {
+            "min": 360,
+            "raw": 1200,
+            "max": 1560
+          }
+        },
+        "base": {
+          "baseHealth": 6000,
+          "baseFireDefence": 275,
+          "baseWaterDefence": -150
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f8",
+      "itemName": "Lost Periapt",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Lost Periapt",
+        "internalName": "Lost Periapt",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.basicPearl"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 115,
+          "agility": 40,
+          "defence": 40
+        },
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "lifeSteal": {
+            "min": 53,
+            "raw": 177,
+            "max": 230
+          },
+          "healthRegen": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          }
+        },
+        "base": {
+          "baseHealth": 1000,
+          "baseWaterDefence": -55
+        }
+      },
+      "after": {
+        "displayName": "Lost Periapt",
+        "internalName": "Lost Periapt",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.basicPearl"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 115,
+          "agility": 40,
+          "defence": 40
+        },
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "lifeSteal": {
+            "min": 53,
+            "raw": 177,
+            "max": 230
+          },
+          "healthRegen": {
+            "min": -10,
+            "raw": -8,
+            "max": -6
+          }
+        },
+        "base": {
+          "baseHealth": 1000,
+          "baseWaterDefence": -55
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560f9",
+      "itemName": "Fleeting Aid",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Fleeting Aid",
+        "internalName": "Fleeting Aid",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "slow",
+        "averageDps": 158,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "mage",
+          "agility": 40,
+          "intelligence": 55
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "rawHealth": {
+            "min": -3022,
+            "raw": -2325,
+            "max": -1627
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "waterDamage": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "healthRegenRaw": {
+            "min": 112,
+            "raw": 373,
+            "max": 485
+          },
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 70
+          },
+          "baseWaterDamage": {
+            "min": 46,
+            "raw": 46,
+            "max": 60
+          }
+        }
+      },
+      "after": {
+        "displayName": "Fleeting Aid",
+        "internalName": "Fleeting Aid",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "slow",
+        "averageDps": 158,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "mage",
+          "agility": 40,
+          "intelligence": 55
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "rawHealth": {
+            "min": -3022,
+            "raw": -2325,
+            "max": -1627
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "healthRegenRaw": {
+            "min": 112,
+            "raw": 373,
+            "max": 485
+          },
+          "healingEfficiency": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawWaterSpellDamage": {
+            "min": 69,
+            "raw": 231,
+            "max": 300
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 70
+          },
+          "baseWaterDamage": {
+            "min": 46,
+            "raw": 46,
+            "max": 60
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560fa",
+      "itemName": "Socketwatch",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Socketwatch",
+        "internalName": "Socketwatch",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 109,
+          "dexterity": 60
+        },
+        "identifications": {
+          "lootBonus": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "healthRegen": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "raw3rdSpellCost": -1,
+          "thunderSpellDamage": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          }
+        },
+        "base": {
+          "baseEarthDefence": -85,
+          "baseThunderDefence": 65
+        }
+      },
+      "after": {
+        "displayName": "Socketwatch",
+        "internalName": "Socketwatch",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 109,
+          "dexterity": 60
+        },
+        "identifications": {
+          "lootBonus": {
+            "min": 2,
+            "raw": 6,
+            "max": 8
+          },
+          "healthRegen": {
+            "min": -14,
+            "raw": -11,
+            "max": -8
+          },
+          "raw3rdSpellCost": -1,
+          "thunderSpellDamage": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          }
+        },
+        "base": {
+          "baseEarthDefence": -85,
+          "baseThunderDefence": 65
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560fb",
+      "itemName": "Mountain Raiser",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Mountain Raiser",
+        "internalName": "Mountain Raiser",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_4",
+        "tier": "rare",
+        "attackSpeed": "superSlow",
+        "averageDps": 177,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 60,
+          "classRequirement": "mage",
+          "strength": 40
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "knockback": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "walkSpeed": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "rawAgility": -8,
+          "rawAttackSpeed": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "mainAttackRange": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "rawMainAttackDamage": {
+            "min": 99,
+            "raw": 331,
+            "max": 430
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 125
+          },
+          "baseEarthDamage": {
+            "min": 215,
+            "raw": 215,
+            "max": 280
+          }
+        }
+      },
+      "after": {
+        "displayName": "Mountain Raiser",
+        "internalName": "Mountain Raiser",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_4",
+        "tier": "rare",
+        "attackSpeed": "superSlow",
+        "averageDps": 177,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 60,
+          "classRequirement": "mage",
+          "strength": 40
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "knockback": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "walkSpeed": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "rawAgility": -8,
+          "rawAttackSpeed": -6,
+          "mainAttackRange": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "rawMainAttackDamage": {
+            "min": 99,
+            "raw": 331,
+            "max": 430
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 75,
+            "raw": 75,
+            "max": 125
+          },
+          "baseEarthDamage": {
+            "min": 215,
+            "raw": 215,
+            "max": 280
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560fc",
+      "itemName": "Overloaded",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Overloaded",
+        "internalName": "Overloaded",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.basicGold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "superSlow",
+        "averageDps": 484,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "warrior",
+          "dexterity": 70
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "exploding": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "lifeSteal": {
+            "min": 173,
+            "raw": 577,
+            "max": 750
+          },
+          "rawHealth": {
+            "min": -5850,
+            "raw": -4500,
+            "max": -3150
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawDexterity": 8,
+          "rawAttackSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          }
+        },
+        "base": {
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1900
+          }
+        }
+      },
+      "after": {
+        "displayName": "Overloaded",
+        "internalName": "Overloaded",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.basicGold"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "superSlow",
+        "averageDps": 484,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "warrior",
+          "dexterity": 70
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "exploding": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "lifeSteal": {
+            "min": 173,
+            "raw": 577,
+            "max": 750
+          },
+          "rawHealth": {
+            "min": -5850,
+            "raw": -4500,
+            "max": -3150
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawDexterity": 8,
+          "rawAttackSpeed": -20
+        },
+        "base": {
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 1900
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0e689733b87c2a6fc560fd",
+      "itemName": "Rotten Swamp",
+      "status": "modify",
+      "timestamp": 1779329175,
+      "before": {
+        "displayName": "Rotten Swamp",
+        "internalName": "Rotten Swamp",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_3",
+        "tier": "unique",
+        "attackSpeed": "slow",
+        "averageDps": 131,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 54,
+          "classRequirement": "mage",
+          "strength": 28
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Olux",
+          "type": "merchant",
+          "coordinates": [
+            -1746,
+            66,
+            -5512
+          ]
+        },
+        "identifications": {
+          "poison": 1800,
+          "healthRegen": -16,
+          "spellDamage": 15,
+          "waterDamage": 10,
+          "raw4thSpellCost": -4
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 50
+          },
+          "baseEarthDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 50
+          }
+        }
+      },
+      "after": {
+        "displayName": "Rotten Swamp",
+        "internalName": "Rotten Swamp",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_3",
+        "tier": "unique",
+        "attackSpeed": "slow",
+        "averageDps": 131,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 54,
+          "classRequirement": "mage",
+          "strength": 28
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Olux",
+          "type": "merchant",
+          "coordinates": [
+            -1746,
+            66,
+            -5512
+          ]
+        },
+        "identifications": {
+          "poison": 1800,
+          "earthDamage": 10,
+          "healthRegen": -16,
+          "spellDamage": 15,
+          "raw4thSpellCost": -4
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 50
+          },
+          "baseEarthDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 50
+          }
+        }
+      }
+    }
+  ]
+}
