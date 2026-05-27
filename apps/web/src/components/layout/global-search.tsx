@@ -377,22 +377,23 @@ const GlobalSearch: React.FC<any> = () => {
                             {Object.entries(results.players).map(([uuid, player]) => (
                               <span
                                 key={uuid}
+                                className="cursor-pointer"
                                 onClick={() => {
                                   saveToSearchHistory(player.username, "player");
+                                  router.push(`/stats/player/${uuid}`);
+                                  setIsDialogOpen(false);
                                 }}
                               >
-                                <Link href={`/stats/player/${uuid}`} prefetch={false}>
-                                  <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
-                                    <CardContent className="flex flex-col justify-between p-2 h-full">
-                                      <div className="flex items-center gap-3">
-                                        <img src={`https://vzge.me/face/128/${uuid}.png`} alt={player.username} className="w-8 h-8" loading="lazy" />
-                                        <div>
-                                          <span className="text-md font-mono">{getPlayerDisplayName(player.username)}</span>
-                                        </div>
+                                <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
+                                  <CardContent className="flex flex-col justify-between p-2 h-full">
+                                    <div className="flex items-center gap-3">
+                                      <img src={`https://vzge.me/face/128/${uuid}.png`} alt={player.username} className="w-8 h-8" loading="lazy" />
+                                      <div>
+                                        <span className="text-md font-mono">{getPlayerDisplayName(player.username)}</span>
                                       </div>
-                                    </CardContent>
-                                  </Card>
-                                </Link>
+                                    </div>
+                                  </CardContent>
+                                </Card>
                               </span>
                             ))}
                           </div>
@@ -405,17 +406,18 @@ const GlobalSearch: React.FC<any> = () => {
                             {Object.entries(results.mergedGuilds).map(([id, guild]) => (
                               <span
                                 key={id}
+                                className="cursor-pointer"
                                 onClick={() => {
                                   saveToSearchHistory(guild.name, "guild");
+                                  router.push(`/stats/guild/${guild.name}`);
+                                  setIsDialogOpen(false);
                                 }}
                               >
-                                <Link href={`/stats/guild/${guild.name}`} prefetch={false}>
-                                  <Card className="w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2">
-                                    <li className="text-md font-mono">
-                                      [{guild.prefix}] {guild.name}
-                                    </li>
-                                  </Card>
-                                </Link>
+                                <Card className="w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2">
+                                  <li className="text-md font-mono">
+                                    [{guild.prefix}] {guild.name}
+                                  </li>
+                                </Card>
                               </span>
                             ))}
                           </ul>
@@ -430,13 +432,14 @@ const GlobalSearch: React.FC<any> = () => {
                               return (
                                 <span
                                   key={itemName}
+                                  className="cursor-pointer"
                                   onClick={() => {
                                     saveToSearchHistory(itemName, "item");
+                                    router.push(`/item/${encodeURIComponent(itemName)}`);
+                                    setIsDialogOpen(false);
                                   }}
                                 >
-                                  <Link href={`/item/${encodeURIComponent(itemName)}`} prefetch={false}>
-                                    <SmallItemCard item={item} />
-                                  </Link>
+                                  <SmallItemCard item={item} />
                                 </span>
                               );
                             })}
