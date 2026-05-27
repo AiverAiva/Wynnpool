@@ -125,7 +125,7 @@ export default function ItemSearch({
     const [nameQuery, setNameQuery] = useState('')
     const [selectedTypes, setSelectedTypes] = useState<string[]>([])
     const [selectedTiers, setSelectedTiers] = useState<string[]>(tiers)
-    const [levelRange, setLevelRange] = useState<[number, number]>([1, 106]);
+    const [levelRange, setLevelRange] = useState<[number, number]>([1, 120]);
     const [isLoading, setIsLoading] = useState(false)
     const [identifications, setIdentifications] = useState<string[]>([])
     const [selectedIdentifications, setSelectedIdentifications] = useState<string[]>([]);
@@ -285,7 +285,7 @@ export default function ItemSearch({
         setNameQuery('');
         setSelectedTypes([]);
         setSelectedTiers([]);
-        setLevelRange([1, 106]);
+        setLevelRange([1, 120]);
         setResults(null);
         setError(null);
     };
@@ -358,7 +358,7 @@ export default function ItemSearch({
                         <Label>Level Range</Label>
                         <DualSlider
                             min={1}
-                            max={106}
+                            max={120}
                             step={1}
                             value={levelRange}
                             onValueChange={setLevelRange}
