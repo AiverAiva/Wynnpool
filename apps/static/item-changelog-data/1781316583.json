@@ -1,0 +1,4313 @@
+{
+  "add": [
+    {
+      "_id": "6a2cbbe76bb6207050c8dfc9",
+      "itemName": "Phoenix's Saber",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Phoenix's Saber",
+      "internalName": "Phoenix's Saber",
+      "type": "weapon",
+      "subType": "dagger",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "dagger.phoenix",
+          "customModelData": {
+            "rangeDispatch": [
+              853
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_1",
+      "tier": "legendary",
+      "attackSpeed": "fast",
+      "averageDps": 75,
+      "restriction": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 12,
+        "classRequirement": "assassin"
+      },
+      "powderSlots": 1,
+      "identifications": {
+        "damage": 20,
+        "manaRegen": 15,
+        "healthRegenRaw": 10,
+        "combatExperience": 15
+      },
+      "base": {
+        "baseDamage": {
+          "min": 25,
+          "raw": 25,
+          "max": 35
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfca",
+      "itemName": "Masterwork Lament",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Lament",
+      "internalName": "Masterwork Lament",
+      "type": "weapon",
+      "subType": "wand",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "wand.water3",
+          "customModelData": {
+            "rangeDispatch": [
+              4321
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_6",
+      "tier": "mythic",
+      "attackSpeed": "slow",
+      "averageDps": 412,
+      "restriction": "none",
+      "dropRestriction": "never",
+      "elements": [
+        "water"
+      ],
+      "requirements": {
+        "level": 110,
+        "classRequirement": "mage",
+        "intelligence": 110
+      },
+      "majorIds": {
+        "Requiem": "<span class='font-ascii' style='color:#AAAAAA'>Sunflare regenerates twice the health and mana.</span>"
+      },
+      "powderSlots": 3,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>When the lost city of Sarnfic sunk beneath the depths, nothing but the bubbles of screams and this single wand surfaced. When used, you can still hear the town's lament.</span>",
+      "identifications": {
+        "lifeSteal": {
+          "min": -780,
+          "raw": -600,
+          "max": -420
+        },
+        "manaSteal": {
+          "min": 12,
+          "raw": 40,
+          "max": 52
+        },
+        "waterDamage": {
+          "min": 30,
+          "raw": 100,
+          "max": 130
+        },
+        "1stSpellCost": {
+          "min": -8,
+          "raw": -27,
+          "max": -35
+        },
+        "rawIntelligence": 35,
+        "healingEfficiency": {
+          "min": 15,
+          "raw": 50,
+          "max": 65
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 70,
+          "raw": 70,
+          "max": 100
+        },
+        "baseWaterDamage": {
+          "min": 180,
+          "raw": 180,
+          "max": 200
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfcb",
+      "itemName": "Dawn Chaser",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Dawn Chaser",
+      "internalName": "Dawn Chaser",
+      "type": "weapon",
+      "subType": "wand",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "wand.fire3",
+          "customModelData": {
+            "rangeDispatch": [
+              4264
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_6",
+      "tier": "fabled",
+      "attackSpeed": "normal",
+      "averageDps": 410,
+      "restriction": "none",
+      "dropRestriction": "never",
+      "elements": [
+        "thunder",
+        "fire"
+      ],
+      "requirements": {
+        "level": 114,
+        "classRequirement": "mage",
+        "defence": 55,
+        "dexterity": 50
+      },
+      "majorIds": {
+        "Phantom Slip": "<span class='font-ascii' style='color:#AAAAAA'>Activating Life Steal or Mana Steal will grant +60% speed bonus for 0.7 seconds.</span>"
+      },
+      "powderSlots": 4,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>On the base of this ancient staff, a faded inscription surrounds a carving of an empty nest: \n<span class='font-old_fruman' style='font-weight:normal'>las ah sifpas il lelis, pactef nikcpadpets tofcef.\nluh prifad il kahnukc krad, nikckrahad il pahudef.\nkisal luh udpets tofcef, luh tofnikclotsecisah.\ntof il trasped lokc <span class='font-common'></span> cof, priftastah uc tofsascah.\n8 <span class='font-common'></span> 5al sifkel</span></span></span></span>",
+      "identifications": {
+        "manaSteal": {
+          "min": -19,
+          "raw": -15,
+          "max": -10
+        },
+        "walkSpeed": {
+          "min": -39,
+          "raw": -30,
+          "max": -21
+        },
+        "fireDamage": {
+          "min": 12,
+          "raw": 40,
+          "max": 52
+        },
+        "rawStrength": 12,
+        "mainAttackRange": {
+          "min": 15,
+          "raw": 50,
+          "max": 65
+        },
+        "rawThunderDamage": {
+          "min": 57,
+          "raw": 190,
+          "max": 247
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 70,
+          "raw": 70,
+          "max": 130
+        },
+        "baseFireDamage": {
+          "min": 40,
+          "raw": 40,
+          "max": 60
+        },
+        "baseThunderDamage": {
+          "min": 20,
+          "raw": 20,
+          "max": 80
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfcc",
+      "itemName": "Empty Mind",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Empty Mind",
+      "internalName": "Empty Mind",
+      "type": "weapon",
+      "subType": "wand",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "wand.basicWood",
+          "customModelData": {
+            "rangeDispatch": [
+              4233
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_5",
+      "tier": "unique",
+      "attackSpeed": "normal",
+      "averageDps": 384,
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 101,
+        "classRequirement": "mage"
+      },
+      "sets": [
+        "Empty"
+      ],
+      "identifications": {
+        "rawMaxMana": {
+          "min": -39,
+          "raw": -30,
+          "max": -21
+        },
+        "rawIntelligence": -35
+      },
+      "base": {
+        "baseDamage": {
+          "min": 170,
+          "raw": 170,
+          "max": 205
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfcd",
+      "itemName": "Masterwork Epoch",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Epoch",
+      "internalName": "Masterwork Epoch",
+      "type": "weapon",
+      "subType": "bow",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "bow.basicGold",
+          "customModelData": {
+            "rangeDispatch": [
+              303
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_6",
+      "tier": "mythic",
+      "attackSpeed": "superSlow",
+      "averageDps": 877,
+      "restriction": "none",
+      "dropRestriction": "never",
+      "elements": [
+        "thunder",
+        "air"
+      ],
+      "requirements": {
+        "level": 114,
+        "classRequirement": "archer",
+        "agility": 70,
+        "dexterity": 70
+      },
+      "powderSlots": 3,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>This ornate bow holds a sinister beauty. Each rediscovery marks impending disaster, against any force that attempts to overcome it. Such is the inevitability of fate: irreverent to the will of masses, an epoch starts anew.</span>",
+      "identifications": {
+        "sprint": {
+          "min": 21,
+          "raw": 70,
+          "max": 91
+        },
+        "lifeSteal": {
+          "min": 277,
+          "raw": 923,
+          "max": 1200
+        },
+        "manaSteal": {
+          "min": -8,
+          "raw": -6,
+          "max": -4
+        },
+        "walkSpeed": {
+          "min": -26,
+          "raw": -20,
+          "max": -14
+        },
+        "spellDamage": {
+          "min": 15,
+          "raw": 50,
+          "max": 65
+        },
+        "mainAttackRange": {
+          "min": 9,
+          "raw": 31,
+          "max": 40
+        },
+        "raw1stSpellCost": {
+          "min": -1,
+          "raw": -5,
+          "max": -6
+        },
+        "raw4thSpellCost": {
+          "min": -1,
+          "raw": -5,
+          "max": -6
+        },
+        "rawMainAttackDamage": {
+          "min": 231,
+          "raw": 769,
+          "max": 1000
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 520,
+          "raw": 520,
+          "max": 660
+        },
+        "baseAirDamage": {
+          "min": 530,
+          "raw": 530,
+          "max": 600
+        },
+        "baseThunderDamage": {
+          "min": 510,
+          "raw": 510,
+          "max": 620
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfce",
+      "itemName": "Empty Agony",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Empty Agony",
+      "internalName": "Empty Agony",
+      "type": "armour",
+      "subType": "leggings",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_leggings",
+          "name": "leggings.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "unique",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 102
+      },
+      "sets": [
+        "Empty"
+      ],
+      "identifications": {
+        "walkSpeed": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        },
+        "rawAgility": -3,
+        "rawDefence": -3,
+        "rawStrength": -3,
+        "rawDexterity": -3,
+        "3rdSpellCost": {
+          "min": -5,
+          "raw": -16,
+          "max": -21
+        },
+        "neutralDamage": {
+          "min": 11,
+          "raw": 38,
+          "max": 49
+        },
+        "rawIntelligence": -3,
+        "rawNeutralSpellDamage": {
+          "min": 54,
+          "raw": 181,
+          "max": 235
+        }
+      },
+      "base": {
+        "baseHealth": 2650
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfcf",
+      "itemName": "Empty Body",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Empty Body",
+      "internalName": "Empty Body",
+      "type": "weapon",
+      "subType": "dagger",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "dagger.basicWood",
+          "customModelData": {
+            "rangeDispatch": [
+              793
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_5",
+      "tier": "unique",
+      "attackSpeed": "verySlow",
+      "averageDps": 585,
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 101,
+        "classRequirement": "assassin"
+      },
+      "sets": [
+        "Empty"
+      ],
+      "identifications": {
+        "rawStrength": -35,
+        "mainAttackRange": {
+          "min": -65,
+          "raw": -50,
+          "max": -35
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 650,
+          "raw": 650,
+          "max": 760
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd0",
+      "itemName": "Recoil",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Recoil",
+      "internalName": "Recoil",
+      "type": "accessory",
+      "subType": "ring",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "ring.air2",
+          "customModelData": {
+            "rangeDispatch": [
+              3697
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "sticker_5",
+      "tier": "unique",
+      "restriction": "none",
+      "dropRestriction": "lootchest",
+      "elements": [
+        "air"
+      ],
+      "requirements": {
+        "level": 104,
+        "agility": 45
+      },
+      "identifications": {
+        "knockback": {
+          "min": 5,
+          "raw": 18,
+          "max": 23
+        },
+        "airDamage": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "rawAgility": 4,
+        "rawDexterity": -3,
+        "rawAttackSpeed": -6
+      },
+      "base": {
+        "baseAirDefence": 80
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd1",
+      "itemName": "Phoenix's Hammer",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Phoenix's Hammer",
+      "internalName": "Phoenix's Hammer",
+      "type": "weapon",
+      "subType": "spear",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "spear.phoenix",
+          "customModelData": {
+            "rangeDispatch": [
+              3823
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_1",
+      "tier": "legendary",
+      "attackSpeed": "fast",
+      "averageDps": 55,
+      "restriction": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 12,
+        "classRequirement": "warrior"
+      },
+      "powderSlots": 1,
+      "identifications": {
+        "damage": 20,
+        "manaRegen": 15,
+        "healthRegenRaw": 10,
+        "combatExperience": 15
+      },
+      "base": {
+        "baseDamage": {
+          "min": 18,
+          "raw": 18,
+          "max": 26
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd2",
+      "itemName": "Liquid Lightning",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Liquid Lightning",
+      "internalName": "Liquid Lightning",
+      "type": "armour",
+      "subType": "boots",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_boots",
+          "name": "boots.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "rare",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "thunder",
+        "water"
+      ],
+      "requirements": {
+        "level": 104,
+        "dexterity": 55,
+        "intelligence": 55
+      },
+      "identifications": {
+        "walkSpeed": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        },
+        "rawStrength": -12,
+        "spellDamage": {
+          "min": 6,
+          "raw": 21,
+          "max": 27
+        },
+        "rawDexterity": 4,
+        "thunderDefence": {
+          "min": 7,
+          "raw": 23,
+          "max": 30
+        },
+        "rawIntelligence": 4,
+        "mainAttackRange": {
+          "min": -26,
+          "raw": -20,
+          "max": -14
+        },
+        "raw2ndSpellCost": {
+          "min": -2,
+          "raw": -8,
+          "max": -10
+        }
+      },
+      "base": {
+        "baseHealth": 3360,
+        "baseEarthDefence": -200,
+        "baseWaterDefence": 180,
+        "baseThunderDefence": 180
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd3",
+      "itemName": "Phoenix's Span",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Phoenix's Span",
+      "internalName": "Phoenix's Span",
+      "type": "weapon",
+      "subType": "bow",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "bow.phoenix",
+          "customModelData": {
+            "rangeDispatch": [
+              366
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_1",
+      "tier": "legendary",
+      "attackSpeed": "fast",
+      "averageDps": 88,
+      "restriction": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 12,
+        "classRequirement": "archer"
+      },
+      "powderSlots": 1,
+      "identifications": {
+        "damage": 20,
+        "manaRegen": 15,
+        "healthRegenRaw": 10,
+        "combatExperience": 15
+      },
+      "base": {
+        "baseDamage": {
+          "min": 30,
+          "raw": 30,
+          "max": 40
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd4",
+      "itemName": "Cruel Pedagogy",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Cruel Pedagogy",
+      "internalName": "Cruel Pedagogy",
+      "type": "accessory",
+      "subType": "bracelet",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "bracelet.thunder2",
+          "customModelData": {
+            "rangeDispatch": [
+              405
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "sticker_5",
+      "tier": "rare",
+      "restriction": "none",
+      "dropRestriction": "lootchest",
+      "elements": [
+        "thunder",
+        "air"
+      ],
+      "requirements": {
+        "level": 103,
+        "agility": 50,
+        "dexterity": 50
+      },
+      "identifications": {
+        "damage": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "healthRegen": {
+          "min": -10,
+          "raw": -8,
+          "max": -6
+        },
+        "3rdSpellCost": {
+          "min": -2,
+          "raw": -7,
+          "max": -9
+        },
+        "combatExperience": {
+          "min": 5,
+          "raw": 18,
+          "max": 23
+        }
+      },
+      "base": {
+        "baseAirDefence": 20,
+        "baseFireDefence": 20,
+        "baseEarthDefence": 20,
+        "baseWaterDefence": 20,
+        "baseThunderDefence": 20
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd5",
+      "itemName": "Empty Symphony",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Empty Symphony",
+      "internalName": "Empty Symphony",
+      "type": "accessory",
+      "subType": "bracelet",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "bracelet.basicGold",
+          "customModelData": {
+            "rangeDispatch": [
+              396
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "sticker_5",
+      "tier": "unique",
+      "restriction": "none",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 103
+      },
+      "sets": [
+        "Empty"
+      ],
+      "identifications": {
+        "manaRegen": {
+          "min": 2,
+          "raw": 7,
+          "max": 9
+        },
+        "walkSpeed": {
+          "min": -18,
+          "raw": -14,
+          "max": -10
+        },
+        "rawAgility": 2,
+        "rawDefence": 2,
+        "rawStrength": 2,
+        "rawDexterity": 2,
+        "healthRegenRaw": {
+          "min": 31,
+          "raw": 104,
+          "max": 135
+        },
+        "rawIntelligence": 2
+      },
+      "base": {
+        "baseHealth": -500,
+        "baseAirDefence": 30,
+        "baseFireDefence": 30,
+        "baseEarthDefence": 30,
+        "baseWaterDefence": 30,
+        "baseThunderDefence": 30
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd6",
+      "itemName": "Phoenix's Staff",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Phoenix's Staff",
+      "internalName": "Phoenix's Staff",
+      "type": "weapon",
+      "subType": "wand",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "wand.phoenix",
+          "customModelData": {
+            "rangeDispatch": [
+              4295
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_1",
+      "tier": "legendary",
+      "attackSpeed": "fast",
+      "averageDps": 38,
+      "restriction": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 12,
+        "classRequirement": "mage"
+      },
+      "powderSlots": 1,
+      "identifications": {
+        "damage": 20,
+        "manaRegen": 15,
+        "healthRegenRaw": 10,
+        "combatExperience": 15
+      },
+      "base": {
+        "baseDamage": {
+          "min": 13,
+          "raw": 13,
+          "max": 17
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd7",
+      "itemName": "Eleemosynary",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Eleemosynary",
+      "internalName": "Eleemosynary",
+      "type": "accessory",
+      "subType": "necklace",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "necklace.earth2",
+          "customModelData": {
+            "rangeDispatch": [
+              2765
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "sticker_5",
+      "tier": "rare",
+      "restriction": "none",
+      "dropRestriction": "lootchest",
+      "elements": [
+        "earth",
+        "water"
+      ],
+      "requirements": {
+        "level": 102,
+        "strength": 50,
+        "intelligence": 40
+      },
+      "identifications": {
+        "healthRegen": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        },
+        "rawIntelligence": 4,
+        "raw4thSpellCost": {
+          "min": 4,
+          "raw": 3,
+          "max": 2
+        },
+        "healingEfficiency": {
+          "min": 1,
+          "raw": 4,
+          "max": 5
+        }
+      },
+      "base": {
+        "baseEarthDefence": 90,
+        "baseWaterDefence": 80
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd8",
+      "itemName": "Phoenix's Emblem",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Phoenix's Emblem",
+      "internalName": "Phoenix's Emblem",
+      "type": "weapon",
+      "subType": "relik",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "relik.phoenix",
+          "customModelData": {
+            "rangeDispatch": [
+              3668
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_1",
+      "tier": "legendary",
+      "attackSpeed": "fast",
+      "averageDps": 88,
+      "restriction": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "requirements": {
+        "level": 12,
+        "classRequirement": "shaman"
+      },
+      "powderSlots": 1,
+      "identifications": {
+        "damage": 20,
+        "manaRegen": 15,
+        "healthRegenRaw": 10,
+        "combatExperience": 15
+      },
+      "base": {
+        "baseDamage": {
+          "min": 30,
+          "raw": 30,
+          "max": 40
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfd9",
+      "itemName": "Masterwork Cataclysm",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Cataclysm",
+      "internalName": "Masterwork Cataclysm",
+      "type": "weapon",
+      "subType": "dagger",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "dagger.thunder3",
+          "customModelData": {
+            "rangeDispatch": [
+              871
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_6",
+      "tier": "mythic",
+      "attackSpeed": "superFast",
+      "averageDps": 968,
+      "restriction": "none",
+      "dropRestriction": "never",
+      "elements": [
+        "thunder"
+      ],
+      "requirements": {
+        "level": 113,
+        "classRequirement": "assassin",
+        "dexterity": 120
+      },
+      "powderSlots": 3,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>Despite the existence of the Nether Portal, few believe that it is possible to open such rifts with sheer force alone. None believe that a tool with enough power to accomplish such a monumental feat could exist. And yet...</span>",
+      "identifications": {
+        "thorns": {
+          "min": 12,
+          "raw": 40,
+          "max": 52
+        },
+        "stealing": {
+          "min": 2,
+          "raw": 5,
+          "max": 7
+        },
+        "rawHealth": {
+          "min": -7800,
+          "raw": -6000,
+          "max": -4200
+        },
+        "rawDexterity": 30,
+        "thunderDamage": {
+          "min": 9,
+          "raw": 31,
+          "max": 40
+        },
+        "raw1stSpellCost": {
+          "min": -1,
+          "raw": -4,
+          "max": -5
+        },
+        "raw3rdSpellCost": {
+          "min": -1,
+          "raw": -4,
+          "max": -5
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 25,
+          "raw": 25,
+          "max": 120
+        },
+        "baseThunderDamage": {
+          "min": 45,
+          "raw": 45,
+          "max": 260
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfda",
+      "itemName": "Empty Cadenza",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Empty Cadenza",
+      "internalName": "Empty Cadenza",
+      "type": "accessory",
+      "subType": "bracelet",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "bracelet.basicGold",
+          "customModelData": {
+            "rangeDispatch": [
+              396
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "sticker_5",
+      "tier": "unique",
+      "restriction": "none",
+      "dropRestriction": "lootchest",
+      "requirements": {
+        "level": 103
+      },
+      "sets": [
+        "Empty"
+      ],
+      "identifications": {
+        "lifeSteal": {
+          "min": 47,
+          "raw": 158,
+          "max": 205
+        },
+        "rawAgility": -1,
+        "rawDefence": -1,
+        "rawStrength": -1,
+        "rawDexterity": -1,
+        "neutralDamage": {
+          "min": 5,
+          "raw": 18,
+          "max": 23
+        },
+        "rawIntelligence": -1,
+        "rawNeutralSpellDamage": {
+          "min": 23,
+          "raw": 77,
+          "max": 100
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfdb",
+      "itemName": "Astral Grief",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Astral Grief",
+      "internalName": "Astral Grief",
+      "type": "armour",
+      "subType": "chestplate",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_chestplate",
+          "name": "chestplate.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "legendary",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "thunder",
+        "water",
+        "fire",
+        "air"
+      ],
+      "requirements": {
+        "level": 103,
+        "agility": 65,
+        "defence": 65,
+        "dexterity": 65,
+        "intelligence": 65
+      },
+      "powderSlots": 4,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>The parting gift of a condemned lover: a mesh of starstuff, bound with hope. A reminder that the heavens will always guide you home. A forgiveness. This parcel never reached its destination. </span>",
+      "identifications": {
+        "manaRegen": {
+          "min": 4,
+          "raw": 14,
+          "max": 18
+        },
+        "jumpHeight": {
+          "min": 1,
+          "raw": 2,
+          "max": 3
+        },
+        "rawAgility": 5,
+        "rawDefence": 5,
+        "rawDexterity": 5,
+        "rawIntelligence": 5,
+        "combatExperience": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        },
+        "healingEfficiency": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "thunderSpellDamage": {
+          "min": 7,
+          "raw": 23,
+          "max": 30
+        },
+        "rawFireSpellDamage": {
+          "min": 62,
+          "raw": 208,
+          "max": 270
+        }
+      },
+      "base": {
+        "baseHealth": 3900,
+        "baseAirDefence": 160,
+        "baseFireDefence": 160,
+        "baseWaterDefence": 160,
+        "baseThunderDefence": 160
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfdc",
+      "itemName": "Masterwork Immolation",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Immolation",
+      "internalName": "Masterwork Immolation",
+      "type": "weapon",
+      "subType": "relik",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "relik.fire3",
+          "customModelData": {
+            "rangeDispatch": [
+              3638
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_6",
+      "tier": "mythic",
+      "attackSpeed": "slow",
+      "averageDps": 1020,
+      "dropRestriction": "never",
+      "elements": [
+        "fire",
+        "air"
+      ],
+      "requirements": {
+        "level": 113,
+        "classRequirement": "shaman",
+        "agility": 75,
+        "defence": 75
+      },
+      "majorIds": {
+        "Blazing Effigy": "<span class='font-ascii' style='color:#AAAAAA'> Regeneration increases Totem's damage by <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+14%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+6%</span> instead of restoring health.</span></span></span>"
+      },
+      "powderSlots": 3,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>The act of self-immolation is never taken lightly, and is always a sacrifice. This idol was carved to honor one such instance, in which a master of flame burned through his life force in a final act of heroism-purging an encroaching army of the undead, saving the people of the jungle from destruction.</span>",
+      "identifications": {
+        "airDamage": {
+          "min": 23,
+          "raw": 76,
+          "max": 99
+        },
+        "fireDamage": {
+          "min": 23,
+          "raw": 76,
+          "max": 99
+        },
+        "rawAgility": 75,
+        "rawDefence": 75,
+        "healthRegen": {
+          "min": -104,
+          "raw": -80,
+          "max": -56
+        },
+        "1stSpellCost": {
+          "min": -6,
+          "raw": -19,
+          "max": -25
+        },
+        "3rdSpellCost": {
+          "min": -8,
+          "raw": -27,
+          "max": -35
+        },
+        "healingEfficiency": {
+          "min": -650,
+          "raw": -500,
+          "max": -350
+        }
+      },
+      "base": {
+        "baseAirDamage": {
+          "min": 325,
+          "raw": 325,
+          "max": 355
+        },
+        "baseFireDamage": {
+          "min": 205,
+          "raw": 205,
+          "max": 475
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfdd",
+      "itemName": "Empty Joy",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Empty Joy",
+      "internalName": "Empty Joy",
+      "type": "armour",
+      "subType": "leggings",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_leggings",
+          "name": "leggings.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "unique",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 102
+      },
+      "sets": [
+        "Empty"
+      ],
+      "powderSlots": 5,
+      "identifications": {
+        "manaRegen": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "walkSpeed": {
+          "min": -21,
+          "raw": -16,
+          "max": -11
+        },
+        "jumpHeight": {
+          "min": 1,
+          "raw": 3,
+          "max": 4
+        },
+        "rawAgility": 4,
+        "rawDefence": 4,
+        "rawStrength": 4,
+        "rawDexterity": 4,
+        "rawAttackSpeed": -5,
+        "rawIntelligence": 4
+      },
+      "base": {
+        "baseHealth": 3525,
+        "baseAirDefence": 60,
+        "baseFireDefence": 60,
+        "baseEarthDefence": 60,
+        "baseWaterDefence": 60,
+        "baseThunderDefence": 60
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfde",
+      "itemName": "Usufruct",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Usufruct",
+      "internalName": "Usufruct",
+      "type": "armour",
+      "subType": "boots",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_boots",
+          "name": "boots.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "rare",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "earth",
+        "air"
+      ],
+      "requirements": {
+        "level": 102,
+        "agility": 50,
+        "strength": 50
+      },
+      "powderSlots": 3,
+      "identifications": {
+        "manaSteal": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "walkSpeed": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        },
+        "rawAgility": 5,
+        "rawDefence": 3,
+        "rawStrength": 5,
+        "waterDamage": {
+          "min": -26,
+          "raw": -20,
+          "max": -14
+        },
+        "rawDexterity": 3,
+        "combatExperience": {
+          "min": 7,
+          "raw": 23,
+          "max": 30
+        },
+        "mainAttackRange": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        }
+      },
+      "base": {
+        "baseHealth": 3465,
+        "baseAirDefence": 160,
+        "baseEarthDefence": 160,
+        "baseWaterDefence": -140
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfdf",
+      "itemName": "Empty Heart",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Empty Heart",
+      "internalName": "Empty Heart",
+      "type": "weapon",
+      "subType": "relik",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "relik.basicWood",
+          "customModelData": {
+            "rangeDispatch": [
+              3609
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_5",
+      "tier": "unique",
+      "attackSpeed": "slow",
+      "averageDps": 682,
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "requirements": {
+        "level": 101,
+        "classRequirement": "shaman"
+      },
+      "sets": [
+        "Empty"
+      ],
+      "identifications": {
+        "rawHealth": {
+          "min": -2042,
+          "raw": -1571,
+          "max": -1100
+        },
+        "rawDefence": -35
+      },
+      "base": {
+        "baseDamage": {
+          "min": 420,
+          "raw": 420,
+          "max": 490
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe0",
+      "itemName": "Masterwork Idol",
+      "status": "add",
+      "timestamp": 1781316583,
+      "displayName": "Idol",
+      "internalName": "Masterwork Idol",
+      "type": "weapon",
+      "subType": "spear",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "spear.water3",
+          "customModelData": {
+            "rangeDispatch": [
+              3848
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_6",
+      "tier": "mythic",
+      "attackSpeed": "normal",
+      "averageDps": 584,
+      "restriction": "none",
+      "dropRestriction": "never",
+      "elements": [
+        "water"
+      ],
+      "requirements": {
+        "level": 111,
+        "classRequirement": "warrior",
+        "intelligence": 120
+      },
+      "majorIds": {
+        "Tidal Drift": "<span class='font-ascii' style='color:#AAAAAA'>Flying Kick will instead send you forwards. This effect is limited to once per Charge cast.</span>"
+      },
+      "powderSlots": 3,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>Intricate carvings and images, almost like that of a totem pole, cover the shaft of this marvelous trident, dredged up from the Seavale Reef. Foreign magics heighten the senses of its user in battle, but also instills a longing for the ocean. Many have succumbed to this urge and drowned themselves.</span>",
+      "identifications": {
+        "manaRegen": {
+          "min": 5,
+          "raw": 18,
+          "max": 23
+        },
+        "reflection": {
+          "min": 9,
+          "raw": 30,
+          "max": 39
+        },
+        "waterDefence": {
+          "min": 8,
+          "raw": 28,
+          "max": 36
+        },
+        "rawIntelligence": 26,
+        "rawSpellDamage": {
+          "min": 113,
+          "raw": 377,
+          "max": 490
+        },
+        "raw2ndSpellCost": {
+          "min": -18,
+          "raw": -60,
+          "max": -78
+        }
+      },
+      "base": {
+        "baseWaterDamage": {
+          "min": 240,
+          "raw": 240,
+          "max": 330
+        }
+      }
+    }
+  ],
+  "modify": [
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe1",
+      "itemName": "Demonomicon",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Demonomicon",
+        "internalName": "Demonomicon",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 841,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 106,
+          "classRequirement": "shaman",
+          "defence": 70,
+          "strength": 35,
+          "dexterity": 35,
+          "intelligence": 35
+        },
+        "majorIds": {
+          "Gruesome Knots": "<span class='font-ascii' style='color:#AAAAAA'>Bleeding and Twisted Tether deal double damage, but Bleeding duration is reduced.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A dusty old tome, containing all the powers of the abyss. From its pages spring forth the blackest of secrets and the darkest of truths. Do not let yourself slip into its grasp, for it will consume you too.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 180,
+            "raw": 600,
+            "max": 780
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "rawHealth": {
+            "min": -2990,
+            "raw": -2300,
+            "max": -1610
+          },
+          "walkSpeed": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "rawAgility": -35,
+          "rawElementalDamage": {
+            "min": 72,
+            "raw": 240,
+            "max": 312
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 6,
+            "raw": 6,
+            "max": 700
+          },
+          "baseFireDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 275
+          }
+        }
+      },
+      "after": {
+        "displayName": "Demonomicon",
+        "internalName": "Demonomicon",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 841,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 106,
+          "classRequirement": "shaman",
+          "defence": 70,
+          "strength": 35,
+          "dexterity": 35,
+          "intelligence": 35
+        },
+        "majorIds": {
+          "Gruesome Knots": "<span class='font-ascii' style='color:#AAAAAA'>Bleeding and Twisted Tether deal double the damage, but Bleeding duration is reduced.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A dusty old tome, containing all the powers of the abyss. From its pages spring forth the blackest of secrets and the darkest of truths. Do not let yourself slip into its grasp, for it will consume you too.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 180,
+            "raw": 600,
+            "max": 780
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "rawHealth": {
+            "min": -2990,
+            "raw": -2300,
+            "max": -1610
+          },
+          "walkSpeed": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "rawAgility": -35,
+          "rawElementalDamage": {
+            "min": 72,
+            "raw": 240,
+            "max": 312
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 6,
+            "raw": 6,
+            "max": 700
+          },
+          "baseFireDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 275
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe2",
+      "itemName": "Cerberus",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Cerberus",
+        "internalName": "Cerberus",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 368,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 100,
+          "classRequirement": "mage",
+          "defence": 65,
+          "dexterity": 60
+        },
+        "majorIds": {
+          "Meteor Crash": "<span class='font-ascii' style='color:#AAAAAA'>Burning Sigil gains +6 radius and deals double the damage, but lasts half as long.</span>"
+        },
+        "powderSlots": 4,
+        "identifications": {
+          "lootBonus": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "waterDefence": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "4thSpellCost": {
+            "min": 39,
+            "raw": 30,
+            "max": 21
+          },
+          "rawIntelligence": -8,
+          "thunderSpellDamage": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "rawFireSpellDamage": {
+            "min": 69,
+            "raw": 231,
+            "max": 300
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 80
+          },
+          "baseFireDamage": {
+            "min": 90,
+            "raw": 90,
+            "max": 110
+          },
+          "baseThunderDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 130
+          }
+        }
+      },
+      "after": {
+        "displayName": "Cerberus",
+        "internalName": "Cerberus",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 368,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 100,
+          "classRequirement": "mage",
+          "defence": 65,
+          "dexterity": 60
+        },
+        "majorIds": {
+          "Meteor Crash": "<span class='font-ascii' style='color:#AAAAAA'>Burning Sigil gains +6 radius and deals 4x the damage, but lasts half as long.</span>"
+        },
+        "powderSlots": 4,
+        "identifications": {
+          "lootBonus": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "waterDefence": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "4thSpellCost": {
+            "min": 39,
+            "raw": 30,
+            "max": 21
+          },
+          "rawIntelligence": -8,
+          "thunderSpellDamage": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          },
+          "rawFireSpellDamage": {
+            "min": 69,
+            "raw": 231,
+            "max": 300
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 80
+          },
+          "baseFireDamage": {
+            "min": 90,
+            "raw": 90,
+            "max": 110
+          },
+          "baseThunderDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 130
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe3",
+      "itemName": "Restitution",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Restitution",
+        "internalName": "Restitution",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 554,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "classRequirement": "warrior",
+          "defence": 60,
+          "dexterity": 45,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Old Spark": "<span class='font-ascii' style='color:#AAAAAA'>Whirlwind transforms into a travelling projectile, exploding on contact and knocking enemies into the air. Hold shift to rise with them.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'><span class='font-old_fruman' style='font-weight:normal'>recnal il <span class='font-common'></span>il. alac toc, pasad il, atlruc il, kaclahpokc il cefos. lahes il nikcrolad kec pahsofmal uc ifrah tofnikcsif. etlefrofmad uc, etlaces uc tofnikcsoftahal. <span class='font-common'></span>rofmel <span class='font-common'></span>lahrakctriltod uc tofpahnuc. <span class='font-common'></span>lahic cof efrofmad il pahsadiled uc tofifrah. etlalnes ah rofmedes uc tofpestal. pasad uc tofmahatskritsec. etlrakc kec. etlrakc kec.</span></span></span></span></span></span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": 635,
+            "raw": 2115,
+            "max": 2750
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "earthDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawDexterity": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "thunderSpellDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseWaterDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 115
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 180
+          }
+        }
+      },
+      "after": {
+        "displayName": "Restitution",
+        "internalName": "Restitution",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 615,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "classRequirement": "warrior",
+          "defence": 60,
+          "dexterity": 45,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Old Spark": "<span class='font-ascii' style='color:#AAAAAA'>Whirlwind transforms into a travelling projectile, exploding on contact and knocking enemies into the air. Hold shift to rise with them.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'><span class='font-old_fruman' style='font-weight:normal'>recnal il <span class='font-common'></span>il. alac toc, pasad il, atlruc il, kaclahpokc il cefos. lahes il nikcrolad kec pahsofmal uc ifrah tofnikcsif. etlefrofmad uc, etlaces uc tofnikcsoftahal. <span class='font-common'></span>rofmel <span class='font-common'></span>lahrakctriltod uc tofpahnuc. <span class='font-common'></span>lahic cof efrofmad il pahsadiled uc tofifrah. etlalnes ah rofmedes uc tofpestal. pasad uc tofmahatskritsec. etlrakc kec. etlrakc kec.</span></span></span></span></span></span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": 635,
+            "raw": 2115,
+            "max": 2750
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "earthDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawDexterity": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "thunderSpellDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseWaterDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 115
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 180
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe4",
+      "itemName": "Desperate Facsimile",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Desperate Facsimile",
+        "internalName": "Desperate Facsimile",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.multi2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 281,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 80,
+          "classRequirement": "warrior",
+          "dexterity": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#AAAAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-200%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>-120%</span>.</span></span></span>"
+        },
+        "powderSlots": 7,
+        "identifications": {
+          "rawDamage": {
+            "min": 52,
+            "raw": 173,
+            "max": 225
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "sprintRegen": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          },
+          "rawDexterity": 13,
+          "1stSpellCost": {
+            "min": 17,
+            "raw": 13,
+            "max": 9
+          },
+          "healthRegenRaw": {
+            "min": -291,
+            "raw": -224,
+            "max": -157
+          },
+          "rawAttackSpeed": 1
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 45
+          }
+        }
+      },
+      "after": {
+        "displayName": "Desperate Facsimile",
+        "internalName": "Desperate Facsimile",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.multi2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 281,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 80,
+          "classRequirement": "warrior",
+          "dexterity": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#AAAAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-100%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>-60%</span>.</span></span></span>"
+        },
+        "powderSlots": 7,
+        "identifications": {
+          "rawDamage": {
+            "min": 52,
+            "raw": 173,
+            "max": 225
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "sprintRegen": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          },
+          "rawDexterity": 13,
+          "1stSpellCost": {
+            "min": 17,
+            "raw": 13,
+            "max": 9
+          },
+          "healthRegenRaw": {
+            "min": -291,
+            "raw": -224,
+            "max": -157
+          },
+          "rawAttackSpeed": 1
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 45
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe5",
+      "itemName": "Pyrrhic Respite",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Pyrrhic Respite",
+        "internalName": "Pyrrhic Respite",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 101,
+          "defence": 55,
+          "dexterity": 40,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -455,
+            "raw": -350,
+            "max": -245
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawStrength": -12,
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawIntelligence": 6,
+          "rawSpellDamage": {
+            "min": -234,
+            "raw": -180,
+            "max": -126
+          },
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseHealth": 4650,
+          "baseAirDefence": 100,
+          "baseEarthDefence": 100
+        }
+      },
+      "after": {
+        "displayName": "Pyrrhic Respite",
+        "internalName": "Pyrrhic Respite",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 101,
+          "defence": 55,
+          "dexterity": 40,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 10% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -455,
+            "raw": -350,
+            "max": -245
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawStrength": -12,
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawIntelligence": 6,
+          "rawSpellDamage": {
+            "min": -234,
+            "raw": -180,
+            "max": -126
+          },
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseHealth": 4650,
+          "baseAirDefence": 100,
+          "baseEarthDefence": 100
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe6",
+      "itemName": "Dance Among the Stars",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Dance Among the Stars",
+        "internalName": "Dance Among the Stars",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "normal",
+        "averageDps": 676,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 94,
+          "classRequirement": "assassin",
+          "agility": 60,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Space Glide": "<span class='font-ascii' style='color:#AAAAAA'>Lacerate performs a single horizontal jump and slash, dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>400%</span>.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Carelessly aloft, between the heavens and the abyss...</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": -1856,
+            "raw": -1428,
+            "max": -1000
+          },
+          "reflection": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "walkSpeed": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 2,
+            "max": 3
+          },
+          "rawStrength": -20,
+          "1stSpellCost": {
+            "min": -7,
+            "raw": -25,
+            "max": -32
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 170
+          },
+          "baseWaterDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 170
+          }
+        }
+      },
+      "after": {
+        "displayName": "Dance Among the Stars",
+        "internalName": "Dance Among the Stars",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "normal",
+        "averageDps": 676,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 94,
+          "classRequirement": "assassin",
+          "agility": 60,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Space Glide": "<span class='font-ascii' style='color:#AAAAAA'>Lacerate performs a single horizontal jump and slash, dealing <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>500%</span>.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Carelessly aloft, between the heavens and the abyss...</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": -1856,
+            "raw": -1428,
+            "max": -1000
+          },
+          "reflection": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "walkSpeed": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 2,
+            "max": 3
+          },
+          "rawStrength": -20,
+          "1stSpellCost": {
+            "min": -7,
+            "raw": -25,
+            "max": -32
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 170
+          },
+          "baseWaterDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 170
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe7",
+      "itemName": "Decaybound Spindle",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Decaybound Spindle",
+        "internalName": "Decaybound Spindle",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_3",
+        "tier": "fabled",
+        "attackSpeed": "veryFast",
+        "averageDps": 356,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 50,
+          "classRequirement": "shaman",
+          "strength": 45
+        },
+        "majorIds": {
+          "Gruesome Knots": "<span class='font-ascii' style='color:#AAAAAA'>Bleeding and Twisted Tether deal double damage, but Bleeding duration is reduced.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Decay spreads unseen, but you know it spreads, and that is enough.</span>",
+        "identifications": {
+          "poison": {
+            "min": 390,
+            "raw": 1300,
+            "max": 1690
+          },
+          "airDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawHealth": {
+            "min": -422,
+            "raw": -325,
+            "max": -227
+          },
+          "rawStrength": 5,
+          "healthRegenRaw": {
+            "min": -64,
+            "raw": -49,
+            "max": -34
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 80
+          },
+          "baseEarthDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 50
+          }
+        }
+      },
+      "after": {
+        "displayName": "Decaybound Spindle",
+        "internalName": "Decaybound Spindle",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_3",
+        "tier": "fabled",
+        "attackSpeed": "veryFast",
+        "averageDps": 356,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 50,
+          "classRequirement": "shaman",
+          "strength": 45
+        },
+        "majorIds": {
+          "Gruesome Knots": "<span class='font-ascii' style='color:#AAAAAA'>Bleeding and Twisted Tether deal double the damage, but Bleeding duration is reduced.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Decay spreads unseen, but you know it spreads, and that is enough.</span>",
+        "identifications": {
+          "poison": {
+            "min": 390,
+            "raw": 1300,
+            "max": 1690
+          },
+          "airDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawHealth": {
+            "min": -422,
+            "raw": -325,
+            "max": -227
+          },
+          "rawStrength": 5,
+          "healthRegenRaw": {
+            "min": -64,
+            "raw": -49,
+            "max": -34
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 80
+          },
+          "baseEarthDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 50
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe8",
+      "itemName": "Apsara",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Apsara",
+        "internalName": "Apsara",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 390,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "mage",
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Under the waters, between the waves, there lies something-something beautiful.</span>",
+        "identifications": {
+          "damage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "1stSpellCost": {
+            "min": 29,
+            "raw": 22,
+            "max": 15
+          },
+          "rawIntelligence": 20,
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 275
+          }
+        }
+      },
+      "after": {
+        "displayName": "Apsara",
+        "internalName": "Apsara",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 390,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "mage",
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 10% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Under the waters, between the waves, there lies something-something beautiful.</span>",
+        "identifications": {
+          "damage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "1stSpellCost": {
+            "min": 29,
+            "raw": 22,
+            "max": 15
+          },
+          "rawIntelligence": 20,
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 275
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfe9",
+      "itemName": "Helios Lux",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Helios Lux",
+        "internalName": "Helios Lux",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 73,
+          "agility": 45,
+          "dexterity": 45
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "lifeSteal": {
+            "min": -227,
+            "raw": -175,
+            "max": -122
+          },
+          "rawAgility": 8,
+          "sprintRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 8,
+          "airSpellDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "combatExperience": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "thunderSpellDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          }
+        },
+        "base": {
+          "baseHealth": 2000,
+          "baseAirDefence": 70,
+          "baseThunderDefence": 70
+        }
+      },
+      "after": {
+        "displayName": "Helios Lux",
+        "internalName": "Helios Lux",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 73,
+          "agility": 45,
+          "dexterity": 45
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 10% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "lifeSteal": {
+            "min": -227,
+            "raw": -175,
+            "max": -122
+          },
+          "rawAgility": 8,
+          "sprintRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 8,
+          "airSpellDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "combatExperience": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "thunderSpellDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          }
+        },
+        "base": {
+          "baseHealth": 2000,
+          "baseAirDefence": 70,
+          "baseThunderDefence": 70
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfea",
+      "itemName": "Revolution",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Revolution",
+        "internalName": "Revolution",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 759,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 111,
+          "classRequirement": "archer",
+          "agility": 65,
+          "strength": 60,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Regicide": "<span class='font-ascii' style='color:#AAAAAA'>Your deal 2% more damage for every block you are away from your target (Max 120%).</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A boiling rage has been gathering, the pain of an entire empire yearning to be freed. With all the power of the downtrodden and the overlooked and the starved, you echo out a shout with ten thousand voices, each too quiet to hear by itself, but together a catastrophic force to make the heavens cower.</span>",
+        "identifications": {
+          "knockback": {
+            "min": 39,
+            "raw": 131,
+            "max": 170
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": -3150,
+            "raw": -2423,
+            "max": -1696
+          },
+          "rawIntelligence": 25,
+          "mainAttackRange": {
+            "min": -47,
+            "raw": -36,
+            "max": -25
+          },
+          "raw2ndSpellCost": {
+            "min": -3,
+            "raw": -9,
+            "max": -12
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 260
+          },
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 300
+          },
+          "baseEarthDamage": {
+            "min": 210,
+            "raw": 210,
+            "max": 250
+          },
+          "baseWaterDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 280
+          }
+        }
+      },
+      "after": {
+        "displayName": "Revolution",
+        "internalName": "Revolution",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 759,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 111,
+          "classRequirement": "archer",
+          "agility": 65,
+          "strength": 60,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Regicide": "<span class='font-ascii' style='color:#AAAAAA'>You deal 2% more damage for every block you are away from your target (Max 120%).</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A boiling rage has been gathering, the pain of an entire empire yearning to be freed. With all the power of the downtrodden and the overlooked and the starved, you echo out a shout with ten thousand voices, each too quiet to hear by itself, but together a catastrophic force to make the heavens cower.</span>",
+        "identifications": {
+          "knockback": {
+            "min": 39,
+            "raw": 131,
+            "max": 170
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": -3150,
+            "raw": -2423,
+            "max": -1696
+          },
+          "rawIntelligence": 25,
+          "mainAttackRange": {
+            "min": -47,
+            "raw": -36,
+            "max": -25
+          },
+          "raw2ndSpellCost": {
+            "min": -3,
+            "raw": -9,
+            "max": -12
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 190,
+            "raw": 190,
+            "max": 260
+          },
+          "baseAirDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 300
+          },
+          "baseEarthDamage": {
+            "min": 210,
+            "raw": 210,
+            "max": 250
+          },
+          "baseWaterDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 280
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfeb",
+      "itemName": "Starcaller",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Starcaller",
+        "internalName": "Starcaller",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 428,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 117,
+          "classRequirement": "mage",
+          "agility": 45,
+          "dexterity": 60
+        },
+        "majorIds": {
+          "Solar Wind": "<span class='font-ascii' style='color:#AAAAAA'>Thunderstorm disables Meteor and grants +3 thunderbolts, +3 radius and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>100%</span> and <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>110%</span> each. Unstable now activates on Thunderstorm for 400% bonus damage.</span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>From afar, a faint light glimmers. A brighter light next. Another. Then another still. A cascade of blinding force, more than anything you could have ever imagined. And then... nothing. As though there was never anything there.</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "rawDamage": {
+            "min": 59,
+            "raw": 196,
+            "max": 255
+          },
+          "waterDamage": {
+            "min": -31,
+            "raw": -24,
+            "max": -17
+          },
+          "rawDexterity": 10,
+          "3rdSpellCost": {
+            "min": 22,
+            "raw": 17,
+            "max": 12
+          },
+          "rawAttackSpeed": 1
+        },
+        "base": {
+          "baseDamage": {
+            "min": 31,
+            "raw": 31,
+            "max": 75
+          },
+          "baseAirDamage": {
+            "min": 31,
+            "raw": 31,
+            "max": 65
+          },
+          "baseThunderDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 85
+          }
+        }
+      },
+      "after": {
+        "displayName": "Starcaller",
+        "internalName": "Starcaller",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 428,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 117,
+          "classRequirement": "mage",
+          "agility": 45,
+          "dexterity": 60
+        },
+        "majorIds": {
+          "Solar Wind": "<span class='font-ascii' style='color:#AAAAAA'>Thunderstorm disables Meteor, grants +3 thunderbolts, +3 radius and deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>100%</span> and <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>110%</span> each. Unstable now activates on Thunderstorm for 400% bonus damage.</span></span></span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>From afar, a faint light glimmers. A brighter light next. Another. Then another still. A cascade of blinding force, more than anything you could have ever imagined. And then... nothing. As though there was never anything there.</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "rawDamage": {
+            "min": 59,
+            "raw": 196,
+            "max": 255
+          },
+          "waterDamage": {
+            "min": -31,
+            "raw": -24,
+            "max": -17
+          },
+          "rawDexterity": 10,
+          "3rdSpellCost": {
+            "min": 22,
+            "raw": 17,
+            "max": 12
+          },
+          "rawAttackSpeed": 1
+        },
+        "base": {
+          "baseDamage": {
+            "min": 31,
+            "raw": 31,
+            "max": 75
+          },
+          "baseAirDamage": {
+            "min": 31,
+            "raw": 31,
+            "max": 65
+          },
+          "baseThunderDamage": {
+            "min": 55,
+            "raw": 55,
+            "max": 85
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfec",
+      "itemName": "Ascendancy",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Ascendancy",
+        "internalName": "Ascendancy",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 544,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "warrior",
+          "agility": 60,
+          "defence": 60,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Divine Right": "<span class='font-ascii' style='color:#AAAAAA'>Your Maximum Health is reduced by 60%. For every 100 HP lost, Sacred Surge's damage is increased by 5%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is very little outside the purview of those with power. No matter the circumstance, those in a higher position can, will, and have justified their actions in different ways. Some reasons are fine, some are weak. But what sort of justification is there, for those in the highest position? You have the floor.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 808,
+            "raw": 2692,
+            "max": 3500
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "fireDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": -250,
+          "rawDexterity": -250,
+          "rawSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 30
+          },
+          "baseAirDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 100
+          },
+          "baseFireDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          },
+          "baseWaterDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          }
+        }
+      },
+      "after": {
+        "displayName": "Ascendancy",
+        "internalName": "Ascendancy",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 544,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "warrior",
+          "agility": 60,
+          "defence": 60,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Divine Right": "<span class='font-ascii' style='color:#AAAAAA'>Your Maximum Health is reduced by 75%. For every 100 HP lost, Sacred Surge's damage is increased by 3%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is very little outside the purview of those with power. No matter the circumstance, those in a higher position can, will, and have justified their actions in different ways. Some reasons are fine, some are weak. But what sort of justification is there, for those in the highest position? You have the floor.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 808,
+            "raw": 2692,
+            "max": 3500
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "fireDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": -250,
+          "rawDexterity": -250,
+          "rawSpellDamage": {
+            "min": 75,
+            "raw": 250,
+            "max": 325
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 30
+          },
+          "baseAirDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 100
+          },
+          "baseFireDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          },
+          "baseWaterDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 75
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfed",
+      "itemName": "Aeropurity",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Aeropurity",
+        "internalName": "Aeropurity",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "superFast",
+        "averageDps": 282,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 110,
+          "classRequirement": "mage",
+          "agility": 80
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawHealth": {
+            "min": -1982,
+            "raw": -1525,
+            "max": -1067
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 2,
+            "max": 3
+          },
+          "rawAgility": 25,
+          "rawDefence": -10,
+          "rawStrength": -10,
+          "rawDexterity": -10,
+          "elementalDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawIntelligence": -10
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 31,
+            "raw": 31,
+            "max": 100
+          }
+        }
+      },
+      "after": {
+        "displayName": "Aeropurity",
+        "internalName": "Aeropurity",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "rare",
+        "attackSpeed": "superFast",
+        "averageDps": 452,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 110,
+          "classRequirement": "mage",
+          "agility": 80
+        },
+        "identifications": {
+          "airDamage": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawHealth": {
+            "min": -1982,
+            "raw": -1525,
+            "max": -1067
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 2,
+            "max": 3
+          },
+          "rawAgility": 25,
+          "rawDefence": -10,
+          "rawStrength": -10,
+          "rawDexterity": -10,
+          "elementalDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawIntelligence": -10
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 31,
+            "raw": 31,
+            "max": 100
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfee",
+      "itemName": "Singed Regrets",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Singed Regrets",
+        "internalName": "Singed Regrets",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.chainmail"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "fabled",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 60,
+          "defence": 50
+        },
+        "majorIds": {
+          "Meteor Crash": "<span class='font-ascii' style='color:#AAAAAA'>Burning Sigil gains +6 radius and deals double the damage, but lasts half as long.</span>"
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "sprint": {
+            "min": -25,
+            "raw": -19,
+            "max": -13
+          },
+          "exploding": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "manaRegen": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "3rdSpellCost": {
+            "min": -4,
+            "raw": -12,
+            "max": -16
+          },
+          "fireSpellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healingEfficiency": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseHealth": 1450,
+          "baseAirDefence": -25,
+          "baseFireDefence": 100,
+          "baseWaterDefence": -25
+        }
+      },
+      "after": {
+        "displayName": "Singed Regrets",
+        "internalName": "Singed Regrets",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.chainmail"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "fabled",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 60,
+          "defence": 50
+        },
+        "majorIds": {
+          "Meteor Crash": "<span class='font-ascii' style='color:#AAAAAA'>Burning Sigil gains +6 radius and deals 4x the damage, but lasts half as long.</span>"
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "sprint": {
+            "min": -25,
+            "raw": -19,
+            "max": -13
+          },
+          "exploding": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "manaRegen": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "3rdSpellCost": {
+            "min": -4,
+            "raw": -12,
+            "max": -16
+          },
+          "fireSpellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healingEfficiency": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseHealth": 1450,
+          "baseAirDefence": -25,
+          "baseFireDefence": 100,
+          "baseWaterDefence": -25
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dfef",
+      "itemName": "Masterwork Guardian",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Guardian",
+        "internalName": "Masterwork Guardian",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 533,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "warrior",
+          "defence": 110
+        },
+        "majorIds": {
+          "Heroine's Blessing": "<span class='font-ascii' style='color:#AAAAAA'>Devout Union gains +25% damage redirection and +8 radius. Additionally, Enlightenment now only requires 1 broken mantle per mantle given to allies.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A vow of protection hangs over this spear, now inhabited by the spirit of a legendary heroine. Even simply a glimpse of the burning blade will instill a feeling of protection and security, and that feeling will hold true if one is brave enough to wield it.</span>",
+        "identifications": {
+          "thorns": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": 2308,
+            "raw": 7692,
+            "max": 10000
+          },
+          "rawDefence": 20,
+          "fireDefence": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "earthDefence": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "waterDefence": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "healthRegenRaw": {
+            "min": 270,
+            "raw": 900,
+            "max": 1170
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseFireDamage": {
+            "min": 155,
+            "raw": 155,
+            "max": 220
+          }
+        }
+      },
+      "after": {
+        "displayName": "Guardian",
+        "internalName": "Masterwork Guardian",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 533,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "warrior",
+          "defence": 110
+        },
+        "majorIds": {
+          "Heroine's Blessing": "<span class='font-ascii' style='color:#AAAAAA'>Devout Union gains +25% damage redirection and +8 radius. Additionally, Mantles given by Enlightenment have +20% damage reduction.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A vow of protection hangs over this spear, now inhabited by the spirit of a legendary heroine. Even simply a glimpse of the burning blade will instill a feeling of protection and security, and that feeling will hold true if one is brave enough to wield it.</span>",
+        "identifications": {
+          "thorns": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": 2308,
+            "raw": 7692,
+            "max": 10000
+          },
+          "rawDefence": 20,
+          "fireDefence": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "earthDefence": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "waterDefence": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "healthRegenRaw": {
+            "min": 270,
+            "raw": 900,
+            "max": 1170
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseFireDamage": {
+            "min": 155,
+            "raw": 155,
+            "max": 220
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dff0",
+      "itemName": "Xenotransplantation",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Xenotransplantation",
+        "internalName": "Xenotransplantation",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 102,
+          "defence": 50,
+          "dexterity": 50,
+          "intelligence": 35
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Your flesh is but a weak imitation of power, a flabby welter of gushing blood and brittle bones, stitched together with threads of weak hope. There is only one way through: you must supplement your failing heart.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "walkSpeed": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawDefence": 2,
+          "rawMaxMana": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDexterity": 2,
+          "rawIntelligence": 6
+        },
+        "base": {
+          "baseFireDefence": 85,
+          "baseWaterDefence": 60,
+          "baseThunderDefence": 85
+        }
+      },
+      "after": {
+        "displayName": "Xenotransplantation",
+        "internalName": "Xenotransplantation",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 102,
+          "defence": 50,
+          "dexterity": 50,
+          "intelligence": 35
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Your flesh is but a weak imitation of power, a flabby welter of gushing blood and brittle bones, stitched together with threads of weak hope. There is only one way through: you must supplant your failing heart.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 58,
+            "raw": 192,
+            "max": 250
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "walkSpeed": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawDefence": 2,
+          "rawMaxMana": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDexterity": 2,
+          "rawIntelligence": 6
+        },
+        "base": {
+          "baseFireDefence": 85,
+          "baseWaterDefence": 60,
+          "baseThunderDefence": 85
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dff1",
+      "itemName": "Catabolysis",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Catabolysis",
+        "internalName": "Catabolysis",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 119,
+          "defence": 35,
+          "strength": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#AAAAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-200%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>-120%</span>.</span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Soldiers training in extreme cold conditions often push themselves beyond the limits. This however is not sustainable, as their bodies frantically scramble for survival.</span>",
+        "identifications": {
+          "sprint": {
+            "min": -31,
+            "raw": -24,
+            "max": -17
+          },
+          "healthRegen": {
+            "min": -78,
+            "raw": -60,
+            "max": -42
+          },
+          "rawAttackSpeed": -20,
+          "rawFireSpellDamage": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "rawEarthMainAttackDamage": {
+            "min": 692,
+            "raw": 2308,
+            "max": 3000
+          }
+        },
+        "base": {
+          "baseHealth": 4600,
+          "baseAirDefence": -200,
+          "baseWaterDefence": -200
+        }
+      },
+      "after": {
+        "displayName": "Catabolysis",
+        "internalName": "Catabolysis",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 119,
+          "defence": 35,
+          "strength": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#AAAAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-100%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>-60%</span>.</span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Soldiers training in extreme cold conditions often push themselves beyond the limits. This however is not sustainable, as their bodies frantically scramble for survival.</span>",
+        "identifications": {
+          "sprint": {
+            "min": -31,
+            "raw": -24,
+            "max": -17
+          },
+          "healthRegen": {
+            "min": -78,
+            "raw": -60,
+            "max": -42
+          },
+          "rawAttackSpeed": -20,
+          "rawFireSpellDamage": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "rawEarthMainAttackDamage": {
+            "min": 692,
+            "raw": 2308,
+            "max": 3000
+          }
+        },
+        "base": {
+          "baseHealth": 4600,
+          "baseAirDefence": -200,
+          "baseWaterDefence": -200
+        }
+      }
+    },
+    {
+      "_id": "6a2cbbe76bb6207050c8dff2",
+      "itemName": "Pain Cycle",
+      "status": "modify",
+      "timestamp": 1781316583,
+      "before": {
+        "displayName": "Pain Cycle",
+        "internalName": "Pain Cycle",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 93,
+          "agility": 70
+        },
+        "majorIds": {
+          "Gruesome Knots": "<span class='font-ascii' style='color:#AAAAAA'>Bleeding and Twisted Tether deal double damage, but Bleeding duration is reduced.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Every ounce of your suffering must be made worth it. Otherwise, what was the point of it all?</span>",
+        "dropMeta": {
+          "name": "Molten Heights Hike",
+          "type": "lootrun",
+          "coordinates": [
+            1270,
+            11,
+            -5127
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -390,
+            "raw": -300,
+            "max": -210
+          },
+          "rawAgility": 7,
+          "fireDefence": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "healingEfficiency": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "rawAirSpellDamage": {
+            "min": 57,
+            "raw": 190,
+            "max": 247
+          },
+          "rawMainAttackDamage": {
+            "min": 155,
+            "raw": 515,
+            "max": 670
+          }
+        },
+        "base": {
+          "baseHealth": 3775,
+          "baseEarthDefence": -90,
+          "baseWaterDefence": -90,
+          "baseThunderDefence": -90
+        }
+      },
+      "after": {
+        "displayName": "Pain Cycle",
+        "internalName": "Pain Cycle",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 93,
+          "agility": 70
+        },
+        "majorIds": {
+          "Gruesome Knots": "<span class='font-ascii' style='color:#AAAAAA'>Bleeding and Twisted Tether deal double the damage, but Bleeding duration is reduced.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Every ounce of your suffering must be made worth it. Otherwise, what was the point of it all?</span>",
+        "dropMeta": {
+          "name": "Molten Heights Hike",
+          "type": "lootrun",
+          "coordinates": [
+            1270,
+            11,
+            -5127
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -390,
+            "raw": -300,
+            "max": -210
+          },
+          "rawAgility": 7,
+          "fireDefence": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "healingEfficiency": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "rawAirSpellDamage": {
+            "min": 57,
+            "raw": 190,
+            "max": 247
+          },
+          "rawMainAttackDamage": {
+            "min": 155,
+            "raw": 515,
+            "max": 670
+          }
+        },
+        "base": {
+          "baseHealth": 3775,
+          "baseEarthDefence": -90,
+          "baseWaterDefence": -90,
+          "baseThunderDefence": -90
+        }
+      }
+    }
+  ]
+}
