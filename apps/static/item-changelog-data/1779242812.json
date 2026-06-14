@@ -1,0 +1,3552 @@
+{
+  "add": [
+    {
+      "_id": "6a0d173c513cdd8f2635ec09",
+      "itemName": "Concussion",
+      "status": "add",
+      "timestamp": 1779242812,
+      "displayName": "Concussion",
+      "internalName": "Concussion",
+      "type": "armour",
+      "subType": "helmet",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "name": "helmet.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "unique",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "fire",
+        "air"
+      ],
+      "requirements": {
+        "level": 102,
+        "agility": 40,
+        "defence": 40
+      },
+      "powderSlots": 3,
+      "identifications": {
+        "knockback": {
+          "min": 9,
+          "raw": 30,
+          "max": 39
+        },
+        "jumpHeight": 1,
+        "rawAgility": 12,
+        "rawDefence": 12,
+        "rawMaxMana": {
+          "min": -30,
+          "raw": -23,
+          "max": -16
+        },
+        "rawAttackSpeed": -12,
+        "rawIntelligence": -15,
+        "rawMainAttackDamage": {
+          "min": 418,
+          "raw": 1392,
+          "max": 1810
+        }
+      },
+      "base": {
+        "baseHealth": 3715,
+        "baseAirDefence": 180,
+        "baseFireDefence": 180
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec0a",
+      "itemName": "Snake Eyes",
+      "status": "add",
+      "timestamp": 1779242812,
+      "displayName": "Snake Eyes",
+      "internalName": "Snake Eyes",
+      "type": "armour",
+      "subType": "helmet",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "name": "helmet.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "unique",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "fire"
+      ],
+      "requirements": {
+        "level": 101,
+        "defence": 55
+      },
+      "powderSlots": 2,
+      "identifications": {
+        "walkSpeed": {
+          "min": 5,
+          "raw": 16,
+          "max": 21
+        },
+        "rawDefence": 11,
+        "rawAttackSpeed": -2,
+        "raw1stSpellCost": -1,
+        "raw3rdSpellCost": -1,
+        "criticalDamageBonus": {
+          "min": -12,
+          "raw": -9,
+          "max": -6
+        },
+        "rawMainAttackDamage": {
+          "min": 254,
+          "raw": 846,
+          "max": 1100
+        }
+      },
+      "base": {
+        "baseHealth": 3434,
+        "baseAirDefence": -60,
+        "baseFireDefence": 220,
+        "baseEarthDefence": -60,
+        "baseWaterDefence": -60,
+        "baseThunderDefence": -60
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec0b",
+      "itemName": "Igneous Tidecaller",
+      "status": "add",
+      "timestamp": 1779242812,
+      "displayName": "Igneous Tidecaller",
+      "internalName": "Igneous Tidecaller",
+      "type": "weapon",
+      "subType": "dagger",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "dagger.water3",
+          "customModelData": {
+            "rangeDispatch": [
+              880
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_6",
+      "tier": "unique",
+      "attackSpeed": "slow",
+      "averageDps": 375,
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "earth",
+        "water",
+        "fire"
+      ],
+      "requirements": {
+        "level": 115,
+        "classRequirement": "assassin",
+        "defence": 30,
+        "strength": 30,
+        "intelligence": 30
+      },
+      "powderSlots": 3,
+      "identifications": {
+        "manaRegen": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "walkSpeed": {
+          "min": -21,
+          "raw": -16,
+          "max": -11
+        },
+        "rawMaxMana": {
+          "min": 9,
+          "raw": 31,
+          "max": 40
+        },
+        "waterDamage": {
+          "min": 23,
+          "raw": 77,
+          "max": 100
+        },
+        "healthRegenRaw": {
+          "min": 84,
+          "raw": 280,
+          "max": 364
+        }
+      },
+      "base": {
+        "baseFireDamage": {
+          "min": 110,
+          "raw": 110,
+          "max": 140
+        },
+        "baseEarthDamage": {
+          "min": 80,
+          "raw": 80,
+          "max": 170
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec0c",
+      "itemName": "Shattered Aurora",
+      "status": "add",
+      "timestamp": 1779242812,
+      "displayName": "Shattered Aurora",
+      "internalName": "Shattered Aurora",
+      "type": "armour",
+      "subType": "helmet",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "name": "helmet.titanium",
+          "customModelData": {
+            "rangeDispatch": [
+              9
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_6",
+      "tier": "legendary",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "water",
+        "air"
+      ],
+      "requirements": {
+        "level": 120,
+        "agility": 60,
+        "intelligence": 50
+      },
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>The shifting mosaic that graces the winter skies has always struck you as a faint trace of some grand precursor, pure and whole. As you look up at what remains, fragmented beyond the horizon, you can't help but wonder what it would take to break it once more.</span>",
+      "identifications": {
+        "jumpHeight": 1,
+        "rawStrength": -40,
+        "rawDexterity": -40,
+        "rawIntelligence": 20,
+        "elementalDefence": {
+          "min": -52,
+          "raw": -40,
+          "max": -28
+        },
+        "raw2ndSpellCost": {
+          "min": -4,
+          "raw": -13,
+          "max": -17
+        },
+        "healingEfficiency": {
+          "min": 5,
+          "raw": 16,
+          "max": 21
+        },
+        "elementalSpellDamage": {
+          "min": 12,
+          "raw": 40,
+          "max": 52
+        },
+        "rawElementalSpellDamage": {
+          "min": 52,
+          "raw": 173,
+          "max": 225
+        }
+      },
+      "base": {
+        "baseHealth": 4000,
+        "baseAirDefence": 100,
+        "baseWaterDefence": 100,
+        "baseThunderDefence": -250
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec0d",
+      "itemName": "Witherleaf",
+      "status": "add",
+      "timestamp": 1779242812,
+      "displayName": "Witherleaf",
+      "internalName": "Witherleaf",
+      "type": "armour",
+      "subType": "helmet",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "name": "helmet.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "rare",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "earth",
+        "air"
+      ],
+      "requirements": {
+        "level": 103,
+        "agility": 55,
+        "strength": 35
+      },
+      "powderSlots": 5,
+      "identifications": {
+        "manaSteal": {
+          "min": 2,
+          "raw": 8,
+          "max": 10
+        },
+        "rawAgility": 8,
+        "spellDamage": {
+          "min": 7,
+          "raw": 24,
+          "max": 31
+        },
+        "earthDefence": {
+          "min": -39,
+          "raw": -30,
+          "max": -21
+        },
+        "rawAirDamage": {
+          "min": 46,
+          "raw": 154,
+          "max": 200
+        },
+        "healthRegenRaw": {
+          "min": -372,
+          "raw": -286,
+          "max": -200
+        },
+        "mainAttackRange": {
+          "min": 6,
+          "raw": 20,
+          "max": 26
+        }
+      },
+      "base": {
+        "baseHealth": 3430,
+        "baseAirDefence": 180,
+        "baseEarthDefence": -160
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec0e",
+      "itemName": "Expertise",
+      "status": "add",
+      "timestamp": 1779242812,
+      "displayName": "Expertise",
+      "internalName": "Expertise",
+      "type": "armour",
+      "subType": "helmet",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "name": "helmet.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "rare",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "water"
+      ],
+      "requirements": {
+        "level": 102
+      },
+      "powderSlots": 2,
+      "identifications": {
+        "rawMaxMana": {
+          "min": 7,
+          "raw": 23,
+          "max": 30
+        },
+        "rawIntelligence": 12,
+        "combatExperience": {
+          "min": 9,
+          "raw": 31,
+          "max": 40
+        },
+        "raw1stSpellCost": -1,
+        "raw3rdSpellCost": -1,
+        "raw4thSpellCost": -1
+      },
+      "base": {
+        "baseHealth": 3500,
+        "baseWaterDefence": 100
+      }
+    }
+  ],
+  "modify": [
+    {
+      "_id": "6a0d173c513cdd8f2635ec0f",
+      "itemName": "Gathering Pickaxe 13",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T13",
+        "internalName": "Gathering Pickaxe 13",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe13"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 400,
+        "durability": 350,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 115
+        }
+      },
+      "after": {
+        "displayName": "Titanium Pickaxe T13",
+        "internalName": "Gathering Pickaxe 13",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe13"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "fabled",
+        "gatheringSpeed": 400,
+        "durability": 350,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 115
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec10",
+      "itemName": "Gathering Axe 7",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T7",
+        "internalName": "Gathering Axe 7",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe7"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 120,
+        "durability": 220,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 55
+        }
+      },
+      "after": {
+        "displayName": "Steel Axe T7",
+        "internalName": "Gathering Axe 7",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe7"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 120,
+        "durability": 220,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 55
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec11",
+      "itemName": "Gathering Axe 13",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T13",
+        "internalName": "Gathering Axe 13",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe13"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 400,
+        "durability": 350,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 115
+        }
+      },
+      "after": {
+        "displayName": "Titanium Axe T13",
+        "internalName": "Gathering Axe 13",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe13"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "fabled",
+        "gatheringSpeed": 400,
+        "durability": 350,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 115
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec12",
+      "itemName": "Gathering Axe 2",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T2",
+        "internalName": "Gathering Axe 2",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 16,
+        "durability": 120,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 5
+        }
+      },
+      "after": {
+        "displayName": "Stone Axe T2",
+        "internalName": "Gathering Axe 2",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 16,
+        "durability": 120,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 5
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec13",
+      "itemName": "Gathering Scythe 11",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T11",
+        "internalName": "Gathering Scythe 11",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe11"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 275,
+        "durability": 300,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 95
+        }
+      },
+      "after": {
+        "displayName": "Void Scythe T11",
+        "internalName": "Gathering Scythe 11",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe11"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "legendary",
+        "gatheringSpeed": 275,
+        "durability": 300,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 95
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec14",
+      "itemName": "Gathering Pickaxe 9",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T9",
+        "internalName": "Gathering Pickaxe 9",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe9"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 190,
+        "durability": 260,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 75
+        }
+      },
+      "after": {
+        "displayName": "Diamond Pickaxe T9",
+        "internalName": "Gathering Pickaxe 9",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe9"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 190,
+        "durability": 260,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 75
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec15",
+      "itemName": "Gathering Pickaxe 8",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T8",
+        "internalName": "Gathering Pickaxe 8",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe8"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 150,
+        "durability": 240,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 65
+        }
+      },
+      "after": {
+        "displayName": "Cobalt Pickaxe T8",
+        "internalName": "Gathering Pickaxe 8",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe8"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 150,
+        "durability": 240,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 65
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec16",
+      "itemName": "Gathering Rod 7",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T7",
+        "internalName": "Gathering Rod 7",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod7"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 120,
+        "durability": 220,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 55
+        }
+      },
+      "after": {
+        "displayName": "Steel Rod T7",
+        "internalName": "Gathering Rod 7",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod7"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 120,
+        "durability": 220,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 55
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec17",
+      "itemName": "Gathering Rod 11",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T11",
+        "internalName": "Gathering Rod 11",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod11"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 275,
+        "durability": 300,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 95
+        }
+      },
+      "after": {
+        "displayName": "Void Rod T11",
+        "internalName": "Gathering Rod 11",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod11"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "legendary",
+        "gatheringSpeed": 275,
+        "durability": 300,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 95
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec18",
+      "itemName": "Gathering Scythe 12",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T12",
+        "internalName": "Gathering Scythe 12",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe12"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 330,
+        "durability": 320,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 105
+        }
+      },
+      "after": {
+        "displayName": "Dernic Scythe T12",
+        "internalName": "Gathering Scythe 12",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe12"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "fabled",
+        "gatheringSpeed": 330,
+        "durability": 320,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 105
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec19",
+      "itemName": "Gathering Axe 8",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T8",
+        "internalName": "Gathering Axe 8",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe8"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 150,
+        "durability": 240,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 65
+        }
+      },
+      "after": {
+        "displayName": "Cobalt Axe T8",
+        "internalName": "Gathering Axe 8",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe8"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 150,
+        "durability": 240,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 65
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec1a",
+      "itemName": "Gathering Pickaxe 10",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T10",
+        "internalName": "Gathering Pickaxe 10",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe10"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 230,
+        "durability": 280,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 85
+        }
+      },
+      "after": {
+        "displayName": "Molten Pickaxe T10",
+        "internalName": "Gathering Pickaxe 10",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe10"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "legendary",
+        "gatheringSpeed": 230,
+        "durability": 280,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 85
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec1b",
+      "itemName": "Gathering Axe 3",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T3",
+        "internalName": "Gathering Axe 3",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 28,
+        "durability": 140,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 15
+        }
+      },
+      "after": {
+        "displayName": "Copper Axe T3",
+        "internalName": "Gathering Axe 3",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 28,
+        "durability": 140,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 15
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec1c",
+      "itemName": "Gathering Pickaxe 6",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T6",
+        "internalName": "Gathering Pickaxe 6",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe6"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 90,
+        "durability": 200,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 45
+        }
+      },
+      "after": {
+        "displayName": "Iron Pickaxe T6",
+        "internalName": "Gathering Pickaxe 6",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe6"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 90,
+        "durability": 200,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 45
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec1d",
+      "itemName": "Lucky Strike",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Lucky Strike",
+        "internalName": "Lucky Strike",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "superFast",
+        "averageDps": 624,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 107,
+          "classRequirement": "assassin",
+          "defence": 77
+        },
+        "majorIds": {
+          "Juggle": "<span class='font-ascii' style='color:#AAAAAA'>Mutilate adds an additional 12 hits. All hits are reduced by <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-10%</span>.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Roll the dice, hit a match. You never miss.</span>",
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "lifeSteal": {
+            "min": 179,
+            "raw": 598,
+            "max": 777
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "healthRegen": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawMaxMana": {
+            "min": -27,
+            "raw": -21,
+            "max": -15
+          },
+          "rawStrength": 7,
+          "rawDexterity": 7,
+          "rawAttackSpeed": 4,
+          "rawIntelligence": -77,
+          "rawFireMainAttackDamage": {
+            "min": 41,
+            "raw": 136,
+            "max": 177
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 180
+          }
+        }
+      },
+      "after": {
+        "displayName": "Lucky Strike",
+        "internalName": "Lucky Strike",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "superFast",
+        "averageDps": 611,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 107,
+          "classRequirement": "assassin",
+          "defence": 77
+        },
+        "majorIds": {
+          "Juggle": "<span class='font-ascii' style='color:#AAAAAA'>Mutilate adds an additional 12 hits. All hits are reduced by <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-10%</span>.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Roll the dice, hit a match. You never miss.</span>",
+        "identifications": {
+          "stealing": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "lifeSteal": {
+            "min": 179,
+            "raw": 598,
+            "max": 777
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "healthRegen": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawMaxMana": {
+            "min": -27,
+            "raw": -21,
+            "max": -15
+          },
+          "rawStrength": 7,
+          "rawDexterity": 7,
+          "rawAttackSpeed": 4,
+          "rawIntelligence": -77,
+          "rawFireMainAttackDamage": {
+            "min": 41,
+            "raw": 136,
+            "max": 177
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 180
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec1e",
+      "itemName": "Gathering Rod 9",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T9",
+        "internalName": "Gathering Rod 9",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod9"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 190,
+        "durability": 260,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 75
+        }
+      },
+      "after": {
+        "displayName": "Diamond Rod T9",
+        "internalName": "Gathering Rod 9",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod9"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 190,
+        "durability": 260,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 75
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec1f",
+      "itemName": "Gathering Pickaxe 4",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T4",
+        "internalName": "Gathering Pickaxe 4",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe4"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 45,
+        "durability": 160,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 25
+        }
+      },
+      "after": {
+        "displayName": "Bronze Pickaxe T4",
+        "internalName": "Gathering Pickaxe 4",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe4"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 45,
+        "durability": 160,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 25
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec20",
+      "itemName": "Gathering Scythe 4",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T4",
+        "internalName": "Gathering Scythe 4",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe4"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 45,
+        "durability": 160,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 25
+        }
+      },
+      "after": {
+        "displayName": "Bronze Scythe T4",
+        "internalName": "Gathering Scythe 4",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe4"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 45,
+        "durability": 160,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 25
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec21",
+      "itemName": "Gathering Scythe 2",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T2",
+        "internalName": "Gathering Scythe 2",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 16,
+        "durability": 120,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 5
+        }
+      },
+      "after": {
+        "displayName": "Stone Scythe T2",
+        "internalName": "Gathering Scythe 2",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 16,
+        "durability": 120,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 5
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec22",
+      "itemName": "Gathering Pickaxe 1",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T1",
+        "internalName": "Gathering Pickaxe 1",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe1"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 8,
+        "durability": 100,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 1
+        }
+      },
+      "after": {
+        "displayName": "Wooden Pickaxe T1",
+        "internalName": "Gathering Pickaxe 1",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe1"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 8,
+        "durability": 100,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec23",
+      "itemName": "Gathering Rod 1",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T1",
+        "internalName": "Gathering Rod 1",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod1"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 8,
+        "durability": 100,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 1
+        }
+      },
+      "after": {
+        "displayName": "Wooden Rod T1",
+        "internalName": "Gathering Rod 1",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod1"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 8,
+        "durability": 100,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec24",
+      "itemName": "Gathering Axe 9",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T9",
+        "internalName": "Gathering Axe 9",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe9"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 190,
+        "durability": 260,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 75
+        }
+      },
+      "after": {
+        "displayName": "Diamond Axe T9",
+        "internalName": "Gathering Axe 9",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe9"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 190,
+        "durability": 260,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 75
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec25",
+      "itemName": "Gathering Scythe 9",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T9",
+        "internalName": "Gathering Scythe 9",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe9"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 190,
+        "durability": 260,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 75
+        }
+      },
+      "after": {
+        "displayName": "Diamond Scythe T9",
+        "internalName": "Gathering Scythe 9",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe9"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 190,
+        "durability": 260,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 75
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec26",
+      "itemName": "Vengeance",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Vengeance",
+        "internalName": "Vengeance",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "superSlow",
+        "averageDps": 790,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 116,
+          "classRequirement": "assassin",
+          "defence": 50,
+          "strength": 60,
+          "dexterity": 60
+        },
+        "majorIds": {
+          "Manic Edge": "<span class='font-ascii' style='color:#AAAAAA'>While vanished, lose 5% of your max mana per second. Increase Surprise Strike's damage bonus by 5% per mana lost from this effect, up to 130%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A strength fueled by rage, merciless, unending. A hatred, all-consuming, that erodes all other thought, all sense of being. An ally so fickle, so selfish, that leaves you aimless at the moment of pyrrhic triumph.</span>",
+        "identifications": {
+          "damage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "healthRegen": {
+            "min": 100,
+            "raw": 333,
+            "max": 433
+          },
+          "3rdSpellCost": {
+            "min": -4,
+            "raw": -14,
+            "max": -18
+          },
+          "healthRegenRaw": {
+            "min": -9100,
+            "raw": -7000,
+            "max": -4900
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 500,
+            "raw": 500,
+            "max": 800
+          },
+          "baseFireDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 400
+          },
+          "baseEarthDamage": {
+            "min": 250,
+            "raw": 250,
+            "max": 350
+          },
+          "baseThunderDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 450
+          }
+        }
+      },
+      "after": {
+        "displayName": "Vengeance",
+        "internalName": "Vengeance",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "superSlow",
+        "averageDps": 790,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 116,
+          "classRequirement": "assassin",
+          "defence": 50,
+          "strength": 60,
+          "dexterity": 60
+        },
+        "majorIds": {
+          "Manic Edge": "<span class='font-ascii' style='color:#AAAAAA'>While vanished, lose 5% of your max mana per second. Surprise Strike further increases your damage by 3% per mana lost from this effect, up to 70%.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A strength fueled by rage, merciless, unending. A hatred, all-consuming, that erodes all other thought, all sense of being. An ally so fickle, so selfish, that leaves you aimless at the moment of pyrrhic triumph.</span>",
+        "identifications": {
+          "damage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "healthRegen": {
+            "min": 100,
+            "raw": 333,
+            "max": 433
+          },
+          "3rdSpellCost": {
+            "min": -4,
+            "raw": -14,
+            "max": -18
+          },
+          "healthRegenRaw": {
+            "min": -9100,
+            "raw": -7000,
+            "max": -4900
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 500,
+            "raw": 500,
+            "max": 800
+          },
+          "baseFireDamage": {
+            "min": 200,
+            "raw": 200,
+            "max": 400
+          },
+          "baseEarthDamage": {
+            "min": 250,
+            "raw": 250,
+            "max": 350
+          },
+          "baseThunderDamage": {
+            "min": 150,
+            "raw": 150,
+            "max": 450
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec27",
+      "itemName": "Gathering Pickaxe 2",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T2",
+        "internalName": "Gathering Pickaxe 2",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 16,
+        "durability": 120,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 5
+        }
+      },
+      "after": {
+        "displayName": "Stone Pickaxe T2",
+        "internalName": "Gathering Pickaxe 2",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 16,
+        "durability": 120,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 5
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec28",
+      "itemName": "Gathering Rod 5",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T5",
+        "internalName": "Gathering Rod 5",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod5"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 65,
+        "durability": 180,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 35
+        }
+      },
+      "after": {
+        "displayName": "Golden Rod T5",
+        "internalName": "Gathering Rod 5",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod5"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 65,
+        "durability": 180,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 35
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec29",
+      "itemName": "Gathering Pickaxe 12",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T12",
+        "internalName": "Gathering Pickaxe 12",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe12"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 330,
+        "durability": 320,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 105
+        }
+      },
+      "after": {
+        "displayName": "Dernic Pickaxe T12",
+        "internalName": "Gathering Pickaxe 12",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe12"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "fabled",
+        "gatheringSpeed": 330,
+        "durability": 320,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 105
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec2a",
+      "itemName": "Gathering Rod 13",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T13",
+        "internalName": "Gathering Rod 13",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod13"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 400,
+        "durability": 350,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 115
+        }
+      },
+      "after": {
+        "displayName": "Titanium Rod T13",
+        "internalName": "Gathering Rod 13",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod13"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "fabled",
+        "gatheringSpeed": 400,
+        "durability": 350,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 115
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec2b",
+      "itemName": "Gathering Scythe 8",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T8",
+        "internalName": "Gathering Scythe 8",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe8"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 150,
+        "durability": 240,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 65
+        }
+      },
+      "after": {
+        "displayName": "Cobalt Scythe T8",
+        "internalName": "Gathering Scythe 8",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe8"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 150,
+        "durability": 240,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 65
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec2c",
+      "itemName": "Gathering Pickaxe 3",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T3",
+        "internalName": "Gathering Pickaxe 3",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 28,
+        "durability": 140,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 15
+        }
+      },
+      "after": {
+        "displayName": "Copper Pickaxe T3",
+        "internalName": "Gathering Pickaxe 3",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 28,
+        "durability": 140,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 15
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec2d",
+      "itemName": "Gathering Pickaxe 5",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T5",
+        "internalName": "Gathering Pickaxe 5",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe5"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 65,
+        "durability": 180,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 35
+        }
+      },
+      "after": {
+        "displayName": "Golden Pickaxe T5",
+        "internalName": "Gathering Pickaxe 5",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe5"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 65,
+        "durability": 180,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 35
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec2e",
+      "itemName": "Gathering Scythe 1",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T1",
+        "internalName": "Gathering Scythe 1",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe1"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 8,
+        "durability": 100,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 1
+        }
+      },
+      "after": {
+        "displayName": "Wooden Scythe T1",
+        "internalName": "Gathering Scythe 1",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe1"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 8,
+        "durability": 100,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec2f",
+      "itemName": "Gathering Rod 12",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T12",
+        "internalName": "Gathering Rod 12",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod12"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 330,
+        "durability": 320,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 105
+        }
+      },
+      "after": {
+        "displayName": "Dernic Rod T12",
+        "internalName": "Gathering Rod 12",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod12"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "fabled",
+        "gatheringSpeed": 330,
+        "durability": 320,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 105
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec30",
+      "itemName": "Gathering Scythe 3",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T3",
+        "internalName": "Gathering Scythe 3",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 28,
+        "durability": 140,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 15
+        }
+      },
+      "after": {
+        "displayName": "Copper Scythe T3",
+        "internalName": "Gathering Scythe 3",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 28,
+        "durability": 140,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 15
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec31",
+      "itemName": "Gathering Pickaxe 7",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T7",
+        "internalName": "Gathering Pickaxe 7",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe7"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 120,
+        "durability": 220,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 55
+        }
+      },
+      "after": {
+        "displayName": "Steel Pickaxe T7",
+        "internalName": "Gathering Pickaxe 7",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe7"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 120,
+        "durability": 220,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 55
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec32",
+      "itemName": "Gathering Rod 6",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T6",
+        "internalName": "Gathering Rod 6",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod6"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 90,
+        "durability": 200,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 45
+        }
+      },
+      "after": {
+        "displayName": "Iron Rod T6",
+        "internalName": "Gathering Rod 6",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod6"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 90,
+        "durability": 200,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 45
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec33",
+      "itemName": "Gathering Scythe 13",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T13",
+        "internalName": "Gathering Scythe 13",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe13"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 400,
+        "durability": 350,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 115
+        }
+      },
+      "after": {
+        "displayName": "Titanium Scythe T13",
+        "internalName": "Gathering Scythe 13",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe13"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "fabled",
+        "gatheringSpeed": 400,
+        "durability": 350,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 115
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec34",
+      "itemName": "Gathering Scythe 7",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T7",
+        "internalName": "Gathering Scythe 7",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe7"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 120,
+        "durability": 220,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 55
+        }
+      },
+      "after": {
+        "displayName": "Steel Scythe T7",
+        "internalName": "Gathering Scythe 7",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe7"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 120,
+        "durability": 220,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 55
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec35",
+      "itemName": "Gathering Rod 3",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T3",
+        "internalName": "Gathering Rod 3",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 28,
+        "durability": 140,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 15
+        }
+      },
+      "after": {
+        "displayName": "Copper Rod T3",
+        "internalName": "Gathering Rod 3",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 28,
+        "durability": 140,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 15
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec36",
+      "itemName": "Gathering Rod 10",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T10",
+        "internalName": "Gathering Rod 10",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod10"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 230,
+        "durability": 280,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 85
+        }
+      },
+      "after": {
+        "displayName": "Molten Rod T10",
+        "internalName": "Gathering Rod 10",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod10"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "legendary",
+        "gatheringSpeed": 230,
+        "durability": 280,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 85
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec37",
+      "itemName": "Gathering Axe 10",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T10",
+        "internalName": "Gathering Axe 10",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe10"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 230,
+        "durability": 280,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 85
+        }
+      },
+      "after": {
+        "displayName": "Molten Axe T10",
+        "internalName": "Gathering Axe 10",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe10"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "legendary",
+        "gatheringSpeed": 230,
+        "durability": 280,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 85
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec38",
+      "itemName": "Gathering Axe 11",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T11",
+        "internalName": "Gathering Axe 11",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe11"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 275,
+        "durability": 300,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 95
+        }
+      },
+      "after": {
+        "displayName": "Void Axe T11",
+        "internalName": "Gathering Axe 11",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe11"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "legendary",
+        "gatheringSpeed": 275,
+        "durability": 300,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 95
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec39",
+      "itemName": "Gathering Scythe 6",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T6",
+        "internalName": "Gathering Scythe 6",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe6"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 90,
+        "durability": 200,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 45
+        }
+      },
+      "after": {
+        "displayName": "Iron Scythe T6",
+        "internalName": "Gathering Scythe 6",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe6"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 90,
+        "durability": 200,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 45
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec3a",
+      "itemName": "Gathering Rod 2",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T2",
+        "internalName": "Gathering Rod 2",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 16,
+        "durability": 120,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 5
+        }
+      },
+      "after": {
+        "displayName": "Stone Rod T2",
+        "internalName": "Gathering Rod 2",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 16,
+        "durability": 120,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 5
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec3b",
+      "itemName": "Gathering Scythe 5",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T5",
+        "internalName": "Gathering Scythe 5",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe5"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 65,
+        "durability": 180,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 35
+        }
+      },
+      "after": {
+        "displayName": "Golden Scythe T5",
+        "internalName": "Gathering Scythe 5",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe5"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 65,
+        "durability": 180,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 35
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec3c",
+      "itemName": "Gathering Axe 5",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T5",
+        "internalName": "Gathering Axe 5",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe5"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 65,
+        "durability": 180,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 35
+        }
+      },
+      "after": {
+        "displayName": "Golden Axe T5",
+        "internalName": "Gathering Axe 5",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe5"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 65,
+        "durability": 180,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 35
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec3d",
+      "itemName": "Gathering Axe 6",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T6",
+        "internalName": "Gathering Axe 6",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe6"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 90,
+        "durability": 200,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 45
+        }
+      },
+      "after": {
+        "displayName": "Iron Axe T6",
+        "internalName": "Gathering Axe 6",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe6"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 90,
+        "durability": 200,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 45
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec3e",
+      "itemName": "Gathering Axe 4",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T4",
+        "internalName": "Gathering Axe 4",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe4"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 45,
+        "durability": 160,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 25
+        }
+      },
+      "after": {
+        "displayName": "Bronze Axe T4",
+        "internalName": "Gathering Axe 4",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe4"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 45,
+        "durability": 160,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 25
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec3f",
+      "itemName": "Gathering Scythe 10",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Scythe T10",
+        "internalName": "Gathering Scythe 10",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe10"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 230,
+        "durability": 280,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 85
+        }
+      },
+      "after": {
+        "displayName": "Molten Scythe T10",
+        "internalName": "Gathering Scythe 10",
+        "type": "tool",
+        "subType": "scythe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.scythe10"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "legendary",
+        "gatheringSpeed": 230,
+        "durability": 280,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 85
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec40",
+      "itemName": "Gathering Rod 8",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T8",
+        "internalName": "Gathering Rod 8",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod8"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 150,
+        "durability": 240,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 65
+        }
+      },
+      "after": {
+        "displayName": "Cobalt Rod T8",
+        "internalName": "Gathering Rod 8",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod8"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "rare",
+        "gatheringSpeed": 150,
+        "durability": 240,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 65
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec41",
+      "itemName": "Gathering Rod 4",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Rod T4",
+        "internalName": "Gathering Rod 4",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod4"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 45,
+        "durability": 160,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 25
+        }
+      },
+      "after": {
+        "displayName": "Bronze Rod T4",
+        "internalName": "Gathering Rod 4",
+        "type": "tool",
+        "subType": "rod",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.rod4"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "unique",
+        "gatheringSpeed": 45,
+        "durability": 160,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 25
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec42",
+      "itemName": "Gathering Axe 1",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T1",
+        "internalName": "Gathering Axe 1",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe1"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 8,
+        "durability": 100,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 1
+        }
+      },
+      "after": {
+        "displayName": "Wooden Axe T1",
+        "internalName": "Gathering Axe 1",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe1"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 8,
+        "durability": 100,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 1
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec43",
+      "itemName": "Gathering Axe 12",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Axe T12",
+        "internalName": "Gathering Axe 12",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe12"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 330,
+        "durability": 320,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 105
+        }
+      },
+      "after": {
+        "displayName": "Dernic Axe T12",
+        "internalName": "Gathering Axe 12",
+        "type": "tool",
+        "subType": "axe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.axe12"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "fabled",
+        "gatheringSpeed": 330,
+        "durability": 320,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 105
+        }
+      }
+    },
+    {
+      "_id": "6a0d173c513cdd8f2635ec44",
+      "itemName": "Gathering Pickaxe 11",
+      "status": "modify",
+      "timestamp": 1779242812,
+      "before": {
+        "displayName": "Gathering Pickaxe T11",
+        "internalName": "Gathering Pickaxe 11",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe11"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "normal",
+        "gatheringSpeed": 275,
+        "durability": 300,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 95
+        }
+      },
+      "after": {
+        "displayName": "Void Pickaxe T11",
+        "internalName": "Gathering Pickaxe 11",
+        "type": "tool",
+        "subType": "pickaxe",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "gatheringTool.pickaxe11"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "legendary",
+        "gatheringSpeed": 275,
+        "durability": 300,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "allowCraftsman": true,
+        "requirements": {
+          "level": 95
+        }
+      }
+    }
+  ]
+}

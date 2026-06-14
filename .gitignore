@@ -18,6 +18,7 @@ out/
 .idea
 .vscode
 *.log
+.kilo
 
 # Turbo
 .turbo/

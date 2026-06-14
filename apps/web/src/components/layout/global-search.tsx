@@ -23,10 +23,18 @@ import { Badge } from "../ui/badge"
 // Change searchHistory to store objects: { query: string, type: "item" | "player" | "guild" }
 type SearchHistoryEntry = { query: string; type: "item" | "player" | "guild" };
 
+type PlayerSearchResult = {
+  username: string
+  rank: string
+  supportRank?: string
+  legacyRankColour?: { main: string; sub: string }
+  rankBadge?: string
+}
+
 type SearchResult =
   | {
     query?: string
-    players?: Record<string, string> // Mapping of UUID to username
+    players?: Record<string, PlayerSearchResult>
     guilds?: Record<
       string,
       {
@@ -63,7 +71,7 @@ type SearchResult =
         end: [number, number] // Coordinates [X, Z]
       }
     >
-    items?: Record<string, Item>
+    items?: Item[]
   }
   | { error: string }
 
@@ -221,7 +229,7 @@ const GlobalSearch: React.FC<any> = () => {
       // Try to find uuid from current results, fallback to search by name
       if (results && typeof results === "object" && !("error" in results) && results.players) {
         const exactPlayer = Object.entries(results.players).find(
-          ([, name]) => name.toLowerCase() === historyItem.query.trim().toLowerCase()
+          ([, player]) => player.username.toLowerCase() === historyItem.query.trim().toLowerCase()
         );
         if (exactPlayer) {
           router.push(`/stats/player/${exactPlayer[0]}`);
@@ -249,12 +257,13 @@ const GlobalSearch: React.FC<any> = () => {
     if (e.key === "Enter" && results && typeof results === "object" && !("error" in results)) {
       // Item match
       if (results.items) {
-        const exactItem = Object.keys(results.items).find(
-          (itemName) => itemName.toLowerCase() === query.trim().toLowerCase()
+        const exactItem = results.items.find(
+          (item) => (item.internalName ?? item.itemName ?? item.id).toLowerCase() === query.trim().toLowerCase()
         );
         if (exactItem) {
-          saveToSearchHistory(exactItem, "item");
-          router.push(`/item/${exactItem}`);
+          const itemName = exactItem.internalName ?? exactItem.itemName ?? exactItem.id;
+          saveToSearchHistory(itemName, "item");
+          router.push(`/item/${encodeURIComponent(itemName)}`);
           setIsDialogOpen(false);
           e.preventDefault();
           return;
@@ -263,10 +272,10 @@ const GlobalSearch: React.FC<any> = () => {
       // Player match
       if (results.players) {
         const exactPlayer = Object.entries(results.players).find(
-          ([uuid, name]) => name.toLowerCase() === query.trim().toLowerCase()
+          ([uuid, player]) => player.username.toLowerCase() === query.trim().toLowerCase()
         );
         if (exactPlayer) {
-          saveToSearchHistory(exactPlayer[1], "player");
+          saveToSearchHistory(exactPlayer[1].username, "player");
           router.push(`/stats/player/${exactPlayer[0]}`);
           setIsDialogOpen(false);
           e.preventDefault();
@@ -365,25 +374,26 @@ const GlobalSearch: React.FC<any> = () => {
                         <div>
                           <h2 className="font-bold mb-2">Players</h2>
                           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                            {Object.entries(results.players).map(([uuid, name]) => (
+                            {Object.entries(results.players).map(([uuid, player]) => (
                               <span
                                 key={uuid}
+                                className="cursor-pointer"
                                 onClick={() => {
-                                  saveToSearchHistory(name, "player");
+                                  saveToSearchHistory(player.username, "player");
+                                  router.push(`/stats/player/${uuid}`);
+                                  setIsDialogOpen(false);
                                 }}
                               >
-                                <Link href={`/stats/player/${uuid}`} prefetch={false}>
-                                  <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
-                                    <CardContent className="flex flex-col justify-between p-2 h-full">
-                                      <div className="flex items-center gap-3">
-                                        <img src={`https://vzge.me/face/128/${uuid}.png`} alt={name} className="w-8 h-8" loading="lazy" />
-                                        <div>
-                                          <span className="text-md font-mono">{getPlayerDisplayName(name)}</span>
-                                        </div>
+                                <Card className="h-full flex flex-col hover:bg-accent transition-colors cursor-pointer">
+                                  <CardContent className="flex flex-col justify-between p-2 h-full">
+                                    <div className="flex items-center gap-3">
+                                      <img src={`https://vzge.me/face/128/${uuid}.png`} alt={player.username} className="w-8 h-8" loading="lazy" />
+                                      <div>
+                                        <span className="text-md font-mono">{getPlayerDisplayName(player.username)}</span>
                                       </div>
-                                    </CardContent>
-                                  </Card>
-                                </Link>
+                                    </div>
+                                  </CardContent>
+                                </Card>
                               </span>
                             ))}
                           </div>
@@ -396,38 +406,43 @@ const GlobalSearch: React.FC<any> = () => {
                             {Object.entries(results.mergedGuilds).map(([id, guild]) => (
                               <span
                                 key={id}
+                                className="cursor-pointer"
                                 onClick={() => {
                                   saveToSearchHistory(guild.name, "guild");
+                                  router.push(`/stats/guild/${guild.name}`);
+                                  setIsDialogOpen(false);
                                 }}
                               >
-                                <Link href={`/stats/guild/${guild.name}`} prefetch={false}>
-                                  <Card className="w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2">
-                                    <li className="text-md font-mono">
-                                      [{guild.prefix}] {guild.name}
-                                    </li>
-                                  </Card>
-                                </Link>
+                                <Card className="w-full hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2">
+                                  <li className="text-md font-mono">
+                                    [{guild.prefix}] {guild.name}
+                                  </li>
+                                </Card>
                               </span>
                             ))}
                           </ul>
                         </div>
                       )}
-                      {results.items && (
+                      {results.items && results.items.length > 0 && (
                         <div className="mt-4">
                           <h2 className="font-bold mb-2">Items</h2>
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                            {Object.keys(results.items).map((itemName) => (
-                              <span
-                                key={itemName}
-                                onClick={() => {
-                                  saveToSearchHistory(itemName, "item");
-                                }}
-                              >
-                                <Link href={`/item/${itemName}`} prefetch={false}>
-                                  <SmallItemCard item={results.items![itemName]} />
-                                </Link>
-                              </span>
-                            ))}
+                            {results.items.map((item) => {
+                              const itemName = item.internalName ?? item.itemName ?? item.id;
+                              return (
+                                <span
+                                  key={itemName}
+                                  className="cursor-pointer"
+                                  onClick={() => {
+                                    saveToSearchHistory(itemName, "item");
+                                    router.push(`/item/${encodeURIComponent(itemName)}`);
+                                    setIsDialogOpen(false);
+                                  }}
+                                >
+                                  <SmallItemCard item={item} />
+                                </span>
+                              );
+                            })}
                           </div>
                         </div>
                       )}
