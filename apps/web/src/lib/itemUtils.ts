@@ -115,7 +115,8 @@ const identificationMap: Record<string, IdentificationInfo> = {
   "manaRegen": { unit: "/5s", displayName: "Mana Regen" },
   "manaSteal": { unit: "/3s", displayName: "Mana Steal" },
   "walkSpeed": { unit: "%", displayName: "Walk Speed" }, //, detailedName: "Movement Speed %"
-  "xpBonus": { unit: "%", displayName: "Xp Bonus" },
+  // "xpBonus": { unit: "%", displayName: "Xp Bonus" },
+  "combatExperience": { unit: "%", displayName: "Combat Experience" },
   "exploding": { unit: "%", displayName: "Exploding" }, //, detailedName: "Explosion Chance on Kill"
   "lifeSteal": { unit: "/3s", displayName: "Life Steal" }, //, detailedName: "Life Steal Per Hit"
   "reflection": { unit: "%", displayName: "Reflection" },
@@ -162,8 +163,8 @@ const identificationMap: Record<string, IdentificationInfo> = {
   "notTouching": { unit: "%", displayName: "To ingredients not touching this one" },
 };
 
-export function getIdentificationInfo(identification: string): IdentificationInfo | undefined {
-  return identificationMap[identification];
+export function getIdentificationInfo(identification: string): IdentificationInfo {
+  return identificationMap[identification] ?? { displayName: identification, unit: "" };
 }
 
 export function getIdentificationCost(rarity: string, level: number): number {
