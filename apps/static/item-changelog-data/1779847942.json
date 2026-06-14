@@ -1,0 +1,278 @@
+{
+  "modify": [
+    {
+      "_id": "6a16530618cab62b0fe89981",
+      "itemName": "Desperate Facsimile",
+      "status": "modify",
+      "timestamp": 1779847942,
+      "before": {
+        "displayName": "Desperate Facsimile",
+        "internalName": "Desperate Facsimile",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.multi2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 281,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 80,
+          "classRequirement": "warrior",
+          "dexterity": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#AAAAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-100%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>-60%</span>.</span></span></span>"
+        },
+        "powderSlots": 7,
+        "identifications": {
+          "rawDamage": {
+            "min": 52,
+            "raw": 173,
+            "max": 225
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "sprintRegen": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          },
+          "rawDexterity": 13,
+          "1stSpellCost": {
+            "min": 17,
+            "raw": 13,
+            "max": 9
+          },
+          "healthRegenRaw": {
+            "min": -291,
+            "raw": -224,
+            "max": -157
+          },
+          "rawAttackSpeed": 1
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 45
+          }
+        }
+      },
+      "after": {
+        "displayName": "Desperate Facsimile",
+        "internalName": "Desperate Facsimile",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.multi2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 281,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 80,
+          "classRequirement": "warrior",
+          "dexterity": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#AAAAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-200%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>-120%</span>.</span></span></span>"
+        },
+        "powderSlots": 7,
+        "identifications": {
+          "rawDamage": {
+            "min": 52,
+            "raw": 173,
+            "max": 225
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "sprintRegen": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          },
+          "rawDexterity": 13,
+          "1stSpellCost": {
+            "min": 17,
+            "raw": 13,
+            "max": 9
+          },
+          "healthRegenRaw": {
+            "min": -291,
+            "raw": -224,
+            "max": -157
+          },
+          "rawAttackSpeed": 1
+        },
+        "base": {
+          "baseDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 45
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a16530618cab62b0fe89982",
+      "itemName": "Catabolysis",
+      "status": "modify",
+      "timestamp": 1779847942,
+      "before": {
+        "displayName": "Catabolysis",
+        "internalName": "Catabolysis",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 119,
+          "defence": 35,
+          "strength": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#AAAAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-100%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>-60%</span>.</span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Soldiers training in extreme cold conditions often push themselves beyond the limits. This however is not sustainable, as their bodies frantically scramble for survival.</span>",
+        "identifications": {
+          "sprint": {
+            "min": -31,
+            "raw": -24,
+            "max": -17
+          },
+          "healthRegen": {
+            "min": -78,
+            "raw": -60,
+            "max": -42
+          },
+          "rawAttackSpeed": -20,
+          "rawFireSpellDamage": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "rawEarthMainAttackDamage": {
+            "min": 692,
+            "raw": 2308,
+            "max": 3000
+          }
+        },
+        "base": {
+          "baseHealth": 4600,
+          "baseAirDefence": -200,
+          "baseWaterDefence": -200
+        }
+      },
+      "after": {
+        "displayName": "Catabolysis",
+        "internalName": "Catabolysis",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 119,
+          "defence": 35,
+          "strength": 70
+        },
+        "majorIds": {
+          "Last Resort": "<span class='font-ascii' style='color:#AAAAAA'>Bloodlust has doubled corrupted scaling and knockback, but deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>-200%</span> <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>-120%</span>.</span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Soldiers training in extreme cold conditions often push themselves beyond the limits. This however is not sustainable, as their bodies frantically scramble for survival.</span>",
+        "identifications": {
+          "sprint": {
+            "min": -31,
+            "raw": -24,
+            "max": -17
+          },
+          "healthRegen": {
+            "min": -78,
+            "raw": -60,
+            "max": -42
+          },
+          "rawAttackSpeed": -20,
+          "rawFireSpellDamage": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "rawEarthMainAttackDamage": {
+            "min": 692,
+            "raw": 2308,
+            "max": 3000
+          }
+        },
+        "base": {
+          "baseHealth": 4600,
+          "baseAirDefence": -200,
+          "baseWaterDefence": -200
+        }
+      }
+    }
+  ]
+}

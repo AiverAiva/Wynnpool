@@ -1,0 +1,3906 @@
+{
+  "modify": [
+    {
+      "_id": "6a0bc61fce8b9582580400ed",
+      "itemName": "Utilitarian",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Utilitarian",
+        "internalName": "Utilitarian",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 60,
+          "dexterity": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lifeSteal": {
+            "min": 129,
+            "raw": 430,
+            "max": 559
+          },
+          "4thSpellCost": {
+            "min": -6,
+            "raw": -21,
+            "max": -27
+          },
+          "rawFireDamage": {
+            "min": 63,
+            "raw": 211,
+            "max": 274
+          },
+          "rawAttackSpeed": -6,
+          "rawIntelligence": -15,
+          "healingEfficiency": {
+            "min": -40,
+            "raw": -31,
+            "max": -22
+          }
+        },
+        "base": {
+          "baseHealth": 4900,
+          "baseFireDefence": 180,
+          "baseThunderDefence": 160
+        }
+      },
+      "after": {
+        "displayName": "Utilitarian",
+        "internalName": "Utilitarian",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 60,
+          "dexterity": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lifeSteal": {
+            "min": 129,
+            "raw": 430,
+            "max": 559
+          },
+          "2ndSpellCost": {
+            "min": -6,
+            "raw": -21,
+            "max": -27
+          },
+          "4thSpellCost": {
+            "min": -6,
+            "raw": -21,
+            "max": -27
+          },
+          "rawFireDamage": {
+            "min": 69,
+            "raw": 230,
+            "max": 299
+          },
+          "rawAttackSpeed": -6,
+          "rawIntelligence": -15,
+          "healingEfficiency": {
+            "min": -40,
+            "raw": -31,
+            "max": -22
+          }
+        },
+        "base": {
+          "baseHealth": 4900,
+          "baseFireDefence": 180,
+          "baseThunderDefence": 160
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400ee",
+      "itemName": "Rogue",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Rogue",
+        "internalName": "Rogue",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 106,
+          "agility": 65,
+          "dexterity": 65
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "exploding": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "2ndSpellCost": {
+            "min": -4,
+            "raw": -12,
+            "max": -16
+          },
+          "mainAttackRange": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawAirSpellDamage": {
+            "min": 67,
+            "raw": 223,
+            "max": 290
+          }
+        },
+        "base": {
+          "baseHealth": 3400,
+          "baseAirDefence": 80,
+          "baseEarthDefence": -175,
+          "baseThunderDefence": 80
+        }
+      },
+      "after": {
+        "displayName": "Rogue",
+        "internalName": "Rogue",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 106,
+          "agility": 65,
+          "dexterity": 65
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "exploding": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "2ndSpellCost": {
+            "min": -7,
+            "raw": -23,
+            "max": -30
+          },
+          "mainAttackRange": {
+            "min": -18,
+            "raw": -14,
+            "max": -10
+          },
+          "rawAirSpellDamage": {
+            "min": 67,
+            "raw": 223,
+            "max": 290
+          }
+        },
+        "base": {
+          "baseHealth": 3400,
+          "baseAirDefence": 80,
+          "baseEarthDefence": -175,
+          "baseThunderDefence": 80
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400ef",
+      "itemName": "Inflammation",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Inflammation",
+        "internalName": "Inflammation",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 116,
+          "defence": 65
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lifeSteal": {
+            "min": 104,
+            "raw": 346,
+            "max": 450
+          },
+          "fireDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawDefence": 10,
+          "fireDefence": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "healingEfficiency": {
+            "min": -22,
+            "raw": -17,
+            "max": -12
+          }
+        },
+        "base": {
+          "baseHealth": 3700,
+          "baseFireDefence": 150
+        }
+      },
+      "after": {
+        "displayName": "Inflammation",
+        "internalName": "Inflammation",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 116,
+          "defence": 65
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lifeSteal": {
+            "min": 104,
+            "raw": 346,
+            "max": 450
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "fireDamage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawDefence": 10,
+          "fireDefence": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "healingEfficiency": {
+            "min": -22,
+            "raw": -17,
+            "max": -12
+          }
+        },
+        "base": {
+          "baseHealth": 3700,
+          "baseFireDefence": 150
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f0",
+      "itemName": "Landscour",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Landscour",
+        "internalName": "Landscour",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth",
+          "thunder"
+        ],
+        "requirements": {
+          "level": 117,
+          "strength": 55,
+          "dexterity": 30
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "poison": 18000,
+          "manaSteal": 12,
+          "rawDefence": -6,
+          "fireDefence": -30,
+          "rawStrength": 6,
+          "rawDexterity": 6,
+          "2ndSpellCost": -20
+        },
+        "base": {
+          "baseHealth": 3333,
+          "baseFireDefence": -200,
+          "baseEarthDefence": 180,
+          "baseThunderDefence": 180
+        }
+      },
+      "after": {
+        "displayName": "Landscour",
+        "internalName": "Landscour",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth",
+          "thunder"
+        ],
+        "requirements": {
+          "level": 117,
+          "strength": 55,
+          "dexterity": 30
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": 30,
+          "poison": 18000,
+          "manaSteal": 12,
+          "rawDefence": -6,
+          "fireDefence": -30,
+          "rawStrength": 6,
+          "rawDexterity": 6,
+          "2ndSpellCost": -20
+        },
+        "base": {
+          "baseHealth": 3333,
+          "baseFireDefence": -200,
+          "baseEarthDefence": 180,
+          "baseThunderDefence": 180
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f1",
+      "itemName": "Transistor",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Transistor",
+        "internalName": "Transistor",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 112,
+          "dexterity": 45,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaRegen": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "waterDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "rawDexterity": 8,
+          "thunderDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "rawIntelligence": 8,
+          "mainAttackRange": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "mainAttackDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          }
+        },
+        "base": {
+          "baseHealth": 3600,
+          "baseWaterDefence": 100,
+          "baseThunderDefence": 100
+        }
+      },
+      "after": {
+        "displayName": "Transistor",
+        "internalName": "Transistor",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 112,
+          "dexterity": 45,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaRegen": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "waterDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDexterity": 8,
+          "thunderDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawIntelligence": 8,
+          "mainAttackRange": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "mainAttackDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          }
+        },
+        "base": {
+          "baseHealth": 3600,
+          "baseWaterDefence": 100,
+          "baseThunderDefence": 100
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f2",
+      "itemName": "Shimmering Sanctity",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Shimmering Sanctity",
+        "internalName": "Shimmering Sanctity",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 112,
+          "defence": 50,
+          "dexterity": 45,
+          "intelligence": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "reflection": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawDefence": 8,
+          "rawIntelligence": 4,
+          "combatExperience": {
+            "min": 5,
+            "raw": 16,
+            "max": 21
+          },
+          "elementalDefence": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "healingEfficiency": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          }
+        },
+        "base": {
+          "baseHealth": 4300,
+          "baseFireDefence": 150,
+          "baseEarthDefence": -200,
+          "baseWaterDefence": 150,
+          "baseThunderDefence": 150
+        }
+      },
+      "after": {
+        "displayName": "Shimmering Sanctity",
+        "internalName": "Shimmering Sanctity",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 112,
+          "defence": 50,
+          "dexterity": 45,
+          "intelligence": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "reflection": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawDefence": 8,
+          "rawIntelligence": 4,
+          "combatExperience": {
+            "min": 5,
+            "raw": 16,
+            "max": 21
+          },
+          "elementalDefence": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseHealth": 4300,
+          "baseFireDefence": 150,
+          "baseEarthDefence": -200,
+          "baseWaterDefence": 150,
+          "baseThunderDefence": 150
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f3",
+      "itemName": "Dormancy",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Dormancy",
+        "internalName": "Dormancy",
+        "type": "accessory",
+        "subType": "ring",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ring.water2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 119,
+          "intelligence": 60
+        },
+        "sets": [
+          "Forgotten Chronicles"
+        ],
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Lines of text crisscross an ornate runic design: <span class='font-old_fruman' style='font-weight:normal'>etlpasad uc kod ah krof cof nifah<span class='font-common'></span> lasifrah. etlatlruc uc pah cof okcah<span class='font-common'></span> lasifrah. etlpecoles uc elracits toc nucah<span class='font-common'></span> lasifrah.</span></span></span></span></span>",
+        "identifications": {
+          "reflection": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawAttackSpeed": -1,
+          "rawIntelligence": 4,
+          "healingEfficiency": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          }
+        },
+        "base": {
+          "baseHealth": 650,
+          "baseWaterDefence": 90
+        }
+      },
+      "after": {
+        "displayName": "Dormancy",
+        "internalName": "Dormancy",
+        "type": "accessory",
+        "subType": "ring",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ring.water2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 119,
+          "intelligence": 60
+        },
+        "sets": [
+          "Forgotten Chronicles"
+        ],
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Lines of text crisscross an ornate runic design: <span class='font-old_fruman' style='font-weight:normal'>etlpasad uc kod ah krof cof nifah<span class='font-common'></span> lasifrah. etlatlruc uc pah cof okcah<span class='font-common'></span> lasifrah. etlpecoles uc elracits toc nucah<span class='font-common'></span> lasifrah.</span></span></span></span></span>",
+        "identifications": {
+          "reflection": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawAttackSpeed": -1,
+          "rawIntelligence": 4,
+          "healingEfficiency": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          }
+        },
+        "base": {
+          "baseHealth": 650,
+          "baseWaterDefence": 90
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f4",
+      "itemName": "Chelation",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Chelation",
+        "internalName": "Chelation",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 113,
+          "defence": 75
+        },
+        "powderSlots": 5,
+        "identifications": {
+          "poison": {
+            "min": -35100,
+            "raw": -27000,
+            "max": -18900
+          },
+          "rawDefence": 12,
+          "earthDamage": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "healthRegenRaw": {
+            "min": 127,
+            "raw": 423,
+            "max": 550
+          },
+          "elementalDefence": {
+            "min": 7,
+            "raw": 24,
+            "max": 31
+          },
+          "healingEfficiency": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          }
+        },
+        "base": {
+          "baseHealth": 5300,
+          "baseAirDefence": 180,
+          "baseFireDefence": 200,
+          "baseEarthDefence": 160,
+          "baseWaterDefence": 180,
+          "baseThunderDefence": 180
+        }
+      },
+      "after": {
+        "displayName": "Chelation",
+        "internalName": "Chelation",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 113,
+          "defence": 75
+        },
+        "powderSlots": 5,
+        "identifications": {
+          "poison": {
+            "min": -35100,
+            "raw": -27000,
+            "max": -18900
+          },
+          "rawDefence": 12,
+          "earthDamage": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "healthRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "healthRegenRaw": {
+            "min": 127,
+            "raw": 423,
+            "max": 550
+          },
+          "elementalDefence": {
+            "min": 7,
+            "raw": 24,
+            "max": 31
+          },
+          "healingEfficiency": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          }
+        },
+        "base": {
+          "baseHealth": 5300,
+          "baseAirDefence": 180,
+          "baseFireDefence": 200,
+          "baseEarthDefence": 160,
+          "baseWaterDefence": 180,
+          "baseThunderDefence": 180
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f5",
+      "itemName": "Solidus",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Solidus",
+        "internalName": "Solidus",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 105,
+          "defence": 60
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "healthRegen": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "waterDamage": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "waterDefence": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "healthRegenRaw": {
+            "min": 92,
+            "raw": 308,
+            "max": 400
+          },
+          "rawAttackSpeed": {
+            "min": -8,
+            "raw": -6,
+            "max": -4
+          },
+          "rawFireSpellDamage": {
+            "min": 38,
+            "raw": 127,
+            "max": 165
+          }
+        },
+        "base": {
+          "baseHealth": 3800,
+          "baseFireDefence": 180
+        }
+      },
+      "after": {
+        "displayName": "Solidus",
+        "internalName": "Solidus",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 105,
+          "defence": 60
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "healthRegen": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "waterDefence": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawFireDamage": {
+            "min": 46,
+            "raw": 154,
+            "max": 200
+          },
+          "healthRegenRaw": {
+            "min": 92,
+            "raw": 308,
+            "max": 400
+          },
+          "rawAttackSpeed": -4,
+          "rawMainAttackDamage": {
+            "min": 375,
+            "raw": 1250,
+            "max": 1625
+          }
+        },
+        "base": {
+          "baseHealth": 3800,
+          "baseFireDefence": 180
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f6",
+      "itemName": "Temerity",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Temerity",
+        "internalName": "Temerity",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 109,
+          "agility": 20,
+          "strength": 40,
+          "dexterity": 40,
+          "intelligence": 20
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "rawAgility": 10,
+          "4thSpellCost": {
+            "min": -4,
+            "raw": -14,
+            "max": -18
+          },
+          "rawIntelligence": 10,
+          "elementalDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "raw2ndSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "rawMainAttackDamage": {
+            "min": 80,
+            "raw": 265,
+            "max": 345
+          }
+        },
+        "base": {
+          "baseHealth": 3500,
+          "baseFireDefence": -150
+        }
+      },
+      "after": {
+        "displayName": "Temerity",
+        "internalName": "Temerity",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_1",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 109,
+          "agility": 20,
+          "strength": 40,
+          "dexterity": 40,
+          "intelligence": 20
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "rawAgility": 10,
+          "4thSpellCost": {
+            "min": -4,
+            "raw": -14,
+            "max": -18
+          },
+          "rawIntelligence": 10,
+          "elementalDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "raw2ndSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "rawMainAttackDamage": {
+            "min": 157,
+            "raw": 523,
+            "max": 680
+          }
+        },
+        "base": {
+          "baseHealth": 3500,
+          "baseFireDefence": -150
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f7",
+      "itemName": "Subterrestrial",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Subterrestrial",
+        "internalName": "Subterrestrial",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 106,
+          "strength": 40,
+          "dexterity": 40,
+          "intelligence": 40
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lootBonus": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "walkSpeed": {
+            "min": -22,
+            "raw": -17,
+            "max": -12
+          },
+          "rawAgility": -15,
+          "rawMaxMana": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "2ndSpellCost": {
+            "min": 33,
+            "raw": 25,
+            "max": 18
+          },
+          "earthSpellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawEarthSpellDamage": {
+            "min": 51,
+            "raw": 169,
+            "max": 220
+          }
+        },
+        "base": {
+          "baseHealth": 2400,
+          "baseEarthDefence": 50,
+          "baseWaterDefence": 50,
+          "baseThunderDefence": 50
+        }
+      },
+      "after": {
+        "displayName": "Subterrestrial",
+        "internalName": "Subterrestrial",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 106,
+          "strength": 40,
+          "dexterity": 40,
+          "intelligence": 40
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lootBonus": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "walkSpeed": {
+            "min": -22,
+            "raw": -17,
+            "max": -12
+          },
+          "rawAgility": -15,
+          "rawMaxMana": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "spellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "2ndSpellCost": {
+            "min": 33,
+            "raw": 25,
+            "max": 18
+          },
+          "rawEarthSpellDamage": {
+            "min": 51,
+            "raw": 169,
+            "max": 220
+          }
+        },
+        "base": {
+          "baseHealth": 3000,
+          "baseEarthDefence": 50,
+          "baseWaterDefence": 50,
+          "baseThunderDefence": 50
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f8",
+      "itemName": "Gale Weald",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Gale Weald",
+        "internalName": "Gale Weald",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "air"
+        ],
+        "requirements": {
+          "level": 106,
+          "agility": 45,
+          "strength": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawStrength": 8,
+          "mainAttackRange": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "healingEfficiency": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawMainAttackDamage": {
+            "min": -285,
+            "raw": -219,
+            "max": -153
+          }
+        },
+        "base": {
+          "baseHealth": 3300,
+          "baseAirDefence": 100,
+          "baseFireDefence": -75,
+          "baseEarthDefence": 100
+        }
+      },
+      "after": {
+        "displayName": "Gale Weald",
+        "internalName": "Gale Weald",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "air"
+        ],
+        "requirements": {
+          "level": 106,
+          "agility": 45,
+          "strength": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawStrength": 8,
+          "mainAttackRange": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "healingEfficiency": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawMainAttackDamage": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          }
+        },
+        "base": {
+          "baseHealth": 3300,
+          "baseAirDefence": 100,
+          "baseFireDefence": -75,
+          "baseEarthDefence": 100
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400f9",
+      "itemName": "Trullo",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Trullo",
+        "internalName": "Trullo",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 114,
+          "defence": 45,
+          "strength": 45,
+          "intelligence": 30
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "combatExperience": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "elementalDefence": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "fireSpellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "earthSpellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseHealth": 4400,
+          "baseFireDefence": 250,
+          "baseEarthDefence": 250,
+          "baseWaterDefence": 325
+        }
+      },
+      "after": {
+        "displayName": "Trullo",
+        "internalName": "Trullo",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 114,
+          "defence": 45,
+          "strength": 45,
+          "intelligence": 30
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "combatExperience": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "elementalDefence": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "fireSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "earthSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseHealth": 4800,
+          "baseFireDefence": 250,
+          "baseEarthDefence": 250,
+          "baseWaterDefence": 325
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400fa",
+      "itemName": "Twisted Gemstone",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Twisted Gemstone",
+        "internalName": "Twisted Gemstone",
+        "type": "accessory",
+        "subType": "ring",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ring.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 119,
+          "agility": 24,
+          "defence": 28,
+          "dexterity": 28,
+          "intelligence": 32
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -260,
+            "raw": -200,
+            "max": -140
+          },
+          "rawAgility": 1,
+          "rawDefence": 2,
+          "healthRegen": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "rawStrength": -12,
+          "spellDamage": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "rawDexterity": 2,
+          "rawIntelligence": 3
+        },
+        "base": {
+          "baseAirDefence": 40,
+          "baseFireDefence": 45,
+          "baseWaterDefence": 50,
+          "baseThunderDefence": 45
+        }
+      },
+      "after": {
+        "displayName": "Twisted Gemstone",
+        "internalName": "Twisted Gemstone",
+        "type": "accessory",
+        "subType": "ring",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ring.fire2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 119,
+          "agility": 24,
+          "defence": 28,
+          "dexterity": 28,
+          "intelligence": 32
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -260,
+            "raw": -200,
+            "max": -140
+          },
+          "rawAgility": 1,
+          "rawDefence": 2,
+          "healthRegen": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "rawStrength": -12,
+          "spellDamage": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawDexterity": 2,
+          "rawIntelligence": 3
+        },
+        "base": {
+          "baseAirDefence": 40,
+          "baseFireDefence": 45,
+          "baseWaterDefence": 50,
+          "baseThunderDefence": 45
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400fb",
+      "itemName": "Havoc Focus",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Havoc Focus",
+        "internalName": "Havoc Focus",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 109,
+          "dexterity": 65
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "walkSpeed": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "healthRegen": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "spellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "3rdSpellCost": {
+            "min": 33,
+            "raw": 25,
+            "max": 18
+          },
+          "healingEfficiency": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          },
+          "rawThunderSpellDamage": {
+            "min": 50,
+            "raw": 165,
+            "max": 215
+          }
+        },
+        "base": {
+          "baseHealth": 3100,
+          "baseEarthDefence": 100,
+          "baseThunderDefence": 200
+        }
+      },
+      "after": {
+        "displayName": "Havoc Focus",
+        "internalName": "Havoc Focus",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 109,
+          "dexterity": 65
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "walkSpeed": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "healthRegen": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "3rdSpellCost": {
+            "min": 33,
+            "raw": 25,
+            "max": 18
+          },
+          "thunderDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "rawSpellDamage": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          },
+          "healingEfficiency": {
+            "min": -13,
+            "raw": -10,
+            "max": -7
+          }
+        },
+        "base": {
+          "baseHealth": 3100,
+          "baseEarthDefence": 100,
+          "baseThunderDefence": 200
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400fc",
+      "itemName": "Steamboat",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Steamboat",
+        "internalName": "Steamboat",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 115,
+          "defence": 45,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "lootBonus": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "rawHealth": {
+            "min": 300,
+            "raw": 1000,
+            "max": 1300
+          },
+          "combatExperience": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "healingEfficiency": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          }
+        },
+        "base": {
+          "baseHealth": 3700,
+          "baseAirDefence": 50,
+          "baseFireDefence": 125,
+          "baseEarthDefence": 50,
+          "baseWaterDefence": 125,
+          "baseThunderDefence": 50
+        }
+      },
+      "after": {
+        "displayName": "Steamboat",
+        "internalName": "Steamboat",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 115,
+          "defence": 45,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "lootBonus": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "manaRegen": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "rawHealth": {
+            "min": 300,
+            "raw": 1000,
+            "max": 1300
+          },
+          "combatExperience": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "healingEfficiency": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          }
+        },
+        "base": {
+          "baseHealth": 3700,
+          "baseAirDefence": 50,
+          "baseFireDefence": 125,
+          "baseEarthDefence": 50,
+          "baseWaterDefence": 125,
+          "baseThunderDefence": 50
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400fd",
+      "itemName": "Counterbias",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Counterbias",
+        "internalName": "Counterbias",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 116,
+          "intelligence": 55
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaRegen": -6,
+          "manaSteal": -6,
+          "rawIntelligence": 8,
+          "raw4thSpellCost": -4,
+          "neutralSpellDamage": 50
+        },
+        "base": {
+          "baseHealth": 3500,
+          "baseWaterDefence": 200
+        }
+      },
+      "after": {
+        "displayName": "Counterbias",
+        "internalName": "Counterbias",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 116,
+          "intelligence": 55
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaRegen": -6,
+          "manaSteal": -6,
+          "spellDamage": 30,
+          "rawIntelligence": 8,
+          "raw4thSpellCost": -4,
+          "neutralSpellDamage": 30
+        },
+        "base": {
+          "baseHealth": 3500,
+          "baseWaterDefence": 200
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400fe",
+      "itemName": "Cannonade",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Cannonade",
+        "internalName": "Cannonade",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 100,
+          "defence": 115
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>An impenetrable fortress' greatest strength is psychological, a mythos built on the backs of a thousand attackers it has withstood. Your greatest strength is the belief that not one of those thousand could hold a candle to you.</span>",
+        "identifications": {
+          "damage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "exploding": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "walkSpeed": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "rawStrength": 15,
+          "rawFireDamage": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          },
+          "elementalDefence": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "healingEfficiency": {
+            "min": -25,
+            "raw": -19,
+            "max": -13
+          }
+        },
+        "base": {
+          "baseHealth": 5000,
+          "baseFireDefence": 125,
+          "baseThunderDefence": -175
+        }
+      },
+      "after": {
+        "displayName": "Cannonade",
+        "internalName": "Cannonade",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 100,
+          "defence": 115
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>An impenetrable fortress' greatest strength is psychological, a mythos built on the backs of a thousand attackers it has withstood. Your greatest strength is the belief that not one of those thousand could hold a candle to you.</span>",
+        "identifications": {
+          "damage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "exploding": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "walkSpeed": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "rawStrength": 15,
+          "rawFireDamage": {
+            "min": 65,
+            "raw": 215,
+            "max": 280
+          },
+          "elementalDefence": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "healingEfficiency": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          }
+        },
+        "base": {
+          "baseHealth": 5000,
+          "baseFireDefence": 125,
+          "baseThunderDefence": -175
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b9582580400ff",
+      "itemName": "Heartburn",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Heartburn",
+        "internalName": "Heartburn",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 111,
+          "defence": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "rawDefence": 10,
+          "healthRegen": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "2ndSpellCost": {
+            "min": 22,
+            "raw": 17,
+            "max": 12
+          },
+          "healthRegenRaw": {
+            "min": 84,
+            "raw": 280,
+            "max": 364
+          }
+        },
+        "base": {
+          "baseHealth": 4400,
+          "baseFireDefence": 170
+        }
+      },
+      "after": {
+        "displayName": "Heartburn",
+        "internalName": "Heartburn",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 111,
+          "defence": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "rawDefence": 10,
+          "healthRegen": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "2ndSpellCost": {
+            "min": 22,
+            "raw": 17,
+            "max": 12
+          },
+          "healthRegenRaw": {
+            "min": 97,
+            "raw": 323,
+            "max": 420
+          }
+        },
+        "base": {
+          "baseHealth": 4400,
+          "baseFireDefence": 170
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040100",
+      "itemName": "Panopticon",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Panopticon",
+        "internalName": "Panopticon",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 119,
+          "dexterity": 85
+        },
+        "majorIds": {
+          "Superconductor": "<span class='font-ascii' style='color:#AAAAAA'>Chain Lightning channels three massive lightning bolts through you, arcing to enemies within 8 blocks for <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>270%</span> and stunning them for 1s. You take 10% more damage for 4s.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is nothing in these walls that will remain hidden forever. Nothing unaccounted for by the gleaming light of The Citadel.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -520,
+            "raw": -400,
+            "max": -280
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "reflection": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDexterity": 5,
+          "rawAttackSpeed": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "mainAttackRange": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawThunderMainAttackDamage": {
+            "min": 624,
+            "raw": 2080,
+            "max": 2704
+          }
+        },
+        "base": {
+          "baseHealth": 4600,
+          "baseEarthDefence": -250,
+          "baseThunderDefence": 250
+        }
+      },
+      "after": {
+        "displayName": "Panopticon",
+        "internalName": "Panopticon",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 119,
+          "dexterity": 85
+        },
+        "majorIds": {
+          "Superconductor": "<span class='font-ascii' style='color:#AAAAAA'>Chain Lightning channels three massive lightning bolts through you, arcing to enemies within 8 blocks for <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>270%</span> and stunning them for 1s. You take 10% more damage for 4s.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>There is nothing in these walls that will remain hidden forever. Nothing unaccounted for by the gleaming light of The Citadel.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -520,
+            "raw": -400,
+            "max": -280
+          },
+          "lootBonus": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "reflection": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDexterity": 5,
+          "rawAttackSpeed": -30,
+          "mainAttackRange": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawThunderMainAttackDamage": {
+            "min": 624,
+            "raw": 2080,
+            "max": 2704
+          }
+        },
+        "base": {
+          "baseHealth": 4600,
+          "baseEarthDefence": -250,
+          "baseThunderDefence": 250
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040101",
+      "itemName": "Calefaction",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Calefaction",
+        "internalName": "Calefaction",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 110,
+          "agility": 45,
+          "defence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "damage": 15,
+          "airDamage": 20,
+          "walkSpeed": -20,
+          "fireDamage": 20,
+          "rawAgility": 4,
+          "rawDefence": 4,
+          "healthRegen": 30,
+          "raw2ndSpellCost": 4
+        },
+        "base": {
+          "baseHealth": 3450,
+          "baseAirDefence": 180,
+          "baseFireDefence": 180,
+          "baseWaterDefence": -220
+        }
+      },
+      "after": {
+        "displayName": "Calefaction",
+        "internalName": "Calefaction",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 110,
+          "agility": 45,
+          "defence": 45
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "damage": 15,
+          "airDamage": 20,
+          "walkSpeed": -20,
+          "fireDamage": 20,
+          "rawAgility": 4,
+          "rawDefence": 4,
+          "healthRegen": 30,
+          "raw2ndSpellCost": 4
+        },
+        "base": {
+          "baseHealth": 4000,
+          "baseAirDefence": 180,
+          "baseFireDefence": 180,
+          "baseWaterDefence": -220
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040102",
+      "itemName": "Kugelblitz",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Kugelblitz",
+        "internalName": "Kugelblitz",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 111,
+          "strength": 50,
+          "dexterity": 50,
+          "intelligence": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "rawAgility": -10,
+          "spellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawAttackSpeed": -1,
+          "rawWaterSpellDamage": {
+            "min": 47,
+            "raw": 158,
+            "max": 205
+          },
+          "earthMainAttackDamage": {
+            "min": 23,
+            "raw": 77,
+            "max": 100
+          },
+          "thunderMainAttackDamage": {
+            "min": 23,
+            "raw": 77,
+            "max": 100
+          }
+        },
+        "base": {
+          "baseHealth": 2800,
+          "baseAirDefence": -220,
+          "baseEarthDefence": 150,
+          "baseWaterDefence": 150,
+          "baseThunderDefence": 150
+        }
+      },
+      "after": {
+        "displayName": "Kugelblitz",
+        "internalName": "Kugelblitz",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 111,
+          "strength": 50,
+          "dexterity": 50,
+          "intelligence": 50
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "rawAgility": -10,
+          "spellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawAttackSpeed": -1,
+          "rawWaterSpellDamage": {
+            "min": 66,
+            "raw": 220,
+            "max": 286
+          },
+          "earthMainAttackDamage": {
+            "min": 23,
+            "raw": 77,
+            "max": 100
+          },
+          "thunderMainAttackDamage": {
+            "min": 23,
+            "raw": 77,
+            "max": 100
+          }
+        },
+        "base": {
+          "baseHealth": 2800,
+          "baseAirDefence": -220,
+          "baseEarthDefence": 150,
+          "baseWaterDefence": 150,
+          "baseThunderDefence": 150
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040103",
+      "itemName": "Hydrostatic Greaves",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Hydrostatic Greaves",
+        "internalName": "Hydrostatic Greaves",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 117,
+          "dexterity": 55,
+          "intelligence": 55
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 99,
+            "raw": 330,
+            "max": 429
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "healthRegen": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawWaterSpellDamage": {
+            "min": 33,
+            "raw": 110,
+            "max": 143
+          },
+          "rawThunderSpellDamage": {
+            "min": 33,
+            "raw": 110,
+            "max": 143
+          }
+        },
+        "base": {
+          "baseHealth": 3200,
+          "baseWaterDefence": 215,
+          "baseThunderDefence": 215
+        }
+      },
+      "after": {
+        "displayName": "Hydrostatic Greaves",
+        "internalName": "Hydrostatic Greaves",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 117,
+          "dexterity": 55,
+          "intelligence": 55
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": 99,
+            "raw": 330,
+            "max": 429
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "healthRegen": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawWaterSpellDamage": {
+            "min": 33,
+            "raw": 110,
+            "max": 143
+          },
+          "rawThunderSpellDamage": {
+            "min": 33,
+            "raw": 110,
+            "max": 143
+          }
+        },
+        "base": {
+          "baseHealth": 3200,
+          "baseWaterDefence": 215,
+          "baseThunderDefence": 215
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040104",
+      "itemName": "Rapid-Fire Mechanism",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Rapid-Fire Mechanism",
+        "internalName": "Rapid-Fire Mechanism",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.rapidFireMechanism"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 119,
+          "skills": [
+            "weaponsmithing"
+          ]
+        },
+        "identifications": {
+          "rawAttackSpeed": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "rawEarthMainAttackDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 75
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -184000,
+          "strengthRequirement": 25,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Gatling Gun",
+            "coords": [
+              [
+                -1743,
+                131,
+                -897,
+                0
+              ],
+              [
+                -1665,
+                128,
+                -790,
+                0
+              ],
+              [
+                -1515,
+                131,
+                -758,
+                0
+              ],
+              [
+                -1625,
+                129,
+                -778,
+                0
+              ]
+            ]
+          },
+          {
+            "name": "Hwacha Arrow",
+            "coords": [
+              [
+                -1692,
+                170,
+                -911,
+                0
+              ],
+              [
+                -1709,
+                170,
+                -881,
+                0
+              ],
+              [
+                -1728,
+                170,
+                -862,
+                0
+              ],
+              [
+                -1726,
+                170,
+                -817,
+                0
+              ],
+              [
+                -1710,
+                170,
+                -795,
+                0
+              ],
+              [
+                -1578,
+                170,
+                -907,
+                0
+              ],
+              [
+                -1618,
+                170,
+                -922,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "displayName": "Rapid-Fire Mechanism",
+        "internalName": "Rapid-Fire Mechanism",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.rapidFireMechanism"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_3",
+        "requirements": {
+          "level": 119,
+          "skills": [
+            "weaponsmithing"
+          ]
+        },
+        "identifications": {
+          "rawAttackSpeed": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "rawEarthMainAttackDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 75
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -184000,
+          "strengthRequirement": 25,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Gatling Gun",
+            "coords": [
+              [
+                -1743,
+                131,
+                -897,
+                0
+              ],
+              [
+                -1665,
+                128,
+                -790,
+                0
+              ],
+              [
+                -1515,
+                131,
+                -758,
+                0
+              ]
+            ]
+          },
+          {
+            "name": "Hwacha Arrow",
+            "coords": [
+              [
+                -1692,
+                170,
+                -911,
+                0
+              ],
+              [
+                -1709,
+                170,
+                -881,
+                0
+              ],
+              [
+                -1728,
+                170,
+                -862,
+                0
+              ],
+              [
+                -1726,
+                170,
+                -817,
+                0
+              ],
+              [
+                -1710,
+                170,
+                -795,
+                0
+              ],
+              [
+                -1578,
+                170,
+                -907,
+                0
+              ],
+              [
+                -1618,
+                170,
+                -922,
+                0
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040105",
+      "itemName": "Radiator",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Radiator",
+        "internalName": "Radiator",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 109,
+          "defence": 45,
+          "dexterity": 40
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lifeSteal": 360,
+          "rawDefence": 6,
+          "healthRegen": -15,
+          "rawMaxMana": -15,
+          "rawDexterity": 4,
+          "4thSpellCost": -12,
+          "rawFireDamage": 180,
+          "combatExperience": 16
+        },
+        "base": {
+          "baseHealth": 3650,
+          "baseFireDefence": 220,
+          "baseThunderDefence": 190
+        }
+      },
+      "after": {
+        "displayName": "Radiator",
+        "internalName": "Radiator",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 109,
+          "defence": 45,
+          "dexterity": 40
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lifeSteal": 400,
+          "rawDefence": 6,
+          "healthRegen": -15,
+          "rawMaxMana": -15,
+          "rawDexterity": 4,
+          "4thSpellCost": -16,
+          "rawFireDamage": 200,
+          "combatExperience": 16
+        },
+        "base": {
+          "baseHealth": 3650,
+          "baseFireDefence": 220,
+          "baseThunderDefence": 190
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040106",
+      "itemName": "Loose Ammunition",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Loose Ammunition",
+        "internalName": "Loose Ammunition",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.looseAmmunition"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 117,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "identifications": {
+          "rawStrength": {
+            "min": 1,
+            "raw": 1,
+            "max": 2
+          },
+          "rawEarthMainAttackDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 45
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -135000,
+          "strengthRequirement": 18,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Gatling Gun",
+            "coords": [
+              [
+                -1743,
+                131,
+                -897,
+                0
+              ],
+              [
+                -1665,
+                128,
+                -790,
+                0
+              ],
+              [
+                -1515,
+                131,
+                -758,
+                0
+              ],
+              [
+                -1625,
+                129,
+                -778,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "after": {
+        "displayName": "Loose Ammunition",
+        "internalName": "Loose Ammunition",
+        "type": "ingredient",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ingredient.looseAmmunition"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "tier": "TIER_1",
+        "requirements": {
+          "level": 117,
+          "skills": [
+            "jeweling"
+          ]
+        },
+        "identifications": {
+          "rawStrength": {
+            "min": 1,
+            "raw": 1,
+            "max": 2
+          },
+          "rawEarthMainAttackDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 45
+          }
+        },
+        "consumableOnlyIDs": {
+          "duration": 0,
+          "charges": 0
+        },
+        "ingredientPositionModifiers": {
+          "left": 0,
+          "right": 0,
+          "above": 0,
+          "under": 0,
+          "touching": 0,
+          "notTouching": 0
+        },
+        "itemOnlyIDs": {
+          "durabilityModifier": -135000,
+          "strengthRequirement": 18,
+          "dexterityRequirement": 0,
+          "intelligenceRequirement": 0,
+          "defenceRequirement": 0,
+          "agilityRequirement": 0
+        },
+        "droppedBy": [
+          {
+            "name": "Gatling Gun",
+            "coords": [
+              [
+                -1743,
+                131,
+                -897,
+                0
+              ],
+              [
+                -1665,
+                128,
+                -790,
+                0
+              ],
+              [
+                -1515,
+                131,
+                -758,
+                0
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040107",
+      "itemName": "Leafgliders",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Leafgliders",
+        "internalName": "Leafgliders",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "air"
+        ],
+        "requirements": {
+          "level": 105,
+          "agility": 45,
+          "strength": 35
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "walkSpeed": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "fireDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawAgility": 10,
+          "rawDefence": -10,
+          "fireDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawStrength": 5,
+          "2ndSpellCost": {
+            "min": -7,
+            "raw": -23,
+            "max": -30
+          }
+        },
+        "base": {
+          "baseHealth": 3100,
+          "baseAirDefence": 150,
+          "baseEarthDefence": 100
+        }
+      },
+      "after": {
+        "displayName": "Leafgliders",
+        "internalName": "Leafgliders",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "air"
+        ],
+        "requirements": {
+          "level": 105,
+          "agility": 45,
+          "strength": 35
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "walkSpeed": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "fireDamage": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawAgility": 10,
+          "rawDefence": -10,
+          "fireDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawStrength": 5,
+          "spellDamage": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "2ndSpellCost": {
+            "min": -7,
+            "raw": -23,
+            "max": -30
+          }
+        },
+        "base": {
+          "baseHealth": 3100,
+          "baseAirDefence": 150,
+          "baseEarthDefence": 100
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040108",
+      "itemName": "Champion's Valiance",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Champion's Valiance",
+        "internalName": "Champion's Valiance",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 113,
+          "defence": 65,
+          "intelligence": 60
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>These leggings were forged in honour of a martyr, who, legend has it, fought off a horde of the marauders for two days without food or rest to defend his village. </span>",
+        "identifications": {
+          "rawDefence": 10,
+          "fireDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healthRegenRaw": {
+            "min": 127,
+            "raw": 423,
+            "max": 550
+          },
+          "rawEarthDamage": {
+            "min": -292,
+            "raw": -225,
+            "max": -157
+          },
+          "rawIntelligence": 5,
+          "rawWaterDamage": {
+            "min": 60,
+            "raw": 200,
+            "max": 260
+          },
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          }
+        },
+        "base": {
+          "baseHealth": 5300,
+          "baseFireDefence": 180,
+          "baseWaterDefence": 180
+        }
+      },
+      "after": {
+        "displayName": "Champion's Valiance",
+        "internalName": "Champion's Valiance",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 113,
+          "defence": 65,
+          "intelligence": 60
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>These leggings were forged in honour of a martyr, who, legend has it, fought off a horde of the marauders for two days without food or rest to defend his village. </span>",
+        "identifications": {
+          "rawDefence": 10,
+          "fireDefence": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healthRegenRaw": {
+            "min": 127,
+            "raw": 423,
+            "max": 550
+          },
+          "rawEarthDamage": {
+            "min": -227,
+            "raw": -175,
+            "max": -122
+          },
+          "rawIntelligence": 5,
+          "rawWaterDamage": {
+            "min": 46,
+            "raw": 154,
+            "max": 200
+          },
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          }
+        },
+        "base": {
+          "baseHealth": 5300,
+          "baseFireDefence": 180,
+          "baseWaterDefence": 180
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b958258040109",
+      "itemName": "Liff Leaf Plate",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Liff Leaf Plate",
+        "internalName": "Liff Leaf Plate",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 106,
+          "strength": 75
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "sprint": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "thorns": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "earthDamage": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "fireDefence": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "rawStrength": 5
+        },
+        "base": {
+          "baseHealth": 3300,
+          "baseFireDefence": -100,
+          "baseEarthDefence": 150
+        }
+      },
+      "after": {
+        "displayName": "Liff Leaf Plate",
+        "internalName": "Liff Leaf Plate",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 106,
+          "strength": 75
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "damage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "sprint": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "thorns": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "earthDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "fireDefence": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "rawStrength": 5
+        },
+        "base": {
+          "baseHealth": 3300,
+          "baseFireDefence": -100,
+          "baseEarthDefence": 150
+        }
+      }
+    },
+    {
+      "_id": "6a0bc61fce8b95825804010a",
+      "itemName": "Subduction",
+      "status": "modify",
+      "timestamp": 1779156511,
+      "before": {
+        "displayName": "Subduction",
+        "internalName": "Subduction",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 108,
+          "strength": 60,
+          "intelligence": 60
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "knockback": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawMaxMana": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "rawStrength": 3,
+          "spellDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "sprintRegen": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawAttackSpeed": -1,
+          "rawIntelligence": 5,
+          "rawEarthMainAttackDamage": {
+            "min": 212,
+            "raw": 707,
+            "max": 919
+          }
+        },
+        "base": {
+          "baseHealth": 3900,
+          "baseAirDefence": -100,
+          "baseEarthDefence": 150,
+          "baseWaterDefence": 150
+        }
+      },
+      "after": {
+        "displayName": "Subduction",
+        "internalName": "Subduction",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "rare",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water"
+        ],
+        "requirements": {
+          "level": 108,
+          "strength": 60,
+          "intelligence": 60
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "knockback": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawMaxMana": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "rawStrength": 3,
+          "spellDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "sprintRegen": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawAttackSpeed": -1,
+          "rawIntelligence": 5,
+          "rawEarthMainAttackDamage": {
+            "min": 225,
+            "raw": 750,
+            "max": 975
+          }
+        },
+        "base": {
+          "baseHealth": 3900,
+          "baseAirDefence": -100,
+          "baseEarthDefence": 150,
+          "baseWaterDefence": 150
+        }
+      }
+    }
+  ]
+}

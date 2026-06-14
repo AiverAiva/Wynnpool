@@ -1,0 +1,1681 @@
+{
+  "modify": [
+    {
+      "_id": "69fbf044ff92f4e74fbccc06",
+      "itemName": "Fate",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Fate",
+        "internalName": "Fate",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 954,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 108,
+          "classRequirement": "shaman",
+          "agility": 50,
+          "defence": 50,
+          "strength": 60
+        },
+        "majorIds": {
+          "Starcrossed": "<span class='font-ascii' style='color:#AAAAAA'>Hitting an enemy with Haunting Memory makes it Linked. You can have up to two targets Linked at once. When one Linked enemy takes damage, the other Linked enemy takes that damage as well.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A brilliant waltz on the razor's edge. Dance, dance through the fields of broken bodies and the vacant cities of empty people. Become the inevitable; the hands of time announce your interminable arrival. Raise your symphony to a crescendo, now: you are the dealer, and fate is the deck. The whole world will know your song.</span>",
+        "identifications": {
+          "walkSpeed": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawAgility": 10,
+          "rawDefence": 10,
+          "rawStrength": 10,
+          "weakenEnemy": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "3rdSpellCost": {
+            "min": 47,
+            "raw": 36,
+            "max": 25
+          },
+          "raw4thSpellCost": {
+            "min": -3,
+            "raw": -10,
+            "max": -13
+          },
+          "rawElementalMainAttackDamage": {
+            "min": 300,
+            "raw": 1000,
+            "max": 1300
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 215,
+            "raw": 215,
+            "max": 285
+          },
+          "baseAirDamage": {
+            "min": 205,
+            "raw": 205,
+            "max": 395
+          },
+          "baseFireDamage": {
+            "min": 255,
+            "raw": 255,
+            "max": 345
+          },
+          "baseEarthDamage": {
+            "min": 235,
+            "raw": 235,
+            "max": 365
+          }
+        }
+      },
+      "after": {
+        "displayName": "Fate",
+        "internalName": "Fate",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 954,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 108,
+          "classRequirement": "shaman",
+          "agility": 50,
+          "defence": 50,
+          "strength": 60
+        },
+        "majorIds": {
+          "Starcrossed": "<span class='font-ascii' style='color:#AAAAAA'>Hitting an enemy with Haunting Memory makes it Linked. You can have up to two targets Linked at once. When one Linked enemy takes damage, the other Linked enemy takes that damage as well. Haunted Memory's duration is increased by 5 seconds and its range is increased by 10 blocks.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A brilliant waltz on the razor's edge. Dance, dance through the fields of broken bodies and the vacant cities of empty people. Become the inevitable; the hands of time announce your interminable arrival. Raise your symphony to a crescendo, now: you are the dealer, and fate is the deck. The whole world will know your song.</span>",
+        "identifications": {
+          "walkSpeed": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawAgility": 10,
+          "rawDefence": 10,
+          "rawStrength": 10,
+          "weakenEnemy": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "3rdSpellCost": {
+            "min": 47,
+            "raw": 36,
+            "max": 25
+          },
+          "raw4thSpellCost": {
+            "min": -3,
+            "raw": -10,
+            "max": -13
+          },
+          "rawElementalMainAttackDamage": {
+            "min": 300,
+            "raw": 1000,
+            "max": 1300
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 215,
+            "raw": 215,
+            "max": 285
+          },
+          "baseAirDamage": {
+            "min": 205,
+            "raw": 205,
+            "max": 395
+          },
+          "baseFireDamage": {
+            "min": 255,
+            "raw": 255,
+            "max": 345
+          },
+          "baseEarthDamage": {
+            "min": 235,
+            "raw": 235,
+            "max": 365
+          }
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc07",
+      "itemName": "Heretic",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Heretic",
+        "internalName": "Heretic",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 100
+        },
+        "majorIds": {
+          "Burnt Shadows": "<span class='font-ascii' style='color:#AAAAAA'>Buried Light burns faster and is controlled by the direction you face. Enemies in the light instead take <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>80%</span> and recieve 10% more damage.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>What once crowned the Commander of Aelumia's Gendarmerie, now reduced to a singed fragment of its former self.</span>",
+        "identifications": {
+          "damage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "sprintRegen": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          }
+        },
+        "base": {
+          "baseHealth": 4500,
+          "baseFireDefence": -400
+        }
+      },
+      "after": {
+        "displayName": "Heretic",
+        "internalName": "Heretic",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 100
+        },
+        "majorIds": {
+          "Burnt Shadows": "<span class='font-ascii' style='color:#AAAAAA'>Buried Light burns faster and is controlled by the direction you face. Enemies in the light instead take <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>120%</span>.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>What once crowned the Commander of Aelumia's Gendarmerie, now reduced to a singed fragment of its former self.</span>",
+        "identifications": {
+          "damage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "sprintRegen": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          }
+        },
+        "base": {
+          "baseHealth": 4500,
+          "baseFireDefence": -400
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc08",
+      "itemName": "Pyrrhic Respite",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Pyrrhic Respite",
+        "internalName": "Pyrrhic Respite",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 101,
+          "defence": 55,
+          "dexterity": 40,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores up to 25% more max health to allies, but heals at a slower rate. Fluid Healing's effectiveness is increased by 150%.</span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -455,
+            "raw": -350,
+            "max": -245
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawStrength": -12,
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawIntelligence": 6,
+          "rawSpellDamage": {
+            "min": -234,
+            "raw": -180,
+            "max": -126
+          }
+        },
+        "base": {
+          "baseHealth": 4650,
+          "baseAirDefence": 100,
+          "baseEarthDefence": 100
+        }
+      },
+      "after": {
+        "displayName": "Pyrrhic Respite",
+        "internalName": "Pyrrhic Respite",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 101,
+          "defence": 55,
+          "dexterity": 40,
+          "intelligence": 55
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Silent Expanse Expedition",
+          "type": "lootrun",
+          "coordinates": [
+            997,
+            78,
+            -789
+          ]
+        },
+        "identifications": {
+          "lifeSteal": {
+            "min": -455,
+            "raw": -350,
+            "max": -245
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawStrength": -12,
+          "waterDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawIntelligence": 6,
+          "rawSpellDamage": {
+            "min": -234,
+            "raw": -180,
+            "max": -126
+          }
+        },
+        "base": {
+          "baseHealth": 4650,
+          "baseAirDefence": 100,
+          "baseEarthDefence": 100
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc09",
+      "itemName": "Architect",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Architect",
+        "internalName": "Architect",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "slow",
+        "averageDps": 660,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "assassin",
+          "defence": 55,
+          "strength": 55,
+          "intelligence": 65
+        },
+        "majorIds": {
+          "Living Museum": "<span class='font-ascii' style='color:#AAAAAA'>Players within 10 blocks of Mirage, Shadow, or Another Self clones will get 20% resistance, and be healed 10%, 20%, or 50% max health when the respective clone is destroyed.</span>"
+        },
+        "powderSlots": 5,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Allies are exhausting, with their egos and beliefs, and pesky moral codes. Followers are much better-soldiers in your own perfect image, whose deaths are merely scaffolds to a world of your design.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -975,
+            "raw": -750,
+            "max": -525
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawHealth": {
+            "min": 450,
+            "raw": 1500,
+            "max": 1950
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawAgility": 15,
+          "rawDefence": 15,
+          "rawStrength": 15,
+          "rawDexterity": 15,
+          "rawIntelligence": 15,
+          "healingEfficiency": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 400
+          },
+          "baseFireDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 65
+          },
+          "baseEarthDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 55
+          },
+          "baseWaterDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 60
+          }
+        }
+      },
+      "after": {
+        "displayName": "Architect",
+        "internalName": "Architect",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "slow",
+        "averageDps": 660,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "assassin",
+          "defence": 55,
+          "strength": 55,
+          "intelligence": 65
+        },
+        "majorIds": {
+          "Living Museum": "<span class='font-ascii' style='color:#AAAAAA'>Players within 10 blocks of Mirage, Shadow, or Another Self clones will get 20% resistance, and be healed 8%, 15%, or 50% max health when the respective clone is destroyed.</span>"
+        },
+        "powderSlots": 5,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Allies are exhausting, with their egos and beliefs, and pesky moral codes. Followers are much better-soldiers in your own perfect image, whose deaths are merely scaffolds to a world of your design.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": -975,
+            "raw": -750,
+            "max": -525
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawHealth": {
+            "min": 450,
+            "raw": 1500,
+            "max": 1950
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawAgility": 15,
+          "rawDefence": 15,
+          "rawStrength": 15,
+          "rawDexterity": 15,
+          "rawIntelligence": 15,
+          "healingEfficiency": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 400
+          },
+          "baseFireDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 65
+          },
+          "baseEarthDamage": {
+            "min": 45,
+            "raw": 45,
+            "max": 55
+          },
+          "baseWaterDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 60
+          }
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc0a",
+      "itemName": "Helios Lux",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Helios Lux",
+        "internalName": "Helios Lux",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 73,
+          "agility": 45,
+          "dexterity": 45
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores up to 25% more max health to allies, but heals at a slower rate. Fluid Healing's effectiveness is increased by 150%.</span>"
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "lifeSteal": {
+            "min": -227,
+            "raw": -175,
+            "max": -122
+          },
+          "rawAgility": 8,
+          "sprintRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 8,
+          "airSpellDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "combatExperience": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "thunderSpellDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          }
+        },
+        "base": {
+          "baseHealth": 2000,
+          "baseAirDefence": 70,
+          "baseThunderDefence": 70
+        }
+      },
+      "after": {
+        "displayName": "Helios Lux",
+        "internalName": "Helios Lux",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_4",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 73,
+          "agility": 45,
+          "dexterity": 45
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "lifeSteal": {
+            "min": -227,
+            "raw": -175,
+            "max": -122
+          },
+          "rawAgility": 8,
+          "sprintRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawDexterity": 8,
+          "airSpellDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "combatExperience": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "thunderSpellDamage": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          }
+        },
+        "base": {
+          "baseHealth": 2000,
+          "baseAirDefence": 70,
+          "baseThunderDefence": 70
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc0b",
+      "itemName": "Insomniac",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Insomniac",
+        "internalName": "Insomniac",
+        "type": "accessory",
+        "subType": "ring",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ring.air2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 111,
+          "agility": 40,
+          "dexterity": 40
+        },
+        "identifications": {
+          "damage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 7,
+            "max": 9
+          },
+          "walkSpeed": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "rawAgility": 5,
+          "rawMaxMana": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          }
+        }
+      },
+      "after": {
+        "displayName": "Insomniac",
+        "internalName": "Insomniac",
+        "type": "accessory",
+        "subType": "ring",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "ring.air2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_6",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 111,
+          "agility": 40,
+          "dexterity": 40
+        },
+        "identifications": {
+          "damage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 7,
+            "max": 9
+          },
+          "walkSpeed": {
+            "min": 2,
+            "raw": 8,
+            "max": 10
+          },
+          "rawAgility": 5,
+          "rawMaxMana": {
+            "min": -17,
+            "raw": -13,
+            "max": -9
+          }
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc0c",
+      "itemName": "Labyrinth",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Labyrinth",
+        "internalName": "Labyrinth",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 830,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 104,
+          "classRequirement": "archer",
+          "defence": 85,
+          "strength": 70
+        },
+        "majorIds": {
+          "Twisting Threads": "<span class='font-ascii' style='color:#AAAAAA'>Tangled Traps ropes gain +1 range, can overlap up to 3 times, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>50%</span>. Gain +12 traps with 66% duration that cannot be triggered by enemies.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Left. Right. Left. Right. They are desperate for an escape, merely playthings in a maze of your design. Left. Left. Right.  Turn back. When mountains of stone can shift at your command, their world is reduced to a single path. Left. Right. Does it ever end?</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "fireDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDefence": 20,
+          "earthDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "3rdSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 470,
+            "raw": 470,
+            "max": 530
+          },
+          "baseEarthDamage": {
+            "min": 485,
+            "raw": 485,
+            "max": 515
+          }
+        }
+      },
+      "after": {
+        "displayName": "Labyrinth",
+        "internalName": "Labyrinth",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 830,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 104,
+          "classRequirement": "archer",
+          "defence": 85,
+          "strength": 70
+        },
+        "majorIds": {
+          "Twisting Threads": "<span class='font-ascii' style='color:#AAAAAA'>Tangled Traps ropes gain +1 range, can overlap up to 3 times, and deal <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>65%</span>. Gain +12 traps with 66% duration that cannot be triggered by enemies.</span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Left. Right. Left. Right. They are desperate for an escape, merely playthings in a maze of your design. Left. Left. Right.  Turn back. When mountains of stone can shift at your command, their world is reduced to a single path. Left. Right. Does it ever end?</span>",
+        "identifications": {
+          "manaSteal": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "slowEnemy": {
+            "min": 3,
+            "raw": 11,
+            "max": 14
+          },
+          "fireDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawDefence": 20,
+          "earthDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "3rdSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 470,
+            "raw": 470,
+            "max": 530
+          },
+          "baseEarthDamage": {
+            "min": 485,
+            "raw": 485,
+            "max": 515
+          }
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc0d",
+      "itemName": "Singularity",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Singularity",
+        "internalName": "Singularity",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "superSlow",
+        "averageDps": 465,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 99,
+          "classRequirement": "mage",
+          "agility": 42,
+          "defence": 42,
+          "strength": 42,
+          "dexterity": 42,
+          "intelligence": 42
+        },
+        "majorIds": {
+          "Orbital Chain": "<span class='font-ascii' style='color:#AAAAAA'>Chain Lightning hits slower, rebounds, adds 6 chains, and pulls mobs closer for a <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>1500%</span> explosion spell. </span></span>"
+        },
+        "powderSlots": 15,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The existence of all things is reflected in the otherworldly jewels of this grand staff, dense enough to have its own gravitational pull. Users have reported their limbs being stretched after usage.</span>",
+        "identifications": {
+          "walkSpeed": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "spellDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawDexterity": 35,
+          "healthRegenRaw": {
+            "min": 105,
+            "raw": 350,
+            "max": 455
+          },
+          "rawSpellDamage": {
+            "min": 67,
+            "raw": 222,
+            "max": 289
+          },
+          "mainAttackDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawMainAttackDamage": {
+            "min": 231,
+            "raw": 769,
+            "max": 1000
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 280
+          },
+          "baseFireDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 255
+          },
+          "baseEarthDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 205
+          },
+          "baseWaterDamage": {
+            "min": 135,
+            "raw": 135,
+            "max": 230
+          },
+          "baseThunderDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 305
+          }
+        }
+      },
+      "after": {
+        "displayName": "Singularity",
+        "internalName": "Singularity",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "superSlow",
+        "averageDps": 465,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 99,
+          "classRequirement": "mage",
+          "agility": 42,
+          "defence": 42,
+          "strength": 42,
+          "dexterity": 42,
+          "intelligence": 42
+        },
+        "majorIds": {
+          "Orbital Chain": "<span class='font-ascii' style='color:#AAAAAA'>Chain Lightning hits slower, rebounds, adds 6 chains, and pulls mobs closer for a <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>8000%</span> explosion spell. </span></span>"
+        },
+        "powderSlots": 15,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The existence of all things is reflected in the otherworldly jewels of this grand staff, dense enough to have its own gravitational pull. Users have reported their limbs being stretched after usage.</span>",
+        "identifications": {
+          "walkSpeed": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "spellDamage": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "rawDexterity": 35,
+          "healthRegenRaw": {
+            "min": 105,
+            "raw": 350,
+            "max": 455
+          },
+          "rawSpellDamage": {
+            "min": 67,
+            "raw": 222,
+            "max": 289
+          },
+          "mainAttackDamage": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "rawMainAttackDamage": {
+            "min": 231,
+            "raw": 769,
+            "max": 1000
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 280
+          },
+          "baseFireDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 255
+          },
+          "baseEarthDamage": {
+            "min": 160,
+            "raw": 160,
+            "max": 205
+          },
+          "baseWaterDamage": {
+            "min": 135,
+            "raw": 135,
+            "max": 230
+          },
+          "baseThunderDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 305
+          }
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc0e",
+      "itemName": "Halcyon",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Halcyon",
+        "internalName": "Halcyon",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 492,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 118,
+          "classRequirement": "mage",
+          "agility": 50,
+          "dexterity": 50,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Blinding Lights": "<span class='font-ascii' style='color:#AAAAAA'>All Ophanim orbs deal 250% increased damage, gain +5 Crystallize per hit, and instead orbit around you. Using Main Attack causes all orbs to travel faster.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>As a flashing star shot through the night sky, a sole observer witnessed its brilliance. It was then, wreathed in prismatic light, he decided. Someday, he would shine as bright as that star, and overtake those beneath him. No matter the cost.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": -4290,
+            "raw": -3300,
+            "max": -2310
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawStrength": -50,
+          "elementalDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "healingEfficiency": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawElementalSpellDamage": {
+            "min": 90,
+            "raw": 300,
+            "max": 390
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 80
+          },
+          "baseFireDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "baseEarthDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "baseWaterDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 70
+          },
+          "baseThunderDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 90
+          }
+        }
+      },
+      "after": {
+        "displayName": "Halcyon",
+        "internalName": "Halcyon",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.multi3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 492,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 118,
+          "classRequirement": "mage",
+          "agility": 50,
+          "dexterity": 50,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Blinding Lights": "<span class='font-ascii' style='color:#AAAAAA'>All Ophanim orbs deal 250% damage, gain +5 Crystallize per hit, and instead orbit around you. Using Main Attack causes all orbs to travel faster.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>As a flashing star shot through the night sky, a sole observer witnessed its brilliance. It was then, wreathed in prismatic light, he decided. Someday, he would shine as bright as that star, and overtake those beneath him. No matter the cost.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": -4290,
+            "raw": -3300,
+            "max": -2310
+          },
+          "reflection": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawStrength": -50,
+          "elementalDefence": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "raw4thSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "healingEfficiency": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "rawElementalSpellDamage": {
+            "min": 90,
+            "raw": 300,
+            "max": 390
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 80
+          },
+          "baseFireDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "baseEarthDamage": {
+            "min": 1,
+            "raw": 1,
+            "max": 1
+          },
+          "baseWaterDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 70
+          },
+          "baseThunderDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 90
+          }
+        }
+      }
+    },
+    {
+      "_id": "69fbf044ff92f4e74fbccc0f",
+      "itemName": "Apsara",
+      "status": "modify",
+      "timestamp": 1778118724,
+      "before": {
+        "displayName": "Apsara",
+        "internalName": "Apsara",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 390,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "mage",
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores up to 25% more max health to allies, but heals at a slower rate. Fluid Healing's effectiveness is increased by 150%.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Under the waters, between the waves, there lies something-something beautiful.</span>",
+        "identifications": {
+          "damage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "1stSpellCost": {
+            "min": 14,
+            "raw": 11,
+            "max": 8
+          },
+          "rawIntelligence": 20
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 275
+          }
+        }
+      },
+      "after": {
+        "displayName": "Apsara",
+        "internalName": "Apsara",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 390,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "mage",
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 5% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Under the waters, between the waves, there lies something-something beautiful.</span>",
+        "identifications": {
+          "damage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "1stSpellCost": {
+            "min": 14,
+            "raw": 11,
+            "max": 8
+          },
+          "rawIntelligence": 20
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 275
+          }
+        }
+      }
+    }
+  ],
+  "add": [
+    {
+      "_id": "69fbf044ff92f4e74fbccc05",
+      "itemName": "Pas De Deux",
+      "status": "add",
+      "timestamp": 1778118724,
+      "displayName": "Pas De Deux",
+      "internalName": "Pas De Deux",
+      "type": "weapon",
+      "subType": "relik",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "relik.air3",
+          "customModelData": {
+            "rangeDispatch": [
+              3595
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "diamond_4",
+      "tier": "fabled",
+      "attackSpeed": "fast",
+      "averageDps": 600,
+      "dropRestriction": "normal",
+      "elements": [
+        "water",
+        "air"
+      ],
+      "requirements": {
+        "level": 81,
+        "classRequirement": "shaman",
+        "agility": 50,
+        "intelligence": 50
+      },
+      "majorIds": {
+        "Aubri's Tears": "<span class='font-ascii' style='color:#AAAAAA'>Pool of Rejuvenation's range and duration are doubled, but Frog Dance deals no damage.</span>"
+      },
+      "powderSlots": 3,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>\"I am only human in the snow. When it melts away, so too do I, for then I am cursed to be a swan.\"</span>",
+      "identifications": {
+        "reflection": {
+          "min": 8,
+          "raw": 28,
+          "max": 36
+        },
+        "slowEnemy": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "jumpHeight": 1,
+        "healthRegen": {
+          "min": -14,
+          "raw": -11,
+          "max": -8
+        },
+        "raw2ndSpellCost": {
+          "min": -2,
+          "raw": -6,
+          "max": -8
+        },
+        "rawWaterSpellDamage": {
+          "min": 53,
+          "raw": 177,
+          "max": 230
+        }
+      },
+      "base": {
+        "baseDamage": {
+          "min": 15,
+          "raw": 15,
+          "max": 65
+        },
+        "baseAirDamage": {
+          "min": 35,
+          "raw": 35,
+          "max": 165
+        },
+        "baseWaterDamage": {
+          "min": 65,
+          "raw": 65,
+          "max": 135
+        }
+      }
+    }
+  ]
+}
