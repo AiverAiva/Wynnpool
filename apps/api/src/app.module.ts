@@ -7,10 +7,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GuildModule } from './guild/guild.module';
 import { PlayerModule } from './player/player.module';
-import { LootrunPoolModule } from './lootrun-pool/lootrun-pool.module';
 import { ItemModule } from './item/item.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
-import { AspectPoolModule } from './aspect-pool/aspect-pool.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { CacheModule } from '@nestjs/cache-manager';
@@ -36,9 +34,7 @@ import { WorldEventModule } from './world-event/world-event.module';
     }),
     GuildModule,
     PlayerModule,
-    LootrunPoolModule,
-    AspectPoolModule,
-    ItemModule,
+            ItemModule,
     AspectModule,
     ServerModule,
     LeaderboardModule,
