@@ -7,7 +7,6 @@ import { LootTimeSelector } from "./_component/loot-time-selector";
 import { LootrunProvider } from "@/components/provider/LootrunProvider";
 import { getLootpoolYearWeek } from "@/lib/dateUtils";
 
-import { LootrunItemHistory } from "./_component/loot-item-history";
 
 type Selection = {
     year: number
@@ -53,7 +52,6 @@ export default function LootrunPage() {
             <LootrunProvider selection={selection}>
                 <LootRunDisplay />
             </LootrunProvider>
-            <LootrunItemHistory />
-        </main>
+                    </main>
     )
 }
