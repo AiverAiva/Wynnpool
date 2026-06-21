@@ -29,7 +29,6 @@ const navCategories = [
     category: 'Main',
     items: [
       { name: 'Home', href: '/' },
-      { name: 'Annihilation', href: '/annihilation' },
       { name: 'Stats', href: '/stats' },
       { name: 'Discord', href: 'https://discord.gg/QVxPPqHFMk' },
     ],
@@ -50,6 +49,13 @@ const navCategories = [
       { name: 'Item Ranking', href: '/item/ranking' },
       { name: 'Item Weight', href: '/item/weight' },
       { name: 'Aspects Data', href: '/aspects/data' },
+    ],
+  },
+  {
+    category: 'World',
+    items: [
+      { name: 'Annihilation', href: '/annihilation' },
+      { name: 'Events', href: '/events' },
     ],
   },
 ];
@@ -129,15 +135,27 @@ export function Navbar({ user }: NavbarProps) {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className={`transition-colors hover:text-foreground/80 ${isActive(['/annihilation', '/events']) ? 'text-foreground' : 'text-foreground/60'
+                    } `}
+                >
+                  World
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
+                    <ListItem href="/annihilation" title="Annihilation" className={pathname === "/annihilation" ? 'bg-accent/50' : ''}>
+                      Countdown to the next Annihilation event with predictions.
+                    </ListItem>
+                    <ListItem href="/events" title="Events" className={pathname === "/events" ? 'bg-accent/50' : ''}>
+                      All world events with live countdowns and filters.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
                 <NavigationMenuLink href="/stats" className={navigationMenuTriggerStyle()}>
                   <p className={`transition-colors hover:text-foreground/80 ${pathname === '/stats' ? 'text-foreground' : 'text-foreground/60'
                     } `}>Stats</p>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="/annihilation" className={navigationMenuTriggerStyle()}>
-                  <p className={`transition-colors hover:text-foreground/80 ${pathname === '/annihilation' ? 'text-foreground' : 'text-foreground/60'
-                    } `}>Annihilation</p>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>

@@ -19,6 +19,7 @@ import { AspectModule } from 'aspect/aspect.module';
 import { RaidpoolModule } from './raidpool/raidpool.module';
 import { LootrunModule } from './lootrun/lootrun.module';
 import { WynncraftModule } from './wynncraft/wynncraft.module';
+import { WorldEventModule } from './world-event/world-event.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { WynncraftModule } from './wynncraft/wynncraft.module';
     RaidpoolModule,
     LootrunModule,
     WynncraftModule,
+    WorldEventModule,
   ],
   controllers: [AppController],
   providers: [AppService,
