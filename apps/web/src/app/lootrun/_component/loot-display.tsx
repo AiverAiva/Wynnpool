@@ -3,13 +3,13 @@
 import { useState, useMemo, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { LootItem } from "./loot-item"
+import { LootItem, getItemIcon } from "./loot-item"
 import {
     MapPin,
     Package,
     ChevronDown,
     ChevronUp,
-    Sparkles,
+    Wand2,
     Gem,
     Sword,
     BookOpen,
@@ -22,9 +22,10 @@ import { getRarityStyles } from "@/lib/colorUtils"
 import { AspectTooltipWrapper } from "@/components/wrapper/AspectTooltipWrapper"
 import { useLootrun, type Item } from "@/components/context/LootrunContext"
 
-type Category = "Gear" | "Tome" | "Key" | "Currency" | "Misc"
+type Category = "Gear" | "Corkian" | "Tome" | "Key" | "Currency" | "Misc"
 
-const CATEGORIES: readonly Category[] = ["Gear", "Tome", "Key", "Currency", "Misc"] as const
+/** Categories rendered as collapsible cards (Corkian is rendered as inline pills instead). */
+const COLLAPSIBLE_CATEGORIES: readonly Category[] = ["Gear", "Tome", "Key", "Currency", "Misc"] as const
 const RARITY_ORDER = ["Mythic", "Legendary", "Fabled", "Rare", "Unique", "Set", "Common"] as const
 
 const RARITY_RANK = Object.fromEntries(
@@ -49,13 +50,18 @@ function getCategoryType(item: Item): Category {
     switch (item.itemType) {
         case "GearItem":
             return "Gear"
+        case "SimulatorItem":
+        case "InsulatorItem":
+        case "AmplifierItem":
+            return "Corkian"
+        case "WardItem":
+            return "Misc" // Wards are raid rewards — shelled until lootrun data includes them
         case "TomeItem":
             return "Tome"
         case "DungeonKeyItem":
             return "Key"
         case "EmeraldItem":
         case "RuneItem":
-        case "InsulatorItem":
             return "Currency"
         default:
             return "Misc"
@@ -66,6 +72,8 @@ function getCategoryIcon(category: string) {
     switch (category) {
         case "Gear":
             return <Sword className="h-4 w-4" />
+        case "Corkian":
+            return <Wand2 className="h-4 w-4" />
         case "Tome":
             return <BookOpen className="h-4 w-4" />
         case "Key":
@@ -100,6 +108,41 @@ function sortRarityGroups(groupedByRarity: Record<string, Item[]>): [string, Ite
         const indexB = RARITY_RANK[b[0].toLowerCase()] ?? Infinity
         return indexA - indexB
     })
+}
+
+function CorkianPills({ items }: { items: Item[] }) {
+    if (items.length === 0) return null
+    return (
+        <div className="space-y-2 pb-2">
+            <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                Corkian Augment
+            </p>
+            <div className="flex flex-wrap gap-2">
+                {items.map((item, idx) => (
+                    <div
+                        key={`${item.name}-${idx}`}
+                        className={cn(
+                            "flex items-center gap-2 px-3 py-1.5 rounded-md bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 transition-colors",
+                            item.shiny && "shiny-card-effect",
+                        )}
+                        title={item.name}
+                    >
+                        <div className="h-5 w-5 flex-shrink-0 flex items-center justify-center [&_svg]:h-5 [&_svg]:w-5 [&_img]:h-5 [&_img]:w-5">
+                            {getItemIcon(item)}
+                        </div>
+                        <span className="text-sm font-medium truncate max-w-[200px]">
+                            {item.name}
+                        </span>
+                        {item.amount > 1 && (
+                            <span className="text-[10px] font-mono text-muted-foreground">
+                                ×{item.amount}
+                            </span>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
 }
 
 export function LootRunDisplay() {
@@ -203,14 +246,16 @@ export function LootRunDisplay() {
                                 acc[getCategoryType(item)].push(item)
                                 return acc
                             },
-                            { Gear: [], Tome: [], Key: [], Currency: [], Misc: [] } as Record<Category, Item[]>
+                            { Gear: [], Corkian: [], Tome: [], Key: [], Currency: [], Misc: [] } as Record<Category, Item[]>
                         )
 
                         return (
                             <div key={region.region} className="space-y-4">
 
+                                <CorkianPills items={categorizedItems.Corkian} />
+
                                 <div className="space-y-4">
-                                    {CATEGORIES.map((category) => {
+                                    {COLLAPSIBLE_CATEGORIES.map((category) => {
                                         const items = categorizedItems[category]
                                         if (items.length === 0) return null
 

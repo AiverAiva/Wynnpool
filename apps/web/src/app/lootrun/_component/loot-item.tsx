@@ -28,8 +28,15 @@ export interface Item {
 
 
 function getItemIcon(item: Item) {
-  // If we have a specific icon from the API, use it
-  if (item.icon) {
+  // If we have a specific icon from the API, use it — except for Corkian item
+  // types which need their dedicated local icon image (the CDN URL returned
+  // by wynnventory for these itemTypes does not resolve to a valid image).
+  const isCorkianItem =
+    item.itemType === "InsulatorItem" ||
+    item.itemType === "SimulatorItem" ||
+    item.itemType === "AmplifierItem"
+
+  if (item.icon && !isCorkianItem) {
     const compatibleItem = {
       type: item.itemType === "GearItem" ? (["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"].includes(item.subtype) ? "armour" : "weapon") : item.itemType.replace("Item", "").toLowerCase(),
       armourType: item.subtype.toLowerCase(),
