@@ -75,57 +75,62 @@ export default function ServerStatusDisplay() {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center h-screen">
-                <Loader2 className="h-8 w-8 animate-spin" />
-            </div>
+            <Card className="flex justify-center items-center py-16">
+                <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            </Card>
         )
     }
 
     if (error) {
-        return <div className="text-red-500 text-center">{error}</div>
+        return (
+            <Card className="py-16">
+                <p className="text-center text-muted-foreground">{error}</p>
+            </Card>
+        )
     }
 
     if (!data) {
-        return <div className="text-center">No data available</div>
+        return (
+            <Card className="py-16">
+                <p className="text-center text-muted-foreground">No data available</p>
+            </Card>
+        )
     }
 
     return (
-        <div className="container mx-auto py-8 max-w-screen-lg">
-            <h3 className="text-2xl font-bold mb-4">Server Status</h3>
-            <Card>
-                <Table>
-                    <TableHeader>
-                        <TableRow >
-                            <TableHead>
-                                <Button variant="ghost" onClick={() => handleSort('server')}>
-                                    Server <ArrowUpDown className="ml-2 h-4 w-4" />
-                                </Button>
-                            </TableHead>
-                            <TableHead>
-                                <Button variant="ghost" onClick={() => handleSort('players')}>
-                                    Players <ArrowUpDown className="ml-2 h-4 w-4" />
-                                </Button>
-                            </TableHead>
-                            <TableHead>
-                                <Button variant="ghost" onClick={() => handleSort('uptime')}>
-                                    Uptime <ArrowUpDown className="ml-2 h-4 w-4" />
-                                </Button>
-                            </TableHead>
-                        </TableRow>
-                    </TableHeader>
+        <Card>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>
+                            <Button variant="ghost" onClick={() => handleSort('server')}>
+                                Server <ArrowUpDown className="ml-2 h-4 w-4" />
+                            </Button>
+                        </TableHead>
+                        <TableHead>
+                            <Button variant="ghost" onClick={() => handleSort('players')}>
+                                Players <ArrowUpDown className="ml-2 h-4 w-4" />
+                            </Button>
+                        </TableHead>
+                        <TableHead>
+                            <Button variant="ghost" onClick={() => handleSort('uptime')}>
+                                Uptime <ArrowUpDown className="ml-2 h-4 w-4" />
+                            </Button>
+                        </TableHead>
+                    </TableRow>
+                </TableHeader>
 
-                    <TableBody>
-                        {sortedServers.map(([server, serverData]) => (
-                            <TableRow key={server}>
-                                <TableCell>{server}</TableCell>
-                                <TableCell>{serverData.players.length}</TableCell>
-                                <TableCell>{formatUptime(serverData.uptime)}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </Card>
-        </div>
+                <TableBody>
+                    {sortedServers.map(([server, serverData]) => (
+                        <TableRow key={server}>
+                            <TableCell>{server}</TableCell>
+                            <TableCell>{serverData.players.length}</TableCell>
+                            <TableCell>{formatUptime(serverData.uptime)}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </Card>
     )
 }
 

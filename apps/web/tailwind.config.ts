@@ -11,7 +11,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+				sans: ["var(--font-geist)", ...defaultTheme.fontFamily.sans],
 			},
 			colors: {
 				//wynncraft colors
