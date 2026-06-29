@@ -2,10 +2,9 @@
 
 import { useState, useMemo, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { RegionTabs } from "@/components/region-tabs"
 import { LootItem, getItemIcon } from "./loot-item"
 import {
-    MapPin,
     Package,
     ChevronDown,
     ChevronUp,
@@ -40,6 +39,14 @@ const REGION_NAMES: Record<string, string> = {
     "Molten Heights": "Molten Heights",
     "Sky Islands": "Sky Islands",
     "Silent Expanse": "Silent Expanse",
+}
+
+const REGION_SHORT_NAMES: Record<string, string> = {
+    COTL: "COTL",
+    "Corkus": "Corkus",
+    "Molten Heights": "Molten",
+    "Sky Islands": "Sky",
+    "Silent Expanse": "Silent",
 }
 
 const REGION_RANK = Object.fromEntries(
@@ -222,23 +229,17 @@ export function LootRunDisplay() {
             {/* Header */}
 
 
-            <Tabs value={activeRegion} onValueChange={setActiveRegion} className="w-full">
-                <TabsList className="bg-transparent border-b border-border rounded-none h-auto p-0 w-full flex overflow-x-auto scrollbar-hide mb-6">
-                    {sortedRegions.map((region) => (
-                        <TabsTrigger
-                            key={region.region}
-                            value={region.region}
-                            className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent bg-transparent px-2 sm:px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"
-                        >
-                            <div className="flex items-center justify-center gap-2">
-                                <MapPin className="h-3.5 w-3.5" />
-                                {REGION_NAMES[region.region] || region.region}
-                            </div>
-                        </TabsTrigger>
-                    ))}
-                </TabsList>
+            <RegionTabs
+                regions={sortedRegions.map((region) => ({
+                    id: region.region,
+                    label: REGION_NAMES[region.region] || region.region,
+                    shortLabel: REGION_SHORT_NAMES[region.region],
+                }))}
+                activeRegion={activeRegion}
+                onRegionChange={setActiveRegion}
+            />
 
-                <TabsContent value={activeRegion} className="mt-0 space-y-8 animate-in fade-in duration-300">
+                <div className="space-y-8">
                     {currentRegions.map((region) => {
                         // Group items for this specific region
                         const categorizedItems = region.items.reduce(
@@ -315,8 +316,7 @@ export function LootRunDisplay() {
                             </div>
                         )
                     })}
-                </TabsContent>
-            </Tabs>
+                </div>
 
             {currentRegions[0] && (
                 <p className="text-[10px] text-muted-foreground/50 uppercase tracking-wider mt-6 text-center">

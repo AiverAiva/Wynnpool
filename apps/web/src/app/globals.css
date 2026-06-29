@@ -109,4 +109,12 @@ html {
     border-color: #eac2ff !important;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), inset 0 0 10px rgba(234, 194, 255, 0.3) !important;
   }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

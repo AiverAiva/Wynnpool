@@ -1,6 +1,6 @@
 import { Item, LootItem } from "./loot-item"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { Loader2, AlertCircle, MapPin, Package, ChevronUp, ChevronDown } from "lucide-react"
+import { RegionTabs } from "@/components/region-tabs"
+import { Loader2, AlertCircle, Package, ChevronUp, ChevronDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { getRarityStyles } from "@/lib/colorUtils"
@@ -179,37 +179,16 @@ export const LootDisplay: React.FC = () => {
 
     return (
         <>
-            <Tabs value={activeRegion} onValueChange={(value) => setActiveRegion(value as RegionAbbrev)} className="w-full">
-                <TabsList className="bg-transparent border-b border-border rounded-none h-auto p-0 w-full justify-between overflow-x-auto scrollbar-hide mb-6">
-                    {REGION_ABBREV_ORDER.map((abbrev) => {
-                        const label = getRegionLabel(abbrev)
-                        const isAvailable = availableRegionLabels.has(label)
+            <RegionTabs
+                regions={REGION_ABBREV_ORDER.map((abbrev) => ({
+                    id: abbrev,
+                    label: getRegionLabel(abbrev),
+                    disabled: !availableRegionLabels.has(getRegionLabel(abbrev)),
+                }))}
+                activeRegion={activeRegion}
+                onRegionChange={(value) => setActiveRegion(value as RegionAbbrev)}
+            />
 
-                        return (
-                            <TabsTrigger
-                                key={abbrev}
-                                value={abbrev}
-                                disabled={!isAvailable}
-                                className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent bg-transparent px-0 py-3 text-sm font-medium transition-all flex-1 text-center disabled:opacity-40 disabled:cursor-not-allowed relative"
-                            >
-                                <div className="flex items-center gap-2">
-                                    <MapPin className="h-3.5 w-3.5" />
-                                    {abbrev}
-                                    {!isAvailable && (
-                                        <Badge variant="outline" className="ml-1 text-[8px] py-0 px-1 h-3.5 border-muted-foreground/30">
-                                            Pending
-                                        </Badge>
-                                    )}
-                                </div>
-                            </TabsTrigger>
-                        )
-                    })}
-                </TabsList>
-
-                <TabsContent
-                    value={activeRegion}
-                    className="mt-0 space-y-4 animate-in fade-in duration-300"
-                >
                     {categorizedItems && CATEGORIES.map((category) => {
                         const items = categorizedItems[category]
                         if (items.length === 0) return null
@@ -264,8 +243,6 @@ export const LootDisplay: React.FC = () => {
                             </div>
                         )
                     })}
-                </TabsContent>
-            </Tabs>
 
             {currentRegion && (
                 <p className="text-[10px] text-muted-foreground/50 uppercase tracking-wider mt-6 text-center">
