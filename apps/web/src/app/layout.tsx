@@ -3,14 +3,23 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { SponsoredWhale } from "@/components/custom/sponsor-tab";
 import { Toaster } from "@/components/ui/sonner";
-import { Inter } from "next/font/google"
+import localFont from "next/font/local"
+import { Pixelify_Sans } from "next/font/google"
 import { Footer } from "@/components/layout/footer";
 import { Providers } from "./providers";
 import { getCurrentUser } from "@/lib/server-auth";
 
-const inter = Inter({
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist",
+  display: "swap",
+})
+
+const pixelifySans = Pixelify_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-pixelify",
+  display: "swap",
+  weight: "700",
 })
 
 export const metadata: Metadata = {
@@ -32,7 +41,7 @@ export default async function RootLayout({
   const user = await getCurrentUser();
 
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={`${geistSans.variable} ${pixelifySans.variable}`} suppressHydrationWarning>
       <head>
         {/* Google Analytics Script */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCQ4YPPLEP"></script>
