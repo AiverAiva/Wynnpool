@@ -311,21 +311,17 @@ const GlobalSearch: React.FC<any> = () => {
 
   return (
     <>
-      <Button
-        variant='ghost'
-        className='size-9 p-0'
+      <button
+        type="button"
+        aria-label="Search"
         onClick={handleInputFocus}
+        className="grid size-9 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.05] hover:text-foreground"
       >
         <Search className="size-4" />
-      </Button>
-
-      {/* blur */}
-      <div
-        className={`absolute w-screen h-screen top-0 left-0 z-5 backdrop-blur-sm pointer-events-none ${!isDialogOpen && "hidden"}`}
-      />
+      </button>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="z-50">
+        <DialogContent className="z-[70]">
           <DialogTitle className="hidden" />
           <DialogHeader>
             <div className="flex gap-2">

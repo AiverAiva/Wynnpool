@@ -1,28 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { ModeToggle } from '@/components/layout/mode-toggle'
-import { Menu } from 'lucide-react'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+import * as DialogPrimitive from '@radix-ui/react-dialog'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
 import React from 'react'
-import UserAuthDisplay from './user-auth-display'
-import { GlobalSearch } from './global-search'
+import { cn } from '@/lib/utils'
+import { ModeToggle } from '@/components/layout/mode-toggle'
+import UserAuthDisplay from '@/components/layout/user-auth-display'
+import { GlobalSearch } from '@/components/layout/global-search'
 
 interface NavbarProps {
   user: any | null
 }
+
+/* ------------------------------------------------------------------ */
+/* IA — kept exactly as before (no route / label changes)             */
+/* ------------------------------------------------------------------ */
 
 const navCategories = [
   {
@@ -58,208 +55,437 @@ const navCategories = [
       { name: 'Events', href: '/events' },
     ],
   },
-];
+]
+
+/* ------------------------------------------------------------------ */
+/* Desktop nav — section model                                         */
+/* ------------------------------------------------------------------ */
+
+type Section = {
+  label: string
+  /** active when pathname starts with any of these */
+  match: string[]
+  /** single link OR groups of items rendered in a dropdown */
+  href?: string
+  groups?: { items: { name: string; href: string; desc: string }[] }[]
+}
+
+const sections: Section[] = [
+  { label: 'Home', match: ['/'], href: '/' },
+  {
+    label: 'Lootpool',
+    match: ['/raid', '/lootrun'],
+    groups: [
+      {
+        items: [
+          { name: 'Raid', href: '/raid', desc: 'Raid pool data and a planner.' },
+          { name: 'Lootrun', href: '/lootrun', desc: 'Lootrun pool for every area, in detail.' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Loadout',
+    match: ['/item/search', '/item/changelog', '/item/analyze', '/item/ranking', '/item/weight', '/aspects/data'],
+    groups: [
+      {
+        items: [
+          { name: 'Item Search', href: '/item/search', desc: 'Find items with a selected filter.' },
+          { name: 'Item Changelog', href: '/item/changelog', desc: 'Track item changes across updates.' },
+          { name: 'Item Analyze', href: '/item/analyze', desc: "Inspect an item's potential with weight sets." },
+          { name: 'Item Ranking', href: '/item/ranking', desc: 'Best items, ranked by weighted score.' },
+          { name: 'Item Weight', href: '/item/weight', desc: 'Check the weight of every item.' },
+        ],
+      },
+      {
+        items: [
+          { name: 'Aspect Data', href: '/aspects/data', desc: 'All aspects and their effects, by class.' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'World',
+    match: ['/annihilation', '/events'],
+    groups: [
+      {
+        items: [
+          { name: 'Annihilation', href: '/annihilation', desc: 'Countdown to the next Annihilation with predictions.' },
+          { name: 'Events', href: '/events', desc: 'All world events with live countdowns and filters.' },
+        ],
+      },
+    ],
+  },
+  { label: 'Stats', match: ['/stats'], href: '/stats' },
+]
+
+/* ------------------------------------------------------------------ */
+/* Component                                                           */
+/* ------------------------------------------------------------------ */
 
 export function Navbar({ user }: NavbarProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
-  function isActive(triggerPaths: string[]) {
-    return triggerPaths.includes(pathname);
-  }
+  const prefersReduced = useReducedMotion()
+
+  const isSectionActive = (s: Section) =>
+    s.match.some((p) => (p === '/' ? pathname === '/' : pathname.startsWith(p)))
 
   return (
-    <header className="fixed top-4 inset-x-0 z-50 mx-auto max-w-5xl px-8 h-[60px] rounded-2xl bg-background/30 shadow-xs backdrop-blur backdrop-saturate-100 transition-colors">
-      <div className="container flex justify-between items-center h-full px-4">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block text-xl">
-              Wynnpool
-            </span>
+    <header className="fixed inset-x-0 top-4 z-50 mx-auto w-[calc(100%-2rem)] max-w-5xl px-0">
+      <nav className="flex h-14 items-center rounded-2xl bg-background/70 px-6 shadow-[0_8px_30px_rgb(0_0_0/0.08)] backdrop-blur-xl backdrop-saturate-150 dark:bg-background/60 dark:shadow-[0_10px_40px_rgb(0_0_0/0.45)]">
+        {/* ── Left: brand ──────────────────────────────────────── */}
+        <div className="flex shrink-0 items-center">
+          <Link
+            href="/"
+            className="flex shrink-0 items-center font-[family-name:var(--font-pixelify)] text-lg leading-none tracking-[0.02em] text-foreground"
+          >
+            Wynnpool
           </Link>
-          <NavigationMenu>
-            <NavigationMenuList className="flex items-center text-sm font-medium">
-              <NavigationMenuItem>
-                <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
-                  <p className={`transition-colors hover:text-foreground/80 ${pathname === '/' ? 'text-foreground' : 'text-foreground/60'
-                    } `}>Home</p>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={`transition-colors hover:text-foreground/80 ${isActive(['/raid', '/lootrun']) ? 'text-foreground' : 'text-foreground/60'
-                    } `}
-                >
-                  Lootpool
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
-                    <ListItem href="/raid" title="Raid" className={pathname === "/raid" ? 'bg-accent/50' : ''}>
-                      A page where you can find information about the raid pool and planner.
-                    </ListItem>
-                    <ListItem href="/lootrun" title="Lootrun" className={pathname === "/lootrun" ? 'bg-accent/50' : ''}>
-                      Lootrun pool from every area in game, with detailed infomation.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={`transition-colors hover:text-foreground/80 ${isActive(['/item/search', '/aspects/data', "/item/changelog", "/item/ranking", "/item/weight"]) ? 'text-foreground' : 'text-foreground/60'
-                    } `}
-                >
-                  Loadout
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className='flex'>
-                  <ul className="grid gap-3 p-6 w-[300px] lg:grid-cols-1">
-                    <ListItem href="/item/search" title="Item Search" className={pathname === "/item/search" ? 'bg-accent/50' : ''}>
-                      Find the items with a selected filter.
-                    </ListItem>
-                    <ListItem href="/item/changelog" title="Item Changelog" className={pathname === "/item/changelog" ? 'bg-accent/50' : ''}>
-                      Track changes to items across game updates.
-                    </ListItem>
-                    <ListItem href="/item/analyze" title="Item Analyze" className={pathname === "/item/analyze" ? 'bg-accent/50' : ''}>
-                      Discover your item's potential with expert-crafted weight sets!
-                    </ListItem>
-                    <ListItem href="/item/ranking" title="Item Ranking" className={pathname === "/item/ranking" ? 'bg-accent/50' : ''}>
-                      Find the best items in the game, ranked by their weighted score.
-                    </ListItem>
-                    <ListItem href="/item/weight" title="Item Weight" className={pathname === "/item/weight" ? 'bg-accent/50' : ''}>
-                      Check the weight of every item.
-                    </ListItem>
-                  </ul>
-                  <ul className="grid gap-3 p-6 w-[300px] lg:grid-cols-1">
-                    <ListItem href="/aspects/data" title="Aspect Data" className={pathname === "/aspects/data" ? 'bg-accent/50' : ''}>
-                      A page with all the aspects and their effects, cateogrized by class.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={`transition-colors hover:text-foreground/80 ${isActive(['/annihilation', '/events']) ? 'text-foreground' : 'text-foreground/60'
-                    } `}
-                >
-                  World
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-6 md:w-[300px] lg:w-[400px] lg:grid-cols-1">
-                    <ListItem href="/annihilation" title="Annihilation" className={pathname === "/annihilation" ? 'bg-accent/50' : ''}>
-                      Countdown to the next Annihilation event with predictions.
-                    </ListItem>
-                    <ListItem href="/events" title="Events" className={pathname === "/events" ? 'bg-accent/50' : ''}>
-                      All world events with live countdowns and filters.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="/stats" className={navigationMenuTriggerStyle()}>
-                  <p className={`transition-colors hover:text-foreground/80 ${pathname === '/stats' ? 'text-foreground' : 'text-foreground/60'
-                    } `}>Stats</p>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="https://discord.gg/QVxPPqHFMk" className={navigationMenuTriggerStyle()}>
-                  <p className={`transition-colors hover:text-foreground/80 text-foreground/60`}>Discord</p>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
         </div>
-        <div className="flex items-center space-x-2 w-full">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="pr-0">
-              <MobileLink href="/" className="flex items-center" onOpenChange={setIsOpen}>
-                <span className="font-bold text-foreground">Wynnpool</span>
-              </MobileLink>
-              <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-                <div className="flex flex-col space-y-3">
-                  {navCategories.map((category) => (
-                    <div key={category.category}>
-                      <h3 className="font-bold text-lg mt-4 mb-2">{category.category}</h3>
-                      <div className="ml-2 flex flex-col space-y-2">
-                        {category.items.map((item) => (
-                          <MobileLink key={item.href} href={item.href} onOpenChange={setIsOpen}>
-                            {item.name}
-                          </MobileLink>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
-          <div className='space-x-2 flex-grow flex justify-end items-center'>
-            <GlobalSearch />
-            <ModeToggle />
+
+        {/* ── Center: desktop nav ──────────────────────────────── */}
+        <ul className="hidden flex-1 items-center justify-center gap-0.5 md:flex" role="menubar">
+          {sections.map((section) =>
+            section.href && !section.groups ? (
+              <li key={section.label} role="none">
+                <Link
+                  href={section.href}
+                  role="menuitem"
+                  className={cn(
+                    'inline-flex h-9 items-center rounded-md px-3 text-[13px] transition-colors duration-200',
+                    isSectionActive(section)
+                      ? 'font-semibold text-foreground'
+                      : 'font-medium text-muted-foreground hover:text-foreground',
+                  )}
+                >
+                  {section.label}
+                </Link>
+              </li>
+            ) : (
+              <DropdownSection
+                key={section.label}
+                section={section}
+                active={isSectionActive(section)}
+                pathname={pathname}
+              />
+            ),
+          )}
+        </ul>
+
+        {/* ── Right cluster ─────────────────────────────────────── */}
+        <div className="ml-auto flex shrink-0 items-center gap-1.5 md:ml-0">
+          <GlobalSearch />
+          <ModeToggle />
+          <div className="hidden md:flex items-center">
             <UserAuthDisplay user={user} />
           </div>
+
+          {/* Mobile trigger (right cluster, thumb-reachable) */}
+          <button
+            type="button"
+            aria-label="Open menu"
+            onClick={() => setMobileOpen(true)}
+            className="grid size-9 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.05] hover:text-foreground md:hidden"
+          >
+            <Menu className="size-5" />
+          </button>
         </div>
-      </div>
+      </nav>
+
+      {/* ── Mobile overlay ─────────────────────────────────────── */}
+      <MobileOverlay
+        open={mobileOpen}
+        onOpenChange={setMobileOpen}
+        pathname={pathname}
+        reduced={prefersReduced}
+        user={user}
+      />
     </header>
   )
 }
 
-interface MobileLinkProps {
-  href: string
-  onOpenChange?: (open: boolean) => void
-  children: React.ReactNode
-  className?: string
+/* ------------------------------------------------------------------ */
+/* Dropdown section — portal-based for working backdrop-filter         */
+/* The dropdown panel is portaled to document.body, escaping the       */
+/* fixed header's stacking context so backdrop-filter can blur the     */
+/* actual page content behind it.                                      */
+/* ------------------------------------------------------------------ */
+
+function DropdownSection({
+  section,
+  active,
+  pathname,
+}: {
+  section: Section
+  active: boolean
+  pathname: string
+}) {
+  const [open, setOpen] = useState(false)
+  const [panelPos, setPanelPos] = useState({ left: 0, top: 0 })
+  const timer = useRef<NodeJS.Timeout | null>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const prefersReduced = useReducedMotion()
+
+  const computePosition = () => {
+    if (!triggerRef.current) return
+    const rect = triggerRef.current.getBoundingClientRect()
+    const panelWidth = Math.min(window.innerWidth * 0.92, 540)
+    let left = rect.left + rect.width / 2 - panelWidth / 2
+    // clamp to viewport with 16px margin
+    left = Math.max(16, Math.min(left, window.innerWidth - panelWidth - 16))
+    setPanelPos({ left, top: rect.bottom + 8 })
+  }
+
+  const openMenu = () => {
+    if (timer.current) clearTimeout(timer.current)
+    computePosition()
+    setOpen(true)
+  }
+  const closeMenu = () => {
+    timer.current = setTimeout(() => setOpen(false), 100)
+  }
+
+  useEffect(() => {
+    if (!open) return
+    const handleScroll = () => {
+      setOpen(false)
+    }
+    window.addEventListener('scroll', handleScroll, true)
+    const handleResize = () => computePosition()
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('scroll', handleScroll, true)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [open])
+
+  useEffect(() => {
+    return () => {
+      if (timer.current) clearTimeout(timer.current)
+    }
+  }, [])
+
+  return (
+    <li
+      role="none"
+      className="relative"
+      onMouseEnter={openMenu}
+      onMouseLeave={closeMenu}
+    >
+      <button
+        ref={triggerRef}
+        type="button"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => {
+          if (open) setOpen(false)
+          else {
+            computePosition()
+            setOpen(true)
+          }
+        }}
+        className={cn(
+          'inline-flex h-9 items-center rounded-md px-3 text-[13px] transition-colors duration-200',
+          active
+            ? 'font-semibold text-foreground'
+            : 'font-medium text-muted-foreground hover:text-foreground',
+        )}
+      >
+        {section.label}
+        <ChevronDown
+          className={cn(
+            'relative top-[1px] ml-1 h-3 w-3 transition duration-200',
+            open && 'rotate-180',
+          )}
+          aria-hidden="true"
+        />
+      </button>
+
+      {open &&
+        createPortal(
+          <motion.div
+            style={{ position: 'fixed', left: panelPos.left, top: panelPos.top, zIndex: 50 }}
+            className={cn(
+              'w-[min(92vw,540px)] rounded-2xl bg-background/70 p-2',
+              'shadow-[0_12px_40px_rgb(0_0_0/0.1),inset_0_1px_0_hsl(var(--foreground)/0.05)]',
+              'backdrop-blur-2xl backdrop-saturate-150',
+              'dark:bg-background/60 dark:shadow-[0_16px_50px_rgb(0_0_0/0.5),inset_0_1px_0_hsl(0_0%_100/0.04)]',
+            )}
+            initial={{ opacity: 0, y: prefersReduced ? 0 : -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: prefersReduced ? 0 : -6 }}
+            transition={{ duration: prefersReduced ? 0 : 0.18, ease: [0.16, 1, 0.3, 1] }}
+            onMouseEnter={openMenu}
+            onMouseLeave={closeMenu}
+            role="menu"
+          >
+            <div
+              className={cn(
+                'grid gap-0.5',
+                section.groups && section.groups.length > 1
+                  ? 'md:grid-cols-[1fr_auto_1fr] md:items-start'
+                  : 'grid-cols-1',
+              )}
+            >
+              {section.groups?.map((group, gi) => (
+                <React.Fragment key={gi}>
+                  {gi > 0 && <div className="mx-2 hidden w-px self-stretch bg-border/60 md:block" />}
+                  <div className="grid gap-0.5 p-2">
+                    {group.items.map((item) => (
+                      <DropdownLink key={item.href} item={item} pathname={pathname} />
+                    ))}
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+          </motion.div>,
+          document.body,
+        )}
+    </li>
+  )
 }
 
-function MobileLink({
-  href,
-  onOpenChange,
-  className,
-  children,
-  ...props
-}: MobileLinkProps) {
-  const pathname = usePathname()
+/* ------------------------------------------------------------------ */
+/* Dropdown item                                                       */
+/* ------------------------------------------------------------------ */
+
+function DropdownLink({
+  item,
+  pathname,
+}: {
+  item: { name: string; href: string; desc: string }
+  pathname: string
+}) {
+  const active = pathname === item.href
   return (
     <Link
-      href={href}
-      onClick={() => {
-        onOpenChange?.(false)
-      }}
-      className={`${className} ${pathname === href
-        ? 'text-foreground'
-        : 'text-foreground/60 hover:text-foreground/80'
-        }`}
-      {...props}
+      href={item.href}
+      className={cn(
+        'group/item relative flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors duration-200',
+        active ? 'bg-foreground/[0.06]' : 'hover:bg-foreground/[0.04]',
+      )}
     >
-      {children}
+      <div className="min-w-0 flex-1">
+        <div className="text-sm font-medium text-foreground">{item.name}</div>
+        <div className="mt-0.5 line-clamp-2 text-xs leading-snug text-muted-foreground">
+          {item.desc}
+        </div>
+      </div>
+      <ArrowRight className="mt-0.5 size-3.5 shrink-0 translate-x-[-4px] text-muted-foreground opacity-0 transition-all duration-200 group-hover/item:translate-x-0 group-hover/item:opacity-100" />
     </Link>
   )
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+/* ------------------------------------------------------------------ */
+/* Mobile full-screen overlay                                          */
+/* ------------------------------------------------------------------ */
+
+function MobileOverlay({
+  open,
+  onOpenChange,
+  pathname,
+  reduced,
+  user,
+}: {
+  open: boolean
+  onOpenChange: (v: boolean) => void
+  pathname: string
+  reduced?: boolean | null
+  user: any | null
+}) {
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={
-            `${className} block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground`
-          }
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
+    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      <AnimatePresence>
+        {open && (
+          <DialogPrimitive.Portal forceMount>
+            <DialogPrimitive.Overlay asChild>
+              <motion.div
+                className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-2xl backdrop-saturate-150"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: reduced ? 0 : 0.25, ease: [0.16, 1, 0.3, 1] }}
+              />
+            </DialogPrimitive.Overlay>
+            <DialogPrimitive.Content asChild>
+              <motion.div
+                className="fixed inset-0 z-[60] flex flex-col bg-background/80 backdrop-blur-2xl backdrop-saturate-150"
+                initial={reduced ? { opacity: 0 } : { opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduced ? { opacity: 0 } : { opacity: 0, y: -8 }}
+                transition={{ duration: reduced ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {/* Top bar */}
+                <div className="flex h-14 items-center justify-between px-5">
+                  <span className="flex items-center font-[family-name:var(--font-pixelify)] text-lg leading-none tracking-[0.02em] text-foreground">
+                    Wynnpool
+                  </span>
+                  <button
+                    type="button"
+                    aria-label="Close menu"
+                    onClick={() => onOpenChange(false)}
+                    className="grid size-9 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.05] hover:text-foreground"
+                  >
+                    <X className="size-5" />
+                  </button>
+                </div>
+
+                {/* Nav body */}
+                <div className="flex-1 overflow-y-auto px-5 pb-10 pt-4">
+                  <div className="flex flex-col gap-7">
+                    {navCategories.map((category, ci) => (
+                      <motion.section
+                        key={category.category}
+                        initial={reduced ? false : { opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: reduced ? 0 : 0.4,
+                          delay: reduced ? 0 : 0.08 + ci * 0.06,
+                          ease: [0.16, 1, 0.3, 1],
+                        }}
+                      >
+                        <h3 className="mb-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                          {category.category}
+                        </h3>
+                        <div className="flex flex-col gap-0.5">
+                          {category.items.map((item) => {
+                            const active = pathname === item.href
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => onOpenChange(false)}
+                                className={cn(
+                                  'flex items-center justify-between rounded-xl px-3 py-2.5 text-[15px] transition-colors',
+                                  active
+                                    ? 'bg-foreground/[0.06] text-foreground'
+                                    : 'text-muted-foreground hover:bg-foreground/[0.04] hover:text-foreground',
+                                )}
+                              >
+                                {item.name}
+                                {active && <span className="size-1.5 rounded-full bg-foreground/60" />}
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </motion.section>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Footer row */}
+                {user && (
+                  <div className="border-t border-border/50 px-5 py-3">
+                    <UserAuthDisplay user={user} />
+                  </div>
+                )}
+              </motion.div>
+            </DialogPrimitive.Content>
+          </DialogPrimitive.Portal>
+        )}
+      </AnimatePresence>
+    </DialogPrimitive.Root>
   )
-})
-ListItem.displayName = "ListItem"
+}

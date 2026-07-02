@@ -10,7 +10,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, User, Settings, Sparkles } from "lucide-react";
+import { LogOut, User, Settings } from "lucide-react";
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -38,11 +38,10 @@ export default function UserAuthDisplay({ user }: UserAuthDisplayProps) {
                         whileTap={{ scale: 0.95 }}
                         className="relative group focus:outline-none"
                     >
-                        <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-70 blur transition duration-300" />
-                        <div className="relative flex items-center justify-center size-9 rounded-full bg-background border border-border group-hover:border-transparent transition-colors overflow-hidden">
+                        <div className="relative flex items-center justify-center size-9 rounded-full bg-background border border-border transition-colors group-hover:border-foreground/30 overflow-hidden">
                             <Avatar className="size-8">
                                 <AvatarImage src={avatarUrl} alt={userName} className="object-cover" />
-                                <AvatarFallback className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 text-indigo-500 font-bold">
+                                <AvatarFallback className="bg-muted text-sm font-bold text-foreground">
                                     {userName.charAt(0).toUpperCase()}
                                 </AvatarFallback>
                             </Avatar>
@@ -51,26 +50,19 @@ export default function UserAuthDisplay({ user }: UserAuthDisplayProps) {
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent
-                    className="p-1.5 z-50 min-w-[240px] bg-background/60 shadow-[0_8px_32px_0_rgba(31,38,31,0.37)] backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl overflow-hidden"
+                    className="min-w-[240px] rounded-2xl border-0 bg-background/70 p-1.5 shadow-[0_12px_40px_rgb(0_0_0/0.1),inset_0_1px_0_hsl(var(--foreground)/0.05)] backdrop-blur-2xl backdrop-saturate-150 dark:bg-background/60 dark:shadow-[0_16px_50px_rgb(0_0_0/0.5),inset_0_1px_0_hsl(0_0%_100/0.04)]"
                     align="end"
                     sideOffset={8}
                 >
-                    <div className="relative px-3 py-4 mb-1.5 overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500/20 via-purple-500/10 to-transparent border border-white/10">
-                        <div className="absolute top-0 right-0 p-2 opacity-20">
-                            <Sparkles className="size-12 text-indigo-500 rotate-12" />
-                        </div>
-
-                        <div className="flex items-center gap-3 relative z-10">
-                            <div className="relative">
-                                <div className="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur-[2px] opacity-50" />
-                                <Avatar className="size-12 border-2 border-background rounded-full shadow-sm">
-                                    <AvatarImage src={avatarUrl} alt={userName} />
-                                    <AvatarFallback className="bg-muted text-sm font-bold">{userName.charAt(0)}</AvatarFallback>
-                                </Avatar>
-                            </div>
+                    <div className="px-3 py-3 mb-1.5 rounded-xl bg-foreground/[0.03]">
+                        <div className="flex items-center gap-3">
+                            <Avatar className="size-10 border-2 border-background rounded-full shadow-sm">
+                                <AvatarImage src={avatarUrl} alt={userName} />
+                                <AvatarFallback className="bg-muted text-sm font-bold text-foreground">{userName.charAt(0)}</AvatarFallback>
+                            </Avatar>
                             <div className="flex flex-col min-w-0">
-                                <span className="text-sm font-bold truncate tracking-tight">{userName}</span>
-                                <span className="text-[10px] text-muted-foreground truncate opacity-80">@{discordTag}</span>
+                                <span className="text-sm font-bold text-foreground truncate tracking-tight">{userName}</span>
+                                <span className="text-[11px] text-muted-foreground truncate">@{discordTag}</span>
                             </div>
                         </div>
                     </div>
@@ -78,30 +70,30 @@ export default function UserAuthDisplay({ user }: UserAuthDisplayProps) {
                     <DropdownMenuGroup className="space-y-0.5">
                         <DropdownMenuItem
                             onClick={() => router.push("/profile")}
-                            className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-lg transition-colors hover:bg-white/10 focus:bg-indigo-500/20 focus:text-indigo-500 group"
+                            className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-lg transition-colors hover:bg-foreground/[0.05] focus:bg-foreground/[0.05] group text-foreground"
                         >
-                            <User className="size-4 opacity-60 group-hover:opacity-100 transition-opacity" />
+                            <User className="size-4 text-muted-foreground group-hover:text-foreground transition-colors" />
                             <span className="text-sm font-medium">My Profile</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                             onClick={() => router.push("/settings")}
-                            className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-lg transition-colors hover:bg-white/10 focus:bg-indigo-500/20 focus:text-indigo-500 group"
+                            className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-lg transition-colors hover:bg-foreground/[0.05] focus:bg-foreground/[0.05] group text-foreground"
                         >
-                            <Settings className="size-4 opacity-60 group-hover:opacity-100 transition-opacity" />
+                            <Settings className="size-4 text-muted-foreground group-hover:text-foreground transition-colors" />
                             <span className="text-sm font-medium">Settings</span>
                         </DropdownMenuItem>
                     </DropdownMenuGroup>
 
-                    <DropdownMenuSeparator className="my-1.5 bg-white/10" />
+                    <DropdownMenuSeparator className="my-1.5 bg-border" />
 
                     <DropdownMenuItem
                         onClick={async () => {
                             await fetch(api('/auth/logout'), { credentials: 'include' });
                             router.refresh();
                         }}
-                        className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-lg transition-colors hover:bg-red-500/10 focus:bg-red-500/20 focus:text-red-500 group text-red-500/80"
+                        className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-lg transition-colors hover:bg-destructive/10 focus:bg-destructive/15 group text-destructive"
                     >
-                        <LogOut className="size-4 opacity-60 group-hover:opacity-100 transition-opacity" />
+                        <LogOut className="size-4 text-destructive/70 group-hover:text-destructive transition-colors" />
                         <span className="text-sm font-medium">Sign Out</span>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
