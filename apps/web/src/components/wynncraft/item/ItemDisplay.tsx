@@ -7,6 +7,7 @@ import { getFormattedIdNumber, getIdentificationColor, getIdentificationInfo } f
 import type { Item } from "@wynnpool/shared"
 import Image from 'next/image'
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import { ItemIcon } from "../../custom/WynnIcon"
 import AttackSpeed from "./AttackSpeed"
 import BaseStats from "./BaseStats"
@@ -23,11 +24,20 @@ interface ItemDisplayProps {
 const SmallItemCard: React.FC<ItemDisplayProps> = ({ item }) => {
   const itemName = item.itemName ?? item.id ?? item.internalName;
 
+  // Mirrors the PlayerRow / GuildRow language in global-search: no Card chrome,
+  // same hover token, same ArrowRight push-in. Replaces the old h-12 + mb-2
+  // dense card so the items grid breathes alongside the other result rows.
   return (
-    <Card className='w-full flex h-12 items-center gap-4 hover:bg-accent/60 transition-colors cursor-pointer p-1.5 px-3 rounded-md mb-2'>
+    <div className="group flex w-full cursor-pointer items-center gap-2.5 rounded-lg p-2 transition-colors hover:bg-foreground/[0.04]">
       <ItemIcon item={item} />
-      <span key={itemName} className='text-md font-mono'>{itemName}</span>
-    </Card>
+      <span className="flex-1 truncate text-[13px] font-medium tracking-tight text-foreground">
+        {itemName}
+      </span>
+      <ArrowRight
+        className="size-3.5 shrink-0 -translate-x-1 text-muted-foreground opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+        aria-hidden="true"
+      />
+    </div>
   )
 }
 
