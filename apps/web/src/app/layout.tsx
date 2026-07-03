@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
-import { SponsoredWhale } from "@/components/custom/sponsor-tab";
 import { Toaster } from "@/components/ui/sonner";
 import localFont from "next/font/local"
 import { Pixelify_Sans } from "next/font/google"
@@ -61,7 +60,6 @@ export default async function RootLayout({
       >
         <Providers>
           <Navbar user={user} />
-          <SponsoredWhale />
           <Toaster />
           {children}
           {modal}
