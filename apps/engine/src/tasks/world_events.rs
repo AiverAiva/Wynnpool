@@ -63,9 +63,11 @@ async fn run_update_world_events() -> Result<()> {
     let schedules_coll = db.collection::<Document>("world_event_schedules");
     let changelog_coll = db.collection::<Document>("world_event_changelog");
 
-    // Ensure TTL index on schedules collection
+    // Ensure TTL index on schedules collection.
+    // TTL only fires on BSON Date fields, so we index `expireAt`
+    // (a BsonDateTime set per-doc), not `polledAt` (an RFC3339 string).
     let idx = IndexModel::builder()
-        .keys(doc! { "polledAt": 1 })
+        .keys(doc! { "expireAt": 1 })
         .options(
             IndexOptions::builder()
                 .expire_after(Some(std::time::Duration::from_secs(0)))
