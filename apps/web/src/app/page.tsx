@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useMotionSettings } from '@/components/provider/MotionSettingsProvider';
 import WynnPublisher from '@/components/custom/WynnPublisher';
-import ServerStatusDisplay from '@/components/custom/server-status';
+import { ServerStatusSummary } from '@/components/custom/server-status-summary';
 
 /* ------------------------------------------------------------------ */
 /* Noise Texture (CSS-only)                                            */
@@ -185,7 +185,7 @@ export default function HomePage() {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <ServerStatusDisplay />
+              <ServerStatusSummary />
             </motion.div>
           </div>
         </section>
