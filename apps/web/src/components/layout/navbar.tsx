@@ -53,6 +53,7 @@ const navCategories = [
     items: [
       { name: 'Annihilation', href: '/annihilation' },
       { name: 'Events', href: '/events' },
+      { name: 'Servers', href: '/servers' },
     ],
   },
 ]
@@ -106,12 +107,13 @@ const sections: Section[] = [
   },
   {
     label: 'World',
-    match: ['/annihilation', '/events'],
+    match: ['/annihilation', '/events', '/servers'],
     groups: [
       {
         items: [
           { name: 'Annihilation', href: '/annihilation', desc: 'Countdown to the next Annihilation with predictions.' },
           { name: 'Events', href: '/events', desc: 'All world events with live countdowns and filters.' },
+          { name: 'Servers', href: '/servers', desc: 'Live player count and uptime across all Wynncraft servers.' },
         ],
       },
     ],
