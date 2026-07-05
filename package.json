@@ -7,6 +7,7 @@
     "dev": "turbo run dev",
     "dev:web": "yarn workspace @wynnpool/web dev",
     "dev:api": "yarn workspace @wynnpool/api start:dev",
+    "dev:bot": "yarn workspace @wynnpool/bot dev",
     "build": "turbo run build"
   },
   "keywords": [],
