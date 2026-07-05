@@ -1,14 +1,16 @@
 {
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
     "dev": {
       "cache": true,
       "dependsOn": []
+    },
+    "start": {
+      "dependsOn": ["^build"],
+      "cache": false
     }
   }
 }
