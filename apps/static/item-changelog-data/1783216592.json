@@ -1,0 +1,168 @@
+{
+  "modify": [
+    {
+      "_id": "6a49b9d0b8524bc2d446a7aa",
+      "itemName": "Dawn Chaser",
+      "status": "modify",
+      "timestamp": 1783216592,
+      "before": {
+        "displayName": "Dawn Chaser",
+        "internalName": "Dawn Chaser",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "normal",
+        "averageDps": 410,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 114,
+          "classRequirement": "mage",
+          "defence": 55,
+          "dexterity": 50
+        },
+        "majorIds": {
+          "Phantom Slip": "<span class='font-ascii' style='color:#AAAAAA'>Activating Life Steal or Mana Steal will grant +60% speed bonus for 0.7 seconds.</span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>On the base of this ancient staff, a faded inscription surrounds a carving of an empty nest: \n<span class='font-old_fruman' style='font-weight:normal'>las ah sifpas il lelis, pactef nikcpadpets tofcef.\nluh prifad il kahnukc krad, nikckrahad il pahudef.\nkisal luh udpets tofcef, luh tofnikclotsecisah.\ntof il trasped lokc <span class='font-common'></span> cof, priftastah uc tofsascah.\n8 <span class='font-common'></span> 5al sifkel</span></span></span></span>",
+        "identifications": {
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "walkSpeed": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "fireDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "rawStrength": 12,
+          "mainAttackRange": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawThunderDamage": {
+            "min": 57,
+            "raw": 190,
+            "max": 247
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 130
+          },
+          "baseFireDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 60
+          },
+          "baseThunderDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 80
+          }
+        }
+      },
+      "after": {
+        "displayName": "Dawn Chaser",
+        "internalName": "Dawn Chaser",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "normal",
+        "averageDps": 410,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 114,
+          "classRequirement": "mage",
+          "defence": 55,
+          "dexterity": 50
+        },
+        "majorIds": {
+          "Phantom Slip": "<span class='font-ascii' style='color:#AAAAAA'>Activating Life Steal or Mana Steal will grant +60% speed bonus for 0.7 seconds.</span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>On the base of this ancient staff, a faded inscription surrounds a carving of an empty nest: \n<span class='font-old_fruman' style='font-weight:normal'>las ah sifpas il lelis, pactef nikcpadpets tofcef.\nluh prifad il kahnukc krad, nikckrahad il pahudef.\nkisal luh udpets tofcef, luh tofnikclotsecisah.\ntof il trasped lokc <span class='font-common'></span> cof, prifastah uc tofsascah.\n8 <span class='font-common'></span> 5al sifkel</span></span></span></span>",
+        "identifications": {
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "walkSpeed": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "fireDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "rawStrength": 12,
+          "mainAttackRange": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawThunderDamage": {
+            "min": 57,
+            "raw": 190,
+            "max": 247
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 130
+          },
+          "baseFireDamage": {
+            "min": 40,
+            "raw": 40,
+            "max": 60
+          },
+          "baseThunderDamage": {
+            "min": 20,
+            "raw": 20,
+            "max": 80
+          }
+        }
+      }
+    }
+  ]
+}
