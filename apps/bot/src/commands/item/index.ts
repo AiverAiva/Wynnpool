@@ -5,6 +5,7 @@ import { data as analyzeData } from './analyze';
 export const data = new SlashCommandBuilder()
   .setName('item')
   .setDescription('Item-related commands')
+  .setContexts([0, 1, 2])
   .addSubcommand(() => analyzeData)
   .addSubcommand(() => weightData);
 
