@@ -111,9 +111,6 @@ export function LootTimeSelector({ value, onChange }: LootTimeSelectorProps) {
             if (currentDay === 5 && currentHour >= 19) {
                 daysUntilFriday = 7
             }
-            if (daysUntilFriday === 0) {
-                daysUntilFriday = 7
-            }
 
             nextFriday.setUTCDate(now.getUTCDate() + daysUntilFriday)
             nextFriday.setUTCHours(19, 0, 0, 0)
@@ -125,7 +122,15 @@ export function LootTimeSelector({ value, onChange }: LootTimeSelectorProps) {
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
             const seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
-            return `${days}d ${hours}h ${minutes}m ${seconds}s`
+            // Drop leading zeros: "0d 4h" → "4h", "0d 0h 0m" → "0m"
+            const parts = [
+                days > 0 ? `${days}d` : null,
+                days > 0 || hours > 0 ? `${hours}h` : null,
+                days > 0 || hours > 0 || minutes > 0 ? `${minutes}m` : null,
+                `${seconds}s`,
+            ].filter(Boolean)
+
+            return parts.join(" ")
         }
 
         setTimeLeft(calculateTimeLeft())
