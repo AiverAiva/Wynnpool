@@ -1,0 +1,3769 @@
+{
+  "add": [
+    {
+      "_id": "6a519c196c8f447b4048283d",
+      "itemName": "Broken Lifeloop",
+      "status": "add",
+      "timestamp": 1783733273,
+      "displayName": "Broken Lifeloop",
+      "internalName": "Broken Lifeloop",
+      "type": "accessory",
+      "subType": "ring",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "ring.thunder2",
+          "customModelData": {
+            "rangeDispatch": [
+              3710
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "sticker_5",
+      "tier": "unique",
+      "restriction": "none",
+      "dropRestriction": "lootchest",
+      "elements": [
+        "thunder"
+      ],
+      "requirements": {
+        "level": 101,
+        "dexterity": 50
+      },
+      "identifications": {
+        "lifeSteal": {
+          "min": 51,
+          "raw": 170,
+          "max": 221
+        },
+        "manaSteal": {
+          "min": -8,
+          "raw": -6,
+          "max": -4
+        },
+        "mainAttackRange": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "rawMainAttackDamage": {
+          "min": 21,
+          "raw": 70,
+          "max": 91
+        }
+      },
+      "base": {
+        "baseHealth": -350,
+        "baseWaterDefence": -50,
+        "baseThunderDefence": 60
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048283e",
+      "itemName": "Arcane Parasite",
+      "status": "add",
+      "timestamp": 1783733273,
+      "displayName": "Arcane Parasite",
+      "internalName": "Arcane Parasite",
+      "type": "armour",
+      "subType": "helmet",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "name": "helmet.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "rare",
+      "restriction": "none",
+      "dropRestriction": "normal",
+      "elements": [
+        "thunder"
+      ],
+      "requirements": {
+        "level": 104,
+        "dexterity": 70
+      },
+      "powderSlots": 3,
+      "identifications": {
+        "manaRegen": {
+          "min": 3,
+          "raw": 11,
+          "max": 14
+        },
+        "manaSteal": {
+          "min": 4,
+          "raw": 14,
+          "max": 18
+        },
+        "rawDefence": -7,
+        "rawDexterity": 10,
+        "healthRegenRaw": {
+          "min": -455,
+          "raw": -350,
+          "max": -245
+        },
+        "rawIntelligence": 5,
+        "healingEfficiency": {
+          "min": -21,
+          "raw": -16,
+          "max": -11
+        },
+        "rawThunderSpellDamage": {
+          "min": 42,
+          "raw": 140,
+          "max": 182
+        }
+      },
+      "base": {
+        "baseHealth": 3000,
+        "baseFireDefence": -120,
+        "baseWaterDefence": 140,
+        "baseThunderDefence": 160
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048283f",
+      "itemName": "Spirit Shackles",
+      "status": "add",
+      "timestamp": 1783733273,
+      "displayName": "Spirit Shackles",
+      "internalName": "Spirit Shackles",
+      "type": "accessory",
+      "subType": "bracelet",
+      "icon": {
+        "value": {
+          "id": "minecraft:potion",
+          "name": "bracelet.water2",
+          "customModelData": {
+            "rangeDispatch": [
+              407
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "sticker_4",
+      "tier": "legendary",
+      "restriction": "none",
+      "dropRestriction": "never",
+      "elements": [
+        "water"
+      ],
+      "requirements": {
+        "level": 73,
+        "intelligence": 40
+      },
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>Unfinished business.</span>",
+      "identifications": {
+        "lootBonus": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        },
+        "walkSpeed": {
+          "min": -16,
+          "raw": -12,
+          "max": -8
+        },
+        "rawMaxMana": {
+          "min": 6,
+          "raw": 19,
+          "max": 25
+        },
+        "rawIntelligence": 3,
+        "healingEfficiency": {
+          "min": 3,
+          "raw": 10,
+          "max": 13
+        }
+      },
+      "base": {
+        "baseHealth": 300,
+        "baseAirDefence": 30,
+        "baseEarthDefence": -25,
+        "baseWaterDefence": 30
+      }
+    }
+  ],
+  "modify": [
+    {
+      "_id": "6a519c196c8f447b40482840",
+      "itemName": "Refined Pine Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Pine Plank",
+        "internalName": "Refined Pine Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankPine"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 80
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Pine Plank",
+        "internalName": "Refined Pine Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankPine"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 80
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482841",
+      "itemName": "Phoenix's Emblem",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Phoenix's Emblem",
+        "internalName": "Phoenix's Emblem",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 88,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "shaman"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 40
+          }
+        }
+      },
+      "after": {
+        "displayName": "Phoenix's Emblem",
+        "internalName": "Phoenix's Emblem",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 81,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "shaman"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 40
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482842",
+      "itemName": "Refined Dark Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Dark Plank",
+        "internalName": "Refined Dark Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankDark"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 60
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Dark Plank",
+        "internalName": "Refined Dark Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankDark"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 60
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482843",
+      "itemName": "Arsene",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Arsene",
+        "internalName": "Arsene",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "agility": 65,
+          "strength": 65
+        },
+        "majorIds": {
+          "Altruism": "<span class='font-ascii' style='color:#AAAAAA'>Nearby players gain 100% of the health you gain from Health Regen and Life Steal.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>I am thou... Thou art I.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "earthDefence": {
+            "min": 10,
+            "raw": 33,
+            "max": 43
+          },
+          "mainAttackRange": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "healingEfficiency": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "rawMainAttackDamage": {
+            "min": 180,
+            "raw": 600,
+            "max": 780
+          }
+        },
+        "base": {
+          "baseHealth": 4300,
+          "baseAirDefence": 175,
+          "baseFireDefence": -150,
+          "baseEarthDefence": 175
+        }
+      },
+      "after": {
+        "displayName": "Arsene",
+        "internalName": "Arsene",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_6",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "air"
+        ],
+        "requirements": {
+          "level": 112,
+          "agility": 65,
+          "strength": 65
+        },
+        "majorIds": {
+          "Altruism": "<span class='font-ascii' style='color:#AAAAAA'>Allies within 16 blocks gain 100% of the health you gain from Health Regen and Life Steal.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>I am thou... Thou art I.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          },
+          "walkSpeed": {
+            "min": 4,
+            "raw": 12,
+            "max": 16
+          },
+          "earthDefence": {
+            "min": 10,
+            "raw": 33,
+            "max": 43
+          },
+          "mainAttackRange": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "healingEfficiency": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "rawMainAttackDamage": {
+            "min": 180,
+            "raw": 600,
+            "max": 780
+          }
+        },
+        "base": {
+          "baseHealth": 4300,
+          "baseAirDefence": 175,
+          "baseFireDefence": -150,
+          "baseEarthDefence": 175
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482844",
+      "itemName": "Masterwork Archangel",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Archangel",
+        "internalName": "Masterwork Archangel",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 600,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 94,
+          "classRequirement": "assassin",
+          "agility": 105
+        },
+        "majorIds": {
+          "Grand Influence": "<span class='font-ascii' style='color:#AAAAAA'>While above 80% maximum health, nearby allies gain 15% increased health gain from all sources and 25% Walk Speed.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The unwieldy, yet imposing stature of this massive sickle strikes awe into those who view it. Those who have the will to wield it, however, seem to garner respect from all those around them, as though they had become a god.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 570,
+            "raw": 1900,
+            "max": 2470
+          },
+          "walkSpeed": {
+            "min": 12,
+            "raw": 41,
+            "max": 53
+          },
+          "rawAgility": 15,
+          "rawDefence": 10,
+          "healthRegen": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "weakenEnemy": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healthRegenRaw": {
+            "min": 147,
+            "raw": 490,
+            "max": 637
+          },
+          "mainAttackRange": {
+            "min": 38,
+            "raw": 125,
+            "max": 163
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 70
+          },
+          "baseAirDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 200
+          }
+        }
+      },
+      "after": {
+        "displayName": "Archangel",
+        "internalName": "Masterwork Archangel",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "fast",
+        "averageDps": 600,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 94,
+          "classRequirement": "assassin",
+          "agility": 105
+        },
+        "majorIds": {
+          "Grand Influence": "<span class='font-ascii' style='color:#AAAAAA'>While above 80% maximum health, allies within 12 blocks gain 15% increased health gain from all sources and 25% Walk Speed.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The unwieldy, yet imposing stature of this massive sickle strikes awe into those who view it. Those who have the will to wield it, however, seem to garner respect from all those around them, as though they had become a god.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 570,
+            "raw": 1900,
+            "max": 2470
+          },
+          "walkSpeed": {
+            "min": 12,
+            "raw": 41,
+            "max": 53
+          },
+          "rawAgility": 15,
+          "rawDefence": 10,
+          "healthRegen": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "weakenEnemy": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "healthRegenRaw": {
+            "min": 147,
+            "raw": 490,
+            "max": 637
+          },
+          "mainAttackRange": {
+            "min": 38,
+            "raw": 125,
+            "max": 163
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 70
+          },
+          "baseAirDamage": {
+            "min": 180,
+            "raw": 180,
+            "max": 200
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482845",
+      "itemName": "Refined Icefish Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Icefish Oil",
+        "internalName": "Refined Icefish Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilIce"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 40
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Icefish Oil",
+        "internalName": "Refined Icefish Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilIce"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 40
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482846",
+      "itemName": "Refined Spruce Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Spruce Plank",
+        "internalName": "Refined Spruce Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankSpruce"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 40
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Spruce Plank",
+        "internalName": "Refined Spruce Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankSpruce"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 40
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482847",
+      "itemName": "Strobelight",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Strobelight",
+        "internalName": "Strobelight",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.multi2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_3",
+        "tier": "fabled",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 54,
+          "defence": 30
+        },
+        "majorIds": {
+          "Taunt": "<span class='font-ascii' style='color:#AAAAAA'>Provoke's Cooldown is lowered by -3s.</span>"
+        },
+        "identifications": {
+          "reflection": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "walkSpeed": {
+            "min": -9,
+            "raw": -7,
+            "max": -5
+          },
+          "rawDefence": 7
+        },
+        "base": {
+          "baseHealth": 350
+        }
+      },
+      "after": {
+        "displayName": "Strobelight",
+        "internalName": "Strobelight",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.multi2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_3",
+        "tier": "fabled",
+        "dropRestriction": "lootchest",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 54,
+          "defence": 30
+        },
+        "majorIds": {
+          "Taunt": "<span class='font-ascii' style='color:#AAAAAA'>Provoke's Cooldown is reduced to 8s but its duration is reduced to 3s.</span>"
+        },
+        "identifications": {
+          "reflection": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "walkSpeed": {
+            "min": -9,
+            "raw": -7,
+            "max": -5
+          },
+          "rawDefence": 7
+        },
+        "base": {
+          "baseHealth": 350
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482848",
+      "itemName": "Refined Gudgeon Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Gudgeon Oil",
+        "internalName": "Refined Gudgeon Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilGudgeon"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 1
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 80,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Gudgeon Oil",
+        "internalName": "Refined Gudgeon Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilGudgeon"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 1
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 80,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482849",
+      "itemName": "Refined Maple Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Maple Plank",
+        "internalName": "Refined Maple Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankMaple"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 110
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Maple Plank",
+        "internalName": "Refined Maple Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankMaple"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 110
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048284a",
+      "itemName": "Refined Sky Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Sky Plank",
+        "internalName": "Refined Sky Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankSky"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 100
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Sky Plank",
+        "internalName": "Refined Sky Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankSky"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 100
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048284b",
+      "itemName": "Ignis",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Ignis",
+        "internalName": "Ignis",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 723,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 95,
+          "classRequirement": "archer",
+          "defence": 105
+        },
+        "majorIds": {
+          "Altruism": "<span class='font-ascii' style='color:#AAAAAA'>Nearby players gain 100% of the health you gain from Health Regen and Life Steal.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>This bow, used by the dwarves to land the final blow in the slaughter of Garaheth, is extremely powerful. Special fire resistant gloves must be worn at all times to prevent burns to the user.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 900,
+            "raw": 3000,
+            "max": 3900
+          },
+          "airDefence": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawDefence": 20,
+          "fireDefence": {
+            "min": 30,
+            "raw": 100,
+            "max": 130
+          },
+          "healthRegen": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "4thSpellCost": {
+            "min": -10,
+            "raw": -35,
+            "max": -45
+          },
+          "healthRegenRaw": {
+            "min": 168,
+            "raw": 560,
+            "max": 728
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 130,
+            "raw": 130,
+            "max": 210
+          },
+          "baseFireDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 225
+          }
+        }
+      },
+      "after": {
+        "displayName": "Ignis",
+        "internalName": "Ignis",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 723,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 95,
+          "classRequirement": "archer",
+          "defence": 105
+        },
+        "majorIds": {
+          "Altruism": "<span class='font-ascii' style='color:#AAAAAA'>Allies within 16 blocks gain 100% of the health you gain from Health Regen and Life Steal.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>This bow, used by the dwarves to land the final blow in the slaughter of Garaheth, is extremely powerful. Special fire resistant gloves must be worn at all times to prevent burns to the user.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 900,
+            "raw": 3000,
+            "max": 3900
+          },
+          "airDefence": {
+            "min": 15,
+            "raw": 50,
+            "max": 65
+          },
+          "rawDefence": 20,
+          "fireDefence": {
+            "min": 30,
+            "raw": 100,
+            "max": 130
+          },
+          "healthRegen": {
+            "min": 5,
+            "raw": 17,
+            "max": 22
+          },
+          "4thSpellCost": {
+            "min": -10,
+            "raw": -35,
+            "max": -45
+          },
+          "healthRegenRaw": {
+            "min": 168,
+            "raw": 560,
+            "max": 728
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 130,
+            "raw": 130,
+            "max": 210
+          },
+          "baseFireDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 225
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048284c",
+      "itemName": "Refined Koi Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Koi Oil",
+        "internalName": "Refined Koi Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilKoi"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 60
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Koi Oil",
+        "internalName": "Refined Koi Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilKoi"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 60
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048284d",
+      "itemName": "Refined Trout Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Trout Oil",
+        "internalName": "Refined Trout Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilTrout"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 10
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Trout Oil",
+        "internalName": "Refined Trout Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilTrout"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 10
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048284e",
+      "itemName": "Refined Bass Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Bass Oil",
+        "internalName": "Refined Bass Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilBass"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 80
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Bass Oil",
+        "internalName": "Refined Bass Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilBass"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 80
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048284f",
+      "itemName": "Refined Oak Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Oak Plank",
+        "internalName": "Refined Oak Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankOak"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 1
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 80,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Oak Plank",
+        "internalName": "Refined Oak Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankOak"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 1
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 80,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482850",
+      "itemName": "Signal Flare",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Signal Flare",
+        "internalName": "Signal Flare",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 85,
+          "agility": 45,
+          "defence": 45
+        },
+        "majorIds": {
+          "Taunt": "<span class='font-ascii' style='color:#AAAAAA'>Provoke's Cooldown is lowered by -3s.</span>"
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "airDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "lifeSteal": {
+            "min": 83,
+            "raw": 275,
+            "max": 358
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "fireDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawStrength": 10,
+          "waterDefence": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "rawMainAttackDamage": {
+            "min": 124,
+            "raw": 414,
+            "max": 538
+          }
+        },
+        "base": {
+          "baseHealth": 3200,
+          "baseAirDefence": 100,
+          "baseFireDefence": 100,
+          "baseEarthDefence": -100,
+          "baseWaterDefence": -50
+        }
+      },
+      "after": {
+        "displayName": "Signal Flare",
+        "internalName": "Signal Flare",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "fire",
+          "air"
+        ],
+        "requirements": {
+          "level": 85,
+          "agility": 45,
+          "defence": 45
+        },
+        "majorIds": {
+          "Taunt": "<span class='font-ascii' style='color:#AAAAAA'>Provoke's Cooldown is reduced to 8s but its duration is reduced to 3s.</span>"
+        },
+        "powderSlots": 2,
+        "identifications": {
+          "airDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "lifeSteal": {
+            "min": 83,
+            "raw": 275,
+            "max": 358
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "fireDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawStrength": 10,
+          "waterDefence": {
+            "min": -45,
+            "raw": -35,
+            "max": -24
+          },
+          "rawMainAttackDamage": {
+            "min": 124,
+            "raw": 414,
+            "max": 538
+          }
+        },
+        "base": {
+          "baseHealth": 3200,
+          "baseAirDefence": 100,
+          "baseFireDefence": 100,
+          "baseEarthDefence": -100,
+          "baseWaterDefence": -50
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482851",
+      "itemName": "Refined Dernic Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Dernic Plank",
+        "internalName": "Refined Dernic Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankDernic"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 105
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Dernic Plank",
+        "internalName": "Refined Dernic Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankDernic"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 105
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482852",
+      "itemName": "Phoenix's Saber",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Phoenix's Saber",
+        "internalName": "Phoenix's Saber",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 75,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "assassin"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 35
+          }
+        }
+      },
+      "after": {
+        "displayName": "Phoenix's Saber",
+        "internalName": "Phoenix's Saber",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 68,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "assassin"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 25,
+            "raw": 25,
+            "max": 35
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482853",
+      "itemName": "Refined Sturgeon Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Sturgeon Oil",
+        "internalName": "Refined Sturgeon Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilSturgeon"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 110
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Sturgeon Oil",
+        "internalName": "Refined Sturgeon Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilSturgeon"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 110
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482854",
+      "itemName": "Refined Salmon Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Salmon Oil",
+        "internalName": "Refined Salmon Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilSalmon"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 20
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Salmon Oil",
+        "internalName": "Refined Salmon Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilSalmon"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 20
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482855",
+      "itemName": "Refined Carp Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Carp Oil",
+        "internalName": "Refined Carp Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilCarp"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 30
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Carp Oil",
+        "internalName": "Refined Carp Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilCarp"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 30
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482856",
+      "itemName": "Refined Avo Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Avo Plank",
+        "internalName": "Refined Avo Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankAvo"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 90
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Avo Plank",
+        "internalName": "Refined Avo Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankAvo"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 90
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482857",
+      "itemName": "Vulcan",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Vulcan",
+        "internalName": "Vulcan",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 86,
+          "defence": 65,
+          "strength": 60
+        },
+        "majorIds": {
+          "Altruism": "<span class='font-ascii' style='color:#AAAAAA'>Nearby players gain 100% of the health you gain from Health Regen and Life Steal.</span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Canyon of the Lost Excursion (South)",
+          "type": "lootrun",
+          "coordinates": [
+            587,
+            80,
+            -5022
+          ]
+        },
+        "identifications": {
+          "sprint": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "lifeSteal": {
+            "min": -552,
+            "raw": -425,
+            "max": -297
+          },
+          "rawAgility": -8,
+          "healthRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawStrength": 15,
+          "3rdSpellCost": {
+            "min": 18,
+            "raw": 14,
+            "max": 10
+          },
+          "fireMainAttackDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawFireMainAttackDamage": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          }
+        },
+        "base": {
+          "baseHealth": 3400,
+          "baseAirDefence": -300,
+          "baseFireDefence": 200,
+          "baseEarthDefence": 200
+        }
+      },
+      "after": {
+        "displayName": "Vulcan",
+        "internalName": "Vulcan",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 86,
+          "defence": 65,
+          "strength": 60
+        },
+        "majorIds": {
+          "Altruism": "<span class='font-ascii' style='color:#AAAAAA'>Allies within 16 blocks gain 100% of the health you gain from Health Regen and Life Steal.</span>"
+        },
+        "powderSlots": 2,
+        "dropMeta": {
+          "name": "Canyon of the Lost Excursion (South)",
+          "type": "lootrun",
+          "coordinates": [
+            587,
+            80,
+            -5022
+          ]
+        },
+        "identifications": {
+          "sprint": {
+            "min": -32,
+            "raw": -25,
+            "max": -17
+          },
+          "lifeSteal": {
+            "min": -552,
+            "raw": -425,
+            "max": -297
+          },
+          "rawAgility": -8,
+          "healthRegen": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "rawStrength": 15,
+          "3rdSpellCost": {
+            "min": 18,
+            "raw": 14,
+            "max": 10
+          },
+          "fireMainAttackDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawFireMainAttackDamage": {
+            "min": 150,
+            "raw": 500,
+            "max": 650
+          }
+        },
+        "base": {
+          "baseHealth": 3400,
+          "baseAirDefence": -300,
+          "baseFireDefence": 200,
+          "baseEarthDefence": 200
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482858",
+      "itemName": "Hero",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Hero",
+        "internalName": "Hero",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "veryFast",
+        "averageDps": 457,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 91,
+          "classRequirement": "warrior",
+          "agility": 110
+        },
+        "majorIds": {
+          "Saviour's Sacrifice": "<span class='font-ascii' style='color:#AAAAAA'>While under 50% maximum health, nearby allies gain 15% bonus damage and defence.</span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Enigmatically, this weapon will only show itself to those who believe themselves to be worth nothing, or to be weak. While utilizing this weapon will greatly strengthen one's resolve, it will disappear when it is no longer needed, going to the next wielder.</span>",
+        "identifications": {
+          "walkSpeed": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "rawAgility": 30,
+          "healthRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawStrength": 10,
+          "rawDexterity": 10,
+          "mainAttackDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 55
+          },
+          "baseAirDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 120
+          }
+        }
+      },
+      "after": {
+        "displayName": "Hero",
+        "internalName": "Hero",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "mythic",
+        "attackSpeed": "veryFast",
+        "averageDps": 457,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 91,
+          "classRequirement": "warrior",
+          "agility": 110
+        },
+        "majorIds": {
+          "Saviour's Sacrifice": "<span class='font-ascii' style='color:#AAAAAA'>While under 50% maximum health, allies within 8 blocks gain 15% bonus damage and defence.</span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Enigmatically, this weapon will only show itself to those who believe themselves to be worth nothing, or to be weak. While utilizing this weapon will greatly strengthen one's resolve, it will disappear when it is no longer needed, going to the next wielder.</span>",
+        "identifications": {
+          "walkSpeed": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "rawAgility": 30,
+          "healthRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "rawStrength": 10,
+          "rawDexterity": 10,
+          "mainAttackDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 55
+          },
+          "baseAirDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 120
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482859",
+      "itemName": "Refined Willow Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Willow Plank",
+        "internalName": "Refined Willow Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankWillow"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 20
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Willow Plank",
+        "internalName": "Refined Willow Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankWillow"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 20
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048285a",
+      "itemName": "Hearthkeeper",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Hearthkeeper",
+        "internalName": "Hearthkeeper",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 99,
+          "strength": 50,
+          "dexterity": 40,
+          "intelligence": 50
+        },
+        "majorIds": {
+          "Altruism": "<span class='font-ascii' style='color:#AAAAAA'>Nearby players gain 100% of the health you gain from Health Regen and Life Steal.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Childhood memories, days of late nights and snow fights and cocoa by the fireside. Loving smiles and friendly faces. The beating heart of the world: home. This is what you fight for, beating back those dark and wicked forces which work to break down all that is loved. There is no sacrifice too great for the hearth.</span>",
+        "identifications": {
+          "lifeSteal": 580,
+          "manaRegen": -8,
+          "rawStrength": 5,
+          "spellDamage": 25,
+          "rawIntelligence": 5,
+          "elementalDefence": -25,
+          "raw1stSpellCost": -3
+        },
+        "base": {
+          "baseHealth": 3400,
+          "baseEarthDefence": 140,
+          "baseWaterDefence": 140,
+          "baseThunderDefence": 110
+        }
+      },
+      "after": {
+        "displayName": "Hearthkeeper",
+        "internalName": "Hearthkeeper",
+        "type": "armour",
+        "subType": "boots",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_boots",
+            "name": "boots.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth",
+          "thunder",
+          "water"
+        ],
+        "requirements": {
+          "level": 99,
+          "strength": 50,
+          "dexterity": 40,
+          "intelligence": 50
+        },
+        "majorIds": {
+          "Altruism": "<span class='font-ascii' style='color:#AAAAAA'>Allies within 16 blocks gain 100% of the health you gain from Health Regen and Life Steal.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Childhood memories, days of late nights and snow fights and cocoa by the fireside. Loving smiles and friendly faces. The beating heart of the world: home. This is what you fight for, beating back those dark and wicked forces which work to break down all that is loved. There is no sacrifice too great for the hearth.</span>",
+        "identifications": {
+          "lifeSteal": 580,
+          "manaRegen": -8,
+          "rawStrength": 5,
+          "spellDamage": 25,
+          "rawIntelligence": 5,
+          "elementalDefence": -25,
+          "raw1stSpellCost": -3
+        },
+        "base": {
+          "baseHealth": 3400,
+          "baseEarthDefence": 140,
+          "baseWaterDefence": 140,
+          "baseThunderDefence": 110
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048285b",
+      "itemName": "Restitution",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Restitution",
+        "internalName": "Restitution",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 615,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "classRequirement": "warrior",
+          "defence": 60,
+          "dexterity": 45,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Old Spark": "<span class='font-ascii' style='color:#AAAAAA'>Whirlwind transforms into a travelling projectile, exploding on contact and knocking enemies into the air. Hold shift to rise with them.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'><span class='font-old_fruman' style='font-weight:normal'>recnal il <span class='font-common'></span>il. alac toc, pasad il, atlruc il, kaclahpokc il cefos. lahes il nikcrolad kec pahsofmal uc ifrah tofnikcsif. etlefrofmad uc, etlaces uc tofnikcsoftahal. <span class='font-common'></span>rofmel <span class='font-common'></span>lahrakctriltod uc tofpahnuc. <span class='font-common'></span>lahic cof efrofmad il pahsadiled uc tofifrah. etlalnes ah rofmedes uc tofpestal. pasad uc tofmahatskritsec. etlrakc kec. etlrakc kec.</span></span></span></span></span></span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": 635,
+            "raw": 2115,
+            "max": 2750
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "earthDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawDexterity": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "thunderSpellDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseWaterDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 115
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 180
+          }
+        }
+      },
+      "after": {
+        "displayName": "Restitution",
+        "internalName": "Restitution",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "normal",
+        "averageDps": 615,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "classRequirement": "warrior",
+          "defence": 60,
+          "dexterity": 45,
+          "intelligence": 60
+        },
+        "majorIds": {
+          "Old Spark": "<span class='font-ascii' style='color:#AAAAAA'>Whirlwind transforms into a travelling projectile, exploding on contact and knocking enemies into the air. Crouch to rise with them.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'><span class='font-old_fruman' style='font-weight:normal'>recnal il <span class='font-common'></span>il. alac toc, pasad il, atlruc il, kaclahpokc il cefos. lahes il nikcrolad kec pahsofmal uc ifrah tofnikcsif. etlefrofmad uc, etlaces uc tofnikcsoftahal. <span class='font-common'></span>rofmel <span class='font-common'></span>lahrakctriltod uc tofpahnuc. <span class='font-common'></span>lahic cof efrofmad il pahsadiled uc tofifrah. etlalnes ah rofmedes uc tofpestal. pasad uc tofmahatskritsec. etlrakc kec. etlrakc kec.</span></span></span></span></span></span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 4,
+            "raw": 14,
+            "max": 18
+          },
+          "rawHealth": {
+            "min": 635,
+            "raw": 2115,
+            "max": 2750
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "earthDefence": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "rawDexterity": 20,
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          },
+          "thunderSpellDamage": {
+            "min": 17,
+            "raw": 58,
+            "max": 75
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseWaterDamage": {
+            "min": 65,
+            "raw": 65,
+            "max": 115
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 180
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048285c",
+      "itemName": "Eleventh Hour",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Eleventh Hour",
+        "internalName": "Eleventh Hour",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 80,
+          "defence": 30,
+          "strength": 55
+        },
+        "majorIds": {
+          "Saviour's Sacrifice": "<span class='font-ascii' style='color:#AAAAAA'>While under 50% maximum health, nearby allies gain 15% bonus damage and defence.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The last stand, a hero's rally, a turning tide-is it a tale of a champion who conquered, or a martyr who inspired? This is your story to tell.</span>",
+        "dropMeta": {
+          "name": "Isles of Fiction",
+          "type": [
+            "event",
+            "merchant"
+          ],
+          "event": "heroes",
+          "coordinates": [
+            -307,
+            36,
+            -4102
+          ]
+        },
+        "identifications": {
+          "thorns": 25,
+          "reflection": 25,
+          "walkSpeed": -15,
+          "rawStrength": 5,
+          "raw4thSpellCost": -3,
+          "mainAttackDamage": 25
+        },
+        "base": {
+          "baseAirDefence": 100,
+          "baseFireDefence": 100,
+          "baseEarthDefence": 100,
+          "baseWaterDefence": 100,
+          "baseThunderDefence": 100
+        }
+      },
+      "after": {
+        "displayName": "Eleventh Hour",
+        "internalName": "Eleventh Hour",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_iron"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "fabled",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth",
+          "fire"
+        ],
+        "requirements": {
+          "level": 80,
+          "defence": 30,
+          "strength": 55
+        },
+        "majorIds": {
+          "Saviour's Sacrifice": "<span class='font-ascii' style='color:#AAAAAA'>While under 50% maximum health, allies within 8 blocks gain 15% bonus damage and defence.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The last stand, a hero's rally, a turning tide-is it a tale of a champion who conquered, or a martyr who inspired? This is your story to tell.</span>",
+        "dropMeta": {
+          "name": "Isles of Fiction",
+          "type": [
+            "event",
+            "merchant"
+          ],
+          "event": "heroes",
+          "coordinates": [
+            -307,
+            36,
+            -4102
+          ]
+        },
+        "identifications": {
+          "thorns": 25,
+          "reflection": 25,
+          "walkSpeed": -15,
+          "rawStrength": 5,
+          "raw4thSpellCost": -3,
+          "mainAttackDamage": 25
+        },
+        "base": {
+          "baseAirDefence": 100,
+          "baseFireDefence": 100,
+          "baseEarthDefence": 100,
+          "baseWaterDefence": 100,
+          "baseThunderDefence": 100
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048285d",
+      "itemName": "Refined Jungle Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Jungle Plank",
+        "internalName": "Refined Jungle Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankJungle"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 50
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Jungle Plank",
+        "internalName": "Refined Jungle Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankJungle"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 50
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048285e",
+      "itemName": "Refined Acacia Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Acacia Plank",
+        "internalName": "Refined Acacia Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankAcacia"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 30
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Acacia Plank",
+        "internalName": "Refined Acacia Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankAcacia"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 30
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048285f",
+      "itemName": "Refined Starfish Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Starfish Oil",
+        "internalName": "Refined Starfish Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilStar"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 100
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Starfish Oil",
+        "internalName": "Refined Starfish Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilStar"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 100
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482860",
+      "itemName": "Refined Birch Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Birch Plank",
+        "internalName": "Refined Birch Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankBirch"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 10
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Birch Plank",
+        "internalName": "Refined Birch Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankBirch"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 10
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482861",
+      "itemName": "Refined Molten Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Molten Oil",
+        "internalName": "Refined Molten Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilMolten"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 90
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Molten Oil",
+        "internalName": "Refined Molten Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilMolten"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 90
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482862",
+      "itemName": "Refined Dernic Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Dernic Oil",
+        "internalName": "Refined Dernic Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilDernic"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 105
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Dernic Oil",
+        "internalName": "Refined Dernic Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilDernic"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 105
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482863",
+      "itemName": "Refined Redwood Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Redwood Plank",
+        "internalName": "Refined Redwood Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankRedwood"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 115
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Redwood Plank",
+        "internalName": "Refined Redwood Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankRedwood"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 115
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482864",
+      "itemName": "Refined Mahseer Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Mahseer Oil",
+        "internalName": "Refined Mahseer Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilMahseer"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 115
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Mahseer Oil",
+        "internalName": "Refined Mahseer Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilMahseer"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 115
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482865",
+      "itemName": "Refined Piranha Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Piranha Oil",
+        "internalName": "Refined Piranha Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilPiranha"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 50
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Piranha Oil",
+        "internalName": "Refined Piranha Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilPiranha"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 50
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482866",
+      "itemName": "A16-L31 Handheld Mortar",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "A16-L31 Handheld Mortar",
+        "internalName": "A16-L31 Handheld Mortar",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 820,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "shaman",
+          "defence": 45,
+          "strength": 45,
+          "dexterity": 45
+        },
+        "majorIds": {
+          "Totemic Fuse": "<span class='font-ascii' style='color:#AAAAAA'>Totemic Smash deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+40%</span>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>+90%</span>, <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>+90%</span>, and <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+60%</span> at the cost of half of Totem's duration.</span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "exploding": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawIntelligence": -30,
+          "raw1stSpellCost": {
+            "min": -5,
+            "raw": -17,
+            "max": -22
+          },
+          "mainAttackDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 480,
+            "raw": 480,
+            "max": 530
+          },
+          "baseEarthDamage": {
+            "min": 525,
+            "raw": 525,
+            "max": 575
+          },
+          "baseThunderDamage": {
+            "min": 495,
+            "raw": 495,
+            "max": 610
+          }
+        }
+      },
+      "after": {
+        "displayName": "A16-L31 Handheld Mortar",
+        "internalName": "A16-L31 Handheld Mortar",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 820,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder",
+          "fire"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "shaman",
+          "defence": 45,
+          "strength": 45,
+          "dexterity": 45
+        },
+        "majorIds": {
+          "Totemic Fuse": "<span class='font-ascii' style='color:#AAAAAA'>Totemic Smash deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>+150%</span>, <span class='font-ascii' style='color:#00AA00'><span class='font-common'></span>+150%</span>, <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>+150%</span>, and <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>+120%</span> but totemic smash loses 30% radius.</span></span></span></span></span>"
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "exploding": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawIntelligence": -30,
+          "raw1stSpellCost": {
+            "min": -5,
+            "raw": -17,
+            "max": -22
+          },
+          "mainAttackDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 480,
+            "raw": 480,
+            "max": 530
+          },
+          "baseEarthDamage": {
+            "min": 525,
+            "raw": 525,
+            "max": 575
+          },
+          "baseThunderDamage": {
+            "min": 495,
+            "raw": 495,
+            "max": 610
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482867",
+      "itemName": "Refined Light Wood",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Light Plank",
+        "internalName": "Refined Light Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankLight"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 70
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Light Plank",
+        "internalName": "Refined Light Wood",
+        "type": "material",
+        "subType": "woodcutting",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.plankLight"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 70
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Acceleration, Toughness</span> and <span class='font-ascii' style='color:#bc8f62'>Speed</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Spears</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Daggers</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Bows</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Wands</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482868",
+      "itemName": "Phoenix's Span",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Phoenix's Span",
+        "internalName": "Phoenix's Span",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 88,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "archer"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 40
+          }
+        }
+      },
+      "after": {
+        "displayName": "Phoenix's Span",
+        "internalName": "Phoenix's Span",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 81,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "archer"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 30,
+            "raw": 30,
+            "max": 40
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b40482869",
+      "itemName": "Phoenix's Hammer",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Phoenix's Hammer",
+        "internalName": "Phoenix's Hammer",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 55,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "warrior"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 18,
+            "raw": 18,
+            "max": 26
+          }
+        }
+      },
+      "after": {
+        "displayName": "Phoenix's Hammer",
+        "internalName": "Phoenix's Hammer",
+        "type": "weapon",
+        "subType": "spear",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "spear.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 50,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "warrior"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 18,
+            "raw": 18,
+            "max": 26
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048286a",
+      "itemName": "Refined Gylia Oil",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Gylia Oil",
+        "internalName": "Refined Gylia Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilGylia"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 70
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      },
+      "after": {
+        "displayName": "Gylia Oil",
+        "internalName": "Refined Gylia Oil",
+        "type": "material",
+        "subType": "fishing",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "profession.oilGylia"
+          },
+          "format": "attribute"
+        },
+        "emblem": "square",
+        "requirements": {
+          "level": 70
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Feed to your <span class='font-ascii' style='color:#bc8f62'>Mount</span> to upgrade its <span class='font-ascii' style='color:#bc8f62'>Handling, Training</span> and <span class='font-ascii' style='color:#bc8f62'>Altitude</span> \n\nCan be used to purchase blocks in <span class='font-ascii' style='color:#FFFFFF'>Housing</span>, or to craft <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Scrolls</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Rings</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Bracelets</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Necklaces</span>, <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'>󐀁</span></span><span class='font-ascii' style='color:#FFFFFF'> Potions</span> & <span class='font-ascii' style='color:#FFFFFF'><span class='font-profession'></span></span><span class='font-ascii' style='color:#FFFFFF'> Reliks</span></span></span></span></span></span></span></span>",
+        "chances": {
+          "TIER_1": 70,
+          "TIER_2": 10,
+          "TIER_3": 1
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048286b",
+      "itemName": "Phoenix's Staff",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Phoenix's Staff",
+        "internalName": "Phoenix's Staff",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 38,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "mage"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 13,
+            "raw": 13,
+            "max": 17
+          }
+        }
+      },
+      "after": {
+        "displayName": "Phoenix's Staff",
+        "internalName": "Phoenix's Staff",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.phoenix"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_1",
+        "tier": "legendary",
+        "attackSpeed": "fast",
+        "averageDps": 35,
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "requirements": {
+          "level": 12,
+          "classRequirement": "mage"
+        },
+        "powderSlots": 1,
+        "identifications": {
+          "damage": 20,
+          "manaRegen": 15,
+          "healthRegenRaw": 10,
+          "combatExperience": 15
+        },
+        "base": {
+          "baseDamage": {
+            "min": 13,
+            "raw": 13,
+            "max": 17
+          }
+        }
+      }
+    },
+    {
+      "_id": "6a519c196c8f447b4048286c",
+      "itemName": "Song of Solitude",
+      "status": "modify",
+      "timestamp": 1783733273,
+      "before": {
+        "displayName": "Song of Solitude",
+        "internalName": "Song of Solitude",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 701,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "archer",
+          "intelligence": 95
+        },
+        "majorIds": {
+          "Pioneer's Echo": "<span class='font-ascii' style='color:#AAAAAA'>Phantom Ray deals two bursts of <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> 150%</span>, <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> 60%</span> over 1 second. Decimator's increase and cap are raised to 140% and Quick Draw's activation threshold is decreased to 2.</span></span></span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>It is an apathy born from lonely desperation with which one sends a blinding ray as their signal flare, uncaring if it hails friend or foe.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "sprintRegen": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "healthRegenRaw": {
+            "min": 88,
+            "raw": 294,
+            "max": 382
+          },
+          "rawIntelligence": 30,
+          "elementalDefence": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 1250,
+            "raw": 1250,
+            "max": 1500
+          }
+        }
+      },
+      "after": {
+        "displayName": "Song of Solitude",
+        "internalName": "Song of Solitude",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 701,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 96,
+          "classRequirement": "archer",
+          "intelligence": 95
+        },
+        "majorIds": {
+          "Pioneer's Echo": "<span class='font-ascii' style='color:#AAAAAA'>Phantom Ray deals 7x damage, but only hits twice over 1 second. Decimator's increase and cap are raised to 140% and Quick Draw's activation threshold is decreased to 2.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>It is an apathy born from lonely desperation with which one sends a blinding ray as their signal flare, uncaring if it hails friend or foe.</span>",
+        "identifications": {
+          "manaRegen": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "sprintRegen": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "healthRegenRaw": {
+            "min": 88,
+            "raw": 294,
+            "max": 382
+          },
+          "rawIntelligence": 30,
+          "elementalDefence": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          }
+        },
+        "base": {
+          "baseWaterDamage": {
+            "min": 1250,
+            "raw": 1250,
+            "max": 1500
+          }
+        }
+      }
+    }
+  ]
+}
