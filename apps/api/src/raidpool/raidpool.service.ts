@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { RaidpoolGambits } from './raidpool.schema';
 import { HttpService } from '@nestjs/axios';
+import { getDailyResetKey, getDailyExpireAt, RAIDPOOL_RESET_HOUR } from '@wynnpool/shared';
 
 const UPSTREAM_BASE = 'https://www.wynnventory.com/api/raidpool';
 
@@ -65,7 +66,7 @@ export class RaidpoolService {
     }
 
     const now = Date.now();
-    const { year, month, day, key } = this.getGambitsDateKey(new Date());
+    const { year, month, day, key } = getDailyResetKey(new Date(), RAIDPOOL_RESET_HOUR);
 
     // //1 hit cache
     const cached = this.gambitsCache.get(key);
@@ -81,7 +82,7 @@ export class RaidpoolService {
     if (existing?.gambits?.length === 4) {
       this.gambitsCache.set(key, {
         value: existing,
-        expiresAt: this.getGambitsExpireAt(new Date()),
+        expiresAt: getDailyExpireAt(new Date(), RAIDPOOL_RESET_HOUR),
       });
 
       return existing;
@@ -108,25 +109,5 @@ export class RaidpoolService {
     }
 
     return response.data;
-  }
-
-  private getGambitsDateKey(date: Date): { year: number; month: number; day: number; key: string } {
-    const adjusted = new Date(date.getTime() - 18 * 60 * 60 * 1000);
-
-    const year = adjusted.getUTCFullYear();
-    const month = adjusted.getUTCMonth() + 1; // 1-12
-    const day = adjusted.getUTCDate();
-
-    const key = `${year}-${month}-${day}`;
-
-    return { year, month, day, key };
-  }
-
-  private getGambitsExpireAt(date: Date): number {
-    const adjusted = new Date(date.getTime() - 18 * 60 * 60 * 1000);
-    adjusted.setUTCDate(adjusted.getUTCDate() + 1);
-    adjusted.setUTCHours(18, 0, 0, 0);
-
-    return adjusted.getTime();
   }
 }

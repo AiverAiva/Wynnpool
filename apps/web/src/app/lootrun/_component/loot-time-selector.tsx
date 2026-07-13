@@ -5,80 +5,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { ChevronDown, ChevronUp, Clock, History, RotateCcw } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { getFirstFriday19UTC, getLootpoolYearWeek, WEEK_MS } from "@/lib/dateUtils"
-
-const SYSTEM_START = {
-    year: 2024,
-    week: 38,
-}
+import { getLootpoolYearWeek, getWeeksInLootpoolYear, getLootpoolWeekDateRange, getDaysSinceLootpoolWeek, getNextLootpoolReset } from "@wynnpool/shared"
 
 const currentYear = new Date().getFullYear()
 const years = Array.from({ length: 3 }, (_, i) => currentYear - i)
-
-function getWeeksInLootpoolYear(year: number): number[] {
-    const firstFriday = getFirstFriday19UTC(year)
-    const nextYearFirstFriday = getFirstFriday19UTC(year + 1)
-
-    const totalWeeks = Math.floor(
-        (nextYearFirstFriday - firstFriday) / WEEK_MS
-    )
-
-    const { year: curYear, week: curWeek } =
-        getLootpoolYearWeek(new Date())
-
-    let minWeek = 1
-    let maxWeek =
-        year === curYear
-            ? curWeek
-            : totalWeeks
-
-    // enforce system start
-    if (year === SYSTEM_START.year) {
-        minWeek = SYSTEM_START.week
-    }
-
-    if (maxWeek < minWeek) return []
-
-    return Array.from(
-        { length: maxWeek - minWeek + 1 },
-        (_, i) => maxWeek - i
-    )
-}
-
-function getWeekDateRange(year: number, week: number) {
-    const firstFriday = getFirstFriday19UTC(year)
-    const weekStart = new Date(firstFriday + (week - 1) * WEEK_MS)
-    const weekEnd = new Date(weekStart.getTime() + WEEK_MS - 1)
-
-    const format = (d: Date) =>
-        d.toLocaleDateString("en-US", { month: "short", day: "numeric" })
-
-    return `${format(weekStart)} - ${format(weekEnd)}`
-}
-
-function getDaysAgo(year: number, week: number): string {
-    const jan1 = new Date(Date.UTC(year, 0, 1))
-    const daysToAdd = (week - 1) * 7 - ((jan1.getUTCDay() + 6) % 7)
-    const weekStart = new Date(jan1)
-    weekStart.setUTCDate(jan1.getUTCDate() + daysToAdd)
-
-    // Calculate to the Friday 7PM of that week
-    const friday = new Date(weekStart)
-    friday.setUTCDate(weekStart.getUTCDate() + ((5 - weekStart.getUTCDay() + 7) % 7))
-    friday.setUTCHours(19, 0, 0, 0)
-
-    const now = new Date()
-    const diff = now.getTime() - friday.getTime()
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-
-    if (days === 0) return "Today"
-    if (days === 1) return "1 day ago"
-    if (days < 7) return `${days} days ago`
-    if (days < 14) return "1 week ago"
-    if (days < 30) return `${Math.floor(days / 7)} weeks ago`
-    if (days < 60) return "1 month ago"
-    return `${Math.floor(days / 30)} months ago`
-}
 
 export interface TimeSelection {
     year: number
@@ -101,21 +31,8 @@ export function LootTimeSelector({ value, onChange }: LootTimeSelectorProps) {
     useEffect(() => {
         const calculateTimeLeft = () => {
             const now = new Date()
-            const nextFriday = new Date()
 
-            const currentDay = now.getUTCDay()
-            const currentHour = now.getUTCHours()
-
-            let daysUntilFriday = (5 - currentDay + 7) % 7
-
-            if (currentDay === 5 && currentHour >= 19) {
-                daysUntilFriday = 7
-            }
-
-            nextFriday.setUTCDate(now.getUTCDate() + daysUntilFriday)
-            nextFriday.setUTCHours(19, 0, 0, 0)
-
-            const diff = nextFriday.getTime() - now.getTime()
+            const diff = getNextLootpoolReset().getTime() - now.getTime()
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24))
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
@@ -185,7 +102,7 @@ export function LootTimeSelector({ value, onChange }: LootTimeSelectorProps) {
                         <>
                             <span className="text-sm text-muted-foreground">Viewing historical data:</span>
                             <span className="font-mono text-xl font-semibold text-foreground">
-                                {getDaysAgo(value.year, value.week)}
+                                {getDaysSinceLootpoolWeek(value.year, value.week)}
                             </span>
                             <Badge variant="secondary" className="text-xs">
                                 Week {value.week}, {value.year}
@@ -254,7 +171,7 @@ export function LootTimeSelector({ value, onChange }: LootTimeSelectorProps) {
                                         {weeks.map((w) => (
                                             <SelectItem key={w} value={w.toString()}>
                                                 <div className="flex items-center justify-between gap-2 w-full">
-                                                    <span>Week {w} ({getWeekDateRange(value.year, w)})</span>
+                                                    <span>Week {w} ({getLootpoolWeekDateRange(value.year, w)})</span>
 
                                                     {w === currentWeek && value.year === currentYear && (
                                                         <Badge variant="secondary" className="text-[10px] py-0 px-1">
@@ -270,7 +187,7 @@ export function LootTimeSelector({ value, onChange }: LootTimeSelectorProps) {
                         </div>
 
                         <div className="flex items-center justify-between pt-2 border-t border-border">
-                            <span className="text-xs text-muted-foreground">{getWeekDateRange(value.year, value.week)}</span>
+                            <span className="text-xs text-muted-foreground">{getLootpoolWeekDateRange(value.year, value.week)}</span>
                             {!value.isCurrent && (
                                 <button
                                     onClick={handleResetToCurrent}

@@ -70,12 +70,12 @@ function getRarityOrder(rarity: string): number {
 export function ClassAspectFinder() {
     const { data } = useRaidpool()
 
+    const [selectedClass, setSelectedClass] = useState<ClassId>("Archer")
+    const [groupBy, setGroupBy] = useState<GroupBy>("rarity")
+
     if (!data) {
         return null
     }
-
-    const [selectedClass, setSelectedClass] = useState<ClassId>("Archer")
-    const [groupBy, setGroupBy] = useState<GroupBy>("rarity")
 
     const classConfig = CLASSES.find((c) => c.id === selectedClass)!
 
