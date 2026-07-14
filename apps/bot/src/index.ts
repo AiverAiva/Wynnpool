@@ -3,10 +3,13 @@ import { DISCORD_TOKEN } from '@/config';
 import { getCommandHandler, getAutocompleteHandler } from '@/handlers/commandHandler';
 import logger from '@/utils/logger';
 import { initEmojis } from './utils/emojiFactory';
+import { EventNotifier } from './services/eventNotifier';
 import { fetchPoolData, buildPoolContainer, V2_FLAGS } from '@/utils/poolRenderer';
 import type { PoolFilter } from '@/utils/poolRenderer';
 import { LOOTRUN_URL, LOOTRUN_ABBREVS } from '@/commands/lootpool';
 import { RAIDPOOL_URL, RAID_ABBREVS, DEFAULT_RAID_FILTER } from '@/commands/raidpool';
+import { handleEventToggleButton, handleEventAllButton, handleRegionSelect } from '@/utils/eventSubscriptionHandlers';
+import { CUSTOM_ID_REGION_SELECT, CUSTOM_ID_TOGGLE_PREFIX, CUSTOM_ID_ALL_PREFIX } from '@/utils/eventSubscriptionView';
 
 const client = new Client({
   intents: [
@@ -19,6 +22,10 @@ client.once(Events.ClientReady, async () => {
   logger.info(`Logged in as ${client.user?.tag}`);
   await initEmojis(client);
   logger.info(`Emojis initialized`);
+
+  const eventNotifier = new EventNotifier();
+  eventNotifier.start(client);
+  logger.info(`Event notifier started`);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -84,6 +91,16 @@ client.on(Events.InteractionCreate, async interaction => {
       }
       return;
     }
+
+    if (prefix === CUSTOM_ID_TOGGLE_PREFIX) {
+      await handleEventToggleButton(interaction);
+      return;
+    }
+
+    if (prefix === CUSTOM_ID_ALL_PREFIX) {
+      await handleEventAllButton(interaction);
+      return;
+    }
   }
 
   if (interaction.isStringSelectMenu()) {
@@ -122,6 +139,11 @@ client.on(Events.InteractionCreate, async interaction => {
         logger.error('Error handling raidpool filter:', err);
         await interaction.reply({ content: 'Error updating pool view.', ephemeral: true });
       }
+      return;
+    }
+
+    if (interaction.customId === CUSTOM_ID_REGION_SELECT) {
+      await handleRegionSelect(interaction);
       return;
     }
   }
