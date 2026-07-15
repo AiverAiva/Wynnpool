@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { WorldEventService } from './world-event.service';
 import { WorldEventController } from './world-event.controller';
+import { WorldEventService } from './world-event.service';
+import { SubscriptionController } from './subscription.controller';
+import { SubscriptionService } from './subscription.service';
 
 @Module({
-    providers: [WorldEventService],
-    controllers: [WorldEventController],
+  controllers: [WorldEventController, SubscriptionController],
+  providers: [WorldEventService, SubscriptionService],
 })
 export class WorldEventModule {}
