@@ -129,6 +129,10 @@ export const WORLD_EVENT_REGIONS: WorldEventRegion[] = [
     ],
   },
   {
+    name: 'Major World Event',
+    events: ['Prelude to Annihilation'],
+  },
+  {
     name: 'Fruma',
     events: [
       'Autumn Poachers',
