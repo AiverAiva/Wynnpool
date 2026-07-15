@@ -15,6 +15,7 @@ export class EventNotifier {
   private notifiedKeys = new Set<string>();
   private intervalId: ReturnType<typeof setInterval> | null = null;
   private client: Client | null = null;
+  private initialized = false;
 
   start(client: Client): void {
     this.client = client;
@@ -32,6 +33,20 @@ export class EventNotifier {
     try {
       const schedule = await this.fetchSchedule();
       if (!schedule) return;
+
+      // First poll: establish baseline without notifying
+      // (prevents spamming all existing schedules on bot restart)
+      if (!this.initialized) {
+        for (const entry of schedule) {
+          this.previousSchedules.set(entry.internalName, entry.schedule);
+          if (entry.schedule) {
+            this.notifiedKeys.add(`${entry.internalName}:${entry.schedule}`);
+          }
+        }
+        this.initialized = true;
+        logger.info('Event notifier baseline established');
+        return;
+      }
 
       for (const entry of schedule) {
         const prev = this.previousSchedules.get(entry.internalName);
