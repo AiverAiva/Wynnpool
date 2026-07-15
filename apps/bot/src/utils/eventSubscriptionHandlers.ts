@@ -1,4 +1,4 @@
-import { ButtonInteraction, StringSelectMenuInteraction } from 'discord.js';
+import { ButtonInteraction, StringSelectMenuInteraction, MessageFlags } from 'discord.js';
 import logger from '@/utils/logger';
 import {
   buildSubscriptionView,
@@ -7,7 +7,7 @@ import {
   parseAllCustomId,
   parseRegionValue,
 } from '@/utils/eventSubscriptionView';
-import { WORLD_EVENT_REGIONS } from '@/data/worldEventRegions';
+import { WORLD_EVENT_REGIONS } from '@wynnpool/shared';
 
 const API_BASE = process.env.API_BASE_URL || 'https://api.wynnpool.com';
 const API_KEY = process.env.API_INTERNAL_KEY || '';
@@ -39,36 +39,31 @@ async function fetchUserData(
   return { subscribed, eventMap };
 }
 
-/** Subscribe or unsubscribe a single event for a user. */
-async function toggleSubscription(
-  discordUserId: string,
-  internalName: string,
-  isSubscribed: boolean,
-): Promise<void> {
-  if (isSubscribed) {
-    // Unsubscribe
-    await fetch(
-      `${API_BASE}/world-event/subscription?type=user&discordUserId=${discordUserId}&eventInternalName=${encodeURIComponent(internalName)}`,
-      {
-        method: 'DELETE',
-        headers: { Authorization: `Bearer ${API_KEY}` },
-      },
-    );
-  } else {
-    // Subscribe
-    await fetch(`${API_BASE}/world-event/subscription`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${API_KEY}`,
-      },
-      body: JSON.stringify({
-        type: 'user',
-        discordUserId,
-        eventInternalName: internalName,
-      }),
-    });
-  }
+/** Subscribe a user to an event via API. */
+async function subscribeEvent(discordUserId: string, internalName: string): Promise<void> {
+  await fetch(`${API_BASE}/world-event/subscription`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    body: JSON.stringify({
+      type: 'user',
+      discordUserId,
+      eventInternalName: internalName,
+    }),
+  });
+}
+
+/** Unsubscribe a user from an event via API. */
+async function unsubscribeEvent(discordUserId: string, internalName: string): Promise<void> {
+  await fetch(
+    `${API_BASE}/world-event/subscription?type=user&discordUserId=${discordUserId}&eventInternalName=${encodeURIComponent(internalName)}`,
+    {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${API_KEY}` },
+    },
+  );
 }
 
 /** Handle event toggle button click. */
@@ -79,30 +74,29 @@ export async function handleEventToggleButton(interaction: ButtonInteraction): P
   const { regionIndex, internalName } = parsed;
   const userId = interaction.user.id;
 
+  // Defer immediately — Discord interactions expire in 3s
+  await interaction.deferUpdate();
+
   try {
     const userData = await fetchUserData(userId);
     if (!userData) {
-      await interaction.reply({ content: '❌ Failed to load subscription data.', ephemeral: true });
+      await interaction.followUp({ content: '❌ Failed to load subscription data.', flags: MessageFlags.Ephemeral });
       return;
     }
 
     const isSubscribed = userData.subscribed.has(internalName);
-    await toggleSubscription(userId, internalName, isSubscribed);
-
-    // Update local state for re-render
     if (isSubscribed) {
+      await unsubscribeEvent(userId, internalName);
       userData.subscribed.delete(internalName);
     } else {
+      await subscribeEvent(userId, internalName);
       userData.subscribed.add(internalName);
     }
 
     const container = buildSubscriptionView(regionIndex, userData.subscribed, userData.eventMap);
-    await interaction.update({ components: [container], flags: V2_FLAGS });
+    await interaction.editReply({ components: [container], flags: V2_FLAGS });
   } catch (err) {
     logger.error('Error handling event toggle button:', err);
-    if (!interaction.deferred && !interaction.replied) {
-      await interaction.reply({ content: '❌ Error updating subscription.', ephemeral: true });
-    }
   }
 }
 
@@ -116,10 +110,13 @@ export async function handleEventAllButton(interaction: ButtonInteraction): Prom
   const region = WORLD_EVENT_REGIONS[regionIndex];
   if (!region) return;
 
+  // Defer immediately — bulk operations take time
+  await interaction.deferUpdate();
+
   try {
     const userData = await fetchUserData(userId);
     if (!userData) {
-      await interaction.reply({ content: '❌ Failed to load subscription data.', ephemeral: true });
+      await interaction.followUp({ content: '❌ Failed to load subscription data.', flags: MessageFlags.Ephemeral });
       return;
     }
 
@@ -130,43 +127,33 @@ export async function handleEventAllButton(interaction: ButtonInteraction): Prom
 
     const allSubscribed = regionInternalNames.every(n => userData.subscribed.has(n));
 
-    for (const internalName of regionInternalNames) {
-      const isSubscribed = userData.subscribed.has(internalName);
-      if (allSubscribed && isSubscribed) {
-        // Unsubscribe
-        await fetch(
-          `${API_BASE}/world-event/subscription?type=user&discordUserId=${userId}&eventInternalName=${encodeURIComponent(internalName)}`,
-          {
-            method: 'DELETE',
-            headers: { Authorization: `Bearer ${API_KEY}` },
-          },
-        );
-        userData.subscribed.delete(internalName);
-      } else if (!allSubscribed && !isSubscribed) {
-        // Subscribe
-        await fetch(`${API_BASE}/world-event/subscription`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${API_KEY}`,
-          },
-          body: JSON.stringify({
-            type: 'user',
-            discordUserId: userId,
-            eventInternalName: internalName,
+    // Parallelize all API calls for speed
+    if (allSubscribed) {
+      // Unsubscribe all
+      await Promise.all(
+        regionInternalNames
+          .filter(n => userData.subscribed.has(n))
+          .map(n => {
+            userData.subscribed.delete(n);
+            return unsubscribeEvent(userId, n);
           }),
-        });
-        userData.subscribed.add(internalName);
-      }
+      );
+    } else {
+      // Subscribe all that aren't subscribed
+      await Promise.all(
+        regionInternalNames
+          .filter(n => !userData.subscribed.has(n))
+          .map(n => {
+            userData.subscribed.add(n);
+            return subscribeEvent(userId, n);
+          }),
+      );
     }
 
     const container = buildSubscriptionView(regionIndex, userData.subscribed, userData.eventMap);
-    await interaction.update({ components: [container], flags: V2_FLAGS });
+    await interaction.editReply({ components: [container], flags: V2_FLAGS });
   } catch (err) {
     logger.error('Error handling event all button:', err);
-    if (!interaction.deferred && !interaction.replied) {
-      await interaction.reply({ content: '❌ Error updating subscriptions.', ephemeral: true });
-    }
   }
 }
 
@@ -177,19 +164,19 @@ export async function handleRegionSelect(interaction: StringSelectMenuInteractio
 
   const userId = interaction.user.id;
 
+  // Defer immediately
+  await interaction.deferUpdate();
+
   try {
     const userData = await fetchUserData(userId);
     if (!userData) {
-      await interaction.reply({ content: '❌ Failed to load subscription data.', ephemeral: true });
+      await interaction.followUp({ content: '❌ Failed to load subscription data.', flags: MessageFlags.Ephemeral });
       return;
     }
 
     const container = buildSubscriptionView(regionIndex, userData.subscribed, userData.eventMap);
-    await interaction.update({ components: [container], flags: V2_FLAGS });
+    await interaction.editReply({ components: [container], flags: V2_FLAGS });
   } catch (err) {
     logger.error('Error handling region select:', err);
-    if (!interaction.deferred && !interaction.replied) {
-      await interaction.reply({ content: '❌ Error changing region.', ephemeral: true });
-    }
   }
 }
