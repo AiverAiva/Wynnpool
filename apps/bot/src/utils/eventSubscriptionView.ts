@@ -9,7 +9,7 @@ import {
   SeparatorSpacingSize,
   MessageFlags,
 } from 'discord.js';
-import { WORLD_EVENT_REGIONS } from '@/data/worldEventRegions';
+import { WORLD_EVENT_REGIONS } from '@wynnpool/shared';
 
 export const V2_FLAGS = MessageFlags.IsComponentsV2;
 
