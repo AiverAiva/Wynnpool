@@ -1,5 +1,6 @@
 import { Client, EmbedBuilder } from 'discord.js';
 import logger from '@/utils/logger';
+import { getRegionForEvent } from '@wynnpool/shared';
 
 const API_BASE = process.env.API_BASE_URL || 'https://api.wynnpool.com';
 const API_KEY = process.env.API_INTERNAL_KEY || '';
@@ -133,6 +134,7 @@ export class EventNotifier {
 
   private buildEmbed(event: any, schedule: string): EmbedBuilder {
     const name = event?.name || event?.internalName || 'Unknown Event';
+    const region = getRegionForEvent(name);
 
     // Parse schedule ISO timestamp to Unix seconds for Discord dynamic timestamp
     const ts = Math.floor(new Date(schedule).getTime() / 1000);
@@ -141,10 +143,15 @@ export class EventNotifier {
       ? 'Soon'
       : `<t:${ts}:F> (<t:${ts}:R>)`;
 
+    const descriptionParts = [`**Starts:** ${timeDisplay}`];
+    if (region) {
+      descriptionParts.push(`**Region:** ${region}`);
+    }
+
     const embed = new EmbedBuilder()
       .setAuthor({ name: 'World Event Notification' })
       .setTitle(`🌍 ${name}`)
-      .setDescription(`**Starts:** ${timeDisplay}`)
+      .setDescription(descriptionParts.join('\n'))
       .setColor(0x00b0f4)
       .setTimestamp()
       .setURL('https://www.wynnpool.com/events');

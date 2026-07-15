@@ -153,3 +153,26 @@ export const WORLD_EVENT_REGIONS: WorldEventRegion[] = [
     ],
   },
 ];
+
+/**
+ * Find the region name for a given event display name.
+ */
+export function getRegionForEvent(eventName: string): string | null {
+  for (const region of WORLD_EVENT_REGIONS) {
+    if (region.events.includes(eventName)) return region.name;
+  }
+  return null;
+}
+
+/**
+ * Given a Map of internalName → displayName (from API) and a list of
+ * internalNames, return display info with region.
+ */
+export function resolveEventInfo(
+  internalName: string,
+  eventMap: Map<string, string>,
+): { displayName: string; region: string | null } {
+  const displayName = eventMap.get(internalName) || internalName;
+  const region = getRegionForEvent(displayName);
+  return { displayName, region };
+}
