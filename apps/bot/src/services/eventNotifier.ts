@@ -40,7 +40,7 @@ export class EventNotifier {
           const notifyKey = `${entry.internalName}:${entry.schedule}`;
           if (!this.notifiedKeys.has(notifyKey)) {
             this.notifiedKeys.add(notifyKey);
-            await this.notify(entry.internalName);
+            await this.notify(entry.internalName, entry.schedule);
           }
         }
       }
@@ -63,7 +63,7 @@ export class EventNotifier {
     return res.json() as Promise<ScheduleEntry[]>;
   }
 
-  private async notify(eventInternalName: string): Promise<void> {
+  private async notify(eventInternalName: string, schedule: string): Promise<void> {
     if (!this.client) return;
 
     logger.info(`New event schedule detected: ${eventInternalName}`);
@@ -88,7 +88,7 @@ export class EventNotifier {
         event = events.find((e: any) => e.internalName === eventInternalName) || null;
       }
 
-      const embed = this.buildEmbed(event);
+      const embed = this.buildEmbed(event, schedule);
 
       // Send DMs
       for (const userId of (subs.userSubscriptions || [])) {
@@ -116,25 +116,23 @@ export class EventNotifier {
     }
   }
 
-  private buildEmbed(event: any): EmbedBuilder {
+  private buildEmbed(event: any, schedule: string): EmbedBuilder {
     const name = event?.name || event?.internalName || 'Unknown Event';
+
+    // Parse schedule ISO timestamp to Unix seconds for Discord dynamic timestamp
+    const ts = Math.floor(new Date(schedule).getTime() / 1000);
+    // <t:TIMESTAMP:R> = relative ("in 12 minutes"), <t:TIMESTAMP:F> = full date/time
+    const timeDisplay = isNaN(ts)
+      ? 'Soon'
+      : `<t:${ts}:F> (<t:${ts}:R>)`;
+
     const embed = new EmbedBuilder()
       .setAuthor({ name: 'World Event Notification' })
       .setTitle(`🌍 ${name}`)
+      .setDescription(`**Starts:** ${timeDisplay}`)
       .setColor(0x00b0f4)
       .setTimestamp()
       .setURL('https://www.wynnpool.com/events');
-
-    if (event) {
-      embed.setDescription(event.lore || '');
-      embed.addFields(
-        { name: 'Difficulty', value: event.difficulty || 'Unknown', inline: true },
-        { name: 'Level', value: event.level?.toString() || '?', inline: true },
-        { name: 'Length', value: event.length || 'Unknown', inline: true },
-      );
-    } else {
-      embed.setDescription('A world event is starting soon!');
-    }
 
     return embed;
   }
