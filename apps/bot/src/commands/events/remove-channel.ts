@@ -38,21 +38,25 @@ export async function execute(interaction: ChatInputCommandInteraction) {
       return;
     }
 
-    // Delete each channel subscription
-    let deletedCount = 0;
+    // Delete all channel subscriptions in parallel
+    const deletePromises: Promise<any>[] = [];
     for (const sub of channelSubs) {
       for (const eventName of sub.events) {
-        const delRes = await fetch(
-          `${API_BASE}/world-event/subscription?type=channel&discordUserId=${sub.channelId}&eventInternalName=${encodeURIComponent(eventName)}`,
-          {
-            method: 'DELETE',
-            headers: { Authorization: `Bearer ${API_KEY}` },
-          },
+        deletePromises.push(
+          fetch(
+            `${API_BASE}/world-event/subscription?type=channel&discordUserId=${sub.channelId}&eventInternalName=${encodeURIComponent(eventName)}`,
+            {
+              method: 'DELETE',
+              headers: { Authorization: `Bearer ${API_KEY}` },
+            },
+          )
+            .then(res => res.json() as Promise<any>)
+            .catch(() => ({ success: false })),
         );
-        const delJson = await delRes.json() as any;
-        if (delJson.success) deletedCount++;
       }
     }
+    const results = await Promise.all(deletePromises);
+    const deletedCount = results.filter((r: any) => r.success).length;
 
     await interaction.editReply(`✅ Removed channel notifications (${deletedCount} subscriptions deleted).`);
   } catch (err: any) {

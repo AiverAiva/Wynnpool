@@ -24,6 +24,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
   }
 
   const channel = interaction.options.getChannel('channel', true);
+  const guildId = interaction.guild.id;
   await interaction.deferReply({ ephemeral: true });
 
   try {
@@ -33,22 +34,27 @@ export async function execute(interaction: ChatInputCommandInteraction) {
     const events: any[] = await eventsRes.json() as any[];
 
     let successCount = 0;
-    for (const event of events) {
-      const res = await fetch(`${API_BASE}/world-event/subscription`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${API_KEY}`,
-        },
-        body: JSON.stringify({
-          type: 'channel',
-          discordUserId: interaction.user.id,
-          discordGuildId: interaction.guild.id,
-          discordChannelId: channel.id,
-          eventInternalName: event.internalName,
-        }),
-      });
-      const json = await res.json() as any;
+    const results = await Promise.all(
+      events.map(event =>
+        fetch(`${API_BASE}/world-event/subscription`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${API_KEY}`,
+          },
+          body: JSON.stringify({
+            type: 'channel',
+            discordUserId: interaction.user.id,
+            discordGuildId: guildId,
+            discordChannelId: channel.id,
+            eventInternalName: event.internalName,
+          }),
+        })
+          .then(res => res.json() as Promise<any>)
+          .catch(() => ({ success: false })),
+      ),
+    );
+    for (const json of results) {
       if (json.success) successCount++;
     }
 

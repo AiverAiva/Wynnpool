@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
 
@@ -11,10 +11,32 @@ export interface CreateSubscriptionDto {
 }
 
 @Injectable()
-export class SubscriptionService {
+export class SubscriptionService implements OnModuleInit {
   private readonly COLLECTION = 'world_event_subscriptions';
 
   constructor(@InjectConnection() private connection: Connection) {}
+
+  async onModuleInit(): Promise<void> {
+    const coll = this.connection.collection(this.COLLECTION);
+
+    // Unique index: one user can't subscribe to the same event twice
+    await coll.createIndex(
+      { type: 1, discordUserId: 1, eventInternalName: 1 },
+      {
+        unique: true,
+        partialFilterExpression: { type: 'user' },
+      },
+    );
+
+    // Unique index: one channel can't subscribe to the same event twice
+    await coll.createIndex(
+      { type: 1, discordChannelId: 1, eventInternalName: 1 },
+      {
+        unique: true,
+        partialFilterExpression: { type: 'channel' },
+      },
+    );
+  }
 
   async create(dto: CreateSubscriptionDto): Promise<void> {
     const coll = this.connection.collection(this.COLLECTION);
