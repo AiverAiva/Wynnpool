@@ -1,4 +1,5 @@
 import { SlashCommandSubcommandBuilder, ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
+import { getRegionForEvent } from '@wynnpool/shared';
 
 const API_BASE = process.env.API_BASE_URL || 'https://api.wynnpool.com';
 const API_KEY = process.env.API_INTERNAL_KEY || '';
@@ -11,12 +12,32 @@ export async function execute(interaction: ChatInputCommandInteraction) {
   await interaction.deferReply({ ephemeral: true });
 
   try {
-    const res = await fetch(
-      `${API_BASE}/world-event/subscription?discordUserId=${interaction.user.id}`,
-      { headers: { Authorization: `Bearer ${API_KEY}` } },
-    );
-    if (!res.ok) throw new Error(`API error ${res.status}`);
-    const json = (await res.json()) as any;
+    // Fetch subscriptions + all events in parallel to resolve display names
+    const [subsRes, eventsRes] = await Promise.all([
+      fetch(
+        `${API_BASE}/world-event/subscription?discordUserId=${interaction.user.id}`,
+        { headers: { Authorization: `Bearer ${API_KEY}` } },
+      ),
+      fetch(`${API_BASE}/world-event`),
+    ]);
+
+    if (!subsRes.ok || !eventsRes.ok) throw new Error('Failed to fetch data');
+
+    const json = (await subsRes.json()) as any;
+    const allEvents = (await eventsRes.json()) as any[];
+
+    // Build internalName → displayName map
+    const nameMap = new Map<string, string>();
+    for (const event of allEvents) {
+      nameMap.set(event.internalName, event.name || event.internalName);
+    }
+
+    // Helper to format a single event line with region
+    const formatEvent = (internalName: string): string => {
+      const displayName = nameMap.get(internalName) || internalName;
+      const region = getRegionForEvent(displayName);
+      return region ? `• **${displayName}** *(${region})*` : `• **${displayName}**`;
+    };
 
     const userEvents = json.user?.events || [];
     const channels = json.channels || [];
@@ -31,14 +52,14 @@ export async function execute(interaction: ChatInputCommandInteraction) {
       if (userEvents.length > 0) {
         embed.addFields({
           name: '📩 DM Notifications',
-          value: userEvents.map((e: string) => `• ${e}`).join('\n') || 'None',
+          value: userEvents.map(formatEvent).join('\n') || 'None',
         });
       }
       if (channels.length > 0) {
         for (const ch of channels) {
           embed.addFields({
             name: `📢 <#${ch.channelId}>`,
-            value: ch.events.map((e: string) => `• ${e}`).join('\n') || 'None',
+            value: ch.events.map(formatEvent).join('\n') || 'None',
           });
         }
       }
