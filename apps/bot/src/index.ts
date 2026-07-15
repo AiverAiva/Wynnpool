@@ -8,8 +8,22 @@ import { fetchPoolData, buildPoolContainer, V2_FLAGS } from '@/utils/poolRendere
 import type { PoolFilter } from '@/utils/poolRenderer';
 import { LOOTRUN_URL, LOOTRUN_ABBREVS } from '@/commands/lootpool';
 import { RAIDPOOL_URL, RAID_ABBREVS, DEFAULT_RAID_FILTER } from '@/commands/raidpool';
-import { handleEventToggleButton, handleEventAllButton, handleRegionSelect } from '@/utils/eventSubscriptionHandlers';
-import { CUSTOM_ID_REGION_SELECT, CUSTOM_ID_TOGGLE_PREFIX, CUSTOM_ID_ALL_PREFIX } from '@/utils/eventSubscriptionView';
+import {
+  handleUserToggleButton,
+  handleChannelToggleButton,
+  handleUserAllButton,
+  handleChannelAllButton,
+  handleUserRegionSelect,
+  handleChannelRegionSelect,
+} from '@/utils/eventSubscriptionHandlers';
+import {
+  CUSTOM_ID_TOGGLE_PREFIX,
+  CUSTOM_ID_ALL_PREFIX,
+  CUSTOM_ID_REGION_SELECT,
+  CUSTOM_ID_CH_TOGGLE_PREFIX,
+  CUSTOM_ID_CH_ALL_PREFIX,
+  CUSTOM_ID_CH_REGION_SELECT,
+} from '@/utils/eventSubscriptionView';
 
 const client = new Client({
   intents: [
@@ -93,12 +107,22 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 
     if (prefix === CUSTOM_ID_TOGGLE_PREFIX) {
-      await handleEventToggleButton(interaction);
+      await handleUserToggleButton(interaction);
+      return;
+    }
+
+    if (prefix === CUSTOM_ID_CH_TOGGLE_PREFIX) {
+      await handleChannelToggleButton(interaction);
       return;
     }
 
     if (prefix === CUSTOM_ID_ALL_PREFIX) {
-      await handleEventAllButton(interaction);
+      await handleUserAllButton(interaction);
+      return;
+    }
+
+    if (prefix === CUSTOM_ID_CH_ALL_PREFIX) {
+      await handleChannelAllButton(interaction);
       return;
     }
   }
@@ -143,7 +167,12 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 
     if (interaction.customId === CUSTOM_ID_REGION_SELECT) {
-      await handleRegionSelect(interaction);
+      await handleUserRegionSelect(interaction);
+      return;
+    }
+
+    if (prefix === CUSTOM_ID_CH_REGION_SELECT) {
+      await handleChannelRegionSelect(interaction);
       return;
     }
   }
