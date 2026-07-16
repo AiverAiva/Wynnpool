@@ -1,9 +1,13 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { WorldEventService } from './world-event.service';
+import { AnnihilationService } from './annihilation.service';
 
 @Controller('world-event')
 export class WorldEventController {
-    constructor(private readonly worldEventService: WorldEventService) {}
+    constructor(
+        private readonly worldEventService: WorldEventService,
+        private readonly annihilationService: AnnihilationService,
+    ) {}
 
     @Get()
     async getEvents(
@@ -30,5 +34,10 @@ export class WorldEventController {
     async getChangelog(@Query('limit') limit?: string) {
         const parsedLimit = limit ? parseInt(limit, 10) : 50;
         return this.worldEventService.getChangelog(parsedLimit);
+    }
+
+    @Get('annihilation')
+    async getAnnihilation() {
+        return this.annihilationService.getPrediction();
     }
 }

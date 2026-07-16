@@ -7,12 +7,12 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, Clock, Info, ArrowDown, CalendarClock, Flame } from "lucide-react"
 import Countdown from "@/components/custom/countdown"
 import { Badge } from "@/components/ui/badge"
+import api from "@/lib/api"
 
 interface AnnihilationData {
     current: {
         datetime_utc: number
         predicted?: boolean
-        workflow_dispatched?: boolean
     }
     predicted: {
         datetime_utc: number
@@ -46,7 +46,7 @@ export default function AnnihilationEvents() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/annihilation')
+                const response = await fetch(api('/world-event/annihilation'))
                 if (!response.ok) throw new Error('Failed to fetch data')
                 const result: AnnihilationData = await response.json()
                 setData(result)
@@ -109,7 +109,7 @@ export default function AnnihilationEvents() {
                                     <Flame className="text-red-500 h-6 w-6" />
                                     <CardTitle className="text-3xl font-bold">Next Annihilation</CardTitle>
                                 </div>
-                                {data && !data.current.workflow_dispatched && (
+                                {data && (
                                     <Badge className={`sm:absolute top-4 right-4 w-fit sm:text-lg font-mono ${!data.current.predicted && 'bg-green-600'}`}>
                                         {data.current.predicted ? 'Predicted' : 'Accurate'}
                                     </Badge>
