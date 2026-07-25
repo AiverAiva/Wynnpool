@@ -13,8 +13,12 @@ use crate::config::MONGODB_URI;
 use crate::logger::log_event;
 use wynnpool_engine_macros::fetch;
 
-const ANNIHILATION_INTERNAL_NAME: &str = "Prelude to Annihilation";
 const FORECAST_HORIZON: usize = 10;
+
+// Annihilation's internalName is an opaque hash assigned by Wynncraft (not the
+// human-readable "name" field). Confirmed live via the world-events API; if
+// Wynncraft rotates it, this will need updating (detection silently no-ops).
+const ANNIHILATION_INTERNAL_NAME: &str = "a63b2c02";
 
 /// Annihilation predictor.
 ///
@@ -150,6 +154,14 @@ async fn run_update_annihilation() -> Result<()> {
     {
         if let Some(Bson::String(s)) = latest.get("schedule") {
             if let Some(ts) = parse_schedule_to_ms(s) {
+                // A live schedule in the future IS the next upcoming event
+                // (observed → Accurate). A schedule whose time has passed is
+                // stale (Wynncraft doesn't null it the instant an event
+                // starts), so `ts > now_ms` alone is the correct gate — it
+                // rejects just-passed schedules and accepts genuinely upcoming
+                // ones. Do NOT also require `ts > last_ts`: that breaks when
+                // the last recorded event and the live schedule refer to the
+                // same upcoming occurrence.
                 if ts > now_ms {
                     current_ts = ts;
                     current_predicted = false;
