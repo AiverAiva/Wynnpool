@@ -53,6 +53,9 @@ interface ItemEntry {
         rerollCount: number
     }
     uuid: string
+    anonymous?: boolean
+    ironman?: boolean
+    verified?: boolean
 }
 
 type ItemList = [string, Item][]
@@ -465,7 +468,11 @@ export default function ManagePage() {
                                                             className="w-6 h-6 rounded-sm"
                                                         />
                                                         {item.owner}
-                                                        {/* <Badge variant="outline"></Badge> */}
+                                                        {item.anonymous && (
+                                                            <Badge variant="secondary" className="text-xs">
+                                                                Anonymous
+                                                            </Badge>
+                                                        )}
                                                     </TableCell>
                                                     <TableCell>
                                                         <div className="flex items-center gap-1 text-sm text-muted-foreground">

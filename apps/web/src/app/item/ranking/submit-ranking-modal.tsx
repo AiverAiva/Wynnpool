@@ -19,6 +19,7 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
   const [ownerName, setOwnerName] = useState("");
   const [ironman, setIronman] = useState(false);
   const [verified, setVerified] = useState(false);
+  const [anonymous, setAnonymous] = useState(false);
 
   const [loading, setLoading] = useState(false);
   type SubmissionError = 'DECODE_FAILED' | 'STORE_FAILED' | 'NETWORK_ERROR';
@@ -97,6 +98,7 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
           owner: trimmedOwnerName || "Unknown",
           ironman,
           verified,
+          anonymous,
         }),
         credentials: "include",
       });
@@ -108,6 +110,7 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
       setOwnerName("");
       setIronman(false);
       setVerified(false);
+      setAnonymous(false);
       setDecodedData(null);
     } catch (err: any) {
       setError(err.message);
@@ -164,6 +167,13 @@ export default function SubmitRankingModal({ open, onClose }: { open: boolean; o
                     onCheckedChange={(checked) => setVerified(!!checked)}
                     disabled={loading}/>
                   <Label className="pl-1">Verified in-game</Label>
+                </div>
+                <div>
+                  <Checkbox
+                    checked={anonymous}
+                    onCheckedChange={(checked) => setAnonymous(!!checked)}
+                    disabled={loading}/>
+                  <Label className="pl-1">Hide owner on public leaderboard</Label>
                 </div>
               </div>
 

@@ -20,6 +20,10 @@ export class DatabaseItem extends Document {
 
   @Prop()
   verified: boolean;
+
+  /** When true, public GET responses redact owner/uuid. Staff search keeps the real values. */
+  @Prop({ type: Boolean, default: false })
+  anonymous: boolean;
 }
 
 export const DatabaseItemSchema = SchemaFactory.createForClass(DatabaseItem);

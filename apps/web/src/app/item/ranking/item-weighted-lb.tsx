@@ -28,6 +28,7 @@ interface VerifiedItem {
   };
   ironman?: boolean;
   verified?: boolean;
+  anonymous?: boolean;
 }
 
 interface Weight {
@@ -211,9 +212,14 @@ export default function ItemWeightedLB({ item, open, onClose, isEmbedded = false
                           <div className="border rounded p-2 text-sm flex justify-between items-center cursor-pointer">
                             <div className="flex space-x-2 items-center text-md">
                               <img
-                                src={`https://www.mc-heads.net/avatar/${entry.owner}`}
+                                src={
+                                  entry.anonymous || entry.owner === "Anonymous"
+                                    ? "/icons/anonymous-head.png"
+                                    : `https://www.mc-heads.net/avatar/${entry.owner}`
+                                }
                                 alt={entry.owner}
                                 className="w-6 h-6"
+                                style={{ imageRendering: "pixelated" }}
                               />
                               <span><strong>#{i + 1}</strong> {entry.owner}</span>
                             </div>

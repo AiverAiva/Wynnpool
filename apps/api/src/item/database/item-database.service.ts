@@ -11,7 +11,9 @@ export class DatabaseItemService {
 
   async getVerifyItems(itemName?: string) {
     const query = itemName ? { itemName } : {};
-    return this.databaseItemModel.find(query).sort({ timestamp: -1 }).lean();
+    const items = await this.databaseItemModel.find(query).sort({ timestamp: -1 }).lean();
+    // Public endpoint: redact owner identity for anonymous submissions
+    return items.map((item) => this.redactPublicItem(item));
   }
 
   async addVerifyItem(data: {
@@ -20,27 +22,46 @@ export class DatabaseItemService {
     owner: string;
     ironman?: boolean;
     verified?: boolean;
+    anonymous?: boolean;
   }) {
     if (!data.itemName || !data.originalString || !data.owner) {
       throw new Error('Missing required fields.');
     }
+    // Coerce anonymous flag; always store an explicit boolean
+    const payload = {
+      ...data,
+      anonymous: data.anonymous === true,
+    };
     // If owner is a name, fetch UUID from Mojang API
-    if (typeof data.owner === 'string') {
+    if (typeof payload.owner === 'string') {
       try {
-        const resp = await fetch(`https://api.mojang.com/users/profiles/minecraft/${data.owner}`);
+        const resp = await fetch(`https://api.mojang.com/users/profiles/minecraft/${payload.owner}`);
         if (resp.ok) {
           const mojang = await resp.json();
           if (mojang && mojang.id) {
-            data.owner = mojang.name;
-            (data as any).uuid = mojang.id;
+            payload.owner = mojang.name;
+            (payload as any).uuid = mojang.id;
           }
         }
       } catch (e) {
         throw new Error('unknown owner');
       }
     }
-    await this.databaseItemModel.create(data);
+    await this.databaseItemModel.create(payload);
     return { success: true };
+  }
+
+  /** Redact owner/uuid for public leaderboard reads when anonymous is set. */
+  private redactPublicItem(item: Record<string, any>) {
+    if (item?.anonymous !== true) {
+      return item;
+    }
+    return {
+      ...item,
+      owner: 'Anonymous',
+      uuid: null,
+      anonymous: true,
+    };
   }
 
   async searchDatabaseItems(query: { itemName?: string; owner?: string }) {

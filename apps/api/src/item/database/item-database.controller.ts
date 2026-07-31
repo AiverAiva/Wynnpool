@@ -23,7 +23,9 @@ export class DatabaseItemController {
     originalString: string;
     owner: string;
     ironman?: boolean;
-    verified?: boolean }, @Req() req) {
+    verified?: boolean;
+    anonymous?: boolean;
+  }, @Req() req) {
     // Optionally, you can use req.user to set owner automatically
     return this.databaseItemService.addVerifyItem(body);
   }
