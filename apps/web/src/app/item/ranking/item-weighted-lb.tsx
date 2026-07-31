@@ -184,8 +184,19 @@ export default function ItemWeightedLB({ item, open, onClose, isEmbedded = false
             const weightObj = weights.find(w => w.weight_id === tab.weight_id);
             const ranked = verifiedItems
               .filter(v => !shinyOnly || v.shinyStat)
-              .map(v => ({ ...v, score: calculateScore(v, weightObj) }))
-              .sort((a, b) => sortOrder === "desc" ? b.score - a.score : a.score - b.score)
+              .map(v => ({
+                ...v,
+                score: calculateScore(v, weightObj),
+                overallScore: calculateScore(v),
+              }))
+              .sort((a, b) => {
+                const primary = sortOrder === "desc" ? b.score - a.score : a.score - b.score;
+                if (primary !== 0) return primary;
+                // Tiebreak by overall score (same direction as primary sort)
+                return sortOrder === "desc"
+                  ? b.overallScore - a.overallScore
+                  : a.overallScore - b.overallScore;
+              })
               .slice(0, 10);
 
             return (
