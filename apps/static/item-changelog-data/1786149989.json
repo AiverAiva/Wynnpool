@@ -1,0 +1,152 @@
+{
+  "modify": [
+    {
+      "_id": "6a767c65cba0fa0eadd94894",
+      "itemName": "Roaring Thunder",
+      "status": "modify",
+      "timestamp": 1786149989,
+      "before": {
+        "displayName": "Roaring Thunder",
+        "internalName": "Roaring Thunder",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "verySlow",
+        "averageDps": 762,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 115,
+          "classRequirement": "assassin",
+          "dexterity": 90
+        },
+        "majorIds": {
+          "Lightning Crash": "<span class='font-ascii' style='color:#AAAAAA'>Dash becomes a downward dive. Ripple has tripled height amplification and deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>250%</span> and <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>100%</span>.</span></span></span>"
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "walkSpeed": {
+            "min": -40,
+            "raw": -31,
+            "max": -22
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          },
+          "rawDexterity": 15,
+          "thunderDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "raw2ndSpellCost": {
+            "min": -2,
+            "raw": -6,
+            "max": -8
+          },
+          "raw4thSpellCost": {
+            "min": 8,
+            "raw": 6,
+            "max": 4
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 425,
+            "raw": 425,
+            "max": 650
+          },
+          "baseThunderDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 650
+          }
+        }
+      },
+      "after": {
+        "displayName": "Roaring Thunder",
+        "internalName": "Roaring Thunder",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "verySlow",
+        "averageDps": 762,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 115,
+          "classRequirement": "assassin",
+          "dexterity": 90
+        },
+        "majorIds": {
+          "Lightning Crash": "<span class='font-ascii' style='color:#AAAAAA'>Dash becomes a downward dive. Ripple has doubled height amplification and deals <span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span>250%</span> and <span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span>100%</span>.</span></span></span>"
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "walkSpeed": {
+            "min": -40,
+            "raw": -31,
+            "max": -22
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 4,
+            "max": 5
+          },
+          "rawDexterity": 15,
+          "thunderDamage": {
+            "min": 9,
+            "raw": 31,
+            "max": 40
+          },
+          "raw2ndSpellCost": {
+            "min": -2,
+            "raw": -6,
+            "max": -8
+          },
+          "raw4thSpellCost": {
+            "min": 8,
+            "raw": 6,
+            "max": 4
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 425,
+            "raw": 425,
+            "max": 650
+          },
+          "baseThunderDamage": {
+            "min": 110,
+            "raw": 110,
+            "max": 650
+          }
+        }
+      }
+    }
+  ]
+}
