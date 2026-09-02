@@ -3,7 +3,7 @@ import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Connection, FilterQuery, Model } from 'mongoose';
 import { Item } from './item.schema';
 import { parseIdString } from '@lib/wynntils-decode';
-import { calculateIdentificationRoll } from '@lib/itemUtils';
+import { actualValueToInternalRoll, calculateIdentificationRoll } from '@lib/itemUtils';
 
 @Injectable()
 export class ItemService implements OnModuleInit {
@@ -83,6 +83,12 @@ export class ItemService implements OnModuleInit {
             powderSlots?: number;
             powders?: any[];
             identifications?: Record<string, number>;
+            /**
+             * 'roll' = legacy internal rolls (≈30–130).
+             * 'actual' = Wynntils encoding v3 stores real identification values;
+             * convert via {@link normalizeIdentificationsToRolls} before scoring.
+             */
+            identificationValueKind?: 'roll' | 'actual';
             shinyStat?: { key: string; displayName: string; rerollCount?: number; value: number };
             rerollCount?: number;
         } = { itemName: '' };
@@ -98,11 +104,12 @@ export class ItemService implements OnModuleInit {
             }
 
             if (block.name === 'IdentificationData') {
-                summary.identifications = {}
+                summary.identifications = {};
+                summary.identificationValueKind = block.layout === 'v3' ? 'actual' : 'roll';
                 for (const id of block.identifications) {
                     const name = this.idMap.get(id.kind);
-                    if (name && typeof id.roll === 'number') {
-                        summary.identifications[name] = id.roll;
+                    if (name && typeof id.value === 'number') {
+                        summary.identifications[name] = id.value;
                     }
                 }
             }
@@ -126,6 +133,37 @@ export class ItemService implements OnModuleInit {
             }
         }
 
+        return summary;
+    }
+
+    /**
+     * Convert v3 actual identification values into internal rolls so the rest of
+     * the pipeline (and the web client) can keep using calculateIdentificationRoll.
+     */
+    normalizeIdentificationsToRolls(summary: {
+        identifications?: Record<string, number>;
+        identificationValueKind?: 'roll' | 'actual';
+    }, original: any) {
+        if (
+            !summary?.identifications ||
+            summary.identificationValueKind !== 'actual' ||
+            !original?.identifications
+        ) {
+            return summary;
+        }
+
+        const rolls: Record<string, number> = {};
+        for (const [name, actual] of Object.entries(summary.identifications)) {
+            const range = original.identifications[name];
+            if (!range || typeof range.raw !== 'number') {
+                rolls[name] = actual;
+                continue;
+            }
+            rolls[name] = actualValueToInternalRoll(actual, range.raw);
+        }
+
+        summary.identifications = rolls;
+        summary.identificationValueKind = 'roll';
         return summary;
     }
 

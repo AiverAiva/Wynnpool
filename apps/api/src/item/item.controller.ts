@@ -70,6 +70,7 @@ export class ItemController {
 
         const summary = this.itemService.summarize(item);
         const original = await this.itemService.findItemById(summary.itemName);
+        this.itemService.normalizeIdentificationsToRolls(summary, original);
         const weights = await this.itemService.findWeightsByItemName(summary.itemName);
 
         return {
@@ -87,6 +88,7 @@ export class ItemController {
 
         const summary = this.itemService.summarize(item);
         const original = await this.itemService.findItemById(summary.itemName);
+        this.itemService.normalizeIdentificationsToRolls(summary, original);
         const weights = await this.itemService.findWeightsByItemName(summary.itemName);
         const result: any = { ...summary };
         // Add processedIdentifications to the response

@@ -11,6 +11,16 @@ export function getStarsFromRollValue(value: number, negative: boolean): number 
   return 0;
 }
 
+/**
+ * Wynntils PR #4265 (encoding v3) stores the actual identification value.
+ * The rest of Wynnpool's scoring pipeline expects an internal roll (≈30–130),
+ * where actual ≈ round(roll * raw / 100). Invert that relationship.
+ */
+export function actualValueToInternalRoll(actual: number, raw: number): number {
+  if (raw === 0) return 100;
+  return Math.round((Math.abs(actual) * 100) / Math.abs(raw));
+}
+
 export function calculateIdentificationRoll(
   key: string,
   original: { min: number; max: number; raw: number },

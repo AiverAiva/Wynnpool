@@ -834,7 +834,7 @@ export default function Home() {
             <div className="mb-2">
               <span className="font-semibold">Q: How do I copy a string of an item?</span>
               <br />
-              <span className="">A: Get <Link href="https://wynntils.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600 transition-colors duration-150">Wynntils</Link>, press <span className="font-mono bg-muted px-1 rounded">F3</span> when hovering on your item in inventory.</span>
+              <span className="">A: Get <Link href="https://wynntils.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600 transition-colors duration-150">Wynntils</Link>, press <span className="font-mono bg-muted px-1 rounded">F5</span> when hovering on your item in inventory.</span>
             </div>
             <div className="mb-2">
               <span className="font-semibold">Q: How do I show weights on items?</span>
