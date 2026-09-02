@@ -477,12 +477,10 @@ function MobileOverlay({
                   </div>
                 </div>
 
-                {/* Footer row */}
-                {user && (
-                  <div className="border-t border-border/50 px-5 py-3">
-                    <UserAuthDisplay user={user} />
-                  </div>
-                )}
+                {/* Footer row — always shown: logged out = "Login with Discord", logged in = avatar menu */}
+                <div className="border-t border-border/50 px-5 py-3">
+                  <UserAuthDisplay user={user} />
+                </div>
               </motion.div>
             </DialogPrimitive.Content>
           </DialogPrimitive.Portal>
