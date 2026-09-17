@@ -1,0 +1,165 @@
+{
+  "modify": [
+    {
+      "_id": "6aab4d0505cd8c5da9bc07e6",
+      "itemName": "Bantisu's Approach",
+      "status": "modify",
+      "timestamp": 1789611269,
+      "before": {
+        "displayName": "Bantisu's Approach",
+        "internalName": "Bantisu's Approach",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "requirements": {
+          "level": 86
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "sprint": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "lootBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "manaRegen": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "walkSpeed": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "airDefence": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawAgility": 8,
+          "rawDefence": 1,
+          "rawStrength": 1,
+          "sprintRegen": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "rawDexterity": 1,
+          "rawIntelligence": 1,
+          "combatExperience": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseHealth": 2500,
+          "baseAirDefence": 80,
+          "baseFireDefence": 10,
+          "baseEarthDefence": 10,
+          "baseWaterDefence": 10,
+          "baseThunderDefence": 10
+        }
+      },
+      "after": {
+        "displayName": "Bantisu's Approach",
+        "internalName": "Bantisu's Approach",
+        "type": "armour",
+        "subType": "leggings",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_leggings",
+            "name": "leggings.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "unique",
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "air"
+        ],
+        "requirements": {
+          "level": 86
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "sprint": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "lootBonus": {
+            "min": 5,
+            "raw": 15,
+            "max": 20
+          },
+          "manaRegen": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 5,
+            "max": 7
+          },
+          "walkSpeed": {
+            "min": 3,
+            "raw": 10,
+            "max": 13
+          },
+          "airDefence": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "rawAgility": 8,
+          "rawDefence": 1,
+          "rawStrength": 1,
+          "sprintRegen": {
+            "min": 8,
+            "raw": 27,
+            "max": 35
+          },
+          "rawDexterity": 1,
+          "rawIntelligence": 1,
+          "combatExperience": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          }
+        },
+        "base": {
+          "baseHealth": 2500,
+          "baseAirDefence": 80,
+          "baseFireDefence": 10,
+          "baseEarthDefence": 10,
+          "baseWaterDefence": 10,
+          "baseThunderDefence": 10
+        }
+      }
+    }
+  ]
+}
