@@ -2,8 +2,6 @@ use std::collections::{HashMap, HashSet};
 use std::time::{Instant, SystemTime, UNIX_EPOCH};
 
 use anyhow::Result;
-use once_cell::sync::Lazy;
-use reqwest::Client;
 use serde_json::Value;
 
 use mongodb::{bson::{doc, Bson, DateTime as BsonDateTime, Document}, options::FindOptions, options::ClientOptions, Client as MongoClient, IndexModel};
@@ -14,8 +12,6 @@ use std::time::Duration;
 use crate::logger::log_event;
 use crate::config::MONGODB_URI;
 use wynnpool_engine_macros::fetch;
-
-static CLIENT: Lazy<Client> = Lazy::new(Client::new);
 
 // 12 hours TTL for server data
 const SERVER_DATA_TTL_SECS: i64 = 60 * 60 * 12;
@@ -37,12 +33,7 @@ async fn run_update_server_status_new() -> Result<()> {
 
     // --- 1. HTTP FETCH ---
     let http_start = Instant::now();
-    let resp: Value = CLIENT
-        .get("https://api.wynncraft.com/v3/player")
-        .send()
-        .await?
-        .json()
-        .await?;
+    let resp: Value = crate::wapi::get_json("/v3/player").await?;
     let http_elapsed = http_start.elapsed();
 
     let players = resp["players"]

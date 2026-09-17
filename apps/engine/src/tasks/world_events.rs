@@ -1,8 +1,6 @@
 use std::time::{Instant, SystemTime, UNIX_EPOCH};
 
 use anyhow::Result;
-use once_cell::sync::Lazy;
-use reqwest::Client;
 use serde_json::Value;
 
 use mongodb::{
@@ -14,8 +12,6 @@ use mongodb::{
 use crate::config::MONGODB_URI;
 use crate::logger::log_event;
 use wynnpool_engine_macros::fetch;
-
-static CLIENT: Lazy<Client> = Lazy::new(Client::new);
 
 // 24 hours TTL for schedule snapshots
 const SCHEDULE_TTL_SECS: i64 = 60 * 60 * 24;
@@ -39,12 +35,7 @@ async fn run_update_world_events() -> Result<()> {
 
     // --- 1. HTTP FETCH ---
     let http_start = Instant::now();
-    let resp: Value = CLIENT
-        .get("https://api.wynncraft.com/v3/map/world-events")
-        .send()
-        .await?
-        .json()
-        .await?;
+    let resp: Value = crate::wapi::get_json("/v3/map/world-events").await?;
     let http_elapsed = http_start.elapsed();
 
     let events = resp

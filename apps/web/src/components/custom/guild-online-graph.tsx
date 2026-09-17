@@ -12,7 +12,6 @@ import {
 import {
     ChartContainer,
     ChartTooltip,
-    ChartTooltipContent,
 } from "@/components/ui/chart"
 import {
     Select,
@@ -25,41 +24,52 @@ import { Spinner } from "../ui/spinner"
 import { useEffect, useState } from "react"
 import api from "@/lib/api"
 
-interface OnlineCountData {
+/**
+ * One hourly bucket from the engine. `count` is the mean over the samples taken in
+ * that hour; `samples` is how many samples it is based on, so a bucket is only ever
+ * rendered when it represents real observations.
+ */
+interface OnlineCountPoint {
     timestamp: number
-    count: number
+    count: number | null
+    countMax: number
+    samples: number
 }
 
 interface ChartProps {
     guildUuid: string
 }
 
-function fillDataGaps(data: OnlineCountData[]): OnlineCountData[] {
-    const filledData: OnlineCountData[] = [];
-    const interval = 60 * 60 * 1000; // an hour in milliseconds
+const HOUR_MS = 60 * 60 * 1000
+
+/**
+ * Insert an explicit "no data" node for every hour the collector did not sample.
+ *
+ * The previous version of this filled those hours with `count: 0`, which is why a
+ * stalled collector looked exactly like "nobody is online" for three weeks. Now a
+ * missing hour is `null` and breaks the area (see `connectNulls` below), so a gap
+ * reads as a gap rather than as an activity level.
+ */
+function insertNoDataNodes(data: OnlineCountPoint[]): OnlineCountPoint[] {
+    const filled: OnlineCountPoint[] = []
 
     for (let i = 0; i < data.length; i++) {
-        const currentNode = data[i];
-        filledData.push(currentNode); // Add the current node
+        filled.push(data[i])
 
-        // If not the last node, add gap nodes
         if (i < data.length - 1) {
-            let tempTimestamp = currentNode.timestamp + interval;
+            let tempTimestamp = data[i].timestamp + HOUR_MS
             while (tempTimestamp < data[i + 1].timestamp) {
-                filledData.push({
-                    timestamp: tempTimestamp,
-                    count: 0, // Default count for gap nodes
-                });
-                tempTimestamp += interval;
+                filled.push({ timestamp: tempTimestamp, count: null, countMax: 0, samples: 0 })
+                tempTimestamp += HOUR_MS
             }
         }
     }
 
-    return filledData;
+    return filled
 }
 
 export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
-    const [chartData, setChartData] = useState<OnlineCountData[]>([])
+    const [chartData, setChartData] = useState<OnlineCountPoint[]>([])
     const [loading, setLoading] = useState(true)
     const [timeSpan, setTimeSpan] = useState("24h")
 
@@ -95,12 +105,15 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                     }),
                 })
                 const result = await response.json()
-                setChartData(fillDataGaps(result.data.map((item: any) => ({
+                setChartData(insertNoDataNodes((result.data ?? []).map((item: any) => ({
                     timestamp: item.timestamp * 1000,
                     count: item.count,
-                }))));
+                    countMax: item.countMax ?? 0,
+                    samples: item.samples ?? 0,
+                }))))
             } catch (error) {
                 console.error("Failed to fetch chart data:", error)
+                setChartData([])
             } finally {
                 setLoading(false)
             }
@@ -116,27 +129,43 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
         },
     }
 
-    const maxCount = Math.max(...chartData.map(item => item.count))
-    const CustomTooltip = ({ active, payload, label }: any) => {
-        if (active && payload && payload.length) {
-            const data = payload[0].payload
-            return (
-                <div className="bg-background/80 p-2 shadow-md rounded-lg border border-border">
-                    <p className="font-semibold">{new Date(data.timestamp).toLocaleString()}</p>
-                    <p>Count: {data.count}</p>
-                </div>
-            )
-        }
-        return null
+    const sampled = chartData.filter(item => item.count !== null)
+    const maxCount = sampled.length > 0
+        ? Math.max(...sampled.map(item => item.count as number))
+        : 0
+    // An empty series would otherwise produce a [0, -Infinity] domain.
+    const yMax = maxCount > 0 ? maxCount : 1
+
+    const CustomTooltip = ({ active, payload }: any) => {
+        if (!active || !payload || !payload.length) return null
+
+        const point = payload[0].payload
+        return (
+            <div className="bg-background/80 p-2 shadow-md rounded-lg border border-border">
+                <p className="font-semibold">{new Date(point.timestamp).toLocaleString()}</p>
+                {point.count === null ? (
+                    <p className="text-muted-foreground">No data recorded</p>
+                ) : (
+                    <>
+                        <p>Count: {point.count} <span className="text-muted-foreground">avg/hr</span></p>
+                        {point.samples > 0 && (
+                            <p className="text-muted-foreground">
+                                {point.samples} sample{point.samples === 1 ? "" : "s"}, peak {point.countMax}
+                            </p>
+                        )}
+                    </>
+                )}
+            </div>
+        )
     }
-    
+
     return (
         <Card className="mt-4">
             <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
                 <div className="grid flex-1 gap-1 text-center sm:text-left">
                     <CardTitle>Guild Online Count</CardTitle>
                     <CardDescription>
-                        Showing online member count over time
+                        Hourly average online members. Gaps are hours with no recorded samples.
                     </CardDescription>
                 </div>
                 <Select value={timeSpan} onValueChange={setTimeSpan}>
@@ -154,6 +183,10 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                 {loading ? (
                     <div className="flex h-[250px] items-center justify-center">
                         <Spinner size="large" />
+                    </div>
+                ) : sampled.length === 0 ? (
+                    <div className="flex h-[250px] items-center justify-center text-sm text-muted-foreground">
+                        No online-member samples were recorded for this period.
                     </div>
                 ) : (
                     <ChartContainer
@@ -178,6 +211,11 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                             <CartesianGrid vertical={false} />
                             <XAxis
                                 dataKey="timestamp"
+                                // Numeric time axis: buckets are hourly, so spacing must
+                                // reflect real elapsed time rather than point order.
+                                type="number"
+                                scale="time"
+                                domain={["dataMin", "dataMax"]}
                                 tickLine={false}
                                 axisLine={false}
                                 tickMargin={8}
@@ -196,13 +234,14 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                                 tickLine={false}
                                 axisLine={false}
                                 tickMargin={8}
-                                domain={[0, maxCount]}
+                                domain={[0, yMax]}
                                 allowDataOverflow={true}
                             />
                             <ChartTooltip content={<CustomTooltip />} />
                             <Area
                                 dataKey="count"
                                 type="monotone"
+                                connectNulls={false}
                                 fill="url(#fillOnlineCount)"
                                 stroke="var(--color-onlineCount)"
                             />
@@ -213,4 +252,3 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
         </Card>
     )
 }
-

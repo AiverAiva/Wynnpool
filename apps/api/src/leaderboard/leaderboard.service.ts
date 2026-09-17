@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { GuildOnlineCount } from '@shared/schemas/online-count.schema';
+import { GuildOnlineBucket } from '@shared/schemas/online-count-bucket.schema';
 import { Model, Document } from 'mongoose';
 import { GuildService } from '../guild/guild.service';
 
 @Injectable()
 export class LeaderboardService {
     constructor(
-    @InjectModel('guild_online_count') private readonly onlineCountModel: Model<GuildOnlineCount>,
+    @InjectModel(GuildOnlineBucket.name) private readonly onlineCountModel: Model<GuildOnlineBucket>,
     @InjectModel('guild_data') private readonly guildDataModel: Model<Document>,
     // @InjectModel('guild_member_events') private readonly guildMemberEventsModel: Model<Document>,
         private readonly guildService: GuildService,
@@ -16,13 +16,26 @@ export class LeaderboardService {
     async getGuildAverageOnlineLeaderboard() {
         // Single aggregation pipeline: group -> sort -> limit -> lookup guild_data -> project
         const pipeline: any[] = [
+            // Buckets with no activity at all still cost a group pass, so drop them
+            // up front.
+            { $match: { activeSamples: { $gt: 0 } } },
             {
                 $group: {
                     _id: '$guild_uuid',
                     guild_name: { $first: '$guild_name' },
-                    avg_online: { $avg: '$count' }
+                    count_sum: { $sum: '$countSum' },
+                    active_samples: { $sum: '$activeSamples' },
                 }
             },
+            { $match: { active_samples: { $gt: 0 } } },
+            // Average over the samples where someone was actually online. That is what
+            // the old raw-sample aggregation effectively measured -- a guild with
+            // nobody online produced no row at all, so zeroes contributed nothing to
+            // the mean. Keeping that definition means the published ranking stays
+            // comparable across the storage change. The true time-average is
+            // count_sum / samples instead; both are derivable from the stored fields,
+            // so this can be switched later without re-collecting anything.
+            { $addFields: { avg_online: { $divide: ['$count_sum', '$active_samples'] } } },
             { $sort: { avg_online: -1 } },
             { $limit: 50 },
             {

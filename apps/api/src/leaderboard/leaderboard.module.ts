@@ -3,7 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { LeaderboardController } from './leaderboard.controller';
 import { LeaderboardService } from './leaderboard.service';
 import { HttpModule } from '@nestjs/axios';
-import { GuildOnlineCountSchema } from '@shared/schemas/online-count.schema';
+import { GuildOnlineBucket, GuildOnlineBucketSchema } from '@shared/schemas/online-count-bucket.schema';
 import { GuildModule } from '../guild/guild.module';
 import { GuildSchema } from '@shared/schemas/guild.schema';
 import { Schema } from 'mongoose';
@@ -23,7 +23,7 @@ const GuildMemberEventsSchema = new Schema({
     imports: [
         HttpModule,
         MongooseModule.forFeature([
-            { name: 'guild_online_count', schema: GuildOnlineCountSchema },
+            { name: GuildOnlineBucket.name, schema: GuildOnlineBucketSchema },
             { name: 'guild_data', schema: GuildSchema },
             // { name: 'guild_member_events', schema: GuildMemberEventsSchema },
         ]),
