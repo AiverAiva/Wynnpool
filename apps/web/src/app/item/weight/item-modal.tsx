@@ -81,6 +81,17 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
     });
   };
 
+  const handleRemoveWeight = (id: string) => {
+    if (!editableWeight) return;
+
+    const { [id]: _, ...remainingIdentifications } = editableWeight.identifications;
+
+    setEditableWeight({
+      ...editableWeight,
+      identifications: remainingIdentifications,
+    });
+  }
+
   const handleSubmit = async () => {
     if (!editableWeight || !isAllowed) return;
     setSubmitting(true);
@@ -343,7 +354,7 @@ export default function ItemModal({ item, open, onClose, user, isAllowed }: Prop
                                     const raw = e.target.value;
 
                                     if (raw === "") {
-                                      handleChangeWeight(key, 0);
+                                      handleRemoveWeight(key);
                                       return;
                                     }
 
