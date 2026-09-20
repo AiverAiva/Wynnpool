@@ -4,13 +4,13 @@ import { Model } from 'mongoose';
 import { GuildOnlineBucket } from '@shared/schemas/online-count-bucket.schema';
 
 export interface GuildOnlinePoint {
-    /** Start of the hour bucket, in unix seconds. */
+    /** Start of the bucket window, in unix seconds. */
     timestamp: number;
-    /** Mean online count across the samples taken in that hour. */
+    /** Mean online count across the samples taken in that window. */
     count: number;
-    /** Peak online count seen in that hour. */
+    /** Peak online count seen in that window. */
     countMax: number;
-    /** How many samples the hour is based on (0 would mean a fake bucket). */
+    /** How many samples the bucket is based on (0 would mean a fake bucket). */
     samples: number;
 }
 

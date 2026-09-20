@@ -15,12 +15,14 @@
 //!    would have produced denser data computed against the same stale table, which is
 //!    harder to notice than an obviously broken graph. The membership task fixes that.
 //!
-//! Counts are stored as hourly buckets rather than raw samples. The web chart renders
-//! hourly buckets anyway, so this costs nothing in resolution, but it makes the data
-//! self-describing: a bucket with `samples > 0` and `countMax == 0` is a genuine
-//! "nobody online", while a missing bucket means "not sampled". The previous model
-//! could not express that distinction, which is why the chart ended up filling gaps
-//! with fabricated zeroes.
+//! Counts are stored as fixed-size buckets rather than raw samples. That costs some
+//! resolution -- the working pre-regression pipeline plotted one point per 5-minute
+//! poll -- but it bounds storage, and a bucket is still fully self-describing: a
+//! bucket with `samples > 0` and `countMax == 0` is a genuine "nobody online", while
+//! a missing bucket means "not sampled". The previous model could not express that
+//! distinction, which is why the chart ended up filling gaps with fabricated zeroes.
+//!
+//! `BUCKET_SECS` holds the bucket size and the storage arithmetic behind it.
 
 use std::collections::{HashMap, HashSet};
 use std::sync::atomic::{AtomicBool, Ordering};
@@ -42,7 +44,7 @@ use wynnpool_engine_macros::fetch;
 
 const DB_NAME: &str = "wynnpool";
 
-/// Hourly buckets of online counts. Distinct from the legacy `guild_online_count`
+/// Bucketed online counts. Distinct from the legacy `guild_online_count`
 /// collection, which holds raw per-tick samples and is left untouched so the old
 /// path can be compared against the new one before anything is retired.
 const COLL_BUCKET: &str = "guild_online_bucket";
@@ -54,6 +56,15 @@ const COLL_HEARTBEAT: &str = "guild_online_heartbeat";
 /// Existing collection, read once to seed membership so we do not cold-start with
 /// an empty map.
 const COLL_GUILD_DATA: &str = "guild_data";
+
+/// Bucket size for the online-count series.
+///
+/// The count task samples every 60s, so one bucket holds up to 15 samples. At this
+/// size the 14-day retention the web UI offers works out at roughly 320k documents
+/// (~40MB); at 5 minutes it would be ~960k documents (~120MB), which is close to
+/// doubling the whole database. The API and the chart both treat `bucket` as an
+/// opaque timestamp, so changing this affects only storage and resolution.
+const BUCKET_SECS: i64 = 15 * 60;
 
 /// Buckets are kept as long as the widest window the web UI offers.
 const BUCKET_TTL_SECS: i64 = 14 * 24 * 60 * 60;
@@ -121,8 +132,8 @@ fn now_secs() -> i64 {
         .as_secs() as i64
 }
 
-fn hour_bucket(ts: i64) -> i64 {
-    ts - ts.rem_euclid(3600)
+fn bucket_start(ts: i64) -> i64 {
+    ts - ts.rem_euclid(BUCKET_SECS)
 }
 
 async fn mongo_client() -> Result<MongoClient> {
@@ -164,7 +175,7 @@ async fn update_guild_online_count_inner() -> Result<()> {
     let online_set: HashSet<&str> = online.iter().map(String::as_str).collect();
 
     let now = now_secs();
-    let bucket = hour_bucket(now);
+    let bucket = bucket_start(now);
 
     // Tally per guild via the reverse index, under a read lock only.
     let mut counts: HashMap<String, i64> = HashMap::new();
@@ -239,7 +250,8 @@ async fn update_guild_online_count_inner() -> Result<()> {
                 // online. Because zero counts add nothing to `countSum`, both the
                 // true time-average (countSum/samples) and the "average while
                 // someone was online" (countSum/activeSamples) stay computable
-                // without re-collecting anything.
+                // without re-collecting anything. A bucket spans BUCKET_SECS, so
+                // samples is capped at BUCKET_SECS / 60.
                 let active = if count > 0 { 1i64 } else { 0i64 };
                 let update = doc! {
                     "$inc": { "samples": 1i64, "activeSamples": active, "countSum": count },
@@ -298,7 +310,7 @@ async fn ensure_indexes() -> Result<()> {
         .build();
 
     // Makes the per-tick upsert idempotent: without it, two racing upserts for the
-    // same (guild, hour) could both insert.
+    // same (guild, bucket) could both insert.
     let unique = IndexModel::builder()
         .keys(doc! { "guild_uuid": 1, "bucket": 1 })
         .options(IndexOptions::builder().unique(Some(true)).build())

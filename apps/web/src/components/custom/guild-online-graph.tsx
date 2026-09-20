@@ -25,8 +25,8 @@ import { useEffect, useState } from "react"
 import api from "@/lib/api"
 
 /**
- * One hourly bucket from the engine. `count` is the mean over the samples taken in
- * that hour; `samples` is how many samples it is based on, so a bucket is only ever
+ * One bucket from the engine. `count` is the mean over the samples taken in that
+ * bucket; `samples` is how many samples it is based on, so a point is only ever
  * rendered when it represents real observations.
  */
 interface OnlineCountPoint {
@@ -40,14 +40,16 @@ interface ChartProps {
     guildUuid: string
 }
 
-const HOUR_MS = 60 * 60 * 1000
+/** Must match BUCKET_SECS in apps/engine/src/tasks/guild_online.rs. */
+const BUCKET_MS = 15 * 60 * 1000
 
 /**
- * Insert an explicit "no data" node for every hour the collector did not sample.
+ * Insert an explicit "no data" node for every bucket interval the collector did not
+ * sample.
  *
- * The previous version of this filled those hours with `count: 0`, which is why a
+ * The previous version of this filled those intervals with `count: 0`, which is why a
  * stalled collector looked exactly like "nobody is online" for three weeks. Now a
- * missing hour is `null` and breaks the area (see `connectNulls` below), so a gap
+ * missing interval is `null` and breaks the area (see `connectNulls` below), so a gap
  * reads as a gap rather than as an activity level.
  */
 function insertNoDataNodes(data: OnlineCountPoint[]): OnlineCountPoint[] {
@@ -57,10 +59,10 @@ function insertNoDataNodes(data: OnlineCountPoint[]): OnlineCountPoint[] {
         filled.push(data[i])
 
         if (i < data.length - 1) {
-            let tempTimestamp = data[i].timestamp + HOUR_MS
+            let tempTimestamp = data[i].timestamp + BUCKET_MS
             while (tempTimestamp < data[i + 1].timestamp) {
                 filled.push({ timestamp: tempTimestamp, count: null, countMax: 0, samples: 0 })
-                tempTimestamp += HOUR_MS
+                tempTimestamp += BUCKET_MS
             }
         }
     }
@@ -147,7 +149,7 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                     <p className="text-muted-foreground">No data recorded</p>
                 ) : (
                     <>
-                        <p>Count: {point.count} <span className="text-muted-foreground">avg/hr</span></p>
+                        <p>Count: {point.count} <span className="text-muted-foreground">avg/15min</span></p>
                         {point.samples > 0 && (
                             <p className="text-muted-foreground">
                                 {point.samples} sample{point.samples === 1 ? "" : "s"}, peak {point.countMax}
@@ -165,7 +167,7 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                 <div className="grid flex-1 gap-1 text-center sm:text-left">
                     <CardTitle>Guild Online Count</CardTitle>
                     <CardDescription>
-                        Hourly average online members. Gaps are hours with no recorded samples.
+                        15-minute average online members. Gaps are periods with no recorded samples.
                     </CardDescription>
                 </div>
                 <Select value={timeSpan} onValueChange={setTimeSpan}>
