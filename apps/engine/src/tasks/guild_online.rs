@@ -44,9 +44,7 @@ use wynnpool_engine_macros::fetch;
 
 const DB_NAME: &str = "wynnpool";
 
-/// Bucketed online counts. Distinct from the legacy `guild_online_count`
-/// collection, which holds raw per-tick samples and is left untouched so the old
-/// path can be compared against the new one before anything is retired.
+/// Bucketed online counts.
 const COLL_BUCKET: &str = "guild_online_bucket";
 
 /// Single document recording the last successful tick, so a stalled collector is
@@ -73,7 +71,7 @@ const BUCKET_TTL_SECS: i64 = 14 * 24 * 60 * 60;
 /// member online. Hot guilds keep getting a bucket row every tick even when the
 /// count is zero, so `samples` is a real sample count and a zero is a real
 /// observation rather than an absence.
-const HOT_WINDOW_SECS: i64 = 24 * 60 * 60;
+const HOT_WINDOW_SECS: i64 = 3 * 60 * 60;
 
 /// Do not re-fetch a hot guild more often than this. This is the knob that trades
 /// membership freshness against API budget.
@@ -193,6 +191,9 @@ async fn update_guild_online_count_inner() -> Result<()> {
         for guild_uuid in counts.keys() {
             state.hot_until.insert(guild_uuid.clone(), now);
         }
+        state
+            .hot_until
+            .retain(|_, last_online| *last_online + HOT_WINDOW_SECS > now);
 
         let mut rows: Vec<(String, String, i64)> = Vec::with_capacity(counts.len());
         for (guild_uuid, count) in &counts {
@@ -207,12 +208,8 @@ async fn update_guild_online_count_inner() -> Result<()> {
 
         // Explicit zeroes for the rest of the hot set, so "0 online" is recorded
         // instead of being inferred from a missing row.
-        let mut hot = 0usize;
-        for (guild_uuid, last_online) in state.hot_until.iter() {
-            if *last_online + HOT_WINDOW_SECS <= now {
-                continue;
-            }
-            hot += 1;
+        let hot = state.hot_until.len();
+        for guild_uuid in state.hot_until.keys() {
             if counts.contains_key(guild_uuid) {
                 continue;
             }

@@ -5,10 +5,7 @@ import { Document } from 'mongoose';
  * Online-count buckets, written by the Rust engine
  * (apps/engine/src/tasks/guild_online.rs, `BUCKET_SECS` for the window size).
  *
- * Deliberately distinct from the legacy `guild_online_count` collection, which
- * holds raw per-tick samples and is kept read-only for comparison.
- *
- * The shape carries the information the old model could not express:
+ * The shape carries:
  * - `samples`        every tick inside the window, including ticks with nobody online
  * - `activeSamples`  only the ticks where at least one member was online
  * - `countSum`       sum of the per-tick counts (zeroes add nothing, so this doubles
