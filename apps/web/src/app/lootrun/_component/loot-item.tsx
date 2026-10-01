@@ -39,8 +39,6 @@ function getItemIcon(item: Item) {
   if (item.icon && !isCorkianItem) {
     const compatibleItem = {
       type: item.itemType === "GearItem" ? (["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"].includes(item.subtype) ? "armour" : "weapon") : item.itemType.replace("Item", "").toLowerCase(),
-      armourType: item.subtype.toLowerCase(),
-      armourMaterial: "leather", // Default to leather for texture lookup if material is missing
       icon: item.icon,
       internalName: item.name
     }

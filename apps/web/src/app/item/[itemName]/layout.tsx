@@ -1,4 +1,4 @@
-import { getImageSrc } from "@/components/custom/WynnIcon";
+import { getImageSrc, toAbsoluteIconUrl } from "@/lib/wynn-item-icon";
 import type { Item } from "@wynnpool/shared";
 import api from "@/lib/api";
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ itemName:
     }
 
     const itemData: Item = await res.json();
-    const iconUrl: string = getImageSrc(itemData)
+    const iconUrl: string = toAbsoluteIconUrl(getImageSrc(itemData));
 
     return {
         title: `${itemData.internalName} - Item Info`,

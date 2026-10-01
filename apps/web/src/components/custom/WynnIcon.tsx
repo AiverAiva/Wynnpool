@@ -1,8 +1,11 @@
 
-import type { Item, ArmourItem } from '@wynnpool/shared';
-import React, { FC } from 'react';
+'use client';
+
+import type { Item } from '@wynnpool/shared';
+import React, { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { BARRIER_ICON_SRC, getImageSrc } from '@/lib/wynn-item-icon';
 
 interface IconProps {
   name: string; // Add more icon names as needed
@@ -61,29 +64,13 @@ const ItemTypeIcon: React.FC<ItemTypeIconProps> = ({ type, size = 32 }) => {
 };
 
 
-const getImageSrc = (item: Item): string => {
-  if (item.type === 'armour') {
-    // Updated: armourType unified to subType, but armourMaterial stays on ArmourItem
-    const armorItem = item as ArmourItem;
-    const armorSubtype = armorItem.subType ?? "unknown";
-    return `/textures/wynn/armor/${armorSubtype}/${armorItem.armourMaterial}_${armorSubtype}.png`;
-  } else if (item.icon) {
-    if (item.icon.format === 'attribute' || item.icon.format === 'legacy') {
-      const iconValue =
-        typeof item.icon.value === 'object'
-          ? item.icon.value.name
-          : item.icon.value.replace(':', '_');
-      return `https://cdn.wynncraft.com/nextgen/itemguide/3.3/${iconValue}.webp`;
-    }
-    if (item.icon.format === 'skin') {
-      return `https://mc-heads.net/head/${item.icon.value}`;
-    }
-  }
-  return `/icons/items/barrier.webp`;
-};
-
 const ItemIcon: FC<{ item: Item, size?: number, className?: string }> = ({ item, size = 32, className }) => {
-  const src = getImageSrc(item);
+  const resolved = getImageSrc(item);
+  const [src, setSrc] = useState(resolved);
+
+  useEffect(() => {
+    setSrc(resolved);
+  }, [resolved]);
 
   return (
     <Image
@@ -91,10 +78,14 @@ const ItemIcon: FC<{ item: Item, size?: number, className?: string }> = ({ item,
       alt={item.internalName}
       width={size}
       height={size}
+      unoptimized
       style={{
-        imageRendering: 'pixelated', // Preserve pixel art look
+        imageRendering: 'pixelated',
       }}
       className={cn(className)}
+      onError={() => {
+        if (src !== BARRIER_ICON_SRC) setSrc(BARRIER_ICON_SRC);
+      }}
     />
   );
 };
