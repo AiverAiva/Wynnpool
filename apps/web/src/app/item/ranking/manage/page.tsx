@@ -84,9 +84,10 @@ export default function ManagePage() {
 
         const fetchAvailableItems = async () => {
             try {
+                // Updated: item rarity and profRarity unified under tier in new API
                 const query = {
                     $and: [
-                        { rarity: { $in: ["mythic"] } },
+                        { tier: { $in: ["mythic"] } },
                         {
                             $or: [
                                 { type: "weapon" },
