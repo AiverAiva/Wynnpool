@@ -55,7 +55,7 @@ export class AuthController {
 
     @Get('logout')
     async logout(@Req() req: Request, @Res() res: Response) {
-        res.clearCookie(this.getCookieName(), { path: '/' });
+        res.clearCookie(this.getCookieName(), this.getCookieOptions());
         res.json({ success: true });
     }
 

@@ -5,5 +5,11 @@
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@shared/(.*)$": "<rootDir>/../src/shared/$1",
+    "^@lib/(.*)$": "<rootDir>/../src/lib/$1",
+    "^server/(.*)$": "<rootDir>/../src/server/$1",
+    "^aspect/(.*)$": "<rootDir>/../src/aspect/$1"
   }
 }
