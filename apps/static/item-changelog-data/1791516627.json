@@ -1,0 +1,1276 @@
+{
+  "add": [
+    {
+      "_id": "6ac85fd33be28a5aea47abcf",
+      "itemName": "Ashes to Ashes",
+      "status": "add",
+      "timestamp": 1791516627,
+      "displayName": "Ashes to Ashes",
+      "internalName": "Ashes to Ashes",
+      "type": "armour",
+      "subType": "leggings",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_leggings",
+          "name": "leggings.titanium",
+          "customModelData": {
+            "rangeDispatch": [
+              9
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_6",
+      "tier": "fabled",
+      "dropRestriction": "never",
+      "elements": [
+        "thunder"
+      ],
+      "requirements": {
+        "level": 106,
+        "dexterity": 75
+      },
+      "identifications": {
+        "damage": {
+          "min": 5,
+          "raw": 18,
+          "max": 23
+        },
+        "lifeSteal": {
+          "min": -520,
+          "raw": -400,
+          "max": -280
+        },
+        "rawDamage": {
+          "min": 51,
+          "raw": 169,
+          "max": 220
+        },
+        "rawDefence": -10,
+        "rawStrength": 12,
+        "1stSpellCost": {
+          "min": 26,
+          "raw": 20,
+          "max": 14
+        },
+        "rawAttackSpeed": 1,
+        "raw1stSpellCost": 1
+      },
+      "base": {
+        "baseHealth": 3200,
+        "baseEarthDefence": 195,
+        "baseWaterDefence": -130,
+        "baseThunderDefence": 90
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd0",
+      "itemName": "Last Rites",
+      "status": "add",
+      "timestamp": 1791516627,
+      "displayName": "Last Rites",
+      "internalName": "Last Rites",
+      "type": "armour",
+      "subType": "boots",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_boots",
+          "name": "boots.pale_chainmail",
+          "customModelData": {
+            "rangeDispatch": [
+              12
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_3",
+      "tier": "rare",
+      "restriction": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "elements": [
+        "air"
+      ],
+      "requirements": {
+        "level": 52,
+        "agility": 35
+      },
+      "powderSlots": 2,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'>I         ,        ;                , t      o  '   l   d'       ;              y   ' o   u  ,                t    o   ' ,     .       ;    . s   , t      '     a .    y       ,         ;                                                              a  '     w   ;   ,a      . y</span>",
+      "identifications": {
+        "lifeSteal": 75,
+        "manaSteal": 8,
+        "reflection": 20,
+        "walkSpeed": -10,
+        "spellDamage": 20
+      },
+      "base": {
+        "baseHealth": 575,
+        "baseAirDefence": 20,
+        "baseWaterDefence": 20,
+        "baseThunderDefence": 20
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd1",
+      "itemName": "Gift of Life",
+      "status": "add",
+      "timestamp": 1791516627,
+      "displayName": "Gift of Life",
+      "internalName": "Gift of Life",
+      "type": "armour",
+      "subType": "helmet",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_helmet",
+          "name": "helmet.titanium",
+          "customModelData": {
+            "rangeDispatch": [
+              9
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_6",
+      "tier": "legendary",
+      "restriction": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "elements": [
+        "earth",
+        "thunder"
+      ],
+      "requirements": {
+        "level": 116,
+        "strength": 71,
+        "dexterity": 53
+      },
+      "powderSlots": 7,
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'> \"Now, dance for me! Hehehahehah!\" </span>",
+      "identifications": {
+        "damage": 13,
+        "lifeSteal": 546,
+        "rawAgility": 1,
+        "rawDefence": 1,
+        "rawStrength": 1,
+        "earthDefence": 53,
+        "rawDexterity": 1,
+        "neutralDamage": 38,
+        "healthRegenRaw": -334,
+        "rawIntelligence": 1,
+        "mainAttackRange": 84
+      },
+      "base": {
+        "baseHealth": 3863,
+        "baseAirDefence": 78,
+        "baseFireDefence": 34,
+        "baseEarthDefence": 177,
+        "baseWaterDefence": 63,
+        "baseThunderDefence": 132
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd2",
+      "itemName": "Fearmonger",
+      "status": "add",
+      "timestamp": 1791516627,
+      "displayName": "Fearmonger",
+      "internalName": "Fearmonger",
+      "type": "armour",
+      "subType": "boots",
+      "icon": {
+        "value": {
+          "id": "minecraft:leather_boots",
+          "name": "boots.diamond",
+          "customModelData": {
+            "rangeDispatch": [
+              8
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "emblem": "shield_5",
+      "tier": "legendary",
+      "restriction": "untradable",
+      "dropRestriction": "never",
+      "identified": true,
+      "elements": [
+        "thunder",
+        "air"
+      ],
+      "requirements": {
+        "level": 105,
+        "agility": 60,
+        "dexterity": 60
+      },
+      "lore": "<span class='font-ascii' style='color:#AAAAAA'> \"There's... nothing here?\" </span>",
+      "identifications": {
+        "knockback": 75,
+        "walkSpeed": 80,
+        "rawAttackSpeed": -30,
+        "rawIntelligence": -10,
+        "rawSpellDamage": -84213,
+        "mainAttackRange": -20,
+        "rawMainAttackDamage": 2700
+      },
+      "base": {
+        "baseHealth": -3300,
+        "baseAirDefence": -130,
+        "baseWaterDefence": -300,
+        "baseThunderDefence": -130
+      }
+    }
+  ],
+  "modify": [
+    {
+      "_id": "6ac85fd33be28a5aea47abd3",
+      "itemName": "Diamond Static Necklace",
+      "status": "modify",
+      "timestamp": 1791516627,
+      "before": {
+        "displayName": "Diamond Static Necklace",
+        "internalName": "Diamond Static Necklace",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_5",
+        "tier": "legendary",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 95,
+          "dexterity": 100
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The lethal amount of electricity emmited from this often desired necklace fails to kill you, as its pure energy runs through your veins.</span>",
+        "dropMeta": {
+          "name": "Legendary Island",
+          "type": "challenge",
+          "coordinates": [
+            -1113,
+            65,
+            -2426
+          ]
+        },
+        "identifications": {
+          "walkSpeed": 5,
+          "thunderDamage": 6,
+          "rawAttackSpeed": 1,
+          "rawMainAttackDamage": 29
+        },
+        "base": {
+          "baseThunderDefence": 50
+        }
+      },
+      "after": {
+        "displayName": "Diamond Static Necklace",
+        "internalName": "Diamond Static Necklace",
+        "type": "accessory",
+        "subType": "necklace",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "necklace.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "sticker_5",
+        "tier": "legendary",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 95,
+          "dexterity": 100
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The lethal amount of electricity emitted from this often desired necklace fails to kill you, as its pure energy runs through your veins.</span>",
+        "dropMeta": {
+          "name": "Legendary Island",
+          "type": "challenge",
+          "coordinates": [
+            -1113,
+            65,
+            -2426
+          ]
+        },
+        "identifications": {
+          "walkSpeed": 5,
+          "thunderDamage": 6,
+          "rawAttackSpeed": 1,
+          "rawMainAttackDamage": 29
+        },
+        "base": {
+          "baseThunderDefence": 50
+        }
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd4",
+      "itemName": "The Incomprehensible",
+      "status": "modify",
+      "timestamp": 1791516627,
+      "before": {
+        "displayName": "The Incomprehensible",
+        "internalName": "The Incomprehensible",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 662,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder"
+        ],
+        "requirements": {
+          "level": 97,
+          "classRequirement": "assassin",
+          "strength": 67,
+          "dexterity": 59
+        },
+        "majorIds": {
+          "Wormhole": "<span class='font-ascii' style='color:#AAAAAA'>Mirror and Shadow clones will cast Meteor with Last Laugh. Malicious Mockery causes Meteor to apply 13 Trick stacks.</span>"
+        },
+        "powderSlots": 1,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>After eons spent in parochial search for something familiar, perhaps this blade should have been a hint to think outside the box.</span>",
+        "identifications": {
+          "poison": {
+            "min": 2564,
+            "raw": 8547,
+            "max": 11111
+          },
+          "rawHealth": {
+            "min": -1052,
+            "raw": -809,
+            "max": -566
+          },
+          "earthDamage": {
+            "min": 11,
+            "raw": 37,
+            "max": 48
+          },
+          "rawStrength": 13,
+          "rawDexterity": 11,
+          "3rdSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          },
+          "thunderDamage": {
+            "min": -25,
+            "raw": -19,
+            "max": -13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 11
+          },
+          "baseEarthDamage": {
+            "min": 89,
+            "raw": 89,
+            "max": 127
+          },
+          "baseThunderDamage": {
+            "min": 137,
+            "raw": 137,
+            "max": 163
+          }
+        }
+      },
+      "after": {
+        "displayName": "The Incomprehensible",
+        "internalName": "The Incomprehensible",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 662,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder"
+        ],
+        "requirements": {
+          "level": 97,
+          "classRequirement": "assassin",
+          "strength": 67,
+          "dexterity": 59
+        },
+        "majorIds": {
+          "Wormhole": "<span class='font-ascii' style='color:#AAAAAA'>Clones instead cast Meteor with Last Laugh. Malicious Mockery causes Meteor to apply 13 Trick stacks.</span>"
+        },
+        "powderSlots": 1,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>After eons spent in parochial search for something familiar, perhaps this blade should have been a hint to think outside the box.</span>",
+        "identifications": {
+          "poison": {
+            "min": 2564,
+            "raw": 8547,
+            "max": 11111
+          },
+          "rawHealth": {
+            "min": -1052,
+            "raw": -809,
+            "max": -566
+          },
+          "earthDamage": {
+            "min": 11,
+            "raw": 37,
+            "max": 48
+          },
+          "rawStrength": 13,
+          "rawDexterity": 11,
+          "3rdSpellCost": {
+            "min": -6,
+            "raw": -19,
+            "max": -25
+          },
+          "thunderDamage": {
+            "min": -25,
+            "raw": -19,
+            "max": -13
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 3,
+            "raw": 3,
+            "max": 11
+          },
+          "baseEarthDamage": {
+            "min": 89,
+            "raw": 89,
+            "max": 127
+          },
+          "baseThunderDamage": {
+            "min": 137,
+            "raw": 137,
+            "max": 163
+          }
+        }
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd5",
+      "itemName": "Apsara",
+      "status": "modify",
+      "timestamp": 1791516627,
+      "before": {
+        "displayName": "Apsara",
+        "internalName": "Apsara",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 390,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "mage",
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 10% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Under the waters, between the waves, there lies something-something beautiful.</span>",
+        "identifications": {
+          "damage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "1stSpellCost": {
+            "min": 29,
+            "raw": 22,
+            "max": 15
+          },
+          "rawIntelligence": 20,
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 275
+          }
+        }
+      },
+      "after": {
+        "displayName": "Apsara",
+        "internalName": "Apsara",
+        "type": "weapon",
+        "subType": "wand",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "wand.water3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 435,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "water"
+        ],
+        "requirements": {
+          "level": 109,
+          "classRequirement": "mage",
+          "intelligence": 85
+        },
+        "majorIds": {
+          "Gentle Glow": "<span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse restores 10% more max health per pulse, but heals at a slower rate.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Under the waters, between the waves, there lies something-something beautiful.</span>",
+        "identifications": {
+          "damage": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "manaRegen": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "manaSteal": {
+            "min": -19,
+            "raw": -15,
+            "max": -10
+          },
+          "waterDamage": {
+            "min": 12,
+            "raw": 40,
+            "max": 52
+          },
+          "1stSpellCost": {
+            "min": 29,
+            "raw": 22,
+            "max": 15
+          },
+          "rawIntelligence": 20,
+          "healingEfficiency": {
+            "min": 6,
+            "raw": 19,
+            "max": 25
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 50,
+            "raw": 50,
+            "max": 95
+          },
+          "baseWaterDamage": {
+            "min": 100,
+            "raw": 100,
+            "max": 275
+          }
+        }
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd6",
+      "itemName": "Chaos Theory",
+      "status": "modify",
+      "timestamp": 1791516627,
+      "before": {
+        "displayName": "Chaos Theory",
+        "internalName": "Chaos Theory",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "veryFast",
+        "averageDps": 868,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 118,
+          "classRequirement": "archer",
+          "agility": 47,
+          "strength": 39,
+          "dexterity": 53
+        },
+        "majorIds": {
+          "Uncertainty Principle": "<span class='font-ascii' style='color:#AAAAAA'>Arrow and Grape Bombs gain +1 radius and phase through enemies. Bouncing Bomb has decreased velocity and gains +1 bounces, and Grape Bombs gain increased randomness and +2 projectiles.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>War does not bring destruction. With war comes chaos, and with chaos comes destruction.</span>",
+        "identifications": {
+          "damage": {
+            "min": 7,
+            "raw": 24,
+            "max": 31
+          },
+          "exploding": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "1stSpellCost": {
+            "min": -3,
+            "raw": -11,
+            "max": -14
+          },
+          "3rdSpellCost": {
+            "min": 22,
+            "raw": 17,
+            "max": 12
+          },
+          "elementalDefence": {
+            "min": -57,
+            "raw": -44,
+            "max": -31
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseEarthDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 70
+          },
+          "baseThunderDamage": {
+            "min": 90,
+            "raw": 90,
+            "max": 160
+          }
+        }
+      },
+      "after": {
+        "displayName": "Chaos Theory",
+        "internalName": "Chaos Theory",
+        "type": "weapon",
+        "subType": "bow",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "bow.thunder3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "veryFast",
+        "averageDps": 868,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 118,
+          "classRequirement": "archer",
+          "agility": 47,
+          "strength": 39,
+          "dexterity": 53
+        },
+        "majorIds": {
+          "Uncertainty Principle": "<span class='font-ascii' style='color:#AAAAAA'>\nArrow and Grape Bombs gain +1 radius and phase through enemies. Bouncing Bomb has decreased velocity and gains +1 bounces, and Grape Bombs gain increased randomness and +2 projectiles.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>War does not bring destruction. With war comes chaos, and with chaos comes destruction.</span>",
+        "identifications": {
+          "damage": {
+            "min": 7,
+            "raw": 24,
+            "max": 31
+          },
+          "exploding": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "1stSpellCost": {
+            "min": -3,
+            "raw": -11,
+            "max": -14
+          },
+          "3rdSpellCost": {
+            "min": 22,
+            "raw": 17,
+            "max": 12
+          },
+          "elementalDefence": {
+            "min": -57,
+            "raw": -44,
+            "max": -31
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 80,
+            "raw": 80,
+            "max": 100
+          },
+          "baseEarthDamage": {
+            "min": 60,
+            "raw": 60,
+            "max": 70
+          },
+          "baseThunderDamage": {
+            "min": 90,
+            "raw": 90,
+            "max": 160
+          }
+        }
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd7",
+      "itemName": "Demonomicon",
+      "status": "modify",
+      "timestamp": 1791516627,
+      "before": {
+        "displayName": "Demonomicon",
+        "internalName": "Demonomicon",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 841,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 106,
+          "classRequirement": "shaman",
+          "defence": 70,
+          "strength": 35,
+          "dexterity": 35,
+          "intelligence": 35
+        },
+        "majorIds": {
+          "Gruesome Knots": "<span class='font-ascii' style='color:#AAAAAA'>Bleeding and Twisted Tether deal double the damage, but Bleeding duration is reduced.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A dusty old tome, containing all the powers of the abyss. From its pages spring forth the blackest of secrets and the darkest of truths. Do not let yourself slip into its grasp, for it will consume you too.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 180,
+            "raw": 600,
+            "max": 780
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "rawHealth": {
+            "min": -2990,
+            "raw": -2300,
+            "max": -1610
+          },
+          "walkSpeed": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "rawAgility": -35,
+          "rawElementalDamage": {
+            "min": 72,
+            "raw": 240,
+            "max": 312
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 6,
+            "raw": 6,
+            "max": 700
+          },
+          "baseFireDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 275
+          }
+        }
+      },
+      "after": {
+        "displayName": "Demonomicon",
+        "internalName": "Demonomicon",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "slow",
+        "averageDps": 828,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "earth",
+          "thunder",
+          "water",
+          "fire"
+        ],
+        "requirements": {
+          "level": 106,
+          "classRequirement": "shaman",
+          "defence": 70,
+          "strength": 35,
+          "dexterity": 35,
+          "intelligence": 35
+        },
+        "majorIds": {
+          "Gruesome Knots": "<span class='font-ascii' style='color:#AAAAAA'>Bleeding and Twisted Tether deal double the damage, but Bleeding duration is reduced.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A dusty old tome, containing all the powers of the abyss. From its pages spring forth the blackest of secrets and the darkest of truths. Do not let yourself slip into its grasp, for it will consume you too.</span>",
+        "identifications": {
+          "lifeSteal": {
+            "min": 180,
+            "raw": 600,
+            "max": 780
+          },
+          "manaSteal": {
+            "min": 4,
+            "raw": 13,
+            "max": 17
+          },
+          "rawHealth": {
+            "min": -2990,
+            "raw": -2300,
+            "max": -1610
+          },
+          "walkSpeed": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "rawAgility": -35,
+          "rawElementalDamage": {
+            "min": 72,
+            "raw": 240,
+            "max": 312
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 6,
+            "raw": 6,
+            "max": 700
+          },
+          "baseFireDamage": {
+            "min": 140,
+            "raw": 140,
+            "max": 275
+          }
+        }
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd8",
+      "itemName": "Wraith",
+      "status": "modify",
+      "timestamp": 1791516627,
+      "before": {
+        "displayName": "Wraith",
+        "internalName": "Wraith",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "veryFast",
+        "averageDps": 640,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "air"
+        ],
+        "requirements": {
+          "level": 120,
+          "classRequirement": "assassin",
+          "agility": 60,
+          "strength": 60
+        },
+        "majorIds": {
+          "Self-sufficient": "<span class='font-ascii' style='color:#AAAAAA'>Powder Specials can no longer be charged manually, but accumulate 8% charge every second.</span>"
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lifeSteal": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "slowEnemy": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": 15,
+          "sprintRegen": {
+            "min": 11,
+            "raw": 36,
+            "max": 47
+          },
+          "airSpellDamage": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "raw3rdSpellCost": {
+            "min": 8,
+            "raw": 6,
+            "max": 4
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 15,
+            "raw": 15,
+            "max": 27
+          },
+          "baseAirDamage": {
+            "min": 46,
+            "raw": 46,
+            "max": 140
+          },
+          "baseEarthDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 100
+          }
+        }
+      },
+      "after": {
+        "displayName": "Wraith",
+        "internalName": "Wraith",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "attackSpeed": "veryFast",
+        "averageDps": 680,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "air"
+        ],
+        "requirements": {
+          "level": 120,
+          "classRequirement": "assassin",
+          "agility": 60,
+          "strength": 60
+        },
+        "majorIds": {
+          "Self-sufficient": "<span class='font-ascii' style='color:#AAAAAA'>Powder Specials can no longer be charged manually, but accumulate 8% charge every second.</span>"
+        },
+        "powderSlots": 3,
+        "identifications": {
+          "lifeSteal": {
+            "min": -715,
+            "raw": -550,
+            "max": -385
+          },
+          "slowEnemy": {
+            "min": 5,
+            "raw": 18,
+            "max": 23
+          },
+          "jumpHeight": {
+            "min": 1,
+            "raw": 3,
+            "max": 4
+          },
+          "rawStrength": 15,
+          "sprintRegen": {
+            "min": 11,
+            "raw": 36,
+            "max": 47
+          },
+          "airSpellDamage": {
+            "min": 14,
+            "raw": 46,
+            "max": 60
+          },
+          "raw3rdSpellCost": {
+            "min": 8,
+            "raw": 6,
+            "max": 4
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 15,
+            "raw": 15,
+            "max": 27
+          },
+          "baseAirDamage": {
+            "min": 46,
+            "raw": 46,
+            "max": 140
+          },
+          "baseEarthDamage": {
+            "min": 85,
+            "raw": 85,
+            "max": 100
+          }
+        }
+      }
+    },
+    {
+      "_id": "6ac85fd33be28a5aea47abd9",
+      "itemName": "Heretic",
+      "status": "modify",
+      "timestamp": 1791516627,
+      "before": {
+        "displayName": "Heretic",
+        "internalName": "Heretic",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 100
+        },
+        "majorIds": {
+          "Burnt Shadows": "<span class='font-ascii' style='color:#AAAAAA'>Buried Light burns faster and is controlled by the direction you face. Enemies in the light instead take <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>120%</span>.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>What once crowned the Commander of Aelumia's Gendarmerie, now reduced to a singed fragment of its former self.</span>",
+        "identifications": {
+          "damage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "sprintRegen": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          }
+        },
+        "base": {
+          "baseHealth": 4500,
+          "baseFireDefence": -400
+        }
+      },
+      "after": {
+        "displayName": "Heretic",
+        "internalName": "Heretic",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.titanium"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "fabled",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 120,
+          "defence": 100
+        },
+        "majorIds": {
+          "Burnt Shadows": "<span class='font-ascii' style='color:#AAAAAA'>Buried Light has faster travel speed and damage, and is controlled by the direction you face. Enemies in the light instead take <span class='font-ascii' style='color:#FF5555'><span class='font-common'></span>120%</span> and recieve 10% more damage.</span></span>"
+        },
+        "powderSlots": 4,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>What once crowned the Commander of Aelumia's Gendarmerie, now reduced to a singed fragment of its former self.</span>",
+        "identifications": {
+          "damage": {
+            "min": 8,
+            "raw": 28,
+            "max": 36
+          },
+          "walkSpeed": {
+            "min": 6,
+            "raw": 21,
+            "max": 27
+          },
+          "rawDefence": 12,
+          "healthRegen": {
+            "min": -23,
+            "raw": -18,
+            "max": -13
+          },
+          "sprintRegen": {
+            "min": -39,
+            "raw": -30,
+            "max": -21
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -3,
+            "max": -4
+          }
+        },
+        "base": {
+          "baseHealth": 4500,
+          "baseFireDefence": -400
+        }
+      }
+    }
+  ]
+}
