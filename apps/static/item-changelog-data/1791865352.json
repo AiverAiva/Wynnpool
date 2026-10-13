@@ -1,0 +1,98 @@
+{
+  "modify": [
+    {
+      "_id": "6acdb208c67023a7adde4120",
+      "itemName": "Phantasmal Hostage",
+      "status": "modify",
+      "timestamp": 1791865352,
+      "before": {
+        "displayName": "Phantasmal Hostage",
+        "internalName": "Phantasmal Hostage",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 103,
+          "agility": 50,
+          "strength": 50,
+          "intelligence": 65
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A soul sacrificed willingly, to an eternity in captivity. Imprints and memories; all that remain of a hero of the lands.</span>",
+        "identifications": {
+          "lifeSteal": 500,
+          "manaSteal": 10,
+          "rawDamage": 220,
+          "walkSpeed": -25,
+          "spellDamage": 35,
+          "waterSpellDamage": 15
+        },
+        "base": {
+          "baseHealth": 3575,
+          "baseAirDefence": 85,
+          "baseEarthDefence": 85,
+          "baseWaterDefence": 85
+        }
+      },
+      "after": {
+        "displayName": "Phantasmal Hostage",
+        "internalName": "Phantasmal Hostage",
+        "type": "armour",
+        "subType": "chestplate",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_chestplate",
+            "name": "chestplate.pale_diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "untradable",
+        "dropRestriction": "never",
+        "identified": true,
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 103,
+          "agility": 50,
+          "strength": 50,
+          "intelligence": 65
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A soul sacrificed willingly, to an eternity unwound. Imprints and memories; all that remain of a hero of the lands.</span>",
+        "identifications": {
+          "lifeSteal": 500,
+          "manaSteal": 10,
+          "rawDamage": 220,
+          "walkSpeed": -25,
+          "spellDamage": 35,
+          "waterSpellDamage": 15
+        },
+        "base": {
+          "baseHealth": 3575,
+          "baseAirDefence": 85,
+          "baseEarthDefence": 85,
+          "baseWaterDefence": 85
+        }
+      }
+    }
+  ]
+}
