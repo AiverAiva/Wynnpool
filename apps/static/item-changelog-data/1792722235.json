@@ -1,0 +1,174 @@
+{
+  "modify": [
+    {
+      "_id": "6adac53c7c081fa619419f4d",
+      "itemName": "Masterwork Inferno",
+      "status": "modify",
+      "timestamp": 1792722235,
+      "before": {
+        "displayName": "Inferno",
+        "internalName": "Masterwork Inferno",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 807,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "assassin",
+          "defence": 105
+        },
+        "majorIds": {
+          "Molten Rebirth": "<span class='font-ascii' style='color:#AAAAAA'>Harvester additionally restores 1.5% health per leftover mark, increasing to 3% with devour.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The Dogun God Garaheth was actually an immense fire demon occupying the bowels of Molten Heights. Although unwise, the Dwarves forged a demonic dagger using his tooth in celebration of his slaughter.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 600,
+            "raw": 2000,
+            "max": 2600
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "fireDamage": {
+            "min": 16,
+            "raw": 54,
+            "max": 70
+          },
+          "rawDefence": 25,
+          "healthRegen": {
+            "min": -36,
+            "raw": -28,
+            "max": -20
+          },
+          "waterDefence": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          },
+          "rawMainAttackDamage": {
+            "min": 260,
+            "raw": 865,
+            "max": 1125
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 895,
+            "raw": 895,
+            "max": 1050
+          }
+        }
+      },
+      "after": {
+        "displayName": "Inferno",
+        "internalName": "Masterwork Inferno",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.fire3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_6",
+        "tier": "mythic",
+        "attackSpeed": "verySlow",
+        "averageDps": 807,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "fire"
+        ],
+        "requirements": {
+          "level": 112,
+          "classRequirement": "assassin",
+          "defence": 105
+        },
+        "majorIds": {
+          "Molten Rebirth": "<span class='font-ascii' style='color:#AAAAAA'>Harvester additionally restores 1.5% health per mark, increasing to 3% with devour.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>The Dogun God Garaheth was actually an immense fire demon occupying the bowels of Molten Heights. Although unwise, the Dwarves forged a demonic dagger using his tooth in celebration of his slaughter.</span>",
+        "identifications": {
+          "rawHealth": {
+            "min": 600,
+            "raw": 2000,
+            "max": 2600
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "fireDamage": {
+            "min": 16,
+            "raw": 54,
+            "max": 70
+          },
+          "rawDefence": 25,
+          "healthRegen": {
+            "min": -36,
+            "raw": -28,
+            "max": -20
+          },
+          "waterDefence": {
+            "min": -52,
+            "raw": -40,
+            "max": -28
+          },
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          },
+          "raw3rdSpellCost": {
+            "min": -1,
+            "raw": -4,
+            "max": -5
+          },
+          "rawMainAttackDamage": {
+            "min": 260,
+            "raw": 865,
+            "max": 1125
+          }
+        },
+        "base": {
+          "baseFireDamage": {
+            "min": 895,
+            "raw": 895,
+            "max": 1050
+          }
+        }
+      }
+    }
+  ]
+}
