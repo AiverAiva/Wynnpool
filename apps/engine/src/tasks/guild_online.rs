@@ -57,12 +57,18 @@ const COLL_GUILD_DATA: &str = "guild_data";
 
 /// Bucket size for the online-count series.
 ///
-/// The count task samples every 60s, so one bucket holds up to 15 samples. At this
-/// size the 14-day retention the web UI offers works out at roughly 320k documents
-/// (~40MB); at 5 minutes it would be ~960k documents (~120MB), which is close to
-/// doubling the whole database. The API and the chart both treat `bucket` as an
-/// opaque timestamp, so changing this affects only storage and resolution.
-const BUCKET_SECS: i64 = 15 * 60;
+/// The count task samples every 60s, so one bucket holds up to 30 samples. Storage
+/// scales with the number of buckets, so this is the primary size knob: at 15 minutes
+/// the 14-day window measured ~900k documents / ~167MB of the M0 quota, and halving
+/// the resolution halves that. The average is sample-weighted (`countSum /
+/// activeSamples`), so resolution changes leave published rankings comparable.
+///
+/// The API and the chart both treat `bucket` as an opaque timestamp, but the chart's
+/// gap fill has a matching constant (`BUCKET_MS` in
+/// `apps/web/src/components/custom/guild-online-graph.tsx`) that has to move with
+/// this value. During the switch-over both granularities coexist in the collection,
+/// which only affects how finely gaps are drawn.
+const BUCKET_SECS: i64 = 30 * 60;
 
 /// Buckets are kept as long as the widest window the web UI offers.
 const BUCKET_TTL_SECS: i64 = 14 * 24 * 60 * 60;

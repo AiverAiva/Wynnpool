@@ -41,7 +41,10 @@ interface ChartProps {
 }
 
 /** Must match BUCKET_SECS in apps/engine/src/tasks/guild_online.rs. */
-const BUCKET_MS = 15 * 60 * 1000
+const BUCKET_SECS = 30 * 60
+const BUCKET_MS = BUCKET_SECS * 1000
+/** Label text derived from BUCKET_SECS so it cannot drift from the real window. */
+const BUCKET_MINUTES = BUCKET_SECS / 60
 
 /**
  * Insert an explicit "no data" node for every bucket interval the collector did not
@@ -149,7 +152,7 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                     <p className="text-muted-foreground">No data recorded</p>
                 ) : (
                     <>
-                        <p>Count: {point.count} <span className="text-muted-foreground">avg/15min</span></p>
+                        <p>Count: {point.count} <span className="text-muted-foreground">avg/{BUCKET_MINUTES}min</span></p>
                         {point.samples > 0 && (
                             <p className="text-muted-foreground">
                                 {point.samples} sample{point.samples === 1 ? "" : "s"}, peak {point.countMax}
@@ -167,7 +170,7 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                 <div className="grid flex-1 gap-1 text-center sm:text-left">
                     <CardTitle>Guild Online Count</CardTitle>
                     <CardDescription>
-                        15-minute average online members. Gaps are periods with no recorded samples.
+                        {BUCKET_MINUTES}-minute average online members. Gaps are periods with no recorded samples.
                     </CardDescription>
                 </div>
                 <Select value={timeSpan} onValueChange={setTimeSpan}>
@@ -213,8 +216,8 @@ export default function GuildOnlineGraph({ guildUuid }: ChartProps) {
                             <CartesianGrid vertical={false} />
                             <XAxis
                                 dataKey="timestamp"
-                                // Numeric time axis: buckets are hourly, so spacing must
-                                // reflect real elapsed time rather than point order.
+                                // Numeric time axis: buckets are at a fixed interval, so
+                                // spacing must reflect real elapsed time rather than point order.
                                 type="number"
                                 scale="time"
                                 domain={["dataMin", "dataMax"]}
