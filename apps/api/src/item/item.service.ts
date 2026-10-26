@@ -95,7 +95,9 @@ export class ItemService implements OnModuleInit {
 
         for (const block of blocks) {
             if (block.name === 'NameData') {
-                summary.itemName = block.nameStr;
+                // Arethusa 3.1.0 (Wynntils v4.2.15) now writes ascensions as "Ascended <name>".
+                // The API still uses "Masterwork <name>"
+                summary.itemName = block.nameStr.replace(/^Ascended /, 'Masterwork ');
             }
 
             if (block.name === 'PowderData') {
