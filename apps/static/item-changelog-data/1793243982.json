@@ -1,0 +1,616 @@
+{
+  "modify": [
+    {
+      "_id": "6ae2bb4e388a060d6940b22e",
+      "itemName": "Paparazzi",
+      "status": "modify",
+      "timestamp": 1793243982,
+      "before": {
+        "displayName": "Paparazzi",
+        "internalName": "Paparazzi",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_3",
+        "tier": "fabled",
+        "attackSpeed": "veryFast",
+        "averageDps": 395,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 57,
+          "classRequirement": "shaman",
+          "dexterity": 45
+        },
+        "majorIds": {
+          "Seeking Totem": "<span class='font-ascii' style='color:#AAAAAA'>Totem moves towards you when wearing Mask of the Heretic.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>They didn’t follow you this far to watch you survive.</span>",
+        "identifications": {
+          "thorns": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "lifeSteal": {
+            "min": -195,
+            "raw": -150,
+            "max": -105
+          },
+          "rawDefence": -7,
+          "rawIntelligence": -7,
+          "elementalDefence": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawThunderDamage": {
+            "min": 30,
+            "raw": 100,
+            "max": 130
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 55
+          },
+          "baseThunderDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 155
+          }
+        }
+      },
+      "after": {
+        "displayName": "Paparazzi",
+        "internalName": "Paparazzi",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.thunder2"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_3",
+        "tier": "fabled",
+        "attackSpeed": "veryFast",
+        "averageDps": 395,
+        "restriction": "none",
+        "dropRestriction": "normal",
+        "elements": [
+          "thunder"
+        ],
+        "requirements": {
+          "level": 57,
+          "classRequirement": "shaman",
+          "dexterity": 45
+        },
+        "majorIds": {
+          "Seeking Totem": "<span class='font-ascii' style='color:#AAAAAA'>Totem moves towards you when wearing Mask of the Heretic.</span>"
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>They didn't follow you this far to watch you survive.</span>",
+        "identifications": {
+          "thorns": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "lifeSteal": {
+            "min": -195,
+            "raw": -150,
+            "max": -105
+          },
+          "rawDefence": -7,
+          "rawIntelligence": -7,
+          "elementalDefence": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "rawThunderDamage": {
+            "min": 30,
+            "raw": 100,
+            "max": 130
+          }
+        },
+        "base": {
+          "baseDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 55
+          },
+          "baseThunderDamage": {
+            "min": 10,
+            "raw": 10,
+            "max": 155
+          }
+        }
+      }
+    },
+    {
+      "_id": "6ae2bb4e388a060d6940b22f",
+      "itemName": "Tremorcaller",
+      "status": "modify",
+      "timestamp": 1793243982,
+      "before": {
+        "displayName": "Tremorcaller",
+        "internalName": "Tremorcaller",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 848,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 98,
+          "classRequirement": "shaman",
+          "strength": 75
+        },
+        "majorIds": {
+          "Dead Weight": "<span class='font-ascii' style='color:#AAAAAA'>Totem's horizontal velocity is greatly increased at the cost of vertical movement.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A blacksmith’s blow shapes steel - yours shape the very earth. Every strike is a hammerfall, leaving the ground dented and ringing like a struck anvil, its thud rolling deep through stone.</span>",
+        "dropMeta": {
+          "name": "Sky Islands Exploration",
+          "type": "lootrun",
+          "coordinates": [
+            1034,
+            135,
+            -4414
+          ]
+        },
+        "identifications": {
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "jumpHeight": -1,
+          "rawStrength": 25,
+          "airSpellDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          },
+          "rawAttackSpeed": -3,
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "raw3rdSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "earthSpellDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 1550,
+            "raw": 1550,
+            "max": 1775
+          }
+        }
+      },
+      "after": {
+        "displayName": "Tremorcaller",
+        "internalName": "Tremorcaller",
+        "type": "weapon",
+        "subType": "relik",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "relik.earth3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "superSlow",
+        "averageDps": 848,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth"
+        ],
+        "requirements": {
+          "level": 98,
+          "classRequirement": "shaman",
+          "strength": 75
+        },
+        "majorIds": {
+          "Dead Weight": "<span class='font-ascii' style='color:#AAAAAA'>Totem's horizontal velocity is greatly increased at the cost of vertical movement.</span>"
+        },
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>A blacksmith's blow shapes steel - yours shape the very earth. Every strike is a hammerfall, leaving the ground dented and ringing like a struck anvil, its thud rolling deep through stone.</span>",
+        "dropMeta": {
+          "name": "Sky Islands Exploration",
+          "type": "lootrun",
+          "coordinates": [
+            1034,
+            135,
+            -4414
+          ]
+        },
+        "identifications": {
+          "walkSpeed": {
+            "min": -26,
+            "raw": -20,
+            "max": -14
+          },
+          "jumpHeight": -1,
+          "rawStrength": 25,
+          "airSpellDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          },
+          "rawAttackSpeed": -3,
+          "raw1stSpellCost": {
+            "min": -1,
+            "raw": -5,
+            "max": -6
+          },
+          "raw3rdSpellCost": {
+            "min": 7,
+            "raw": 5,
+            "max": 4
+          },
+          "earthSpellDamage": {
+            "min": 11,
+            "raw": 35,
+            "max": 46
+          }
+        },
+        "base": {
+          "baseEarthDamage": {
+            "min": 1550,
+            "raw": 1550,
+            "max": 1775
+          }
+        }
+      }
+    },
+    {
+      "_id": "6ae2bb4e388a060d6940b230",
+      "itemName": "Mesmerizing Madness",
+      "status": "modify",
+      "timestamp": 1793243982,
+      "before": {
+        "displayName": "Mesmerizing Madness",
+        "internalName": "Mesmerizing Madness",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 104,
+          "agility": 45,
+          "strength": 45,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Sink into infinite synchronous beats with the intricate rhythm of fractals and spirals and patterns, and patterns, and patterns that reach to the pulsating stars and then back to the ground where the people are dancing to songs they don't know under stars that turn ‘round, and around, and around, as the spiral is starting again . . .</span>",
+        "identifications": {
+          "sprint": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 7,
+            "max": 9
+          },
+          "fireDamage": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "rawAgility": 5,
+          "rawStrength": 5,
+          "thunderDamage": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "elementalSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseHealth": 3200,
+          "baseFireDefence": -125,
+          "baseThunderDefence": -125
+        }
+      },
+      "after": {
+        "displayName": "Mesmerizing Madness",
+        "internalName": "Mesmerizing Madness",
+        "type": "armour",
+        "subType": "helmet",
+        "icon": {
+          "value": {
+            "id": "minecraft:leather_helmet",
+            "name": "helmet.diamond"
+          },
+          "format": "attribute"
+        },
+        "emblem": "shield_5",
+        "tier": "legendary",
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "water",
+          "air"
+        ],
+        "requirements": {
+          "level": 104,
+          "agility": 45,
+          "strength": 45,
+          "intelligence": 45
+        },
+        "powderSlots": 2,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Sink into infinite synchronous beats with the intricate rhythm of fractals and spirals and patterns, and patterns, and patterns that reach to the pulsating stars and then back to the ground where the people are dancing to songs they don't know under stars that turn 'round, and around, and around, as the spiral is starting again . . .</span>",
+        "identifications": {
+          "sprint": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          },
+          "manaRegen": {
+            "min": 3,
+            "raw": 9,
+            "max": 12
+          },
+          "manaSteal": {
+            "min": 2,
+            "raw": 7,
+            "max": 9
+          },
+          "fireDamage": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "rawAgility": 5,
+          "rawStrength": 5,
+          "thunderDamage": {
+            "min": -30,
+            "raw": -23,
+            "max": -16
+          },
+          "elementalSpellDamage": {
+            "min": 7,
+            "raw": 23,
+            "max": 30
+          }
+        },
+        "base": {
+          "baseHealth": 3200,
+          "baseFireDefence": -125,
+          "baseThunderDefence": -125
+        }
+      }
+    },
+    {
+      "_id": "6ae2bb4e388a060d6940b231",
+      "itemName": "Aviform",
+      "status": "modify",
+      "timestamp": 1793243982,
+      "before": {
+        "displayName": "Aviform",
+        "internalName": "Aviform",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 638,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 83,
+          "classRequirement": "assassin",
+          "agility": 50,
+          "strength": 25,
+          "dexterity": 35
+        },
+        "majorIds": {
+          "Windsurf": "<span class='font-ascii' style='color:#AAAAAA'>Righting Reflex has 75% reduced fall speed, lasts twice as long, and is affected stronger by movement speed.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Weightless as a fallen feather, yet lethal as a hawk’s descent. Its beveled edge reshapes the slipstream to cradle your form, tugging you through the air as you deliver strike after strike, movements blurring into a flurry of beating wings.</span>",
+        "identifications": {
+          "airDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawHealth": {
+            "min": -1560,
+            "raw": -1200,
+            "max": -840
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "earthDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "thunderDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 135
+          },
+          "baseEarthDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 100
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 170
+          }
+        }
+      },
+      "after": {
+        "displayName": "Aviform",
+        "internalName": "Aviform",
+        "type": "weapon",
+        "subType": "dagger",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "dagger.air3"
+          },
+          "format": "attribute"
+        },
+        "emblem": "diamond_5",
+        "tier": "fabled",
+        "attackSpeed": "fast",
+        "averageDps": 638,
+        "restriction": "none",
+        "dropRestriction": "never",
+        "elements": [
+          "earth",
+          "thunder",
+          "air"
+        ],
+        "requirements": {
+          "level": 83,
+          "classRequirement": "assassin",
+          "agility": 50,
+          "strength": 25,
+          "dexterity": 35
+        },
+        "majorIds": {
+          "Windsurf": "<span class='font-ascii' style='color:#AAAAAA'>Righting Reflex has 75% reduced fall speed, lasts twice as long, and is affected stronger by movement speed.</span>"
+        },
+        "powderSlots": 3,
+        "lore": "<span class='font-ascii' style='color:#AAAAAA'>Weightless as a fallen feather, yet lethal as a hawk's descent. Its beveled edge reshapes the slipstream to cradle your form, tugging you through the air as you deliver strike after strike, movements blurring into a flurry of beating wings.</span>",
+        "identifications": {
+          "airDamage": {
+            "min": 9,
+            "raw": 30,
+            "max": 39
+          },
+          "rawHealth": {
+            "min": -1560,
+            "raw": -1200,
+            "max": -840
+          },
+          "walkSpeed": {
+            "min": 8,
+            "raw": 25,
+            "max": 33
+          },
+          "earthDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          },
+          "thunderDamage": {
+            "min": 6,
+            "raw": 20,
+            "max": 26
+          }
+        },
+        "base": {
+          "baseAirDamage": {
+            "min": 35,
+            "raw": 35,
+            "max": 135
+          },
+          "baseEarthDamage": {
+            "min": 70,
+            "raw": 70,
+            "max": 100
+          },
+          "baseThunderDamage": {
+            "min": 0,
+            "raw": 0,
+            "max": 170
+          }
+        }
+      }
+    }
+  ]
+}
