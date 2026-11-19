@@ -37,7 +37,9 @@ export async function execute(interaction: ChatInputCommandInteraction) {
         });
 
         if (!response.ok) {
-            throw new Error(`API error ${response.status}`);
+            const body = (await response.json().catch(() => null)) as { message?: string } | null;
+            const message = typeof body?.message === 'string' ? body.message : `API error ${response.status}`;
+            throw new Error(message);
         }
 
         const json = (await response.json()) as AnalyzeResponse;

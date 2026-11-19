@@ -1,4 +1,5 @@
-import { decodeBlocks, parseIdString } from './wynntils-decode';
+import { decodeBlocks, ItemDecodeError, parseIdString } from './wynntils-decode';
+import { BROKEN_ITEM_STRINGS, VALID_V4_ITEM_STRING } from './wynntils-decode.fixtures';
 
 /**
  * v3 test string from test.txt: StartData version byte is 2, but the
@@ -108,7 +109,7 @@ describe('wynntils-decode v3 (Wynntils PR #4265)', () => {
  * 6-bit powders with a powder special, and drops the durability effectiveness
  * byte; decoding it with the 3.X.X rules desyncs the byte stream.
  */
-const V4_TEST_STRING = '󰀃󰄀󰉁󷍣󶕮󶑥󶐠󴱡󶵥󶹴󰀃󰔁󰄹󴘞󺼉󻜋󰔀󲍐󵰝󰀗󶒀󰄣󰁒󼠁󸐂󲐁󰀶󴐠󰀄󰌃󵕕󴀅󰜅󰓿';
+const V4_TEST_STRING = VALID_V4_ITEM_STRING;
 
 describe('wynntils-decode v4 (Arethusa 4.0.0)', () => {
     it('decodes a v4 gear string end to end', () => {
@@ -154,5 +155,81 @@ describe('wynntils-decode v4 (Arethusa 4.0.0)', () => {
             255,
         ];
         expect(() => decodeBlocks(bytes)).toThrow(/desync/);
+
+        const error = captureDecodeError(() => decodeBlocks(bytes));
+        expect(error.details).toMatchObject({
+            code: 'invalid-block',
+            version: 3,
+            versionName: 'Arethusa 4.X.X',
+            offset: 11,
+            byteLength: 13,
+            decodedBlocks: ['StartData'],
+        });
+        expect(error.details.reason).toMatch(/desync/);
     });
+});
+
+describe('decode error diagnostics', () => {
+    it('flags an encoding version newer than 4.X.X', () => {
+        const error = captureDecodeError(() => decodeBlocks([0, 4, 255]));
+        expect(error.details).toMatchObject({
+            code: 'unsupported-version',
+            version: 4,
+            offset: 2,
+            byteLength: 3,
+            decodedBlocks: [],
+        });
+        expect(error.details.reason).toMatch(/Unsupported encoding version/);
+    });
+
+    it('flags a truncated byte stream', () => {
+        const error = captureDecodeError(() => decodeBlocks([0, 3, 1]));
+        expect(error.details).toMatchObject({
+            code: 'truncated',
+            version: 3,
+            offset: 3,
+            byteLength: 3,
+            decodedBlocks: ['StartData'],
+        });
+    });
+
+    it('flags characters outside the private-use areas', () => {
+        const error = captureDecodeError(() => parseIdString('abc'));
+        expect(error.details).toMatchObject({
+            code: 'invalid-characters',
+            offset: 0,
+            byteLength: 0,
+            decodedBlocks: [],
+        });
+    });
+});
+
+function captureDecodeError(run: () => unknown): ItemDecodeError {
+    try {
+        run();
+    } catch (error) {
+        expect(error).toBeInstanceOf(ItemDecodeError);
+        return error as ItemDecodeError;
+    }
+    throw new Error('Expected decoding to fail');
+}
+
+describe('broken item string fixtures', () => {
+    for (const fixture of BROKEN_ITEM_STRINGS) {
+        it(`${fixture.name} -> ${fixture.decodeCode ?? 'clean decode'} (HTTP ${fixture.httpStatus})`, () => {
+            if (fixture.decodeCode === null) {
+                expect(() => parseIdString(fixture.item)).not.toThrow();
+                return;
+            }
+
+            const error = captureDecodeError(() => parseIdString(fixture.item));
+            expect(error.details).toMatchObject({
+                code: fixture.decodeCode,
+                ...(fixture.version !== undefined ? { version: fixture.version } : {}),
+                ...(fixture.versionName !== undefined ? { versionName: fixture.versionName } : {}),
+                ...(fixture.offset !== undefined ? { offset: fixture.offset } : {}),
+                ...(fixture.byteLength !== undefined ? { byteLength: fixture.byteLength } : {}),
+            });
+        });
+    }
 });

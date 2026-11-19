@@ -1,6 +1,7 @@
 import { Controller, Post, Get, Body, Param, HttpException, HttpStatus, Query } from '@nestjs/common';
 import { ItemService } from './item.service';
 import { SearchItemDto } from './item.schema';
+import { ItemDecodeDetails, ItemDecodeError } from '@lib/wynntils-decode';
 
 @Controller('item')
 export class ItemController {
@@ -45,7 +46,7 @@ export class ItemController {
         try {
             return this.itemService.decode(item);
         } catch (err) {
-            throw new HttpException('Invalid ID string', HttpStatus.BAD_REQUEST);
+            throw this.itemDecodeException(err);
         }
     }
 
@@ -58,7 +59,7 @@ export class ItemController {
         try {
             return this.itemService.summarize(item);
         } catch (err) {
-            throw new HttpException('Unable to summarize ID string', HttpStatus.BAD_REQUEST);
+            throw this.itemDecodeException(err);
         }
     }
 
@@ -69,7 +70,7 @@ export class ItemController {
         }
 
         const summary = this.summarizeOrBadRequest(item);
-        const original = await this.itemService.findItemById(summary.itemName);
+        const original = await this.findOriginalOrNotFound(summary.itemName);
         this.itemService.normalizeIdentificationsToRolls(summary, original);
         const weights = await this.itemService.findWeightsByItemName(summary.itemName);
 
@@ -87,7 +88,7 @@ export class ItemController {
         }
 
         const summary = this.summarizeOrBadRequest(item);
-        const original = await this.itemService.findItemById(summary.itemName);
+        const original = await this.findOriginalOrNotFound(summary.itemName);
         this.itemService.normalizeIdentificationsToRolls(summary, original);
         const weights = await this.itemService.findWeightsByItemName(summary.itemName);
         const result: any = { ...summary };
@@ -129,8 +130,75 @@ export class ItemController {
     private summarizeOrBadRequest(item: string) {
         try {
             return this.itemService.summarize(item);
-        } catch {
-            throw new HttpException('Invalid item string', HttpStatus.BAD_REQUEST);
+        } catch (err) {
+            throw this.itemDecodeException(err);
+        }
+    }
+
+    /**
+     * Build a 400 response that names the failure and carries the fields a
+     * report needs: encoding version, byte offset and the blocks already read.
+     */
+    private itemDecodeException(err: unknown): HttpException {
+        const body = {
+            statusCode: HttpStatus.BAD_REQUEST,
+            error: 'ItemDecodeError',
+        };
+
+        if (err instanceof ItemDecodeError) {
+            return new HttpException(
+                {
+                    ...body,
+                    message: this.describeDecodeFailure(err.details),
+                    diagnostics: err.details,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+
+        return new HttpException(
+            {
+                ...body,
+                message: 'The item string could not be decoded.',
+            },
+            HttpStatus.BAD_REQUEST,
+        );
+    }
+
+    private describeDecodeFailure(details: ItemDecodeDetails): string {
+        switch (details.code) {
+            case 'invalid-characters':
+                return 'This text contains characters that are not part of a Wynncraft item string. Copy the string again from the game.';
+            case 'invalid-start':
+                return 'This text is not a Wynncraft item string. Copy the string again from the game.';
+            case 'unsupported-version':
+                return `This item uses an encoding version Wynnpool cannot read yet (${details.versionName}). Please report it with the debug info below so support can be added.`;
+            case 'unsupported-block':
+                return `This item string contains data Wynnpool cannot read yet (${details.versionName ?? 'unknown encoding'}). Please report it with the debug info below.`;
+            case 'truncated':
+                return `This item string looks incomplete: decoding stopped after byte ${details.offset} of ${details.byteLength}. Copy the whole string and try again.`;
+            default:
+                return `This item string could not be decoded (${details.versionName ?? 'unknown encoding'}). Please report it with the debug info below.`;
+        }
+    }
+
+    /** A string can decode cleanly yet name an item the database does not hold. */
+    private async findOriginalOrNotFound(itemName: string) {
+        try {
+            return await this.itemService.findItemById(itemName);
+        } catch (err) {
+            if (err instanceof HttpException && err.getStatus() === HttpStatus.NOT_FOUND) {
+                throw new HttpException(
+                    {
+                        statusCode: HttpStatus.NOT_FOUND,
+                        error: 'ItemNotInDatabase',
+                        message: `The string decoded to "${itemName}", but that item is not in Wynnpool's item database yet. Please report it with the item string so the item can be added.`,
+                        diagnostics: { itemName },
+                    },
+                    HttpStatus.NOT_FOUND,
+                );
+            }
+            throw err;
         }
     }
 }

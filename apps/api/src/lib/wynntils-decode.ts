@@ -53,6 +53,72 @@ function decodeVarint(next: () => number): number {
 }
 
 /**
+ * Why an item string could not be decoded. Used to give users a message they
+ * can act on and to include actionable fields in bug reports.
+ */
+export type ItemDecodeFailureCode =
+    | 'invalid-characters'
+    | 'invalid-start'
+    | 'unsupported-version'
+    | 'unsupported-block'
+    | 'truncated'
+    | 'invalid-block';
+
+export interface ItemDecodeDetails {
+    code: ItemDecodeFailureCode;
+    /** Technical description of the failure. */
+    reason: string;
+    /** Encoding version byte from the Start block, when it could be read. */
+    version?: number;
+    /** Human-readable encoding name, for example "Arethusa 4.X.X". */
+    versionName?: string;
+    /** Byte offset where decoding stopped. */
+    offset: number;
+    /** Number of bytes decoded from the string. */
+    byteLength: number;
+    /** Blocks decoded before the failure, in order. */
+    decodedBlocks: string[];
+}
+
+export class ItemDecodeError extends Error {
+    readonly details: ItemDecodeDetails;
+
+    constructor(details: ItemDecodeDetails) {
+        super(details.reason);
+        this.name = 'ItemDecodeError';
+        this.details = details;
+    }
+}
+
+/** Internal marker thrown while walking the byte stream. */
+class DecodeFailure extends Error {
+    constructor(
+        readonly code: ItemDecodeFailureCode,
+        message: string,
+        /** Byte offset to report, when it differs from the current read position. */
+        readonly offset?: number,
+    ) {
+        super(message);
+    }
+}
+
+/** Map a version byte to the encoding name used in docs and bug reports. */
+export function arethusaVersionName(version: number): string {
+    switch (version) {
+        case 0:
+            return 'Arethusa 1.X.X/2.X.X';
+        case 1:
+            return 'Arethusa 2.X.X';
+        case 2:
+            return 'Arethusa 3.X.X';
+        case 3:
+            return 'Arethusa 4.X.X';
+        default:
+            return `version byte 0x${version.toString(16).padStart(2, '0')}`;
+    }
+}
+
+/**
  * Block identifiers as per src/block/mod.rs
  */
 export enum DataBlockId {
@@ -299,7 +365,7 @@ function readIdentificationEntries(
 ): { end: number; extended: boolean; entries: IdentificationDataBlock['identifications'] } {
     let i = start;
     const next = (): number => {
-        if (i >= bytes.length) throw new Error('Unexpected end of bytes');
+        if (i >= bytes.length) throw new DecodeFailure('truncated', 'Unexpected end of bytes');
         return bytes[i++];
     };
     const identCount = next();
@@ -339,7 +405,7 @@ function readIdentificationEntries(
 /** A parsed identification block is only valid if the next byte starts a block. */
 function assertBlockBoundary(bytes: number[], end: number, blockName: string) {
     if (end < bytes.length && !isValidBlockId(bytes[end])) {
-        throw new Error(`${blockName} parse desync at byte ${end}`);
+        throw new DecodeFailure('invalid-block', `${blockName} parse desync at byte ${end}`, end);
     }
 }
 
@@ -353,32 +419,44 @@ function isValidBlockId(id: number): boolean {
  */
 export function decodeBlocks(bytes: number[]): Block[] {
     let i = 0;
+    let version = -1;
+    const blocks: Block[] = [];
+    const decodedBlocks: string[] = [];
+    const addBlock = (block: Block) => {
+        blocks.push(block);
+        decodedBlocks.push(block.name);
+    };
     const next = (): number => {
-        if (i >= bytes.length) throw new Error('Unexpected end of bytes');
+        if (i >= bytes.length) throw new DecodeFailure('truncated', 'Unexpected end of bytes');
         return bytes[i++];
     };
 
-    // --- StartData (id=0) & version
-    const startId = next();
-    if (startId !== DataBlockId.StartData) {
-        throw new Error('No start block');
-    }
-    const version = next();
-    const blocks: Block[] = [
-        { id: DataBlockId.StartData, name: 'StartData', version },
-    ];
-
-    // --- Main loop until EndData
-    while (true) {
-        const id = next();
-        if (id === DataBlockId.EndData) {
-            blocks.push({ id: DataBlockId.EndData, name: 'EndData' });
-            break;
+    try {
+        // --- StartData (id=0) & version
+        const startId = next();
+        if (startId !== DataBlockId.StartData) {
+            throw new DecodeFailure('invalid-start', 'No start block');
         }
-        switch (id) {
+        version = next();
+        if (version > 3) {
+            throw new DecodeFailure(
+                'unsupported-version',
+                `Unsupported encoding version byte 0x${version.toString(16).padStart(2, '0')}`,
+            );
+        }
+        addBlock({ id: DataBlockId.StartData, name: 'StartData', version });
+
+        // --- Main loop until EndData
+        while (true) {
+            const id = next();
+            if (id === DataBlockId.EndData) {
+                addBlock({ id: DataBlockId.EndData, name: 'EndData' });
+                break;
+            }
+            switch (id) {
             case DataBlockId.TypeData: {
                 const itemType = next();
-                blocks.push({ id: DataBlockId.TypeData, name: 'TypeData', itemType });
+                addBlock({ id: DataBlockId.TypeData, name: 'TypeData', itemType });
                 break;
             }
 
@@ -390,13 +468,13 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     nameBytes.push(b);
                 }
                 const nameStr = new TextDecoder().decode(new Uint8Array(nameBytes));
-                blocks.push({ id: DataBlockId.NameData, name: 'NameData', nameStr });
+                addBlock({ id: DataBlockId.NameData, name: 'NameData', nameStr });
                 break;
             }
 
             case DataBlockId.RerollData: {
                 const rerollCount = next();
-                blocks.push({ id: DataBlockId.RerollData, name: 'RerollData', rerollCount });
+                addBlock({ id: DataBlockId.RerollData, name: 'RerollData', rerollCount });
                 break;
             }
 
@@ -426,7 +504,7 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     }
                 }
                 i = parsed.end;
-                blocks.push({
+                addBlock({
                     id: DataBlockId.IdentificationData,
                     name: 'IdentificationData',
                     extended: parsed.extended,
@@ -444,7 +522,8 @@ export function decodeBlocks(bytes: number[]): Block[] {
                 const bitsPerPowder = version >= 3 ? 6 : 5;
                 const bits = powderCount * bitsPerPowder;
                 const totalBytes = Math.ceil(bits / 8);
-                if (i + totalBytes > bytes.length) throw new Error('Unexpected end of bytes');
+                if (i + totalBytes > bytes.length)
+                    throw new DecodeFailure('truncated', 'Unexpected end of bytes');
                 const raw = bytes.slice(i, i + totalBytes);
                 i += totalBytes;
                 const powders: PowderDataBlock['powders'] = [];
@@ -469,7 +548,7 @@ export function decodeBlocks(bytes: number[]): Block[] {
                 }
                 const specialId = version >= 3 ? next() : undefined;
                 const specialTier = specialId ? next() : undefined;
-                blocks.push({
+                addBlock({
                     id: DataBlockId.PowderData,
                     name: 'PowderData',
                     powderSlots,
@@ -485,19 +564,19 @@ export function decodeBlocks(bytes: number[]): Block[] {
                 if (version === 0) {
                     // Legacy: [statId, varint(val)]
                     const val = decodeVarint(next);
-                    blocks.push({ id, name: 'ShinyData', shinyId, val });
+                    addBlock({ id, name: 'ShinyData', shinyId, val });
                 } else {
                     // v1+: [statId, rerollCount, varint(val)]
                     const rerollCount = next();
                     const val = decodeVarint(next);
-                    blocks.push({ id, name: 'ShinyData', shinyId, val, rerollCount });
+                    addBlock({ id, name: 'ShinyData', shinyId, val, rerollCount });
                 }
                 break;
             }
 
             case DataBlockId.CustomGearType: {
                 const gearType = next();
-                blocks.push({ id, name: 'CustomGearType', gearType });
+                addBlock({ id, name: 'CustomGearType', gearType });
                 break;
             }
 
@@ -507,12 +586,12 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     const effectStrength = next();
                     const maxDurability = decodeVarint(next);
                     const currentDurability = decodeVarint(next);
-                    blocks.push({ id, name: 'DurabilityData', effectStrength, maxDurability, currentDurability });
+                    addBlock({ id, name: 'DurabilityData', effectStrength, maxDurability, currentDurability });
                 } else {
                     // Arethusa 3.X.X+: [max varint, current varint] (effectStrength dropped, fixed at 100)
                     const maxDurability = decodeVarint(next);
                     const currentDurability = decodeVarint(next);
-                    blocks.push({ id, name: 'DurabilityData', maxDurability, currentDurability });
+                    addBlock({ id, name: 'DurabilityData', maxDurability, currentDurability });
                 }
                 break;
             }
@@ -527,7 +606,7 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     const requirement = decodeVarint(next);
                     skillRequirements.push({ skillId, requirement });
                 }
-                blocks.push({ id, name: 'RequirementsData', level, classId, skillRequirements });
+                addBlock({ id, name: 'RequirementsData', level, classId, skillRequirements });
                 break;
             }
 
@@ -546,7 +625,7 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     const max = decodeVarint(next);
                     damages.push({ damageTypeId, min, max });
                 }
-                blocks.push({ id, name: 'DamageData', attackSpeedId, ...(dps !== undefined ? { dps } : {}), damages });
+                addBlock({ id, name: 'DamageData', attackSpeedId, ...(dps !== undefined ? { dps } : {}), damages });
                 break;
             }
 
@@ -559,7 +638,7 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     const value = decodeVarint(next);
                     defenses.push({ elementId, value });
                 }
-                blocks.push({ id, name: 'DefenseData', health, defenses });
+                addBlock({ id, name: 'DefenseData', health, defenses });
                 break;
             }
 
@@ -586,20 +665,20 @@ export function decodeBlocks(bytes: number[]): Block[] {
                         idents.push({ statId, value });
                     }
                 }
-                blocks.push({ id, name: 'CustomIdentificationData', identifications: idents });
+                addBlock({ id, name: 'CustomIdentificationData', identifications: idents });
                 break;
             }
 
             case DataBlockId.CustomConsumableTypeData: {
                 const consumableType = next();
-                blocks.push({ id, name: 'CustomConsumableTypeData', consumableType });
+                addBlock({ id, name: 'CustomConsumableTypeData', consumableType });
                 break;
             }
 
             case DataBlockId.UsesData: {
                 const currentUses = next();
                 const maxUses = next();
-                blocks.push({ id, name: 'UsesData', currentUses, maxUses });
+                addBlock({ id, name: 'UsesData', currentUses, maxUses });
                 break;
             }
 
@@ -611,33 +690,33 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     const value = decodeVarint(next);
                     effects.push({ effectId, value });
                 }
-                blocks.push({ id, name: 'EffectsData', effects });
+                addBlock({ id, name: 'EffectsData', effects });
                 break;
             }
 
             case DataBlockId.MountTypeData: {
                 const mountType = next();
-                blocks.push({ id, name: 'MountTypeData', mountType });
+                addBlock({ id, name: 'MountTypeData', mountType });
                 break;
             }
 
             case DataBlockId.MountPotentialData: {
                 const potential = decodeVarint(next);
-                blocks.push({ id, name: 'MountPotentialData', potential });
+                addBlock({ id, name: 'MountPotentialData', potential });
                 break;
             }
 
             case DataBlockId.MountColorData: {
                 const primaryColorId = next();
                 const secondaryColorId = next();
-                blocks.push({ id, name: 'MountColorData', primaryColorId, secondaryColorId });
+                addBlock({ id, name: 'MountColorData', primaryColorId, secondaryColorId });
                 break;
             }
 
             case DataBlockId.MountEnergyData: {
                 const currentEnergy = decodeVarint(next);
                 const maxEnergy = decodeVarint(next);
-                blocks.push({ id, name: 'MountEnergyData', currentEnergy, maxEnergy });
+                addBlock({ id, name: 'MountEnergyData', currentEnergy, maxEnergy });
                 break;
             }
 
@@ -650,7 +729,7 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     const max = decodeVarint(next);
                     stats.push({ statId, current, max });
                 }
-                blocks.push({ id, name: 'MountStatsData', stats });
+                addBlock({ id, name: 'MountStatsData', stats });
                 break;
             }
 
@@ -663,21 +742,43 @@ export function decodeBlocks(bytes: number[]): Block[] {
                     const max = decodeVarint(next);
                     stats.push({ statId, max });
                 }
-                blocks.push({ id, name: 'MountStatsMaxData', estimatedMaxStats, stats });
+                addBlock({ id, name: 'MountStatsMaxData', estimatedMaxStats, stats });
                 break;
             }
 
             default:
-                throw new Error(`Unhandled block id: ${id}`);
+                throw new DecodeFailure('unsupported-block', `Unsupported block id: ${id}`, i - 1);
+            }
         }
+        return blocks;
+    } catch (err) {
+        throw new ItemDecodeError({
+            code: err instanceof DecodeFailure ? err.code : 'invalid-block',
+            reason: err instanceof Error ? err.message : String(err),
+            version: version >= 0 ? version : undefined,
+            versionName: version >= 0 ? arethusaVersionName(version) : undefined,
+            offset: err instanceof DecodeFailure && err.offset !== undefined ? err.offset : i,
+            byteLength: bytes.length,
+            decodedBlocks,
+        });
     }
-    return blocks;
 }
 
 /**
  * High-level: string -> Block[]
  */
 export function parseIdString(idstr: string): Block[] {
-    const bytes = decodeString(idstr);
+    let bytes: number[];
+    try {
+        bytes = decodeString(idstr);
+    } catch (err) {
+        throw new ItemDecodeError({
+            code: 'invalid-characters',
+            reason: err instanceof Error ? err.message : String(err),
+            offset: 0,
+            byteLength: 0,
+            decodedBlocks: [],
+        });
+    }
     return decodeBlocks(bytes);
 }

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { getIdentificationInfo, processIdentification, calculateIdentificationRoll } from '@/lib/itemUtils';
-import api from '@/lib/api';
+import api, { ApiError, readApiError } from '@/lib/api';
 import { ItemAnalyzeData, RolledItemDisplay } from '@/components/wynncraft/item/RolledItemDisplay';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,6 +13,7 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CopyText } from '@/components/custom/CopyText';
+import { ItemAnalyzeErrorFallback } from '@/components/custom/ItemAnalyzeErrorFallback';
 
 function calculateWeightedScore(
   ids: { name: string; percentage: number }[],
@@ -70,6 +71,7 @@ export default function Home() {
   const [demoData, setDemoData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [errorDetails, setErrorDetails] = useState<unknown>(null);
   const [rankSuggestion, setRankSuggestion] = useState<React.ReactNode | null>(null);
 
   // States for comparison mode
@@ -79,6 +81,7 @@ export default function Home() {
   const [compareDataB, setCompareDataB] = useState<any>(null);
   const [compareLoading, setCompareLoading] = useState<boolean>(false);
   const [compareError, setCompareError] = useState<string | null>(null);
+  const [compareErrorDetails, setCompareErrorDetails] = useState<unknown>(null);
 
   // Tab state
   const [activeTab, setActiveTab] = useState<'analyze' | 'compare'>('analyze');
@@ -87,6 +90,7 @@ export default function Home() {
   const fetchItemData = async (item: string) => {
     setLoading(true);
     setError(null);
+    setErrorDetails(null);
     setDemoData(null); // Clear previous single item data
     setRankSuggestion(null);
 
@@ -102,7 +106,7 @@ export default function Home() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch item data');
+        throw await readApiError(response);
       }
 
       const data = await response.json();
@@ -113,7 +117,8 @@ export default function Home() {
         throw new Error('Invalid item data');
       }
     } catch (error: any) {
-      setError(error.message); // Show error message if something goes wrong
+      setError(error?.message ?? 'Failed to fetch item data');
+      setErrorDetails(error?.details ?? null);
     } finally {
       setLoading(false);
     }
@@ -503,7 +508,8 @@ export default function Home() {
   // Fetch data for comparison mode
   const fetchCompareItemData = async (
     itemString: string,
-    itemSetter: React.Dispatch<React.SetStateAction<any>>
+    itemSetter: React.Dispatch<React.SetStateAction<any>>,
+    label: 'Item A' | 'Item B',
   ) => {
     // Re-uses the single item fetch logic but targets comparison state setters
     // This could be further optimized by abstracting the core fetch logic
@@ -512,12 +518,15 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ item: itemString }),
     });
-    if (!response.ok) throw new Error(`Failed to fetch item data for ${itemString}`);
+    if (!response.ok) {
+      const apiError = await readApiError(response);
+      throw new ApiError(`${label}: ${apiError.message}`, apiError.details);
+    }
     const data = await response.json();
     if (data) {
       itemSetter(data);
     } else {
-      throw new Error(`Invalid item data for ${itemString}`);
+      throw new ApiError(`${label}: the server returned an empty result.`);
     }
   };
 
@@ -528,16 +537,18 @@ export default function Home() {
     }
     setCompareLoading(true);
     setCompareError(null);
+    setCompareErrorDetails(null);
     setCompareDataA(null);
     setCompareDataB(null);
 
     try {
       await Promise.all([
-        fetchCompareItemData(compareItemAString, setCompareDataA),
-        fetchCompareItemData(compareItemBString, setCompareDataB),
+        fetchCompareItemData(compareItemAString, setCompareDataA, 'Item A'),
+        fetchCompareItemData(compareItemBString, setCompareDataB, 'Item B'),
       ]);
     } catch (error: any) {
-      setCompareError(error.message || "Failed to fetch one or both items for comparison.");
+      setCompareError(error?.message ?? "Failed to fetch one or both items for comparison.");
+      setCompareErrorDetails(error?.details ?? null);
     } finally {
       setCompareLoading(false);
     }
@@ -648,7 +659,14 @@ export default function Home() {
                 {loading ? "Loading..." : "Analyze"}
               </Button>
             </form>
-            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            {error && (
+              <ItemAnalyzeErrorFallback
+                message={error}
+                itemStrings={[inputValue]}
+                tab="analyze"
+                diagnostics={errorDetails}
+              />
+            )}
           </TabsContent>
           <TabsContent value="compare">
             <div className="w-full space-y-4 mt-4">
@@ -667,7 +685,14 @@ export default function Home() {
               <Button onClick={handleCompare} className="w-full" disabled={compareLoading}>
                 {compareLoading ? "Comparing..." : "Compare Items"}
               </Button>
-              {compareError && <p className="text-red-500 text-sm mt-2">{compareError}</p>}
+              {compareError && (
+                <ItemAnalyzeErrorFallback
+                  message={compareError}
+                  itemStrings={[compareItemAString, compareItemBString]}
+                  tab="compare"
+                  diagnostics={compareErrorDetails}
+                />
+              )}
             </div>
           </TabsContent>
         </Tabs>
