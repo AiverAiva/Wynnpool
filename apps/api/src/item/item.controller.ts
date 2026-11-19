@@ -68,7 +68,7 @@ export class ItemController {
             throw new HttpException('Missing item', HttpStatus.BAD_REQUEST);
         }
 
-        const summary = this.itemService.summarize(item);
+        const summary = this.summarizeOrBadRequest(item);
         const original = await this.itemService.findItemById(summary.itemName);
         this.itemService.normalizeIdentificationsToRolls(summary, original);
         const weights = await this.itemService.findWeightsByItemName(summary.itemName);
@@ -86,7 +86,7 @@ export class ItemController {
             throw new HttpException('Missing item', HttpStatus.BAD_REQUEST);
         }
 
-        const summary = this.itemService.summarize(item);
+        const summary = this.summarizeOrBadRequest(item);
         const original = await this.itemService.findItemById(summary.itemName);
         this.itemService.normalizeIdentificationsToRolls(summary, original);
         const weights = await this.itemService.findWeightsByItemName(summary.itemName);
@@ -123,5 +123,14 @@ export class ItemController {
         return {
             ...result,
         };
+    }
+
+    /** An undecodable item string is a client error, not a server fault. */
+    private summarizeOrBadRequest(item: string) {
+        try {
+            return this.itemService.summarize(item);
+        } catch {
+            throw new HttpException('Invalid item string', HttpStatus.BAD_REQUEST);
+        }
     }
 }

@@ -112,14 +112,20 @@ export interface IdentificationDataBlock {
     id: DataBlockId.IdentificationData;
     name: 'IdentificationData';
     extended: boolean;
-    /** v3 stores actual identification values; legacy stores internal rolls (≈30–130). */
-    layout: 'v3' | 'legacy';
+    /**
+     * 'v4' = Arethusa 4.X.X (version byte 0x03) writes the displayed value plus
+     * an always-present meter and perfect byte, and stores no roll.
+     * 'v3' = Arethusa 3.X.X carries the displayed value plus a flags byte.
+     * 'legacy' = Arethusa 1.X.X/2.X.X stores internal rolls (≈30–130).
+     */
+    layout: 'v4' | 'v3' | 'legacy';
     identifications: Array<{
         kind: number;
         base: number | null;
         value: number | null;
         flags?: number;
         meter?: number;
+        perfect?: number;
         preid: boolean;
     }>;
 }
@@ -129,6 +135,9 @@ export interface PowderDataBlock {
     name: 'PowderData';
     powderSlots: number;
     powders: Array<{ element: number; tier: number }>;
+    /** Arethusa 4.X.X only: powder special id (0 = none) and its tier. */
+    specialId?: number;
+    specialTier?: number;
 }
 
 export interface ShinyDataBlock {
@@ -179,7 +188,7 @@ export interface DefenseDataBlock {
 export interface CustomIdentificationDataBlock {
     id: DataBlockId.CustomIdentificationData;
     name: 'CustomIdentificationData';
-    identifications: Array<{ statId: number; value: number; flags?: number; meter?: number }>;
+    identifications: Array<{ statId: number; value: number; flags?: number; meter?: number; perfect?: number }>;
 }
 
 export interface CustomConsumableTypeBlock {
@@ -274,16 +283,19 @@ export type Block =
     | EndDataBlock;
 
 /**
- * Parse an IdentificationData block (id 3) in either the new v3 layout
- * (value varint + flags byte + optional meter byte) or the legacy layout
- * (roll byte). @Wynntils PR #4265 made v3 the default, but strings with a
- * version byte < 3 can still carry v3 identification data, so callers must
- * try v3 first and fall back to legacy.
+ * Parse an IdentificationData block (id 3) in one of the three layouts:
+ * - v4 (Arethusa 4.X.X, version byte 0x03): value varint + meter byte + perfect byte.
+ * - v3 (Arethusa 3.X.X, version byte 0x02): value varint + flags byte + optional meter byte.
+ * - legacy (Arethusa 1.X.X/2.X.X): a single roll byte per entry.
+ *
+ * Wynntils PR #4265 made the value layout the default, but strings with a
+ * lower version byte can still carry it, so callers try v3 first and fall back
+ * to legacy. Version byte 0x03 always uses v4.
  */
 function readIdentificationEntries(
     bytes: number[],
     start: number,
-    layout: 'v3' | 'legacy'
+    layout: 'v4' | 'v3' | 'legacy'
 ): { end: number; extended: boolean; entries: IdentificationDataBlock['identifications'] } {
     let i = start;
     const next = (): number => {
@@ -303,18 +315,32 @@ function readIdentificationEntries(
             entries.push({ kind, base, value: null, preid: true });
             continue;
         }
-        if (layout === 'v3') {
-            const value = decodeVarint(next);
-            const flags = next();
-            // bit0 PERFECT_INTERNAL_ROLL, bit1 ICON_PREFIX, bit2 VANILLA_METER
-            const meter = (flags & 4) !== 0 ? next() : undefined;
-            entries.push({ kind, base, value, flags, meter, preid: false });
-        } else {
+        if (layout === 'legacy') {
             const value = next();
             entries.push({ kind, base, value, preid: false });
+        } else {
+            const value = decodeVarint(next);
+            if (layout === 'v4') {
+                // meter: 0x00–0x24 roll stages, 0xFF = no meter; perfect: 0x01 = perfect roll
+                const meter = next();
+                const perfect = next();
+                entries.push({ kind, base, value, meter, perfect, preid: false });
+            } else {
+                const flags = next();
+                // bit0 PERFECT_INTERNAL_ROLL, bit1 ICON_PREFIX, bit2 VANILLA_METER
+                const meter = (flags & 4) !== 0 ? next() : undefined;
+                entries.push({ kind, base, value, flags, meter, preid: false });
+            }
         }
     }
     return { end: i, extended, entries };
+}
+
+/** A parsed identification block is only valid if the next byte starts a block. */
+function assertBlockBoundary(bytes: number[], end: number, blockName: string) {
+    if (end < bytes.length && !isValidBlockId(bytes[end])) {
+        throw new Error(`${blockName} parse desync at byte ${end}`);
+    }
 }
 
 function isValidBlockId(id: number): boolean {
@@ -376,18 +402,28 @@ export function decodeBlocks(bytes: number[]): Block[] {
 
             case DataBlockId.IdentificationData: {
                 const startIdx = i;
-                let layout: 'v3' | 'legacy' = 'v3';
+                let layout: IdentificationDataBlock['layout'];
                 let parsed: { end: number; extended: boolean; entries: IdentificationDataBlock['identifications'] };
-                try {
-                    parsed = readIdentificationEntries(bytes, startIdx, 'v3');
-                    // Sanity: the byte right after the block must be a valid next block id,
-                    // otherwise the v3 parse desynced and we fall back to the legacy layout.
-                    if (parsed.end < bytes.length && !isValidBlockId(bytes[parsed.end])) {
-                        throw new Error('v3 identification parse desync');
+                if (version >= 3) {
+                    // Arethusa 4.X.X always writes meter + perfect bytes instead of flags,
+                    // so there is no ambiguity to fall back from.
+                    layout = 'v4';
+                    parsed = readIdentificationEntries(bytes, startIdx, 'v4');
+                    assertBlockBoundary(bytes, parsed.end, 'v4 identification');
+                } else {
+                    layout = 'v3';
+                    try {
+                        parsed = readIdentificationEntries(bytes, startIdx, 'v3');
+                        // Sanity: the byte right after the block must be a valid next block id,
+                        // otherwise the v3 parse desynced and we fall back to the legacy layout.
+                        assertBlockBoundary(bytes, parsed.end, 'v3 identification');
+                    } catch {
+                        layout = 'legacy';
+                        parsed = readIdentificationEntries(bytes, startIdx, 'legacy');
+                        // An unvalidated fallback can land mid-stream and fail later with a
+                        // confusing "Unhandled block id" instead of an invalid-string error.
+                        assertBlockBoundary(bytes, parsed.end, 'legacy identification');
                     }
-                } catch {
-                    parsed = readIdentificationEntries(bytes, startIdx, 'legacy');
-                    layout = 'legacy';
                 }
                 i = parsed.end;
                 blocks.push({
@@ -403,29 +439,42 @@ export function decodeBlocks(bytes: number[]): Block[] {
             case DataBlockId.PowderData: {
                 const powderSlots = next();
                 const powderCount = next();
-                const bits = powderCount * 5;
+                // Arethusa 4.X.X packs element × 7 + tier (1–7) into 6 bits so tier VII
+                // fits, and always ends the block with a special id (plus tier when set).
+                const bitsPerPowder = version >= 3 ? 6 : 5;
+                const bits = powderCount * bitsPerPowder;
                 const totalBytes = Math.ceil(bits / 8);
+                if (i + totalBytes > bytes.length) throw new Error('Unexpected end of bytes');
                 const raw = bytes.slice(i, i + totalBytes);
                 i += totalBytes;
                 const powders: PowderDataBlock['powders'] = [];
                 for (let p = 0; p < powderCount; p++) {
                     let val = 0;
-                    for (let b = 0; b < 5; b++) {
-                        const bitIdx = p * 5 + b;
+                    for (let b = 0; b < bitsPerPowder; b++) {
+                        const bitIdx = p * bitsPerPowder + b;
                         const byteVal = raw[Math.floor(bitIdx / 8)];
                         const bit = (byteVal >> (7 - (bitIdx % 8))) & 1;
                         val = (val << 1) | bit;
                     }
                     if (val === 0) continue;
-                    const element = Math.floor(val / 6);
-                    const tier = val % 6 === 0 ? 6 : val % 6;
-                    powders.push({ element, tier });
+                    if (bitsPerPowder === 6) {
+                        const element = Math.floor((val - 1) / 7);
+                        const tier = ((val - 1) % 7) + 1;
+                        powders.push({ element, tier });
+                    } else {
+                        const element = Math.floor(val / 6);
+                        const tier = val % 6 === 0 ? 6 : val % 6;
+                        powders.push({ element, tier });
+                    }
                 }
+                const specialId = version >= 3 ? next() : undefined;
+                const specialTier = specialId ? next() : undefined;
                 blocks.push({
                     id: DataBlockId.PowderData,
                     name: 'PowderData',
                     powderSlots,
                     powders,
+                    ...(specialId !== undefined ? { specialId, specialTier } : {}),
                 });
                 break;
             }
@@ -453,14 +502,14 @@ export function decodeBlocks(bytes: number[]): Block[] {
             }
 
             case DataBlockId.DurabilityData: {
-                if (version < 3) {
-                    // v1/v2: [effectStrength byte, max varint, current varint]
+                if (version < 2) {
+                    // Arethusa 1.X.X/2.X.X: [effectStrength byte, max varint, current varint]
                     const effectStrength = next();
                     const maxDurability = decodeVarint(next);
                     const currentDurability = decodeVarint(next);
                     blocks.push({ id, name: 'DurabilityData', effectStrength, maxDurability, currentDurability });
                 } else {
-                    // v3: [max varint, current varint] (effectStrength dropped, fixed at 100)
+                    // Arethusa 3.X.X+: [max varint, current varint] (effectStrength dropped, fixed at 100)
                     const maxDurability = decodeVarint(next);
                     const currentDurability = decodeVarint(next);
                     blocks.push({ id, name: 'DurabilityData', maxDurability, currentDurability });
@@ -484,8 +533,8 @@ export function decodeBlocks(bytes: number[]): Block[] {
 
             case DataBlockId.DamageData: {
                 let dps: number | undefined;
-                if (version >= 3) {
-                    // v3 prepends a DPS varint before the standard layout
+                if (version >= 2) {
+                    // Arethusa 3.X.X+ prepends a DPS varint before the standard layout
                     dps = decodeVarint(next);
                 }
                 const attackSpeedId = next();
@@ -520,12 +569,19 @@ export function decodeBlocks(bytes: number[]): Block[] {
                 for (let k = 0; k < count; k++) {
                     const statId = next();
                     if (version >= 3) {
-                        // v3: [statId byte, value varint, flags byte, optional meter byte]
+                        // Arethusa 4.X.X: [statId byte, value varint, meter byte, perfect byte]
+                        const value = decodeVarint(next);
+                        const meter = next();
+                        const perfect = next();
+                        idents.push({ statId, value, meter, perfect });
+                    } else if (version >= 2) {
+                        // Arethusa 3.X.X: [statId byte, value varint, flags byte, optional meter byte]
                         const value = decodeVarint(next);
                         const flags = next();
                         const meter = (flags & 4) !== 0 ? next() : undefined;
                         idents.push({ statId, value, flags, meter });
                     } else {
+                        // Arethusa 1.X.X/2.X.X stores only the maximum value.
                         const value = decodeVarint(next);
                         idents.push({ statId, value });
                     }

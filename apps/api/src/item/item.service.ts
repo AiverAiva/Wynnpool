@@ -107,7 +107,9 @@ export class ItemService implements OnModuleInit {
 
             if (block.name === 'IdentificationData') {
                 summary.identifications = {};
-                summary.identificationValueKind = block.layout === 'v3' ? 'actual' : 'roll';
+                // v4 (Arethusa 4.X.X) and v3 (3.X.X) both store displayed values;
+                // only 1.X.X/2.X.X strings carry internal rolls.
+                summary.identificationValueKind = block.layout === 'legacy' ? 'roll' : 'actual';
                 for (const id of block.identifications) {
                     const name = this.idMap.get(id.kind);
                     if (name && typeof id.value === 'number') {
